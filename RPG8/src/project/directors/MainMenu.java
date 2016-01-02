@@ -12,7 +12,7 @@ public class MainMenu extends Screen {
 	
 	public MainMenu(Game game) {
 		super(game);
-		gameFilesMenu=new GameMenu(this.width, this.height);
+		gameFilesMenu=new GameMenu(this.width, this.height, game);
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class MainMenu extends Screen {
 
 	@Override
 	public KeyListener getKeyListener() {
-		return gameFilesMenu;
+		return gameFilesMenu;//KeyListener is implemented in superclass VerticalMenu
 	}
 
 

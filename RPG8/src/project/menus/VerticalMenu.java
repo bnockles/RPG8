@@ -16,15 +16,17 @@ public abstract class VerticalMenu extends Menu{
 		    switch( keyCode ) { 
 		        case KeyEvent.VK_UP:
 		            selectPrevious();
-		            update();
+		            update();//updates appearance of menu(i.e. selections change)
 		            break;
 		        case KeyEvent.VK_DOWN:
 		            selectNext();
-		            update();
+		            System.out.println("Selection made");
+		            update();//updates appearance of menu(i.e. selections change)
 		            break;
 		        case KeyEvent.VK_SPACE: 
 		        case KeyEvent.VK_ENTER:
-		        	confirmSelection();
+		        	System.out.println("Selection made");
+		        	confirmSelection();//defined in superclass Menu
 		        	break;
 		     }
 	}
