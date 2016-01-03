@@ -77,6 +77,8 @@ public class Game extends JFrame{
 	public void reset() {
 		StartScreen startScreen = new StartScreen(this);
 		setScreen(startScreen);
+		activeScreen.update();
+		repaint();
 	}
 
 	public void paint(Graphics g){
@@ -112,7 +114,6 @@ public class Game extends JFrame{
 			removeKeyListener(activeScreen.getKeyListener());
 		}catch(NullPointerException e){
 			//will not remove a listener when first initialized
-			e.printStackTrace();
 		}
 		activeScreen=screen;
 		addKeyListener(screen.getKeyListener());

@@ -3,6 +3,7 @@ package project.menus;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
+
 public abstract class VerticalMenu extends Menu{
 
 
@@ -20,12 +21,10 @@ public abstract class VerticalMenu extends Menu{
 		            break;
 		        case KeyEvent.VK_DOWN:
 		            selectNext();
-		            System.out.println("Selection made");
 		            update();//updates appearance of menu(i.e. selections change)
 		            break;
 		        case KeyEvent.VK_SPACE: 
 		        case KeyEvent.VK_ENTER:
-		        	System.out.println("Selection made");
 		        	confirmSelection();//defined in superclass Menu
 		        	break;
 		     }

@@ -9,8 +9,8 @@ public abstract class Screen {
 
 	Game game;//all screens must be able to reference the Game instance in order to change to a different screen
 	BufferedImage screenImage;//what the screen displays
-	int width;//width
-	int height;//height
+	public int width;//width
+	public int height;//height
 	KeyListener keyListener;//every screen is either itself a KeyListener or contains implementations of KeyListeners (menus)
 	
 	public Screen(Game game) {
