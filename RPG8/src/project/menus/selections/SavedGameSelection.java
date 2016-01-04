@@ -1,7 +1,6 @@
 package project.menus.selections;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 
 import project.directors.GameFile;
 import project.menus.Selection;

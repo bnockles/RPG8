@@ -142,6 +142,8 @@ public class DemoOverworld extends Screen implements KeyListener{
 		//shows the image exactly as it is:
 //		g2.drawImage(sprite, spriteX, spriteY, null);
 		//scales the image to a specified size
+		g2.setColor(new Color(0,80,0));
+		g2.fillOval(spriteX, spriteY+spriteHeight-12, spriteWidth, 20);
 		UtilityMethods.scaleImage(g2, sprite,spriteX, spriteY, spriteWidth, spriteHeight );
 	}
 

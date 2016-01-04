@@ -35,9 +35,9 @@ public class Game extends JFrame{
 	private Screen activeScreen;
 
 	//the states of the following screens should be preserved even when they are not being shown
-	private Screen overWorldScreen;
-	private Screen battleScreen;
-	private Screen pauseScreen;
+//	private Screen overWorldScreen;
+//	private Screen battleScreen;
+//	private Screen pauseScreen;
 
 	public static void main(String[] args) {
 		new Game();
