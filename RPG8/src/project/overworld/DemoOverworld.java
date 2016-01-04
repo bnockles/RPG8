@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -61,9 +62,22 @@ public class DemoOverworld extends Screen implements KeyListener{
 		spriteY = 400;
 		//try block must be used since files *might* not exist
 		try {
-			spriteImages[0] = ImageIO.read(new File("images/sprites/standing.png"));
-			spriteImages[1] = ImageIO.read(new File("images/sprites/standing1.png"));
-			spriteImages[2] = ImageIO.read(new File("images/sprites/standing2.png"));
+			/**SPECIAL NOTE:
+			 * Previously, I used "File" to import images,
+			 *  but this did not work when exporting as a JAR:
+			 *  spriteImages[0] = ImageIO.read(new File("images/sprites/standing.png"));
+			 *  spriteImages[1] = ImageIO.read(new File("images/sprites/standing1.png"));
+			 *  spriteImages[2] = ImageIO.read(new File("images/sprites/standing2.png"));
+			 *  
+			 *  See new implementation below, which works for Files and JARs
+			 */
+			URL url0 = getClass().getResource("/images/sprites/standing.png");
+			URL url1 = getClass().getResource("/images/sprites/standing1.png");
+			URL url2 = getClass().getResource("/images/sprites/standing2.png");
+	
+			spriteImages[0] = ImageIO.read(url0);
+			spriteImages[1] = ImageIO.read(url1);
+			spriteImages[2] = ImageIO.read(url2);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
