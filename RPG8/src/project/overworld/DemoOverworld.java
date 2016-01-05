@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 import project.directors.Game;
 import project.directors.Screen;
 import project.directors.UtilityMethods;
+import project.pause.OverworldPause;
 /**
  * This is a "Demo" of how to display images stored in the directory
  * You probably don't want to use this class as your actual overworld, 
@@ -34,7 +35,7 @@ public class DemoOverworld extends Screen implements KeyListener{
 
 	/**You would not want these field in your actual Overworld class
 	they should be fields in a Character class, but are here for demo purposes only
-	*/
+	 */
 	BufferedImage[] spriteImages;
 	int spriteX;
 	int spriteY;
@@ -48,7 +49,7 @@ public class DemoOverworld extends Screen implements KeyListener{
 	public static final int SHORELINE = 200;
 	public static final int MOVE_UNIT = 6;
 	ArrayList<Integer> pressedKeys;//allow for multiple input
-	
+
 	public DemoOverworld(Game game) {
 		super(game);
 		//demo purposes only:
@@ -74,7 +75,7 @@ public class DemoOverworld extends Screen implements KeyListener{
 			URL url0 = getClass().getResource("/images/sprites/standing.png");
 			URL url1 = getClass().getResource("/images/sprites/standing1.png");
 			URL url2 = getClass().getResource("/images/sprites/standing2.png");
-	
+
 			spriteImages[0] = ImageIO.read(url0);
 			spriteImages[1] = ImageIO.read(url1);
 			spriteImages[2] = ImageIO.read(url2);
@@ -90,6 +91,8 @@ public class DemoOverworld extends Screen implements KeyListener{
 
 	@Override
 	public void paintScreen(Graphics2D g2) {
+		checkMotion();
+		
 		//make a "landscape"
 		waveCount++;
 		if(waveHeightIncreasing)waveHeight+=.05;
@@ -109,7 +112,7 @@ public class DemoOverworld extends Screen implements KeyListener{
 				if(c%6==0)g2.drawLine(c, r-4, c2,r);
 				if(c%6==2)g2.drawLine(c, r-5, c2,r);
 				else g2.drawLine(c, r-3, c2,r);
-				
+
 				if(r%18==0 && (c%6==0 || c%6==1|| c%6==4))c+=1;
 				if(r%18==0 && (c%6==4))c+=4;
 				if(r%18 == 12){
@@ -141,10 +144,9 @@ public class DemoOverworld extends Screen implements KeyListener{
 				}
 			}
 		}
-		
 		BufferedImage sprite = spriteImages[0];
 		spriteWidth=60;
-		if(walking && count < 2){
+		if(walking && count < 5){
 			sprite = spriteImages[1];
 			spriteWidth=55;
 		}
@@ -152,13 +154,25 @@ public class DemoOverworld extends Screen implements KeyListener{
 			sprite = spriteImages[2];
 			spriteWidth=55;
 		}
-		if (count>3)count = 0;
+		if (count>10)count = 0;
 		//shows the image exactly as it is:
-//		g2.drawImage(sprite, spriteX, spriteY, null);
+		//		g2.drawImage(sprite, spriteX, spriteY, null);
 		//scales the image to a specified size
 		g2.setColor(new Color(0,80,0));
 		g2.fillOval(spriteX, spriteY+spriteHeight-12, spriteWidth, 20);
 		UtilityMethods.scaleImage(g2, sprite,spriteX, spriteY, spriteWidth, spriteHeight );
+		g2.setColor(Color.white);
+		g2.drawString("Press spacebar to pause", 10,height-20);
+	}
+
+	private void checkMotion() {
+		if(pressedKeys.contains(KeyEvent.VK_UP) && !pressedKeys.contains(KeyEvent.VK_DOWN)  && spriteY>0) spriteY-=MOVE_UNIT;
+		if(!pressedKeys.contains(KeyEvent.VK_UP) && pressedKeys.contains(KeyEvent.VK_DOWN) && spriteY<height-spriteHeight) spriteY+=MOVE_UNIT;
+		if(pressedKeys.contains(KeyEvent.VK_RIGHT) && !pressedKeys.contains(KeyEvent.VK_LEFT) && spriteX < width-SHORELINE-spriteWidth) {
+			spriteX+=MOVE_UNIT;
+		}
+		if(!pressedKeys.contains(KeyEvent.VK_RIGHT) && pressedKeys.contains(KeyEvent.VK_LEFT) && spriteX>0) spriteX-=MOVE_UNIT;
+		if(walking)count++;
 	}
 
 	@Override
@@ -168,29 +182,25 @@ public class DemoOverworld extends Screen implements KeyListener{
 	@Override
 	public synchronized void keyPressed(KeyEvent e) {
 		int keyCode = e.getKeyCode();
-	    if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT){
-	    	if(!pressedKeys.contains(keyCode))pressedKeys.add(keyCode);
-	    }
+		if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT){
+			if(!pressedKeys.contains(keyCode))pressedKeys.add(keyCode);
+		}
 		if(!pressedKeys.isEmpty()){
 			walking=true;
-			count++;
 		}
-	    if(pressedKeys.contains(KeyEvent.VK_UP) && !pressedKeys.contains(KeyEvent.VK_DOWN)  && spriteY>0) spriteY-=MOVE_UNIT;
-	    if(!pressedKeys.contains(KeyEvent.VK_UP) && pressedKeys.contains(KeyEvent.VK_DOWN) && spriteY<height-spriteHeight) spriteY+=MOVE_UNIT;
-	    if(pressedKeys.contains(KeyEvent.VK_RIGHT) && !pressedKeys.contains(KeyEvent.VK_LEFT) && spriteX < width-SHORELINE-spriteWidth) {
-	    	spriteX+=MOVE_UNIT;
-	    }
-	    if(!pressedKeys.contains(KeyEvent.VK_RIGHT) && pressedKeys.contains(KeyEvent.VK_LEFT) && spriteX>0) spriteX-=MOVE_UNIT;
-	    
+		if(keyCode == KeyEvent.VK_SPACE){
+			OverworldPause pauseMenu = new OverworldPause(game,this);
+			game.setScreen(pauseMenu);
+		}
 	}
 
 	@Override
 	public synchronized void keyReleased(KeyEvent e) {
 		int keyCode = e.getKeyCode();
-	    if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT){
-	    	pressedKeys.remove(pressedKeys.indexOf(keyCode));
-	    }
-	    if(pressedKeys.isEmpty())walking=false;
+		if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT){
+			pressedKeys.remove(pressedKeys.indexOf(keyCode));
+		}
+		if(pressedKeys.isEmpty())walking=false;
 	}
 
 }

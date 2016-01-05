@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 public abstract class Screen {
 
-	Game game;//all screens must be able to reference the Game instance in order to change to a different screen
+	protected Game game;//all screens must be able to reference the Game instance in order to change to a different screen
 	BufferedImage screenImage;//what the screen displays
 	public int width;//width
 	public int height;//height

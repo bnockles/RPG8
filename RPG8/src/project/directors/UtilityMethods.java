@@ -22,6 +22,7 @@ public class UtilityMethods {
 		g2.drawString(text, x, y);
 	}
 	
+	
 	public static void scaleImage(Graphics2D g2,BufferedImage originalImage, int x, int y, int newWidth, int newHeight){
 		
 		int w = originalImage.getWidth();
