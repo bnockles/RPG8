@@ -22,7 +22,12 @@ public class GameMenu extends VerticalMenu{
 	public GameMenu(int width, int height, Game game) {
 		super(width, height);
 		this.game=game;
-		loadGameFromFile("/saveFiles/save1.txt");
+		try{
+			loadGameFromFile(SaveFile.SAVE_FILE_DIRECTORY+"save2.txt");
+		}catch(Exception e){
+			loadGameFromFile("/saveFiles/save1.txt");
+			
+		}
 		selections.get(selectIndex).setSelect(true);
 	}
 

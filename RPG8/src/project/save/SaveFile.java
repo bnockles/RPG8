@@ -13,6 +13,8 @@ public class SaveFile {
 	private int overWorldY;
 	private long creationTime;
 	
+	public static final String SAVE_FILE_DIRECTORY = System.getProperty("user.home")+File.separator+"saveFiles"+File.separator;
+	
 	public static final String NEW_TAG = "newFile";
 	public static final String CREATION_TAG = "creationTime";
 	public static final String X_TAG = "overWorldX";
@@ -58,8 +60,9 @@ public class SaveFile {
 		this.overWorldY = overWorldY;
 	}
 
-	public void save() {
-		String fileName = System.getProperty("user.home")+File.separator+"saveFiles"+File.separator+"save2.txt";
+	public boolean save() {
+		String fileName = SAVE_FILE_DIRECTORY+
+				"save2.txt";
 
 /**
         <newFile>true</newFile>
@@ -85,10 +88,12 @@ public class SaveFile {
 
             // Always close files.
             bufferedWriter.close();
+            return true;
         }
         catch(IOException ex) {
 
             ex.printStackTrace();
+            return false;
         }
 	}
 

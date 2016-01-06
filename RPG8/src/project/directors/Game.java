@@ -153,12 +153,12 @@ public class Game extends JFrame{
 		return openGame;
 	}
 	
-	public void save(DemoOverworld overworld) {
+	public boolean save(DemoOverworld overworld) {
 		ItemState i = openGame.getItemState();
 		i.setPotionCollected(overworld.isPotionCollected());
 		openGame.setOverWorldX(overworld.getSpriteX());
 		openGame.setOverWorldY(overworld.getSpriteY());
-		openGame.save();
+		return openGame.save();
 	}
 
 
