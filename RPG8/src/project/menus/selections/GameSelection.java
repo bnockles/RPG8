@@ -34,7 +34,6 @@ public class GameSelection extends Selection{
 		if(newGame)UtilityMethods.centerText(g2, "New Game", width, height);
 		else {
 			Date date=new Date(creationTime);
-//			SimpleDateFormat format = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
 			UtilityMethods.centerText(g2, "Save File created: "+date, width, height);
 		}
 	}
@@ -54,6 +53,7 @@ public class GameSelection extends Selection{
 		This method does NOT create a new save file or load anything information
 		*/
 		if(newGame)creationTime=System.currentTimeMillis();
+		System.out.println(fileLocation);
 		game.loadGame(fileLocation);
 		game.setScreen(new DemoOverworld(game));
 		

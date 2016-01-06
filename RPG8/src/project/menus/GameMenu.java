@@ -2,6 +2,9 @@ package project.menus;
 
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -17,42 +20,46 @@ public class GameMenu extends VerticalMenu{
 	public static final int SELECTION_HEIGHT = 200;
 	List<GameSelection> saveFiles;
 	Game game;
-	
-	
+
+
 	public GameMenu(int width, int height, Game game) {
 		super(width, height);
 		this.game=game;
-		try{
-			loadGameFromFile(SaveFile.SAVE_FILE_DIRECTORY+"save2.txt");
-		}catch(Exception e){
-			e.printStackTrace();
-			loadGameFromFile("/saveFiles/save1.txt");
-			
+		for(int i=1; i<4;i++){
+			try{
+				loadGameFromFile(SaveFile.SAVE_FILE_DIRECTORY+"save"+i+".txt");
+			}catch(Exception e){
+				//e.printStackTrace();
+				loadNewGame(i);	
+			}
 		}
 		selections.get(selectIndex).setSelect(true);
 	}
 
-	private void loadGameFromFile(String string) {
+
+	private void loadNewGame(int number){
+		File createdFile = new File(SaveFile.SAVE_FILE_DIRECTORY);
+		createdFile.mkdirs();
+		SaveFile newSaveFile = new SaveFile(number);
+		newSaveFile.save();
+		selections.add(new GameSelection(width, 200, game, true, System.currentTimeMillis(),SaveFile.SAVE_FILE_DIRECTORY+"save"+number+".txt"));
+	}
+
+	private void loadGameFromFile(String string) throws NumberFormatException, IOException {
 		//must use importStreamReader to export to JAR
 		String line = null;
-		System.out.println(string);
-		BufferedReader txtReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(string)));
 		boolean newFile = false;
 		long creationDate = 0L;
-		try {
+
+			BufferedReader txtReader = new BufferedReader(new FileReader(string));
+			//reads only identifying information about file
 			while((line = txtReader.readLine()) != null) {
-				if(line.startsWith("<newFile>")){
-			    	newFile=SaveUtility.getBooleanFromTag(line, SaveFile.NEW_TAG);
-			    }
-				if(line.startsWith("<creationTime>")){
-			    	creationDate=Long.parseLong(SaveUtility.getTextFromTags(line, SaveFile.CREATION_TAG));
-			    }
-				if(newFile)break;
+				creationDate=Long.parseLong(SaveUtility.getTextFromTags(line, SaveFile.CREATION_TAG));
+				if(creationDate!=0L)break;
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}   
-		selections.add(new GameSelection(width, 200, game, newFile, creationDate,string));
+			txtReader.close();
+			selections.add(new GameSelection(width, 200, game, newFile, creationDate,string));
+ 
 	}
 
 	@Override

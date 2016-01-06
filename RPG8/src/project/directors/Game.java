@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -137,9 +138,9 @@ public class Game extends JFrame{
 
 	public void loadGame(String fileLocation){
 		String line = null;
-		BufferedReader txtReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(fileLocation)));
 		String rawSaveText="";
 		try {
+			BufferedReader txtReader = new BufferedReader(new FileReader(fileLocation));
 			while((line = txtReader.readLine()) != null) {
 				rawSaveText+=line;
 			}
