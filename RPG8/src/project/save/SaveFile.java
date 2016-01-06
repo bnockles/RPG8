@@ -59,21 +59,8 @@ public class SaveFile {
 	}
 
 	public void save() {
-		String fileName = "saveFiles"+File.separator+"save2.txt";
-		File f = null;
-	    boolean bool = false;
-	      
-	      try{
-	         // create new file
-	         f = new File(fileName);
-	         
-	         // tries to create new file in the system
-	         bool = f.createNewFile();
-	      }catch(Exception e){
-	    	  e.printStackTrace();
-	      }
-        // This will reference one line at a time
-        String line = null;
+		String fileName = System.getProperty("user.home")+File.separator+"saveFiles"+File.separator+"save2.txt";
+
 /**
         <newFile>true</newFile>
         <creationTime>0</creationTime>
