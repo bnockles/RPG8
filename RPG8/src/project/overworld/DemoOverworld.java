@@ -185,7 +185,8 @@ public class DemoOverworld extends Screen implements KeyListener{
 		if(!pressedKeys.contains(KeyEvent.VK_RIGHT) && pressedKeys.contains(KeyEvent.VK_LEFT) && spriteX>0) spriteX-=MOVE_UNIT;
 		if(walking)count++;
 		
-		if(Math.abs(spriteX-potionX)<10 && Math.abs(spriteY-potionY)<10)potionCollected=true;
+		
+		if(Math.abs(spriteX+spriteWidth/2-potionX)<10 && Math.abs(spriteY+spriteHeight-15-potionY)<10)potionCollected=true;
 	}
 
 	@Override
