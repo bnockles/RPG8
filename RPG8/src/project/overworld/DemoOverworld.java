@@ -42,6 +42,10 @@ public class DemoOverworld extends Screen implements KeyListener{
 	int count;
 	int waveCount;
 	double waveHeight;
+	int potionX;
+	int potionY;
+	boolean potionCollected;//it is definitely not a good idea to have all of these as fields, but again, just a demo!
+	BufferedImage potion;
 	boolean waveHeightIncreasing;
 	boolean walking;
 	int spriteWidth=60;
@@ -49,6 +53,7 @@ public class DemoOverworld extends Screen implements KeyListener{
 	public static final int SHORELINE = 200;
 	public static final int MOVE_UNIT = 6;
 	ArrayList<Integer> pressedKeys;//allow for multiple input
+	
 
 	public DemoOverworld(Game game) {
 		super(game);
@@ -59,8 +64,11 @@ public class DemoOverworld extends Screen implements KeyListener{
 		waveHeightIncreasing=false;
 		pressedKeys = new ArrayList<Integer>();
 		spriteImages=new BufferedImage[3];
-		spriteX = 400;
-		spriteY = 400;
+		spriteX = game.getSaveFile().getOverWorldX();
+		spriteY = game.getSaveFile().getOverWorldY();
+		potionX = 200;
+		potionY = 200;
+		potionCollected = game.getSaveFile().getItemState().isPotionCollected();
 		//try block must be used since files *might* not exist
 		try {
 			/**SPECIAL NOTE:
@@ -75,10 +83,12 @@ public class DemoOverworld extends Screen implements KeyListener{
 			URL url0 = getClass().getResource("/images/sprites/standing.png");
 			URL url1 = getClass().getResource("/images/sprites/standing1.png");
 			URL url2 = getClass().getResource("/images/sprites/standing2.png");
+			URL potionURL = getClass().getResource("/images/items/redPotion.png");
 
 			spriteImages[0] = ImageIO.read(url0);
 			spriteImages[1] = ImageIO.read(url1);
 			spriteImages[2] = ImageIO.read(url2);
+			potion = ImageIO.read(potionURL);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -160,7 +170,8 @@ public class DemoOverworld extends Screen implements KeyListener{
 		//scales the image to a specified size
 		g2.setColor(new Color(0,80,0));
 		g2.fillOval(spriteX, spriteY+spriteHeight-12, spriteWidth, 20);
-		UtilityMethods.scaleImage(g2, sprite,spriteX, spriteY, spriteWidth, spriteHeight );
+		if(!potionCollected)UtilityMethods.scaleImage(g2, potion,potionX, potionY, 15, 30);
+		UtilityMethods.scaleImage(g2, sprite,spriteX, spriteY, spriteWidth, spriteHeight);
 		g2.setColor(Color.white);
 		g2.drawString("Press spacebar to pause", 10,height-20);
 	}
@@ -173,6 +184,8 @@ public class DemoOverworld extends Screen implements KeyListener{
 		}
 		if(!pressedKeys.contains(KeyEvent.VK_RIGHT) && pressedKeys.contains(KeyEvent.VK_LEFT) && spriteX>0) spriteX-=MOVE_UNIT;
 		if(walking)count++;
+		
+		if(Math.abs(spriteX-potionX)<10 && Math.abs(spriteY-potionY)<10)potionCollected=true;
 	}
 
 	@Override
@@ -203,4 +216,18 @@ public class DemoOverworld extends Screen implements KeyListener{
 		if(pressedKeys.isEmpty())walking=false;
 	}
 
+	public int getSpriteX() {
+		return spriteX;
+	}
+
+	public int getSpriteY() {
+		return spriteY;
+	}
+
+	public boolean isPotionCollected() {
+		return potionCollected;
+	}
+
+	
+	
 }

@@ -10,9 +10,16 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
+
+import project.overworld.DemoOverworld;
+import project.save.ItemState;
+import project.save.SaveFile;
 
 
 
@@ -33,6 +40,7 @@ public class Game extends JFrame{
 	private int windowHeight = 800;
 	//the active Screen is the screen that is currently being updated and shown
 	private Screen activeScreen;
+	private SaveFile openGame;
 
 	//the states of the following screens should be preserved even when they are not being shown
 //	private Screen overWorldScreen;
@@ -125,6 +133,32 @@ public class Game extends JFrame{
 
 	public int getWindowHeight() {
 		return windowHeight;
+	}
+
+	public void loadGame(String fileLocation){
+		String line = null;
+		BufferedReader txtReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(fileLocation)));
+		String rawSaveText="";
+		try {
+			while((line = txtReader.readLine()) != null) {
+				rawSaveText+=line;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}   
+		openGame = new SaveFile(rawSaveText);
+	}
+	
+	public SaveFile getSaveFile(){
+		return openGame;
+	}
+	
+	public void save(DemoOverworld overworld) {
+		ItemState i = openGame.getItemState();
+		i.setPotionCollected(overworld.isPotionCollected());
+		openGame.setOverWorldX(overworld.getSpriteX());
+		openGame.setOverWorldY(overworld.getSpriteY());
+		openGame.save();
 	}
 
 

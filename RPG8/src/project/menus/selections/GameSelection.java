@@ -2,19 +2,28 @@ package project.menus.selections;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import project.directors.Game;
 import project.directors.UtilityMethods;
 import project.menus.Selection;
 import project.overworld.DemoOverworld;
 
-public class NewGameSelection extends Selection{
+public class GameSelection extends Selection{
 
 	Game game;
+	boolean newGame;
+	long creationTime;
+	String fileLocation;
 	
-	public NewGameSelection(int w, int h, Game game) {
+	public GameSelection(int w, int h, Game game, boolean newGame, long creationTime, String fileLocation) {
 		super(w, h);
 		this.game=game;
+		this.newGame=newGame;
+		this.creationTime=creationTime;
+		this.fileLocation=fileLocation;
 	}
 
 	@Override
@@ -22,7 +31,12 @@ public class NewGameSelection extends Selection{
 		g2.setColor(Color.black);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.white);
-		UtilityMethods.centerText(g2, "New Game", width, height);
+		if(newGame)UtilityMethods.centerText(g2, "New Game", width, height);
+		else {
+			Date date=new Date(creationTime);
+//			SimpleDateFormat format = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
+			UtilityMethods.centerText(g2, "Save File created: "+date, width, height);
+		}
 	}
 
 	@Override
@@ -39,9 +53,17 @@ public class NewGameSelection extends Selection{
 		Currently, it simply sets the game screen to the DemoOverworld.
 		This method does NOT create a new save file or load anything information
 		*/
+		if(newGame)creationTime=System.currentTimeMillis();
+		game.loadGame(fileLocation);
 		game.setScreen(new DemoOverworld(game));
+		
 	}
 
+	public String getFileLocation() {
+		return fileLocation;
+	}
 	
-	
+	public long getCreationTime(){
+		return creationTime;
+	}
 }

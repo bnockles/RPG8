@@ -52,6 +52,14 @@ public class OverworldPause extends Screen implements KeyListener{
 		if(kc==KeyEvent.VK_SPACE){
 			game.setScreen(gameState);
 		}
+		if(kc==KeyEvent.VK_Q){
+			game.setVisible(false);
+			System.exit(0);
+		}
+		if(kc==KeyEvent.VK_S){
+			game.save(gameState);//passing overworld as a parameter since DemoOverworld contains all character information
+			//in practice, it is better to make a character class that contains save data and a story class that contains progress data
+		}
 		
 	}
 

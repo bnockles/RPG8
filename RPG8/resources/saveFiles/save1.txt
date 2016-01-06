@@ -1,0 +1,5 @@
+<newFile>true</newFile>
+<creationTime>0</creationTime>
+<overWorldX>400</overWorldX>
+<overWorldY>400</overWorldY>
+<potionCollected>false</potionCollected>
