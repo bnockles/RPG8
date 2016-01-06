@@ -25,6 +25,7 @@ public class GameMenu extends VerticalMenu{
 		try{
 			loadGameFromFile(SaveFile.SAVE_FILE_DIRECTORY+"save2.txt");
 		}catch(Exception e){
+			e.printStackTrace();
 			loadGameFromFile("/saveFiles/save1.txt");
 			
 		}
@@ -34,6 +35,7 @@ public class GameMenu extends VerticalMenu{
 	private void loadGameFromFile(String string) {
 		//must use importStreamReader to export to JAR
 		String line = null;
+		System.out.println(string);
 		BufferedReader txtReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(string)));
 		boolean newFile = false;
 		long creationDate = 0L;
