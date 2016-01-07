@@ -5,7 +5,6 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -50,6 +49,9 @@ public class DemoOverworld extends Screen implements KeyListener{
 	boolean walking;
 	int spriteWidth=60;
 	int spriteHeight=107;
+	int health;
+	int healthIncrease;
+	public static final int HEALTH_MAX = 300;
 	public static final int SHORELINE = 200;
 	public static final int MOVE_UNIT = 6;
 	ArrayList<Integer> pressedKeys;//allow for multiple input
@@ -66,6 +68,8 @@ public class DemoOverworld extends Screen implements KeyListener{
 		spriteImages=new BufferedImage[3];
 		spriteX = game.getSaveFile().getOverWorldX();
 		spriteY = game.getSaveFile().getOverWorldY();
+		health = game.getSaveFile().getHealth();
+		healthIncrease=0;
 		potionX = 200;
 		potionY = 200;
 		potionCollected = game.getSaveFile().getItemState().isPotionCollected();
@@ -174,6 +178,24 @@ public class DemoOverworld extends Screen implements KeyListener{
 		UtilityMethods.scaleImage(g2, sprite,spriteX, spriteY, spriteWidth, spriteHeight);
 		g2.setColor(Color.white);
 		g2.drawString("Press spacebar to pause", 10,height-20);
+		//draws a health bar
+		drawHealth(g2);
+	}
+
+	private void drawHealth(Graphics2D g2) {
+		if(healthIncrease>0){
+			health+=2;
+			healthIncrease-=2;
+		}
+		int labelSpace = 20;
+		g2.fillRect(40, 40, HEALTH_MAX+labelSpace, 20);
+		if(health<100)g2.setColor(Color.RED);
+		else if(health<=200)g2.setColor(new Color (210,210, 0));
+		else g2.setColor(Color.GREEN);
+		g2.fillRect(39+labelSpace, 41, health, 18);
+		g2.setColor(Color.BLACK);
+		g2.drawString("HP", 43, 56);
+		
 	}
 
 	private void checkMotion() {
@@ -206,6 +228,9 @@ public class DemoOverworld extends Screen implements KeyListener{
 			OverworldPause pauseMenu = new OverworldPause(game,this);
 			game.setScreen(pauseMenu);
 		}
+		if(potionCollected && keyCode == KeyEvent.VK_P){
+			healthIncrease=100;
+		}
 	}
 
 	@Override
@@ -227,6 +252,10 @@ public class DemoOverworld extends Screen implements KeyListener{
 
 	public boolean isPotionCollected() {
 		return potionCollected;
+	}
+
+	public int getHealth() {
+		return health;
 	}
 
 	

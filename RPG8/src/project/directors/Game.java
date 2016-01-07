@@ -13,8 +13,6 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
@@ -144,6 +142,7 @@ public class Game extends JFrame{
 			while((line = txtReader.readLine()) != null) {
 				rawSaveText+=line;
 			}
+			txtReader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}   
@@ -159,6 +158,7 @@ public class Game extends JFrame{
 		i.setPotionCollected(overworld.isPotionCollected());
 		openGame.setOverWorldX(overworld.getSpriteX());
 		openGame.setOverWorldY(overworld.getSpriteY());
+		openGame.setHealth(overworld.getHealth());
 		return openGame.save();
 	}
 

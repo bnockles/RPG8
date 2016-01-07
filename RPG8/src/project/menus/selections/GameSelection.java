@@ -2,8 +2,6 @@ package project.menus.selections;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import project.directors.Game;
@@ -22,6 +20,7 @@ public class GameSelection extends Selection{
 		super(w, h);
 		this.game=game;
 		this.newGame=newGame;
+		System.out.println("creation date of file is "+creationTime);
 		this.creationTime=creationTime;
 		this.fileLocation=fileLocation;
 	}
@@ -31,7 +30,7 @@ public class GameSelection extends Selection{
 		g2.setColor(Color.black);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.white);
-		if(newGame)UtilityMethods.centerText(g2, "New Game", width, height);
+		if(newGame || creationTime==0L)UtilityMethods.centerText(g2, "New Game", width, height);
 		else {
 			Date date=new Date(creationTime);
 			UtilityMethods.centerText(g2, "Save File created: "+date, width, height);
@@ -43,7 +42,11 @@ public class GameSelection extends Selection{
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
-		UtilityMethods.centerText(g2, "New Game", width, height);
+		if(newGame  || creationTime==0L)UtilityMethods.centerText(g2, "New Game", width, height);
+		else {
+			Date date=new Date(creationTime);
+			UtilityMethods.centerText(g2, "Save File created: "+date, width, height);
+		}
 	}
 
 	@Override
@@ -53,7 +56,6 @@ public class GameSelection extends Selection{
 		This method does NOT create a new save file or load anything information
 		*/
 		if(newGame)creationTime=System.currentTimeMillis();
-		System.out.println(fileLocation);
 		game.loadGame(fileLocation);
 		game.setScreen(new DemoOverworld(game));
 		
