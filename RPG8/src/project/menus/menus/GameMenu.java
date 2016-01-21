@@ -1,4 +1,4 @@
-package project.menus;
+package project.menus.menus;
 
 
 import java.io.BufferedReader;
@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 import project.directors.Game;
+import project.menus.VerticalMenu;
 import project.menus.selections.GameSelection;
 import project.save.SaveFile;
 import project.save.SaveUtility;

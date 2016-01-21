@@ -2,23 +2,26 @@ package project.menus;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import project.directors.Visible;
 
-public abstract class Menu implements KeyListener{
+
+public abstract class ListMenu implements KeyListener, Visible{
 
 	
 	
-	ArrayList<Selection> selections;
+	protected ArrayList<Selectable> selections;
 	BufferedImage image;
-	int width;
+	protected int width;
 	int height;
-	int selectIndex;
+	protected int selectIndex;
 	
-	public Menu(int width, int height) {
-		selections = new ArrayList<Selection>();
+	public ListMenu(int width, int height) {
+		selections = new ArrayList<Selectable>();
 		selectIndex = 0;
 		this.width=width;
 		this.height=height;
@@ -76,6 +79,18 @@ public abstract class Menu implements KeyListener{
 
 	public final BufferedImage getImage() {
 		return image;
+	}
+	
+	
+	
+	@Override
+	public void keyTyped(KeyEvent e) {
+
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+	
 	}
 
 
