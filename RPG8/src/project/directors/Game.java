@@ -11,9 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
@@ -137,12 +136,13 @@ public class Game extends JFrame{
 
 	public void loadGame(String fileLocation){
 		String line = null;
-		BufferedReader txtReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(fileLocation)));
 		String rawSaveText="";
 		try {
+			BufferedReader txtReader = new BufferedReader(new FileReader(fileLocation));
 			while((line = txtReader.readLine()) != null) {
 				rawSaveText+=line;
 			}
+			txtReader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}   
@@ -153,12 +153,13 @@ public class Game extends JFrame{
 		return openGame;
 	}
 	
-	public void save(DemoOverworld overworld) {
+	public boolean save(DemoOverworld overworld) {
 		ItemState i = openGame.getItemState();
 		i.setPotionCollected(overworld.isPotionCollected());
 		openGame.setOverWorldX(overworld.getSpriteX());
 		openGame.setOverWorldY(overworld.getSpriteY());
-		openGame.save();
+		openGame.setHealth(overworld.getHealth());
+		return openGame.save();
 	}
 
 

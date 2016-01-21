@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 
 import project.directors.Game;
 import project.directors.Screen;
+import project.directors.UtilityMethods;
 import project.overworld.DemoOverworld;
 
 public class OverworldPause extends Screen implements KeyListener{
@@ -15,10 +16,14 @@ public class OverworldPause extends Screen implements KeyListener{
 	DemoOverworld gameState;
 	int menuWidth = 800;
 	int menuHeight = 400;
+	boolean sucessfulSave;
+	int saveCount;
 	
 	public OverworldPause(Game game, DemoOverworld overworld) {
 		super(game);
 		gameState = overworld;
+		sucessfulSave=false;
+		saveCount = 60;
 	}
 
 	@Override
@@ -39,6 +44,14 @@ public class OverworldPause extends Screen implements KeyListener{
 		g2.drawString("Press \'SPACE\' to return to game", margin, y);
 		y+=20;
 		g2.drawString("Press \'Q\' to quit", margin, y);
+		y+=20;
+		
+		if(saveCount<60){
+			String s = "Saved successfully";
+			if(!sucessfulSave)s="Save failed";
+			UtilityMethods.centerText(g2, s, width, height);
+			saveCount++;
+		}
 	}
 
 	@Override
@@ -57,7 +70,8 @@ public class OverworldPause extends Screen implements KeyListener{
 			System.exit(0);
 		}
 		if(kc==KeyEvent.VK_S){
-			game.save(gameState);//passing overworld as a parameter since DemoOverworld contains all character information
+			sucessfulSave=game.save(gameState);//passing overworld as a parameter since DemoOverworld contains all character information
+			saveCount = 0;
 			//in practice, it is better to make a character class that contains save data and a story class that contains progress data
 		}
 		

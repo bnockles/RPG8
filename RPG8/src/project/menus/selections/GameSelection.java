@@ -20,6 +20,7 @@ public class GameSelection extends SimpleSelection{
 		super(w, h);
 		this.game=game;
 		this.newGame=newGame;
+		System.out.println("creation date of file is "+creationTime);
 		this.creationTime=creationTime;
 		this.fileLocation=fileLocation;
 	}
@@ -29,10 +30,9 @@ public class GameSelection extends SimpleSelection{
 		g2.setColor(Color.black);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.white);
-		if(newGame)UtilityMethods.centerText(g2, "New Game", width, height);
+		if(newGame || creationTime==0L)UtilityMethods.centerText(g2, "New Game", width, height);
 		else {
 			Date date=new Date(creationTime);
-//			SimpleDateFormat format = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
 			UtilityMethods.centerText(g2, "Save File created: "+date, width, height);
 		}
 	}
@@ -42,7 +42,11 @@ public class GameSelection extends SimpleSelection{
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
-		UtilityMethods.centerText(g2, "New Game", width, height);
+		if(newGame  || creationTime==0L)UtilityMethods.centerText(g2, "New Game", width, height);
+		else {
+			Date date=new Date(creationTime);
+			UtilityMethods.centerText(g2, "Save File created: "+date, width, height);
+		}
 	}
 
 	@Override
