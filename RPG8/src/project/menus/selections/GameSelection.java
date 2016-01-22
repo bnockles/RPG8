@@ -6,10 +6,10 @@ import java.util.Date;
 
 import project.directors.Game;
 import project.directors.UtilityMethods;
-import project.menus.Selection;
+import project.menus.SimpleSelection;
 import project.overworld.DemoOverworld;
 
-public class GameSelection extends Selection{
+public class GameSelection extends SimpleSelection{
 
 	Game game;
 	boolean newGame;
@@ -67,5 +67,10 @@ public class GameSelection extends Selection{
 	
 	public long getCreationTime(){
 		return creationTime;
+	}
+
+	@Override
+	public void update() {
+		//static visible item
 	}
 }

@@ -34,7 +34,7 @@ public class OverworldPause extends Screen implements KeyListener{
 	@Override
 	public void paintScreen(Graphics2D g2) {
 		//paints the overworld in the background
-		g2.drawImage(gameState.getScreenImage(), 0, 0, width, height, 0, 0, gameState.getScreenImage().getWidth(), gameState.getScreenImage().getHeight(), null);
+		g2.drawImage(gameState.getImage(), 0, 0, width, height, 0, 0, gameState.getImage().getWidth(), gameState.getImage().getHeight(), null);
 		g2.fillRect((width-menuWidth)/2, (height-menuHeight)/2, menuWidth, menuHeight);
 		g2.setColor(Color.WHITE);
 		int margin = (width-menuWidth)/2+10;

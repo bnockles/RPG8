@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
 
-public abstract class VerticalMenu extends Menu{
+public abstract class VerticalMenu extends ListMenu{
 
 
 	public VerticalMenu(int width, int height) {
@@ -33,20 +33,12 @@ public abstract class VerticalMenu extends Menu{
 	@Override
 	public void paintScreen(Graphics2D g2){
 		int y=0;
-		for(Selection s: selections){
+		for(Selectable s: selections){
 			g2.drawImage(s.getImage(),0, y, null);
-			y+=s.getHeight();
+			y+=s.getImage().getHeight();
 		}
 	}
 
-	@Override
-	public void keyTyped(KeyEvent e) {
 
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-	
-	}
 
 }

@@ -22,6 +22,12 @@ public class UtilityMethods {
 		g2.drawString(text, x, y);
 	}
 	
+	public static void centerTextAtY(Graphics2D g2, String text,int areaWidth,int y){
+		FontMetrics fm = g2.getFontMetrics();
+		int x = (areaWidth-fm.stringWidth(text))/2;
+		g2.drawString(text, x, y);
+	}
+	
 	
 	public static void scaleImage(Graphics2D g2,BufferedImage originalImage, int x, int y, int newWidth, int newHeight){
 		
