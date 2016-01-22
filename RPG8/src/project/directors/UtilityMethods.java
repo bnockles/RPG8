@@ -30,7 +30,6 @@ public class UtilityMethods {
 	
 	
 	public static void scaleImage(Graphics2D g2,BufferedImage originalImage, int x, int y, int newWidth, int newHeight){
-		
 		int w = originalImage.getWidth();
 		int h = originalImage.getHeight();
 		g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
