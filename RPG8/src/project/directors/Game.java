@@ -53,7 +53,7 @@ public class Game extends JFrame{
 	/**
 	 * creates an instance of the Game and displays the screen
 	 */
-	private Game() {
+	public Game() {
 		applySettings();
 		setVisible(true);
 		reset();
@@ -97,7 +97,7 @@ public class Game extends JFrame{
 		g2.setColor(Color.black);
 		g2.fillRect(0, 20, this.getContentPane().getWidth(), this.getContentPane().getHeight());
 		if(activeScreen!=null){
-			BufferedImage before = activeScreen.getScreenImage();
+			BufferedImage before = activeScreen.getImage();
 			int w = before.getWidth();
 			int h = before.getHeight();
 			g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);

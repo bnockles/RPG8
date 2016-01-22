@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
-public abstract class Screen {
+public abstract class Screen implements Visible{
 
 	protected Game game;//all screens must be able to reference the Game instance in order to change to a different screen
 	BufferedImage screenImage;//what the screen displays
@@ -29,7 +29,7 @@ public abstract class Screen {
 	 * 
 	 * @return returns the image of this screen
 	 */
-	public final BufferedImage getScreenImage() {
+	public final BufferedImage getImage() {
 		//screenImage is always same dimension, but gets dilated only if the game window size changes
 		return screenImage;
 	}
