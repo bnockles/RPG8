@@ -35,7 +35,7 @@ public class Game extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = -1357293344654297721L;
-	private int windowWidth = 1000;
+	private int windowWidth = 1000; 
 	private int windowHeight = 800;
 	//the active Screen is the screen that is currently being updated and shown
 	private Screen activeScreen;
