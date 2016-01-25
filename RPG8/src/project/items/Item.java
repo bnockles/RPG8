@@ -20,6 +20,7 @@ public abstract class Item implements Selectable {
 	public void confirm() {
 		// TODO Auto-generated method stub
 		
+		
 	}
 
 	@Override

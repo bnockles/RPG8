@@ -7,4 +7,5 @@ public class Weapons extends Item{
 		// TODO Auto-generated constructor stub
 	}
 	
+	
 }

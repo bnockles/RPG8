@@ -12,6 +12,7 @@ public class Ammo extends Item{
 		this.ammoType=ammoType;
 	}
 
+	
 	/** Type
 	 *[1-Energy, 2-Regular] 
 	 */
