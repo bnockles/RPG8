@@ -6,7 +6,6 @@ public class Armor extends Item{
 		super(name, desc);
 		// TODO Auto-generated constructor stub
 	}
-	
 
 
 

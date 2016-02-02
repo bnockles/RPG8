@@ -9,7 +9,6 @@ public class MedKit extends Item {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
 	/**public int giveHealth(Character b){
 		int charHealth=b.getHealth();
 		charHealth+=this.healthGained;
