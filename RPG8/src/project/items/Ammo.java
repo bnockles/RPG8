@@ -13,7 +13,7 @@ public class Ammo extends Item{
 	}
 
 	/** Type
-	 *[1-Energy, 2-Regular] 
+	 *[1-Regular, 2-Energy] 
 	 */
 	
 }
