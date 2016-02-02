@@ -55,5 +55,5 @@ public class GameMenu extends VerticalMenu{
 	}
 
 
-
+	// Added comment using GitHub
 }
