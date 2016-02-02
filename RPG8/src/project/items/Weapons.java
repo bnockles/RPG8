@@ -6,7 +6,6 @@ public class Weapons extends Item{
 		super(name, desc);
 		// TODO Auto-generated constructor stub
 	}
-
 	
 	
 }

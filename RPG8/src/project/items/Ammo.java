@@ -16,5 +16,4 @@ public class Ammo extends Item{
 	 *[1-Energy, 2-Regular] 
 	 */
 	
-
 }
