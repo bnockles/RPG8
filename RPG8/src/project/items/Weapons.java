@@ -1,13 +1,11 @@
 package project.items;
 
+public class Weapons extends Item{
 
-public class Armor extends Item{
-
-	public Armor(String name, String desc) {
+	public Weapons(String name, String desc,Ammo ammo) {
 		super(name, desc);
 		// TODO Auto-generated constructor stub
 	}
-
-
-
+	
+	
 }
