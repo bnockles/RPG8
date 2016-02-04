@@ -8,7 +8,8 @@ public class MedKit extends Item {
 		super(name, desc);
 		// TODO Auto-generated constructor stub
 	}
-	
+	//I want pie
+	//Can I have pie
 	
 	/**public int giveHealth(Character b){
 		int charHealth=b.getHealth();
