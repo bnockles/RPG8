@@ -39,4 +39,114 @@ public class Weapons extends Item{
 		this.gunNum = gunNum;
 	}
 	
+	public Ammo getAmmo() {
+		return ammo;
+	}
+
+	public void setAmmo(Ammo ammo) {
+		this.ammo = ammo;
+	}
+
+	public int getDamage() {
+		return damage;
+	}
+
+	public void setDamage(int damage) {
+		this.damage = damage;
+	}
+
+	public int getAmmoClip() {
+		return ammoClip;
+	}
+
+	public void setAmmoClip(int ammoClip) {
+		this.ammoClip = ammoClip;
+	}
+
+	public int getAmmoCapacity() {
+		return ammoCapacity;
+	}
+
+	public void setAmmoCapacity(int ammoCapacity) {
+		this.ammoCapacity = ammoCapacity;
+	}
+
+	public double getCriticalHit() {
+		return criticalHit;
+	}
+
+	public void setCriticalHit(double criticalHit) {
+		this.criticalHit = criticalHit;
+	}
+
+	public int getCritHitMul() {
+		return critHitMul;
+	}
+
+	public void setCritHitMul(int critHitMul) {
+		this.critHitMul = critHitMul;
+	}
+
+	public boolean isBuyable() {
+		return buyable;
+	}
+
+	public void setBuyable(boolean buyable) {
+		this.buyable = buyable;
+	}
+
+	public double getCost() {
+		return cost;
+	}
+
+	public void setCost(double cost) {
+		this.cost = cost;
+	}
+
+	public double getReloadSpd() {
+		return reloadSpd;
+	}
+
+	public void setReloadSpd(double reloadSpd) {
+		this.reloadSpd = reloadSpd;
+	}
+
+	public boolean isSecondaryFire() {
+		return secondaryFire;
+	}
+
+	public void setSecondaryFire(boolean secondaryFire) {
+		this.secondaryFire = secondaryFire;
+	}
+
+	public boolean isCanSilence() {
+		return canSilence;
+	}
+
+	public void setCanSilence(boolean canSilence) {
+		this.canSilence = canSilence;
+	}
+
+	public int getGunNum() {
+		return gunNum;
+	}
+
+	public void setGunNum(int gunNum) {
+		this.gunNum = gunNum;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public String getRof() {
+		return rof;
+	}
+
+	public int getRofRPS() {
+		return rofRPS;
+	}
+
+	
+	
 }
