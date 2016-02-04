@@ -1,31 +1,31 @@
 package project.menus;
 
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
-public class Tooltip extends SimpleSelection{
-
-	public Tooltip(int w, int h) {
-		super(w, h);
+public class Tooltip extends VerticalMenu{
+	
+	int width;
+	int height;
+	int x;
+	int y;
+	String text;
+	BufferedImage image;
+	
+	public Tooltip(int width, int height, int x, int y, String text, BufferedImage image) {
+		super(width, height);
+		this.x = x;
+		this.y = y;
+		this.text = text;
+		this.image = image;
 	}
 
 	@Override
-	public void confirm() {
-		
+	public void addSelections() {
+		//We don't put selectors into a tooltip, just a text box.
+		//or we could add a single selector, which is just text, and nothing happens when it is clicked.
 	}
 
-	@Override
-	public void update() {
-		
-	}
-
-	@Override
-	public void paintSelected(Graphics2D g2) {
-		
-	}
-
-	@Override
-	public void paintUnselected(Graphics2D g2) {
-		
-	}
+	
 	
 }
