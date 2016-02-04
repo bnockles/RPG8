@@ -6,6 +6,24 @@ import project.save.ItemState;
 public class KEnemy extends EnemyAI{
 	private int[] nstats;
 	private int[] rstats;
+	private int hp;
+	private int armor;
+	
+	public int getHp() {
+		return hp;
+	}
+
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+	public int getArmor() {
+		return armor;
+	}
+
+	public void setArmor(int armor) {
+		this.armor = armor;
+	}
 
 	void movement() {
 		// TODO Auto-generated method stub
