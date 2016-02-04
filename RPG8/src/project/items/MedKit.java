@@ -10,7 +10,7 @@ public class MedKit extends Item {
 	}
 	//I want pie
 	//Can I have pie
-	
+	//Health regained by clicking to use
 	/**public int giveHealth(Character b){
 		int charHealth=b.getHealth();
 		charHealth+=this.healthGained;
