@@ -16,6 +16,7 @@ public class Weapons extends Item{
 	boolean secondaryFire;
 	boolean canSilence;
 	int gunNum;
+	int ammoTotal;
 
 	public Weapons(String name, String desc, Ammo ammo, int damage, int ammoClip, int ammoCapacity,
 			double criticalHit, int critHitMul, int weight, boolean buyable, double cost, String rof, int rofRPS, 
@@ -37,6 +38,7 @@ public class Weapons extends Item{
 		secondaryFire = false;
 		canSilence = true;
 		this.gunNum = gunNum;
+		ammoTotal = ammoClip;
 	}
 	
 	public Ammo getAmmo() {
@@ -56,7 +58,9 @@ public class Weapons extends Item{
 	}
 
 	public void setAmmoClip(int ammoClip) {
-		this.ammoClip = ammoClip;
+		if(ammoTotal <= ammoClip){
+			this.ammoClip = ammoClip;
+		}	
 	}
 
 	public int getAmmoCapacity() {
