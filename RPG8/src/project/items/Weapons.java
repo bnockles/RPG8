@@ -51,10 +51,6 @@ public class Weapons extends Item{
 		return damage;
 	}
 
-	public void setDamage(int damage) {
-		this.damage = damage;
-	}
-
 	public int getAmmoClip() {
 		return ammoClip;
 	}
@@ -107,10 +103,6 @@ public class Weapons extends Item{
 		return reloadSpd;
 	}
 
-	public void setReloadSpd(double reloadSpd) {
-		this.reloadSpd = reloadSpd;
-	}
-
 	public boolean isSecondaryFire() {
 		return secondaryFire;
 	}
@@ -129,10 +121,6 @@ public class Weapons extends Item{
 
 	public int getGunNum() {
 		return gunNum;
-	}
-
-	public void setGunNum(int gunNum) {
-		this.gunNum = gunNum;
 	}
 
 	public int getWeight() {
