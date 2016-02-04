@@ -39,5 +39,4 @@ public class Weapons extends Item{
 		this.gunNum = gunNum;
 	}
 	
-	//public abstract Weapons getGun(String name, int gunNum);
 }
