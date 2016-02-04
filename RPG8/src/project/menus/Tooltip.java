@@ -67,10 +67,6 @@ public class Tooltip extends VerticalMenu{
 		return text;
 	}
 
-	public BufferedImage getImage() {
-		return image;
-	}
-
 	@Override
 	public void addSelections() {
 		//We don't put selectors into a tooltip, just a text box.
