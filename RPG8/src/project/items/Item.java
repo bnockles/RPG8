@@ -17,6 +17,14 @@ public abstract class Item implements Selectable {
 		item location?*/
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+	
 	public void confirm() {
 		// TODO Auto-generated method stub
 	

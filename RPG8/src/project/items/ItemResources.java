@@ -32,8 +32,8 @@ public class ItemResources {
 
 	 */
 	Weapons pistol3 = new Weapons("CT-Roaring Thunder", "Pistol", pistolAmmo, 62, 20, 140, .20, 2, 
-			1, false, 0.0, "Auto", 13, .55, true, true, true, 3);
+			1, false, 0.0, "Auto", 13, .55, true, true, 3);
 	Weapons pistol4 = new Weapons("Desert Phoenix", "Pistol", pistolAmmo, 88, 7, 70, .35, 2,
-			1, true, 1850.00, "Semi", 0, 1.2, true, false, false, 4);
+			1, true, 1850.00, "Semi", 0, 1.2, false, false, 4);
 	
 }

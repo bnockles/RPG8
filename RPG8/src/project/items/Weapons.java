@@ -13,14 +13,13 @@ public class Weapons extends Item{
 	String rof;
 	int rofRPS;
 	double reloadSpd;
-	boolean armourPiercing;
 	boolean secondaryFire;
 	boolean canSilence;
 	int gunNum;
 	
 	public Weapons(String name, String desc, Ammo ammo, int damage, int ammoClip, int ammoCapacity,
 			double criticalHit, int critHitMul, int weight, boolean buyable, double cost, String rof, int rofRPS, 
-			double reloadSpd, boolean armourPiercing, boolean secondaryFire, boolean canSilence, int gunNum) {
+			double reloadSpd, boolean secondaryFire, boolean canSilence, int gunNum) {
 		super(name, desc);
 		
 		this.ammo = ammo;
@@ -35,13 +34,10 @@ public class Weapons extends Item{
 		this.rof = rof;
 		this.rofRPS = rofRPS;
 		this.reloadSpd = reloadSpd;
-		armourPiercing = false;
 		secondaryFire = false;
 		canSilence = true;
 		this.gunNum = gunNum;
 	}
 	
-	public Weapons getGun(String name, int gunNum){
-		return null;
-	}
+	//public abstract Weapons getGun(String name, int gunNum);
 }
