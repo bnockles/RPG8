@@ -10,7 +10,7 @@ public class ItemResources {
 	
 	//Weapons
 	/**
-	 * Weapons(name, desc, ammo, damage, ammoClip, ammoCapacity, criticalHit, critHitMul, 
+	 * Weapons(name, desc, ammo, damage, ammoClip, ammoCapacity, criticalHit, critHitMul,
 	  		weight, buyable, cost, rof, rofRPS, reloadSpd, 
 	  		secondaryFire, canSilence, gunNum)
 	  	
@@ -31,9 +31,11 @@ public class ItemResources {
 		So gunNum is 23
 
 	 */
-	Weapons pistol3 = new Weapons("CT-Roaring Thunder", "Pistol", pistolAmmo, 62, 20, 140, .20, 2, 
+	Weapons pistolGradeB1 = new Weapons("RIA-45S", "Pistol", pistolAmmo, 33, 18, 126, .00, 2, 
+			0, true, 150.00, "Semi", 0, .45, true, true, 22);
+	Weapons pistolGradeS1 = new Weapons("CT-Roaring Thunder", "Pistol", pistolAmmo, 62, 20, 140, .20, 2, 
 			1, false, 0.0, "Auto", 13, .55, true, true, 23);
-	Weapons pistol4 = new Weapons("Desert Phoenix", "Pistol", pistolAmmo, 88, 7, 70, .35, 2,
+	Weapons pistolGradeA1 = new Weapons("Desert Phoenix", "Pistol", pistolAmmo, 88, 7, 70, .35, 2,
 			1, true, 1850.00, "Semi", 0, 1.2, false, false, 24);
 	
 }
