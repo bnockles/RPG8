@@ -1,5 +1,7 @@
 package project.items;
 
+import myAbstratEx.gunStats;
+
 public interface ItemResources {
 	//Medkits
 	MedKit smallkit=new MedKit("Small Medkit","It's crap.",50);
@@ -38,4 +40,11 @@ public interface ItemResources {
 	Weapons pistol4GradeA1 = new Weapons("Desert Phoenix", "Pistol", pistolAmmo, 88, 7, 70, .35, 2,
 			1, true, 1850.00, "Semi", 0, 1.2, false, false, 24);
 	
+	Weapons[] Melee = { };
+	Weapons[] Pistol = { pistol2GradeB1, pistol3GradeS1, pistol4GradeA1};
+	Weapons[] Rifles = { };
+	Weapons[] Heavy = { };
+	Weapons[] SMG = { };
+	Weapons[] Explosives = { };
+
 }
