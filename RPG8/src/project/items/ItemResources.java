@@ -1,6 +1,6 @@
 package project.items;
 
-public class ItemResources {
+public interface ItemResources {
 	//Medkits
 	MedKit smallkit=new MedKit("Small Medkit","It's crap.",50);
 	
