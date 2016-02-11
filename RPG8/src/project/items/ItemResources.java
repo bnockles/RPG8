@@ -28,7 +28,7 @@ public interface ItemResources {
 		7. Plasma
 		
 		Second Number:
-		Which gun in the category. ex pistol3 is 3
+		Which gun in the category. ex pistol3GradeS1 is a pistol which is 2 and number of the pistol is 3
 		
 		So gunNum is 23
 
