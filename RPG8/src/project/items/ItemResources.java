@@ -1,7 +1,5 @@
 package project.items;
 
-import myAbstratEx.gunStats;
-
 public interface ItemResources {
 	//Medkits
 	MedKit smallkit=new MedKit("Small Medkit","It's crap.",50);
