@@ -11,7 +11,7 @@ public class ItemResources {
 	//Weapons
 	/**
 	 * Weapons(name, desc, ammo, damage, ammoClip, ammoCapacity, criticalHit, critHitMul, 
-	  		weight, buyable, cost, rof, rofRPS, reloadSpd, armourPiercing, 
+	  		weight, buyable, cost, rof, rofRPS, reloadSpd, 
 	  		secondaryFire, canSilence, gunNum)
 	  	
 	  	How 'gunNum' works
