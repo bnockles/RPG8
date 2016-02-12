@@ -53,7 +53,11 @@ public class GameMenu extends VerticalMenu{
 	public void addSelections() {
 		//this method is required by the interface, but selections are added as each saveFile is read
 	}
+<<<<<<< HEAD
 	
 	
 	// Added comment
+=======
+
+>>>>>>> 897a88d8bd23a2bf92c482b270466de99fb67e69
 }
