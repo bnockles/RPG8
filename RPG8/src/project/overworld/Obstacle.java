@@ -6,14 +6,14 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 
-public class Obstacle {
+public abstract class Obstacle {
 	public String name;
 	public int xPos;
 	public int yPos;
 	public int sizeX;
 	public int sizeY;
-	Image image;
-	public Obstacle(String name, int xPos, int yPos, int sizeX, int sizeY,Image image) {
+	String image;
+	public Obstacle(String name, int xPos, int yPos, int sizeX, int sizeY,String image) {
 		this.name = name;
 		this.xPos = xPos;
 		this.yPos = yPos;
@@ -42,11 +42,7 @@ public class Obstacle {
 	public int getSizeY() {
 		return sizeY;
 	}
-	public void drawImage(Graphics g){
-		Graphics2D g2 = (Graphics2D) g;
-		g2.drawImage(image,xPos,yPos,null);
-		
-	}
+	
 	
 
 }
