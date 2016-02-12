@@ -9,7 +9,7 @@ public class Weapons extends Item{
 	int critHitMul;
 	int weight;
 	boolean buyable;
-	double cost;
+	int cost;
 	String rof;
 	int rofRPS;
 	double reloadSpd;
@@ -19,9 +19,9 @@ public class Weapons extends Item{
 	int ammoTotal;
 
 	public Weapons(String name, String desc, Ammo ammo, int damage, int ammoClip, int ammoCapacity,
-			double criticalHit, int critHitMul, int weight, boolean buyable, double cost, String rof, int rofRPS, 
+			double criticalHit, int critHitMul, int weight, boolean buyable, int cost, String rof, int rofRPS, 
 			double reloadSpd, boolean secondaryFire, boolean canSilence, int gunNum) {
-		super(name, desc);
+		super(name, desc,cost);
 		
 		this.ammo = ammo;
 		this.damage = damage;
@@ -99,7 +99,7 @@ public class Weapons extends Item{
 		return cost;
 	}
 
-	public void setCost(double cost) {
+	public void setCost(int cost) {
 		this.cost = cost;
 	}
 

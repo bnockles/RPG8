@@ -7,10 +7,12 @@ import project.menus.Selectable;
 public abstract class Item implements Selectable {
 	String name;
 	String description;
+	int cost;
 	
-	public Item(String name,String desc){
+	public Item(String name,String desc,int cost){
 		this.name=name;
 		description=desc;
+		this.cost=cost;
 		/** possible param String imageName
 		with a method that paint pictures
 		current status: no idea if we do or not
