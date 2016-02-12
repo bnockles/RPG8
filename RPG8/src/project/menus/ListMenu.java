@@ -85,7 +85,7 @@ public abstract class ListMenu implements KeyListener, Visible{
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
-
+		
 	}
 
 	@Override
