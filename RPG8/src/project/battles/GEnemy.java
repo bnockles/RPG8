@@ -31,9 +31,4 @@ public class GEnemy extends EnemyAI{
 		return null;
 	}
 
-	@Override
-	public boolean isHostile() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

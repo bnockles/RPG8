@@ -1,11 +1,16 @@
 package project.directors;
-
 import project.controls.OverworldSpriteControl;
 import project.save.ItemState;
 import project.items.Weapon;
-public interface Character {
-	public ItemState getItems();
-	public OverworldSpriteControl move();
+public abstract class Character {
+
+	public abstract ItemState getItems();
+	public abstract OverworldSpriteControl move();
 	public Weapon equippedWeapon = new Weapon();
-	public boolean isHostile();
+	public boolean Hostile;
+	public int maxHP;
+	public int currentHP;
+	public int positionX;
+	public int positionY;
+
 }

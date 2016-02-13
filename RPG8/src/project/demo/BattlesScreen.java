@@ -28,6 +28,15 @@ public class BattlesScreen extends Screen implements KeyListener{
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
+		try{
+			g2.drawString("Battles Team's Demo", 100, 100);
+			g2.setColor(Color.green);
+			
+			
+		}
+		catch(Exception e){
+			
+		}
 	}
 
 	@Override

@@ -1,8 +1,10 @@
 package project.demo;
 
+import project.controls.OverworldSpriteControl;
 import project.items.Weapon;
+import project.save.ItemState;
 
-public class SampleKEnemy extends SampleEnemyAI implements SampleCharacter{
+public class SampleKEnemy extends SampleEnemyAI{
 	public SampleKEnemy(int[] stats, Weapon weapon){
 		maxhp = stats[0];
 		positionx = stats[1];
@@ -25,30 +27,6 @@ public class SampleKEnemy extends SampleEnemyAI implements SampleCharacter{
 	}
 
 	@Override
-	public void getPositionX() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void getPositionY() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setPositionX() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setPositionY() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void reaction() {
 		// TODO Auto-generated method stub
 		
@@ -58,5 +36,17 @@ public class SampleKEnemy extends SampleEnemyAI implements SampleCharacter{
 	public void run() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public ItemState getItems() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public OverworldSpriteControl move() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

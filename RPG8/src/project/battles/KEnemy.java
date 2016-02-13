@@ -52,9 +52,4 @@ public class KEnemy extends EnemyAI{
 		return null;
 	}
 
-	@Override
-	public boolean isHostile() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

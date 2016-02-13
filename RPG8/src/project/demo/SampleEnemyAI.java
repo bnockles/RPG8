@@ -2,7 +2,7 @@ package project.demo;
 
 import project.items.Weapon;
 
-public abstract class SampleEnemyAI{
+public abstract class SampleEnemyAI extends SampleCharacter{
 	public int hp;//static idk
 	public int maxhp;
 	public int positionx;
