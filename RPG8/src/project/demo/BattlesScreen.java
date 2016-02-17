@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.geom.Arc2D;
 
 import project.directors.Game;
 import project.directors.Screen;
@@ -17,8 +18,8 @@ public class BattlesScreen extends Screen implements KeyListener{
 	public BattlesScreen(Game game){
 		super(game);
 		char1 =  new SampleMCharacter();
-		enemy1 = new SampleKEnemy(new int[6],new Weapon(),true);
-		enemy2 = new SampleGEnemy(new int[6],new Weapon(),true);
+		//enemy1 = new SampleKEnemy(new int[6],new Weapon(),true);
+		//enemy2 = new SampleGEnemy(new int[6],new Weapon(),true);
 		update();
 	}
 	
@@ -31,8 +32,6 @@ public class BattlesScreen extends Screen implements KeyListener{
 		try{
 			g2.drawString("Battles Team's Demo", 100, 100);
 			g2.setColor(Color.green);
-			
-			
 		}
 		catch(Exception e){
 			

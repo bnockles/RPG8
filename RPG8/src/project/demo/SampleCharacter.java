@@ -5,14 +5,14 @@ import project.items.Weapon;
 import project.save.ItemState;
 
 public abstract class SampleCharacter {
-	public abstract ItemState getItems();
-	public abstract OverworldSpriteControl move();
-	public Weapon equippedWeapon = new Weapon();
-	public boolean Hostile;
-	public int maxHP;
-	public int currentHP;
-	public int positionX;
-	public int positionY;
+	protected abstract ItemState getItems();
+	protected abstract OverworldSpriteControl move();
+	protected Weapon equippedWeapon = new Weapon();
+	protected boolean Hostile;
+	protected int maxHP;
+	protected int currentHP;
+	protected int positionX;
+	protected int positionY;
 	public Weapon getEquippedWeapon() {
 		return equippedWeapon;
 	}

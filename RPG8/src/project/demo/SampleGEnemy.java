@@ -8,23 +8,26 @@ public class SampleGEnemy extends SampleEnemyAI{
 	
 	public SampleGEnemy(int[] stats, Weapon weapon){
 		maxhp = stats[0];
-		positionx = stats[1];
-		positiony = stats[2];
+		positionX = stats[1];
+		positionY = stats[2];
 		visionrangeX = stats[3];
 		visionrangeY = stats[4];
 		visiondegree = stats[5];
 		this.weapon = weapon;
 	}
 
-	public SampleGEnemy(int[] stats, Weapon weapon, boolean boss){
+	public SampleGEnemy(int[] stats, Weapon weapon, boolean[] conditions){
 		maxhp = stats[0];
-		positionx = stats[1];
-		positiony = stats[2];
+		positionX = stats[1];
+		positionY = stats[2];
 		visionrangeX = stats[3];
 		visionrangeY = stats[4];
 		visiondegree = stats[5];
 		this.weapon = weapon;
-		this.boss = boss;
+		this.targetlock = conditions[0];
+		this.left = conditions[1];
+		this.up = conditions[2];
+		this.boss = conditions[3];
 	}
 	
 	@Override

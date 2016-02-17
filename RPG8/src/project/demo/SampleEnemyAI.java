@@ -1,20 +1,25 @@
 package project.demo;
 
+import java.awt.Graphics2D;
+import java.awt.geom.Arc2D;
+
 import project.items.Weapon;
 
 public abstract class SampleEnemyAI extends SampleCharacter{
-	public int hp;//static idk
-	public int maxhp;
-	public int positionx;
-	public int positiony;
-	public int visionrangeX;
-	public int visionrangeY;
-	public int visiondegree;
-	public Weapon weapon;
-	private boolean targetlock = false;
-	public boolean boss = false;
-	public abstract void reaction();
-	public abstract void run();
+	protected int hp;//static idk
+	protected int maxhp;
+	protected int positionX;
+	protected int positionY;
+	protected int visionrangeX;
+	protected int visionrangeY;
+	protected int visiondegree;
+	protected Weapon weapon;
+	protected boolean targetlock = false;
+	protected boolean left = false;
+	protected boolean up = false;
+	protected boolean boss = false;
+	protected abstract void reaction();
+	protected abstract void run();
 	public void GeneralEnemyAI(){
 		do{
 			//do something
@@ -36,10 +41,36 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	public void checkForPlayer(){
 		int playerXposition=0;
 		int playerYposition=0;
-		if((positionx+visionrangeX>playerXposition && positionx<playerXposition)&&
-				(positiony+visionrangeY>playerYposition && positiony<playerYposition)){
-			//in the if statement multiply range by sine of something
+		Arc2D.Double visionrange = new Arc2D.Double(positionX, positionY, visionrangeX, visionrangeY, visiondegree, visiondegree+90, Arc2D.PIE);
+		if(visionrange.contains(playerXposition, playerYposition)){
 			targetlock = true;
 		}
+		else{
+			wander();
+		}
+	}
+	public void wander(){
+		if(left){
+			positionX--;
+		}
+		else{
+			positionX++;
+		}
+		if(up){
+			positionY--;
+		}
+		else{
+			positionX++;
+		}
+		if(true){
+			left = !left;
+		}; // check if its gonna crash into a wall or something
+		// need variables for other objects and boundaries
+		if(true){
+			up = !up;
+		}
+	}
+	public void paint(Graphics2D g){
+		
 	}
 }
