@@ -43,11 +43,11 @@ public class SaveScreen extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		jp.add(jt);
+		jp.add(jl);
 		jp.add(charLevel);
 		jp.add(charHealth);
 		jp.add(charPosX);
 		jp.add(charPosY);
-		jp.add(jl);
 		jp.add(saveButton);
 		jp.add(loadButton);
 		jp.add(resetButton);
@@ -75,7 +75,6 @@ public class SaveScreen extends JFrame {
 	}
 
 	private void doSave() {
-		
 		System.out.println("Saving...\n");
 
 		try {
@@ -136,6 +135,7 @@ public class SaveScreen extends JFrame {
 		t.put("testDouble", Math.PI);
 		
 		doSave();
+		printAll(t);
 	}
 	private void printAll(Hashtable h) {
 		System.out.println("Printing all loaded elements...\n");
