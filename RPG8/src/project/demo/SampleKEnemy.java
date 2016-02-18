@@ -5,7 +5,7 @@ import project.items.Weapon;
 import project.save.ItemState;
 
 public class SampleKEnemy extends SampleEnemyAI{
-	public SampleKEnemy(int[] stats, Weapon weapon){
+	public SampleKEnemy(int[] stats, SampleWeapon weapon){
 		maxhp = stats[0];
 		positionX = stats[1];
 		positionY = stats[2];
@@ -15,7 +15,7 @@ public class SampleKEnemy extends SampleEnemyAI{
 		this.weapon = weapon;
 	}
 
-	public SampleKEnemy(int[] stats, Weapon weapon, boolean[] conditions){
+	public SampleKEnemy(int[] stats, SampleWeapon weapon, boolean[] conditions){
 		maxhp = stats[0];
 		positionX = stats[1];
 		positionY = stats[2];

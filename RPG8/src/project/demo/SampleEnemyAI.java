@@ -13,7 +13,7 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	protected int visionrangeX;
 	protected int visionrangeY;
 	protected int visiondegree;
-	protected Weapon weapon;
+	protected SampleWeapon weapon;
 	protected boolean targetlock = false;
 	protected boolean left = false;
 	protected boolean up = false;
