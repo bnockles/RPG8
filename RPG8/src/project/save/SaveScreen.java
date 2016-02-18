@@ -22,7 +22,7 @@ public class SaveScreen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private Hashtable t = new Hashtable();
+	public Hashtable t = doLoad();
 
 	private JPanel jp = new JPanel();
 	private JLabel jl = new JLabel();
@@ -61,15 +61,13 @@ public class SaveScreen extends JFrame {
 		loadButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				doLoad();
+				printAll(t);
 			}
 		});
 
 		resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				doDefaultSave();
-				doLoad();
-
-				printAll(t);
 			}
 		});
 
@@ -77,7 +75,7 @@ public class SaveScreen extends JFrame {
 	}
 
 	private void doSave() {
-
+		
 		System.out.println("Saving...\n");
 
 		try {
@@ -99,11 +97,11 @@ public class SaveScreen extends JFrame {
 		}
 	}
 
-	private void doLoad() {
+	private Hashtable doLoad() {
 		System.out.println("Loading...\n");
-
-		Hashtable h = null;
-
+		
+		Hashtable h = new Hashtable();
+		
 		try {
 			// Creating File/Object input stream
 			FileInputStream fileIn = new FileInputStream("save");
@@ -116,43 +114,37 @@ public class SaveScreen extends JFrame {
 			in.close();
 			fileIn.close();
 
-			// printAll(h);
-
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch(FileNotFoundException e) {
-			// e.printStackTrace();
 			System.out.println("No File.");
-			doDefaultSave();
 			System.out.println("Creating default save file.\n");
+			t = new Hashtable();
+			doDefaultSave();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		t = h;
+		
+		return h;
 	}
 
+	private void doDefaultSave() {		
+		t.put("charHealth", 100);
+		t.put("charPosX", 400);
+		t.put("charPosY", 400);
+		t.put("charName", "B.J. Blazkowicz");
+		t.put("testDouble", Math.PI);
+		
+		doSave();
+	}
 	private void printAll(Hashtable h) {
-		System.out.println("Printing out loaded elements...");
+		System.out.println("Printing all loaded elements...\n");
 		for (Enumeration e = h.keys(); e.hasMoreElements(); ) {
 			Object obj = e.nextElement();
 			System.out.printf("%s = %s\n", obj, h.get(obj));
 		}
 
 		System.out.println("\nTesting null values: charLevel is " + h.get("charLevel"));
-	}
-
-	private void doDefaultSave() {
-		t = new Hashtable();
-		
-		// t.put("charLevel", 1);
-		t.put("charHealth", 100);
-		t.put("charPosX", 400);
-		t.put("charPosY", 400);
-		t.put("charName", "B.J. Blazkowicz");
-		t.put("testDouble", Math.PI);
-
-		doSave();
 	}
 
 	public String getStringData(String key) {
@@ -162,6 +154,8 @@ public class SaveScreen extends JFrame {
 	public int getIntData(String key) {
 		try {
 			return (int)t.get(key);
+		} catch (ClassCastException e) {
+			return Integer.parseInt((String)t.get(key));
 		} catch (NullPointerException e) {
 			return Integer.MIN_VALUE;
 		}
@@ -170,6 +164,8 @@ public class SaveScreen extends JFrame {
 	public double getDoubleData(String key) {
 		try {
 			return (double)t.get(key);
+		} catch (ClassCastException e) {
+			return Double.parseDouble((String)t.get(key));
 		} catch (NullPointerException e) {
 			return Double.MIN_VALUE;
 		}

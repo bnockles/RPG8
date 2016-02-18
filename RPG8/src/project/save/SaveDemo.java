@@ -4,7 +4,8 @@ public class SaveDemo {
 
 	public static void main(String[] args) {
 		SaveScreen save = new SaveScreen();
-
+		
+		/*
 		try {
 			Thread.sleep(7000);
 		} catch(InterruptedException ex) {
@@ -19,6 +20,7 @@ public class SaveDemo {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		*/
 	}
 
 }
