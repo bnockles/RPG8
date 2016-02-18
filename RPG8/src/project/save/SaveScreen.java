@@ -21,8 +21,8 @@ import javax.swing.JTextField;
 public class SaveScreen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	
-	public  Hashtable t = new Hashtable();
+
+	private Hashtable t = new Hashtable();
 
 	private JPanel jp = new JPanel();
 	private JLabel jl = new JLabel();
@@ -51,31 +51,31 @@ public class SaveScreen extends JFrame {
 		jp.add(saveButton);
 		jp.add(loadButton);
 		jp.add(resetButton);
-		
+
 		saveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				doSave();
 			}
 		});
-		
+
 		loadButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				doLoad();
 			}
 		});
-		
+
 		resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				doDefaultSave();
 				doLoad();
-				
+
 				printAll(t);
 			}
 		});
 
 		add(jp);
 	}
-	
+
 	private void doSave() {
 
 		System.out.println("Saving...\n");
@@ -98,12 +98,12 @@ public class SaveScreen extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void doLoad() {
 		System.out.println("Loading...\n");
-		
+
 		Hashtable h = null;
-		
+
 		try {
 			// Creating File/Object input stream
 			FileInputStream fileIn = new FileInputStream("save");
@@ -117,7 +117,7 @@ public class SaveScreen extends JFrame {
 			fileIn.close();
 
 			// printAll(h);
-			
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch(FileNotFoundException e) {
@@ -131,37 +131,47 @@ public class SaveScreen extends JFrame {
 
 		t = h;
 	}
-	
+
 	private void printAll(Hashtable h) {
 		System.out.println("Printing out loaded elements...");
 		for (Enumeration e = h.keys(); e.hasMoreElements(); ) {
 			Object obj = e.nextElement();
 			System.out.printf("%s = %s\n", obj, h.get(obj));
 		}
-		
+
 		System.out.println("\nTesting null values: charLevel is " + h.get("charLevel"));
 	}
-	
+
 	private void doDefaultSave() {
+		t = new Hashtable();
+		
 		// t.put("charLevel", 1);
 		t.put("charHealth", 100);
 		t.put("charPosX", 400);
 		t.put("charPosY", 400);
 		t.put("charName", "B.J. Blazkowicz");
 		t.put("testDouble", Math.PI);
-		
+
 		doSave();
 	}
-	
+
 	public String getStringData(String key) {
 		return (String)t.get(key);
 	}
-	
+
 	public int getIntData(String key) {
-		return (int)t.get(key);
+		try {
+			return (int)t.get(key);
+		} catch (NullPointerException e) {
+			return Integer.MIN_VALUE;
+		}
 	}
-	
+
 	public double getDoubleData(String key) {
-		return (double)t.get(key);
+		try {
+			return (double)t.get(key);
+		} catch (NullPointerException e) {
+			return Double.MIN_VALUE;
+		}
 	}
 }
