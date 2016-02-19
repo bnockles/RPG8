@@ -34,6 +34,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		ySize = 30;
 
 		obstacles.add(new Obstacle("Barrel", 200, 200, 40, 70, "/images/Map/barrelblue.jpg"));
+		obstacles.add(new Obstacle("Barrel", 400, 200, 40, 70, "/images/Map/barrelblue.jpg"));
 		try {
 			URL map = getClass().getResource("/images/Map/test.jpeg");
 			background = ImageIO.read(map);
@@ -66,9 +67,11 @@ public class MapDemoScreen extends Screen implements KeyListener {
 	public void paintScreen(Graphics2D g2) {
 		BufferedImage backgrnd = background;
 		UtilityMethods.scaleImage(g2, backgrnd, 0, 0, width, height);
-		BufferedImage test = obstacles.get(0).getImage();
-		UtilityMethods.scaleImage(g2, test, obstacles.get(0).getxPos(), obstacles.get(0).getyPos(),
-				obstacles.get(0).getSizeX(), obstacles.get(0).getSizeY());
+		for(int i = 0;i<obstacles.size();i++){
+		BufferedImage test = obstacles.get(i).getImage();
+		UtilityMethods.scaleImage(g2, test, obstacles.get(i).getxPos(), obstacles.get(i).getyPos(),
+				obstacles.get(i).getSizeX(), obstacles.get(i).getSizeY());
+		}
 		g2.setColor(Color.red);
 		g2.drawOval(xPos, yPos, 30, 30);
 	}
