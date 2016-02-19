@@ -79,7 +79,7 @@ public class SaveScreen extends JFrame {
 
 		try {
 			// Creating File/Object output stream
-			FileOutputStream fileOut = new FileOutputStream("save");
+			FileOutputStream fileOut = new FileOutputStream("RPG8.save");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
 			// Writing Hashtable Object
@@ -103,7 +103,7 @@ public class SaveScreen extends JFrame {
 		
 		try {
 			// Creating File/Object input stream
-			FileInputStream fileIn = new FileInputStream("save");
+			FileInputStream fileIn = new FileInputStream("RPG8.save");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 
 			// Loading Hashtable Object
@@ -117,7 +117,7 @@ public class SaveScreen extends JFrame {
 			e.printStackTrace();
 		} catch(FileNotFoundException e) {
 			System.out.println("No File.");
-			System.out.println("Creating default save file.\n");
+			System.out.println("Creating default save file.");
 			t = new Hashtable();
 			doDefaultSave();
 		} catch (IOException e) {
