@@ -1,12 +1,16 @@
 package project.overworld;
 
-import java.awt.Image;
+import java.awt.Rectangle;
 
-public class Boundaries extends Obstacle {
+public class Boundaries  {
 	public boolean lethal;
 	int xPos;
-	public Boundaries(String name, int xPos, int yPos, int sizeX, int sizeY,String image, boolean lethal) {
-		super(name, xPos, yPos, sizeX, sizeY,image);
+	String name;
+	int yPos;
+	int sizeX;
+	int sizeY;
+	public Boundaries(String name, int xPos, int yPos, int sizeX, int sizeY, boolean lethal) {
+		
 		this.xPos = xPos;
 		this.lethal = lethal;
 	}
@@ -16,5 +20,19 @@ public class Boundaries extends Obstacle {
 	public int getxPos() {
 		return xPos;
 	}
-	
+	public String getName() {
+		return name;
+	}
+	public int getyPos() {
+		return yPos;
+	}
+	public int getSizeX() {
+		return sizeX;
+	}
+	public int getSizeY() {
+		return sizeY;
+	}
+	public Rectangle getBounds(){
+		return new Rectangle(xPos,yPos,sizeX,sizeY);
+	}
 }
