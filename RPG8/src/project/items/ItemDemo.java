@@ -18,7 +18,7 @@ public class ItemDemo extends Game {
 //	}
 	
 	public void reset() {
-		Screen demoScreen = new ItemScreen(this);
+		Screen demoScreen = new AmmoScreen(this);
 		setScreen(demoScreen);
 		repaint();
 	}
