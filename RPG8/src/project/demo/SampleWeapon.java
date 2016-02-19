@@ -7,6 +7,7 @@ public class SampleWeapon {
 	private int velocity;
 	private int maxammo;
 	private int ammo;
+	private int range;
 	
 	public SampleWeapon(String wimagesrc, String pimagesrc, int[] weaponstats){
 		this.wimagesrc = wimagesrc;
@@ -15,11 +16,15 @@ public class SampleWeapon {
 		this.velocity = weaponstats[1];
 		this.maxammo = weaponstats[2];
 		this.ammo = weaponstats[3];
+		this.range = weaponstats[4];
 	}
 	public void setAmmo(int ammo) {
 		this.ammo = ammo;
 	}
 
+	public int getRange() {
+		return range;
+	}
 	public String getWimagesrc() {
 		return wimagesrc;
 	}
