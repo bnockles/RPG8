@@ -22,7 +22,7 @@ public class SaveScreen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	public Hashtable t = doLoad();
+	private Hashtable t = doLoad();
 
 	private JPanel jp = new JPanel();
 	private JLabel jl = new JLabel();
@@ -60,7 +60,12 @@ public class SaveScreen extends JFrame {
 
 		loadButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				doLoad();
+				// Loading is actually only only done once here, oops.
+				// This is a misleading method.
+				// Loading is done only when this class is created.
+				// What this button actually does is print loaded data.
+				
+				// t = doLoad(); --- This breaks the code.
 				printAll(t);
 			}
 		});
@@ -97,7 +102,7 @@ public class SaveScreen extends JFrame {
 	}
 
 	private Hashtable doLoad() {
-		System.out.println("Loading...\n");
+		System.out.println("Loading...");
 		
 		Hashtable h = new Hashtable();
 		
@@ -124,6 +129,7 @@ public class SaveScreen extends JFrame {
 			e.printStackTrace();
 		}
 		
+		System.out.println();
 		return h;
 	}
 
@@ -135,7 +141,6 @@ public class SaveScreen extends JFrame {
 		t.put("testDouble", Math.PI);
 		
 		doSave();
-		printAll(t);
 	}
 	private void printAll(Hashtable h) {
 		System.out.println("Printing all loaded elements...\n");
@@ -146,7 +151,11 @@ public class SaveScreen extends JFrame {
 
 		System.out.println("\nTesting null values: charLevel is " + h.get("charLevel"));
 	}
-
+	
+	
+	// Getters for other teams to use when accessing data from the Hashtable
+	// An alternative would be to make the Hashtable public, that way the team can get the data
+	// they need without all these getters and their confusing data type conversions.
 	public String getStringData(String key) {
 		return (String)t.get(key);
 	}
