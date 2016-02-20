@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
+import project.mainmenudemo.MainMenuScreen;
+
 public abstract class Screen implements Visible{
 
 	protected Game game;//all screens must be able to reference the Game instance in order to change to a different screen
@@ -39,7 +41,7 @@ public abstract class Screen implements Visible{
 	/**
 	 * called by game when this screen is active
 	 */
-	public final void update(){
+	public void update(){
 		Graphics2D g2 = (Graphics2D) screenImage.getGraphics();
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
@@ -51,7 +53,5 @@ public abstract class Screen implements Visible{
 	 * paints the screen
 	 */
 	public abstract void paintScreen(Graphics2D g2);
-	
-
 	
 }
