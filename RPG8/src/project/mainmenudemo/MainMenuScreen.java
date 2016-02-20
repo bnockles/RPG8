@@ -116,6 +116,8 @@ public class MainMenuScreen extends Screen implements KeyListener{
 		int y=0;
 		int h=108;
 		int w=383;
+		// You really should use an array here
+		// yPos[n] array, with n being (selected - 1) -Wilson W.
 		if(selected ==1) y=276;
 		if(selected ==2) y=396;
 		if(selected ==3) y=516;
