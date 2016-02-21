@@ -8,8 +8,7 @@ public class MedKit extends Item {
 		super(name, desc);
 		// TODO Auto-generated constructor stub
 	}
-	//I want pie
-	//Can I have pie
+	//Testing Push
 	
 	//Health regained by clicking to use
 	/**public int giveHealth(Character b){
