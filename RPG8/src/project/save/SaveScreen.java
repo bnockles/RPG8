@@ -33,7 +33,7 @@ public class SaveScreen extends JFrame {
 	private JButton charPosY = new SubmitButton("Set charPosY", jl, jt, t);
 
 	private JButton saveButton = new JButton("Save");
-	private JButton loadButton = new JButton("Load");
+	private JButton loadButton = new JButton("Print");
 	private JButton resetButton = new JButton("Reset");
 
 	public SaveScreen() {
