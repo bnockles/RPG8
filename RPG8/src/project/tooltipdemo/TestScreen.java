@@ -19,8 +19,7 @@ public class TestScreen extends Screen implements KeyListener {
 		super(game);
 		
 		this.options = new ArrayList<TooltipOption>();
-		TooltipOption o1 = new TooltipOption("Option 1");
-		options.add(o1);
+		options.add(new TooltipOption("Option 1"));
 		options.add(new TooltipOption("Option 2"));
 		options.add(new TooltipOption("Option 3"));
 		options.add(new TooltipOption("Option 4"));
@@ -73,7 +72,10 @@ public class TestScreen extends Screen implements KeyListener {
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
-		g2.fillRect(312, 280, 375, 100);
+		g2.fillRect(112, 220, 375, 100);
+		g2.fillRect(112, 340, 375, 100);
+		g2.fillRect(112, 460, 375, 100);
+		g2.fillRect(112, 580, 375, 100);
 	}
 
 }
