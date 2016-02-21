@@ -1,5 +1,6 @@
 package project.tooltipdemo;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -67,7 +68,8 @@ public class TestScreen extends Screen implements KeyListener {
 	@Override
 	public void paintScreen(Graphics2D g2) {
 		// TODO Auto-generated method stub
-		
+		g2.setColor(Color.white);
+		g2.fillRect(0, 0, width, height);
 	}
 
 }
