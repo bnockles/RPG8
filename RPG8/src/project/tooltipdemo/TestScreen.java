@@ -17,8 +17,10 @@ public class TestScreen extends Screen implements KeyListener {
 	
 	public TestScreen(Game game) {
 		super(game);
-		new OptionList();
-		options.add(new TooltipOption("Option 1"));
+		
+		this.options = new ArrayList<TooltipOption>();
+		TooltipOption o1 = new TooltipOption("Option 1");
+		options.add(o1);
 		options.add(new TooltipOption("Option 2"));
 		options.add(new TooltipOption("Option 3"));
 		options.add(new TooltipOption("Option 4"));
@@ -70,6 +72,8 @@ public class TestScreen extends Screen implements KeyListener {
 		// TODO Auto-generated method stub
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
+		g2.setColor(Color.black);
+		g2.fillRect(312, 280, 375, 100);
 	}
 
 }
