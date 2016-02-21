@@ -1,6 +1,7 @@
 package project.tooltipdemo;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -76,6 +77,13 @@ public class TestScreen extends Screen implements KeyListener {
 		g2.fillRect(112, 340, 375, 100);
 		g2.fillRect(112, 460, 375, 100);
 		g2.fillRect(112, 580, 375, 100);
+		Font font1 = new Font("Courier", Font.ROMAN_BASELINE, 50);
+		g2.setFont(font1);
+		g2.setColor(Color.white);
+		g2.drawString(options.get(0).text, 180, 280);
+		g2.drawString(options.get(1).text, 180, 400);
+		g2.drawString(options.get(2).text, 180, 520);
+		g2.drawString(options.get(3).text, 180, 640);
 	}
 
 }
