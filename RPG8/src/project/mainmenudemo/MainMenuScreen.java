@@ -14,9 +14,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 import project.directors.Game;
 import project.directors.Screen;
+
+import java.awt.*;
+import java.applet.*;
+
+import java.awt.*;
+import java.applet.*;
 
 public class MainMenuScreen extends Screen implements KeyListener{
 
@@ -43,6 +52,7 @@ public class MainMenuScreen extends Screen implements KeyListener{
 		//however until I know these are the final options of the main menu
 		//I will leave it public 
 		
+		
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -50,11 +60,13 @@ public class MainMenuScreen extends Screen implements KeyListener{
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getKeyCode()== KeyEvent.VK_DOWN){
+			playSound(new File("resources/button-19.wav"));
 			selected ++;
 			if(selected>4) selected=1;
 			update();
 		}
 		if(e.getKeyCode()== KeyEvent.VK_UP){
+			playSound(new File("resources/button-19.wav"));
 			selected --;
 			if(selected<1) selected=4;
 			update();
@@ -122,8 +134,8 @@ public class MainMenuScreen extends Screen implements KeyListener{
 		if(selected ==2) y=396;
 		if(selected ==3) y=516;
 		if(selected ==4) y=636;
-		g2.setColor(Color.gray);
-		g2.drawRect(x,y,w,h);
+		g2.setColor(Color.darkGray);
+		g2.fillRect(x,y,w,h);
 		//pictures
 		//g2.fillRect(62, 330, 187,412);
 		//g2.fillRect(750, 330, 187,412);
@@ -141,5 +153,21 @@ public class MainMenuScreen extends Screen implements KeyListener{
 		g2.drawString(options.get(3).name, 450, 710);
 		
 	}
+	
+	 public void playSound(File soundName)
+	    {
+	      try 
+	      {
+	       AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundName.getAbsoluteFile( ));
+	       Clip clip = AudioSystem.getClip( );
+	       clip.open(audioInputStream);
+	       clip.start( );
+	      }
+	      catch(Exception ex)
+	      {
+	        System.out.println("Error with playing sound.");
+	        ex.printStackTrace( );
+	      }
+	    }
 
 }
