@@ -20,10 +20,10 @@ public class TestScreen extends Screen implements KeyListener {
 		super(game);
 		
 		this.options = new ArrayList<TooltipOption>();
-		options.add(new TooltipOption("Option 1"));
-		options.add(new TooltipOption("Option 2"));
-		options.add(new TooltipOption("Option 3"));
-		options.add(new TooltipOption("Option 4"));
+		options.add(new TooltipOption("Option 1", image1, "Sample description"));
+		options.add(new TooltipOption("Option 2", image2, "Another description"));
+		options.add(new TooltipOption("Option 3", image3, "Getting tired"));
+		options.add(new TooltipOption("Option 4", image4, "Another description again"));
 	}
 
 	/**
@@ -64,7 +64,7 @@ public class TestScreen extends Screen implements KeyListener {
 	@Override
 	public KeyListener getKeyListener() {
 		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
@@ -77,6 +77,12 @@ public class TestScreen extends Screen implements KeyListener {
 		g2.fillRect(112, 340, 375, 100);
 		g2.fillRect(112, 460, 375, 100);
 		g2.fillRect(112, 580, 375, 100);
+		
+		int[] yOptions = {218, 338, 458, 578};
+		int y = yOptions[selection];
+		g2.setColor(Color.yellow);
+		g2.fillRect(110, y, 379, 104);
+		
 		Font font1 = new Font("Courier", Font.ROMAN_BASELINE, 50);
 		g2.setFont(font1);
 		g2.setColor(Color.white);

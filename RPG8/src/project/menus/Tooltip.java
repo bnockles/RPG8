@@ -5,30 +5,61 @@ import java.awt.image.BufferedImage;
 
 public class Tooltip extends VerticalMenu{
 	
-	private int width = 50;
-	private int height = 100;
+	private int width = 200;
+	private int height = 200;
 	private int x;
 	private int y;
 	private int imgX;
 	private int imgY;
-	private String text;
+	private String title;
 	private BufferedImage image;
+	private String description;
 	
-	public Tooltip(int width, int height, int x, int y, String text, BufferedImage image, int imgX, int imgY) {
+	public Tooltip(int width, int height, int x, int y, String title, BufferedImage image, String description, int imgX, int imgY) {
 		super(width, height);
+		this.description = description;
 		this.x = x;
 		this.y = y;
-		this.text = text;
+		this.title = title;
 		this.image = image;
 		this.imgX = imgX;
 		this.imgY = imgY;
 	}
 	
-	public Tooltip(int width, int height, int x, int y, String text) {
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public void setImgX(int imgX) {
+		this.imgX = imgX;
+	}
+
+	public void setImgY(int imgY) {
+		this.imgY = imgY;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setImage(BufferedImage image) {
+		this.image = image;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Tooltip(int width, int height, int x, int y, String title, String description) {
 		super(width, height);
 		this.x = x;
 		this.y = y;
-		this.text = text;
+		this.title = title;
+		this.description = description;
 	}
 	
 	public void setWidth(int width) {
@@ -61,10 +92,6 @@ public class Tooltip extends VerticalMenu{
 
 	public int getImgY() {
 		return imgY;
-	}
-
-	public String getText() {
-		return text;
 	}
 
 	@Override

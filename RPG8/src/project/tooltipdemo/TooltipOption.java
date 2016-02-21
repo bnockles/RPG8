@@ -7,9 +7,13 @@ import project.menus.Selectable;
 public class TooltipOption implements Selectable {
 	
 	public String text;
+	public BufferedImage image;
+	public String description;
 	
-	public TooltipOption(String text){
+	public TooltipOption(String text, BufferedImage image, String description){
 		this.text = text;
+		this.image = image;
+		this.description = description;
 	}
 	
 	@Override
