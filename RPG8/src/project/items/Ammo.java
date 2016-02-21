@@ -4,6 +4,7 @@ public class Ammo extends Item{
 	String name;
 	String desc;
 	int ammoType;
+	
 	public Ammo(String name, String desc,int cost,int ammoType) {
 		super(name, desc, cost);
 		// TODO Auto-generated constructor stub
