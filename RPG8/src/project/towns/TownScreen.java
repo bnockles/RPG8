@@ -16,7 +16,7 @@ public class TownScreen extends Screen {
 
 	BufferedImage[][] backgroundGrid;
 	BufferedImage[][] obstacleGrid;
-	BufferedImage[][] foregroundGrid;
+	//BufferedImage[][] foregroundGrid;
 	int gridColumns;
 	int gridRows;
 	
@@ -36,8 +36,8 @@ public class TownScreen extends Screen {
 		this.gridColumns=gridWidth;
 		this.gridRows=gridHeight;
 		backgroundGrid = new BufferedImage[gridHeight][gridWidth];
-		backgroundGrid = new BufferedImage[gridHeight][gridWidth];
-		backgroundGrid = new BufferedImage[gridHeight][gridWidth];
+		obstacleGrid = new BufferedImage[gridHeight][gridWidth];
+		
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class TownScreen extends Screen {
 	public void paintScreen(Graphics2D g2) {
 		g2.drawImage(backgroundGrid[currentRow][currentColumn], 0, 0, null);
 		g2.drawImage(sprite.getImage(),sprite.getX(),sprite.getY(),null);
-		g2.drawImage(foregroundGrid[currentRow][currentColumn], 0, 0, null);
+		
 	}
 
 }
