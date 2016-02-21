@@ -15,12 +15,14 @@ public class MapDemoScreen extends Screen implements KeyListener {
 	ArrayList<Obstacle> obstacles;
 	ArrayList<MainMap> mapSections;
 	ArrayList<Boundaries> boundaries;
+	ArrayList<Region> regions;
 	BufferedImage background;
 	boolean touching;
 	int xPos;
 	int yPos;
 	int xSize;
 	int ySize;
+	int playerRegion;
 	Rectangle hitbox;
 
 	public MapDemoScreen(Game game) {
@@ -28,18 +30,21 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		obstacles = new ArrayList<Obstacle>();
 		mapSections = new ArrayList<MainMap>();
 		boundaries = new ArrayList<Boundaries>();
+		regions = new ArrayList<Region>();
 		touching = false;
-		xPos = 300;
+		xPos = 800;
 		yPos = 200;
 		xSize = 30;
 		ySize = 30;
-
-		obstacles.add(new Obstacle("Barrel", 0, 0, 40, 70, "/images/Map/barrelblue.jpg"));
+		playerRegion = 0;
 		obstacles.add(new Obstacle("Barrel", 400, 200, 40, 70, "/images/Map/barrelblue.jpg"));
 		mapSections.add(new MainMap(0, "/images/Map/test.jpeg"));
+		mapSections.add(new MainMap(1, "/images/Map/test2.jpeg"));
 		boundaries.add(new Boundaries(0, 0, 100, 890, false));
-		boundaries.add(new Boundaries(0,580,920,140,false));
-		boundaries.add(new Boundaries(0,450,200,140,false));
+		boundaries.add(new Boundaries(0, 580, 920, 140, false));
+		boundaries.add(new Boundaries(0, 450, 200, 140, false));
+		regions.add(new Region(920,200,68,500,1,500,500));
+		regions.add(new Region(0,200,50,400,0,800,200));
 	}
 
 	public void checkCollision() {
@@ -69,11 +74,25 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		// TODO Auto-generated method stub
 		return this;
 	}
-
+	public void changeRegion(){
+		hitbox = new Rectangle(xPos, yPos, xSize, ySize);
+		for (int i = 0; i < regions.size(); i++) {
+			if (regions.get(i).getBounds().intersects(hitbox)) {
+				playerRegion = regions.get(i).getGoTo();
+				xPos = regions.get(i).getStartX();
+				yPos = regions.get(i).getStartY();
+				return;
+			} 
+		}
+	}
 	@Override
 	public void paintScreen(Graphics2D g2) {
-		BufferedImage backgrnd = mapSections.get(0).getMap();
-		UtilityMethods.scaleImage(g2, backgrnd, 0, 0, width, height);
+		for (int i = 0; i < mapSections.size(); i++) {
+			if (i == playerRegion) {
+				BufferedImage backgrnd = mapSections.get(i).getMap();
+				UtilityMethods.scaleImage(g2, backgrnd, 0, 0, width, height);
+			}
+		}
 		for (int i = 0; i < obstacles.size(); i++) {
 			BufferedImage test = obstacles.get(i).getImage();
 			UtilityMethods.scaleImage(g2, test, obstacles.get(i).getxPos(), obstacles.get(i).getyPos(),
@@ -81,11 +100,11 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		}
 		g2.setColor(Color.red);
 		g2.drawOval(xPos, yPos, 30, 30);
-		g2.drawRect(0, 450, 200, 140);
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		changeRegion();
 		checkCollision();
 		boolean used = false;
 		int keyCode = e.getKeyCode();
@@ -119,6 +138,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		}
 		touching = false;
 		used = false;
+		
 	}
 
 	@Override
