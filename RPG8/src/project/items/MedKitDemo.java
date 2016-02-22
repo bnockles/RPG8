@@ -14,5 +14,4 @@ public class MedKitDemo extends project.directors.Game{
 		setScreen(demoScreen);
 		repaint();
 	}
-
 }
