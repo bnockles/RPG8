@@ -46,6 +46,11 @@ public class SampleProjectiles {
 	public void setPositionY(int positionY) {
 		this.positionY = positionY;
 	}
+
+	public void fly() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

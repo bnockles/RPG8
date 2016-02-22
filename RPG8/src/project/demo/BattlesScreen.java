@@ -2,22 +2,27 @@ package project.demo;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.Arc2D;
 import java.util.ArrayList;
 
+import javax.swing.Timer;
+
 import project.directors.Game;
 import project.directors.Screen;
 import project.items.Weapon;
 
-public class BattlesScreen extends Screen implements KeyListener{
+public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 	SampleMCharacter char1;
 	SampleKEnemy enemy1;
 	SampleGEnemy enemy2;
 	public static ArrayList<SampleProjectiles> player = new ArrayList<SampleProjectiles>();
 	public static ArrayList<SampleProjectiles> enemy = new ArrayList<SampleProjectiles>();
-
+	Timer timer = new Timer(5,this);
+	
 	public BattlesScreen(Game game){
 		super(game);
 		char1 =  new SampleMCharacter();
@@ -35,12 +40,12 @@ public class BattlesScreen extends Screen implements KeyListener{
 		try{
 			g2.drawString("Battles Team's Demo", 100, 100);
 			g2.setColor(Color.green);
+			timer.start();
 		}
 		catch(Exception e){
 			
 		}
 	}
-
 	@Override
 	public KeyListener getKeyListener() {
 		// TODO Auto-generated method stub
@@ -76,5 +81,17 @@ public class BattlesScreen extends Screen implements KeyListener{
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		for(int i=0;i<player.size();i++){
+			player.get(i).fly();
+		}
+		for(int i=0;i<enemy.size();i++){
+			enemy.get(i).fly();
+		}
+		update();
 	}
 }
