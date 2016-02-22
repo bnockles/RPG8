@@ -10,11 +10,13 @@ public class ChoiceDesc implements Selectable{
 	public String name;
 	public String des;
 	public File pic;
+	public String sel;
 	
-	public ChoiceDesc(String name, File pic, String des){
+	public ChoiceDesc(String name, File pic, String des, String sel){
 		this.name = name;
-		this.des = "N"; //after selected will change
+		this.des = des; 
 		this.pic = pic;	
+		this.sel = "N"; //after selected will change
 	}
 
 	@Override
