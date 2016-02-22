@@ -9,7 +9,7 @@ public class BattlesDemo extends project.directors.Game{
 		// TODO Auto-generated method stub
 		new BattlesDemo();
 	}
-
+	//Testing 1
 	public void BattlesDemo() {
 		applySettings();//display the JFrame the way I want it
 		reset();//starts the game from the beginning
