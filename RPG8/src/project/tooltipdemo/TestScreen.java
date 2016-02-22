@@ -14,7 +14,6 @@ import javax.imageio.ImageIO;
 
 import project.directors.Game;
 import project.directors.Screen;
-import project.mainmenudemo.MainMenuSelectables;
 import project.menus.Tooltip;
 
 public class TestScreen extends Screen implements KeyListener {
