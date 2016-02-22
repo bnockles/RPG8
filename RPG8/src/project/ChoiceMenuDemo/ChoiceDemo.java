@@ -1,4 +1,4 @@
-package ChoiceMenuDemo;
+package project.ChoiceMenuDemo;
 
 import project.directors.Screen;
 

@@ -1,4 +1,4 @@
-package ChoiceMenuDemo;
+package project.ChoiceMenuDemo;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

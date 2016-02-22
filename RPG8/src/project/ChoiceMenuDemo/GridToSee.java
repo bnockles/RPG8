@@ -1,12 +1,16 @@
-package ChoiceMenuDemo;
+package project.ChoiceMenuDemo;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 import project.directors.Game;
 import project.directors.Screen;
@@ -23,12 +27,12 @@ public class GridToSee extends Screen implements KeyListener{
 		super(game);
 
 		this.choice = new ArrayList<ChoiceDesc>();
-		choice.add(new ChoiceDesc("Box 1", new File("resources/image1.jpg"), "Go left to go to end"));
+		choice.add(new ChoiceDesc("Box 1", new File("resources/samusr.jpg"), "Go left to go to end"));
 		choice.add(new ChoiceDesc("Box 2", new File("resources/image1.jpg"), "Desc"));
-		choice.add(new ChoiceDesc("Box 3", new File("resources/image1.jpg"), "Desc"));
-		choice.add(new ChoiceDesc("Box 4", new File("resources/image1.jpg"), "Desc"));
-		choice.add(new ChoiceDesc("Box 5", new File("resources/image1.jpg"), "Desc"));
-		choice.add(new ChoiceDesc("Box 6", new File("resources/image1.jpg"), "Go right to go to start"));
+		choice.add(new ChoiceDesc("Box 3", new File("resources/samusl.jpg"), "Desc"));
+		choice.add(new ChoiceDesc("Box 4", new File("resources/image2.gif"), "PROPERTY OF MAX"));
+		choice.add(new ChoiceDesc("Box 5", new File("resources/image3.png"), "DO NOT STEAL"));
+		choice.add(new ChoiceDesc("Box 6", new File("resources/image4.png"), "Go right to go to start"));
 
 	}
 
@@ -36,6 +40,7 @@ public class GridToSee extends Screen implements KeyListener{
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT){
 			highl++;
+			System.out.println("move pls");
 			if(highl > 6) highl = 0;
 			update();
 		}
@@ -73,7 +78,7 @@ public class GridToSee extends Screen implements KeyListener{
 	@Override
 	public KeyListener getKeyListener() {
 		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
@@ -109,7 +114,7 @@ public class GridToSee extends Screen implements KeyListener{
 		if (highl == 2){
 			x = 643;
 			y = 128;
-		}
+		}	
 		if (highl == 3){
 			x = 123;
 			y = 438;
@@ -128,13 +133,26 @@ public class GridToSee extends Screen implements KeyListener{
 		g2.fillRect(x,y,w,h);
 
 		
-		Font times = new Font ("TimesRoman", Font.CENTER_BASELINE, 60);
-		Font subTimes = new Font ("TimesRoman", Font.ROMAN_BASELINE, 50);
-		g2.setFont(times);
+		Font def = new Font ("Helvetica", Font.BOLD, 30);
+		g2.setFont(def);
 		g2.setColor(Color.white);
-		//g2.drawString(choice.get(0).des, 395, 350);
-		//g2.drawString(choice.get(1).name, 390, 470);
-		//g2.drawString(choice.get(2).name, 500, 590);
-		//g2.drawString(choice.get(3).name, 450, 710);
+		g2.drawString(choice.get(0).name, 128, 160);
+		g2.drawString(choice.get(1).name, 388, 160);
+		g2.drawString(choice.get(2).name, 648, 160);
+		g2.drawString(choice.get(3).name, 128, 470);
+		g2.drawString(choice.get(4).name, 388, 470);
+		g2.drawString(choice.get(5).name, 648, 470);
+		
+		//only selected box shows image
+		BufferedImage boxImg = null;
+		try {
+			int x1 = highl;
+			if(x1 > 5) x1 = 0;
+			if(x1 < 0) x1 = 5;
+			boxImg = ImageIO.read(choice.get(x1).pic);
+		} catch (IOException e) {
+		}
+		g2.drawImage(boxImg, (x + 6), (y + 57), 120, 120, null);
 	}
 }
+
