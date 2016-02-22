@@ -2,6 +2,7 @@ package project.menus;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 public class Tooltip extends VerticalMenu{
 	
@@ -12,20 +13,34 @@ public class Tooltip extends VerticalMenu{
 	private int imgX;
 	private int imgY;
 	private String title;
-	private BufferedImage image;
+	private File file;
 	private String description;
 	
-	public Tooltip(int width, int height, int x, int y, String title, BufferedImage image, String description, int imgX, int imgY) {
+	public Tooltip(int width, int height, int x, int y, String title, File file, String description, int imgX, int imgY) {
 		super(width, height);
+		this.width = width;
+		this.height = height;
 		this.description = description;
 		this.x = x;
 		this.y = y;
 		this.title = title;
-		this.image = image;
+		this.file = file;
 		this.imgX = imgX;
 		this.imgY = imgY;
 	}
 	
+	public String getTitle() {
+		return title;
+	}
+
+	public File getFile() {
+		return file;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
 	public void setX(int x) {
 		this.x = x;
 	}

@@ -1,18 +1,19 @@
 package project.tooltipdemo;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 import project.menus.Selectable;
 
 public class TooltipOption implements Selectable {
 	
 	public String text;
-	public BufferedImage image;
+	public File file;
 	public String description;
 	
-	public TooltipOption(String text, BufferedImage image, String description){
+	public TooltipOption(String text, File file, String description){
 		this.text = text;
-		this.image = image;
+		this.file = file;
 		this.description = description;
 	}
 	

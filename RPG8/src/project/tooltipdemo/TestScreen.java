@@ -5,11 +5,17 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 import project.directors.Game;
 import project.directors.Screen;
 import project.mainmenudemo.MainMenuSelectables;
+import project.menus.Tooltip;
 
 public class TestScreen extends Screen implements KeyListener {
 
@@ -20,10 +26,10 @@ public class TestScreen extends Screen implements KeyListener {
 		super(game);
 		
 		this.options = new ArrayList<TooltipOption>();
-		options.add(new TooltipOption("Option 1", image1, "Sample description"));
-		options.add(new TooltipOption("Option 2", image2, "Another description"));
-		options.add(new TooltipOption("Option 3", image3, "Getting tired"));
-		options.add(new TooltipOption("Option 4", image4, "Another description again"));
+		options.add(new TooltipOption("Option 1", new File("resources/image1.jpg"), "Sample description"));
+		options.add(new TooltipOption("Option 2", new File("resources/image2.gif"), "Another description"));
+		options.add(new TooltipOption("Option 3", new File("resources/image3.png"), "Getting tired"));
+		options.add(new TooltipOption("Option 4", new File("resources/image4.png"), "Another description again"));
 	}
 
 	/**
@@ -78,18 +84,42 @@ public class TestScreen extends Screen implements KeyListener {
 		g2.fillRect(112, 460, 375, 100);
 		g2.fillRect(112, 580, 375, 100);
 		
+		Font font1 = new Font("Courier", Font.ROMAN_BASELINE, 50);
+		Font font2 = new Font("Courier", Font.ROMAN_BASELINE, 25);
+		g2.setFont(font1);
+		
 		int[] yOptions = {218, 338, 458, 578};
 		int y = yOptions[selection];
 		g2.setColor(Color.yellow);
 		g2.fillRect(110, y, 379, 104);
 		
-		Font font1 = new Font("Courier", Font.ROMAN_BASELINE, 50);
+		//Tooltip Drawn
+		Tooltip testTool = new Tooltip(450, 230, 492, 220,
+				options.get(selection).text, options.get(selection).file, options.get(selection).description,
+				234, 120);
+		g2.setColor(Color.black);
+		g2.fillRect(testTool.getX(), testTool.getY(), testTool.getWidth(), testTool.getHeight());
+		g2.setColor(Color.yellow);
+		g2.drawString(testTool.getTitle(), testTool.getX()+110, testTool.getY()+60);
+		BufferedImage img = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
+		try{
+			img = ImageIO.read(testTool.getFile());
+		}
+		catch(IOException e){};
+		g2.drawImage(img, null, testTool.getX()+185, testTool.getY()+100);
+		g2.setFont(font2);
+		g2.setColor(Color.white);
+		g2.drawString(testTool.getDescription(), testTool.getX()+50, testTool.getY()+200);
+		
+		
 		g2.setFont(font1);
 		g2.setColor(Color.white);
 		g2.drawString(options.get(0).text, 180, 280);
 		g2.drawString(options.get(1).text, 180, 400);
 		g2.drawString(options.get(2).text, 180, 520);
 		g2.drawString(options.get(3).text, 180, 640);
+		
+		
 	}
 
 }
