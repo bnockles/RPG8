@@ -1,6 +1,6 @@
 package project.demo;
 
-//hi lol
+//hi lols
 import project.demo.BattlesScreen;
 import project.directors.Screen;
 
