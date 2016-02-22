@@ -5,6 +5,7 @@ import project.items.ItemScreen;
 import project.directors.Game;
 import project.directors.Screen;
 
+
 public class ItemDemo extends Game {
 
 	public static void main(String[] args) {
