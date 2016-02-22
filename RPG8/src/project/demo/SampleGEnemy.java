@@ -33,14 +33,17 @@ public class SampleGEnemy extends SampleEnemyAI{
 	@Override
 	public void reaction() {
 		// TODO Auto-generated method stub
-		
+		// first step is to shoot them back
+		// at a certain range this enemy will stop attacking and go back to where he belonged
 	}
 
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		
+		// locate the main character
+		// run in the opposite direection of the main character
+		// run out of the map
 	}
 
 	@Override

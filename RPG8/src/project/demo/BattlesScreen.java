@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.Arc2D;
+import java.util.ArrayList;
 
 import project.directors.Game;
 import project.directors.Screen;
@@ -14,6 +15,8 @@ public class BattlesScreen extends Screen implements KeyListener{
 	SampleMCharacter char1;
 	SampleKEnemy enemy1;
 	SampleGEnemy enemy2;
+	public static ArrayList<SampleProjectiles> player = new ArrayList<SampleProjectiles>();
+	public static ArrayList<SampleProjectiles> enemy = new ArrayList<SampleProjectiles>();
 
 	public BattlesScreen(Game game){
 		super(game);

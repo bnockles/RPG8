@@ -7,16 +7,18 @@ import project.save.ItemState;
 public abstract class SampleCharacter {
 	protected abstract ItemState getItems();
 	protected abstract OverworldSpriteControl move();
-	protected Weapon equippedWeapon = new Weapon();
+	public int[] rawr = {50,5,200,100};
+	protected SampleWeapon equippedWeapon = new SampleWeapon("blah","blah",rawr);
 	protected boolean Hostile;
 	protected int maxHP;
 	protected int currentHP;
 	protected int positionX;
 	protected int positionY;
-	public Weapon getEquippedWeapon() {
+	
+	public SampleWeapon getEquippedWeapon() {
 		return equippedWeapon;
 	}
-	public void setEquippedWeapon(Weapon equippedWeapon) {
+	public void setEquippedWeapon(SampleWeapon equippedWeapon) {
 		this.equippedWeapon = equippedWeapon;
 	}
 	public boolean isHostile() {
