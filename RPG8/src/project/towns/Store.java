@@ -1,9 +1,20 @@
 package project.towns;
 
-import project.directors.Screen;
+import java.util.ArrayList;
 
-public abstract class Store {
-	//test test
+import project.directors.Game;
+import project.directors.Screen;
+import project.items.Item;
+
+public abstract class Store extends Inventory{
+
+	public Store(Game game, ArrayList<Item> items) {
+		super(game, items);
+		// TODO Auto-generated constructor stub
+	}
+
 	Screen inventory;
+	
+	int id;
 	
 }
