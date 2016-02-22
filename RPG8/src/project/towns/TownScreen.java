@@ -38,12 +38,30 @@ public class TownScreen extends Screen {
 		backgroundGrid = new BufferedImage[gridHeight][gridWidth];
 		obstacleGrid = new BufferedImage[gridHeight][gridWidth];
 		
+		currentRow = 1;// starting postion when character enters town
+		currentColumn = 0;
+		
+		
 	}
 
 	@Override
 	public KeyListener getKeyListener() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public int getEntranceX(){
+		return entranceX;
+	}
+	
+	
+	public int getEntranceY(){
+		return entranceY;
+	}
+	public int getcurrentRow(){
+		return currentRow;
+	}
+	public int getCurrentColumn(){
+		return currentColumn;
 	}
 
 	@Override
@@ -54,3 +72,4 @@ public class TownScreen extends Screen {
 	}
 
 }
+
