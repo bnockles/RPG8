@@ -20,8 +20,8 @@ public class Demo extends Game{
 	public void reset() {
 		//Screen townScreen = new TownScreen(this,3,3);
 		//setScreen(townScreen);
-		Screen inventory = new WeaponStore(this,items);
-		setScreen(inventory);
+		Screen shopScreen = new ShopScreen(this);
+		setScreen(shopScreen);
 		activeScreen.update();
 		repaint();
 	}
