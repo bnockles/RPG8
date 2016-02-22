@@ -10,8 +10,8 @@ import project.save.ItemState;
 
 public class SampleMCharacter extends SampleCharacter implements KeyListener,MouseListener{
 
-	public SampleMCharacter(){
-		
+	public SampleMCharacter(String imgsrc){
+		this.imgsrc = imgsrc;
 	}
 
 	@Override

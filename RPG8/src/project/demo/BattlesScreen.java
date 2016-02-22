@@ -7,12 +7,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.Arc2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
 import project.directors.Game;
 import project.directors.Screen;
+import project.directors.UtilityMethods;
 import project.items.Weapon;
 
 public class BattlesScreen extends Screen implements KeyListener,ActionListener{
@@ -25,7 +30,14 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 	
 	public BattlesScreen(Game game){
 		super(game);
-		char1 =  new SampleMCharacter();
+		File q = new File("/sprites/standing.png");
+		try {
+			BufferedImage r = ImageIO.read(q);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		char1 =  new SampleMCharacter("/sprites/standing.png");
 		//enemy1 = new SampleKEnemy(new int[6],new Weapon(),true);
 		//enemy2 = new SampleGEnemy(new int[6],new Weapon(),true);
 		update();

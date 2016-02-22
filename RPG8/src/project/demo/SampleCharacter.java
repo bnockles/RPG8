@@ -9,11 +9,16 @@ public abstract class SampleCharacter {
 	protected abstract OverworldSpriteControl move();
 	public int[] rawr = {50,5,200,100};
 	protected SampleWeapon equippedWeapon = new SampleWeapon("blah","blah",rawr);
+	protected String imgsrc;
 	protected boolean Hostile;
 	protected int maxHP;
 	protected int currentHP;
 	protected int positionX;
 	protected int positionY;
+	
+	public String getImgsrc() {
+		return imgsrc;
+	}
 	
 	public SampleWeapon getEquippedWeapon() {
 		return equippedWeapon;
