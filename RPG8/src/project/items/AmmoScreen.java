@@ -25,6 +25,7 @@ public class AmmoScreen extends Screen implements KeyListener {
 	BufferedImage image = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
 	Graphics2D g2 = (Graphics2D) image.getGraphics();
 
+	
 	//BufferedImage[] images = new BufferedImage[7];
 	//BufferedImage reG;
 	BufferedImage reGStill;
