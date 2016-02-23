@@ -24,7 +24,7 @@ public class Projectiles extends Collision{
 	}
 
 	public Weapon getBulletType() {
-		return Weapon.getbulletType();
+		return bulletType;
 	}
 
 	public Projectiles(int characterX, int characterY, int cursorX, int cursorY, Weapon bulletType){
