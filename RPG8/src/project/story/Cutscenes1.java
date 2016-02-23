@@ -52,29 +52,6 @@ public abstract class Cutscenes1  {
 		
 		
 	}
-	
-
-	
-	
-	
-	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		int key = arg0.getKeyCode();
-		if(key==KeyEvent.VK_UP){
-			joe.moveup();
-		}
-		
-		/**
-		else if(key==KeyEvent.VK_DOWN){
-			Player.movedown();
-		}
-		else if(key==KeyEvent.VK_RIGHT){
-			Player.moveright();
-		}
-		else if(key==KeyEvent.VK_LEFT){
-			Player.moveleft();
-		}
-		**/
 		
 	}
 	
