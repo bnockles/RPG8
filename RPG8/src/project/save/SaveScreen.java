@@ -66,8 +66,8 @@ public class SaveScreen extends JFrame {
 		loadButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Loading is actually only only done once here, oops.
-				// This is a misleading method.
 				// Loading is done only when this class is created.
+				// This is a misleading method.
 				// What this button actually does is print loaded data.
 				
 				// t = doLoad(); --- This breaks the code.
