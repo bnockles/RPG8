@@ -1,5 +1,5 @@
 package project.story;
 
-public abstract class Cutscenes {
+public class Cutscenes {
 
 }
