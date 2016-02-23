@@ -9,10 +9,13 @@ public class MCharacter extends Character {
 	private int hpValue;
 	private int armorValue;
 	private int sneakValue;
-	private String[] setLoadOut;
-	
-	public MCharacter(){
-		
+//	private String[] setLoadOut;
+
+	public MCharacter(int recovery, int hpValue, int armorValue, int sneakValue){
+		this.recovery= recovery;
+		this.hpValue=  hpValue;
+		this.armorValue = armorValue;
+		this.sneakValue = sneakValue;
 	}
 	public int getLevel() {
 		return level;
@@ -22,32 +25,16 @@ public class MCharacter extends Character {
 		return recovery;
 	}
 
-	public void setRecovery(int recovery) {
-		this.recovery = recovery;
-	}
-
 	public int getHpValue() {
 		return hpValue;
-	}
-
-	public void setHpValue(int hpValue) {
-		this.hpValue = hpValue;
 	}
 
 	public int getArmorValue() {
 		return armorValue;
 	}
-
-	public void setArmorValue(int armorValue) {
-		this.armorValue = armorValue;
-	}
 	
 	public int getSneakValue(){ 
 		return sneakValue;
-	}
-	
-	public void setSneakValue(int sneakValue) {
-		this.sneakValue = sneakValue;
 	}
 	
 	
