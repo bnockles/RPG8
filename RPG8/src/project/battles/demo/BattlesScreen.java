@@ -1,4 +1,4 @@
-package project.demo;
+package project.battles.demo;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -31,7 +31,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 	public BattlesScreen(Game game){
 		super(game);
 		
-		char1 =  new SampleMCharacter("/images/character/mc.jpg",100,100,100,100);
+		char1 =  new SampleMCharacter("/maincharacter/mfront1.png",100,100,100,100);
 		//enemy1 = new SampleKEnemy(new int[6],new Weapon(),true);
 		//enemy2 = new SampleGEnemy(new int[6],new Weapon(),true);
 		update();

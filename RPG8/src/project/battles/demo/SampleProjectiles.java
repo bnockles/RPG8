@@ -1,4 +1,4 @@
-package project.demo;
+package project.battles.demo;
 
 import project.battles.Projectiles;
 

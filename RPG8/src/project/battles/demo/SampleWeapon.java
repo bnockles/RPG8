@@ -1,6 +1,6 @@
-package project.demo;
+package project.battles.demo;
 
-import project.demo.BattlesScreen;
+import project.battles.demo.BattlesScreen;
 
 public class SampleWeapon {
 	private String wimagesrc;

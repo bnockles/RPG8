@@ -1,4 +1,4 @@
-package project.demo;
+package project.battles.demo;
 
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -109,7 +109,25 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		/*
+		 * Animation, use pictures for animation 
+		 * add picture of the weapon
+		 * 
+		 * */
+		int key = e.getKeyCode();
+
+		if(key == KeyEvent.VK_UP){
+
+		}
+		if(key == KeyEvent.VK_DOWN){
+			
+		}
+		if(key == KeyEvent.VK_LEFT){
+
+		}
+		if(key == KeyEvent.VK_RIGHT){
+
+		}
 	}
 
 	@Override

@@ -1,7 +1,7 @@
-package project.demo;
+package project.battles.demo;
 
 //more test
-import project.demo.BattlesScreen;
+import project.battles.demo.BattlesScreen;
 import project.directors.Screen;
 /**
  * 
