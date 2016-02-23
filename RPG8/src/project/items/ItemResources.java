@@ -7,6 +7,8 @@ public interface ItemResources {
 	//Ammo
 	Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1);
 	Ammo pistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 0,1);
+	Ammo rifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 0, 1);
+	Ammo energyAmmo=new Ammo("Energy Ammo", "It's energy ammo", 0,2);
 	
 	//Weapons
 	/**
@@ -43,6 +45,12 @@ public interface ItemResources {
 			1, false, 0, "Auto", 13, .55, true, true, 23);
 	Weapons pistol4GradeA1 = new Weapons("Desert Phoenix", "Pistol", pistolAmmo, 88, 7, 7, .35, 2,
 			1, true, 1850, "Semi", 0, 1.2, false, false, 24);
+	
+	//Test Guns
+	Weapons rifles1GradeA1 = new Weapons("M4A1", "Rifles", rifleAmmo, 36, 30, 210, .10, 2,
+			3, true, 1850, "Auto", 13, 1.3, false, true, 31);
+	Weapons rifles2GradeA2 = new Weapons("NGM4", "Rifles", energyAmmo, 25, 40, 280, .10, 2,
+			2, true, 9850, "Auto", 12, 1.3, false, false, 32);
 	
 	Weapons[] Melee = { };
 	Weapons[] Pistol = { pistol2GradeB1, pistol3GradeS1, pistol4GradeA1};
