@@ -4,7 +4,11 @@ import java.awt.Graphics2D;
 import java.awt.geom.Arc2D;
 
 import project.items.Weapon;
-
+	/**
+	 * 
+	 * @ Author: Chieh-Huang Chen
+	 * 
+	 */
 public abstract class SampleEnemyAI extends SampleCharacter{
 	protected int hp;//static idk
 	protected int maxhp;

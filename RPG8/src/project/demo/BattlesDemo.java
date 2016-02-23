@@ -3,7 +3,11 @@ package project.demo;
 //more test
 import project.demo.BattlesScreen;
 import project.directors.Screen;
-
+/**
+ * 
+ * @ Author: Chieh-Huang Chen
+ * 
+ */
 public class BattlesDemo extends project.directors.Game{
 
 	public static void main(String[] args) {
