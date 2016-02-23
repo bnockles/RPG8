@@ -15,10 +15,18 @@ import project.controls.OverworldSpriteControl;
 import project.save.ItemState;
 
 public class SampleMCharacter extends SampleCharacter implements KeyListener,MouseListener{
-
-	public SampleMCharacter(String imgsrc){
+	private int level;
+	private int recovery;
+	private int hpValue;
+	private int armorValue;
+	private int sneakValue
+	
+	public SampleMCharacter(String imgsrc,int recovery, int hpValue, int armorValue, int sneakValue){
 		this.imgsrc = imgsrc;
-		
+		this.recovery= recovery;
+		this.hpValue=  hpValue;
+		this.armorValue = armorValue;
+		this.sneakValue = sneakValue;
 		sprite = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
 		URL url = getClass().getResource(imgsrc);
 		try{
@@ -33,6 +41,26 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		}
 		
 	}
+		public int getLevel() {
+		return level;
+	}
+	
+	public int getRecovery() {
+		return recovery;
+	}
+
+	public int getHpValue() {
+		return hpValue;
+	}
+
+	public int getArmorValue() {
+		return armorValue;
+	}
+	
+	public int getSneakValue(){ 
+		return sneakValue;
+	}
+	
 	public BufferedImage getImage(){
 		return sprite;
 	}
