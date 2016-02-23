@@ -60,4 +60,8 @@ public class SampleWeapon {
 	public int getAmmo() {
 		return ammo;
 	}
+	public void reduceAmmoByOne(){
+		ammo--;
+	}
+		
 }

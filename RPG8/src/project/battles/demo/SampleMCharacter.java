@@ -20,7 +20,8 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 	private int hpValue;
 	private int armorValue;
 	private int sneakValue;
-	
+	private SampleWeapon equippedWeapon;
+	private ArrayList<SampleWeapon> loadout;
 	public SampleMCharacter(String imgsrc,int recovery, int hpValue, int armorValue, int sneakValue){
 		this.imgsrc = imgsrc;
 		this.recovery= recovery;
@@ -64,11 +65,18 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 	public BufferedImage getImage(){
 		return sprite;
 	}
+	public void firePistol(){
+		SampleProjectiles bullet = new SampleProjectiles(armorValue, armorValue, armorValue, armorValue, armorValue, armorValue, imgsrc);
+		BattlesScreen.player.add(bullet);
+		equippedWeapon.reduceAmmoByOne();
+	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		equippedWeapon.fire(false);
+		//equippedWeapon.fire(false);
+		
 	}
+	
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
@@ -130,6 +138,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		}
 	}
 
+	//leftclik
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
