@@ -11,8 +11,8 @@ public class Obstacle extends Frame {
 	String image;
 	BufferedImage object;
 
-	public Obstacle(String name, int xPos, int yPos, int sizeX, int sizeY, String image) {
-		super(xPos, yPos, sizeX, sizeY);
+	public Obstacle(String name, int xPos, int yPos, int sizeX, int sizeY, String image,int region) {
+		super(xPos, yPos, sizeX, sizeY,region);
 		this.name = name;
 		if (image != "") {
 			this.image = image;
