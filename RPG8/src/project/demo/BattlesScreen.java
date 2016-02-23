@@ -30,14 +30,8 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 	
 	public BattlesScreen(Game game){
 		super(game);
-		File q = new File("/sprites/standing.png");
-		try {
-			BufferedImage r = ImageIO.read(q);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		char1 =  new SampleMCharacter("/sprites/standing.png");
+		
+		char1 =  new SampleMCharacter("/images/character/mc.jpg");
 		//enemy1 = new SampleKEnemy(new int[6],new Weapon(),true);
 		//enemy2 = new SampleGEnemy(new int[6],new Weapon(),true);
 		update();
@@ -53,6 +47,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 			g2.drawString("Battles Team's Demo", 100, 100);
 			g2.setColor(Color.green);
 			timer.start();
+			g2.drawImage(char1.getImage(),char1.getPositionX(),char1.getPositionY(),null);
 		}
 		catch(Exception e){
 			

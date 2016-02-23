@@ -1,5 +1,7 @@
 package project.demo;
 
+import java.awt.image.BufferedImage;
+
 import project.controls.OverworldSpriteControl;
 import project.items.Weapon;
 import project.save.ItemState;
@@ -8,7 +10,10 @@ public abstract class SampleCharacter {
 	protected abstract ItemState getItems();
 	protected abstract OverworldSpriteControl move();
 	public int[] rawr = {50,5,200,100};
+	protected BufferedImage sprite;
 	protected SampleWeapon equippedWeapon = new SampleWeapon("blah","blah",rawr);
+	protected int width = 100;
+	protected int height = 100;
 	protected String imgsrc;
 	protected boolean Hostile;
 	protected int maxHP;

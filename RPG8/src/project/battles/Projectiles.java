@@ -1,5 +1,7 @@
 package project.battles;
 
+import project.items.Weapon;
+
 public class Projectiles extends Collision{
 	private int characterX;
 	private int characterY;
