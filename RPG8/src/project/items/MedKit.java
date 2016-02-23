@@ -4,8 +4,8 @@ public class MedKit extends Item {
 	String name;
 	String desc;
 	int healthGained;
-	public MedKit(String name, String desc,int healthGained) {
-		super(name, desc);
+	public MedKit(String name, String desc,int cost, int healthGained) {
+		super(name, desc, cost);
 		// TODO Auto-generated constructor stub
 	}
 	//Testing Push
