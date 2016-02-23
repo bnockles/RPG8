@@ -31,7 +31,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 	public BattlesScreen(Game game){
 		super(game);
 		
-		char1 =  new SampleMCharacter("/images/character/mc.jpg");
+		char1 =  new SampleMCharacter("/images/character/mc.jpg",100,100,100,100);
 		//enemy1 = new SampleKEnemy(new int[6],new Weapon(),true);
 		//enemy2 = new SampleGEnemy(new int[6],new Weapon(),true);
 		update();
