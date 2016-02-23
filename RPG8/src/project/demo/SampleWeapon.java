@@ -1,5 +1,7 @@
 package project.demo;
 
+import project.demo.BattlesScreen;
+
 public class SampleWeapon {
 	private String wimagesrc;
 	private String pimagesrc;
@@ -15,9 +17,19 @@ public class SampleWeapon {
 		this.dmg = weaponstats[0];
 		this.velocity = weaponstats[1];
 		this.maxammo = weaponstats[2];
-		this.ammo = weaponstats[3];
-		this.range = weaponstats[4];
+		this.ammo = weaponstats[2];
+		this.range = weaponstats[3];
 	}
+	
+	public void fire(boolean hostile){
+		if(hostile){
+			BattlesScreen.player.add(new SampleProjectiles("blah",100,100,100,100,100));
+		}
+		else{
+			BattlesScreen.enemy.add(new SampleProjectiles("blah",100,100,100,100,100));
+		}
+	}
+	
 	public void setAmmo(int ammo) {
 		this.ammo = ammo;
 	}
