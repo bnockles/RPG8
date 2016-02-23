@@ -23,10 +23,10 @@ public class SampleWeapon {
 	
 	public void fire(boolean hostile){
 		if(hostile){
-			BattlesScreen.player.add(new SampleProjectiles("blah",100,100,100,100,100));
+			BattlesScreen.player.add(new SampleProjectiles(100,100,100,100,100,100,"blah"));
 		}
 		else{
-			BattlesScreen.enemy.add(new SampleProjectiles("blah",100,100,100,100,100));
+			BattlesScreen.enemy.add(new SampleProjectiles(100,100,100,100,100,100,"blah"));
 		}
 	}
 	

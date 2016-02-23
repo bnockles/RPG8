@@ -3,43 +3,61 @@ package project.battles;
 import project.items.Weapon;
 
 public class Projectiles extends Collision{
-	private int characterX;
-	private int characterY;
-	private int cursorX;
-	private int cursorY;
-	private Weapon bulletType;
+	protected String pImgSrc;
+	protected int vx;
+	protected int vy;
+	protected int range;
+	protected final int initX;
+	protected final int initY;
+	protected boolean collided;
+
+	public Projectiles(int x, int y, int damage, int vx, int vy, int range, String pImgSrc){
+		super(x, y, damage);
+		//this.bulletType = bulletType; //this needs more clarity because it has to be created
+		this.vx = vx;
+		this.vy = vy;
+		this.pImgSrc = pImgSrc;
+		this.initX = x;
+		this.initY = y;
+		collided = false;
+	}
+	public String getpImgSrc() {
+		return pImgSrc;
+	}
+
+	public void updatePosition(){
+		x += vx;
+		y += vy;
+	}
+	public boolean isCollided() {
+		return collided;
+	}
+	public void checkRange(){
+		double distance = Math.sqrt(Math.pow((x-initX), 2) + Math.pow((y-initY), 2));
+		if(distance >= range)collided=true;
+	}
 	
-	public int getCharacterX() {
-		return characterX;
+	public void updateAndCheckAll(){
+		updatePosition();
+		checkRange();
 	}
-
-	public int getCharacterY() {
-		return characterY;
-	}
-
-	public int getCursorX() {
-		return cursorX;
-	}
-
-	public int getCursorY() {
-		return cursorY;
-	}
-
-	public Weapon getBulletType() {
-		return bulletType;
-	}
-
-	public Projectiles(int characterX, int characterY, int cursorX, int cursorY, Weapon bulletType){
-		this.characterX = characterX;
-		this.characterY = characterY;
-		this.cursorX = cursorX;
-		this.cursorY = cursorY;
-		this.bulletType = bulletType; //this needs more clarity because it has to be created
+	
+	@Override
+	void collideWith(Character C) {
+		// TBD after discussing
+		collided = true;
 	}
 
 	@Override
-	void collide() {
-		// TBD after discussing
+	public boolean canPassThrough() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
+	public void paintImage() {
+		// TODO Auto-generated method stub
 		
 	}
+
 }
