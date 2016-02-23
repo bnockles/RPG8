@@ -18,6 +18,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+import project.ChoiceMenuDemo.ChoiceDemo;
 import project.directors.Game;
 import project.directors.Screen;
 
@@ -73,8 +74,8 @@ public class MainMenuScreen extends Screen implements KeyListener{
 			
 		}
 		if(e.getKeyCode()== KeyEvent.VK_SPACE){
-			//when I have the options from other groups I will 
-			//update what the spacebar does
+			new ChoiceDemo();
+			game.dispose();
 		}
 		
 	}

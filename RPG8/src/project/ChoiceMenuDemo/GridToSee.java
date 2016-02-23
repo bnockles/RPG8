@@ -132,7 +132,7 @@ public class GridToSee extends Screen implements KeyListener{
 			x = 383;
 			y = 128;
 			x2 = 585;
-			y = 115;
+			y2 = 115;
 		}
 		if (highl == 2){
 			x = 643;

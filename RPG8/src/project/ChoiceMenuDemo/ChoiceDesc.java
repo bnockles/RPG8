@@ -13,9 +13,10 @@ import project.menus.Selectable;
 public class ChoiceDesc implements Selectable{
 
 	public String name;
-	public String des;
-	public File pic;
-	public String sel;
+	
+	public String des; //description
+	public File pic; //picture
+	public String sel; //selected
 	
 	public ChoiceDesc(String name, File pic, String des, String sel){
 		this.name = name;
