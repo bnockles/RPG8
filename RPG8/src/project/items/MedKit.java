@@ -1,6 +1,7 @@
 package project.items;
 
 public class MedKit extends Item {
+	//stanley's class
 	String name;
 	String desc;
 	int healthGained;
@@ -8,8 +9,6 @@ public class MedKit extends Item {
 		super(name, desc, cost);
 		// TODO Auto-generated constructor stub
 	}
-	//I want pie
-	//Can I have pie
 	
 	//Health regained by clicking to use
 	/**public int giveHealth(Character b){
