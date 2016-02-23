@@ -5,6 +5,11 @@ import java.io.File;
 
 import project.menus.Selectable;
 
+/**
+ * 
+ * @author Maxwell Sulavko
+ *
+ */
 public class ChoiceDesc implements Selectable{
 
 	public String name;
