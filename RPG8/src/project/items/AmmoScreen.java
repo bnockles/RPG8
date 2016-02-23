@@ -107,13 +107,12 @@ public class AmmoScreen extends Screen implements KeyListener {
 	@Override
 	public synchronized void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		int keyCode = e.getKeyCode();
 
 		//check if an arrow key is pressed and add it to pressedKeys if it is
-		if(keyCode == KeyEvent.VK_UP){ 
+		if(e.getKeyCode() == KeyEvent.VK_UP){ 
 			regAmmoRemaining +=5;
 			if(regAmmoRemaining>100)regAmmoRemaining=100;
-		}else if(keyCode == KeyEvent.VK_DOWN){
+		}else if(e.getKeyCode() == KeyEvent.VK_DOWN){
 			engAmmoRemaining+=5;
 			if(engAmmoRemaining>100)engAmmoRemaining=100;
 		}

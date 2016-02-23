@@ -32,10 +32,10 @@ public interface ItemResources {
 
 	 */
 	Weapons pistol2GradeB1 = new Weapons("RIA-45S", "The Rancor Intelligence Arms pistol is a lightweight weapon that deals medium damage and also can be augmented with a secondary fire.", 
-			pistolAmmo, 33, 18, 126, .00, 2, 0, true, 150, "Semi", 0, .45, true, true, 22);
-	Weapons pistol3GradeS1 = new Weapons("CT-Roaring Thunder", "Pistol", pistolAmmo, 62, 20, 140, .20, 2, 
+			pistolAmmo, 33, 18, 7, .00, 2, 0, true, 150, "Semi", 0, .45, true, true, 22);
+	Weapons pistol3GradeS1 = new Weapons("CT-Roaring Thunder", "Pistol", pistolAmmo, 62, 20, 7, .20, 2, 
 			1, false, 0, "Auto", 13, .55, true, true, 23);
-	Weapons pistol4GradeA1 = new Weapons("Desert Phoenix", "Pistol", pistolAmmo, 88, 7, 70, .35, 2,
+	Weapons pistol4GradeA1 = new Weapons("Desert Phoenix", "Pistol", pistolAmmo, 88, 7, 7, .35, 2,
 			1, true, 1850, "Semi", 0, 1.2, false, false, 24);
 	
 	Weapons[] Melee = { };
