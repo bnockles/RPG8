@@ -15,7 +15,11 @@ import javax.imageio.ImageIO;
 import project.directors.Game;
 import project.directors.Screen;
 
-
+/**
+ * 
+ * @author Maxwell Sulavko
+ *
+ */
 
 public class GridToSee extends Screen implements KeyListener{
 
