@@ -7,7 +7,7 @@ public class MenuDemo extends project.directors.Game{
 		// TODO Auto-generated constructor stub
 	
 	public static void main(String[] args) {
-		new MenuDemo();
+		MenuDemo s = new MenuDemo();
 	}
 	
 	public void reset() {

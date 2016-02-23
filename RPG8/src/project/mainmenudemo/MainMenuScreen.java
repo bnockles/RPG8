@@ -19,8 +19,10 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 import project.ChoiceMenuDemo.ChoiceDemo;
+import project.ChoiceMenuDemo.GridToSee;
 import project.directors.Game;
 import project.directors.Screen;
+import project.menus.ChoiceMenuDemo;
 
 import java.awt.*;
 import java.applet.*;
@@ -74,8 +76,7 @@ public class MainMenuScreen extends Screen implements KeyListener{
 			
 		}
 		if(e.getKeyCode()== KeyEvent.VK_SPACE){
-			new ChoiceDemo();
-			game.dispose();
+			this.game.setScreen(new GridToSee(this.game));
 		}
 		
 	}
