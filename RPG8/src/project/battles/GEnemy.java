@@ -5,8 +5,6 @@ import project.save.ItemState;
 
 public class GEnemy extends EnemyAI{
 	private int[] stats;
-	positionsX;
-	positionsY;
 	
 	void movement() {
 		// TODO Auto-generated method stub
