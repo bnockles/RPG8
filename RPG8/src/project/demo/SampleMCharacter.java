@@ -19,7 +19,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 	private int recovery;
 	private int hpValue;
 	private int armorValue;
-	private int sneakValue
+	private int sneakValue;
 	
 	public SampleMCharacter(String imgsrc,int recovery, int hpValue, int armorValue, int sneakValue){
 		this.imgsrc = imgsrc;
