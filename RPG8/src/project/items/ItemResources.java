@@ -23,6 +23,12 @@ public interface ItemResources {
 		4. Heavy
 		5. SMG
 		6. Explosives
+		
+		
+		
+		
+		
+		
 		7. Plasma
 		
 		Second Number:

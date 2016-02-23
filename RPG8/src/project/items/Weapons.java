@@ -17,7 +17,7 @@ public class Weapons extends Item{
 	boolean canSilence;
 	int gunNum;
 	int ammoTotal;
-
+	
 	public Weapons(String name, String desc, Ammo ammo, int damage, int ammoClip, int ammoCapacity,
 			double criticalHit, int critHitMul, int weight, boolean buyable, int cost, String rof, int rofRPS, 
 			double reloadSpd, boolean secondaryFire, boolean canSilence, int gunNum) {

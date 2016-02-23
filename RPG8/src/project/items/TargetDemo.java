@@ -4,7 +4,7 @@ public class TargetDemo {
 	int health;
 	Weapons weapon;
 	/**
-	 * @param args
+	 * @author Qing Ning Huang, Stanley Ren, Jia Liu
 	 */
 	public TargetDemo(int health,Weapons weapon){
 		this.weapon = weapon;
@@ -16,7 +16,10 @@ public class TargetDemo {
 			target.health-=this.weapon.damage;
 			this.weapon.ammoTotal--;
 		}
-		else{
+	}
+	
+	public void reload(){
+		if(this.weapon.ammoCapacity!=0){
 			this.weapon.ammoTotal=this.weapon.ammoClip;
 			this.weapon.ammoCapacity--;
 		}
