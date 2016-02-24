@@ -23,6 +23,7 @@ import project.ChoiceMenuDemo.GridToSee;
 import project.directors.Game;
 import project.directors.Screen;
 import project.menus.ChoiceMenuDemo;
+import project.tooltipdemo.TestScreen;
 
 import java.awt.*;
 import java.applet.*;
@@ -76,7 +77,10 @@ public class MainMenuScreen extends Screen implements KeyListener{
 			
 		}
 		if(e.getKeyCode()== KeyEvent.VK_SPACE){
+			if(selected ==1)
 			this.game.setScreen(new GridToSee(this.game));
+			if(selected==2)
+				this.game.setScreen(new TestScreen(this.game));
 		}
 		
 	}
