@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -65,11 +66,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 	public BufferedImage getImage(){
 		return sprite;
 	}
-	public void firePistol(){
-		SampleProjectiles bullet = new SampleProjectiles(armorValue, armorValue, armorValue, armorValue, armorValue, armorValue, imgsrc);
-		BattlesScreen.player.add(bullet);
-		equippedWeapon.reduceAmmoByOne();
-	}
+
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub

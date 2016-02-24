@@ -61,4 +61,9 @@ public abstract class SampleCharacter {
 	public void setPositionY(int positionY) {
 		this.positionY = positionY;
 	}
+	public void firePistol(int tx, int ty){//target location
+		SampleProjectiles bullet = new SampleProjectiles(0, 0, 0, 0, 0, 0, imgsrc);
+		BattlesScreen.player.add(bullet);
+		equippedWeapon.reduceAmmoByOne();
+	}
 }

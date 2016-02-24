@@ -21,7 +21,7 @@ import project.directors.UtilityMethods;
 import project.items.Weapon;
 
 public class BattlesScreen extends Screen implements KeyListener,ActionListener{
-	SampleMCharacter char1;
+	static SampleMCharacter char1;
 	SampleKEnemy enemy1;
 	SampleGEnemy enemy2;
 	public static ArrayList<SampleProjectiles> player = new ArrayList<SampleProjectiles>();

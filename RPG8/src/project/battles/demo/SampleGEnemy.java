@@ -37,6 +37,7 @@ public class SampleGEnemy extends SampleEnemyAI{
 		// TODO Auto-generated method stub
 		// first step is to shoot them back
 		// at a certain range this enemy will stop attacking and go back to where he belonged
+		this.firePistol(BattlesScreen.char1.getPositionX(), BattlesScreen.char1.getPositionY());
 	}
 
 
@@ -46,6 +47,13 @@ public class SampleGEnemy extends SampleEnemyAI{
 		// locate the main character
 		// run in the opposite direection of the main character
 		// run out of the map
+		int distanceX = positionX - BattlesScreen.char1.getPositionX();
+		int distanceY = positionY - BattlesScreen.char1.getPositionY();
+		if (distanceX >= 0) positionX++;
+		else positionX--;
+		
+		if (distanceY >= 0) positionY++;
+		else positionY--;
 	}
 
 	@Override
