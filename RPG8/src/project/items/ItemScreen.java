@@ -9,8 +9,7 @@ import project.directors.Game;
 import project.directors.Screen;
 
 public class ItemScreen extends Screen implements KeyListener,ItemResources{
-	TargetDemo you = new TargetDemo(100, pistol2GradeB1);
-	TargetDemo target = new TargetDemo(100, pistol2GradeB1);
+	TargetDemo you = new TargetDemo(100, pistol2GradeB1,0,0);
 	
 	public ItemScreen(Game game) {
 		super(game);
@@ -38,6 +37,8 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		g2.drawString("Clips: "+you.weapon.ammoCapacity, 200, 130);
 		g2.drawString("Ammo in Clip: "+you.weapon.ammoTotal, 200, 145);
 		g2.drawString("Current Weapon: "+you.weapon.name, 200, 160);
+		g2.drawString("Coins: "+you.coins, 200, 175);
+		g2.drawString("Scrap: "+you.scrap, 200, 190);
 		g2.drawOval(50, 200, 40, 40);
 		g2.drawLine(70,240,70,280);
 		g2.drawLine(70,240,50,260);
@@ -63,7 +64,8 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 			if(you.health>0){
 				you.attack(you);
 			}
-			System.out.println(you.health);
+			you.coins+=10;
+			you.scrap+=1;
 //			if((int)(Math.random()*100+1)<45){
 //				target.attack(you);
 //			}

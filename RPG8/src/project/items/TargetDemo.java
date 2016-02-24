@@ -3,12 +3,16 @@ package project.items;
 public class TargetDemo {
 	int health;
 	Weapons weapon;
+	int coins;
+	int scrap;
 	/**
 	 * @author Qing Ning Huang, Stanley Ren, Jia Liu
 	 */
-	public TargetDemo(int health,Weapons weapon){
+	public TargetDemo(int health,Weapons weapon,int coins,int scrap){
 		this.weapon = weapon;
 		this.health=health;
+		this.coins=coins;
+		this.scrap=scrap;
 	}
 	
 	public void attack(TargetDemo target){

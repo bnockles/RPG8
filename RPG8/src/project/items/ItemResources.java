@@ -60,6 +60,6 @@ public interface ItemResources {
 	Weapons[] Heavy = { };
 	Weapons[] SMG = { };
 	Weapons[] Explosives = { };
-
+	// Misc
 	
 }
