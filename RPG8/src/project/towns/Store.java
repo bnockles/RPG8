@@ -6,11 +6,10 @@ import project.directors.Game;
 import project.directors.Screen;
 import project.items.Item;
 
-public abstract class Store extends Inventory{
+public abstract class Store{
 
-	public Store(Game game, ArrayList<Item> items) {
-		super(game, items);
-		// TODO Auto-generated constructor stub
+	public Store(Game game, ArrayList<String> items) {
+		
 	}
 
 	Screen inventory;
