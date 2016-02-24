@@ -16,7 +16,7 @@ import project.directors.Screen;
 public class WeaponsScreen  extends Screen implements KeyListener, ItemResources{
 	
 	int regAmmoRemaining = rifles1GradeA1.getAmmoClip();
-	int engAmmoRemaining = rifles2GradeA2.getAmmoClip();;
+	int engAmmoRemaining = rifles2GradeA2.getAmmoClip();
 	int x=100;
 	int y=500;
 	//fef
