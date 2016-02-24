@@ -1,5 +1,9 @@
 package project.tooltipdemo;
 
+/**
+ * Mark Mozgovoy
+ */
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -23,7 +27,6 @@ public class TestScreen extends Screen implements KeyListener {
 	
 	public TestScreen(Game game) {
 		super(game);
-		
 		this.options = new ArrayList<TooltipOption>();
 		options.add(new TooltipOption("Option 1", new File("resources/image1.jpg"), "Sample description"));
 		options.add(new TooltipOption("Option 2", new File("resources/image2.gif"), "Another description"));
@@ -37,7 +40,6 @@ public class TestScreen extends Screen implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
 		if(e.getKeyCode() == KeyEvent.VK_DOWN){
 			selection++;
 			if(selection > 3){
@@ -74,7 +76,7 @@ public class TestScreen extends Screen implements KeyListener {
 
 	@Override
 	public void paintScreen(Graphics2D g2) {
-		// TODO Auto-generated method stub
+		//Create button containers.
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
@@ -83,10 +85,12 @@ public class TestScreen extends Screen implements KeyListener {
 		g2.fillRect(112, 460, 375, 100);
 		g2.fillRect(112, 580, 375, 100);
 		
+		//Fonts created.
 		Font font1 = new Font("Courier", Font.ROMAN_BASELINE, 50);
 		Font font2 = new Font("Courier", Font.ROMAN_BASELINE, 25);
 		g2.setFont(font1);
 		
+		//Selected Option drawn.
 		int[] yOptions = {218, 338, 458, 578};
 		int y = yOptions[selection];
 		g2.setColor(Color.yellow);
@@ -96,21 +100,9 @@ public class TestScreen extends Screen implements KeyListener {
 		Tooltip testTool = new Tooltip(450, 230, 492, 220,
 				options.get(selection).text, options.get(selection).file, options.get(selection).description,
 				234, 120);
-		g2.setColor(Color.black);
-		g2.fillRect(testTool.getX(), testTool.getY(), testTool.getWidth(), testTool.getHeight());
-		g2.setColor(Color.yellow);
-		g2.drawString(testTool.getTitle(), testTool.getX()+110, testTool.getY()+60);
-		BufferedImage img = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
-		try{
-			img = ImageIO.read(testTool.getFile());
-		}
-		catch(IOException e){};
-		g2.drawImage(img, null, testTool.getX()+185, testTool.getY()+100);
-		g2.setFont(font2);
-		g2.setColor(Color.white);
-		g2.drawString(testTool.getDescription(), testTool.getX()+50, testTool.getY()+200);
+		testTool.drawTooltip(testTool, g2);
 		
-		
+		//Option buttons' text drawn.
 		g2.setFont(font1);
 		g2.setColor(Color.white);
 		g2.drawString(options.get(0).text, 180, 280);

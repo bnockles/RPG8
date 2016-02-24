@@ -1,8 +1,17 @@
 package project.menus;
 
+/**
+ * Mark Mozgovoy
+ */
+
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class Tooltip extends VerticalMenu{
 	
@@ -111,7 +120,24 @@ public class Tooltip extends VerticalMenu{
 
 	@Override
 	public void addSelections() {
-		//We don't put selectors into a tooltip, just a text box.
-		//or we could add a single selector, which is just text, and nothing happens when it is clicked.
+		//A tooltip doesn't have selections.
 	}
+
+	public void drawTooltip(Tooltip tool, Graphics2D g2){
+		g2.setColor(Color.black);
+		g2.fillRect(tool.getX(), tool.getY(), tool.getWidth(), tool.getHeight());
+		g2.setColor(Color.yellow);
+		g2.drawString(tool.getTitle(), tool.getX()+110, tool.getY()+60);
+		BufferedImage img = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
+		try{
+			img = ImageIO.read(tool.getFile());
+		}
+		catch(IOException e){};
+		g2.drawImage(img, null, tool.getX()+185, tool.getY()+100);
+		Font font2 = new Font("Courier", Font.ROMAN_BASELINE, 25);
+		g2.setFont(font2);
+		g2.setColor(Color.white);
+		g2.drawString(tool.getDescription(), tool.getX()+50, tool.getY()+200);
+	}
+	
 }

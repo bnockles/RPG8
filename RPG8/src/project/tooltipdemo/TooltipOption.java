@@ -1,5 +1,9 @@
 package project.tooltipdemo;
 
+/**
+ * Mark Mozgovoy
+ */
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -19,25 +23,25 @@ public class TooltipOption implements Selectable {
 	
 	@Override
 	public BufferedImage getImage() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void confirm() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void setSelect(boolean b) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

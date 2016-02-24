@@ -1,4 +1,10 @@
+//this code is unused for now.
+
 package project.tooltipdemo;
+
+/**
+ * Mark Mozgovoy
+ */
 
 import java.util.ArrayList;
 
