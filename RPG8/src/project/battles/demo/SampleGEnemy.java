@@ -49,11 +49,19 @@ public class SampleGEnemy extends SampleEnemyAI{
 		// run out of the map
 		int distanceX = positionX - BattlesScreen.char1.getPositionX();
 		int distanceY = positionY - BattlesScreen.char1.getPositionY();
-		if (distanceX >= 0) positionX++;
-		else positionX--;
+		if (distanceX >= 0){
+			positionX++;
+		}
+		else {
+			positionX--;
+		}
 		
-		if (distanceY >= 0) positionY++;
-		else positionY--;
+		if (distanceY >= 0) {
+			positionY++;
+		}
+		else {
+			positionY--;
+		}
 	}
 
 	@Override
