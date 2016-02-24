@@ -33,11 +33,26 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		g2.drawString("Player 1", 30, 70);
 		g2.drawRect(30,90,100,20);
 		g2.drawString("Press E to heal", 30, 130);
-		g2.drawString("Press Q to take damage", 30, 145);
+		g2.drawString("Press S to take damage", 30, 145);
+		g2.drawString("Press R to reload", 30, 160);
+		g2.drawString("Clips: "+you.weapon.ammoCapacity, 200, 130);
+		g2.drawString("Ammo in Clip: "+you.weapon.ammoTotal, 200, 145);
+		g2.drawString("Current Weapon: "+you.weapon.name, 200, 160);
+		g2.drawOval(50, 200, 40, 40);
+		g2.drawLine(70,240,70,280);
+		g2.drawLine(70,240,50,260);
+		g2.drawLine(70,240,90,260);
+		g2.drawLine(70,280,50,300);
+		g2.drawLine(70,280,90,300);
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode()==KeyEvent.VK_E){
+			System.out.println(you.health);
+			smallkit.giveHealth(you);
+			System.out.println(you.health);
+		}
 		if(e.getKeyCode()==KeyEvent.VK_H){
 			
 		}
@@ -45,10 +60,13 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 			you.reload();
 		}
 		if(e.getKeyCode()==KeyEvent.VK_S){
-			you.attack(you);
-			if((int)(Math.random()*100+1)<45){
-				target.attack(you);
+			if(you.health>0){
+				you.attack(you);
 			}
+			System.out.println(you.health);
+//			if((int)(Math.random()*100+1)<45){
+//				target.attack(you);
+//			}
 		}
 		update();
 		game.repaint();

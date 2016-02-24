@@ -12,9 +12,13 @@ public class TargetDemo {
 	}
 	
 	public void attack(TargetDemo target){
+		
 		if(this.weapon.ammoTotal!=0){
 			target.health-=this.weapon.damage;
 			this.weapon.ammoTotal--;
+		}
+		if(this.health<0){
+			this.health=0;
 		}
 	}
 	

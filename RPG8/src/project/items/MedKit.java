@@ -4,9 +4,11 @@ public class MedKit extends Item {
 	//stanley's class
 	String name;
 	String desc;
+	int cost;
 	int healthGained;
 	public MedKit(String name, String desc,int cost, int healthGained) {
 		super(name, desc, cost);
+		this.healthGained=healthGained;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -16,7 +18,9 @@ public class MedKit extends Item {
 		charHealth+=this.healthGained;
 	}**/
 	public void giveHealth(TargetDemo b){
-		int charHealth=b.health;
-		charHealth+=this.healthGained;
+		b.health+=this.healthGained;
+		if(b.health>100){
+			b.health=100;
+		}
 	}
 }
