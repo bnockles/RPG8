@@ -15,4 +15,8 @@ public class MedKit extends Item {
 		int charHealth=b.getHealth();
 		charHealth+=this.healthGained;
 	}**/
+	public void giveHealth(TargetDemo b){
+		int charHealth=b.health;
+		charHealth+=this.healthGained;
+	}
 }

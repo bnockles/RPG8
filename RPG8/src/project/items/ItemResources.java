@@ -2,7 +2,9 @@ package project.items;
 
 public interface ItemResources {
 	//Medkits
-	MedKit smallkit=new MedKit("Small Medkit","It's crap.",0, 50);
+	MedKit smallkit=new MedKit("Small Medkit","It's crap.",0, 10);
+	MedKit medkit=new MedKit("Medium Medkit","It's better.",0, 20);
+	MedKit bigkit=new MedKit("Big Medkit","It's the best.",0, 30);
 	
 	//Ammo
 	Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1);
