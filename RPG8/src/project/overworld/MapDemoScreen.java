@@ -32,11 +32,11 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		boundaries = new ArrayList<Boundaries>();
 		regions = new ArrayList<Region>();
 		touching = false;
-		xPos = 800;
+		xPos = 500;
 		yPos = 200;
 		xSize = 30;
 		ySize = 30;
-		playerRegion = 0;
+		playerRegion = 1;
 		obstacles.add(new Obstacle("Barrel", 400, 200, 40, 70,
 				"/images/Map/barrelblue.jpg", 0));
 		mapSections.add(new MainMap(0, "/images/Map/test.jpeg"));
@@ -44,7 +44,16 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		boundaries.add(new Boundaries(0, 0, 100, 890, false, 0));
 		boundaries.add(new Boundaries(0, 580, 920, 140, false, 0));
 		boundaries.add(new Boundaries(0, 450, 200, 140, false, 0));
-		regions.add(new Region(920, 200, 68, 500, 1, 500, 500, 0));
+		boundaries.add(new Boundaries(0, 0, 900, 65, false, 0));
+		boundaries.add(new Boundaries(690, 10, 230, 215, false, 0));
+		boundaries.add(new Boundaries(690, 270, 230, 400, false, 0));
+		boundaries.add(new Boundaries(550, 450, 150, 150, false, 0));
+		boundaries.add(new Boundaries(600, 400, 100, 50, false, 0));
+		boundaries.add(new Boundaries(180, 0, 900, 100, false, 1));
+		boundaries.add(new Boundaries(560, 0, 230, 700, false, 1));
+		boundaries.add(new Boundaries(180, 500, 230, 300, false, 1));
+		boundaries.add(new Boundaries(410,400,200,500,false,1));
+		regions.add(new Region(920, 200, 68, 500, 1, 300, 500, 0));
 		regions.add(new Region(0, 200, 50, 400, 0, 500, 500, 1));
 	}
 
@@ -108,6 +117,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		}
 		g2.setColor(Color.red);
 		g2.drawOval(xPos, yPos, 30, 30);
+		
 	}
 
 	@Override
