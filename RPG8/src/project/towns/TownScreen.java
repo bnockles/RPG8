@@ -1,5 +1,6 @@
 package project.towns;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -21,6 +22,7 @@ public class TownScreen extends Screen {
 
 	BufferedImage[][] backgroundGrid;
 	BufferedImage[][] obstacleGrid;
+
 	//BufferedImage[][] foregroundGrid;
 	int gridColumns;
 	int gridRows;
@@ -47,8 +49,13 @@ public class TownScreen extends Screen {
 		currentColumn = 0;
 		//example of starting screen for town but not actual
 		try{
-			URL url = new URL("http://www.yarrninja.com/pixeltutorial/21.gif");
-			backgroundGrid[currentRow][currentColumn] = ImageIO.read(url);
+			try{
+				backgroundGrid[currentRow][currentColumn] = ImageIO.read( ClassLoader.getSystemResource( "image/maps/image1background.png" ) );
+				
+				sprite = new TownWanderer(450, game.getHeight()-115, "hero", "/images/sprites/standing.png");
+			}
+			catch (IOException e) {
+			}
 			
 			}
 		catch (IOException e) {
@@ -83,6 +90,9 @@ public class TownScreen extends Screen {
 	public void paintScreen(Graphics2D g2) {
 		g2.drawImage(backgroundGrid[currentRow][currentColumn], 0, 0, null);
 		g2.drawImage(sprite.getImage(),sprite.getX(),sprite.getY(),null);
+		g2.drawOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
+		g2.drawString("this is bad town ", 400, 500);
+		
 		
 	}
 
