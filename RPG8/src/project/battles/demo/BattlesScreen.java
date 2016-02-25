@@ -83,7 +83,25 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		char1 =  new SampleMCharacter(animation,100,100,100,100);
 	}
 	public void Enemy(){
-
+		BufferedImage [][] animation = new BufferedImage [4][3];
+		BufferedImage origimage0 = UtilityMethods.getImageFromFile(this, "/enemy/eback1.png");
+		BufferedImage origimage1 = UtilityMethods.getImageFromFile(this, "/enemy/eback2.png");
+		BufferedImage origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/eback3.png");
+		animation[0] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
+		origimage0 = UtilityMethods.getImageFromFile(this, "/enemy/efront1.png");
+		origimage1 = UtilityMethods.getImageFromFile(this, "/enemy/efront2.png");
+		origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/efront3.png");
+		animation[1] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
+		origimage0 = UtilityMethods.getImageFromFile(this, "/enemy/eleft1.png");
+		origimage1 = UtilityMethods.getImageFromFile(this, "/enemy/eleft2.png");
+		origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/eleft3.png");
+		animation[2] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
+		origimage0 = UtilityMethods.getImageFromFile(this, "/enemy/eright1.png");
+		origimage1 = UtilityMethods.getImageFromFile(this, "/enemy/eright2.png");
+		origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/eright3.png");
+		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
+		enemy1 = new SampleGEnemy(animation,100,100,100,100);
+		enemy2 = new SampleKEnemy(animation,100,100,100,100);
 	}
 	public void Weapon(){
 		
