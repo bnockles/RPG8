@@ -115,7 +115,7 @@ public class TownScreen extends Screen implements KeyListener{
 	    	g2.drawOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
 	    	g2.setColor(Color.WHITE);
 	    	g2.fillOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
-	    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),150,200, null);
+	    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
 		}
 		if (status == 1){
 			g2.drawString("Press B to buy and press S to sale.", 100, 50);
@@ -135,7 +135,7 @@ public class TownScreen extends Screen implements KeyListener{
 		if (status == 2){
 			//Fei code
 			g2.drawImage(backgroundGrid[currentRow][currentColumn], 0, 0, null);
-			g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),115,115,null);
+			g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),200,150,null);
 			g2.drawOval(250 - 100, game.getHeight() -110, 100, 100);
 			g2.drawString("this is bad town ", 400, 500);
 		}
