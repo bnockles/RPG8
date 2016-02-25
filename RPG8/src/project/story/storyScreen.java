@@ -57,6 +57,12 @@ public class storyScreen extends Screen implements KeyListener{
 			storyDemo.Aya.animate(storyDemo.AyaStanding.get(1));
 			storyDemo.Aya.moveLeft();
 		}
+		else if(keyCode == KeyEvent.VK_S) {
+			storyDemo.Aya.shoot();
+		}
+		else if(keyCode == KeyEvent.VK_R) {
+			storyDemo.Aya.radio();
+		}
 		
 		//if pressing keys should change the graphics, call update()
 		update();	
