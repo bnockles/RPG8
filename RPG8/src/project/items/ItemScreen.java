@@ -66,9 +66,9 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		if(e.getKeyCode()==KeyEvent.VK_S){
 			if(you.health>0){
 				you.attack(you);
+				you.coins+=10;
+				you.scrap+=1;
 			}
-			you.coins+=10;
-			you.scrap+=1;
 //			if((int)(Math.random()*100+1)<45){
 //				target.attack(you);
 //			}
