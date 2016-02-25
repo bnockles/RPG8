@@ -53,8 +53,8 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		boundaries.add(new Boundaries(560, 0, 230, 700, false, 1));
 		boundaries.add(new Boundaries(180, 500, 230, 300, false, 1));
 		boundaries.add(new Boundaries(410,400,200,500,false,1));
-		regions.add(new Region(920, 200, 68, 500, 1, 300, 500, 0));
-		regions.add(new Region(0, 200, 50, 400, 0, 500, 500, 1));
+		regions.add(new Region(920, 200, 68, 500, 1, 300, 300, 0));
+		regions.add(new Region(0, 200, 50, 400, 0, 300, 300, 1));
 	}
 
 	public void checkCollision() {
