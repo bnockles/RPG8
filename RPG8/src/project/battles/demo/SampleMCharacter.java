@@ -24,7 +24,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 	private int sneakValue;
 	private SampleWeapon equippedWeapon;
 	private ArrayList<SampleWeapon> loadout;
-	public SampleMCharacter(BufferedImage[][] images,int recovery, int hpValue, int armorValue, int sneakValue){
+	public SampleMCharacter(BufferedImage[][] images,int recovery, int hpValue, int armorValue, int sneakValue, int positionX, int positionY){
 		this.bsprite = images[0];
 		this.fsprite = images[1];
 		this.lsprite = images[2];
@@ -34,6 +34,8 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		this.hpValue=  hpValue;
 		this.armorValue = armorValue;
 		this.sneakValue = sneakValue;
+		this.positionX = positionX;
+		this.positionY = positionY;
 //		sprite = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
 //		URL url = getClass().getResource(imgsrc);
 //		try{

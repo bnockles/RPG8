@@ -13,8 +13,8 @@ public class SampleGEnemy extends SampleEnemyAI{
 		this.fsprite = images[1];
 		this.lsprite = images[2];
 		this.rsprite = images[3];
-		this.positionX = 200;
-		this.positionY = 200;
+		this.positionX = 100;
+		this.positionY = 100;
 		maxhp = stats[0];
 		positionX = stats[1];
 		positionY = stats[2];

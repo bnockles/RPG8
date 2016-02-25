@@ -33,6 +33,8 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	Timer timer = new Timer(5,this);
 	ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 	public static final long MOVE_UNIT = 5;
+	public static final int PPOSITION_X = 300;
+	public static final int PPOSITION_Y = 300;
 	public static BufferedImage projectiledemo;
 	SampleProjectiles bullet;
 	public int[] enemystats = {100,100,100,100,100,100};
@@ -81,7 +83,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		origimage1 = UtilityMethods.getImageFromFile(this, "/maincharacter/mright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/maincharacter/mright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		char1 =  new SampleMCharacter(animation,100,100,100,100);
+		char1 =  new SampleMCharacter(animation,100,100,100,100,PPOSITION_X,PPOSITION_Y);
 	}
 	public void Enemy(){
 		BufferedImage [][] animation = new BufferedImage [4][3];
@@ -124,6 +126,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 			g2.drawString("Battles Team's Demo", 100, 100);
 			g2.setColor(Color.green);
 			timer.start();
+			//System.out.println(char1.getPositionY());
 			g2.drawImage(char1.getImage(count),char1.getPositionX(),char1.getPositionY(),null);
 			g2.drawImage(bullet.getpImgSrc(), 100, 100, null);
 
