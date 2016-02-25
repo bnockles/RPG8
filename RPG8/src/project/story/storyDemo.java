@@ -30,6 +30,7 @@ public class storyDemo extends Game{
 	private static String back2 = "/images/heroes/back2.png";
 	final static ArrayList<String> AyaStanding = new ArrayList<String>();
 	public static Hero Aya = new Hero("Aya Drevis", 100, 100);
+	public static Hero Enemy = new Hero("Enemy", 150, 150);
 	
 	public static void main(String args[]){
 		new storyDemo();
@@ -55,6 +56,8 @@ public class storyDemo extends Game{
 //		}
 		Aya = new Hero("Aya Drevis", 100, 100);
 		Aya.animate(AyaStanding.get(0));
+		Enemy = new Hero("Enemy", 150, 150);
+		Enemy.animate("/images/heroes/enemy.jpg");
 		
 	}
 	
@@ -76,6 +79,8 @@ public class storyDemo extends Game{
 		g2.fillRect(0, 0, width, height);
 		g2.drawImage(landscape, 0, 0, null);
 		g2.drawImage(Aya.getImage(), Aya.getX(), Aya.getY(), null);
+		g2.drawImage(Enemy.getImage(), Enemy.getX(), Enemy.getY(), null);
+		EnemyDynamic.detectHit();
 	}
 	
 	
