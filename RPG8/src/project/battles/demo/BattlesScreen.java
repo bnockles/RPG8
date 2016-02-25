@@ -31,7 +31,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 	Timer timer = new Timer(5,this);
 	ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 	public static final long MOVE_UNIT = 5;
-	public BufferedImage projectiledemo;
+	public static BufferedImage projectiledemo;
 	SampleProjectiles bullet;
 	public BattlesScreen(Game game){
 		super(game);
