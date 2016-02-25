@@ -37,7 +37,7 @@ public class SampleGEnemy extends SampleEnemyAI{
 		// TODO Auto-generated method stub
 		// first step is to shoot them back
 		// at a certain range this enemy will stop attacking and go back to where he belonged
-		this.firePistol(BattlesScreen.char1.getPositionX(), BattlesScreen.char1.getPositionY());
+		weapon.fire(true);
 	}
 
 

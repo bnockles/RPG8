@@ -77,11 +77,17 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 		}
 	}
 	public void paint(Graphics2D g){
-		
 	}
+	
 	public void firePistol(int tx, int ty){//target location
 		SampleProjectiles bullet = new SampleProjectiles(0, 0, 0, tx, ty, 0, imgsrc);
 		BattlesScreen.enemy.add(bullet);
 		equippedWeapon.reduceAmmoByOne();
+	}
+	
+	public void dropItem(){
+		if (hp <= 0){
+			BattlesScreen.char1.gainExp(10);
+		}
 	}
 }

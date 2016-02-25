@@ -32,15 +32,30 @@ public class SampleKEnemy extends SampleEnemyAI{
 	@Override
 	public void reaction() {
 		// TODO Auto-generated method stub
+		weapon.fire(true);
 		
 	}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		int distanceX = positionX - BattlesScreen.char1.getPositionX();
+		int distanceY = positionY - BattlesScreen.char1.getPositionY();
+		if (distanceX >= 0){
+			positionX++;
+		}
+		else {
+			positionX--;
+		}
+		
+		if (distanceY >= 0) {
+			positionY++;
+		}
+		else {
+			positionY--;
+		}
 		
 	}
-
+	
 	@Override
 	public ItemState getItems() {
 		// TODO Auto-generated method stub

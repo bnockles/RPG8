@@ -17,6 +17,7 @@ import project.save.ItemState;
 
 public class SampleMCharacter extends SampleCharacter implements KeyListener,MouseListener{
 	private int level;
+	private int exp;
 	private int recovery;
 	private int hpValue;
 	private int armorValue;
@@ -41,12 +42,20 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		catch (IOException e){
 			e.printStackTrace();
 		}
-		
+
 	}
-		public int getLevel() {
+	public int getLevel() {
 		return level;
 	}
 	
+	public void gainExp(int xp){
+		exp+= xp;
+		if (exp >= 100){
+			level++;
+			exp = exp%100;
+		}
+	}
+
 	public int getRecovery() {
 		return recovery;
 	}
@@ -58,45 +67,46 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 	public int getArmorValue() {
 		return armorValue;
 	}
-	
+
 	public int getSneakValue(){ 
 		return sneakValue;
 	}
-	
+
 	public BufferedImage getImage(){
 		return sprite;
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
+	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		//equippedWeapon.fire(false);
-		
+
+
 	}
-	
+
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -125,7 +135,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 
 		}
 		if(key == KeyEvent.VK_DOWN){
-			
+
 		}
 		if(key == KeyEvent.VK_LEFT){
 
@@ -139,13 +149,13 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
