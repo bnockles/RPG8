@@ -32,7 +32,6 @@ public class Projectiles extends Collision{
 	public void updatePosition(){
 		x += vx;
 		y += vy;
-		checkRange();
 	}
 	public boolean isCollided() {
 		return collided;

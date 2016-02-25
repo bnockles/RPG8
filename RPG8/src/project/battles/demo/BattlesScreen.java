@@ -254,10 +254,10 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub/
 		for(int i=0;i<player.size();i++){
-			player.get(i).updatePosition();//.fly(); what in the world is fly
+			player.get(i).updateAndCheckAll();//.fly(); what in the world is fly
 		}
 		for(int i=0;i<enemy.size();i++){
-			enemy.get(i).updatePosition();//.fly();
+			enemy.get(i).updateAndCheckAll();//.fly();
 		}
 		update();
 	}
