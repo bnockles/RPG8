@@ -57,7 +57,7 @@ public class storyDemo extends Game{
 		Aya = new Hero("Aya Drevis", 100, 100);
 		Aya.animate(AyaStanding.get(0));
 		Enemy = new Hero("Enemy", 150, 150);
-		Enemy.animate("/images/heroes/enemy.jpg");
+		Enemy.animate("/images/heroes/IceDragon.jpg");
 		
 	}
 	
