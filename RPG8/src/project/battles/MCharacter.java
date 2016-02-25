@@ -5,6 +5,7 @@ import project.save.ItemState;
 
 public class MCharacter extends Character {
 	private int level;
+	private int exp;
 	private int recovery;
 	private int hpValue;
 	private int armorValue;
@@ -20,7 +21,13 @@ public class MCharacter extends Character {
 	public int getLevel() {
 		return level;
 	}
-	
+	public void gainExp(int xp){
+		exp+= xp;
+		if (exp >= 100){
+			level++;
+			exp = exp%100;
+		}
+	}
 	public int getRecovery() {
 		return recovery;
 	}
