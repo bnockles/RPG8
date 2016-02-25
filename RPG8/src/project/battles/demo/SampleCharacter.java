@@ -1,6 +1,7 @@
 package project.battles.demo;
 
 import java.awt.image.BufferedImage;
+import java.awt.Rectangle;
 
 import project.controls.OverworldSpriteControl;
 import project.items.Weapon;
@@ -32,37 +33,12 @@ public abstract class SampleCharacter {
 	public String getImgsrc() {
 		return imgsrc;
 	}
-
-	public BufferedImage getImage(int count){
-		BufferedImage sprite;
-		if(moveUp == true){
-			if(count >= 0 && count < 5)
-				return bsprite[0];
-			else
-				return bsprite[1];
-		}
-
-		if(moveDown == true){
-			if(count >= 0 && count < 5)
-				return fsprite[0];
-			else
-				return fsprite[1];
-		}
-		if(moveLeft == true){
-			if(count >= 0 && count < 5)
-				return lsprite[0];
-			else
-				return lsprite[1];
-		}
-
-		if(moveRight == true){
-			if(count >= 0 && count < 5)
-				return rsprite[0];
-			else
-				return rsprite[1];
-		}
-		return fsprite[0];
+	
+	public Rectangle getBounds(){ //Pelham made this change sorry in advance for changing your code
+		return new Rectangle(positionX, positionY, width, height);
 	}
+ 
+	public abstract BufferedImage getImage(int count);
 
 	public SampleWeapon getEquippedWeapon() {
 		return equippedWeapon;

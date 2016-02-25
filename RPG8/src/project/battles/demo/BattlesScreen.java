@@ -33,8 +33,13 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	Timer timer = new Timer(5,this);
 	ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 	public static final long MOVE_UNIT = 5;
+	public static final int PPOSITION_X = 300;
+	public static final int PPOSITION_Y = 300;
+	public static final int EPOSITION_X = 100;
+	public static final int EPOSITION_Y = 100;
 	public static BufferedImage projectiledemo;
 	SampleProjectiles bullet;
+	public int[] enemystats = {100,100,100,100,};
 	public BattlesScreen(Game game){
 		super(game);
 		Mainchar1();
@@ -57,9 +62,9 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		 * 
 		 */
 		BufferedImage [][] animation = new BufferedImage [4][3];
-//		BufferedImage walk1 = null;
-//		BufferedImage walk2 = null;
-//		BufferedImage walk3 = null;
+		//		BufferedImage walk1 = null;
+		//		BufferedImage walk2 = null;
+		//		BufferedImage walk3 = null;
 		BufferedImage origimage0 = UtilityMethods.getImageFromFile(this, "/maincharacter/mback1.png");
 		BufferedImage origimage1 = UtilityMethods.getImageFromFile(this, "/maincharacter/mback2.png");
 		BufferedImage origimage2 = UtilityMethods.getImageFromFile(this, "/maincharacter/mback3.png");
@@ -80,7 +85,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		origimage1 = UtilityMethods.getImageFromFile(this, "/maincharacter/mright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/maincharacter/mright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		char1 =  new SampleMCharacter(animation,100,100,100,100);
+		char1 =  new SampleMCharacter(animation,100,100,100,100,PPOSITION_X,PPOSITION_Y);
 	}
 	public void Enemy(){
 		BufferedImage [][] animation = new BufferedImage [4][3];
@@ -100,11 +105,12 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		origimage1 = UtilityMethods.getImageFromFile(this, "/enemy/eright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/eright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		//enemy1 = new SampleGEnemy(animation,100,100,100,100);
-		//enemy2 = new SampleKEnemy(animation,100,100,100,100);
+		enemy1 = new SampleKEnemy(animation,enemystats, new SampleWeapon(), EPOSITION_X, EPOSITION_Y);
+//		enemy1.GeneralEnemyAI();
+		enemy2 = new SampleGEnemy(animation,enemystats, new SampleWeapon(), EPOSITION_X, EPOSITION_Y);
 	}
 	public void Weapon(){
-		
+ 
 	}
 	public void Projectile(){
 		projectiledemo = UtilityMethods.getImageFromFile(this, "/images/items/bullet.png");
@@ -114,6 +120,8 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	public void paintScreen(Graphics2D g2) {
 		// TODO Auto-generated method stub
 		checkMotion();
+		enemy1.GeneralEnemyAI();
+		checkCollision();
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
@@ -121,9 +129,11 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 			g2.drawString("Battles Team's Demo", 100, 100);
 			g2.setColor(Color.green);
 			timer.start();
+			//System.out.println(char1.getPositionY());
 			g2.drawImage(char1.getImage(count),char1.getPositionX(),char1.getPositionY(),null);
 			g2.drawImage(bullet.getpImgSrc(), 100, 100, null);
-			
+			g2.drawImage(enemy1.getImage(count),enemy1.getPositionX(),enemy1.getPositionY(),null);
+
 			for(int i = 0; i < player.size(); i++){
 				g2.drawImage(player.get(i).getpImgSrc(), player.get(i).getX(), player.get(i).getY(), null);
 			}
@@ -132,9 +142,18 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 			}
 		}
 		catch(Exception e){
-			
+
 		}
 	}
+	private void checkCollision() {//Jason Lyan
+		for(int i = player.size() - 1 ; i > -1; i--){
+			if(player.get(i).isCollided()){
+				player.remove(i);
+			}
+		}
+	}
+
+
 	@Override
 	public KeyListener getKeyListener() {
 		// TODO Auto-generated method stub
@@ -174,7 +193,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		if(pressedKeys.isEmpty())
 			char1.setWalking(false);
 	}
-	
+
 	public void increaseCount(){
 		count++;
 		if(count>10)
@@ -183,40 +202,40 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	public void checkMotion() {
 		Graphics2D g = null;
 		if(pressedKeys == null)
-			 return;
-		 int proposedNewY=char1.getPositionY();
-		 int proposedNewX=char1.getPositionX();
-		 if(pressedKeys.contains(KeyEvent.VK_UP) && !pressedKeys.contains(KeyEvent.VK_DOWN)){
-			 proposedNewY-=MOVE_UNIT;
-			 char1.setPositionY(proposedNewY);
-			 increaseCount();
-			 char1.setMoveUp(true);
-		 }
-		 if(!pressedKeys.contains(KeyEvent.VK_UP) && pressedKeys.contains(KeyEvent.VK_DOWN)){
-			 proposedNewY+=MOVE_UNIT;
-			 char1.setPositionY(proposedNewY);
-			 increaseCount();
-			 char1.setMoveDown(true);
-		 }
-		 if(pressedKeys.contains(KeyEvent.VK_RIGHT) && !pressedKeys.contains(KeyEvent.VK_LEFT)){
-			 proposedNewX+=MOVE_UNIT;
-			 char1.setPositionX(proposedNewX);
-			 increaseCount();
-			 char1.setMoveRight(true);
-		 }
-		 if(!pressedKeys.contains(KeyEvent.VK_RIGHT) && pressedKeys.contains(KeyEvent.VK_LEFT)){
-			 proposedNewX-=MOVE_UNIT;
-			 char1.setPositionX(proposedNewX);
-			 increaseCount();
-			 char1.setMoveLeft(true);
-		 }
+			return;
+		int proposedNewY=char1.getPositionY();
+		int proposedNewX=char1.getPositionX();
+		if(pressedKeys.contains(KeyEvent.VK_UP) && !pressedKeys.contains(KeyEvent.VK_DOWN)){
+			proposedNewY-=MOVE_UNIT;
+			char1.setPositionY(proposedNewY);
+			increaseCount();
+			char1.setMoveUp(true);
+		}
+		if(!pressedKeys.contains(KeyEvent.VK_UP) && pressedKeys.contains(KeyEvent.VK_DOWN)){
+			proposedNewY+=MOVE_UNIT;
+			char1.setPositionY(proposedNewY);
+			increaseCount();
+			char1.setMoveDown(true);
+		}
+		if(pressedKeys.contains(KeyEvent.VK_RIGHT) && !pressedKeys.contains(KeyEvent.VK_LEFT)){
+			proposedNewX+=MOVE_UNIT;
+			char1.setPositionX(proposedNewX);
+			increaseCount();
+			char1.setMoveRight(true);
+		}
+		if(!pressedKeys.contains(KeyEvent.VK_RIGHT) && pressedKeys.contains(KeyEvent.VK_LEFT)){
+			proposedNewX-=MOVE_UNIT;
+			char1.setPositionX(proposedNewX);
+			increaseCount();
+			char1.setMoveLeft(true);
+		}
 
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	public int calculateVComponentPlayerToCursor(int velocityScalar, int cursorX, int cursorY, boolean isX){
 		int x = char1.getPositionX();
@@ -242,7 +261,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		}
 		update();
 	}
-	
+
 	@Override
 	public void mousePressed(MouseEvent e) {//Jason Lyan
 		if(e.getButton() == MouseEvent.BUTTON1){
@@ -252,23 +271,23 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 			int vy = calculateVComponentPlayerToCursor(10, cursorX, cursorY, false);
 			char1.firePistol(vx,vy);
 		}
-		
+
 	}
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 }

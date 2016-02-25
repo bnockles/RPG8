@@ -21,6 +21,10 @@ public class SampleWeapon {
 		this.range = weaponstats[3];
 	}
 	
+	public SampleWeapon() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void fire(boolean hostile){
 		if(hostile){
 			BattlesScreen.player.add(new SampleProjectiles(100,100,100,100,100,100,BattlesScreen.projectiledemo));

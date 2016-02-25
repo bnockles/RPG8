@@ -24,7 +24,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 	private int sneakValue;
 	private SampleWeapon equippedWeapon;
 	private ArrayList<SampleWeapon> loadout;
-	public SampleMCharacter(BufferedImage[][] images,int recovery, int hpValue, int armorValue, int sneakValue){
+	public SampleMCharacter(BufferedImage[][] images,int recovery, int hpValue, int armorValue, int sneakValue, int positionX, int positionY){
 		this.bsprite = images[0];
 		this.fsprite = images[1];
 		this.lsprite = images[2];
@@ -34,6 +34,8 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		this.hpValue=  hpValue;
 		this.armorValue = armorValue;
 		this.sneakValue = sneakValue;
+		this.positionX = positionX;
+		this.positionY = positionY;
 //		sprite = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
 //		URL url = getClass().getResource(imgsrc);
 //		try{
@@ -186,6 +188,37 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, vx, vy, 200, BattlesScreen.projectiledemo);
 		BattlesScreen.player.add(bullet);
 		equippedWeapon.reduceAmmoByOne();
+	}
+	@Override
+	public BufferedImage getImage(int count) {
+		// TODO Auto-generated method stub
+			if(moveUp == true){
+				if(count >= 0 && count < 5)
+					return bsprite[0];
+				else
+					return bsprite[1];
+			}
+ 
+			if(moveDown == true){
+				if(count >= 0 && count < 5)
+					return fsprite[0];
+				else
+					return fsprite[1];
+			}
+			if(moveLeft == true){
+				if(count >= 0 && count < 5)
+					return lsprite[0];
+				else
+					return lsprite[1];
+			}
+
+			if(moveRight == true){
+				if(count >= 0 && count < 5)
+					return rsprite[0];
+				else
+					return rsprite[1];
+			}
+		return fsprite[0];
 	}
 
 }
