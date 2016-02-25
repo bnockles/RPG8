@@ -100,7 +100,7 @@ public class TestScreen extends Screen implements KeyListener {
 		Tooltip testTool = new Tooltip(450, 230, 492, 220,
 				options.get(selection).text, options.get(selection).file, options.get(selection).description,
 				234, 120);
-		testTool.drawTooltip(testTool, g2);
+		testTool.drawTooltip(g2);
 		
 		//Option buttons' text drawn.
 		g2.setFont(font1);

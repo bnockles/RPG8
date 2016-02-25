@@ -120,24 +120,24 @@ public class Tooltip extends VerticalMenu{
 
 	@Override
 	public void addSelections() {
-		//A tooltip doesn't have selections.
+		//A tooltip doesn't have selections. Other menus will take care of this.
 	}
 
-	public void drawTooltip(Tooltip tool, Graphics2D g2){
+	public void drawTooltip(Graphics2D g2){
 		g2.setColor(Color.black);
-		g2.fillRect(tool.getX(), tool.getY(), tool.getWidth(), tool.getHeight());
+		g2.fillRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
 		g2.setColor(Color.yellow);
-		g2.drawString(tool.getTitle(), tool.getX()+110, tool.getY()+60);
+		g2.drawString(this.getTitle(), this.getX()+110, this.getY()+60);
 		BufferedImage img = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
 		try{
-			img = ImageIO.read(tool.getFile());
+			img = ImageIO.read(this.getFile());
 		}
 		catch(IOException e){};
-		g2.drawImage(img, null, tool.getX()+185, tool.getY()+100);
+		g2.drawImage(img, null, this.getX()+185, this.getY()+100);
 		Font font2 = new Font("Courier", Font.ROMAN_BASELINE, 25);
 		g2.setFont(font2);
 		g2.setColor(Color.white);
-		g2.drawString(tool.getDescription(), tool.getX()+50, tool.getY()+200);
+		g2.drawString(this.getDescription(), this.getX()+50, this.getY()+200);
 	}
 	
 }
