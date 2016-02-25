@@ -1,6 +1,7 @@
 package project.items;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -24,21 +25,23 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 
 	@Override
 	public void paintScreen(Graphics2D g2) {
+		Font tr=new Font("TimesRoman", Font.PLAIN, 28);
+		g2.setFont(tr);
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.green);
 		g2.fillRect(30, 90, you.health, 20);
 		g2.setColor(Color.black);
-		g2.drawString("Player 1", 30, 70);
+		g2.drawString("You", 30, 70);
 		g2.drawRect(30,90,100,20);
-		g2.drawString("Press E to heal", 30, 130);
-		g2.drawString("Press S to take damage", 30, 145);
-		g2.drawString("Press R to reload", 30, 160);
-		g2.drawString("Clips: "+you.weapon.ammoCapacity, 200, 130);
-		g2.drawString("Ammo in Clip: "+you.weapon.ammoTotal, 200, 145);
-		g2.drawString("Current Weapon: "+you.weapon.name, 200, 160);
-		g2.drawString("Coins: "+you.coins, 200, 175);
-		g2.drawString("Scrap: "+you.scrap, 200, 190);
+		g2.drawString("Press E to heal", 30, 135);
+		g2.drawString("Press S to take damage", 30, 160);
+		g2.drawString("Press R to reload", 30, 185);
+		g2.drawString("Clips: "+you.weapon.ammoCapacity, 400, 135);
+		g2.drawString("Ammo in Clip: "+you.weapon.ammoTotal, 400, 160);
+		g2.drawString("Current Weapon: "+you.weapon.name, 400, 185);
+		g2.drawString("Coins: "+you.coins, 400, 210);
+		g2.drawString("Scrap: "+you.scrap, 400, 235);
 		g2.drawOval(50, 200, 40, 40);
 		g2.drawLine(70,240,70,280);
 		g2.drawLine(70,240,50,260);
