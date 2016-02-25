@@ -40,8 +40,8 @@ public class ShopScreen extends Screen implements KeyListener{
 		store = new WeaponStore(itemN, 10000);
 		// TODO Auto-generated constructor stub
 		try{
-			backGround = ImageIO.read(new FileInputStream("/images/shop/pic.png"));
-			character = ImageIO.read(new URL("http://vignette2.wikia.nocookie.net/reddits-world/images/f/fc/Reddit-alien.png/revision/latest?cb=20140914033417"));
+			backGround = ImageIO.read(getClass().getResource("/images/shop/pic.png"));
+			character = ImageIO.read(getClass().getResource("/images/shop/Reddit-alien.png"));
 			playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/sprites/standing.png");
 		}
 		catch (IOException e) {

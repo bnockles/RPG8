@@ -21,7 +21,7 @@ public class Demo extends Game{
 		//Screen townScreen = new TownScreen(this,3,3);
 		//setScreen(townScreen);;
 		ArrayList<Integer> items = new ArrayList<Integer>();
-		Screen shopScreen = new ShopScreen(this);
+		Screen shopScreen = new TownScreen(this, 3, 3);
 		setScreen(shopScreen);
 		activeScreen.update();
 		repaint();
