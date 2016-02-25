@@ -1,6 +1,7 @@
 package project.battles.demo;
 
 import java.awt.image.BufferedImage;
+import java.awt.Rectangle;
 
 import project.controls.OverworldSpriteControl;
 import project.items.Weapon;
