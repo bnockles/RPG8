@@ -203,7 +203,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub/
 		SampleProjectiles derp = new SampleProjectiles(10, 10, 0, 10, 10, 100, projectiledemo);
 		player.add(derp);
 		for(int i=0;i<player.size();i++){
