@@ -48,7 +48,7 @@ public class TownScreen extends Screen {
 		currentRow = 1;// starting position when the character enters town
 		currentColumn = 0;
 		//example of starting screen for town but not actual
-		try{
+		
 			try{
 				backgroundGrid[currentRow][currentColumn] = ImageIO.read( ClassLoader.getSystemResource( "image/maps/image1background.png" ) );
 				
@@ -57,10 +57,8 @@ public class TownScreen extends Screen {
 			catch (IOException e) {
 			}
 			
-			}
-		catch (IOException e) {
 			
-			}
+		
 		//qq
 		
 		
