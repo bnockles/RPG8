@@ -37,7 +37,7 @@ public abstract class SampleCharacter {
 	public Rectangle getBounds(){ //Pelham made this change sorry in advance for changing your code
 		return new Rectangle(positionX, positionY, width, height);
 	}
-
+ 
 	public abstract BufferedImage getImage(int count);
 
 	public SampleWeapon getEquippedWeapon() {

@@ -110,7 +110,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		enemy2 = new SampleGEnemy(animation,enemystats, new SampleWeapon(), EPOSITION_X, EPOSITION_Y);
 	}
 	public void Weapon(){
-
+ 
 	}
 	public void Projectile(){
 		projectiledemo = UtilityMethods.getImageFromFile(this, "/images/items/bullet.png");

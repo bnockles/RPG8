@@ -89,7 +89,7 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 		if (hp <= 0){
 			BattlesScreen.char1.gainExp(10);
 		}
-	}
+	} 
 	@Override
 	public BufferedImage getImage(int count) {
 		if(up){

@@ -70,7 +70,7 @@ public class SampleGEnemy extends SampleEnemyAI{
 		}
 		else {
 			positionY--;
-		}
+		} 
 	}
 
 	@Override

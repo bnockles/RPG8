@@ -21,7 +21,7 @@ public class SampleKEnemy extends SampleEnemyAI{
 		visiondegree = stats[3];
 		this.weapon = weapon;
 	}
-
+ 
 	public SampleKEnemy(BufferedImage[][] images, int[] stats, SampleWeapon weapon, boolean[] conditions, int positionX, int positionY){
 		this.bsprite = images[0];
 		this.fsprite = images[1];

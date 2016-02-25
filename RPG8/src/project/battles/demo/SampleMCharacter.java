@@ -198,7 +198,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 				else
 					return bsprite[1];
 			}
-
+ 
 			if(moveDown == true){
 				if(count >= 0 && count < 5)
 					return fsprite[0];
