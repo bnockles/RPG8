@@ -209,6 +209,16 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 				update();
 			}
 		}
+		if(menu){
+			if(e.getButton()==MouseEvent.BUTTON1){
+				s = "You left clicked confirm";
+				update();
+			}
+			if(e.getButton()==MouseEvent.BUTTON3){
+				s = "You right clicked an exitted a menu";
+				update();
+			}
+		}
 	}
 
 	@Override
