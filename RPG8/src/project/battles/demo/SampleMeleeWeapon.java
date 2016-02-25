@@ -21,8 +21,8 @@ public class Melee {
 	
 	//My Collision method which I believe should be in an interface because it is different for projectiles and melee weapons	
 	private boolean collision(){
-		if(demo.enemy.getBounds().intersects(getBounds()) ||
-				demo.character.getBounds().intersects(getBounds())) collided = true;
+		if(demo.SampleGEnemy.getBounds().intersects(getBounds()) ||
+				demo.SampleMCharacter.getBounds().intersects(getBounds())) collided = true;
 		
 		if (collided) {
 			delayTime(); 
@@ -36,16 +36,15 @@ public class Melee {
 		}
 	}
 
-	private void delayTime() {
-		// TODO Auto-generated method stub
+	private  abstract void delayTime(); 
 		//Method to set delay time between uses of melee weapon 
 		//E.g. swinging a sword 
-	}
+	
 	
 	private void beingUsed(){
 		if (pickedUp){
-			this.x = project.directors.Character.positionX;
-			this.y = project.directors.Character.positionY;
+			this.x = demo.SampleMCharacter.positionX;
+			this.y = demo.SampleMCharacter.positionY;
 		}
 	}
 	
