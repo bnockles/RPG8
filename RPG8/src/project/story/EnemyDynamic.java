@@ -4,7 +4,7 @@ import project.directors.Game;
 
 public class EnemyDynamic extends storyDemo{
 	
-	public void strengthen() {
+	public static void strengthen() {
 		Enemy.strength+=10;
 		System.out.println("enemy strength " + Enemy.strength);
 	}
