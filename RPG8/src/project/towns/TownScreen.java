@@ -137,7 +137,7 @@ public class TownScreen extends Screen implements KeyListener{
 			g2.drawImage(backgroundGrid[currentRow][currentColumn], 0, 0, null);
 			g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),200,150,null);
 			g2.drawOval(250 - 100, game.getHeight() -110, 100, 100);
-			g2.drawString("this is bad town ", 400, 500);
+			g2.drawString("USE T IN CIRCLE TO GO THROUGH CIRCLE, USE SPACE IN SHOP TO ACCESS SHOP ", 400, 500);
 		}
 //		    }
 //		}
