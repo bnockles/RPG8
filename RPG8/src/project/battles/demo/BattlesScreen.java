@@ -240,14 +240,14 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	public int calculateVComponentPlayerToCursor(int velocityScalar, int cursorX, int cursorY, boolean isX){
 		int x = char1.getPositionX();
 		int y = char1.getPositionY();
-		System.out.println("1: " + (Math.atan2(-193,372)));
+		/*System.out.println("1: " + (Math.atan2(-193,372)));
 		System.out.println("2: " + (int) (velocityScalar*(Math.cos(Math.atan2((y-cursorY),(cursorX - x))))));
 		System.out.println("3: " + cursorX + " " + cursorY);
 		System.out.println("4: " + x + " " + y);
 		System.out.println("5: " + velocityScalar*(Math.cos(Math.atan2((y-cursorY),(cursorX - x)))));
-		System.out.println("6: " + velocityScalar*(Math.sin(Math.atan2((y-cursorY),(cursorX - x)))));
+		System.out.println("6: " + velocityScalar*(Math.sin(Math.atan2((y-cursorY),(cursorX - x)))));*/
 		if(isX)return (int) (velocityScalar*(Math.cos(Math.atan2((cursorY-y),(cursorX - x)))));
-		else return (int) (velocityScalar*(Math.sin(Math.atan2((cursorY-y),(cursorX - x)))));
+		return (int) (velocityScalar*(Math.sin(Math.atan2((cursorY-y),(cursorX - x)))));
 		
 	}
 	@Override
