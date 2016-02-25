@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Arc2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -103,6 +104,12 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 	public KeyListener getKeyListener() {
 		// TODO Auto-generated method stub
 		return this;
+	}
+	
+	public void mouseDown(MouseEvent e){//Jason Lyan
+		if(e.getButton() == MouseEvent.BUTTON1){
+			char1.firePistol(50,50);
+		}
 	}
 
 	@Override

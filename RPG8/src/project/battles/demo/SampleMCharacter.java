@@ -159,5 +159,34 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		// TODO Auto-generated method stub
 
 	}
+	
+	public void firePistol(int tx, int ty){//target location
+		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, tx, ty, 100, imgsrc);
+		BattlesScreen.player.add(bullet);
+		equippedWeapon.reduceAmmoByOne();
+	}
+	public void useMelee(){
+		//requires pelham's class
+	}
+	public void useExplovies(){
+		//requires a new class
+	}
+	public void fireRifle(int tx, int ty){
+		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, tx, ty, 200, imgsrc);
+		BattlesScreen.player.add(bullet);
+		equippedWeapon.reduceAmmoByOne();
+	}
+	public void fireHeavy(int tx, int ty){
+		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, tx, ty, 200, imgsrc);
+		SampleProjectiles bullet1 = new SampleProjectiles(positionX, positionY, 0, tx, ty, 200, imgsrc);
+		BattlesScreen.player.add(bullet);
+		BattlesScreen.player.add(bullet1);
+		equippedWeapon.reduceAmmoByOne();
+	}
+	public void fireSMG(int tx, int ty){
+		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, tx, ty, 200, imgsrc);
+		BattlesScreen.player.add(bullet);
+		equippedWeapon.reduceAmmoByOne();
+	}
 
 }
