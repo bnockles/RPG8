@@ -35,9 +35,11 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	public static final long MOVE_UNIT = 5;
 	public static final int PPOSITION_X = 300;
 	public static final int PPOSITION_Y = 300;
+	public static final int EPOSITION_X = 100;
+	public static final int EPOSITION_Y = 100;
 	public static BufferedImage projectiledemo;
 	SampleProjectiles bullet;
-	public int[] enemystats = {100,100,100,100,100,100};
+	public int[] enemystats = {100,100,100,100,};
 	public BattlesScreen(Game game){
 		super(game);
 		Mainchar1();
@@ -103,9 +105,9 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		origimage1 = UtilityMethods.getImageFromFile(this, "/enemy/eright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/eright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		enemy1 = new SampleKEnemy(animation,enemystats, new SampleWeapon());
+		enemy1 = new SampleKEnemy(animation,enemystats, new SampleWeapon(), EPOSITION_X, EPOSITION_Y);
 //		enemy1.GeneralEnemyAI();
-		enemy2 = new SampleGEnemy(animation,enemystats, new SampleWeapon());
+		enemy2 = new SampleGEnemy(animation,enemystats, new SampleWeapon(), EPOSITION_X, EPOSITION_Y);
 	}
 	public void Weapon(){
 
@@ -129,6 +131,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 			//System.out.println(char1.getPositionY());
 			g2.drawImage(char1.getImage(count),char1.getPositionX(),char1.getPositionY(),null);
 			g2.drawImage(bullet.getpImgSrc(), 100, 100, null);
+			g2.drawImage(enemy1.getImage(count),enemy1.getPositionX(),enemy1.getPositionY(),null);
 
 			for(int i = 0; i < player.size(); i++){
 				g2.drawImage(player.get(i).getpImgSrc(), player.get(i).getX(), player.get(i).getY(), null);

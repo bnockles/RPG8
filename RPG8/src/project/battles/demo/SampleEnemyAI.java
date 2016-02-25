@@ -12,8 +12,6 @@ import project.items.Weapon;
 public abstract class SampleEnemyAI extends SampleCharacter{
 	protected int hp;//static idk
 	protected int maxhp;
-	protected int positionX;
-	protected int positionY;
 	protected int visionrangeX;
 	protected int visionrangeY;
 	protected int visiondegree;
