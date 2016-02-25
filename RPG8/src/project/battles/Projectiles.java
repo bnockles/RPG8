@@ -39,7 +39,6 @@ public class Projectiles extends Collision{
 	}
 	public void checkRange(){
 		double distance = Math.sqrt(Math.pow((x-initX), 2) + Math.pow((y-initY), 2));
-		System.out.println(range);
 		if(distance >= range)collided=true;
 	}
 	
