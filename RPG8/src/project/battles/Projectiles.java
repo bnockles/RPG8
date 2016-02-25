@@ -22,6 +22,7 @@ public class Projectiles extends Collision{
 		this.pImgSrc = pImgSrc;
 		this.initX = x;
 		this.initY = y;
+		this.range= range;
 		collided = false;
 	}
 	public BufferedImage getpImgSrc() {
@@ -31,12 +32,14 @@ public class Projectiles extends Collision{
 	public void updatePosition(){
 		x += vx;
 		y += vy;
+		checkRange();
 	}
 	public boolean isCollided() {
 		return collided;
 	}
 	public void checkRange(){
 		double distance = Math.sqrt(Math.pow((x-initX), 2) + Math.pow((y-initY), 2));
+		System.out.println(range);
 		if(distance >= range)collided=true;
 	}
 	

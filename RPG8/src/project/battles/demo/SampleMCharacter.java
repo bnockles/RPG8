@@ -163,7 +163,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 	}
 	
 	public void firePistol(int vx, int vy){//target location
-		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, vx, vy, 100, BattlesScreen.projectiledemo);
+		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, vx, vy, 400, BattlesScreen.projectiledemo);
 		BattlesScreen.player.add(bullet);
 	}
 	public void useMelee(){
@@ -173,19 +173,19 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		//requires a new class
 	}
 	public void fireRifle(int vx, int vy){
-		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, vx, vy, 200, BattlesScreen.projectiledemo);
+		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, vx, vy, 800, BattlesScreen.projectiledemo);
 		BattlesScreen.player.add(bullet);
 		equippedWeapon.reduceAmmoByOne();
 	}
 	public void fireHeavy(int vx, int vy){
-		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, vx, vy, 200, BattlesScreen.projectiledemo);
-		SampleProjectiles bullet1 = new SampleProjectiles(positionX, positionY, 0, vx, vy, 200, BattlesScreen.projectiledemo);
+		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		SampleProjectiles bullet1 = new SampleProjectiles(positionX, positionY, 0, vx, vy, 800, BattlesScreen.projectiledemo);
 		BattlesScreen.player.add(bullet);
 		BattlesScreen.player.add(bullet1);
 		equippedWeapon.reduceAmmoByOne();
 	}
 	public void fireSMG(int vx, int vy){
-		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, vx, vy, 200, BattlesScreen.projectiledemo);
+		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, vx, vy, 800, BattlesScreen.projectiledemo);
 		BattlesScreen.player.add(bullet);
 		equippedWeapon.reduceAmmoByOne();
 	}
