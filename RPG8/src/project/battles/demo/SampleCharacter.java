@@ -1,6 +1,7 @@
 package project.battles.demo;
 
 import java.awt.image.BufferedImage;
+import java.awt.Rectangle;
 
 import project.controls.OverworldSpriteControl;
 import project.items.Weapon;
@@ -31,6 +32,10 @@ public abstract class SampleCharacter {
 	
 	public String getImgsrc() {
 		return imgsrc;
+	}
+	
+	public Rectangle getBounds(){ //Pelham made this change sorry in advance for changing your code
+		return new Rectangle(positionX, positionY, width, height);
 	}
 
 	public abstract BufferedImage getImage(int count);

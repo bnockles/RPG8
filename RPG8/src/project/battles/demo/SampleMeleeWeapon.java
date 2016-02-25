@@ -2,10 +2,8 @@
 package project.battles.demo;
 import project.directors.Character;
 import java.awt.Rectangle;
-import project.battles.demo.SampleMCharacter;
-import project.battles.demo.SampleGEnemy; 
 
-public class SampleMeleeWeapon {
+public abstract class SampleMeleeWeapon {
 	private int[] stats;
 	int x;
 	int y;
@@ -22,7 +20,7 @@ public class SampleMeleeWeapon {
 	}
 	
 	//My Collision method which I believe should be in an interface because it is different for projectiles and melee weapons	
-	private boolean collision(){
+	public boolean collision(){
 		if(SampleGEnemy.getBounds().intersects(getBounds()) ||
 				SampleMCharacter.getBounds().intersects(getBounds())) collided = true;
 		
@@ -32,18 +30,18 @@ public class SampleMeleeWeapon {
 		} 
 	}
 	
-	private void lost(){
+	public void lost(){
 		if (uses == 0){
 			drawImage = false; //the weapon "dies"
 		}
 	}
-
-	private  abstract void delayTime(); 
+	
+	public abstract void delayTime(); 
 		//Method to set delay time between uses of melee weapon 
 		//E.g. swinging a sword 
 	
 	
-	private void beingUsed(){
+	public abstract void beingUsed(){
 		if (pickedUp){
 			this.x = SampleMCharacter.positionX;
 			this.y = SampleMCharacter.positionY;
