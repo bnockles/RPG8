@@ -34,6 +34,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		g2.setColor(Color.black);
 		g2.drawString("You", 30, 70);
 		g2.drawRect(30,90,100,20);
+		g2.drawString("Health: "+you.health+"/100", 400, 70);
 		g2.drawString("Press E to heal", 30, 135);
 		g2.drawString("Press S to take damage", 30, 160);
 		g2.drawString("Press R to reload", 30, 185);
@@ -66,8 +67,11 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		if(e.getKeyCode()==KeyEvent.VK_S){
 			if(you.health>0){
 				you.attack(you);
-				you.coins+=10;
-				you.scrap+=1;
+				if(you.weapon.ammoTotal>0){
+					you.coins+=10;
+					you.scrap+=1;
+					
+				}
 			}
 //			if((int)(Math.random()*100+1)<45){
 //				target.attack(you);
