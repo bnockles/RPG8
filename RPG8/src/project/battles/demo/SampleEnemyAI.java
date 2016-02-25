@@ -25,7 +25,7 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	public void GeneralEnemyAI(){
 		if(checkAlive()){
 			//do something
-			System.out.println("hello");
+			//System.out.println("hello");
 			if(targetlock == false)
 				checkForPlayer();
 			else
@@ -44,6 +44,7 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	public void checkForPlayer(){
 		int playerXposition=0;
 		int playerYposition=0;
+		//System.out.println("hello");
 		Arc2D.Double visionrange = new Arc2D.Double(positionX, positionY, visionrangeX, visionrangeY, visiondegree, visiondegree+90, Arc2D.PIE);
 		if(visionrange.contains(playerXposition, playerYposition)){
 			targetlock = true;
@@ -53,18 +54,14 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 		}
 	}
 	public void wander(){
-		if(left){
+		System.out.println("a"+positionX);
+		if(Math.abs(positionX-BattlesScreen.char1.getPositionX()) < 100){
 			positionX--;
 		}
 		else{
 			positionX++;
 		}
-		if(up){
-			positionY--;
-		}
-		else{
-			positionX++;
-		}
+		System.out.println("b"+positionX);
 //		if(true){
 //			left = !left;
 //		}; // check if its gonna crash into a wall or something

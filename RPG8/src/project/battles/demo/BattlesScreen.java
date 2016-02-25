@@ -120,6 +120,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	public void paintScreen(Graphics2D g2) {
 		// TODO Auto-generated method stub
 		checkMotion();
+		enemy1.GeneralEnemyAI();
 		checkCollision();
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
