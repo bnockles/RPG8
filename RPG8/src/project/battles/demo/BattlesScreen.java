@@ -31,11 +31,14 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 	Timer timer = new Timer(5,this);
 	ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 	public static final long MOVE_UNIT = 5;
-	
+	public BufferedImage projectiledemo;
+	SampleProjectiles bullet;
 	public BattlesScreen(Game game){
 		super(game);
 		Mainchar1();
 		Enemy();
+		Weapon();
+		Projectile();
 		//enemy1 = new SampleKEnemy(new int[6],new Weapon(),true);
 		//enemy2 = new SampleGEnemy(new int[6],new Weapon(),true);
 		//update();
@@ -83,6 +86,10 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 	public void Weapon(){
 		
 	}
+	public void Projectile(){
+		projectiledemo = UtilityMethods.getImageFromFile(this, "/images/items/bullet.png");
+		bullet = new SampleProjectiles(10, 10, 0, 10, 10, 100, projectiledemo);
+	}
 	@Override
 	public void paintScreen(Graphics2D g2) {
 		// TODO Auto-generated method stub
@@ -95,6 +102,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 			g2.setColor(Color.green);
 			timer.start();
 			g2.drawImage(char1.getImage(count),char1.getPositionX(),char1.getPositionY(),null);
+			g2.drawImage(bullet.getpImgSrc(), 100, 100, null);
 		}
 		catch(Exception e){
 			
