@@ -1,8 +1,10 @@
 //Jason Lyan ---> Corrected by Melvin Cherian
 package project.battles;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import project.battles.demo.BattlesScreen;
 import project.items.Weapon;
 
 public class Projectiles extends Collision{
@@ -13,6 +15,9 @@ public class Projectiles extends Collision{
 	protected final int initX;
 	protected final int initY;
 	protected boolean collided;
+	protected Rectangle hitBox; 
+	
+	
 
 	public Projectiles(int x, int y, int damage, double vx, double vy, int range, BufferedImage pImgSrc){
 		super(x, y, damage);
@@ -32,6 +37,9 @@ public class Projectiles extends Collision{
 	public void updatePosition(){
 		x += vx;
 		y += vy;
+		if(hitBox.intersects(BattlesScreen.enemy1.getBounds())){
+			BattlesScreen.player.remove(this); 
+		}
 	}
 	public boolean isCollided() {
 		return collided;
@@ -63,5 +71,11 @@ public class Projectiles extends Collision{
 		// TODO Auto-generated method stub
 		
 	}
+	public Rectangle getHitBox() {
+		return hitBox;
+	}
 
+	public void setHitBox(Rectangle hitBox) {
+		this.hitBox = hitBox;
+	}
 }
