@@ -68,7 +68,7 @@ public class Game extends JFrame{
 		timer.start();
 	}
 
-	private void applySettings() {
+	protected void applySettings() {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int monitorWidth = (int) screenSize.getWidth();
 		int monitorHeight = (int) screenSize.getHeight();
