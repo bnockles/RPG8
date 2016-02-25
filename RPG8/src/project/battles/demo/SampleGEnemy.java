@@ -40,7 +40,7 @@ public class SampleGEnemy extends SampleEnemyAI{
 		this.up = conditions[2];
 		this.boss = conditions[3];
 	}
-	
+	//Andy Zheng
 	@Override
 	public void reaction() {
 		// TODO Auto-generated method stub
@@ -49,7 +49,7 @@ public class SampleGEnemy extends SampleEnemyAI{
 		weapon.fire(true);
 	}
 
-
+	//Andy Zheng
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
