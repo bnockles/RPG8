@@ -2,6 +2,7 @@ package project.battles.demo;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Arc2D;
+import java.awt.image.BufferedImage;
 
 import project.items.Weapon;
 	/**
@@ -10,10 +11,8 @@ import project.items.Weapon;
 	 * 
 	 */
 public abstract class SampleEnemyAI extends SampleCharacter{
-	protected int hp;//static idk
+	protected int hp;
 	protected int maxhp;
-	protected int positionX;
-	protected int positionY;
 	protected int visionrangeX;
 	protected int visionrangeY;
 	protected int visiondegree;
@@ -25,19 +24,20 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	protected abstract void reaction();
 	protected abstract void run();
 	public void GeneralEnemyAI(){
-		do{
+		if(checkAlive()){
 			//do something
+			//System.out.println("hello");
 			if(targetlock == false)
 				checkForPlayer();
 			else
 				reaction();
-			if(maxhp/10>hp)
+			if(maxhp/10>hp){
+				System.out.println(maxhp+" "+hp);
 				run();
+			}
 		}
-		while(checkAlive());
 		//animation of death
-		//drop items
-		
+		//dropItem();
 	}
 	public boolean checkAlive(){
 		if(hp<0)
@@ -47,6 +47,7 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	public void checkForPlayer(){
 		int playerXposition=0;
 		int playerYposition=0;
+		//System.out.println("hello");
 		Arc2D.Double visionrange = new Arc2D.Double(positionX, positionY, visionrangeX, visionrangeY, visiondegree, visiondegree+90, Arc2D.PIE);
 		if(visionrange.contains(playerXposition, playerYposition)){
 			targetlock = true;
@@ -56,27 +57,52 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 		}
 	}
 	public void wander(){
-		if(left){
+		//System.out.println("a"+positionX);
+		if(Math.abs(positionX-BattlesScreen.char1.getPositionX()) < 100){
 			positionX--;
 		}
 		else{
 			positionX++;
 		}
-		if(up){
+		if(Math.abs(positionY-BattlesScreen.char1.getPositionY()) < 100){
 			positionY--;
 		}
 		else{
-			positionX++;
+			positionY++;
 		}
-		if(true){
-			left = !left;
-		}; // check if its gonna crash into a wall or something
-		// need variables for other objects and boundaries
-		if(true){
-			up = !up;
-		}
+		//System.out.println("b"+positionX);
+//		if(true){
+//			left = !left;
+//		}; // check if its gonna crash into a wall or something
+//		// need variables for other objects and boundaries
+//		if(true){
+//			up = !up;
+//		}
 	}
-	public void paint(Graphics2D g){
-		
+	public void firePistol(int vx, int vy){//target location
+		SampleProjectiles bullet = new SampleProjectiles(0, 0, 0, vx, vy, 0, BattlesScreen.projectiledemo);
+		BattlesScreen.enemy.add(bullet);
+		equippedWeapon.reduceAmmoByOne();
+	}
+	
+	public void dropItem(){
+		if (hp <= 0){
+			BattlesScreen.char1.gainExp(10);
+		}
+	} 
+	@Override
+	public BufferedImage getImage(int count) {
+		if(up){
+			if(count >= 0 && count < 5)
+				return bsprite[0];
+			else
+				return bsprite[1];
+		}
+		else{
+			if(count >= 0 && count < 5)
+				return fsprite[0];
+			else
+				return fsprite[1];
+		}
 	}
 }

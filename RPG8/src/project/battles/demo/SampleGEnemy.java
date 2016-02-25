@@ -1,30 +1,39 @@
 package project.battles.demo;
 
+import java.awt.image.BufferedImage;
+
 import project.controls.OverworldSpriteControl;
 import project.items.Weapon;
 import project.save.ItemState;
 
 public class SampleGEnemy extends SampleEnemyAI{
 	
-	public SampleGEnemy(String imgsrc,int[] stats, SampleWeapon weapon){
-		this.imgsrc=imgsrc;
+	public SampleGEnemy(BufferedImage[][] images,int[] stats, SampleWeapon weapon, int positionX, int positionY){
+		this.bsprite = images[0];
+		this.fsprite = images[1];
+		this.lsprite = images[2];
+		this.rsprite = images[3];
+		this.positionX = positionX;
+		this.positionY = positionY;
 		maxhp = stats[0];
-		positionX = stats[1];
-		positionY = stats[2];
-		visionrangeX = stats[3];
-		visionrangeY = stats[4];
-		visiondegree = stats[5];
+		hp = stats[0];
+		visionrangeX = stats[1];
+		visionrangeY = stats[2];
+		visiondegree = stats[3];
 		this.weapon = weapon;
 	}
 
-	public SampleGEnemy(String imgsrc, int[] stats, SampleWeapon weapon, boolean[] conditions){
-		this.imgsrc=imgsrc;
+	public SampleGEnemy(BufferedImage[][] images, int[] stats, SampleWeapon weapon, boolean[] conditions){
+		this.bsprite = images[0];
+		this.fsprite = images[1];
+		this.lsprite = images[2];
+		this.rsprite = images[3];
+		this.positionX = positionX;
+		this.positionY = positionY;
 		maxhp = stats[0];
-		positionX = stats[1];
-		positionY = stats[2];
-		visionrangeX = stats[3];
-		visionrangeY = stats[4];
-		visiondegree = stats[5];
+		visionrangeX = stats[1];
+		visionrangeY = stats[2];
+		visiondegree = stats[3];
 		this.weapon = weapon;
 		this.targetlock = conditions[0];
 		this.left = conditions[1];
@@ -37,6 +46,7 @@ public class SampleGEnemy extends SampleEnemyAI{
 		// TODO Auto-generated method stub
 		// first step is to shoot them back
 		// at a certain range this enemy will stop attacking and go back to where he belonged
+		weapon.fire(true);
 	}
 
 
@@ -46,6 +56,21 @@ public class SampleGEnemy extends SampleEnemyAI{
 		// locate the main character
 		// run in the opposite direection of the main character
 		// run out of the map
+		int distanceX = positionX - BattlesScreen.char1.getPositionX();
+		int distanceY = positionY - BattlesScreen.char1.getPositionY();
+		if (distanceX >= 0){
+			positionX++;
+		}
+		else {
+			positionX--;
+		}
+		
+		if (distanceY >= 0) {
+			positionY++;
+		}
+		else {
+			positionY--;
+		} 
 	}
 
 	@Override

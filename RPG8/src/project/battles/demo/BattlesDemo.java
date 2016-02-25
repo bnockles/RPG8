@@ -1,6 +1,8 @@
 package project.battles.demo;
 
 //more test
+import java.awt.event.MouseListener;
+
 import project.battles.demo.BattlesScreen;
 import project.directors.Screen;
 /**
@@ -23,6 +25,7 @@ public class BattlesDemo extends project.directors.Game{
 	public void reset() {
 		Screen demoScreen = new BattlesScreen(this);
 		setScreen(demoScreen);
+		addMouseListener((MouseListener) demoScreen);
 		repaint();
 	}
 }

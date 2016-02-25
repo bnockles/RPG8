@@ -1,17 +1,20 @@
+//Jason Lyan ---> Corrected by Melvin Cherian
 package project.battles;
+
+import java.awt.image.BufferedImage;
 
 import project.items.Weapon;
 
 public class Projectiles extends Collision{
-	protected String pImgSrc;
-	protected int vx;
-	protected int vy;
+	protected BufferedImage pImgSrc;
+	protected double vx;
+	protected double vy;
 	protected int range;
 	protected final int initX;
 	protected final int initY;
 	protected boolean collided;
 
-	public Projectiles(int x, int y, int damage, int vx, int vy, int range, String pImgSrc){
+	public Projectiles(int x, int y, int damage, double vx, double vy, int range, BufferedImage pImgSrc){
 		super(x, y, damage);
 		//this.bulletType = bulletType; //this needs more clarity because it has to be created
 		this.vx = vx;
@@ -19,9 +22,10 @@ public class Projectiles extends Collision{
 		this.pImgSrc = pImgSrc;
 		this.initX = x;
 		this.initY = y;
+		this.range= range;
 		collided = false;
 	}
-	public String getpImgSrc() {
+	public BufferedImage getpImgSrc() {
 		return pImgSrc;
 	}
 
@@ -32,7 +36,7 @@ public class Projectiles extends Collision{
 	public boolean isCollided() {
 		return collided;
 	}
-	public void checkRange(){
+	public void checkRange(){//melvino
 		double distance = Math.sqrt(Math.pow((x-initX), 2) + Math.pow((y-initY), 2));
 		if(distance >= range)collided=true;
 	}
@@ -43,7 +47,7 @@ public class Projectiles extends Collision{
 	}
 	
 	@Override
-	void collideWith(Character C) {
+	void collideWith(Character C) {//Working on this
 		// TBD after discussing
 		collided = true;
 	}
