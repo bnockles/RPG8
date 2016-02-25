@@ -76,7 +76,7 @@ public class TownScreen extends Screen implements KeyListener{
 			try{
 				backGround = ImageIO.read(getClass().getResource("/images/shop/pic.png"));
 				character = ImageIO.read(getClass().getResource("/images/shop/Reddit-alien.png"));
-				playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/sprites/standing.png");
+				playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/shop/hi.jpg");
 			}
 			catch (IOException e) {
 				e.printStackTrace();
@@ -136,7 +136,7 @@ public class TownScreen extends Screen implements KeyListener{
 			//Fei code
 			g2.drawImage(backgroundGrid[currentRow][currentColumn], 0, 0, null);
 			g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),115,115,null);
-			g2.drawOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
+			g2.drawOval(250 - 100, game.getHeight() -110, 100, 100);
 			g2.drawString("this is bad town ", 400, 500);
 		}
 //		    }
@@ -183,7 +183,7 @@ public class TownScreen extends Screen implements KeyListener{
 		}
 		if(key == KeyEvent.VK_SPACE){
 			if(status == 0){
-				if(Math.abs(450 - playable.getX()) <= 100 || Math.abs(180 - 100 - playable.getY()) <= 100){
+				if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(180 - playable.getY()) <= 100){
 					status++;
 				}
 			}
@@ -205,13 +205,13 @@ public class TownScreen extends Screen implements KeyListener{
 		}
 		if(key == KeyEvent.VK_T){
 			if(status == 2){
-				if(Math.abs(150 - playable.getX()) <= 100 || Math.abs(game.getHeight() -10 - 100 - playable.getY()) <= 100){
+				if(Math.abs(150 - playable.getX()) <= 100 && Math.abs(game.getHeight() -10 - 100 - playable.getY()) <= 100){
+					System.out.print(Math.abs(game.getHeight() -110 - playable.getY()));
 					status = 0;
-					
 				}
 			}
 			else if(status == 0){
-				if(Math.abs(150 - playable.getX()) <= 100 || Math.abs(game.getHeight() -10 - 100 - playable.getY()) <= 100){
+				if(Math.abs(150 - playable.getX()) <= 100 && Math.abs(game.getHeight() -10 - 100 - playable.getY()) <= 100){
 					status = 2;
 				}
 			}
