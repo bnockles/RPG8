@@ -7,14 +7,14 @@ import project.items.Weapon;
 
 public class Projectiles extends Collision{
 	protected BufferedImage pImgSrc;
-	protected int vx;
-	protected int vy;
+	protected double vx;
+	protected double vy;
 	protected int range;
 	protected final int initX;
 	protected final int initY;
 	protected boolean collided;
 
-	public Projectiles(int x, int y, int damage, int vx, int vy, int range, BufferedImage pImgSrc){
+	public Projectiles(int x, int y, int damage, double vx, double vy, int range, BufferedImage pImgSrc){
 		super(x, y, damage);
 		//this.bulletType = bulletType; //this needs more clarity because it has to be created
 		this.vx = vx;
@@ -35,7 +35,7 @@ public class Projectiles extends Collision{
 	public boolean isCollided() {
 		return collided;
 	}
-	public void checkRange(){
+	public void checkRange(){//melvino
 		double distance = Math.sqrt(Math.pow((x-initX), 2) + Math.pow((y-initY), 2));
 		if(distance >= range)collided=true;
 	}

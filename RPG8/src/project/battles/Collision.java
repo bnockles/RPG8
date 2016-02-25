@@ -3,7 +3,11 @@ package project.battles;
 import java.awt.image.BufferedImage;
 
 import project.items.Weapon;
-
+/**
+ * 
+ * @ Author: Melvin Cherian
+ * 
+ */
 public abstract class Collision implements Collidable{
 	protected BufferedImage image;
 	protected int damage;

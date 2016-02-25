@@ -100,8 +100,8 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		origimage1 = UtilityMethods.getImageFromFile(this, "/enemy/eright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/eright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		enemy1 = new SampleGEnemy(animation,100,100,100,100);
-		enemy2 = new SampleKEnemy(animation,100,100,100,100);
+		//enemy1 = new SampleGEnemy(animation,100,100,100,100);
+		//enemy2 = new SampleKEnemy(animation,100,100,100,100);
 	}
 	public void Weapon(){
 		
@@ -218,7 +218,19 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		// TODO Auto-generated method stub
 		
 	}
-
+	public int calculateVComponentPlayerToCursor(int velocityScalar, int cursorX, int cursorY, boolean isX){
+		int x = char1.getPositionX();
+		int y = char1.getPositionY();
+		System.out.println("1: " + (Math.atan2(-193,372)));
+		System.out.println("2: " + (int) (velocityScalar*(Math.cos(Math.atan2((y-cursorY),(cursorX - x))))));
+		System.out.println("3: " + cursorX + " " + cursorY);
+		System.out.println("4: " + x + " " + y);
+		System.out.println("5: " + velocityScalar*(Math.cos(Math.atan2((y-cursorY),(cursorX - x)))));
+		System.out.println("6: " + velocityScalar*(Math.sin(Math.atan2((y-cursorY),(cursorX - x)))));
+		if(isX)return (int) (velocityScalar*(Math.cos(Math.atan2((cursorY-y),(cursorX - x)))));
+		else return (int) (velocityScalar*(Math.sin(Math.atan2((cursorY-y),(cursorX - x)))));
+		
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub/
@@ -234,7 +246,11 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	@Override
 	public void mousePressed(MouseEvent e) {//Jason Lyan
 		if(e.getButton() == MouseEvent.BUTTON1){
-			char1.firePistol(10,10);
+			int cursorX = e.getX();
+			int cursorY = e.getY();
+			int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
+			int vy = calculateVComponentPlayerToCursor(10, cursorX, cursorY, false);
+			char1.firePistol(vx,vy);
 		}
 		
 	}
