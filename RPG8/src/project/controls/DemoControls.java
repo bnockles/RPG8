@@ -112,7 +112,7 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 			if(keyCode == KeyEvent.VK_D){
 				if(game){
 					s = "Swarm walked right";
-					y+=5;
+					x+=5;
 				}
 				if(menu){
 					s = "You selected the choice on the right";
