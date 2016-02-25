@@ -10,12 +10,20 @@ public abstract class SampleCharacter {
 	protected abstract ItemState getItems();
 	protected abstract OverworldSpriteControl move();
 	public int[] rawr = {50,5,200,100};
-	protected BufferedImage sprite;
+	protected BufferedImage[] fsprite;
+	protected BufferedImage[] bsprite;
+	protected BufferedImage[] lsprite;
+	protected BufferedImage[] rsprite;
+	protected boolean moveUp = false;
+	protected boolean moveDown = false;
+	protected boolean moveLeft = false;
+	protected boolean moveRight = false;
 	protected SampleWeapon equippedWeapon = new SampleWeapon("blah","blah",rawr);
 	protected int width = 100;
 	protected int height = 100;
 	protected String imgsrc;
 	protected boolean Hostile;
+	protected boolean walking = false;
 	protected int maxHP;
 	protected int currentHP;
 	protected int positionX;
@@ -24,7 +32,38 @@ public abstract class SampleCharacter {
 	public String getImgsrc() {
 		return imgsrc;
 	}
-	
+
+	public BufferedImage getImage(int count){
+		BufferedImage sprite;
+		if(moveUp == true){
+			if(count >= 0 && count < 5)
+				return bsprite[0];
+			else
+				return bsprite[1];
+		}
+
+		if(moveDown == true){
+			if(count >= 0 && count < 5)
+				return fsprite[0];
+			else
+				return fsprite[1];
+		}
+		if(moveLeft == true){
+			if(count >= 0 && count < 5)
+				return lsprite[0];
+			else
+				return lsprite[1];
+		}
+
+		if(moveRight == true){
+			if(count >= 0 && count < 5)
+				return rsprite[0];
+			else
+				return rsprite[1];
+		}
+		return fsprite[0];
+	}
+
 	public SampleWeapon getEquippedWeapon() {
 		return equippedWeapon;
 	}
@@ -61,10 +100,33 @@ public abstract class SampleCharacter {
 	public void setPositionY(int positionY) {
 		this.positionY = positionY;
 	}
-public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		equippedWeapon.fire(true);
-	}	
+	public void setMoveUp(boolean moveUp) {
+		this.moveUp = moveUp;
+	}
+	public void setMoveDown(boolean moveDown) {
+		this.moveDown = moveDown;
+	}
+	public void setMoveLeft(boolean moveLeft) {
+		this.moveLeft = moveLeft;
+	}
+	public void setMoveRight(boolean moveRight) {
+		this.moveRight = moveRight;
+	}
+	public boolean isMoveUp() {
+		return moveUp;
+	}
+	public boolean isMoveDown() {
+		return moveDown;
+	}
+	public boolean isMoveLeft() {
+		return moveLeft;
+	}
+	public boolean isMoveRight() {
+		return moveRight;
+	}
+	public void setWalking(boolean walking) {
+		this.walking = walking;
+	}
 	public void firePistol(int tx, int ty){//target location
 		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, tx, ty, 100, imgsrc);
 		BattlesScreen.player.add(bullet);

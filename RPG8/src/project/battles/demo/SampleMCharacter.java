@@ -24,24 +24,28 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 	private int sneakValue;
 	private SampleWeapon equippedWeapon;
 	private ArrayList<SampleWeapon> loadout;
-	public SampleMCharacter(String imgsrc,int recovery, int hpValue, int armorValue, int sneakValue){
+	public SampleMCharacter(BufferedImage[][] images,int recovery, int hpValue, int armorValue, int sneakValue){
+		this.bsprite = images[0];
+		this.fsprite = images[1];
+		this.lsprite = images[2];
+		this.rsprite = images[3];
 		this.imgsrc = imgsrc;
 		this.recovery= recovery;
 		this.hpValue=  hpValue;
 		this.armorValue = armorValue;
 		this.sneakValue = sneakValue;
-		sprite = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
-		URL url = getClass().getResource(imgsrc);
-		try{
-			BufferedImage original = ImageIO.read(url);
-			Graphics2D g = (Graphics2D) sprite.getGraphics();
-			int w = original.getWidth();
-			int h = original.getHeight();
-			g.drawImage(original, 0, 0, width, height, 0, 0, w, h, null);
-		}
-		catch (IOException e){
-			e.printStackTrace();
-		}
+//		sprite = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
+//		URL url = getClass().getResource(imgsrc);
+//		try{
+//			BufferedImage original = ImageIO.read(url);
+//			Graphics2D g = (Graphics2D) sprite.getGraphics();
+//			int w = original.getWidth();
+//			int h = original.getHeight();
+//			g.drawImage(original, 0, 0, width, height, 0, 0, w, h, null);
+//		}
+//		catch (IOException e){
+//			e.printStackTrace();
+//		}
 
 	}
 	public int getLevel() {
@@ -55,6 +59,8 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 			exp = exp%100;
 		}
 	}
+	
+	
 
 	public int getRecovery() {
 		return recovery;
@@ -70,10 +76,6 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 
 	public int getSneakValue(){ 
 		return sneakValue;
-	}
-
-	public BufferedImage getImage(){
-		return sprite;
 	}
 
 	@Override

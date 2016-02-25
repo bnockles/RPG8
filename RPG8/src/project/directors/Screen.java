@@ -12,6 +12,7 @@ public abstract class Screen implements Visible{
 	public int width;//width
 	public int height;//height
 	KeyListener keyListener;//every screen is either itself a KeyListener or contains implementations of KeyListeners (menus)
+	public static int count = 0;
 	
 	public Screen(Game game) {
 		this.game = game;

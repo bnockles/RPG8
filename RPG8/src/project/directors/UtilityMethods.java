@@ -4,6 +4,12 @@ import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+
+import project.battles.demo.BattlesScreen;
 
 public class UtilityMethods {
 
@@ -38,7 +44,32 @@ public class UtilityMethods {
 
 
 	}
+	public static BufferedImage getImageFromFile(BattlesScreen battlesScreen, String string) {
+		// TODO Auto-generated method stub
+		URL url = battlesScreen.getClass().getResource(string);
+		try {
+			BufferedImage check = ImageIO.read(url);
+			return check;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
+	public static BufferedImage getScaledImage(BufferedImage origimage0, int i, int j) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static BufferedImage[] addImage(BufferedImage origimage0, BufferedImage origimage1, BufferedImage origimage2) {
+		// TODO Auto-generated method stub
+		BufferedImage [] images = new BufferedImage[3];
+		images[0] = origimage0;
+		images[1] = origimage1;
+		images[2] = origimage2;
+		return images;
+	}
 	
 	
 	
