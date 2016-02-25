@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -19,6 +20,7 @@ public class TownWanderer {
 	int y;
 	String name;
 	BufferedImage sprite;
+	ArrayList<Integer> itemNu = new ArrayList<Integer>();
 	public TownWanderer(int x, int y, String name, String imageLocation){
 		this.name = name;
 		int width = 200;

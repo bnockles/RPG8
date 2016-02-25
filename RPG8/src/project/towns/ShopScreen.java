@@ -1,5 +1,6 @@
 package project.towns;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.ItemSelectable;
 import java.awt.event.ActionEvent;
@@ -24,13 +25,18 @@ public class ShopScreen extends Screen implements KeyListener{
 	BufferedImage backGround;
 	BufferedImage character;
 	TownWanderer playable;
+	WeaponStore store;
 	int x;
 	int y;
-	ArrayList<Integer>pressedKeys;
+	int itemx = 92;
+	int itemy = 60;
+	ArrayList<Integer>itemN = new ArrayList<Integer>();
 	Timer timer = new Timer();
 	int status = 0;
 	public ShopScreen(Game game) {
 		super(game);
+		for(int i = 0; i < 3; i++) itemN.add(i, 0);
+		store = new WeaponStore(itemN, 10000);
 		// TODO Auto-generated constructor stub
 		try{
 			backGround = ImageIO.read(new URL("http://i1067.photobucket.com/albums/u429/colinharvie/RPGMaker%20MV%20Tiles/MV_WoodAutoTiles_Ezra_color1_zpso4kqtxet.png"));
@@ -65,35 +71,57 @@ public class ShopScreen extends Screen implements KeyListener{
 	    	g2.drawImage(backGround,768,288, null);
 	    	g2.drawImage(backGround,768,576, null);
 	    	g2.drawImage(character, 450,180,105,146, null);
+	    	g2.drawOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
+	    	g2.setColor(Color.WHITE);
+	    	g2.fillOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
 	    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),115,115, null);
 		}
 		if (status == 1){
-			g2.drawString(WeaponStore.items.get(0), 100, 100);
-			g2.drawString(WeaponStore.items.get(1), 100, 200);
-			g2.drawString(WeaponStore.items.get(2), 100, 300);
+			g2.drawString("Press B to buy and press S to sale.", 100, 50);
+			g2.drawString("Player cash: " + store.getMoney(), 400, 50);
+			g2.drawString("Item 1", 100, 100);
+			g2.drawString("U owned: " + store.itemNu.get(0), 300, 100);
+			g2.drawString("Item 2", 100, 200);
+			g2.drawString("U owned: " + store.itemNu.get(1), 300, 200);
+			g2.drawString("Item 3", 100, 300);
+			g2.drawString("U owned: " + store.itemNu.get(2), 300, 300);
+			g2.drawString("Price: 450", 200, 100);
+			g2.drawString("Price: 350", 200, 200);
+			g2.drawString("Price: 250", 200, 300);
+			g2.drawRect(60, itemx, 5, 5);
+			g2.fillRect(60, itemx, 5, 5);
+		}
+		if (status == 2){
+			
 		}
 //		    }
 //		}
 	}
-	
-	public void paintInv(Graphics2D g2){
-		
-	}
+
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		int key = arg0.getKeyCode();
 		if(key == KeyEvent.VK_UP){
+			if(status == 0)
 			playable .moveUp();
+			if(status == 1)
+				if(itemx > 92)
+				itemx-= 100;
 		}
 		if(key == KeyEvent.VK_DOWN){
+			if(status == 0)
 			playable.moveDown();
+			if(itemx < 292)
+			itemx+= 100;
 		}
 		if(key == KeyEvent.VK_LEFT){
+			if(status == 0)
 			playable.moveLeft();
 		}
 		if(key == KeyEvent.VK_RIGHT){
+			if(status == 0)
 			playable.moveRight();
 		}
 		if(key == KeyEvent.VK_SPACE){
@@ -101,7 +129,29 @@ public class ShopScreen extends Screen implements KeyListener{
 				status++;
 			}
 		}
-		update();
+		if(key == KeyEvent.VK_ESCAPE){
+			if(status == 1){
+				status--;
+			}
+		}
+		if(key == KeyEvent.VK_B){
+			if(status == 1){
+				store.moneyInteraction(itemx);
+			}
+		}
+		if(key == KeyEvent.VK_S){
+			if(status == 1){
+				store.moneySellingInteraction(itemx);
+			}
+		}
+		if(key == KeyEvent.VK_T){
+			if(status == 0){
+				if(Math.abs(150 - playable.getX()) <= 100 || Math.abs(game.getHeight() -10 - 100 - playable.getY()) <= 100){
+					status = 2;
+				}
+			}
+		}
+			update();
 	}
 
 	@Override
