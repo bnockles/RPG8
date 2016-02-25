@@ -9,9 +9,9 @@ public class Player {
 	
 	
 	public Player(int xplace, int yplace, String type){
-		this.locationX = xplace;
-		this.locationY = yplace;
-		this.pname = type;
+		locationX = xplace;
+		locationY = yplace;
+		pname = type;
 	
 	}
 	

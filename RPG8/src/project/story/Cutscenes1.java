@@ -1,58 +1,18 @@
 package project.story;
 
-import java.awt.event.KeyEvent;
-
-public abstract class Cutscenes1  {
+@SuppressWarnings("serial")
+public abstract class Cutscenes1 extends storyDemo {
 	static int acceptableX;
-	static int acceptableY;
+	static int acceptableY;	
 
- static Player joe = new Player(0, 0, "hunter");
-
-	public static void main(String[] args) {
-	
-
-	
-	joe.moveup();
-	//cant edit locationx value in here just by setting it. 
-	//Player.setLocation(55,55);  // use this to test different cutscene areas
-	joe.setLocation(55, 55);
-	possibles();
-	
-	
-	
-	
-	
-	}
-	
-	
-
-
-
-
-	public  void moveNow(){
-		joe.moveup();
-	}
-	
-	
 	public static void possibles(){
-		acceptableX = joe.getX();
-		acceptableY = joe.getY();
-		
-		if((acceptableX > 50 & acceptableX < 60) & (acceptableY >50 & acceptableY < 60)){ 
-			//code to make cutscene here
-			System.out.println("work");
-		}
-		
+		acceptableX = storyDemo.Swarm.getX();
+		acceptableY = storyDemo.Swarm.getY();
 
-		else if((acceptableX > 80 & acceptableX < 90) & (acceptableY >80 & acceptableY < 90)){ 
+		if(acceptableX >= 0 && acceptableX <= 100 && acceptableY >= 0 && acceptableY <= 100){ 
 			//code to make cutscene here
-			System.out.println("work");
-		}
-		
-		
-		
+			storyDemo.setCutscene(true);
+		}		
 	}
-		
-	}
-	
+
 }

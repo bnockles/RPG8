@@ -6,10 +6,10 @@ public class Radio extends storyDemo{
 
 	public static void radioCall() {
 		//System.out.println("Ammo " + Enemy.weapon);
-		if(Math.abs(Aya.getX()-Enemy.getX()) + Math.abs(Aya.getY()-Enemy.getY()) < 200) {
+		if(Math.abs(Swarm.getX()-enemy.getX()) + Math.abs(Swarm.getY()-enemy.getY()) < 200) {
 			System.out.println("Enemy nearby");
 		}
-		else if(Enemy.weapon < 4 && Enemy.weapon > 0) {
+		else if(enemy.weapon < 4 && enemy.weapon > 0) {
 			System.out.println("Low Ammo");
 		}
 		

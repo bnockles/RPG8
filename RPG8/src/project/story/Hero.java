@@ -4,9 +4,12 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
 
 import javax.imageio.ImageIO;
+
+/**
+ * Samantha
+ */
 
 public class Hero {
 
@@ -62,50 +65,57 @@ public class Hero {
 	
 	public void moveUp() {
 		y = y - 4;
-		if(zero)storyDemo.Aya.animate(storyDemo.AyaBack.get(0));
+		if(zero)storyDemo.Swarm.animate(storyDemo.AyaBack.get(0));
 		else{
-			storyDemo.Aya.animate(storyDemo.AyaBack.get(1));
+			storyDemo.Swarm.animate(storyDemo.AyaBack.get(1));
 		}
 		zero = !zero;
+		if(y <= 25){
+			setY(32);
+		}
 	}
 
 	public void moveDown() {
 		y = y + 4;
-		if(zero)storyDemo.Aya.animate(storyDemo.AyaForward.get(0));
+		if(zero)storyDemo.Swarm.animate(storyDemo.AyaForward.get(0));
 		else{
-			storyDemo.Aya.animate(storyDemo.AyaForward.get(1));
+			storyDemo.Swarm.animate(storyDemo.AyaForward.get(1));
 		}
 		zero = !zero;
+		if(y >= storyDemo.height - 133){
+			setY(storyDemo.height - 137);
+		}
 	}
 
 	public void moveRight() {
 		x = x + 4;
-		if(zero)storyDemo.Aya.animate(storyDemo.AyaRight.get(0));
+		
+		if(zero)storyDemo.Swarm.animate(storyDemo.AyaRight.get(0));
 		else{
-			storyDemo.Aya.animate(storyDemo.AyaRight.get(1));
+			storyDemo.Swarm.animate(storyDemo.AyaRight.get(1));
 		}
 		zero = !zero;
+		if(x >= storyDemo.width - 33){
+			setX(storyDemo.width - 37);
+		}
 	}
 
 	public void moveLeft() {
 		x = x - 4;
-		if(zero)storyDemo.Aya.animate(storyDemo.AyaLeft.get(0));
+		if(zero)storyDemo.Swarm.animate(storyDemo.AyaLeft.get(0));
 		else{
-			storyDemo.Aya.animate(storyDemo.AyaLeft.get(1));
+			storyDemo.Swarm.animate(storyDemo.AyaLeft.get(1));
 		}
 		zero = !zero;
+		if(x <= 3){
+			setX(7);
+		}
 	}
-	public void randomX() {
-		Random random = new Random();
-		x +=75; //(random.nextInt(500 - 10 + 1) + 10);
-	}
-	public void randomY() {
-		Random random = new Random();
-		y +=75; //(random.nextInt(500 - 10 + 1) + 10);
-	}
+	
 	public void setStrength(int strength) {
 		this.strength = strength;
 	}
+	
 	public void shoot() {
 		if(weapon > 0) {
 			weapon--;

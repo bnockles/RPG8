@@ -9,6 +9,10 @@ import java.util.ArrayList;
 
 import project.directors.Game;
 
+/**
+ * Samantha
+ */
+
 @SuppressWarnings("serial")
 public class storyDemo extends Game{
 	private Image landscape;
@@ -29,8 +33,11 @@ public class storyDemo extends Game{
 	private static String back1 = "/images/heroes/back1.png";
 	private static String back2 = "/images/heroes/back2.png";
 	final static ArrayList<String> AyaStanding = new ArrayList<String>();
-	public static Hero Aya = new Hero("Aya Drevis", 100, 100);
-	public static Hero Enemy = new Hero("Enemy", 150, 150);
+	public static Hero Swarm = new Hero("Aya Drevis", 100, 100);
+	static boolean cutscene = false;
+	public static Enemy enemy = new Enemy(150, 150);
+	static int width = 500;
+	static int height = 500;
 	
 	public static void main(String args[]){
 		new storyDemo();
@@ -51,14 +58,21 @@ public class storyDemo extends Game{
 		AyaStanding.add(left);
 		AyaStanding.add(right);
 		AyaStanding.add(back);
-//		for(int i = 0; i < AyaForward.size(); i ++){
-//			storyDemo.Aya.animate(AyaForward.get(i));
-//		}
-		Aya = new Hero("Aya Drevis", 100, 100);
-		Aya.animate(AyaStanding.get(0));
-		Enemy = new Hero("Enemy", 150, 150);
-		Enemy.animate("/images/heroes/IceDragon.jpg");
-		
+		Swarm = new Hero("Aya Drevis", 100, 100);
+		Swarm.animate(AyaStanding.get(0));
+		enemy = new Enemy(150, 150);
+		enemy.animate("/images/heroes/Enemy.jpg");
+		if(Swarm.getX() <= width && Swarm.getY() >= height - 50){
+			
+		}
+	}
+	
+	public static boolean getCutscene(){
+		return cutscene;
+	}
+	
+	public static void setCutscene(boolean other){
+		cutscene = other;
 	}
 	
 	public void reset(){
@@ -70,16 +84,17 @@ public class storyDemo extends Game{
 	@SuppressWarnings("unused")
 	public void paint(Graphics g){
 		//sets image to current windowWidth/height
-		int width = 600;
-		int height = 600;
 		setSize(width, height);
 		BufferedImage bi = new BufferedImage(width, height+20, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2 = (Graphics2D)g;
-		g2.setColor(Color.black);
+		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.drawImage(landscape, 0, 0, null);
-		g2.drawImage(Aya.getImage(), Aya.getX(), Aya.getY(), null);
-		g2.drawImage(Enemy.getImage(), Enemy.getX(), Enemy.getY(), null);
+		g2.drawImage(Swarm.getImage(), Swarm.getX(), Swarm.getY(), null);
+		g2.drawImage(enemy.getImage(), enemy.getX(), enemy.getY(), null);
+		g2.drawRect(0, 0, 100, 100);
+		g2.setColor(Color.black);
+		g2.fillRect(0, height - 91, width, 91);
 		EnemyDynamic.detectHit();
 	}
 	

@@ -5,15 +5,15 @@ import project.directors.Game;
 public class EnemyDynamic extends storyDemo{
 	
 	public static void strengthen() {
-		Enemy.strength+=10;
-		System.out.println("enemy strength " + Enemy.strength);
+		enemy.strength+=10;
+		System.out.println("enemy strength " + enemy.strength);
 	}
 	public static void detectHit() {
-		if(Math.abs(Aya.getX()-Enemy.getX()) + Math.abs(Aya.getY()-Enemy.getY()) < 20)
+		if(Math.abs(Swarm.getX()-enemy.getX()) + Math.abs(Swarm.getY()-enemy.getY()) < 20)
 		{
 			strengthen();
-			Enemy.randomX();
-			Enemy.randomY();
+			enemy.randomX();
+			enemy.randomY();
 		}
 	}
 
