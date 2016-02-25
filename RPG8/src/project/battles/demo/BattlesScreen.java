@@ -136,7 +136,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 
 		}
 	}
-	private void checkCollision() {
+	private void checkCollision() {//Jason Lyan
 		for(int i = player.size() - 1 ; i > -1; i--){
 			if(player.get(i).isCollided()){
 				player.remove(i);
