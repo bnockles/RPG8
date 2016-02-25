@@ -75,8 +75,8 @@ public class TownScreen extends Screen implements KeyListener{
 			// TODO Auto-generated constructor stub
 			try{
 				backGround = ImageIO.read(getClass().getResource("/images/shop/pic.png"));
-				character = ImageIO.read(getClass().getResource("/images/shop/Reddit-alien.png"));
-				playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/shop/hi.jpg");
+				character = ImageIO.read(getClass().getResource("/images/shop/hey.jpg"));
+				playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/shop/obama.jpg");
 			}
 			catch (IOException e) {
 				e.printStackTrace();
@@ -111,11 +111,11 @@ public class TownScreen extends Screen implements KeyListener{
 	    	g2.drawImage(backGround,768,0, null);
 	    	g2.drawImage(backGround,768,288, null);
 	    	g2.drawImage(backGround,768,576, null);
-	    	g2.drawImage(character, 450,180,105,146, null);
+	    	g2.drawImage(character, 450,180,180,146, null);
 	    	g2.drawOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
 	    	g2.setColor(Color.WHITE);
 	    	g2.fillOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
-	    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),115,115, null);
+	    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),150,200, null);
 		}
 		if (status == 1){
 			g2.drawString("Press B to buy and press S to sale.", 100, 50);
