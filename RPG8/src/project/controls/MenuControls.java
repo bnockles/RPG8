@@ -3,6 +3,7 @@ package project.controls;
 /** author Jacky */
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -67,7 +68,10 @@ public class MenuControls extends project.directors.Screen implements KeyListene
 			string1 = "You have pressed Alt";
 			update();
 		};
-		if(keyCode == 16){};
+		if(keyCode == 27){
+			string1 = "You have pressed Escape";
+			update();
+		};
 
 	}
 
@@ -81,7 +85,19 @@ public class MenuControls extends project.directors.Screen implements KeyListene
 	public void keyTyped(KeyEvent e) {
 		char keyTy = e.getKeyChar();
 		if(keyTy == 'w'){
-			string1 = "You have pressed w";
+			string1 = "You have pressed W";
+			update();
+		}
+		if(keyTy == 's'){
+			string1 = "You have pressed S";
+			update();
+		}
+		if(keyTy == 'a'){
+			string1 = "You have pressed A";
+			update();
+		}
+		if(keyTy == 'd'){
+			string1 = "You have pressed D";
 			update();
 		}
 
