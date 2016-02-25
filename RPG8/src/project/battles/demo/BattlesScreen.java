@@ -127,7 +127,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		// TODO Auto-generated method stub
 		checkMotion();
 		enemy1.GeneralEnemyAI();
-		checkCollision();
+		checkProjectileRange();
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
@@ -151,7 +151,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 
 		}
 	}
-	private void checkCollision() {
+	private void checkProjectileRange() {
 		/**
 		 * Jason Lyan
 		 */
