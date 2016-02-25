@@ -128,18 +128,6 @@ public class BattlesControls extends project.directors.Screen implements KeyList
 			update();
 		}
 	}
-	public void mouseClicked(MouseEvent e){
-		if(game){
-			if(e.getButton()==MouseEvent.BUTTON1){
-				s = "Swarm fired his gun";
-				update();
-			}
-			if(e.getButton()==MouseEvent.BUTTON3){
-				s = "Swarm fired his alternative shot";
-				update();
-			}
-		}
-	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
