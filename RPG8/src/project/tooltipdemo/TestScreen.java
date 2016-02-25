@@ -18,6 +18,7 @@ import javax.imageio.ImageIO;
 
 import project.directors.Game;
 import project.directors.Screen;
+import project.mainmenudemo.MainMenuScreen;
 import project.menus.Tooltip;
 
 public class TestScreen extends Screen implements KeyListener {
@@ -53,6 +54,9 @@ public class TestScreen extends Screen implements KeyListener {
 				selection = 3;
 			}
 			update();
+		}
+		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
+			this.game.setScreen(new MainMenuScreen(this.game));
 		}
 	}
 

@@ -82,6 +82,9 @@ public class MainMenuScreen extends Screen implements KeyListener{
 			if(selected==2)
 				this.game.setScreen(new TestScreen(this.game));
 		}
+		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
+			this.game.setScreen(new MainMenuScreen(this.game));
+		}
 		
 	}
 

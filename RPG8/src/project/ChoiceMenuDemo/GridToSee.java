@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 
 import project.directors.Game;
 import project.directors.Screen;
+import project.mainmenudemo.MainMenuScreen;
 
 /**
  * 
@@ -83,6 +84,9 @@ public class GridToSee extends Screen implements KeyListener{
 			highl = 0;
 			update();
 		}	
+		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
+			this.game.setScreen(new MainMenuScreen(this.game));
+		}
 	
 	}
 
