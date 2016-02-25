@@ -20,7 +20,7 @@ public abstract class SampleMeleeWeapon {
 	}
 	
 	//My Collision method which I believe should be in an interface because it is different for projectiles and melee weapons	
-	private boolean collision(){
+	public boolean collision(){
 		if(SampleGEnemy.getBounds().intersects(getBounds()) ||
 				SampleMCharacter.getBounds().intersects(getBounds())) collided = true;
 		
@@ -30,18 +30,18 @@ public abstract class SampleMeleeWeapon {
 		} 
 	}
 	
-	private void lost(){
+	public void lost(){
 		if (uses == 0){
 			drawImage = false; //the weapon "dies"
 		}
 	}
-
-	private  abstract void delayTime(); 
+	
+	public abstract void delayTime(); 
 		//Method to set delay time between uses of melee weapon 
 		//E.g. swinging a sword 
 	
 	
-	private void beingUsed(){
+	public abstract void beingUsed(){
 		if (pickedUp){
 			this.x = SampleMCharacter.positionX;
 			this.y = SampleMCharacter.positionY;
