@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Arc2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -21,7 +23,7 @@ import project.directors.Screen;
 import project.directors.UtilityMethods;
 import project.items.Weapon;
 
-public class BattlesScreen extends Screen implements KeyListener,ActionListener{
+public class BattlesScreen extends Screen implements KeyListener,ActionListener, MouseListener{
 	static SampleMCharacter char1;
 	SampleKEnemy enemy1;
 	SampleGEnemy enemy2;
@@ -103,6 +105,13 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 			timer.start();
 			g2.drawImage(char1.getImage(count),char1.getPositionX(),char1.getPositionY(),null);
 			g2.drawImage(bullet.getpImgSrc(), 100, 100, null);
+			
+			for(int i = 0; i < player.size(); i++){
+				g2.drawImage(player.get(i).getpImgSrc(), player.get(i).getX(), player.get(i).getY(), null);
+			}
+			for(int i = 0; i < enemy.size(); i++){
+				g2.drawImage(enemy.get(i).getpImgSrc(), enemy.get(i).getX(), enemy.get(i).getY(), null);
+			}
 		}
 		catch(Exception e){
 			
@@ -112,12 +121,6 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 	public KeyListener getKeyListener() {
 		// TODO Auto-generated method stub
 		return this;
-	}
-	
-	public void mouseDown(MouseEvent e){//Jason Lyan
-		if(e.getButton() == MouseEvent.BUTTON1){
-			char1.firePistol(50,50);
-		}
 	}
 
 	@Override
@@ -201,6 +204,8 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		SampleProjectiles derp = new SampleProjectiles(10, 10, 0, 10, 10, 100, projectiledemo);
+		player.add(derp);
 		for(int i=0;i<player.size();i++){
 			player.get(i).updatePosition();//.fly(); what in the world is fly
 		}
@@ -208,5 +213,39 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 			enemy.get(i).updatePosition();//.fly();
 		}
 		update();
+	}
+	
+	public void mouseClicked(MouseEvent e) {
+		if(e.getButton() == MouseEvent.BUTTON1){
+			char1.firePistol(50,50);
+			System.out.println(player.get(0));
+		}
+		
+	}
+	
+	public void mouseEntered(MouseEvent e) {
+		if(e.getButton() == MouseEvent.BUTTON1){
+			char1.firePistol(50,50);
+			System.out.println(player.get(0));
+		}
+		
+	}
+	
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		if(e.getButton() == MouseEvent.BUTTON1){
+			char1.firePistol(50,50);
+			System.out.println(player.get(0));
+		}
+		
+	}
+	
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

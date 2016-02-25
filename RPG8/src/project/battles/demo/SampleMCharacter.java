@@ -164,6 +164,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, vx, vy, 100, BattlesScreen.projectiledemo);
 		BattlesScreen.player.add(bullet);
 		equippedWeapon.reduceAmmoByOne();
+		System.out.println("hello");
 	}
 	public void useMelee(){
 		//requires pelham's class
