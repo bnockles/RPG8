@@ -88,6 +88,9 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		char1 =  new SampleMCharacter(animation,100,100,100,100,PPOSITION_X,PPOSITION_Y);
 	}
 	public void Enemy(){
+		/**
+		 * Chieh-Huang Chen
+		 */
 		BufferedImage [][] animation = new BufferedImage [4][3];
 		BufferedImage origimage0 = UtilityMethods.getImageFromFile(this, "/enemy/eback1.png");
 		BufferedImage origimage1 = UtilityMethods.getImageFromFile(this, "/enemy/eback2.png");
@@ -118,6 +121,9 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	}
 	@Override
 	public void paintScreen(Graphics2D g2) {
+		/**
+		 * Chieh-Huang Chen
+		 */
 		// TODO Auto-generated method stub
 		checkMotion();
 		enemy1.GeneralEnemyAI();
@@ -133,7 +139,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 			g2.drawImage(char1.getImage(count),char1.getPositionX(),char1.getPositionY(),null);
 			g2.drawImage(bullet.getpImgSrc(), 100, 100, null);
 			g2.drawImage(enemy1.getImage(count),enemy1.getPositionX(),enemy1.getPositionY(),null);
-
+			//g2.drawImage(enemy2.getImage(count),enemy2.getPositionX(),enemy2.getPositionY(),null);
 			for(int i = 0; i < player.size(); i++){
 				g2.drawImage(player.get(i).getpImgSrc(), player.get(i).getX(), player.get(i).getY(), null);
 			}
@@ -145,7 +151,10 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 
 		}
 	}
-	private void checkCollision() {//Jason Lyan
+	private void checkCollision() {
+		/**
+		 * Jason Lyan
+		 */
 		for(int i = player.size() - 1 ; i > -1; i--){
 			if(player.get(i).isCollided()){
 				player.remove(i);
@@ -162,6 +171,9 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		/**
+		 * Chieh-Huang Chen
+		 */
 		int keyCode = e.getKeyCode();
 		if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT){
 			if(!pressedKeys.contains(keyCode))
@@ -173,6 +185,9 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
+		/**
+		 * Chieh-Huang Chen
+		 */
 		int keyCode = e.getKeyCode();
 		if(keyCode == KeyEvent.VK_UP){
 			pressedKeys.remove(pressedKeys.indexOf(keyCode));
@@ -195,11 +210,17 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	}
 
 	public void increaseCount(){
+		/**
+		 * Chieh-Huang Chen
+		 */
 		count++;
 		if(count>10)
 			count=0;
 	}
 	public void checkMotion() {
+		/**
+		 * Chieh-Huang Chen
+		 */
 		Graphics2D g = null;
 		if(pressedKeys == null)
 			return;
@@ -238,6 +259,9 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 
 	}
 	public int calculateVComponentPlayerToCursor(int velocityScalar, int cursorX, int cursorY, boolean isX){
+		/**
+		 * Melvin
+		 */
 		int x = char1.getPositionX();
 		int y = char1.getPositionY();
 		/*System.out.println("1: " + (Math.atan2(-193,372)));
@@ -252,12 +276,15 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		/**
+		 * Chieh-Huang Chen
+		 */
 		// TODO Auto-generated method stub/
 		for(int i=0;i<player.size();i++){
-			player.get(i).updateAndCheckAll();//.fly(); what in the world is fly
+			player.get(i).updateAndCheckAll();
 		}
 		for(int i=0;i<enemy.size();i++){
-			enemy.get(i).updateAndCheckAll();//.fly();
+			enemy.get(i).updateAndCheckAll();
 		}
 		update();
 	}
