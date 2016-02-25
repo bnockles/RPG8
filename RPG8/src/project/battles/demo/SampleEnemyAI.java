@@ -2,6 +2,7 @@ package project.battles.demo;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Arc2D;
+import java.awt.image.BufferedImage;
 
 import project.items.Weapon;
 	/**
@@ -10,7 +11,7 @@ import project.items.Weapon;
 	 * 
 	 */
 public abstract class SampleEnemyAI extends SampleCharacter{
-	protected int hp;//static idk
+	protected int hp;
 	protected int maxhp;
 	protected int visionrangeX;
 	protected int visionrangeY;
@@ -30,8 +31,10 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 				checkForPlayer();
 			else
 				reaction();
-			if(maxhp/10>hp)
+			if(maxhp/10>hp){
+				System.out.println(maxhp+" "+hp);
 				run();
+			}
 		}
 		//animation of death
 		//dropItem();
@@ -54,14 +57,20 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 		}
 	}
 	public void wander(){
-		System.out.println("a"+positionX);
+		//System.out.println("a"+positionX);
 		if(Math.abs(positionX-BattlesScreen.char1.getPositionX()) < 100){
 			positionX--;
 		}
 		else{
 			positionX++;
 		}
-		System.out.println("b"+positionX);
+		if(Math.abs(positionY-BattlesScreen.char1.getPositionY()) < 100){
+			positionY--;
+		}
+		else{
+			positionY++;
+		}
+		//System.out.println("b"+positionX);
 //		if(true){
 //			left = !left;
 //		}; // check if its gonna crash into a wall or something
@@ -79,6 +88,21 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	public void dropItem(){
 		if (hp <= 0){
 			BattlesScreen.char1.gainExp(10);
+		}
+	}
+	@Override
+	public BufferedImage getImage(int count) {
+		if(up){
+			if(count >= 0 && count < 5)
+				return bsprite[0];
+			else
+				return bsprite[1];
+		}
+		else{
+			if(count >= 0 && count < 5)
+				return fsprite[0];
+			else
+				return fsprite[1];
 		}
 	}
 }

@@ -15,6 +15,7 @@ public class SampleKEnemy extends SampleEnemyAI{
 		this.positionX = positionX;
 		this.positionY = positionY;
 		maxhp = stats[0];
+		hp = stats[0];
 		visionrangeX = stats[1];
 		visionrangeY = stats[2];
 		visiondegree = stats[3];
@@ -27,6 +28,7 @@ public class SampleKEnemy extends SampleEnemyAI{
 		this.lsprite = images[2];
 		this.rsprite = images[3];
 		maxhp = stats[0];
+		hp = stats[0];
 		this.positionX = positionX;
 		this.positionY = positionY;
 		visionrangeX = stats[1];
@@ -48,6 +50,7 @@ public class SampleKEnemy extends SampleEnemyAI{
 
 	@Override
 	public void run() {
+		System.out.println("hello");
 		int distanceX = positionX - BattlesScreen.char1.getPositionX();
 		int distanceY = positionY - BattlesScreen.char1.getPositionY();
 		if (distanceX >= 0){

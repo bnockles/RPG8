@@ -33,36 +33,7 @@ public abstract class SampleCharacter {
 		return imgsrc;
 	}
 
-	public BufferedImage getImage(int count){
-		BufferedImage sprite;
-		if(moveUp == true){
-			if(count >= 0 && count < 5)
-				return bsprite[0];
-			else
-				return bsprite[1];
-		}
-
-		if(moveDown == true){
-			if(count >= 0 && count < 5)
-				return fsprite[0];
-			else
-				return fsprite[1];
-		}
-		if(moveLeft == true){
-			if(count >= 0 && count < 5)
-				return lsprite[0];
-			else
-				return lsprite[1];
-		}
-
-		if(moveRight == true){
-			if(count >= 0 && count < 5)
-				return rsprite[0];
-			else
-				return rsprite[1];
-		}
-		return fsprite[0];
-	}
+	public abstract BufferedImage getImage(int count);
 
 	public SampleWeapon getEquippedWeapon() {
 		return equippedWeapon;

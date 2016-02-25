@@ -16,6 +16,7 @@ public class SampleGEnemy extends SampleEnemyAI{
 		this.positionX = positionX;
 		this.positionY = positionY;
 		maxhp = stats[0];
+		hp = stats[0];
 		visionrangeX = stats[1];
 		visionrangeY = stats[2];
 		visiondegree = stats[3];
