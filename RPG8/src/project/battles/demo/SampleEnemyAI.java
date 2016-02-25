@@ -36,7 +36,7 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 		}
 		while(checkAlive());
 		//animation of death
-		//drop items
+		dropItem();
 		
 	}
 	public boolean checkAlive(){
