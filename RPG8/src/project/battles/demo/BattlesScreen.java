@@ -24,6 +24,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 	static SampleMCharacter char1;
 	SampleKEnemy enemy1;
 	SampleGEnemy enemy2;
+	public static ArrayList<SampleEnemyAI> enemiesOnScreen= new ArrayList<SampleEnemyAI>();
 	public static ArrayList<SampleProjectiles> player = new ArrayList<SampleProjectiles>();
 	public static ArrayList<SampleProjectiles> enemy = new ArrayList<SampleProjectiles>();
 	Timer timer = new Timer(5,this);
@@ -34,6 +35,8 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 		char1 =  new SampleMCharacter("/maincharacter/mfront1.png",100,100,100,100);
 		//enemy1 = new SampleKEnemy(new int[6],new Weapon(),true);
 		//enemy2 = new SampleGEnemy(new int[6],new Weapon(),true);
+		enemiesOnScreen.add(enemy1);
+		enemiesOnScreen.add(enemy2);
 		update();
 	}
 	
@@ -48,6 +51,9 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener{
 			g2.setColor(Color.green);
 			timer.start();
 			g2.drawImage(char1.getImage(),char1.getPositionX(),char1.getPositionY(),null);
+			for (SampleEnemyAI a: enemiesOnScreen){
+				g2.drawImage(a.sprite,a.getPositionX(),a.getPositionY(),null);
+			}
 		}
 		catch(Exception e){
 			
