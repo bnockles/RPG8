@@ -38,17 +38,18 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		g2.drawString("Press E to heal", 30, 135);
 		g2.drawString("Press S to take damage", 30, 160);
 		g2.drawString("Press R to reload", 30, 185);
+		g2.drawString("Press H to switch weapons", 30, 210);
 		g2.drawString("Clips: "+you.weapon.ammoCapacity, 400, 135);
 		g2.drawString("Ammo in Clip: "+you.weapon.ammoTotal, 400, 160);
 		g2.drawString("Current Weapon: "+you.weapon.name, 400, 185);
 		g2.drawString("Coins: "+you.coins, 400, 210);
 		g2.drawString("Scrap: "+you.scrap, 400, 235);
-		g2.drawOval(50, 200, 40, 40);
-		g2.drawLine(70,240,70,280);
-		g2.drawLine(70,240,50,260);
-		g2.drawLine(70,240,90,260);
-		g2.drawLine(70,280,50,300);
-		g2.drawLine(70,280,90,300);
+		g2.drawOval(50, 250, 40, 40);
+		g2.drawLine(70,290,70,330);
+		g2.drawLine(70,290,50,310);
+		g2.drawLine(70,290,90,310);
+		g2.drawLine(70,330,50,350);
+		g2.drawLine(70,330,90,350);
 	}
 
 	@Override
@@ -59,7 +60,11 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 			System.out.println(you.health);
 		}
 		if(e.getKeyCode()==KeyEvent.VK_H){
-			
+			if(you.weapon.name == "RIA-45S"){
+				you.weapon = pistol4GradeA1;
+			}else{
+				you.weapon = pistol2GradeB1;
+			}
 		}
 		if(e.getKeyCode() == KeyEvent.VK_R){ 
 			you.reload();
