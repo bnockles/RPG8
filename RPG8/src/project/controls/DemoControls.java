@@ -197,14 +197,16 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 			};
 		}
 	}
-	public void mouseClicked(MouseEvent e){
-		if(SwingUtilities.isLeftMouseButton(e)){
-			s = "Swarm fired his gun";
-			update();
-		}
-		else if(SwingUtilities.isRightMouseButton(e)){
-			s = "Swarm fired his alternative shot";
-			update();
+	public void mousePressed(MouseEvent e){
+		if(game){
+			if(e.getButton()==MouseEvent.BUTTON1){
+				s = "Swarm fired his gun";
+				update();
+			}
+			if(e.getButton()==MouseEvent.BUTTON3){
+				s = "Swarm fired his alternative shot";
+				update();
+			}
 		}
 	}
 
