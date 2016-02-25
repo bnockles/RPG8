@@ -2,10 +2,8 @@
 package project.battles.demo;
 import project.directors.Character;
 import java.awt.Rectangle;
-import project.battles.demo.SampleMCharacter;
-import project.battles.demo.SampleGEnemy; 
 
-public class SampleMeleeWeapon {
+public abstract class SampleMeleeWeapon {
 	private int[] stats;
 	int x;
 	int y;
