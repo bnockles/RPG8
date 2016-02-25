@@ -204,8 +204,6 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub/
-		SampleProjectiles derp = new SampleProjectiles(10, 10, 0, 10, 10, 100, projectiledemo);
-		player.add(derp);
 		for(int i=0;i<player.size();i++){
 			player.get(i).updatePosition();//.fly(); what in the world is fly
 		}
@@ -215,37 +213,28 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		update();
 	}
 	
-	public void mouseClicked(MouseEvent e) {
+	@Override
+	public void mousePressed(MouseEvent e) {//Jason Lyan
 		if(e.getButton() == MouseEvent.BUTTON1){
-			char1.firePistol(50,50);
-			System.out.println(player.get(0));
+			char1.firePistol(10,10);
 		}
 		
 	}
-	
-	public void mouseEntered(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON1){
-			char1.firePistol(50,50);
-			System.out.println(player.get(0));
-		}
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
 		
 	}
-	
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public void mousePressed(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON1){
-			char1.firePistol(50,50);
-			System.out.println(player.get(0));
-		}
-		
-	}
-	
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+	
 }
