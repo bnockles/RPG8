@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import project.directors.Visible;
 
 public class ShopScreen extends Screen implements KeyListener{
 	
-	BufferedImage backGround;
+	BufferedImage backGround = new BufferedImage(384, 288, BufferedImage.TYPE_INT_ARGB);;
 	BufferedImage character;
 	TownWanderer playable;
 	WeaponStore store;
@@ -39,11 +40,12 @@ public class ShopScreen extends Screen implements KeyListener{
 		store = new WeaponStore(itemN, 10000);
 		// TODO Auto-generated constructor stub
 		try{
-			backGround = ImageIO.read(new URL("http://i1067.photobucket.com/albums/u429/colinharvie/RPGMaker%20MV%20Tiles/MV_WoodAutoTiles_Ezra_color1_zpso4kqtxet.png"));
+			backGround = ImageIO.read(new FileInputStream("/images/shop/pic.png"));
 			character = ImageIO.read(new URL("http://vignette2.wikia.nocookie.net/reddits-world/images/f/fc/Reddit-alien.png/revision/latest?cb=20140914033417"));
 			playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/sprites/standing.png");
 		}
 		catch (IOException e) {
+			e.printStackTrace();
 		}
 		getKeyListener();
 	}	
