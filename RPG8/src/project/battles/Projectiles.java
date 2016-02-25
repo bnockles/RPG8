@@ -1,9 +1,11 @@
 package project.battles;
 
+import java.awt.image.BufferedImage;
+
 import project.items.Weapon;
 
 public class Projectiles extends Collision{
-	protected String pImgSrc;
+	protected BufferedImage pImgSrc;
 	protected int vx;
 	protected int vy;
 	protected int range;
@@ -11,7 +13,7 @@ public class Projectiles extends Collision{
 	protected final int initY;
 	protected boolean collided;
 
-	public Projectiles(int x, int y, int damage, int vx, int vy, int range, String pImgSrc){
+	public Projectiles(int x, int y, int damage, int vx, int vy, int range, BufferedImage pImgSrc){
 		super(x, y, damage);
 		//this.bulletType = bulletType; //this needs more clarity because it has to be created
 		this.vx = vx;
@@ -21,7 +23,7 @@ public class Projectiles extends Collision{
 		this.initY = y;
 		collided = false;
 	}
-	public String getpImgSrc() {
+	public BufferedImage getpImgSrc() {
 		return pImgSrc;
 	}
 
