@@ -35,6 +35,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	public static final long MOVE_UNIT = 5;
 	public static BufferedImage projectiledemo;
 	SampleProjectiles bullet;
+	public int[] enemystats = {100,100,100,100,100,100};
 	public BattlesScreen(Game game){
 		super(game);
 		Mainchar1();
@@ -100,8 +101,9 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		origimage1 = UtilityMethods.getImageFromFile(this, "/enemy/eright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/eright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		enemy1 = new SampleGEnemy(animation,100,100,100,100);
-		enemy2 = new SampleKEnemy(animation,100,100,100,100);
+		enemy1 = new SampleKEnemy(animation,enemystats, new SampleWeapon());
+//		enemy1.GeneralEnemyAI();
+		enemy2 = new SampleGEnemy(animation,enemystats, new SampleWeapon());
 	}
 	public void Weapon(){
 

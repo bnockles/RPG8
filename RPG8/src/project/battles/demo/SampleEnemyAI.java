@@ -25,8 +25,9 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	protected abstract void reaction();
 	protected abstract void run();
 	public void GeneralEnemyAI(){
-		do{
+		if(checkAlive()){
 			//do something
+			System.out.println("hello");
 			if(targetlock == false)
 				checkForPlayer();
 			else
@@ -34,10 +35,8 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 			if(maxhp/10>hp)
 				run();
 		}
-		while(checkAlive());
 		//animation of death
-		dropItem();
-		
+		//dropItem();
 	}
 	public boolean checkAlive(){
 		if(hp<0)
@@ -68,17 +67,14 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 		else{
 			positionX++;
 		}
-		if(true){
-			left = !left;
-		}; // check if its gonna crash into a wall or something
-		// need variables for other objects and boundaries
-		if(true){
-			up = !up;
-		}
+//		if(true){
+//			left = !left;
+//		}; // check if its gonna crash into a wall or something
+//		// need variables for other objects and boundaries
+//		if(true){
+//			up = !up;
+//		}
 	}
-	public void paint(Graphics2D g){
-	}
-	
 	public void firePistol(int vx, int vy){//target location
 		SampleProjectiles bullet = new SampleProjectiles(0, 0, 0, vx, vy, 0, BattlesScreen.projectiledemo);
 		BattlesScreen.enemy.add(bullet);

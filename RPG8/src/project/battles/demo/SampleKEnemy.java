@@ -1,11 +1,19 @@
 package project.battles.demo;
 
+import java.awt.image.BufferedImage;
+
 import project.controls.OverworldSpriteControl;
 import project.items.Weapon;
 import project.save.ItemState;
 
 public class SampleKEnemy extends SampleEnemyAI{
-	public SampleKEnemy(int[] stats, SampleWeapon weapon){
+	public SampleKEnemy(BufferedImage[][] images, int[] stats, SampleWeapon weapon){
+		this.bsprite = images[0];
+		this.fsprite = images[1];
+		this.lsprite = images[2];
+		this.rsprite = images[3];
+		this.positionX = 200;
+		this.positionY = 200;
 		maxhp = stats[0];
 		positionX = stats[1];
 		positionY = stats[2];
@@ -15,7 +23,11 @@ public class SampleKEnemy extends SampleEnemyAI{
 		this.weapon = weapon;
 	}
 
-	public SampleKEnemy(int[] stats, SampleWeapon weapon, boolean[] conditions){
+	public SampleKEnemy(BufferedImage[][] images, int[] stats, SampleWeapon weapon, boolean[] conditions){
+		this.bsprite = images[0];
+		this.fsprite = images[1];
+		this.lsprite = images[2];
+		this.rsprite = images[3];
 		maxhp = stats[0];
 		positionX = stats[1];
 		positionY = stats[2];
