@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -16,6 +17,8 @@ public class Hero {
 	int width = 30;
 	int height = 46;
 	boolean zero = true;
+	public static int weapon = 10;
+	public int strength = 100;
 	
 	public Hero(String name, int x, int y){
 		this.name = name;
@@ -91,6 +94,29 @@ public class Hero {
 			storyDemo.Aya.animate(storyDemo.AyaLeft.get(1));
 		}
 		zero = !zero;
+	}
+	public void randomX() {
+		Random random = new Random();
+		x +=75; //(random.nextInt(500 - 10 + 1) + 10);
+	}
+	public void randomY() {
+		Random random = new Random();
+		y +=75; //(random.nextInt(500 - 10 + 1) + 10);
+	}
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+	public void shoot() {
+		if(weapon > 0) {
+			weapon--;
+			System.out.println("Bang!");
+		}
+		else{
+			System.out.println("No Ammo");
+		}
+	}
+	public void radio() {
+		Radio.radioCall();
 	}
 	
 	public BufferedImage getImage(){
