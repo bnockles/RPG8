@@ -1,7 +1,7 @@
 package project.story;
 
 import project.directors.Game;
-
+//test
 public class EnemyDynamic extends storyDemo{
 	
 	public static void strengthen() {
