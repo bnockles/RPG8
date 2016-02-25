@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.SwingUtilities;
@@ -15,7 +16,7 @@ import javax.swing.SwingUtilities;
 import project.directors.Game;
 import project.directors.Screen;
 
-public class DemoControls extends project.directors.Screen implements KeyListener,MenuInteraction,BattlesInteraction{
+public class DemoControls extends project.directors.Screen implements KeyListener,MenuInteraction,BattlesInteraction, MouseListener{
 
 	BufferedImage landscape;
 	int x=300;
@@ -249,6 +250,30 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 	public void paintScreen(Graphics2D g2) {
 		g2.setColor(Color.blue);
 		g2.drawString(s,x, y);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

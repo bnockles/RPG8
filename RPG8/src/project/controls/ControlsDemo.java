@@ -2,6 +2,8 @@ package project.controls;
 
 /** author Vincent & Jacky */
 
+import java.awt.event.MouseListener;
+
 import project.directors.Screen;
 
 public class ControlsDemo extends project.directors.Game{
@@ -19,6 +21,7 @@ public class ControlsDemo extends project.directors.Game{
 	public void reset() {
 		Screen demoScreen = new DemoControls(this);
 		setScreen(demoScreen);
+		addMouseListener((MouseListener) demoScreen);
 		repaint();
 	}
 }
