@@ -61,5 +61,6 @@ public interface ItemResources {
 	Weapons[] SMG = { };
 	Weapons[] Explosives = { };
 	// Misc
-	
+	Misc gold = new Misc("Gold", "Get more of this and you're rich!", 0);
+	Misc scrap = new Misc("Scrap Metal", "Useless trash.", 1);
 }
