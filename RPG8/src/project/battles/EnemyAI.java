@@ -161,6 +161,20 @@ public abstract class EnemyAI extends Character{
 			}
 		return fsprite[0];
 	}
+	@Override
+	public void fire(int x, int y, int vx, int vy) {
+		// TODO Auto-generated method stub
+		if(checkAmmo()){
+				//BattlesScreen.player.add(new Projectiles(100,100,100,100,100,100,BattlesScreen.projectiledemo));
+				firePistol(hostile,x,y,vx,vy);
+				weapon.reduceAmmoByOne();
+
+				//			Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 400, BattlesScreen.projectiledemo);
+				//			BattlesScreen.player.add(bullet);
+		}
+		else
+			return;
+	}
 	abstract void movement();
 	abstract void sight();
 }

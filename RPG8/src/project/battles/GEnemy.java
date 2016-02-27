@@ -35,7 +35,7 @@ public class GEnemy extends EnemyAI{
 	@Override
 	protected void reaction() {
 		// TODO Auto-generated method stub
-		weapon.fire(true,x,y,10,10);
+		fire(x,y,10,10);
 	}
 
 	@Override

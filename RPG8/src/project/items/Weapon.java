@@ -24,71 +24,6 @@ public class Weapon {
 		this.ammo = projectilestats[2];
 		this.range = projectilestats[3];
 	}
-
-	public void fire(boolean hostile,int x, int y, int vx, int vy){
-		if(checkAmmo())
-			if(hostile){
-				//BattlesScreen.player.add(new Projectiles(100,100,100,100,100,100,BattlesScreen.projectiledemo));
-				firePistol(hostile,x,y,vx,vy);
-				ammo--;
-			}
-			else{
-				//			Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 400, BattlesScreen.projectiledemo);
-				//			BattlesScreen.player.add(bullet);
-
-			}
-		else
-			return;
-	}
-	public boolean checkAmmo(){
-		if(ammo<=0){
-			return false;
-		}
-		return true;
-	}
-
-	public void firePistol(boolean hostile, int x, int y, int vx, int vy){//target location
-		/**
-		 * Yifan
-		 */
-		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 400, projectileimg);
-		if(hostile)
-			BattlesScreen.eBullets.add(bullet);
-		else
-			BattlesScreen.pBullets.add(bullet);
-	}
-	public void useMelee(){
-		//requires pelham's class
-	}
-	public void useExplovies(){
-		//requires a new class
-	}
-	public void fireRifle(boolean hostile, int x, int y, int vx, int vy){
-		/**
-		 * Yifan
-		 */
-		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
-		BattlesScreen.pBullets.add(bullet);
-		reduceAmmoByOne();
-	}
-	public void fireHeavy(boolean hostile, int x, int y, int vx, int vy){
-		/**
-		 * Yifan
-		 */
-		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
-		Projectiles bullet1 = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
-		BattlesScreen.pBullets.add(bullet);
-		BattlesScreen.pBullets.add(bullet1);
-		reduceAmmoByOne();
-	}
-	public void fireSMG(boolean hostile, int x, int y, int vx, int vy){
-		/**
-		 * Yifan
-		 */
-		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
-		BattlesScreen.pBullets.add(bullet);
-		reduceAmmoByOne();
-	}
 	public void setAmmo(int ammo) {
 		this.ammo = ammo;
 	}
@@ -105,7 +40,7 @@ public class Weapon {
 		return velocity;
 	}
 
-	public int getMaxammo() {
+	public int getMaxAmmo() {
 		return maxammo;
 	}
 
@@ -114,6 +49,9 @@ public class Weapon {
 	}
 	public void reduceAmmoByOne(){
 		ammo--;
+	}
+	public BufferedImage getProjectileImg() {
+		return projectileimg;
 	}
 
 }

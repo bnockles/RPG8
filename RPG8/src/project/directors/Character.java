@@ -3,7 +3,8 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import project.battles.demo.SampleWeapon;
+import project.battles.Projectiles;
+import project.battles.demo.BattlesScreen;
 import project.controls.OverworldSpriteControl;
 import project.save.ItemState;
 import project.items.Weapon;
@@ -37,7 +38,7 @@ public abstract class Character {
 	protected int exp; //Enemies will give exp to the player when it dies 
 	protected int strength; // Muhammad said something about this for enemies and players in the earlier demo
 	
-	protected ArrayList<SampleWeapon> loadout;
+	protected ArrayList<Weapon> loadout;
 	
 	protected boolean hostile;
 	
@@ -76,7 +77,8 @@ public abstract class Character {
 	}
 	//ABSTRACT BELOW
 	public abstract BufferedImage getImage();
-	
+	public abstract void fire(int x, int y, int vx, int vy);
+
 	//NOT GETTERS/SETTERS BELOW
 	public Rectangle getBounds(){ //Pelham made this change sorry in advance for changing your code
 		return new Rectangle(x, y, width, height);
@@ -90,6 +92,60 @@ public abstract class Character {
 		if(count>=20)
 			count=0;
 	}
+	
+	//WEAPON METHODS BELOW
+	
+	public boolean checkAmmo(){
+		if(weapon.getAmmo()<=0){
+			return false;
+		}
+		return true;
+	}
+	
+	public void firePistol(boolean hostile, int x, int y, int vx, int vy){//target location
+		/**
+		 * Yifan
+		 */
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 400, weapon.getProjectileImg());
+		if(hostile)
+			BattlesScreen.eBullets.add(bullet);
+		else
+			BattlesScreen.pBullets.add(bullet);
+	}
+	public void useMelee(){
+		//requires pelham's class
+	}
+	public void useExplovies(){
+		//requires a new class
+	}
+	public void fireRifle(boolean hostile, int x, int y, int vx, int vy){
+		/**
+		 * Yifan
+		 */
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		BattlesScreen.pBullets.add(bullet);
+		weapon.reduceAmmoByOne();
+	}
+	public void fireHeavy(boolean hostile, int x, int y, int vx, int vy){
+		/**
+		 * Yifan
+		 */
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		Projectiles bullet1 = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		BattlesScreen.pBullets.add(bullet);
+		BattlesScreen.pBullets.add(bullet1);
+		weapon.reduceAmmoByOne();
+	}
+	public void fireSMG(boolean hostile, int x, int y, int vx, int vy){
+		/**
+		 * Yifan
+		 */
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		BattlesScreen.pBullets.add(bullet);
+		weapon.reduceAmmoByOne();
+	}
+	//GETTERS&SETTERS BELOW
+	
 	public int getWidth() {
 		return width;
 	}
@@ -129,7 +185,7 @@ public abstract class Character {
 	public int getStrength() {
 		return strength;
 	}
-	public ArrayList<SampleWeapon> getLoadout() {
+	public ArrayList<Weapon> getLoadout() {
 		return loadout;
 	}
 	public boolean isHostile() {
@@ -162,7 +218,7 @@ public abstract class Character {
 	public void setStrength(int strength) {
 		this.strength = strength;
 	}
-	public void setLoadout(ArrayList<SampleWeapon> loadout) {
+	public void setLoadout(ArrayList<Weapon> loadout) {
 		this.loadout = loadout;
 	}
 	public void setHostile(boolean hostile) {
@@ -192,5 +248,5 @@ public abstract class Character {
 	public void setWalking(boolean walking) {
 		this.walking = walking;
 	}
-
+	
 }

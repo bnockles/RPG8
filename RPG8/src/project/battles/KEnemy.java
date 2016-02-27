@@ -3,7 +3,6 @@ package project.battles;
 import java.awt.image.BufferedImage;
 
 import project.battles.demo.BattlesScreen;
-import project.battles.demo.SampleWeapon;
 import project.controls.OverworldSpriteControl;
 import project.items.Weapon;
 import project.save.ItemState;
@@ -45,7 +44,7 @@ public class KEnemy extends EnemyAI{
 	@Override
 	protected void reaction() {
 		// TODO Auto-generated method stub
-		weapon.fire(true,x,y,10,10);
+		fire(x,y,10,10);
 	}
 
 	@Override
