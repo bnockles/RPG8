@@ -21,8 +21,8 @@ public abstract class SampleCharacter {
 	protected boolean moveLeft = false;
 	protected boolean moveRight = false;
 	protected SampleWeapon equippedWeapon = new SampleWeapon("blah","blah",rawr);
-	protected int width = 100;
-	protected int height = 100;
+	protected int width;
+	protected int height;
 	protected String imgsrc;
 	protected boolean Hostile;
 	protected boolean walking = false;

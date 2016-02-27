@@ -29,7 +29,6 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		this.fsprite = images[1];
 		this.lsprite = images[2];
 		this.rsprite = images[3];
-		this.imgsrc = imgsrc;
 		this.recovery= recovery;
 		this.hpValue=  hpValue;
 		this.armorValue = armorValue;
