@@ -57,9 +57,12 @@ public class UtilityMethods {
 		return null;
 	}
 
-	public static BufferedImage getScaledImage(BufferedImage origimage0, int i, int j) {
+	public static BufferedImage getScaledImage(BufferedImage original, int width, int height) {
 		// TODO Auto-generated method stub
-		return null;
+		BufferedImage result = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g2 = result.createGraphics();
+		g2.drawImage(original,0,0,width,height,0,0,original.getWidth(),original.getHeight(),null);
+		return result;
 	}
 
 	public static BufferedImage[] addImage(BufferedImage origimage0, BufferedImage origimage1, BufferedImage origimage2) {
