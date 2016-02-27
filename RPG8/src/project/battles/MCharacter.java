@@ -77,6 +77,7 @@ public class MCharacter extends Character{
 	@Override
 	public void fire(int x, int y, int vx, int vy) {
 		// TODO Auto-generated method stub
+		useMelee();
 		if(checkAmmo()){
 			//if(weapon instanceof Pistol) // this may be the way to check weapons
 				firePistol(hostile,x,y,vx,vy);

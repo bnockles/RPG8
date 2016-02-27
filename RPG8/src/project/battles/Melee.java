@@ -15,24 +15,34 @@ public class Melee extends Collision{
 	protected Rectangle hitBox;
 	protected double rotation;
 	protected int frames;//out of 30, e.g. 15/30fps = .5 seconds
+	protected BufferedImage imageSheet;
 	
-	public Melee(int x, int y, int damage, int width, int height, int frames, BufferedImage image, double rotation){
+	public Melee(int x, int y, int damage, int width, int height, int frames, BufferedImage imageSheet, double rotation){
 		super(x, y, damage);
 		this.width = width;
 		this.height = height;
 		this.hitBox = new Rectangle(x,y,width,height);
 		this.frames = frames;
-		this.image = image;
+		this.imageSheet = imageSheet;
+		updateImage();
 		this.rotation = rotation;
 		collided = false;
-		paintImage();
 	}
 	
 	public void updateTime(){
 		if(--frames <= 0)collided = true;
 	}
+	public void updateImage(){
+		 int count = 7 - Math.round(frames/2);
+		 int imageWidth = imageSheet.getWidth()/8;
+		 int imageHeight = imageSheet.getHeight();
+		 BufferedImage imageSub = imageSheet.getSubimage(imageWidth*count, 0, imageWidth, imageHeight);
+		 image = UtilityMethods.getScaledImage(imageSub, width, height);
+		 //paintImage();
+	}
 	@Override
 	public void updateAndCheckAll() {
+		updateImage();
 		updateTime();
 	}
 
@@ -51,12 +61,11 @@ public class Melee extends Collision{
 	@Override
 	public void paintImage() {
 		BufferedImage slashImage = image;
-		slashImage = UtilityMethods.getScaledImage(slashImage, width, height);
 		Graphics2D g = slashImage.createGraphics();
 		AffineTransform oldtrans = new AffineTransform();
 	    AffineTransform trans = new AffineTransform();
 	    trans.setToIdentity();
-	    trans.rotate(Math.toRadians(rotation), width/2, height/2);
+	    trans.rotate(rotation, width/2, height/2);
 	    trans.translate((width/2), (height/2));
 	    g.setTransform(trans);
 	    g.drawImage(this.getImage(), 0, 0, width, height, null);

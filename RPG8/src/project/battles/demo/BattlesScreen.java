@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
+import project.battles.Collision;
 import project.battles.EnemyAI;
 import project.battles.GEnemy;
 import project.battles.KEnemy;
@@ -113,8 +114,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static GEnemy enemy2;
 	
 	public static ArrayList<EnemyAI> enemiesOnScreen= new ArrayList<EnemyAI>();
-	public static ArrayList<Projectiles> pBullets = new ArrayList<Projectiles>();
-	public static ArrayList<Projectiles> eBullets = new ArrayList<Projectiles>();
+	public static ArrayList<Collision> pBullets = new ArrayList<Collision>();
+	public static ArrayList<Collision> eBullets = new ArrayList<Collision>();
 	
 	Timer timer = new Timer(FPS,this);
 	ArrayList<Integer> pressedKeys = new ArrayList<Integer>();

@@ -44,7 +44,7 @@ public class UtilityMethods {
 
 
 	}
-	public static BufferedImage getImageFromFile(BattlesScreen battlesScreen, String string) {
+	public static BufferedImage getImageFromFile(Object battlesScreen, String string) {
 		// TODO Auto-generated method stub
 		URL url = battlesScreen.getClass().getResource(string);
 		try {

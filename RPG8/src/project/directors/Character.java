@@ -3,6 +3,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import project.battles.Melee;
 import project.battles.Projectiles;
 import project.battles.demo.BattlesScreen;
 import project.controls.OverworldSpriteControl;
@@ -113,7 +114,10 @@ public abstract class Character {
 			BattlesScreen.pBullets.add(bullet);
 	}
 	public void useMelee(){
-		//requires pelham's class
+		//test code
+		BufferedImage sheet = UtilityMethods.getImageFromFile(this, "/images/slash/slash.png");
+		Melee attack = new Melee(x-5,y-30,0,50,50,15,sheet,Math.PI/2);
+		BattlesScreen.pBullets.add(attack);
 	}
 	public void useExplovies(){
 		//requires a new class
