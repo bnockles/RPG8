@@ -339,7 +339,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		// TODO Auto-generated method stub
 
 	}
-	public int calculateVComponentPlayerToCursor(int velocityScalar, int cursorX, int cursorY, boolean isX){
+	public static int calculateVComponentPlayerToCursor(int velocityScalar, int cursorX, int cursorY, boolean isX){
 		/**
 		 * Melvin
 		 */

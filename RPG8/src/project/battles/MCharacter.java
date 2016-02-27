@@ -77,14 +77,11 @@ public class MCharacter extends Character{
 	@Override
 	public void fire(int x, int y, int vx, int vy) {
 		// TODO Auto-generated method stub
-		if(checkAmmo())
-				//BattlesScreen.player.add(new Projectiles(100,100,100,100,100,100,BattlesScreen.projectiledemo));
+		if(checkAmmo()){
+			//if(weapon instanceof Pistol) // this may be the way to check weapons
 				firePistol(hostile,x,y,vx,vy);
-				weapon.setAmmo(weapon.getAmmo()-1);
-
-				//			Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 400, BattlesScreen.projectiledemo);
-				//			BattlesScreen.player.add(bullet);
-			return;
+				weapon.reduceAmmoByOne();
+		}
 	}
 
 }

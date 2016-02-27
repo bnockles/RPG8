@@ -35,7 +35,9 @@ public class GEnemy extends EnemyAI{
 	@Override
 	protected void reaction() {
 		// TODO Auto-generated method stub
-		fire(x,y,10,10);
+		int vx = BattlesScreen.calculateVComponentPlayerToCursor(10, x, y, true);
+		int vy = BattlesScreen.calculateVComponentPlayerToCursor(10, x, y, false);
+		fire(x,y,-vx,-vy);
 	}
 
 	@Override
