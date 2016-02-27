@@ -11,6 +11,7 @@ import project.items.Weapon;
 	 * 
 	 */
 public abstract class SampleEnemyAI extends SampleCharacter{
+	public static Arc2D.Double visioncone;
 	protected int visionrangeX;
 	protected int visionrangeY;
 	protected int visiondegree;
@@ -53,12 +54,50 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 		int playerXposition=0;
 		int playerYposition=0;
 		//System.out.println("hello");
-		Arc2D.Double visionrange = new Arc2D.Double(x, y, visionrangeX, visionrangeY, visiondegree, visiondegree+90, Arc2D.PIE);
-		if(visionrange.contains(playerXposition, playerYposition)){
+		visioncone = new Arc2D.Double(x, y, visionrangeX, visionrangeY, 225, 90, Arc2D.PIE);
+		if(visioncone.contains(playerXposition, playerYposition)){
 			targetlock = true;
 		}
 		else{
-			wander();
+			moveUpAndDown();
+		}
+	}
+	public static void paintArc(Graphics2D g){
+		g.draw(visioncone);
+		g.drawString("hi",x,y);
+	}
+	public void moveUpAndDown(){
+		if(moveUp){
+			y-=10;
+			if(y<=0){
+				moveUp = false;
+				moveDown = true;
+			}
+		}
+		else{
+			y+=10;
+			if(BattlesScreen.height <= y){
+				System.out.println(y+" "+ BattlesScreen.height);
+				moveUp = true;
+				moveDown = false;
+			}
+		}
+	}
+	public void moveLeftAndRight(){
+		if(moveRight){
+			y-=10;
+			if(y<=0){
+				moveRight = false;
+				moveLeft = true;
+			}
+		}
+		else{
+			y+=10;
+			if(BattlesScreen.height <= y){
+				System.out.println(y+" "+ BattlesScreen.height);
+				moveUp = true;
+				moveDown = false;
+			}
 		}
 	}
 	public void wander(){
