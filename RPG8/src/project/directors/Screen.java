@@ -6,7 +6,6 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 import project.battles.EnemyAI;
-import project.battles.demo.SampleEnemyAI;
 
 public abstract class Screen implements Visible{
 
