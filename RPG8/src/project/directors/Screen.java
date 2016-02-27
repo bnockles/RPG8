@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
+import project.battles.EnemyAI;
 import project.battles.demo.SampleEnemyAI;
 
 public abstract class Screen implements Visible{
@@ -47,7 +48,7 @@ public abstract class Screen implements Visible{
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
 		paintScreen(g2);
-		SampleEnemyAI.paintArc(g2);
+		EnemyAI.paintArc(g2);
 	}
 	
 	/**

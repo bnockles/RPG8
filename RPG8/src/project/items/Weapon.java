@@ -3,7 +3,7 @@ package project.items;
 import java.awt.image.BufferedImage;
 
 import project.battles.demo.BattlesScreen;
-import project.battles.demo.SampleProjectiles;
+import project.battles.Projectiles;
 
 public class Weapon {
 
@@ -28,12 +28,12 @@ public class Weapon {
 	public void fire(boolean hostile,int x, int y, int vx, int vy){
 		if(checkAmmo())
 			if(hostile){
-				//BattlesScreen.player.add(new SampleProjectiles(100,100,100,100,100,100,BattlesScreen.projectiledemo));
+				//BattlesScreen.player.add(new Projectiles(100,100,100,100,100,100,BattlesScreen.projectiledemo));
 				firePistol(hostile,x,y,vx,vy);
 				ammo--;
 			}
 			else{
-				//			SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 400, BattlesScreen.projectiledemo);
+				//			Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 400, BattlesScreen.projectiledemo);
 				//			BattlesScreen.player.add(bullet);
 
 			}
@@ -51,11 +51,11 @@ public class Weapon {
 		/**
 		 * Yifan
 		 */
-		SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 400, projectileimg);
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 400, projectileimg);
 		if(hostile)
-			BattlesScreen.enemy.add(bullet);
+			BattlesScreen.eBullets.add(bullet);
 		else
-			BattlesScreen.player.add(bullet);
+			BattlesScreen.pBullets.add(bullet);
 	}
 	public void useMelee(){
 		//requires pelham's class
@@ -67,26 +67,26 @@ public class Weapon {
 		/**
 		 * Yifan
 		 */
-		SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
-		BattlesScreen.player.add(bullet);
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		BattlesScreen.pBullets.add(bullet);
 		reduceAmmoByOne();
 	}
 	public void fireHeavy(boolean hostile, int x, int y, int vx, int vy){
 		/**
 		 * Yifan
 		 */
-		SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
-		SampleProjectiles bullet1 = new SampleProjectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
-		BattlesScreen.player.add(bullet);
-		BattlesScreen.player.add(bullet1);
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		Projectiles bullet1 = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		BattlesScreen.pBullets.add(bullet);
+		BattlesScreen.pBullets.add(bullet1);
 		reduceAmmoByOne();
 	}
 	public void fireSMG(boolean hostile, int x, int y, int vx, int vy){
 		/**
 		 * Yifan
 		 */
-		SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
-		BattlesScreen.player.add(bullet);
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		BattlesScreen.pBullets.add(bullet);
 		reduceAmmoByOne();
 	}
 	public void setAmmo(int ammo) {
