@@ -249,25 +249,21 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		if(pressedKeys.contains(KeyEvent.VK_UP) && !pressedKeys.contains(KeyEvent.VK_DOWN)){
 			proposedNewY-=P_SPEED;
 			character.setY(proposedNewY);
-			character.increaseCount();
 			character.setMoveUp(true);
 		}
 		if(!pressedKeys.contains(KeyEvent.VK_UP) && pressedKeys.contains(KeyEvent.VK_DOWN)){
 			proposedNewY+=P_SPEED;
 			character.setY(proposedNewY);
-			character.increaseCount();
 			character.setMoveDown(true);
 		}
 		if(pressedKeys.contains(KeyEvent.VK_RIGHT) && !pressedKeys.contains(KeyEvent.VK_LEFT)){
 			proposedNewX+=P_SPEED;
 			character.setX(proposedNewX);
-			character.increaseCount();
 			character.setMoveRight(true);
 		}
 		if(!pressedKeys.contains(KeyEvent.VK_RIGHT) && pressedKeys.contains(KeyEvent.VK_LEFT)){
 			proposedNewX-=P_SPEED;
 			character.setX(proposedNewX);
-			character.increaseCount();
 			character.setMoveLeft(true);
 		}
 
