@@ -11,8 +11,7 @@ public class Projectiles extends Collision{
 	protected double vy;
 	protected int range;
 	protected final int initX;
-	protected final int initY;
-	protected boolean collided;	
+	protected final int initY;	
 
 	public Projectiles(int x, int y, int damage, double vx, double vy, int range, BufferedImage image){
 		super(x, y, damage);
@@ -36,9 +35,6 @@ public class Projectiles extends Collision{
 			BattlesScreen.player.remove(this); 
 		}*/
 	}
-	public boolean isCollided() {
-		return collided;
-	}
 	public void checkRange(){//melvino
 		double distance = Math.sqrt(Math.pow((x-initX), 2) + Math.pow((y-initY), 2));
 		if(distance >= range)collided=true;
@@ -51,7 +47,7 @@ public class Projectiles extends Collision{
 	}
 	
 	@Override
-	void collideWith(Character C) {//Working on this
+	public void collideWith(Character C) {//Working on this
 		// TBD after discussing
 		collided = true;
 	}

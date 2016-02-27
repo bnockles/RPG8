@@ -13,9 +13,9 @@ public abstract class Collision implements Collidable{
 	protected int damage;
 	protected int x;
 	protected int y;
-	//protected int delay time ... will implement later
-	abstract void collideWith(Character c);
-	abstract public void updateAndCheckAll();
+	protected boolean collided;
+	//protected int delayTime ... will implement later
+	
 	public Collision(int x, int y, int damage){
 		this(x,y);
 		this.damage = damage;
@@ -31,7 +31,9 @@ public abstract class Collision implements Collidable{
 	public int getY() {
 		return y;
 	}
-
+	public boolean isCollided() {
+		return collided;
+	}
 	public BufferedImage getImage() {
 		return image;
 	}
@@ -41,6 +43,8 @@ public abstract class Collision implements Collidable{
 	public boolean doesDamage(){
 		return true;
 	}
+	public abstract void collideWith(Character c);
+	public abstract void updateAndCheckAll();
 	
 	public abstract boolean canPassThrough();
 	public abstract void paintImage();
