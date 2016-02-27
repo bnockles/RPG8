@@ -27,7 +27,7 @@ public class SampleGEnemy extends SampleEnemyAI{
 		// TODO Auto-generated method stub
 		// first step is to shoot them back
 		// at a certain range this enemy will stop attacking and go back to where he belonged
-		weapon.fire(true);
+		weapon.fire(true,x,y,10,10);
 	}
 
 	//Andy Zheng

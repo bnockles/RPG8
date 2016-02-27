@@ -35,6 +35,7 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 				checkForPlayer();
 			else
 				reaction();
+			moveUpAndDown();
 			if(maxHP/10>currentHP){
 				System.out.println(maxHP+" "+currentHP);
 				run();
@@ -50,16 +51,12 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	}
 	public void checkForPlayer(){
 		//System.out.println("hello");
-		int width1 = x+(width/2)-visionrange/2;
-		int height1 = y+(height/2)-visionrange/2;
+		int arcX = x+(width/2)-visionrange/2;
+		int arcY = y+(height/2)-visionrange/2;
 		
-		visioncone = new Arc2D.Double(width1,height1, visionrange, visionrange, 225, 90, Arc2D.PIE);
+		visioncone = new Arc2D.Double(arcX,arcY, visionrange, visionrange, 225, 90, Arc2D.PIE);
 		if(visioncone.contains(BattlesScreen.character.getX(), BattlesScreen.character.getY())){
-			//targetlock = true;
-			System.out.println("HIIIIIIII");
-		}
-		else{
-			moveUpAndDown();
+			targetlock = true;
 		}
 	}
 	public static void paintArc(Graphics2D g){

@@ -25,13 +25,23 @@ public class SampleWeapon {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void fire(boolean hostile){
+	public void fire(boolean hostile,int x, int y, int vx, int vy){
 		if(hostile){
-			BattlesScreen.player.add(new SampleProjectiles(100,100,100,100,100,100,BattlesScreen.projectiledemo));
+			//BattlesScreen.player.add(new SampleProjectiles(100,100,100,100,100,100,BattlesScreen.projectiledemo));
+			firePistol(x,y,vx,vy);
 		}
 		else{
-			BattlesScreen.enemy.add(new SampleProjectiles(100,100,100,100,100,100,BattlesScreen.projectiledemo));
+//			SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 400, BattlesScreen.projectiledemo);
+//			BattlesScreen.player.add(bullet);
 		}
+	}
+	
+	public void firePistol(int x, int y, int vx, int vy){//target location
+		/**
+		 * Yifan
+		 */
+		SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 400, BattlesScreen.projectiledemo);
+		BattlesScreen.enemy.add(bullet);
 	}
 	
 	public void setAmmo(int ammo) {

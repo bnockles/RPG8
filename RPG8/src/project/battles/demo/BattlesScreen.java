@@ -78,7 +78,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	
 	static SampleMCharacter character;
 	public static SampleKEnemy enemy1;
-	SampleGEnemy enemy2;
+	public static SampleGEnemy enemy2;
 	public static ArrayList<SampleEnemyAI> enemiesOnScreen= new ArrayList<SampleEnemyAI>();
 	public static ArrayList<SampleProjectiles> player = new ArrayList<SampleProjectiles>();
 	public static ArrayList<SampleProjectiles> enemy = new ArrayList<SampleProjectiles>();

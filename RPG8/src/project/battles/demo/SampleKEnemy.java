@@ -24,7 +24,7 @@ public class SampleKEnemy extends SampleEnemyAI{
 	@Override
 	public void reaction() {
 		// TODO Auto-generated method stub
-		weapon.fire(true);
+		weapon.fire(true,x,y,10,10);
 		
 	}
 	//Andy Zheng
