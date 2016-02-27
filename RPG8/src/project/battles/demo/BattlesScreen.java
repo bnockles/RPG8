@@ -166,14 +166,14 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 			timer.start();
 			//System.out.println(char1.getPositionY());
 			g2.drawImage(character.getImage(),character.getX(),character.getY(),null);
-			g2.drawImage(bullet.getpImgSrc(), 100, 100, null);
+			g2.drawImage(bullet.getImage(), 100, 100, null);
 			g2.drawImage(enemy1.getImage(),enemy1.getX(),enemy1.getY(),null);
 			//g2.drawImage(enemy2.getImage(count),enemy2.getPositionX(),enemy2.getPositionY(),null);
 			for(int i = 0; i < player.size(); i++){
-				g2.drawImage(player.get(i).getpImgSrc(), player.get(i).getX(), player.get(i).getY(), null);
+				g2.drawImage(player.get(i).getImage(), player.get(i).getX(), player.get(i).getY(), null);
 			}
 			for(int i = 0; i < enemy.size(); i++){
-				g2.drawImage(enemy.get(i).getpImgSrc(), enemy.get(i).getX(), enemy.get(i).getY(), null);
+				g2.drawImage(enemy.get(i).getImage(), enemy.get(i).getX(), enemy.get(i).getY(), null);
 			}
 		}
 		catch(Exception e){

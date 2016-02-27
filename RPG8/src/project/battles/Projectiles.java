@@ -1,45 +1,40 @@
 //Jason Lyan ---> Corrected by Melvin Cherian
 package project.battles;
 
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import project.battles.demo.BattlesScreen;
 import project.items.Weapon;
 
 public class Projectiles extends Collision{
-	protected BufferedImage pImgSrc;
 	protected double vx;
 	protected double vy;
 	protected int range;
 	protected final int initX;
 	protected final int initY;
-	protected boolean collided;
-	protected Rectangle hitBox; 
-	
-	
+	protected boolean collided;	
 
-	public Projectiles(int x, int y, int damage, double vx, double vy, int range, BufferedImage pImgSrc){
+	public Projectiles(int x, int y, int damage, double vx, double vy, int range, BufferedImage image){
 		super(x, y, damage);
 		//this.bulletType = bulletType; //this needs more clarity because it has to be created
 		this.vx = vx;
 		this.vy = vy;
-		this.pImgSrc = pImgSrc;
+		this.image = image;
 		this.initX = x;
 		this.initY = y;
 		this.range= range;
 		collided = false;
 	}
-	public BufferedImage getpImgSrc() {
-		return pImgSrc;
+	public BufferedImage getImage() {
+		return image;
 	}
 
 	public void updatePosition(){
 		x += vx;
-		y += vy;
+		y += vy;/* what is this doe
 		if(hitBox.intersects(BattlesScreen.enemy1.getBounds())){
 			BattlesScreen.player.remove(this); 
-		}
+		}*/
 	}
 	public boolean isCollided() {
 		return collided;
@@ -49,6 +44,7 @@ public class Projectiles extends Collision{
 		if(distance >= range)collided=true;
 	}
 	
+	@Override
 	public void updateAndCheckAll(){
 		updatePosition();
 		checkRange();
@@ -71,11 +67,5 @@ public class Projectiles extends Collision{
 		// TODO Auto-generated method stub
 		
 	}
-	public Rectangle getHitBox() {
-		return hitBox;
-	}
 
-	public void setHitBox(Rectangle hitBox) {
-		this.hitBox = hitBox;
-	}
 }

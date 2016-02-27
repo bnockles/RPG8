@@ -13,8 +13,9 @@ public abstract class Collision implements Collidable{
 	protected int damage;
 	protected int x;
 	protected int y;
+	//protected int delay time ... will implement later
 	abstract void collideWith(Character c);
-	
+	abstract public void updateAndCheckAll();
 	public Collision(int x, int y, int damage){
 		this(x,y);
 		this.damage = damage;
