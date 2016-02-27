@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
+import project.battles.EnemyAI;
 import project.battles.GEnemy;
 import project.battles.KEnemy;
 import project.battles.MCharacter;
@@ -108,12 +109,10 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int W_RANGE = 300;
 	
 	public static MCharacter character;
-	//public static SampleKEnemy enemy1;
 	public static KEnemy enemy1;
-	//public static SampleGEnemy enemy2;
 	public static GEnemy enemy2;
 	
-	public static ArrayList<SampleEnemyAI> enemiesOnScreen= new ArrayList<SampleEnemyAI>();
+	public static ArrayList<EnemyAI> enemiesOnScreen= new ArrayList<EnemyAI>();
 	public static ArrayList<Projectiles> pBullets = new ArrayList<Projectiles>();
 	public static ArrayList<Projectiles> eBullets = new ArrayList<Projectiles>();
 	
@@ -186,7 +185,6 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		origimage2 = UtilityMethods.getImageFromFile(this, "/maincharacter/mright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
 		character =  new MCharacter(animation,playerstats,weapon);
-		//character = new SampleMCharacter(animation,100,100,100,100,100,100);
 	}
 	public void Enemy(){
 		/**
@@ -209,7 +207,6 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		origimage1 = UtilityMethods.getImageFromFile(this, "/enemy/eright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/eright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		//enemy1 = new SampleKEnemy(animation,enemyG, new SampleWeapon(), KE_X, KE_Y);
 		enemy1 = new KEnemy(animation,enemyK,visionK,weapon1);
 //		enemy1.GeneralEnemyAI();
 		enemy2 = new GEnemy(animation,enemyG, visionG,weapon2);

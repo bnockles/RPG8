@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import project.battles.Projectiles;
 import project.battles.demo.BattlesScreen;
-import project.battles.demo.SampleWeapon;
 import project.controls.OverworldSpriteControl;
 import project.save.ItemState;
 import project.items.Weapon;
@@ -39,7 +38,7 @@ public abstract class Character {
 	protected int exp; //Enemies will give exp to the player when it dies 
 	protected int strength; // Muhammad said something about this for enemies and players in the earlier demo
 	
-	protected ArrayList<SampleWeapon> loadout;
+	protected ArrayList<Weapon> loadout;
 	
 	protected boolean hostile;
 	
@@ -186,7 +185,7 @@ public abstract class Character {
 	public int getStrength() {
 		return strength;
 	}
-	public ArrayList<SampleWeapon> getLoadout() {
+	public ArrayList<Weapon> getLoadout() {
 		return loadout;
 	}
 	public boolean isHostile() {
@@ -219,7 +218,7 @@ public abstract class Character {
 	public void setStrength(int strength) {
 		this.strength = strength;
 	}
-	public void setLoadout(ArrayList<SampleWeapon> loadout) {
+	public void setLoadout(ArrayList<Weapon> loadout) {
 		this.loadout = loadout;
 	}
 	public void setHostile(boolean hostile) {
