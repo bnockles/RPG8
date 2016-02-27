@@ -48,7 +48,7 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 		int playerXposition=0;
 		int playerYposition=0;
 		//System.out.println("hello");
-		Arc2D.Double visionrange = new Arc2D.Double(positionX, positionY, visionrangeX, visionrangeY, visiondegree, visiondegree+90, Arc2D.PIE);
+		Arc2D.Double visionrange = new Arc2D.Double(x, y, visionrangeX, visionrangeY, visiondegree, visiondegree+90, Arc2D.PIE);
 		if(visionrange.contains(playerXposition, playerYposition)){
 			targetlock = true;
 		}
@@ -58,17 +58,17 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	}
 	public void wander(){
 		//System.out.println("a"+positionX);
-		if(Math.abs(positionX-BattlesScreen.char1.getPositionX()) < 100){
-			positionX--;
+		if(Math.abs(x-BattlesScreen.character.getX()) < 100){
+			x--;
 		}
 		else{
-			positionX++;
+			x++;
 		}
-		if(Math.abs(positionY-BattlesScreen.char1.getPositionY()) < 100){
-			positionY--;
+		if(Math.abs(y-BattlesScreen.character.getY()) < 100){
+			y--;
 		}
 		else{
-			positionY++;
+			y++;
 		}
 		//System.out.println("b"+positionX);
 //		if(true){
@@ -87,7 +87,7 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	
 	public void dropItem(){
 		if (hp <= 0){
-			BattlesScreen.char1.gainExp(10);
+			BattlesScreen.character.gainExp(10);
 		}
 	} 
 	@Override

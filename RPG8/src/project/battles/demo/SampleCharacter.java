@@ -28,15 +28,15 @@ public abstract class SampleCharacter {
 	protected boolean walking = false;
 	protected int maxHP;
 	protected int currentHP;
-	protected int positionX;
-	protected int positionY;
+	protected int x;
+	protected int y;
 	
 	public String getImgsrc() {
 		return imgsrc;
 	}
 	
 	public Rectangle getBounds(){ //Pelham made this change sorry in advance for changing your code
-		return new Rectangle(positionX, positionY, width, height);
+		return new Rectangle(x, y, width, height);
 	}
 	
 	public void increaseCount(){
@@ -74,17 +74,17 @@ public abstract class SampleCharacter {
 	public void setCurrentHP(int currentHP) {
 		this.currentHP = currentHP;
 	}
-	public int getPositionX() {
-		return positionX;
+	public int getX() {
+		return x;
 	}
-	public void setPositionX(int positionX) {
-		this.positionX = positionX;
+	public void setX(int positionX) {
+		this.x = positionX;
 	}
-	public int getPositionY() {
-		return positionY;
+	public int getY() {
+		return y;
 	}
-	public void setPositionY(int positionY) {
-		this.positionY = positionY;
+	public void setY(int positionY) {
+		this.y = positionY;
 	}
 	public void setMoveUp(boolean moveUp) {
 		this.moveUp = moveUp;

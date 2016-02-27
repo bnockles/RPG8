@@ -24,7 +24,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 	private int sneakValue;
 	private SampleWeapon equippedWeapon;
 	private ArrayList<SampleWeapon> loadout;
-	public SampleMCharacter(BufferedImage[][] images,int recovery, int hpValue, int armorValue, int sneakValue, int positionX, int positionY){
+	public SampleMCharacter(BufferedImage[][] images,int recovery, int hpValue, int armorValue, int sneakValue, int x, int y){
 		this.bsprite = images[0];
 		this.fsprite = images[1];
 		this.lsprite = images[2];
@@ -33,8 +33,8 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		this.hpValue=  hpValue;
 		this.armorValue = armorValue;
 		this.sneakValue = sneakValue;
-		this.positionX = positionX;
-		this.positionY = positionY;
+		this.x = x;
+		this.y = y;
 //		sprite = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
 //		URL url = getClass().getResource(imgsrc);
 //		try{
@@ -165,7 +165,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		/**
 		 * Yifan
 		 */
-		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, vx, vy, 400, BattlesScreen.projectiledemo);
+		SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 400, BattlesScreen.projectiledemo);
 		BattlesScreen.player.add(bullet);
 	}
 	public void useMelee(){
@@ -178,7 +178,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		/**
 		 * Yifan
 		 */
-		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
 		BattlesScreen.player.add(bullet);
 		equippedWeapon.reduceAmmoByOne();
 	}
@@ -186,8 +186,8 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		/**
 		 * Yifan
 		 */
-		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, vx, vy, 800, BattlesScreen.projectiledemo);
-		SampleProjectiles bullet1 = new SampleProjectiles(positionX, positionY, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		SampleProjectiles bullet1 = new SampleProjectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
 		BattlesScreen.player.add(bullet);
 		BattlesScreen.player.add(bullet1);
 		equippedWeapon.reduceAmmoByOne();
@@ -196,7 +196,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		/**
 		 * Yifan
 		 */
-		SampleProjectiles bullet = new SampleProjectiles(positionX, positionY, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
 		BattlesScreen.player.add(bullet);
 		equippedWeapon.reduceAmmoByOne();
 	}

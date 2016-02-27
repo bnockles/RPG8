@@ -22,7 +22,7 @@ public abstract class SampleMeleeWeapon {
 	//My Collision method which I believe should be in an interface because it is different for projectiles and melee weapons	
 	public void collision(){
 		if(BattlesScreen.enemy1.getBounds().intersects(getBounds()) ||
-				BattlesScreen.char1.getBounds().intersects(getBounds())) collided = true;
+				BattlesScreen.character.getBounds().intersects(getBounds())) collided = true;
 		
 		if (collided) {
 			delayTime(); 
@@ -44,8 +44,8 @@ public abstract class SampleMeleeWeapon {
 	
 	public void beingUsed(){
 		if (pickedUp){
-			this.x = BattlesScreen.char1.getPositionX();
-			this.y = BattlesScreen.char1.getPositionY();
+			this.x = BattlesScreen.character.getX();
+			this.y = BattlesScreen.character.getY();
 		}
 	}
 	

@@ -7,13 +7,13 @@ import project.items.Weapon;
 import project.save.ItemState;
 
 public class SampleKEnemy extends SampleEnemyAI{
-	public SampleKEnemy(BufferedImage[][] images, int[] stats, SampleWeapon weapon, int positionX, int positionY){
+	public SampleKEnemy(BufferedImage[][] images, int[] stats, SampleWeapon weapon, int x, int y){
 		this.bsprite = images[0];
 		this.fsprite = images[1];
 		this.lsprite = images[2];
 		this.rsprite = images[3];
-		this.positionX = positionX;
-		this.positionY = positionY;
+		this.x = x;
+		this.y = y;
 		maxhp = stats[0];
 		hp = stats[0];
 		//hp = 0;
@@ -30,8 +30,8 @@ public class SampleKEnemy extends SampleEnemyAI{
 		this.rsprite = images[3];
 		maxhp = stats[0];
 		hp = stats[0];
-		this.positionX = positionX;
-		this.positionY = positionY;
+		this.x = positionX;
+		this.y = positionY;
 		visionrangeX = stats[1];
 		visionrangeY = stats[2];
 		visiondegree = stats[3];
@@ -52,20 +52,20 @@ public class SampleKEnemy extends SampleEnemyAI{
 	@Override
 	public void run() {
 		System.out.println("hello");
-		int distanceX = positionX - BattlesScreen.char1.getPositionX();
-		int distanceY = positionY - BattlesScreen.char1.getPositionY();
+		int distanceX = x - BattlesScreen.character.getX();
+		int distanceY = y - BattlesScreen.character.getY();
 		if (distanceX >= 0){
-			positionX++;
+			x++;
 		}
 		else {
-			positionX--;
+			x--;
 		}
 		
 		if (distanceY >= 0) {
-			positionY++;
+			y++;
 		}
 		else {
-			positionY--;
+			y--;
 		}
 		
 	}
