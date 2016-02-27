@@ -107,7 +107,7 @@ public abstract class Character {
 		/**
 		 * Yifan
 		 */
-		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 400, weapon.getProjectileImg());
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, weapon.getRange(), weapon.getProjectileImg());
 		if(hostile)
 			BattlesScreen.eBullets.add(bullet);
 		else
