@@ -51,7 +51,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	 * NEW:
 	 * 	VARIABLES
 	 * 
-	 * 	CONSTANTS
+	 * 	CONSTANTS // too lazy to list all the constants gave up
 	 * 		-GE_SPEED	GUARDENEMIES' SPEED
 	 * 		-KE_SPEED	KILLENEMIES' SPEED
 	 * 		-FPS 1000/TIMER
@@ -59,6 +59,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	 * 		-KE_VISION 
 	 * 		-GE_DEGREE ENEMIES' LINE OF SIGHT
 	 *		-KE_DEGREE
+	 *
+	 *	
 	 */
 	
 	public static final int P_SPEED = 8;
@@ -123,6 +125,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	
 	Projectiles bullet;
 	Weapon weapon;
+	Weapon weapon1;
+	Weapon weapon2;
 	//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 	public int[] enemyG = {GE_X,GE_Y,GE_ARMOR,GE_SNEAK,GE_SPEED,GE_RECOVERY,GE_EXP,GE_STRENGTH,GE_LEVEL};
 	public int[] enemyK = {KE_X,KE_Y,KE_ARMOR,KE_SNEAK,KE_SPEED,KE_RECOVERY,KE_EXP,KE_STRENGTH,KE_LEVEL};
@@ -148,6 +152,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		 weapondemo = null;
 		 BufferedImage [] pics = new BufferedImage [4];
 		 weapon = new Weapon(pics,projectiledemo,projectilestats);
+		 weapon1 = new Weapon(pics,projectiledemo,projectilestats);
+		 weapon2 = new Weapon(pics,projectiledemo,projectilestats);
 	}
 	public void MainCharacter(){
 		/**
@@ -204,9 +210,9 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/eright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
 		//enemy1 = new SampleKEnemy(animation,enemyG, new SampleWeapon(), KE_X, KE_Y);
-		enemy1 = new KEnemy(animation,enemyK,visionK,weapon);
+		enemy1 = new KEnemy(animation,enemyK,visionK,weapon1);
 //		enemy1.GeneralEnemyAI();
-		enemy2 = new GEnemy(animation,enemyG, visionG,weapon);
+		enemy2 = new GEnemy(animation,enemyG, visionG,weapon2);
 	}
 	@Override
 	public void paintScreen(Graphics2D g2) {

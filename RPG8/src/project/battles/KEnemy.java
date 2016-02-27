@@ -2,6 +2,7 @@ package project.battles;
 
 import java.awt.image.BufferedImage;
 
+import project.battles.demo.BattlesScreen;
 import project.battles.demo.SampleWeapon;
 import project.controls.OverworldSpriteControl;
 import project.items.Weapon;
@@ -44,13 +45,27 @@ public class KEnemy extends EnemyAI{
 	@Override
 	protected void reaction() {
 		// TODO Auto-generated method stub
-		
+		weapon.fire(true,x,y,10,10);
 	}
 
 	@Override
 	protected void run() {
 		// TODO Auto-generated method stub
+		int distanceX = x - BattlesScreen.character.getX();
+		int distanceY = y - BattlesScreen.character.getY();
+		if (distanceX >= 0){
+			x++;
+		}
+		else {
+			x--;
+		}
 		
+		if (distanceY >= 0) {
+			y++;
+		}
+		else {
+			y--;
+		} 
 	}
 
 }
