@@ -202,7 +202,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		equippedWeapon.reduceAmmoByOne();
 	}
 	@Override
-	public BufferedImage getImage(int count) {
+	public BufferedImage getImage() {
 		/**
 		 * Chieh-Huang Chen
 		 */

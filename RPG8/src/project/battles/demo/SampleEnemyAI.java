@@ -91,7 +91,7 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 		}
 	} 
 	@Override
-	public BufferedImage getImage(int count) {
+	public BufferedImage getImage() {
 		if(up){
 			if(count >= 0 && count < 5)
 				return bsprite[0];

@@ -46,11 +46,6 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		Enemy();
 		Weapon();
 		Projectile();
-		//enemy1 = new SampleKEnemy(new int[6],new Weapon(),true);
-		//enemy2 = new SampleGEnemy(new int[6],new Weapon(),true);
-		//update();
-		//enemy1 = new SampleKEnemy(new int[6],new Weapon(),true);
-		//enemy2 = new SampleGEnemy(new int[6],new Weapon(),true);
 		enemiesOnScreen.add(enemy1);
 		enemiesOnScreen.add(enemy2);
 		update();
@@ -136,9 +131,9 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 			g2.setColor(Color.green);
 			timer.start();
 			//System.out.println(char1.getPositionY());
-			g2.drawImage(char1.getImage(count),char1.getPositionX(),char1.getPositionY(),null);
+			g2.drawImage(char1.getImage(),char1.getPositionX(),char1.getPositionY(),null);
 			g2.drawImage(bullet.getpImgSrc(), 100, 100, null);
-			g2.drawImage(enemy1.getImage(count),enemy1.getPositionX(),enemy1.getPositionY(),null);
+			g2.drawImage(enemy1.getImage(),enemy1.getPositionX(),enemy1.getPositionY(),null);
 			//g2.drawImage(enemy2.getImage(count),enemy2.getPositionX(),enemy2.getPositionY(),null);
 			for(int i = 0; i < player.size(); i++){
 				g2.drawImage(player.get(i).getpImgSrc(), player.get(i).getX(), player.get(i).getY(), null);
@@ -208,15 +203,6 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		if(pressedKeys.isEmpty())
 			char1.setWalking(false);
 	}
-
-	public void increaseCount(){
-		/**
-		 * Chieh-Huang Chen
-		 */
-		count++;
-		if(count>10)
-			count=0;
-	}
 	public void checkMotion() {
 		/**
 		 * Chieh-Huang Chen
@@ -229,25 +215,25 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		if(pressedKeys.contains(KeyEvent.VK_UP) && !pressedKeys.contains(KeyEvent.VK_DOWN)){
 			proposedNewY-=MOVE_UNIT;
 			char1.setPositionY(proposedNewY);
-			increaseCount();
+			char1.increaseCount();
 			char1.setMoveUp(true);
 		}
 		if(!pressedKeys.contains(KeyEvent.VK_UP) && pressedKeys.contains(KeyEvent.VK_DOWN)){
 			proposedNewY+=MOVE_UNIT;
 			char1.setPositionY(proposedNewY);
-			increaseCount();
+			char1.increaseCount();
 			char1.setMoveDown(true);
 		}
 		if(pressedKeys.contains(KeyEvent.VK_RIGHT) && !pressedKeys.contains(KeyEvent.VK_LEFT)){
 			proposedNewX+=MOVE_UNIT;
 			char1.setPositionX(proposedNewX);
-			increaseCount();
+			char1.increaseCount();
 			char1.setMoveRight(true);
 		}
 		if(!pressedKeys.contains(KeyEvent.VK_RIGHT) && pressedKeys.contains(KeyEvent.VK_LEFT)){
 			proposedNewX-=MOVE_UNIT;
 			char1.setPositionX(proposedNewX);
-			increaseCount();
+			char1.increaseCount();
 			char1.setMoveLeft(true);
 		}
 

@@ -15,6 +15,7 @@ public abstract class SampleCharacter {
 	protected BufferedImage[] bsprite;
 	protected BufferedImage[] lsprite;
 	protected BufferedImage[] rsprite;
+	protected int count = 0;
 	protected boolean moveUp = false;
 	protected boolean moveDown = false;
 	protected boolean moveLeft = false;
@@ -37,8 +38,17 @@ public abstract class SampleCharacter {
 	public Rectangle getBounds(){ //Pelham made this change sorry in advance for changing your code
 		return new Rectangle(positionX, positionY, width, height);
 	}
- 
-	public abstract BufferedImage getImage(int count);
+	
+	public void increaseCount(){
+		/**
+		 * Chieh-Huang Chen
+		 */
+		count++;
+		if(count>10)
+			count=0;
+	}
+	
+	public abstract BufferedImage getImage();
 
 	public SampleWeapon getEquippedWeapon() {
 		return equippedWeapon;
