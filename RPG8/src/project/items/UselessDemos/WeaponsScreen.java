@@ -1,4 +1,4 @@
-package project.items;
+package project.items.UselessDemos;
 
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 
 import project.directors.Game;
 import project.directors.Screen;
+import project.items.ItemResources;
 
 public class WeaponsScreen  extends Screen implements KeyListener, ItemResources{
 	
