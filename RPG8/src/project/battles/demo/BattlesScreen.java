@@ -58,7 +58,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	 *		-KE_DEGREE
 	 */
 	
-	public static final int P_SPEED = 5;
+	public static final int P_SPEED = 8;
 	public static final int P_X = 300;
 	public static final int P_Y = 300;
 	public static final int P_HP = 100;
@@ -84,8 +84,13 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int KE_DEGREE = 100;
 	public static final int FPS = 30;
 	
-	//public static MCharacter character;
-	public static SampleMCharacter character;
+	public static final int W_DMG = 10;
+	public static final int W_VELOCITY = 10;
+	public static final int W_AMMO = 10;
+	public static final int W_RANGE = 300;
+	
+	public static MCharacter character;
+	//public static SampleMCharacter character;
 	public static SampleKEnemy enemy1;
 	public static SampleGEnemy enemy2;
 	public static ArrayList<SampleEnemyAI> enemiesOnScreen= new ArrayList<SampleEnemyAI>();
@@ -95,20 +100,32 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 
 	public static BufferedImage projectiledemo;
+	public static BufferedImage weapondemo;
+	
 	SampleProjectiles bullet;
+	Weapon weapon;
 	public int[] enemyG = {GE_HP,GE_VISION,GE_DEGREE};
 	public int[] enemyK = {KE_HP,KE_VISION,KE_DEGREE};
-	//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
+	public int[] projectilestats = {W_DMG,W_VELOCITY,W_AMMO,W_RANGE};
 	public int[] playerstats = {P_X,P_Y,P_HP,P_ARMOR,P_SNEAK,P_SPEED,P_RECOVERY,P_EXP,P_STRENGTH,P_LEVEL};
 	public BattlesScreen(Game game){
 		super(game);
+		Projectile();
+		Weapon();
 		MainCharacter();
 		Enemy();
-		Weapon();
-		Projectile();
 		enemiesOnScreen.add(enemy1);
 		enemiesOnScreen.add(enemy2);
 		update();
+	}
+	public void Projectile(){
+		projectiledemo = UtilityMethods.getImageFromFile(this, "/images/items/bullet.png");
+		bullet = new SampleProjectiles(10, 10, 0, 10, 10, 100, projectiledemo);
+	}
+	public void Weapon(){
+		 weapondemo = null;
+		 BufferedImage [] pics = new BufferedImage [4];
+		 weapon = new Weapon(pics,projectiledemo,projectilestats);
 	}
 	public void MainCharacter(){
 		/**
@@ -140,8 +157,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		origimage1 = UtilityMethods.getImageFromFile(this, "/maincharacter/mright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/maincharacter/mright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		//character =  new MCharacter(animation,playerstats);
-		character = new SampleMCharacter(animation,100,100,100,100,100,100);
+		character =  new MCharacter(animation,playerstats,weapon);
+		//character = new SampleMCharacter(animation,100,100,100,100,100,100);
 	}
 	public void Enemy(){
 		/**
@@ -167,13 +184,6 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		enemy1 = new SampleKEnemy(animation,enemyG, new SampleWeapon(), KE_X, KE_Y);
 //		enemy1.GeneralEnemyAI();
 		enemy2 = new SampleGEnemy(animation,enemyG, new SampleWeapon(), GE_X, GE_Y);
-	}
-	public void Weapon(){
- 
-	}
-	public void Projectile(){
-		projectiledemo = UtilityMethods.getImageFromFile(this, "/images/items/bullet.png");
-		bullet = new SampleProjectiles(10, 10, 0, 10, 10, 100, projectiledemo);
 	}
 	@Override
 	public void paintScreen(Graphics2D g2) {
@@ -340,7 +350,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			int cursorY = e.getY();
 			int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
 			int vy = calculateVComponentPlayerToCursor(10, cursorX, cursorY, false);
-			character.firePistol(vx,vy);
+			//character.firePistol(vx,vy);
+			character.getWeapon().fire(character.isHostile(),character.getX(),character.getY(),vx,vy);//change it up
 		}
 
 	}

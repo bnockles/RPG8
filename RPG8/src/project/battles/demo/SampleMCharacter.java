@@ -14,7 +14,13 @@ import javax.imageio.ImageIO;
 
 import project.controls.OverworldSpriteControl;
 import project.save.ItemState;
-
+/**
+ * 
+ * 	FINISHED TRANSFERRING CLASS TO SAMPLEMCHARACTER
+ * 	DO NOT WORK ON THIS CLASS
+ * 	GO TO CLASS MCHARACTER TO DO YOUR WORK
+ *
+ */
 public class SampleMCharacter extends SampleCharacter implements KeyListener,MouseListener{
 	private int level;
 	private int exp;

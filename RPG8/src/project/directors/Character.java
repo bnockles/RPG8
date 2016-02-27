@@ -43,9 +43,9 @@ public abstract class Character {
 	
 	protected boolean walking = false; // planning to do something with it
 	
-	public Weapon weapon = new Weapon();
+	public Weapon weapon;
 	
-	protected Character(BufferedImage[][] images,int[] stats, boolean hostile){
+	protected Character(BufferedImage[][] images,int[] stats, boolean hostile, Weapon weapon){
 		//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 		// we might create allies if we do this hostile method.
 		//need an inventory for character and arraylist of weapons for parameters
@@ -71,6 +71,8 @@ public abstract class Character {
 		this.strength = stats[8];
 		
 		this.hostile = hostile;
+		
+		this.weapon = weapon;
 	}
 	//ABSTRACT BELOW
 	public abstract BufferedImage getImage();
