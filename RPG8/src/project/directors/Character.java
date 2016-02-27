@@ -3,6 +3,8 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import project.battles.Projectiles;
+import project.battles.demo.BattlesScreen;
 import project.battles.demo.SampleWeapon;
 import project.controls.OverworldSpriteControl;
 import project.save.ItemState;
@@ -76,7 +78,8 @@ public abstract class Character {
 	}
 	//ABSTRACT BELOW
 	public abstract BufferedImage getImage();
-	
+	public abstract void fire(int x, int y, int vx, int vy);
+
 	//NOT GETTERS/SETTERS BELOW
 	public Rectangle getBounds(){ //Pelham made this change sorry in advance for changing your code
 		return new Rectangle(x, y, width, height);
@@ -90,6 +93,60 @@ public abstract class Character {
 		if(count>=20)
 			count=0;
 	}
+	
+	//WEAPON METHODS BELOW
+	
+	public boolean checkAmmo(){
+		if(weapon.getAmmo()<=0){
+			return false;
+		}
+		return true;
+	}
+	
+	public void firePistol(boolean hostile, int x, int y, int vx, int vy){//target location
+		/**
+		 * Yifan
+		 */
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 400, weapon.getProjectileImg());
+		if(hostile)
+			BattlesScreen.eBullets.add(bullet);
+		else
+			BattlesScreen.pBullets.add(bullet);
+	}
+	public void useMelee(){
+		//requires pelham's class
+	}
+	public void useExplovies(){
+		//requires a new class
+	}
+	public void fireRifle(boolean hostile, int x, int y, int vx, int vy){
+		/**
+		 * Yifan
+		 */
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		BattlesScreen.pBullets.add(bullet);
+		weapon.reduceAmmoByOne();
+	}
+	public void fireHeavy(boolean hostile, int x, int y, int vx, int vy){
+		/**
+		 * Yifan
+		 */
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		Projectiles bullet1 = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		BattlesScreen.pBullets.add(bullet);
+		BattlesScreen.pBullets.add(bullet1);
+		weapon.reduceAmmoByOne();
+	}
+	public void fireSMG(boolean hostile, int x, int y, int vx, int vy){
+		/**
+		 * Yifan
+		 */
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		BattlesScreen.pBullets.add(bullet);
+		weapon.reduceAmmoByOne();
+	}
+	//GETTERS&SETTERS BELOW
+	
 	public int getWidth() {
 		return width;
 	}
@@ -192,5 +249,5 @@ public abstract class Character {
 	public void setWalking(boolean walking) {
 		this.walking = walking;
 	}
-
+	
 }

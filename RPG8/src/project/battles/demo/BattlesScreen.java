@@ -380,7 +380,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			int cursorY = e.getY();
 			int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
 			int vy = calculateVComponentPlayerToCursor(10, cursorX, cursorY, false);
-			character.getWeapon().fire(character.isHostile(),character.getX(),character.getY(),vx,vy);//change it up
+			character.fire(character.getX(),character.getY(),vx,vy);//change it up
 		}
 
 	}
