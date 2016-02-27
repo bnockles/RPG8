@@ -18,12 +18,14 @@ public abstract class EnemyAI extends Character{
 	protected boolean boss = false;
 	protected abstract void reaction();
 	protected abstract void run();
+	protected int waitInterval;
 	
 	protected EnemyAI(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon) {
 		//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 		super(images, stats, false, weapon);
 		this.visionrange = vision[0];
 		this.visiondegree = vision[1];
+		this.hostile = true;
 	}
 	public void GeneralEnemyAI(){
 		if(checkAlive()){
@@ -34,7 +36,8 @@ public abstract class EnemyAI extends Character{
 			else
 				reaction();
 			//moveUpAndDown();
-			moveLeftAndRight();
+			//moveLeftAndRight();
+			//goToPlayer();
 			if(maxHP/10>currentHP){
 				System.out.println(maxHP+" "+currentHP);
 				run();
@@ -83,7 +86,21 @@ public abstract class EnemyAI extends Character{
 	public void goToPlayer(){
 		int pX = BattlesScreen.character.getX();
 		int pY = BattlesScreen.character.getY();
-		
+		if(Math.abs(pX-x) < 10 && Math.abs(pY-y) < 10){
+			x = (int) (Math.random()*600);
+			y = (int) (Math.random()*600);
+			//System.out.println(x + " " + y);
+		}
+		else{
+			if(pX-x<0)
+				x-=speed;
+			else
+				x+=speed;
+			if(pY-y<0)
+				y-=speed;
+			else
+				y+=speed;
+		}
 	}
 	public void moveLeftAndRight(){
 		if(moveRight){
@@ -133,7 +150,6 @@ public abstract class EnemyAI extends Character{
 		// TODO Auto-generated method stub
 		// moveup use it as moving.
 		increaseCount();
-		System.out.println(count);
 			if(moveUp == true){
 				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
 					return bsprite[0];
@@ -170,13 +186,24 @@ public abstract class EnemyAI extends Character{
 			}
 		return fsprite[0];
 	}
+	public boolean waitInterval(int perSec){
+		waitInterval+= perSec;
+		if(waitInterval > 10){
+			waitInterval = 0;
+			return true;
+		}
+		return false;
+	}
 	@Override
 	public void fire(int x, int y, int vx, int vy) {
 		// TODO Auto-generated method stub
-		if(checkAmmo()){
-			//if(weapon instanceof Pistol) // this may be the way to check weapons
+		if(waitInterval(1)){
+			if(checkAmmo()){
+				//if(weapon instanceof Pistol) // this may be the way to check weapons
 				firePistol(hostile,x,y,vx,vy);
 				weapon.reduceAmmoByOne();
+				System.out.println(BattlesScreen.eBullets.size());
+			}
 		}
 	}
 }

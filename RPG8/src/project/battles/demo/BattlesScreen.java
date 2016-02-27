@@ -105,8 +105,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	
 	public static final int W_DMG = 10;
 	public static final int W_VELOCITY = 10;
-	public static final int W_AMMO = 10;
-	public static final int W_RANGE = 300;
+	public static final int W_AMMO = 100;
+	public static final int W_RANGE = 100;
 	
 	public static MCharacter character;
 	public static KEnemy enemy1;
@@ -253,6 +253,11 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		for(int i = pBullets.size() - 1 ; i > -1; i--){
 			if(pBullets.get(i).isCollided()){
 				pBullets.remove(i);
+			}
+		}
+		for(int i = eBullets.size() - 1 ; i > -1; i--){
+			if(eBullets.get(i).isCollided()){
+				eBullets.remove(i);
 			}
 		}
 	}
