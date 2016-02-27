@@ -39,9 +39,9 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		g2.drawString("Press S to take damage", 30, 160);
 		g2.drawString("Press R to reload", 30, 185);
 		g2.drawString("Press H to switch weapons", 30, 210);
-		g2.drawString("Clips: "+you.weapon.ammoCapacity, 400, 135);
-		g2.drawString("Ammo in Clip: "+you.weapon.ammoTotal, 400, 160);
-		g2.drawString("Current Weapon: "+you.weapon.name, 400, 185);
+		g2.drawString("Clips: "+you.weapon.getAmmoCapacity(), 400, 135);
+		g2.drawString("Ammo in Clip: "+you.weapon.getAmmoTotal(), 400, 160);
+		g2.drawString("Current Weapon: "+you.weapon.getName(), 400, 185);
 		g2.drawString("Coins: "+you.coins, 400, 210);
 		g2.drawString("Scrap: "+you.scrap, 400, 235);
 		g2.drawOval(50, 250, 40, 40);
@@ -60,7 +60,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 			System.out.println(you.health);
 		}
 		if(e.getKeyCode()==KeyEvent.VK_H){
-			if(you.weapon.name == "RIA-45S"){
+			if(you.weapon.getName() == "RIA-45S"){
 				you.weapon = pistol4GradeA1;
 			}else{
 				you.weapon = pistol2GradeB1;
@@ -72,7 +72,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		if(e.getKeyCode()==KeyEvent.VK_S){
 			if(you.health>0){
 				you.attack(you);
-				if(you.weapon.ammoTotal>0){
+				if(you.weapon.getAmmoTotal()>0){
 					you.coins+=10;
 					you.scrap+=1;
 					

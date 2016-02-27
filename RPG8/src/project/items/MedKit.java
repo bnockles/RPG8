@@ -2,10 +2,10 @@ package project.items;
 
 public class MedKit extends Item {
 	//stanley's class
-	String name;
-	String desc;
-	int cost;
-	int healthGained;
+	private String name;
+	private String desc;
+	private int cost;
+	private int healthGained;
 	public MedKit(String name, String desc,int cost, int healthGained) {
 		super(name, desc, cost);
 		this.healthGained=healthGained;

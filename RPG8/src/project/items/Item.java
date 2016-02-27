@@ -5,9 +5,9 @@ import java.awt.image.BufferedImage;
 import project.menus.Selectable;
 
 public abstract class Item implements Selectable {
-	String name;
-	String description;
-	int cost;
+	private String name;
+	private String description;
+	private int cost;
 	
 	public Item(String name,String desc,int cost){
 		this.name=name;

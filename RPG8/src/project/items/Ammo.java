@@ -1,9 +1,9 @@
 package project.items;
 
 public class Ammo extends Item{
-	String name;
-	String desc;
-	int ammoType;
+	private String name;
+	private String desc;
+	private int ammoType;
 	
 	public Ammo(String name, String desc,int cost,int ammoType) {
 		super(name, desc, cost);

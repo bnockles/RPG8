@@ -17,9 +17,9 @@ public class TargetDemo {
 	
 	public void attack(TargetDemo target){
 		
-		if(this.weapon.ammoTotal!=0){
-			target.health-=this.weapon.damage;
-			this.weapon.ammoTotal--;
+		if(this.weapon.getAmmoTotal()!=0){
+			target.health-=this.weapon.getDamage();
+			this.weapon.setAmmoTotal(this.weapon.getAmmoTotal()-1);
 		}
 		if(this.health<0){
 			this.health=1;
@@ -27,9 +27,9 @@ public class TargetDemo {
 	}
 	
 	public void reload(){
-		if(this.weapon.ammoCapacity!=0){
-			this.weapon.ammoTotal=this.weapon.ammoClip;
-			this.weapon.ammoCapacity--;
+		if(this.weapon.getAmmoCapacity()!=0){
+			this.weapon.setAmmoTotal(this.weapon.getAmmoClip());
+			this.weapon.setAmmoCapacity(this.weapon.getAmmoCapacity()-1);
 		}
 	}
 }
