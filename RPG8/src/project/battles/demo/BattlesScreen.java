@@ -18,12 +18,13 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
+import project.battles.MCharacter;
 import project.directors.Game;
 import project.directors.Screen;
 import project.directors.UtilityMethods;
 import project.items.Weapon;
 
-public class BattlesScreen extends Screen implements KeyListener,ActionListener, MouseListener{
+public class BattlesScreen extends Screen implements ActionListener, KeyListener , MouseListener{
 	/**
 	 * ***********CHANGES! MUST READ********************
 	 * RENAMING: 
@@ -57,18 +58,25 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	 *		-KE_DEGREE
 	 */
 	
-	public static final long P_SPEED = 5;
+	public static final int P_SPEED = 5;
 	public static final int P_X = 300;
 	public static final int P_Y = 300;
+	public static final int P_HP = 100;
+	public static final int P_ARMOR = 100;
+	public static final int P_SNEAK = 100;
+	public static final int P_RECOVERY = 100;
+	public static final int P_EXP = 0;
+	public static final int P_STRENGTH = 10;
+	public static final int P_LEVEL = 10;
 	
-	public static final long GE_SPEED = 5;
+	public static final int GE_SPEED = 5;
 	public static final int GE_X = 100;
 	public static final int GE_Y = 100;
 	public static final int GE_VISION = 300;
 	public static final int GE_HP = 100;
 	public static final int GE_DEGREE = 100;
 	
-	public static final long KE_SPEED = 5;
+	public static final int KE_SPEED = 5;
 	public static final int KE_X = 100;
 	public static final int KE_Y = 100;
 	public static final int KE_VISION = 300;
@@ -76,7 +84,8 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	public static final int KE_DEGREE = 100;
 	public static final int FPS = 30;
 	
-	static SampleMCharacter character;
+	//public static MCharacter character;
+	public static SampleMCharacter character;
 	public static SampleKEnemy enemy1;
 	public static SampleGEnemy enemy2;
 	public static ArrayList<SampleEnemyAI> enemiesOnScreen= new ArrayList<SampleEnemyAI>();
@@ -89,6 +98,8 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	SampleProjectiles bullet;
 	public int[] enemyG = {GE_HP,GE_VISION,GE_DEGREE};
 	public int[] enemyK = {KE_HP,KE_VISION,KE_DEGREE};
+	//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
+	public int[] playerstats = {P_X,P_Y,P_HP,P_ARMOR,P_SNEAK,P_SPEED,P_RECOVERY,P_EXP,P_STRENGTH,P_LEVEL};
 	public BattlesScreen(Game game){
 		super(game);
 		MainCharacter();
@@ -129,7 +140,8 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		origimage1 = UtilityMethods.getImageFromFile(this, "/maincharacter/mright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/maincharacter/mright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		character =  new SampleMCharacter(animation,100,100,100,100,P_X,P_Y);
+		//character =  new MCharacter(animation,playerstats);
+		character = new SampleMCharacter(animation,100,100,100,100,100,100);
 	}
 	public void Enemy(){
 		/**
@@ -227,6 +239,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 			character.setWalking(true);
 		}
 	}
+	
 	@Override
 	public void keyReleased(KeyEvent e) {
 		/**

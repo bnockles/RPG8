@@ -19,16 +19,16 @@ public class GEnemy extends EnemyAI{
 		this.stats = stats;
 	}
 
-	@Override
-	public ItemState getItems() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public OverworldSpriteControl move() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public ItemState getItems() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//
+//	public OverworldSpriteControl move() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

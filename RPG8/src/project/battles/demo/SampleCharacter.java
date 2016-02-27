@@ -23,7 +23,6 @@ public abstract class SampleCharacter {
 	protected SampleWeapon equippedWeapon = new SampleWeapon("blah","blah",rawr);
 	protected int width;
 	protected int height;
-	protected String imgsrc;
 	protected boolean Hostile;
 	protected boolean walking = false;
 	protected int maxHP;
@@ -31,7 +30,7 @@ public abstract class SampleCharacter {
 	protected int x;
 	protected int y;
 	
-	public SampleCharacter(BufferedImage[][] images,int maxHP,int x, int y){
+	protected SampleCharacter(BufferedImage[][] images,int maxHP,int x, int y){
 		this.bsprite = images[0];
 		this.fsprite = images[1];
 		this.lsprite = images[2];
@@ -42,9 +41,6 @@ public abstract class SampleCharacter {
 		this.y = y;
 		this.maxHP = maxHP;
 		this.currentHP = maxHP;
-	}
-	public String getImgsrc() {
-		return imgsrc;
 	}
 	
 	public Rectangle getBounds(){ //Pelham made this change sorry in advance for changing your code
@@ -60,8 +56,10 @@ public abstract class SampleCharacter {
 			count=0;
 	}
 	
+	
+	
 	public abstract BufferedImage getImage();
-
+	
 	public SampleWeapon getEquippedWeapon() {
 		return equippedWeapon;
 	}

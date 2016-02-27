@@ -24,6 +24,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 	private int sneakValue;
 	private SampleWeapon equippedWeapon;
 	private ArrayList<SampleWeapon> loadout;
+	
 	public SampleMCharacter(BufferedImage[][] images,int recovery, int maxHP, int armorValue, int sneakValue, int x, int y){
 		super(images,maxHP,x,y);
 		this.recovery= recovery;
