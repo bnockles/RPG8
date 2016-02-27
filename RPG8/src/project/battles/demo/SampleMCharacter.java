@@ -207,30 +207,38 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		 */
 		// TODO Auto-generated method stub
 			if(moveUp == true){
-				if(count >= 0 && count < 5)
+				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
 					return bsprite[0];
-				else
+				if(count >= 5 && count < 10)
 					return bsprite[1];
+				if(count >= 15 && count < 20)
+				return bsprite[2];
 			}
  
 			if(moveDown == true){
-				if(count >= 0 && count < 5)
+				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
 					return fsprite[0];
-				else
+				if(count >= 5 && count < 10)
 					return fsprite[1];
+				if(count >= 15 && count < 20)
+				return fsprite[2];
 			}
 			if(moveLeft == true){
-				if(count >= 0 && count < 5)
+				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
 					return lsprite[0];
-				else
+				if(count >= 5 && count < 10)
 					return lsprite[1];
+				if(count >= 15 && count < 20)
+				return lsprite[2];
 			}
 
 			if(moveRight == true){
-				if(count >= 0 && count < 5)
+				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
 					return rsprite[0];
-				else
+				if(count >= 5 && count < 10)
 					return rsprite[1];
+				if(count >= 15 && count < 20)
+				return rsprite[2];
 			}
 		return fsprite[0];
 	}

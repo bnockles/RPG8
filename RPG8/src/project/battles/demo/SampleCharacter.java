@@ -44,7 +44,7 @@ public abstract class SampleCharacter {
 		 * Chieh-Huang Chen
 		 */
 		count++;
-		if(count>10)
+		if(count>20)
 			count=0;
 	}
 	

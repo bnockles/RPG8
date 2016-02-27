@@ -26,25 +26,51 @@ import project.items.Weapon;
 public class BattlesScreen extends Screen implements KeyListener,ActionListener, MouseListener{
 	/**
 	 * ***********CHANGES! MUST READ********************
-	 * VARIABLE CHANGES:
+	 * RENAMING: 
+	 * 	VARIABLES
 	 * 		- char1 -> character
 	 * 		- positionX -> x
 	 * 		- positionY -> y
+	 * 		- enemy1 -> enemyK
+	 * 		- enemy2 -> enemyG
 	 * 		
+	 * 
+	 * 	CONSTANTS
+	 * 		- MOVE_UNIT -> P_SPEED
+	 * 		- PPOSITION_X -> P_X
+	 * 		- PPOSITION_Y -> P_Y
+	 * 		- EPOSITION_X -> GE_X	GUARDENEMIES
+	 * 		- EPOSITION_Y -> GE_Y
+	 * 		- EPOSITION_X -> KE_X	KILLONSIGHTENEMIES
+	 * 		- EPOSITION_Y -> KE_Y
+	 * 
+	 * NEW:
+	 * 	VARIABLES
+	 * 
+	 * 	CONSTANTS
+	 * 		-GE_SPEED	GUARDENEMIES' SPEED
+	 * 		-KE_SPEED	KILLENEMIES' SPEED
+	 * 		-FPS 1000/TIMER
 	 */
+	
+	public static final long P_SPEED = 5;
+	public static final long GE_SPEED = 5;
+	public static final long KE_SPEED = 5;
+	public static final int P_X = 300;
+	public static final int P_Y = 300;
+	public static final int GE_X = 100;
+	public static final int GE_Y = 100;
+	public static final int FPS = 30;
+	
 	static SampleMCharacter character;
 	public static SampleKEnemy enemy1;
 	SampleGEnemy enemy2;
 	public static ArrayList<SampleEnemyAI> enemiesOnScreen= new ArrayList<SampleEnemyAI>();
 	public static ArrayList<SampleProjectiles> player = new ArrayList<SampleProjectiles>();
 	public static ArrayList<SampleProjectiles> enemy = new ArrayList<SampleProjectiles>();
-	Timer timer = new Timer(5,this);
+	Timer timer = new Timer(FPS,this);
 	ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
-	public static final long MOVE_UNIT = 5;
-	public static final int PPOSITION_X = 300;
-	public static final int PPOSITION_Y = 300;
-	public static final int EPOSITION_X = 100;
-	public static final int EPOSITION_Y = 100;
+
 	public static BufferedImage projectiledemo;
 	SampleProjectiles bullet;
 	public int[] enemystats = {100,100,100,100,};
@@ -88,7 +114,7 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		origimage1 = UtilityMethods.getImageFromFile(this, "/maincharacter/mright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/maincharacter/mright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		character =  new SampleMCharacter(animation,100,100,100,100,PPOSITION_X,PPOSITION_Y);
+		character =  new SampleMCharacter(animation,100,100,100,100,P_X,P_Y);
 	}
 	public void Enemy(){
 		/**
@@ -111,9 +137,9 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		origimage1 = UtilityMethods.getImageFromFile(this, "/enemy/eright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/eright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		enemy1 = new SampleKEnemy(animation,enemystats, new SampleWeapon(), EPOSITION_X, EPOSITION_Y);
+		enemy1 = new SampleKEnemy(animation,enemystats, new SampleWeapon(), GE_X, GE_Y);
 //		enemy1.GeneralEnemyAI();
-		enemy2 = new SampleGEnemy(animation,enemystats, new SampleWeapon(), EPOSITION_X, EPOSITION_Y);
+		enemy2 = new SampleGEnemy(animation,enemystats, new SampleWeapon(), GE_X, GE_Y);
 	}
 	public void Weapon(){
  
@@ -221,25 +247,25 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		int proposedNewY=character.getY();
 		int proposedNewX=character.getX();
 		if(pressedKeys.contains(KeyEvent.VK_UP) && !pressedKeys.contains(KeyEvent.VK_DOWN)){
-			proposedNewY-=MOVE_UNIT;
+			proposedNewY-=P_SPEED;
 			character.setY(proposedNewY);
 			character.increaseCount();
 			character.setMoveUp(true);
 		}
 		if(!pressedKeys.contains(KeyEvent.VK_UP) && pressedKeys.contains(KeyEvent.VK_DOWN)){
-			proposedNewY+=MOVE_UNIT;
+			proposedNewY+=P_SPEED;
 			character.setY(proposedNewY);
 			character.increaseCount();
 			character.setMoveDown(true);
 		}
 		if(pressedKeys.contains(KeyEvent.VK_RIGHT) && !pressedKeys.contains(KeyEvent.VK_LEFT)){
-			proposedNewX+=MOVE_UNIT;
+			proposedNewX+=P_SPEED;
 			character.setX(proposedNewX);
 			character.increaseCount();
 			character.setMoveRight(true);
 		}
 		if(!pressedKeys.contains(KeyEvent.VK_RIGHT) && pressedKeys.contains(KeyEvent.VK_LEFT)){
-			proposedNewX-=MOVE_UNIT;
+			proposedNewX-=P_SPEED;
 			character.setX(proposedNewX);
 			character.increaseCount();
 			character.setMoveLeft(true);
