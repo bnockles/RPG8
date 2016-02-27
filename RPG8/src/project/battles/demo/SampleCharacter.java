@@ -15,7 +15,7 @@ public abstract class SampleCharacter {
 	protected BufferedImage[] bsprite;
 	protected BufferedImage[] lsprite;
 	protected BufferedImage[] rsprite;
-	protected int count = 0;
+	protected int count;
 	protected boolean moveUp = false;
 	protected boolean moveDown = false;
 	protected boolean moveLeft = false;
@@ -31,6 +31,16 @@ public abstract class SampleCharacter {
 	protected int x;
 	protected int y;
 	
+	public SampleCharacter(BufferedImage[][] images,int maxHP,int x, int y){
+		this.bsprite = images[0];
+		this.fsprite = images[1];
+		this.lsprite = images[2];
+		this.rsprite = images[3];
+		this.x = x;
+		this.y = y;
+		this.maxHP = maxHP;
+		this.currentHP = maxHP;
+	}
 	public String getImgsrc() {
 		return imgsrc;
 	}
@@ -44,7 +54,7 @@ public abstract class SampleCharacter {
 		 * Chieh-Huang Chen
 		 */
 		count++;
-		if(count>20)
+		if(count>=20)
 			count=0;
 	}
 	

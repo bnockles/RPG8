@@ -11,8 +11,6 @@ import project.items.Weapon;
 	 * 
 	 */
 public abstract class SampleEnemyAI extends SampleCharacter{
-	protected int hp;
-	protected int maxhp;
 	protected int visionrangeX;
 	protected int visionrangeY;
 	protected int visiondegree;
@@ -23,6 +21,13 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	protected boolean boss = false;
 	protected abstract void reaction();
 	protected abstract void run();
+	
+	public SampleEnemyAI(BufferedImage[][] images, int[] stats, int x, int y) {
+		super(images, stats[0], x, y);
+		this.visionrangeX = stats[1];
+		this.visionrangeY = stats[2];
+		this.visiondegree = stats[3];
+	}
 	public void GeneralEnemyAI(){
 		if(checkAlive()){
 			//do something
@@ -31,8 +36,8 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 				checkForPlayer();
 			else
 				reaction();
-			if(maxhp/10>hp){
-				System.out.println(maxhp+" "+hp);
+			if(maxHP/10>currentHP){
+				System.out.println(maxHP+" "+currentHP);
 				run();
 			}
 		}
@@ -40,7 +45,7 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 		//dropItem();
 	}
 	public boolean checkAlive(){
-		if(hp<0)
+		if(currentHP<0)
 			return false;
 		return true;
 	}
@@ -86,7 +91,7 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	}
 	
 	public void dropItem(){
-		if (hp <= 0){
+		if (currentHP <= 0){
 			BattlesScreen.character.gainExp(10);
 		}
 	} 
