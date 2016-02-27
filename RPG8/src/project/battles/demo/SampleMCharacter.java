@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import project.battles.Projectiles;
 import project.controls.OverworldSpriteControl;
 import project.save.ItemState;
 /**
@@ -155,8 +156,8 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		/**
 		 * Yifan
 		 */
-		SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 400, BattlesScreen.projectiledemo);
-		BattlesScreen.player.add(bullet);
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 400, BattlesScreen.projectiledemo);
+		BattlesScreen.pBullets.add(bullet);
 	}
 	public void useMelee(){
 		//requires pelham's class
@@ -168,26 +169,26 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		/**
 		 * Yifan
 		 */
-		SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
-		BattlesScreen.player.add(bullet);
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		BattlesScreen.pBullets.add(bullet);
 		equippedWeapon.reduceAmmoByOne();
 	}
 	public void fireHeavy(int vx, int vy){
 		/**
 		 * Yifan
 		 */
-		SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
-		SampleProjectiles bullet1 = new SampleProjectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
-		BattlesScreen.player.add(bullet);
-		BattlesScreen.player.add(bullet1);
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		Projectiles bullet1 = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		BattlesScreen.pBullets.add(bullet);
+		BattlesScreen.pBullets.add(bullet1);
 		equippedWeapon.reduceAmmoByOne();
 	}
 	public void fireSMG(int vx, int vy){
 		/**
 		 * Yifan
 		 */
-		SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
-		BattlesScreen.player.add(bullet);
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		BattlesScreen.pBullets.add(bullet);
 		equippedWeapon.reduceAmmoByOne();
 	}
 	@Override

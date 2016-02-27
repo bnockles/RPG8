@@ -1,5 +1,6 @@
 package project.battles.demo;
 
+import project.battles.Projectiles;
 import project.battles.demo.BattlesScreen;
 
 public class SampleWeapon {
@@ -27,11 +28,11 @@ public class SampleWeapon {
 
 	public void fire(boolean hostile,int x, int y, int vx, int vy){
 		if(hostile){
-			//BattlesScreen.player.add(new SampleProjectiles(100,100,100,100,100,100,BattlesScreen.projectiledemo));
+			//BattlesScreen.player.add(new Projectiles(100,100,100,100,100,100,BattlesScreen.projectiledemo));
 			firePistol(x,y,vx,vy);
 		}
 		else{
-//			SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 400, BattlesScreen.projectiledemo);
+//			Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 400, BattlesScreen.projectiledemo);
 //			BattlesScreen.player.add(bullet);
 		}
 	}
@@ -40,8 +41,8 @@ public class SampleWeapon {
 		/**
 		 * Yifan
 		 */
-		SampleProjectiles bullet = new SampleProjectiles(x, y, 0, vx, vy, 400, BattlesScreen.projectiledemo);
-		BattlesScreen.enemy.add(bullet);
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 400, BattlesScreen.projectiledemo);
+		BattlesScreen.eBullets.add(bullet);
 	}
 	
 	public void setAmmo(int ammo) {

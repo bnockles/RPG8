@@ -19,6 +19,7 @@ import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
 import project.battles.MCharacter;
+import project.battles.Projectiles;
 import project.directors.Game;
 import project.directors.Screen;
 import project.directors.UtilityMethods;
@@ -90,20 +91,22 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int W_RANGE = 300;
 	
 	public static MCharacter character;
-	//public static SampleMCharacter character;
 	public static SampleKEnemy enemy1;
 	public static SampleGEnemy enemy2;
+	
 	public static ArrayList<SampleEnemyAI> enemiesOnScreen= new ArrayList<SampleEnemyAI>();
-	public static ArrayList<SampleProjectiles> player = new ArrayList<SampleProjectiles>();
-	public static ArrayList<SampleProjectiles> enemy = new ArrayList<SampleProjectiles>();
+	public static ArrayList<Projectiles> pBullets = new ArrayList<Projectiles>();
+	public static ArrayList<Projectiles> eBullets = new ArrayList<Projectiles>();
+	
 	Timer timer = new Timer(FPS,this);
 	ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 
 	public static BufferedImage projectiledemo;
 	public static BufferedImage weapondemo;
 	
-	SampleProjectiles bullet;
+	Projectiles bullet;
 	Weapon weapon;
+	
 	public int[] enemyG = {GE_HP,GE_VISION,GE_DEGREE};
 	public int[] enemyK = {KE_HP,KE_VISION,KE_DEGREE};
 	public int[] projectilestats = {W_DMG,W_VELOCITY,W_AMMO,W_RANGE};
@@ -120,7 +123,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	}
 	public void Projectile(){
 		projectiledemo = UtilityMethods.getImageFromFile(this, "/images/items/bullet.png");
-		bullet = new SampleProjectiles(10, 10, 0, 10, 10, 100, projectiledemo);
+		bullet = new Projectiles(10, 10, 0, 10, 10, 100, projectiledemo);
 	}
 	public void Weapon(){
 		 weapondemo = null;
@@ -206,24 +209,24 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			g2.drawImage(bullet.getImage(), 100, 100, null);
 			g2.drawImage(enemy1.getImage(),enemy1.getX(),enemy1.getY(),null);
 			//g2.drawImage(enemy2.getImage(count),enemy2.getPositionX(),enemy2.getPositionY(),null);
-			for(int i = 0; i < player.size(); i++){
-				g2.drawImage(player.get(i).getImage(), player.get(i).getX(), player.get(i).getY(), null);
+			for(int i = 0; i < pBullets.size(); i++){
+				g2.drawImage(pBullets.get(i).getImage(), pBullets.get(i).getX(), pBullets.get(i).getY(), null);
 			}
-			for(int i = 0; i < enemy.size(); i++){
-				g2.drawImage(enemy.get(i).getImage(), enemy.get(i).getX(), enemy.get(i).getY(), null);
+			for(int i = 0; i < eBullets.size(); i++){
+				g2.drawImage(eBullets.get(i).getImage(), eBullets.get(i).getX(), eBullets.get(i).getY(), null);
 			}
 		}
 		catch(Exception e){
-
+			
 		}
 	}
 	private void checkProjectileRange() {
 		/**
 		 * Jason Lyan
 		 */
-		for(int i = player.size() - 1 ; i > -1; i--){
-			if(player.get(i).isCollided()){
-				player.remove(i);
+		for(int i = pBullets.size() - 1 ; i > -1; i--){
+			if(pBullets.get(i).isCollided()){
+				pBullets.remove(i);
 			}
 		}
 	}
@@ -334,11 +337,11 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		 * Chieh-Huang Chen
 		 */
 		// TODO Auto-generated method stub/
-		for(int i=0;i<player.size();i++){
-			player.get(i).updateAndCheckAll();
+		for(int i=0;i<pBullets.size();i++){
+			pBullets.get(i).updateAndCheckAll();
 		}
-		for(int i=0;i<enemy.size();i++){
-			enemy.get(i).updateAndCheckAll();
+		for(int i=0;i<eBullets.size();i++){
+			eBullets.get(i).updateAndCheckAll();
 		}
 		update();
 	}
@@ -350,7 +353,6 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			int cursorY = e.getY();
 			int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
 			int vy = calculateVComponentPlayerToCursor(10, cursorX, cursorY, false);
-			//character.firePistol(vx,vy);
 			character.getWeapon().fire(character.isHostile(),character.getX(),character.getY(),vx,vy);//change it up
 		}
 

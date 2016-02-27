@@ -1,5 +1,7 @@
 package project.battles;
 
+import java.awt.image.BufferedImage;
+
 import project.controls.OverworldSpriteControl;
 import project.save.ItemState;
 
@@ -48,6 +50,12 @@ public class KEnemy extends EnemyAI{
 	}
 
 	public OverworldSpriteControl move() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BufferedImage getImage() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Arc2D;
 import java.awt.image.BufferedImage;
 
+import project.battles.Projectiles;
 import project.items.Weapon;
 	/**
 	 * 
@@ -120,8 +121,8 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 //		}
 	}
 	public void firePistol(int vx, int vy){//target location
-		SampleProjectiles bullet = new SampleProjectiles(0, 0, 0, vx, vy, 0, BattlesScreen.projectiledemo);
-		BattlesScreen.enemy.add(bullet);
+		Projectiles bullet = new Projectiles(0, 0, 0, vx, vy, 0, BattlesScreen.projectiledemo);
+		BattlesScreen.eBullets.add(bullet);
 		equippedWeapon.reduceAmmoByOne();
 	}
 	
