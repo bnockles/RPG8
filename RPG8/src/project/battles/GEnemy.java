@@ -21,16 +21,6 @@ public class GEnemy extends EnemyAI{
 		this.up = conditions[2];
 		this.boss = conditions[3];
 	}
-	
-	void movement() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	void sight() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	protected void reaction() {
@@ -60,16 +50,5 @@ public class GEnemy extends EnemyAI{
 		} 
 	}
 
-//	@Override
-//	public ItemState getItems() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//
-//	public OverworldSpriteControl move() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 }

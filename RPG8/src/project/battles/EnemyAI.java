@@ -33,7 +33,8 @@ public abstract class EnemyAI extends Character{
 				checkForPlayer();
 			else
 				reaction();
-			moveUpAndDown();
+			//moveUpAndDown();
+			moveLeftAndRight();
 			if(maxHP/10>currentHP){
 				System.out.println(maxHP+" "+currentHP);
 				run();
@@ -63,35 +64,41 @@ public abstract class EnemyAI extends Character{
 	}
 	public void moveUpAndDown(){
 		if(moveUp){
-			y-=10;
+			//System.out.println(speed);
+			y-=speed;
 			if(y<=0){
 				moveUp = false;
-				moveDown = true;
 			}
 		}
 		else{
-			y+=10;
-			if(BattlesScreen.height <= y){
+			y+=speed;
+			moveDown = true;
+			if(BattlesScreen.height <= y+height){
 				System.out.println(y+" "+ BattlesScreen.height);
 				moveUp = true;
 				moveDown = false;
 			}
 		}
 	}
+	public void goToPlayer(){
+		int pX = BattlesScreen.character.getX();
+		int pY = BattlesScreen.character.getY();
+		
+	}
 	public void moveLeftAndRight(){
 		if(moveRight){
-			y-=10;
-			if(y<=0){
+			x+=speed;
+			if(BattlesScreen.width <= x+width){
 				moveRight = false;
-				moveLeft = true;
 			}
 		}
 		else{
-			y+=10;
-			if(BattlesScreen.height <= y){
-				System.out.println(y+" "+ BattlesScreen.height);
-				moveUp = true;
-				moveDown = false;
+			x-=speed;
+			moveLeft = true;
+			if(x<=0){
+				//System.out.println(y+" "+ BattlesScreen.height);
+				moveRight = true;
+				moveLeft = false;
 			}
 		}
 	}
@@ -125,6 +132,8 @@ public abstract class EnemyAI extends Character{
 		 */
 		// TODO Auto-generated method stub
 		// moveup use it as moving.
+		increaseCount();
+		System.out.println(count);
 			if(moveUp == true){
 				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
 					return bsprite[0];
@@ -170,6 +179,4 @@ public abstract class EnemyAI extends Character{
 				weapon.reduceAmmoByOne();
 		}
 	}
-	abstract void movement();
-	abstract void sight();
 }

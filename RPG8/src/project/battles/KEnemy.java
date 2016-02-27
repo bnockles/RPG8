@@ -21,15 +21,6 @@ public class KEnemy extends EnemyAI{
 		this.up = conditions[2];
 		this.boss = conditions[3];
 	}
-	void movement() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	void sight() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public ItemState getItems() {
 		// TODO Auto-generated method stub

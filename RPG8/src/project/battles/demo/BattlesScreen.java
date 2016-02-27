@@ -127,8 +127,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	Weapon weapon1;
 	Weapon weapon2;
 	//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
-	public int[] enemyG = {GE_X,GE_Y,GE_ARMOR,GE_SNEAK,GE_SPEED,GE_RECOVERY,GE_EXP,GE_STRENGTH,GE_LEVEL};
-	public int[] enemyK = {KE_X,KE_Y,KE_ARMOR,KE_SNEAK,KE_SPEED,KE_RECOVERY,KE_EXP,KE_STRENGTH,KE_LEVEL};
+	public int[] enemyG = {GE_X,GE_Y,GE_HP,GE_ARMOR,GE_SNEAK,GE_SPEED,GE_RECOVERY,GE_EXP,GE_STRENGTH,GE_LEVEL};
+	public int[] enemyK = {KE_X,KE_Y,GE_HP,KE_ARMOR,KE_SNEAK,KE_SPEED,KE_RECOVERY,KE_EXP,KE_STRENGTH,KE_LEVEL};
 	public int[] visionG = {GE_VISION, GE_DEGREE};
 	public int[] visionK = {KE_VISION, KE_DEGREE};
 	public int[] projectilestats = {W_DMG,W_VELOCITY,W_AMMO,W_RANGE};
@@ -232,7 +232,9 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			g2.drawImage(character.getImage(),character.getX(),character.getY(),null);
 			g2.drawImage(bullet.getImage(), 100, 100, null);
 			g2.drawImage(enemy1.getImage(),enemy1.getX(),enemy1.getY(),null);
+			g2.drawString("enemyK", enemy1.getX(), enemy1.getY()+25);
 			g2.drawImage(enemy2.getImage(),enemy2.getX(),enemy2.getY(),null);
+			g2.drawString("enemyG", enemy2.getX(), enemy2.getY()+25);
 			for(int i = 0; i < pBullets.size(); i++){
 				g2.drawImage(pBullets.get(i).getImage(), pBullets.get(i).getX(), pBullets.get(i).getY(), null);
 			}
