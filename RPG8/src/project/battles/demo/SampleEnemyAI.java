@@ -12,8 +12,7 @@ import project.items.Weapon;
 	 */
 public abstract class SampleEnemyAI extends SampleCharacter{
 	public static Arc2D.Double visioncone;
-	protected int visionrangeX;
-	protected int visionrangeY;
+	protected int visionrange;
 	protected int visiondegree;
 	protected SampleWeapon weapon;
 	protected boolean targetlock = false;
@@ -25,9 +24,8 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	
 	public SampleEnemyAI(BufferedImage[][] images, int[] stats, int x, int y) {
 		super(images, stats[0], x, y);
-		this.visionrangeX = stats[1];
-		this.visionrangeY = stats[2];
-		this.visiondegree = stats[3];
+		this.visionrange = stats[1];
+		this.visiondegree = stats[2];
 	}
 	public void GeneralEnemyAI(){
 		if(checkAlive()){
@@ -51,12 +49,14 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 		return true;
 	}
 	public void checkForPlayer(){
-		int playerXposition=0;
-		int playerYposition=0;
 		//System.out.println("hello");
-		visioncone = new Arc2D.Double(x, y, visionrangeX, visionrangeY, 225, 90, Arc2D.PIE);
-		if(visioncone.contains(playerXposition, playerYposition)){
-			targetlock = true;
+		int width1 = x+(width/2)-visionrange/2;
+		int height1 = y+(height/2)-visionrange/2;
+		
+		visioncone = new Arc2D.Double(width1,height1, visionrange, visionrange, 225, 90, Arc2D.PIE);
+		if(visioncone.contains(BattlesScreen.character.getX(), BattlesScreen.character.getY())){
+			//targetlock = true;
+			System.out.println("HIIIIIIII");
 		}
 		else{
 			moveUpAndDown();
@@ -64,7 +64,6 @@ public abstract class SampleEnemyAI extends SampleCharacter{
 	}
 	public static void paintArc(Graphics2D g){
 		g.draw(visioncone);
-		g.drawString("hi",x,y);
 	}
 	public void moveUpAndDown(){
 		if(moveUp){

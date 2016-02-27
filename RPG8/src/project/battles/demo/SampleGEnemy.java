@@ -10,17 +10,11 @@ public class SampleGEnemy extends SampleEnemyAI{
 	
 	public SampleGEnemy(BufferedImage[][] images,int[] stats, SampleWeapon weapon, int x, int y){
 		super(images,stats,x,y);
-		visionrangeX = stats[1];
-		visionrangeY = stats[2];
-		visiondegree = stats[3];
 		this.weapon = weapon;
 	}
 
 	public SampleGEnemy(BufferedImage[][] images, int[] stats, SampleWeapon weapon, int x, int y,boolean[] conditions){
 		super(images,stats,x,y);
-		visionrangeX = stats[1];
-		visionrangeY = stats[2];
-		visiondegree = stats[3];
 		this.weapon = weapon;
 		this.targetlock = conditions[0];
 		this.left = conditions[1];

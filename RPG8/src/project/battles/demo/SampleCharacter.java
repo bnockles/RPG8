@@ -28,14 +28,16 @@ public abstract class SampleCharacter {
 	protected boolean walking = false;
 	protected int maxHP;
 	protected int currentHP;
-	protected static int x; //make it not static later
-	protected static int y;
+	protected int x;
+	protected int y;
 	
 	public SampleCharacter(BufferedImage[][] images,int maxHP,int x, int y){
 		this.bsprite = images[0];
 		this.fsprite = images[1];
 		this.lsprite = images[2];
 		this.rsprite = images[3];
+		this.width = bsprite[0].getWidth();
+		this.height = bsprite[0].getHeight();
 		this.x = x;
 		this.y = y;
 		this.maxHP = maxHP;

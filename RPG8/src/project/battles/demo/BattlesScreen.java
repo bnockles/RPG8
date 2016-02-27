@@ -51,15 +51,29 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 	 * 		-GE_SPEED	GUARDENEMIES' SPEED
 	 * 		-KE_SPEED	KILLENEMIES' SPEED
 	 * 		-FPS 1000/TIMER
+	 * 		-GE_VISION ENEMIES' VISION RANGE
+	 * 		-KE_VISION 
+	 * 		-GE_DEGREE ENEMIES' LINE OF SIGHT
+	 *		-KE_DEGREE
 	 */
 	
 	public static final long P_SPEED = 5;
-	public static final long GE_SPEED = 5;
-	public static final long KE_SPEED = 5;
 	public static final int P_X = 300;
 	public static final int P_Y = 300;
+	
+	public static final long GE_SPEED = 5;
 	public static final int GE_X = 100;
 	public static final int GE_Y = 100;
+	public static final int GE_VISION = 300;
+	public static final int GE_HP = 100;
+	public static final int GE_DEGREE = 100;
+	
+	public static final long KE_SPEED = 5;
+	public static final int KE_X = 100;
+	public static final int KE_Y = 100;
+	public static final int KE_VISION = 300;
+	public static final int KE_HP = 100;
+	public static final int KE_DEGREE = 100;
 	public static final int FPS = 30;
 	
 	static SampleMCharacter character;
@@ -73,7 +87,8 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 
 	public static BufferedImage projectiledemo;
 	SampleProjectiles bullet;
-	public int[] enemystats = {100,100,100,100,};
+	public int[] enemyG = {GE_HP,GE_VISION,GE_DEGREE};
+	public int[] enemyK = {KE_HP,KE_VISION,KE_DEGREE};
 	public BattlesScreen(Game game){
 		super(game);
 		MainCharacter();
@@ -137,9 +152,9 @@ public class BattlesScreen extends Screen implements KeyListener,ActionListener,
 		origimage1 = UtilityMethods.getImageFromFile(this, "/enemy/eright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/eright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		enemy1 = new SampleKEnemy(animation,enemystats, new SampleWeapon(), GE_X, GE_Y);
+		enemy1 = new SampleKEnemy(animation,enemyG, new SampleWeapon(), KE_X, KE_Y);
 //		enemy1.GeneralEnemyAI();
-		enemy2 = new SampleGEnemy(animation,enemystats, new SampleWeapon(), GE_X, GE_Y);
+		enemy2 = new SampleGEnemy(animation,enemyG, new SampleWeapon(), GE_X, GE_Y);
 	}
 	public void Weapon(){
  
