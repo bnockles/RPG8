@@ -8,30 +8,15 @@ import project.save.ItemState;
 
 public class SampleKEnemy extends SampleEnemyAI{
 	public SampleKEnemy(BufferedImage[][] images, int[] stats, SampleWeapon weapon, int x, int y){
-		this.bsprite = images[0];
-		this.fsprite = images[1];
-		this.lsprite = images[2];
-		this.rsprite = images[3];
-		this.x = x;
-		this.y = y;
-		maxhp = stats[0];
-		hp = stats[0];
-		//hp = 0;
+		super(images,stats,x,y);
 		visionrangeX = stats[1];
 		visionrangeY = stats[2];
 		visiondegree = stats[3];
 		this.weapon = weapon;
 	}
  
-	public SampleKEnemy(BufferedImage[][] images, int[] stats, SampleWeapon weapon, boolean[] conditions, int positionX, int positionY){
-		this.bsprite = images[0];
-		this.fsprite = images[1];
-		this.lsprite = images[2];
-		this.rsprite = images[3];
-		maxhp = stats[0];
-		hp = stats[0];
-		this.x = positionX;
-		this.y = positionY;
+	public SampleKEnemy(BufferedImage[][] images, int[] stats, SampleWeapon weapon, boolean[] conditions, int x, int y){
+		super(images,stats,x,y);
 		visionrangeX = stats[1];
 		visionrangeY = stats[2];
 		visiondegree = stats[3];

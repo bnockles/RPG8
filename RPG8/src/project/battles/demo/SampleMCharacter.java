@@ -24,30 +24,13 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 	private int sneakValue;
 	private SampleWeapon equippedWeapon;
 	private ArrayList<SampleWeapon> loadout;
-	public SampleMCharacter(BufferedImage[][] images,int recovery, int hpValue, int armorValue, int sneakValue, int x, int y){
-		this.bsprite = images[0];
-		this.fsprite = images[1];
-		this.lsprite = images[2];
-		this.rsprite = images[3];
+	public SampleMCharacter(BufferedImage[][] images,int recovery, int maxHP, int armorValue, int sneakValue, int x, int y){
+		super(images,maxHP,x,y);
 		this.recovery= recovery;
-		this.hpValue=  hpValue;
 		this.armorValue = armorValue;
 		this.sneakValue = sneakValue;
 		this.x = x;
 		this.y = y;
-//		sprite = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
-//		URL url = getClass().getResource(imgsrc);
-//		try{
-//			BufferedImage original = ImageIO.read(url);
-//			Graphics2D g = (Graphics2D) sprite.getGraphics();
-//			int w = original.getWidth();
-//			int h = original.getHeight();
-//			g.drawImage(original, 0, 0, width, height, 0, 0, w, h, null);
-//		}
-//		catch (IOException e){
-//			e.printStackTrace();
-//		}
-
 	}
 	public int getLevel() {
 		return level;
@@ -206,6 +189,7 @@ public class SampleMCharacter extends SampleCharacter implements KeyListener,Mou
 		 * Chieh-Huang Chen
 		 */
 		// TODO Auto-generated method stub
+		increaseCount();
 			if(moveUp == true){
 				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
 					return bsprite[0];
