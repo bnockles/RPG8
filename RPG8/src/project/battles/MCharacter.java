@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import project.battles.demo.BattlesScreen;
 import project.controls.OverworldSpriteControl;
 import project.directors.Character;
 import project.items.Weapon;
@@ -38,41 +39,74 @@ public class MCharacter extends Character{
 	public BufferedImage getImage() {
 		// TODO Auto-generated method stub
 		increaseCount();
-		if(moveUp == true){
-			if((count >= 0 && count < 5) || (count >= 10 && count < 15))
+		if(BattlesScreen.pressedKeys.contains(KeyEvent.VK_UP) && BattlesScreen.pressedKeys.contains(KeyEvent.VK_DOWN)){
+			if(facingUp)
 				return bsprite[0];
-			if(count >= 5 && count < 10)
-				return bsprite[1];
-			if(count >= 15 && count < 20)
-				return bsprite[2];
-		}
-
-		if(moveDown == true){
-			if((count >= 0 && count < 5) || (count >= 10 && count < 15))
+			else
 				return fsprite[0];
-			if(count >= 5 && count < 10)
-				return fsprite[1];
-			if(count >= 15 && count < 20)
-				return fsprite[2];
 		}
-		if(moveLeft == true){
-			if((count >= 0 && count < 5) || (count >= 10 && count < 15))
+		else{
+			if(moveUp){
+				facingUp = true;
+				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
+					return bsprite[0];
+				if(count >= 5 && count < 10)
+					return bsprite[1];
+				if(count >= 15 && count < 20)
+					return bsprite[2];
+			}
+			if(moveDown){
+				facingDown = true;
+				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
+					return fsprite[0];
+				if(count >= 5 && count < 10)
+					return fsprite[1];
+				if(count >= 15 && count < 20)
+					return fsprite[2];
+			}
+		}
+		if(BattlesScreen.pressedKeys.contains(KeyEvent.VK_RIGHT) && BattlesScreen.pressedKeys.contains(KeyEvent.VK_LEFT)){
+			if(facingLeft)
 				return lsprite[0];
-			if(count >= 5 && count < 10)
-				return lsprite[1];
-			if(count >= 15 && count < 20)
-				return lsprite[2];
-		}
-
-		if(moveRight == true){
-			if((count >= 0 && count < 5) || (count >= 10 && count < 15))
+			else
 				return rsprite[0];
-			if(count >= 5 && count < 10)
-				return rsprite[1];
-			if(count >= 15 && count < 20)
-				return rsprite[2];
+		}
+		else{
+			if(!moveRight&&moveLeft){
+				facingLeft = true;
+				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
+					return lsprite[0];
+				if(count >= 5 && count < 10)
+					return lsprite[1];
+				if(count >= 15 && count < 20)
+					return lsprite[2];
+			}
+
+			if(moveRight&&!moveLeft){
+				facingRight = true;
+				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
+					return rsprite[0];
+				if(count >= 5 && count < 10)
+					return rsprite[1];
+				if(count >= 15 && count < 20)
+					return rsprite[2];
+			}
 		}
 		return stopImage;
+	}
+	public void setFacingDirection(){
+		if(facingUp){
+			facingDown = false;
+			facingLeft = false;
+			facingRight = false;
+		}
+		else if(facingDown){
+			facingLeft = false;
+			facingRight = false;
+		}
+		else if(facingLeft){
+			facingRight = false;
+		}
 	}
 	@Override
 	public void fire(int x, int y, int vx, int vy) {

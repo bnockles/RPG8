@@ -316,6 +316,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			character.setMoveRight(false);
 			character.setStopImage(character.getRsprite()[0]);
 		}
+		character.setFacingDirection();
 		if(pressedKeys.isEmpty())
 			character.setWalking(false);
 	}

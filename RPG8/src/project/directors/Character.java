@@ -24,6 +24,10 @@ public abstract class Character {
 	protected boolean moveDown = false;
 	protected boolean moveLeft = false;
 	protected boolean moveRight = false;
+	protected boolean facingUp = false;
+	protected boolean facingDown = false;
+	protected boolean facingLeft = false;
+	protected boolean facingRight = false;
 	
 	protected int width;
 	protected int height;
@@ -230,6 +234,18 @@ public abstract class Character {
 	public Weapon getWeapon() {
 		return weapon;
 	}
+	public boolean isFacingUp() {
+		return facingUp;
+	}
+	public boolean isFacingDown() {
+		return facingDown;
+	}
+	public boolean isFacingLeft() {
+		return facingLeft;
+	}
+	public boolean isFacingRight() {
+		return facingRight;
+	}
 	public void setCurrentHP(int currentHP) {
 		this.currentHP = currentHP;
 	}
@@ -283,6 +299,18 @@ public abstract class Character {
 	}
 	public void setStopImage(BufferedImage stopImage) {
 		this.stopImage = stopImage;
+	}
+	public void setFacingUp(boolean facingUp) {
+		this.facingUp = facingUp;
+	}
+	public void setFacingDown(boolean facingDown) {
+		this.facingDown = facingDown;
+	}
+	public void setFacingLeft(boolean facingLeft) {
+		this.facingLeft = facingLeft;
+	}
+	public void setFacingRight(boolean facingRight) {
+		this.facingRight = facingRight;
 	}
 	
 }
