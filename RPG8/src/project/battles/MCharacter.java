@@ -95,16 +95,16 @@ public class MCharacter extends Character{
 		return stopImage;
 	}
 	public void setFacingDirection(){
-		if(facingUp){
+		if(!moveUp){
+			facingUp = false;
+		}
+		if(!moveDown){
 			facingDown = false;
-			facingLeft = false;
-			facingRight = false;
 		}
-		else if(facingDown){
+		if(!moveLeft){
 			facingLeft = false;
-			facingRight = false;
 		}
-		else if(facingLeft){
+		if(!moveRight){
 			facingRight = false;
 		}
 	}
