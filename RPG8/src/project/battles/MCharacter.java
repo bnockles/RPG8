@@ -72,7 +72,7 @@ public class MCharacter extends Character{
 			if(count >= 15 && count < 20)
 				return rsprite[2];
 		}
-		return fsprite[0];
+		return stopImage;
 	}
 	@Override
 	public void fire(int x, int y, int vx, int vy) {

@@ -17,6 +17,7 @@ public abstract class Character {
 	protected BufferedImage[] bsprite;
 	protected BufferedImage[] lsprite;
 	protected BufferedImage[] rsprite;
+	protected BufferedImage stopImage;
 	
 	protected int count;
 	protected boolean moveUp = false;
@@ -56,6 +57,7 @@ public abstract class Character {
 		this.fsprite = images[1];
 		this.lsprite = images[2];
 		this.rsprite = images[3];
+		this.stopImage = fsprite[0];
 		
 		this.width = bsprite[0].getWidth();
 		this.height = bsprite[0].getHeight();
@@ -198,6 +200,30 @@ public abstract class Character {
 	public boolean isHostile() {
 		return hostile;
 	}
+	public BufferedImage[] getFsprite() {
+		return fsprite;
+	}
+	public void setFsprite(BufferedImage[] fsprite) {
+		this.fsprite = fsprite;
+	}
+	public BufferedImage[] getBsprite() {
+		return bsprite;
+	}
+	public void setBsprite(BufferedImage[] bsprite) {
+		this.bsprite = bsprite;
+	}
+	public BufferedImage[] getLsprite() {
+		return lsprite;
+	}
+	public void setLsprite(BufferedImage[] lsprite) {
+		this.lsprite = lsprite;
+	}
+	public BufferedImage[] getRsprite() {
+		return rsprite;
+	}
+	public void setRsprite(BufferedImage[] rsprite) {
+		this.rsprite = rsprite;
+	}
 	public boolean isWalking() {
 		return walking;
 	}
@@ -254,6 +280,9 @@ public abstract class Character {
 	}
 	public void setWalking(boolean walking) {
 		this.walking = walking;
+	}
+	public void setStopImage(BufferedImage stopImage) {
+		this.stopImage = stopImage;
 	}
 	
 }

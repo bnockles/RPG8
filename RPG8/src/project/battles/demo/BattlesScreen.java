@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Arc2D;
 import java.awt.image.BufferedImage;
@@ -18,7 +19,6 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
-import project.battles.Collision;
 import project.battles.EnemyAI;
 import project.battles.GEnemy;
 import project.battles.KEnemy;
@@ -29,7 +29,7 @@ import project.directors.Screen;
 import project.directors.UtilityMethods;
 import project.items.Weapon;
 
-public class BattlesScreen extends Screen implements ActionListener, KeyListener , MouseListener{
+public class BattlesScreen extends Screen implements ActionListener, KeyListener , MouseListener,MouseMotionListener{
 	/**
 	 * ***********CHANGES! MUST READ********************
 	 * RENAMING: 
@@ -114,12 +114,13 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static GEnemy enemy2;
 	
 	public static ArrayList<EnemyAI> enemiesOnScreen= new ArrayList<EnemyAI>();
-	public static ArrayList<Collision> pBullets = new ArrayList<Collision>();
-	public static ArrayList<Collision> eBullets = new ArrayList<Collision>();
+	public static ArrayList<Projectiles> pBullets = new ArrayList<Projectiles>();
+	public static ArrayList<Projectiles> eBullets = new ArrayList<Projectiles>();
 	
 	Timer timer = new Timer(FPS,this);
-	ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
-
+	public static ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
+	public static ArrayList<Integer> pressedMouse = new ArrayList<Integer>();
+	
 	public static BufferedImage projectiledemo;
 	public static BufferedImage weapondemo;
 	
@@ -127,6 +128,9 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	Weapon weapon;
 	Weapon weapon1;
 	Weapon weapon2;
+	int cursorX;
+	int cursorY;
+	
 	//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 	public int[] enemyG = {GE_X,GE_Y,GE_HP,GE_ARMOR,GE_SNEAK,GE_SPEED,GE_RECOVERY,GE_EXP,GE_STRENGTH,GE_LEVEL};
 	public int[] enemyK = {KE_X,KE_Y,GE_HP,KE_ARMOR,KE_SNEAK,KE_SPEED,KE_RECOVERY,KE_EXP,KE_STRENGTH,KE_LEVEL};
@@ -294,18 +298,22 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		if(keyCode == KeyEvent.VK_UP){
 			pressedKeys.remove(pressedKeys.indexOf(keyCode));
 			character.setMoveUp(false);
+			character.setStopImage(character.getBsprite()[0]);
 		}
 		if(keyCode == KeyEvent.VK_DOWN){
 			pressedKeys.remove(pressedKeys.indexOf(keyCode));
 			character.setMoveDown(false);
+			character.setStopImage(character.getFsprite()[0]);
 		}
 		if(keyCode == KeyEvent.VK_LEFT){
 			pressedKeys.remove(pressedKeys.indexOf(keyCode));
 			character.setMoveLeft(false);
+			character.setStopImage(character.getLsprite()[0]);
 		}
 		if(keyCode == KeyEvent.VK_RIGHT){
 			pressedKeys.remove(pressedKeys.indexOf(keyCode));
 			character.setMoveRight(false);
+			character.setStopImage(character.getRsprite()[0]);
 		}
 		if(pressedKeys.isEmpty())
 			character.setWalking(false);
@@ -381,29 +389,35 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	@Override
 	public void mousePressed(MouseEvent e) {//Jason Lyan
 		if(e.getButton() == MouseEvent.BUTTON1){
+			System.out.println("Hello");
 			int cursorX = e.getX();
 			int cursorY = e.getY();
 			int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
 			int vy = calculateVComponentPlayerToCursor(10, cursorX, cursorY, false);
 			character.fire(character.getX(),character.getY(),vx,vy);//change it up
 		}
-
 	}
-	public void mouseClicked(MouseEvent arg0) {
+	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-
 	}
-	public void mouseEntered(MouseEvent arg0) {
+	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-
 	}
-	public void mouseExited(MouseEvent arg0) {
+	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-
 	}
-	public void mouseReleased(MouseEvent arg0) {
+	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+	}
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
