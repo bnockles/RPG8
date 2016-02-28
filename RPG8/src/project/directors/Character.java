@@ -115,8 +115,11 @@ public abstract class Character {
 	}
 	public void useMelee(){
 		//test code
+		double rotation = 0;;
+		if(moveRight || moveLeft)rotation = Math.PI/2;
+		else rotation = 0;
 		BufferedImage sheet = UtilityMethods.getImageFromFile(this, "/images/slash/slash.png");
-		Melee attack = new Melee(x-5,y-30,0,50,50,15,sheet,Math.PI/2);
+		Melee attack = new Melee(x-5,y-30,0,50,50,15,sheet,rotation);
 		BattlesScreen.pBullets.add(attack);
 	}
 	public void useExplovies(){

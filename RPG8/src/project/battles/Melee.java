@@ -38,7 +38,7 @@ public class Melee extends Collision{
 		 int imageHeight = imageSheet.getHeight();
 		 BufferedImage imageSub = imageSheet.getSubimage(imageWidth*count, 0, imageWidth, imageHeight);
 		 image = UtilityMethods.getScaledImage(imageSub, width, height);
-		 //paintImage();
+		 paintImage();
 	}
 	@Override
 	public void updateAndCheckAll() {
@@ -59,16 +59,16 @@ public class Melee extends Collision{
 	}
 
 	@Override
-	public void paintImage() {
-		BufferedImage slashImage = image;
+	public void paintImage() {//paints image based on rotation
+		BufferedImage slashImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g = slashImage.createGraphics();
 		AffineTransform oldtrans = new AffineTransform();
 	    AffineTransform trans = new AffineTransform();
 	    trans.setToIdentity();
 	    trans.rotate(rotation, width/2, height/2);
-	    trans.translate((width/2), (height/2));
+	    //trans.translate(0,0);
 	    g.setTransform(trans);
-	    g.drawImage(this.getImage(), 0, 0, width, height, null);
+	    g.drawImage(image, 0, 0, width, height, null);
 	    trans.setToIdentity();
 	    g.setTransform(oldtrans);
 	    image = slashImage;
