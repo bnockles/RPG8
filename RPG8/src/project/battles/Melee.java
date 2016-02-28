@@ -8,7 +8,9 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
 import project.directors.UtilityMethods;
-
+/**
+ * @ Author: Melvin Cherian
+ */
 public class Melee extends Collision{
 	protected int width;
 	protected int height;
@@ -40,6 +42,9 @@ public class Melee extends Collision{
 		 image = UtilityMethods.getScaledImage(imageSub, width, height);
 		 paintImage();
 	}
+	public Rectangle getHitBox() {
+		return hitBox;
+	}
 	@Override
 	public void updateAndCheckAll() {
 		updateImage();
@@ -59,7 +64,8 @@ public class Melee extends Collision{
 	}
 
 	@Override
-	public void paintImage() {//paints image based on rotation
+	public void paintImage() {//paints image based on rotation field
+		//CAN I GET EXTRA CREDIT FOR THIS DAMN
 		BufferedImage slashImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g = slashImage.createGraphics();
 		AffineTransform oldtrans = new AffineTransform();

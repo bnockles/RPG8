@@ -20,7 +20,7 @@ public class MCharacter extends Character{
 
 	public MCharacter(BufferedImage[][] images, int[] stats, Weapon weapon){
 		//this is where we change stats for characters
-		super(images,stats,true,weapon);
+		super(images,stats,false,weapon);
 		this.level = stats[9];
 	}
 	public int getLevel() {
