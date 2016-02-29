@@ -13,9 +13,10 @@ public interface ItemResources {
 	MedKit bigkit=new MedKit("Big Medkit","It's the best.",0, 30, NO_EFFECT);
 	
 	//Ammo
-	Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, NO_EFFECT);
 	Ammo pistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 0, 1, NO_EFFECT);
 	Ammo rifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 0, 1, NO_EFFECT);
+	Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, NO_EFFECT);
+	Ammo SMGAmmo=new Ammo("SMG Ammo", "It's SMG ammo", 0, 1, NO_EFFECT);
 	Ammo energyAmmo=new Ammo("Energy Ammo", "It's energy ammo", 0, 2, NO_EFFECT);
 	
 	//Weapons
