@@ -1,9 +1,19 @@
 package project.towns;
 
-import project.directors.Screen;
+import java.util.ArrayList;
 
-public abstract class Store {
+import project.directors.Game;
+import project.directors.Screen;
+import project.items.Item;
+
+public abstract class Store{
+
+	public Store(ArrayList<Integer> itemN) {
+		
+	}
 
 	Screen inventory;
+	
+	int id;
 	
 }
