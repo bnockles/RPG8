@@ -1,4 +1,4 @@
-package project.menus;
+package project.menus;//test comment 2
 
 
 import java.io.BufferedReader;
@@ -67,7 +67,5 @@ public class GameMenu extends VerticalMenu{
 	public void addSelections() {
 		//this method is required by the interface, but selections are added as each saveFile is read
 	}
-
-
 
 }

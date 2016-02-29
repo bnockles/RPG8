@@ -37,7 +37,7 @@ public abstract class EnemyAI extends Character{
 				reaction();
 			//moveUpAndDown();
 			//moveLeftAndRight();
-			//goToPlayer();
+			goToPlayer();
 			if(maxHP/10>currentHP){
 				System.out.println(maxHP+" "+currentHP);
 				run();
@@ -55,8 +55,14 @@ public abstract class EnemyAI extends Character{
 		//System.out.println("hello");
 		int arcX = x+(width/2)-visionrange/2;
 		int arcY = y+(height/2)-visionrange/2;
-		
-		visioncone = new Arc2D.Double(arcX,arcY, visionrange, visionrange, 225, 90, Arc2D.PIE);
+		int begindegree = 45;
+		if(moveLeft)
+			begindegree+=90;
+		if(moveDown)
+			begindegree+=180;
+		if(moveRight)
+			begindegree+=270;
+		visioncone = new Arc2D.Double(arcX,arcY, visionrange, visionrange, begindegree, 90, Arc2D.PIE);
 		//90, 225 change it to line of sight degree - 45 degree + 45
 		if(visioncone.contains(BattlesScreen.character.getX(), BattlesScreen.character.getY())){
 			targetlock = true;
