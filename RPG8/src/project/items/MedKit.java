@@ -6,8 +6,8 @@ public class MedKit extends Item {
 	private String desc;
 	private int cost;
 	private int healthGained;
-	public MedKit(String name, String desc,int cost, int healthGained) {
-		super(name, desc, cost);
+	public MedKit(String name, String desc,int cost, int healthGained, int effect) {
+		super(name, desc, cost, effect);
 		this.healthGained=healthGained;
 		// TODO Auto-generated constructor stub
 	}

@@ -7,8 +7,8 @@ public class Misc extends Item{
 	private int cost;
 	
 		
-		public Misc(String name, String desc,boolean coin, int cost){
-			super(name,desc, cost);
+		public Misc(String name, String desc,boolean coin, int cost, int effect){
+			super(name,desc, cost, effect);
 		}
 	}
 

@@ -9,7 +9,13 @@ public abstract class Item implements Selectable {
 	private String description;
 	private int cost;
 	
-	public Item(String name,String desc,int cost){
+	private static final int NO_EFFECT = 0;
+	private static final int FIRE = 1;
+	private static final int CORROSIVE = 2;
+	private static final int SHOCK = 3;
+	private static final int REGEN = 4;
+	
+	public Item(String name,String desc,int cost, int effect){
 		this.name=name;
 		description=desc;
 		this.cost=cost;
@@ -19,6 +25,10 @@ public abstract class Item implements Selectable {
 		item location?*/
 	}
 	
+	public int getCost() {
+		return cost;
+	}
+
 	public String getName() {
 		return name;
 	}
