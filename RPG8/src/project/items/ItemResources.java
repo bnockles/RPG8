@@ -56,11 +56,11 @@ public interface ItemResources {
 	
 	Weapons[] Melee = { };
 	Weapons[] Pistol = { pistol2GradeB1, pistol3GradeS1, pistol4GradeA1};
-	Weapons[] Rifles = { };
+	Weapons[] Rifles = { rifles1GradeA1, rifles2GradeA2};
 	Weapons[] Heavy = { };
 	Weapons[] SMG = { };
 	Weapons[] Explosives = { };
 	// Misc
-	Misc gold = new Misc("Gold", "Get more of this and you're rich!", 0);
-	Misc scrap = new Misc("Scrap Metal", "Useless trash.", 1);
+	Misc gold = new Misc("Gold", "Get more of this and you're rich!", true , 0);
+	Misc scrap = new Misc("Scrap Metal", "Useless trash.",false , 1);
 }
