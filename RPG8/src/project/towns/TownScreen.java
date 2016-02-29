@@ -145,6 +145,7 @@ public class TownScreen extends Screen implements KeyListener{
 	public int getEntranceX(){
 		return entranceX;
 	}
+	//XXX
 	
 	
 	public int getEntranceY(){
