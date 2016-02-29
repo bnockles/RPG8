@@ -10,7 +10,6 @@ import project.directors.Game;
 import project.directors.Screen;
 import project.directors.UtilityMethods;
 import java.util.ArrayList;
-
 public class MapDemoScreen extends Screen implements KeyListener {
 	ArrayList<Obstacle> obstacles;
 	ArrayList<MainMap> mapSections;
