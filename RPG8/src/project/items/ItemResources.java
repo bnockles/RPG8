@@ -1,16 +1,22 @@
 package project.items;
 
 public interface ItemResources {
+	static final int NO_EFFECT = 0;
+	static final int FIRE = 1;
+	static final int CORROSIVE = 2;
+	static final int SHOCK = 3;
+	static final int REGEN = 4;
+	
 	//Medkits
-	MedKit smallkit=new MedKit("Small Medkit","It's crap.",0, 10);
-	MedKit medkit=new MedKit("Medium Medkit","It's better.",0, 20);
-	MedKit bigkit=new MedKit("Big Medkit","It's the best.",0, 30);
+	MedKit smallkit=new MedKit("Small Medkit","It's crap.",0, 10, NO_EFFECT);
+	MedKit medkit=new MedKit("Medium Medkit","It's better.",0, 20, NO_EFFECT);
+	MedKit bigkit=new MedKit("Big Medkit","It's the best.",0, 30, NO_EFFECT);
 	
 	//Ammo
-	Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, 0);
-	Ammo pistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 0, 1, 0);
-	Ammo rifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 0, 1, 0);
-	Ammo energyAmmo=new Ammo("Energy Ammo", "It's energy ammo", 0, 2, 0);
+	Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, NO_EFFECT);
+	Ammo pistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 0, 1, NO_EFFECT);
+	Ammo rifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 0, 1, NO_EFFECT);
+	Ammo energyAmmo=new Ammo("Energy Ammo", "It's energy ammo", 0, 2, NO_EFFECT);
 	
 	//Weapons
 	/**
@@ -56,6 +62,6 @@ public interface ItemResources {
 	Weapons[] SMG = { };
 	Weapons[] Explosives = { };
 	// Misc
-	Misc gold = new Misc("Gold", "Get more of this and you're rich!", true , 0);
-	Misc scrap = new Misc("Scrap Metal", "Useless trash.",false , 1);
+	Misc gold = new Misc("Gold", "Get more of this and you're rich!", true , 0, NO_EFFECT);
+	Misc scrap = new Misc("Scrap Metal", "Useless trash.",false , 1, NO_EFFECT);
 }

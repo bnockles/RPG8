@@ -8,17 +8,14 @@ public abstract class Item implements Selectable {
 	private String name;
 	private String description;
 	private int cost;
+	private int effect;
 	
-	private static final int NO_EFFECT = 0;
-	private static final int FIRE = 1;
-	private static final int CORROSIVE = 2;
-	private static final int SHOCK = 3;
-	private static final int REGEN = 4;
-	
+
 	public Item(String name,String desc,int cost, int effect){
 		this.name=name;
 		description=desc;
 		this.cost=cost;
+		this.effect = effect;
 		/** possible param String imageName
 		with a method that paint pictures
 		current status: no idea if we do or not
@@ -35,6 +32,10 @@ public abstract class Item implements Selectable {
 
 	public String getDescription() {
 		return description;
+	}
+	
+	public int getEffect() {
+		return effect;
 	}
 	
 	public void confirm() {
