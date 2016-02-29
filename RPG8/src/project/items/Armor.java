@@ -3,8 +3,8 @@ package project.items;
 
 public class Armor extends Item{
 
-	public Armor(String name, String desc,int cost) {
-		super(name, desc,cost);
+	public Armor(String name, String desc,int cost, int effect) {
+		super(name, desc,cost, effect);
 		// TODO Auto-generated constructor stub
 	}
 

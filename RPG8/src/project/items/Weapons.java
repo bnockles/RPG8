@@ -22,8 +22,8 @@ public class Weapons extends Item{
 
 	public Weapons(String name, String desc, Ammo ammo, int damage, int ammoClip, int ammoCapacity,
 			double criticalHit, int critHitMul, int weight, boolean buyable, int cost, String rof, int rofRPS, 
-			double reloadSpd, boolean secondaryFire, boolean canSilence, int gunNum) {
-		super(name, desc,cost);
+			double reloadSpd, boolean secondaryFire, boolean canSilence, int effect, int gunNum) {
+		super(name, desc,cost, effect);
 		
 		this.ammo = ammo;
 		this.damage = damage;
@@ -102,7 +102,7 @@ public class Weapons extends Item{
 		this.buyable = buyable;
 	}
 
-	public double getCost() {
+	public int getCost() {
 		return cost;
 	}
 
