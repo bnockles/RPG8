@@ -51,11 +51,11 @@ public class Enemy {
 	}
 	
 	public void randomX() {
-		x += 20; //random.nextInt((500 - 10 + 1) + 10);
+		x += 75; //random.nextInt((500 - 10 + 1) + 10);
 	}
 	public void randomY() {
 		Random random = new Random();
-		y += 20; //(random.nextInt(500 - 10 + 1) + 10);
+		y += 75; //(random.nextInt(500 - 10 + 1) + 10);
 	}
 
 	public void setStrength(int strength) {

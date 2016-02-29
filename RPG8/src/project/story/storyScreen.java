@@ -51,6 +51,8 @@ public class storyScreen extends Screen implements KeyListener{
 				storyDemo.Swarm.animate(storyDemo.AyaStanding.get(3));
 				storyDemo.Swarm.moveUp();
 			}
+			
+		
 			else if(keyCode == KeyEvent.VK_DOWN){			
 				storyDemo.Swarm.animate(storyDemo.AyaStanding.get(0));
 				storyDemo.Swarm.moveDown();

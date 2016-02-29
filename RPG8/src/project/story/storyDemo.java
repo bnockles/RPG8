@@ -33,7 +33,7 @@ public class storyDemo extends Game{
 	private static String back1 = "/images/heroes/back1.png";
 	private static String back2 = "/images/heroes/back2.png";
 	final static ArrayList<String> AyaStanding = new ArrayList<String>();
-	public static Hero Swarm = new Hero("Aya Drevis", 100, 100);
+	public static Hero Swarm = new Hero("Aya", 100, 100);
 	static boolean cutscene = false;
 	public static Enemy enemy = new Enemy(150, 150);
 	static int width = 500;
@@ -58,7 +58,7 @@ public class storyDemo extends Game{
 		AyaStanding.add(left);
 		AyaStanding.add(right);
 		AyaStanding.add(back);
-		Swarm = new Hero("Aya Drevis", 100, 100);
+		Swarm = new Hero("Aya Drevis", 105, 105);
 		Swarm.animate(AyaStanding.get(0));
 		enemy = new Enemy(150, 150);
 		enemy.animate("/images/heroes/Enemy.jpg");
@@ -96,6 +96,7 @@ public class storyDemo extends Game{
 		g2.setColor(Color.black);
 		g2.fillRect(0, height - 91, width, 91);
 		EnemyDynamic.detectHit();
+		Cutscenes1.possibles();
 	}
 	
 	
