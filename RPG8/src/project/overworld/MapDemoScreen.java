@@ -63,7 +63,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 			if (boundaries.get(i).getBounds().intersects(hitbox)
 					&& playerRegion == boundaries.get(i).getRegion()) {
 				touching = true;
-				return;
+				return ;
 			} else {
 				touching = false;
 			}
@@ -72,7 +72,6 @@ public class MapDemoScreen extends Screen implements KeyListener {
 			if (obstacles.get(i).getBounds().intersects(hitbox)
 					&& playerRegion == obstacles.get(i).getRegion()) {
 				touching = true;
-				System.out.println(boundaries.size());
 				return;
 			} else {
 				touching = false;
@@ -80,7 +79,6 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		}
 
 	}
-
 	@Override
 	public KeyListener getKeyListener() {
 		// TODO Auto-generated method stub
@@ -170,4 +168,34 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		// TODO Auto-generated method stub
 
 	}
+
+	public ArrayList<Region> getRegions() {
+		return regions;
+	}
+
+	public boolean isTouching() {
+		return touching;
+	}
+
+	public int getxPos() {
+		return xPos;
+	}
+
+	public int getyPos() {
+		return yPos;
+	}
+
+	public int getxSize() {
+		return xSize;
+	}
+
+	public int getySize() {
+		return ySize;
+	}
+
+	public int getPlayerRegion() {
+		return playerRegion;
+	}
+
+	
 }
