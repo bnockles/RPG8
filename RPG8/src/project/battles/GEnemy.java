@@ -3,7 +3,6 @@ package project.battles;
 import java.awt.image.BufferedImage;
 
 import project.battles.demo.BattlesScreen;
-import project.controls.OverworldSpriteControl;
 import project.items.Weapon;
 import project.save.ItemState;
 
