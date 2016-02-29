@@ -5,12 +5,22 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
 
 import project.directors.Game;
 import project.directors.Screen;
 
 public class ItemScreen extends Screen implements KeyListener,ItemResources{
 	TargetDemo you = new TargetDemo(100, pistol2GradeB1,0,0);
+	
+	int[][] size = new int[6][2];
+	BufferedImage reG;
+	BufferedImage enG;
+	
 	
 	public ItemScreen(Game game) {
 		super(game);
@@ -23,8 +33,26 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		return this;
 	}
 
+	public void createImages() {
+		URL reGurl = getClass().getResource("/images/items/handgunStill.png");
+		URL enGurl = getClass().getResource("/images/items/energyGun.png");
+
+		try {
+			reG = ImageIO.read(reGurl);
+			enG = ImageIO.read(enGurl);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void paintScreen(Graphics2D g2) {
+		createImages();
+		for(int i=0;i<size.length;i++){
+			for(int j=0;j<size[i].length;j++){
+				size[i][j] = 100;
+			}
+		}
 		Font tr=new Font("TimesRoman", Font.PLAIN, 28);
 		g2.setFont(tr);
 		g2.setColor(Color.white);
@@ -50,6 +78,16 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		g2.drawLine(70,290,90,310);
 		g2.drawLine(70,330,50,350);
 		g2.drawLine(70,330,90,350);
+		
+		g2.drawRect(70, 600, size[0][0], size[0][1]);
+		g2.drawRect(170, 600, size[1][0], size[1][1]);
+		g2.drawRect(270, 600, size[2][0], size[2][1]);
+		g2.drawRect(370, 600, size[3][0], size[3][1]);
+		g2.drawRect(470, 600, size[4][0], size[4][1]);
+		g2.drawRect(570, 600, size[5][0], size[5][1]);
+		
+		g2.drawImage(reG, 70, 600, reG.getWidth()/3, reG.getHeight()/3, null);			
+		g2.drawImage(enG, 170, 600, enG.getWidth(), enG.getHeight(), null);
 	}
 
 	@Override
@@ -59,12 +97,23 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 			smallkit.giveHealth(you);
 			System.out.println(you.health);
 		}
-		if(e.getKeyCode()==KeyEvent.VK_H){
-			if(you.weapon.getName() == "RIA-45S"){
-				you.weapon = pistol4GradeA1;
-			}else{
-				you.weapon = pistol2GradeB1;
-			}
+		if(e.getKeyCode()==KeyEvent.VK_1){
+			you.weapon = pistol4GradeA1;
+		}
+		if(e.getKeyCode()==KeyEvent.VK_2){
+			you.weapon = pistol4GradeA1;
+		}
+		if(e.getKeyCode()==KeyEvent.VK_3){
+			you.weapon = pistol4GradeA1;
+		}
+		if(e.getKeyCode()==KeyEvent.VK_4){
+			you.weapon = pistol4GradeA1;
+		}
+		if(e.getKeyCode()==KeyEvent.VK_5){
+			you.weapon = pistol4GradeA1;
+		}
+		if(e.getKeyCode()==KeyEvent.VK_6){
+			you.weapon = pistol4GradeA1;
 		}
 		if(e.getKeyCode() == KeyEvent.VK_R){ 
 			you.reload();

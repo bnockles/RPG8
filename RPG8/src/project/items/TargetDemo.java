@@ -22,7 +22,7 @@ public class TargetDemo {
 			this.weapon.setAmmoTotal(this.weapon.getAmmoTotal()-1);
 		}
 		if(this.health<0){
-			this.health=1;
+			this.health=0;
 		}
 	}
 	
