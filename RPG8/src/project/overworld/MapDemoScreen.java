@@ -16,13 +16,13 @@ public class MapDemoScreen extends Screen implements KeyListener {
 	ArrayList<Boundaries> boundaries;
 	ArrayList<Region> regions;
 	BufferedImage background;
-	boolean touching;
-	int xPos;
-	int yPos;
-	int xSize;
-	int ySize;
-	int playerRegion;
-	Rectangle hitbox;
+	static boolean touching;
+	static int xPos;
+	static int yPos;
+	static int xSize;
+	static int ySize;
+	static int playerRegion;
+	static Rectangle hitbox;
 
 	public MapDemoScreen(Game game) {
 		super(game);
@@ -172,19 +172,19 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		return regions;
 	}
 
-	public boolean isTouching() {
+	public static boolean isTouching() {
 		return touching;
 	}
 
-	public int getxPos() {
+	public static int getxPos() {
 		return xPos;
 	}
 
-	public int getyPos() {
+	public static int getyPos() {
 		return yPos;
 	}
 
-	public int getxSize() {
+	public static int getxSize() {
 		return xSize;
 	}
 
