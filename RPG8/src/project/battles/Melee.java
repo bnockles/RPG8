@@ -8,9 +8,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
 import project.directors.UtilityMethods;
-/**
- * @ Author: Melvin Cherian
- */
+
 public class Melee extends Collision{
 	protected int width;
 	protected int height;
