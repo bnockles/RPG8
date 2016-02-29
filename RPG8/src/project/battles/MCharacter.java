@@ -8,7 +8,6 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import project.battles.demo.BattlesScreen;
-import project.controls.OverworldSpriteControl;
 import project.directors.Character;
 import project.items.Weapon;
 import project.save.ItemState;

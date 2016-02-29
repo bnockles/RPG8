@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
-import project.battles.EnemyAI;
+
 
 public abstract class Screen implements Visible{
 
@@ -41,20 +41,17 @@ public abstract class Screen implements Visible{
 	/**
 	 * called by game when this screen is active
 	 */
-	public final void update(){
+	public void update(){
 		Graphics2D g2 = (Graphics2D) screenImage.getGraphics();
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
 		paintScreen(g2);
-		EnemyAI.paintArc(g2);
 	}
 	
 	/**
 	 * paints the screen
 	 */
 	public abstract void paintScreen(Graphics2D g2);
-	
-
 	
 }

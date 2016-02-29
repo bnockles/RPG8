@@ -77,7 +77,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int P_STRENGTH = 10;
 	public static final int P_LEVEL = 10;
 	
-	public static final int GE_SPEED = 5;
+	public static final int GE_SPEED = 15;
 	public static final int GE_X = 100;
 	public static final int GE_Y = 100;
 	public static final int GE_HP = 100;
@@ -90,7 +90,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int GE_DEGREE = 100;
 	public static final int GE_VISION = 300;
 	
-	public static final int KE_SPEED = 5;
+	public static final int KE_SPEED = 15;
 	public static final int KE_X = 100;
 	public static final int KE_Y = 300;
 	public static final int KE_HP = 100;
@@ -352,6 +352,12 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 
 	}
 
+	public void update(){
+		super.update();
+		Graphics2D g2 = (Graphics2D)getImage().getGraphics();
+		EnemyAI.paintArc(g2);
+	}
+	
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
