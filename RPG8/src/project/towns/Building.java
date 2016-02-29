@@ -12,6 +12,7 @@ public class Building {
 		this.image = image;
 		this.y = y;
 		this.x = x;
+		//http://www.javatpoint.com/constructor
 	}
 
 }
