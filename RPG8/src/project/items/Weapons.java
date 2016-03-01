@@ -43,6 +43,7 @@ public class Weapons extends Item{
 		this.gunNum = gunNum;
 		ammoTotal = ammoClip;
 		this.pellets = pellets;
+		//p
 	}
 	public int getAmmoTotal() {
 		return ammoTotal;
