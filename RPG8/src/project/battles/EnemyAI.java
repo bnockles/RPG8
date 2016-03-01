@@ -12,7 +12,13 @@ public abstract class EnemyAI extends Character{
 	private Arc2D.Double visioncone;
 	private int visionrange;
 	private int visiondegree;
+	
 	protected boolean targetlock = false;
+	protected boolean upAndDown = false;
+	protected boolean leftAndRight = false;
+	protected boolean goAround = false;
+	protected boolean goToPlayer = false;
+	
 	protected boolean left = false;
 	protected boolean up = false;
 	protected boolean boss = false;
@@ -20,13 +26,21 @@ public abstract class EnemyAI extends Character{
 	protected abstract void run();
 	protected int waitInterval;
 	
-	protected EnemyAI(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon) {
+	protected EnemyAI(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon, int type) {
 		//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 		super(images, stats, false, weapon);
 		this.visionrange = vision[0];
 		this.visiondegree = vision[1];
 		this.hostile = true;
-		this.moveUp =true;
+		this.moveUp=true;
+		if(type == BattlesScreen.LEFT_RIGHT)
+			leftAndRight = true;
+		if(type == BattlesScreen.UP_DOWN)
+			upAndDown = true;
+		if(type == BattlesScreen.AROUND)
+			goAround = true;
+		if(type == BattlesScreen.GOTOPLAYER)
+			goToPlayer = true;
 	}
 	public void GeneralEnemyAI(){
 		if(checkAlive()){
@@ -35,10 +49,14 @@ public abstract class EnemyAI extends Character{
 			checkForPlayer();
 			if(targetlock)
 				reaction();
-			moveAround();
-			//moveUpAndDown();
-			//moveLeftAndRight();
-			//goToPlayer();
+			if(leftAndRight)
+				moveLeftAndRight();
+			if(upAndDown)
+				moveUpAndDown();
+			if(goAround)
+				moveAround();
+			if(goToPlayer)
+				goToPlayer();
 			if(maxHP/10>currentHP){
 				System.out.println(maxHP+" "+currentHP);
 				run();

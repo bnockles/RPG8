@@ -110,6 +110,13 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int W_AMMO = 100;
 	public static final int W_RANGE = 100;
 	
+	public static final int LEFT_RIGHT = 0;
+	public static final int UP_DOWN = 1;
+	public static final int AROUND = 2;
+	public static final int GOTOPLAYER = 3;
+	
+	public static final int ENEMYMOVE = LEFT_RIGHT;
+	
 	public static MCharacter character;
 	public static KEnemy enemy1;
 	public static GEnemy enemy2;
@@ -213,8 +220,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		origimage1 = UtilityMethods.getImageFromFile(this, "/enemy/eright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/eright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		enemy1 = new KEnemy(animation,enemyK,visionK,weapon1);
-		enemy2 = new GEnemy(animation,enemyG, visionG,weapon2);
+		enemy1 = new KEnemy(animation,enemyK,visionK,weapon1,ENEMYMOVE);
+		enemy2 = new GEnemy(animation,enemyG, visionG,weapon2,ENEMYMOVE);
 	}
 	@Override
 	public void paintScreen(Graphics2D g2) {
@@ -231,7 +238,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		g2.setColor(Color.black);
 		try{
 			g2.drawString("Battles Team's Demo", 100, 100);
-			g2.setColor(Color.green);
+			g2.setColor(Color.red);
 			timer.start();
 			g2.drawImage(character.getImage(),character.getX(),character.getY(),null);
 			g2.drawImage(bullet.getImage(), 100, 100, null);

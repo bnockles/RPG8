@@ -8,13 +8,13 @@ import project.save.ItemState;
 
 public class GEnemy extends EnemyAI{
 	
-	public GEnemy(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon){
-		super(images,stats,vision,weapon);
+	public GEnemy(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon, int type){
+		super(images,stats,vision,weapon,type);
 		this.weapon = weapon;
 	}
  
-	public GEnemy(BufferedImage[][] images, int[] stats,int[] vision, Weapon weapon, boolean[] conditions){
-		super(images,stats,vision,weapon);
+	public GEnemy(BufferedImage[][] images, int[] stats,int[] vision, Weapon weapon, int type, boolean[] conditions){
+		super(images,stats,vision,weapon,type);
 		this.targetlock = conditions[0];
 		this.left = conditions[1];
 		this.up = conditions[2];
