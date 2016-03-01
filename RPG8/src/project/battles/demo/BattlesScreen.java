@@ -77,10 +77,10 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int P_STRENGTH = 10;
 	public static final int P_LEVEL = 10;
 	
-	public static final int GE_SPEED = 15;
+	public static final int GE_SPEED = 10;
 	public static final int GE_X = 100;
 	public static final int GE_Y = 100;
-	public static final int GE_HP = 100;
+	public static final int GE_HP = 150;
 	public static final int GE_ARMOR = 100;
 	public static final int GE_SNEAK = 100;
 	public static final int GE_RECOVERY = 10;
@@ -90,7 +90,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int GE_DEGREE = 100;
 	public static final int GE_VISION = 300;
 	
-	public static final int KE_SPEED = 15;
+	public static final int KE_SPEED = 10;
 	public static final int KE_X = 100;
 	public static final int KE_Y = 300;
 	public static final int KE_HP = 100;
@@ -134,7 +134,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	
 	//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 	public int[] enemyG = {GE_X,GE_Y,GE_HP,GE_ARMOR,GE_SNEAK,GE_SPEED,GE_RECOVERY,GE_EXP,GE_STRENGTH,GE_LEVEL};
-	public int[] enemyK = {KE_X,KE_Y,GE_HP,KE_ARMOR,KE_SNEAK,KE_SPEED,KE_RECOVERY,KE_EXP,KE_STRENGTH,KE_LEVEL};
+	public int[] enemyK = {KE_X,KE_Y,KE_HP,KE_ARMOR,KE_SNEAK,KE_SPEED,KE_RECOVERY,KE_EXP,KE_STRENGTH,KE_LEVEL};
 	public int[] visionG = {GE_VISION, GE_DEGREE};
 	public int[] visionK = {KE_VISION, KE_DEGREE};
 	public int[] projectilestats = {W_DMG,W_VELOCITY,W_AMMO,W_RANGE};
@@ -214,7 +214,6 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/eright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
 		enemy1 = new KEnemy(animation,enemyK,visionK,weapon1);
-//		enemy1.GeneralEnemyAI();
 		enemy2 = new GEnemy(animation,enemyG, visionG,weapon2);
 	}
 	@Override
@@ -234,7 +233,6 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			g2.drawString("Battles Team's Demo", 100, 100);
 			g2.setColor(Color.green);
 			timer.start();
-			//System.out.println(char1.getPositionY());
 			g2.drawImage(character.getImage(),character.getX(),character.getY(),null);
 			g2.drawImage(bullet.getImage(), 100, 100, null);
 			g2.drawImage(enemy1.getImage(),enemy1.getX(),enemy1.getY(),null);
@@ -247,9 +245,11 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			for(int i = 0; i < eBullets.size(); i++){
 				g2.drawImage(eBullets.get(i).getImage(), eBullets.get(i).getX(), eBullets.get(i).getY(), null);
 			}
+			g2.draw(enemy1.getVisioncone());
+			g2.draw(enemy2.getVisioncone());
 		}
 		catch(Exception e){
-			
+			e.printStackTrace();
 		}
 	}
 	private void checkProjectileRange() {
@@ -354,8 +354,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 
 	public void update(){
 		super.update();
-		Graphics2D g2 = (Graphics2D)getImage().getGraphics();
-		EnemyAI.paintArc(g2);
+//		Graphics2D g2 = (Graphics2D)getImage().getGraphics();
+//		EnemyAI.paintArc(g2);
 	}
 	
 	@Override

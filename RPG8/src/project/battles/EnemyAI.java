@@ -9,7 +9,7 @@ import project.directors.Character;
 import project.items.Weapon;
 
 public abstract class EnemyAI extends Character{
-	protected static Arc2D.Double visioncone;
+	private Arc2D.Double visioncone;
 	private int visionrange;
 	private int visiondegree;
 	protected boolean targetlock = false;
@@ -26,18 +26,19 @@ public abstract class EnemyAI extends Character{
 		this.visionrange = vision[0];
 		this.visiondegree = vision[1];
 		this.hostile = true;
+		this.moveUp =true;
 	}
 	public void GeneralEnemyAI(){
 		if(checkAlive()){
 			//do something
 			//System.out.println("hello");
-			if(targetlock == false)
-				checkForPlayer();
-			else
+			checkForPlayer();
+			if(targetlock)
 				reaction();
+			moveAround();
 			//moveUpAndDown();
 			//moveLeftAndRight();
-			goToPlayer();
+			//goToPlayer();
 			if(maxHP/10>currentHP){
 				System.out.println(maxHP+" "+currentHP);
 				run();
@@ -46,12 +47,12 @@ public abstract class EnemyAI extends Character{
 		//animation of death
 		//dropItem();
 	}
-	public boolean checkAlive(){
-		if(currentHP<0)
+	private boolean checkAlive(){
+		if(currentHP<=0)
 			return false;
 		return true;
 	}
-	public void checkForPlayer(){
+	private void checkForPlayer(){
 		//System.out.println("hello");
 		int arcX = x+(width/2)-visionrange/2;
 		int arcY = y+(height/2)-visionrange/2;
@@ -68,28 +69,88 @@ public abstract class EnemyAI extends Character{
 			targetlock = true;
 		}
 	}
-	public static void paintArc(Graphics2D g){
-		g.draw(visioncone);
+	public Arc2D.Double getVisioncone() {
+		return visioncone;
 	}
-	public void moveUpAndDown(){
+	private void moveAround(){
 		if(moveUp){
-			//System.out.println(speed);
-			y-=speed;
-			if(y<=0){
-				moveUp = false;
+			moveUp();
+			if(!moveUp){
+				moveRight=true;
 			}
+		}
+		if(moveRight){
+			moveRight();
+			if(!moveRight){
+				moveDown=true;
+			}
+		}
+		if(moveDown){
+			moveDown();
+			if(!moveDown)
+				moveLeft=true;
+		}
+		if(moveLeft){
+			moveLeft();
+			if(!moveLeft)
+				moveUp=true;
+		}
+	}
+	private void moveUpAndDown(){
+		if(moveUp){
+			moveUp();
+			if(!moveUp)
+				moveDown = true;
 		}
 		else{
-			y+=speed;
 			moveDown = true;
-			if(BattlesScreen.height <= y+height){
-				System.out.println(y+" "+ BattlesScreen.height);
+			moveDown();
+			if(!moveDown)
 				moveUp = true;
-				moveDown = false;
-			}
 		}
 	}
-	public void goToPlayer(){
+	private void moveUp(){
+		if(y-height<=0){
+			moveUp=false;
+			return;
+		}
+		y-=speed;
+	}
+	private void moveDown(){
+		if(BattlesScreen.height <= y+height){
+			moveDown=false;
+			return;
+		}
+		y+=speed;
+	}
+	private void moveLeft(){
+		if(x<=0){
+			moveLeft = false;
+			return;
+		}
+		x-=speed;
+	}
+	private void moveRight(){
+		if(BattlesScreen.width <= x+width){
+			moveRight = false;
+			return;
+		}
+		x+=speed;
+	}
+	private void moveLeftAndRight(){
+		if(moveRight){
+			moveRight();
+			if(!moveRight)
+				moveLeft = true;
+		}
+		else{
+			moveLeft = true;
+			moveLeft();
+			if(!moveLeft)
+				moveRight = true;
+		}
+	}
+	private void goToPlayer(){
 		int pX = BattlesScreen.character.getX();
 		int pY = BattlesScreen.character.getY();
 		if(Math.abs(pX-x) < 10 && Math.abs(pY-y) < 10){
@@ -108,24 +169,7 @@ public abstract class EnemyAI extends Character{
 				y+=speed;
 		}
 	}
-	public void moveLeftAndRight(){
-		if(moveRight){
-			x+=speed;
-			if(BattlesScreen.width <= x+width){
-				moveRight = false;
-			}
-		}
-		else{
-			x-=speed;
-			moveLeft = true;
-			if(x<=0){
-				//System.out.println(y+" "+ BattlesScreen.height);
-				moveRight = true;
-				moveLeft = false;
-			}
-		}
-	}
-	public void wander(){
+	private void wander(){
 		//System.out.println("a"+positionX);
 		if(Math.abs(x-BattlesScreen.character.getX()) < 100){
 			x--;
