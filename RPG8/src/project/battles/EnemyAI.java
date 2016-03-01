@@ -18,6 +18,7 @@ public abstract class EnemyAI extends Character{
 	protected boolean leftAndRight = false;
 	protected boolean goAround = false;
 	protected boolean goToPlayer = false;
+	protected boolean direction = false;
 	
 	protected boolean left = false;
 	protected boolean up = false;
@@ -47,16 +48,17 @@ public abstract class EnemyAI extends Character{
 			//do something
 			//System.out.println("hello");
 			checkForPlayer();
-			if(targetlock)
-				reaction();
-			if(leftAndRight)
-				moveLeftAndRight();
-			if(upAndDown)
-				moveUpAndDown();
-			if(goAround)
-				moveAround();
-			if(goToPlayer)
-				goToPlayer();
+//			if(targetlock)
+//				reaction();
+//			if(leftAndRight)
+//				moveLeftAndRight();
+//			if(upAndDown)
+//				moveUpAndDown();
+//			if(goAround)
+//				moveAround();
+//			if(goToPlayer)
+//				goToPlayer();
+			wander();
 			if(maxHP/10>currentHP){
 				System.out.println(maxHP+" "+currentHP);
 				run();
@@ -188,27 +190,29 @@ public abstract class EnemyAI extends Character{
 		}
 	}
 	private void wander(){
-		//System.out.println("a"+positionX);
-		if(Math.abs(x-BattlesScreen.character.getX()) < 100){
-			x--;
+		if(moveUp||moveDown)
+			moveUpAndDown();
+		else
+			moveLeftAndRight();
+		randomTurns();
+	}
+	private void randomTurns(){
+		int num =(int) (Math.random()*200);
+		//System.out.println(num);
+		if(num < 4){
+			moveUp = false;
+			moveDown = false;
+			moveLeft = false;
+			moveRight = false;
+			if(num == 0)
+				moveUp = true;
+			if(num == 1)
+				moveDown = true;
+			if(num == 2)
+				moveLeft = true;
+			if(num == 3)
+				moveRight =true;
 		}
-		else{
-			x++;
-		}
-		if(Math.abs(y-BattlesScreen.character.getY()) < 100){
-			y--;
-		}
-		else{
-			y++;
-		}
-		//System.out.println("b"+positionX);
-//		if(true){
-//			left = !left;
-//		}; // check if its gonna crash into a wall or something
-//		// need variables for other objects and boundaries
-//		if(true){
-//			up = !up;
-//		}
 	}
 	@Override
 	public BufferedImage getImage() {
