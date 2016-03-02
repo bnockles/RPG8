@@ -56,6 +56,10 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		boundaries.add(new Boundaries(560, 0, 230, 700, false, 1));
 		boundaries.add(new Boundaries(180, 500, 230, 300, false, 1));
 		boundaries.add(new Boundaries(410, 400, 200, 500, false, 1));
+		boundaries.add(new Boundaries(0,0,width,1,false,-1));
+		boundaries.add(new Boundaries(width,0,1,height,false,-1));
+		boundaries.add(new Boundaries(0,0,1,height,false,-1));
+		boundaries.add(new Boundaries(0,height,width,1,false,-1));
 		regions.add(new Region(920, 200, 68, 500, 1, 300, 300, 0));
 		regions.add(new Region(0, 200, 50, 400, 0, 300, 300, 1));
 	}
@@ -64,7 +68,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		hitbox = new Rectangle(xPos, yPos, xSize, ySize);
 		for (int i = 0; i < boundaries.size(); i++) {
 			if (boundaries.get(i).getBounds().intersects(hitbox)
-					&& playerRegion == boundaries.get(i).getRegion()) {
+					&& (playerRegion == boundaries.get(i).getRegion() || boundaries.get(i).getRegion() == -1 )) {
 				touching = true;
 				type = "B";
 				obstacleNum = i;
