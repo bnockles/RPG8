@@ -16,8 +16,8 @@ import project.items.ItemResources;
 
 public class WeaponsScreen  extends Screen implements KeyListener, ItemResources{
 	
-	int regAmmoRemaining = rifles1GradeA1.getAmmoClip();
-	int engAmmoRemaining = rifles2GradeA2.getAmmoClip();
+	int regAmmoRemaining = rifles1GradeC1.getAmmoClip();
+	int engAmmoRemaining = rifles3GradeA2.getAmmoClip();
 	int x=100;
 	int y=500;
 	//fef
@@ -57,10 +57,10 @@ public class WeaponsScreen  extends Screen implements KeyListener, ItemResources
 	public void paintScreen(Graphics2D g2) {
 		createImages();
 		g2.drawString("Press S to shoot the gun and press D to shoot energy gun.", 100, 100);
-		g2.drawString(rifles1GradeA1.getName() + "Damage: " +  rifles1GradeA1.getDamage() + " Cost: $" + rifles1GradeA1.getCost(), 500, 235);
-		g2.drawString(" [Ammo:" + regAmmoRemaining + "/" + rifles1GradeA1.getAmmoCapacity() + "]", 500, 250);
-		g2.drawString(rifles2GradeA2.getName() + "Damage: " +  rifles2GradeA2.getDamage() + " Cost: $" + rifles2GradeA2.getCost(), 500, 435);
-		g2.drawString(" [Ammo:" + engAmmoRemaining + "/" + rifles2GradeA2.getAmmoCapacity() + "]", 500, 450);
+		g2.drawString(rifles1GradeC1.getName() + "Damage: " +  rifles1GradeC1.getDamage() + " Cost: $" + rifles1GradeC1.getCost(), 500, 235);
+		g2.drawString(" [Ammo:" + regAmmoRemaining + "/" + rifles1GradeC1.getAmmoCapacity() + "]", 500, 250);
+		g2.drawString(rifles3GradeA2.getName() + "Damage: " +  rifles3GradeA2.getDamage() + " Cost: $" + rifles3GradeA2.getCost(), 500, 435);
+		g2.drawString(" [Ammo:" + engAmmoRemaining + "/" + rifles3GradeA2.getAmmoCapacity() + "]", 500, 450);
 		
 		
 		g2.drawImage(reGun, 200, 200, reGun.getWidth(), reGun.getHeight(), null);
