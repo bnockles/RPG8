@@ -169,28 +169,28 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		boolean used = false;
 		int keyCode = e.getKeyCode();
 		if (keyCode == KeyEvent.VK_UP) {
-			yPos--;
+			yPos= yPos - 2;
 			if (touching && !used) {
 				test = checkType(type);
 				yPos = test[1] + test[3]+3;
 				used = true;
 			}
 		}else if (keyCode == KeyEvent.VK_DOWN) {
-			yPos++;
+			yPos = xPos +2;
 			if (touching & !used) {
 				test = checkType(type);
 				yPos = test[1] - ySize-2;
 				used = true;
 			}
 		}else if (keyCode == KeyEvent.VK_LEFT) {
-			xPos--;
+			xPos= xPos -2;
 			if (touching & !used) {
 				test = checkType(type);
 				xPos = test[0] + test[2]+3;
 				used = true;
 			}
 		}else if (keyCode == KeyEvent.VK_RIGHT) {
-			xPos++;
+			xPos = xPos + 2;
 			if (touching & !used) {
 				test = checkType(type);
 				xPos = test[0] - xSize-2;
