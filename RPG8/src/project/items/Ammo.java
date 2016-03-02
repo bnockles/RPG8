@@ -13,6 +13,18 @@ public class Ammo extends Item{
 		this.ammoType=ammoType;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public int getAmmoType() {
+		return ammoType;
+	}
+
 	/** Type
 	 *[1-Regular, 2-Energy] 
 	 */
