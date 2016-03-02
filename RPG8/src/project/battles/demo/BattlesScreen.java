@@ -237,8 +237,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		 */
 		// TODO Auto-generated method stub
 		checkMotion();
-		enemy1.GeneralEnemyAI();
-		enemy2.GeneralEnemyAI();
+//		enemy1.GeneralEnemyAI();
+//		enemy2.GeneralEnemyAI();
 		checkProjectileRange();
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
@@ -249,18 +249,24 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			timer.start();
 			g2.drawImage(character.getImage(),character.getX(),character.getY(),null);
 			g2.drawImage(bullet.getImage(), 100, 100, null);
-			g2.drawImage(enemy1.getImage(),enemy1.getX(),enemy1.getY(),null);
-			g2.drawString("enemyK", enemy1.getX(), enemy1.getY()+25);
-			g2.drawImage(enemy2.getImage(),enemy2.getX(),enemy2.getY(),null);
-			g2.drawString("enemyG", enemy2.getX(), enemy2.getY()+25);
+			for (EnemyAI a : enemiesOnScreen){
+				a.GeneralEnemyAI();
+				g2.drawImage(a.getImage(),a.getX(),a.getY(),null);
+				g2.drawString("enemyK", a.getX(), a.getY()+25);
+				g2.draw(getNColorVisionCone(a,g2));
+			}
+//			g2.drawImage(enemy1.getImage(),enemy1.getX(),enemy1.getY(),null);
+//			g2.drawString("enemyK", enemy1.getX(), enemy1.getY()+25);
+//			g2.drawImage(enemy2.getImage(),enemy2.getX(),enemy2.getY(),null);
+//			g2.drawString("enemyG", enemy2.getX(), enemy2.getY()+25);
 			for(int i = 0; i < pBullets.size(); i++){
 				g2.drawImage(pBullets.get(i).getImage(), pBullets.get(i).getX(), pBullets.get(i).getY(), null);
 			}
 			for(int i = 0; i < eBullets.size(); i++){
 				g2.drawImage(eBullets.get(i).getImage(), eBullets.get(i).getX(), eBullets.get(i).getY(), null);
 			}
-			g2.draw(getNColorVisionCone(enemy1,g2));
-			g2.draw(getNColorVisionCone(enemy2,g2));
+//			g2.draw(getNColorVisionCone(enemy1,g2));
+//			g2.draw(getNColorVisionCone(enemy2,g2));
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -315,9 +321,9 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		/**
 		 * Yifan He
 		 */
-
 		if(keyCode == KeyEvent.VK_8){
-			enemiesOnScreen.clear();
+			enemiesOnScreen.clear(); //Clear the array list
+			
 			addEnemies(enemy1,enemy1);
 		}
 		if(keyCode == KeyEvent.VK_9){
