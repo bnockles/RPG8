@@ -209,7 +209,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
 		character =  new MCharacter(animation,playerstats,weapon);
 	}
-	public void Enemy(){
+	public BufferedImage[][] Enemy(){
 		/**
 		 * Chieh-Huang Chen
 		 */
@@ -232,6 +232,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
 		enemy1 = new KEnemy(animation,enemyK,visionK,weapon1,ENEMYMOVE);
 		enemy2 = new GEnemy(animation,enemyG, visionG,weapon2,ENEMYMOVE);
+		return animation;
 	}
 	@Override
 	public void paintScreen(Graphics2D g2) {
@@ -312,6 +313,40 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		}
 		if(!pressedKeys.isEmpty()){
 			character.setWalking(true);
+		}
+		
+
+		/**
+		 * Yifan He
+		 */
+		GEnemy scenario1Enemy = new GEnemy(Enemy(),enemyG, visionG,weapon2,ENEMYMOVE);
+		KEnemy scenario2Enemy = new KEnemy(Enemy(),enemyG, visionG,weapon2,ENEMYMOVE);
+		if(keyCode == KeyEvent.VK_8){
+			enemiesOnScreen.clear();
+			addEnemies(scenario1Enemy,scenario1Enemy);
+			
+		}
+		if(keyCode == KeyEvent.VK_9){
+			enemiesOnScreen.clear();
+			addEnemies(scenario2Enemy,scenario2Enemy);
+		}
+		if(keyCode == KeyEvent.VK_0){
+			enemiesOnScreen.clear();
+			addEnemies(scenario1Enemy,scenario2Enemy);
+		}
+	}
+	public void addEnemies(EnemyAI a, EnemyAI b){ //add random number of enemies for scenarios
+		/**
+		 * Yifan He
+		 */
+		int enemy1Num = (int) (Math.random()*3+1);
+		int randomNumber = (int) (Math.random()*6+3);
+		for(int i=0; i<enemy1Num; i++)
+		{
+			enemiesOnScreen.add(a);
+		}
+		for(int j=0; j<randomNumber-enemy1Num; j++){
+			enemiesOnScreen.add(b);
 		}
 	}
 	
