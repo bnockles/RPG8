@@ -201,7 +201,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
 		character =  new MCharacter(animation,playerstats,weapon);
 	}
-	public void Enemy(){
+	public BufferedImage[][] Enemy(){
 		/**
 		 * Chieh-Huang Chen
 		 */
@@ -224,6 +224,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
 		enemy1 = new KEnemy(animation,enemyK,visionK,weapon1,ENEMYMOVE);
 		enemy2 = new GEnemy(animation,enemyG, visionG,weapon2,ENEMYMOVE);
+		return animation;
 	}
 	@Override
 	public void paintScreen(Graphics2D g2) {
@@ -285,6 +286,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	}
 
 	@Override
+	
 	public void keyPressed(KeyEvent e) {
 		/**
 		 * Chieh-Huang Chen
@@ -297,8 +299,39 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		if(!pressedKeys.isEmpty()){
 			character.setWalking(true);
 		}
+		
+
+		/**
+		 * Yifan He
+		 */
+		GEnemy scenario1Enemy = new GEnemy(Enemy(),enemyG, visionG,weapon2,ENEMYMOVE);
+		KEnemy scenario2Enemy = new KEnemy(Enemy(),enemyG, visionG,weapon2,ENEMYMOVE);
+		int randomNumber = (int) (Math.random()*6+3);
+		int enemy1Num = (int) (Math.random()*3+1);
+		if(keyCode == KeyEvent.VK_8){
+			addEnemies(scenario1Enemy);
+			//enemiesOnScreen.add();
+		}
+		if(keyCode == KeyEvent.VK_9){
+			addEnemies(scenario2Enemy);
+		}
+		if(keyCode == KeyEvent.VK_0){
+			for(int i=0; i<enemy1Num; i++)
+			{
+				enemiesOnScreen.add(scenario1Enemy);
+			}
+			for(int j=0; j<randomNumber-enemy1Num; j++){
+				enemiesOnScreen.add(scenario2Enemy);
+			}	
+		}
 	}
-	
+	public void addEnemies(EnemyAI a){ //add random number of enemies for scenarios
+		int enemy1Num = (int) (Math.random()*3+1);
+		for(int i=0; i<enemy1Num; i++)
+		{
+			enemiesOnScreen.add(a);
+		}
+	}
 	@Override
 	public void keyReleased(KeyEvent e) {
 		/**
