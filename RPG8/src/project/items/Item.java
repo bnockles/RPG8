@@ -21,7 +21,22 @@ public abstract class Item implements Selectable {
 		current status: no idea if we do or not
 		item location?*/
 	}
-	
+	private static void useEffect(int duration,int effect) {
+		// TODO Auto-generated method stub
+		if(effect==4){
+			int changed=0;
+			long timenow=System.nanoTime();
+			System.out.println(timenow);
+			while((System.nanoTime()-timenow)/1000000000<=duration){
+				if((System.nanoTime()-timenow)/1000000000!=changed){
+					changed++;
+					//health+=10;
+					//System.out.println("Health"+health);
+				}
+			}
+		}
+		//System.out.println("Final Health"+health);
+	}
 	public int getCost() {
 		return cost;
 	}
