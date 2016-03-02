@@ -15,7 +15,7 @@ public class GEnemy extends EnemyAI{
  
 	public GEnemy(BufferedImage[][] images, int[] stats,int[] vision, Weapon weapon, int type, boolean[] conditions){
 		super(images,stats,vision,weapon,type);
-		this.targetlock = conditions[0];
+		this.targetLock = conditions[0];
 		this.left = conditions[1];
 		this.up = conditions[2];
 		this.boss = conditions[3];
