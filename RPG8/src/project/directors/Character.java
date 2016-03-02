@@ -118,13 +118,23 @@ public abstract class Character {
 		else
 			BattlesScreen.pBullets.add(bullet);
 	}
-	public void useMelee(){
+	public void useMelee(int direction){
 		//test code
 		double rotation = Math.PI/2;
-		if(moveRight || moveLeft)rotation = 0;
+		int posx = x;
+		int posy = y;
+		if(direction == 1  || direction == 2){
+			rotation = 0;
+			if(direction==1)posy-=50;
+			if(direction==2)posy+=50;
+		}
+		if(direction == 3  || direction == 4){
+			if(direction==3)posx-=50;
+			if(direction==4)posx+=50;
+		}
 		else rotation = Math.PI/2;
 		BufferedImage sheet = UtilityMethods.getImageFromFile(this, "/images/slash/slash.png");
-		Melee attack = new Melee(x-5,y-30,0,50,50,15,sheet,rotation);
+		Melee attack = new Melee(posx,posy,0,50,50,15,sheet,rotation);
 		BattlesScreen.pBullets.add(attack);
 	}
 	public void useExplovies(){
