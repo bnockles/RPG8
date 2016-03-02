@@ -69,4 +69,8 @@ public class Enemy {
 	public int getY() {
 		return y;
 	}
+	
+
+	
+	
 }

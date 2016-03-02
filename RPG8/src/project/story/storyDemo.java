@@ -81,6 +81,8 @@ public class storyDemo extends Game{
 		repaint();
 	}
 	
+	
+	
 	@SuppressWarnings("unused")
 	public void paint(Graphics g){
 		//sets image to current windowWidth/height
@@ -97,6 +99,7 @@ public class storyDemo extends Game{
 		g2.fillRect(0, height - 91, width, 91);
 		EnemyDynamic.detectHit();
 		Cutscenes1.possibles();
+		//everytime anythign is done paint gets called.
 	}
 	
 	

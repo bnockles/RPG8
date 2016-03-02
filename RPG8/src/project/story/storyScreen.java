@@ -127,5 +127,10 @@ public class storyScreen extends Screen implements KeyListener{
 		if(pressedKeys.contains(KeyEvent.VK_RIGHT) && !pressedKeys.contains(KeyEvent.VK_LEFT)) storyDemo.Swarm.setX(storyDemo.Swarm.getX() - MOVE_UNIT); 
 		if(!pressedKeys.contains(KeyEvent.VK_RIGHT) && pressedKeys.contains(KeyEvent.VK_LEFT)) storyDemo.Swarm.setX(storyDemo.Swarm.getX() + MOVE_UNIT); 
 	}
+	
+	
+//	public int getX(){
+	//}
 
+	
 }
