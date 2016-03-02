@@ -89,6 +89,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int GE_LEVEL = 10;
 	public static final int GE_DEGREE = 100;
 	public static final int GE_VISION = 300;
+	public static final int GE_AWARE = 50;
 	
 	public static final int KE_SPEED = 10;
 	public static final int KE_X = 100;
@@ -102,6 +103,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int KE_LEVEL = 10;
 	public static final int KE_DEGREE = 100;
 	public static final int KE_VISION = 300;
+	public static final int KE_AWARE = 50;
 	
 	public static final int FPS = 30;
 	
@@ -142,8 +144,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 	public int[] enemyG = {GE_X,GE_Y,GE_HP,GE_ARMOR,GE_SNEAK,GE_SPEED,GE_RECOVERY,GE_EXP,GE_STRENGTH,GE_LEVEL};
 	public int[] enemyK = {KE_X,KE_Y,KE_HP,KE_ARMOR,KE_SNEAK,KE_SPEED,KE_RECOVERY,KE_EXP,KE_STRENGTH,KE_LEVEL};
-	public int[] visionG = {GE_VISION, GE_DEGREE};
-	public int[] visionK = {KE_VISION, KE_DEGREE};
+	public int[] visionG = {GE_VISION, GE_DEGREE, GE_AWARE};
+	public int[] visionK = {KE_VISION, KE_DEGREE, KE_AWARE};
 	public int[] projectilestats = {W_DMG,W_VELOCITY,W_AMMO,W_RANGE};
 	public int[] playerstats = {P_X,P_Y,P_HP,P_ARMOR,P_SNEAK,P_SPEED,P_RECOVERY,P_EXP,P_STRENGTH,P_LEVEL};
 	public BattlesScreen(Game game){

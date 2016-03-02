@@ -2,6 +2,7 @@ package project.battles;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Arc2D;
+import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 
 import project.battles.demo.BattlesScreen;
@@ -10,8 +11,10 @@ import project.items.Weapon;
 
 public abstract class EnemyAI extends Character{
 	private Arc2D.Double visioncone;
+	private Ellipse2D.Double awarenessRange;
 	private int visionrange;
 	private int visiondegree;
+	private int awareRange;
 	
 	protected boolean targetlock = false;
 	protected boolean upAndDown = false;
@@ -20,6 +23,7 @@ public abstract class EnemyAI extends Character{
 	protected boolean goToPlayer = false;
 	protected boolean direction = false;
 	
+	protected boolean alone = true;
 	protected boolean left = false;
 	protected boolean up = false;
 	protected boolean boss = false;
@@ -32,6 +36,10 @@ public abstract class EnemyAI extends Character{
 		super(images, stats, false, weapon);
 		this.visionrange = vision[0];
 		this.visiondegree = vision[1];
+		this.awareRange = vision[2];
+		awarenessRange = new Ellipse2D.Double(x-awareRange, y-awareRange, awareRange, awareRange);
+		
+		
 		this.hostile = true;
 		this.moveUp=true;
 		if(type == BattlesScreen.LEFT_RIGHT)
@@ -59,13 +67,22 @@ public abstract class EnemyAI extends Character{
 //			if(goToPlayer)
 //				goToPlayer();
 			wander();
-			if(maxHP/10>currentHP){
+			checkEnemiesAround();
+			if(maxHP/10>currentHP && alone){
 				System.out.println(maxHP+" "+currentHP);
 				run();
 			}
 		}
 		//animation of death
 		//dropItem();
+	}
+	private void checkEnemiesAround(){
+		for(EnemyAI enemy:BattlesScreen.enemiesOnScreen){
+			if(awarenessRange.contains(enemy.getX(),enemy.getY()))
+				alone = false;
+			else
+				alone = true;
+		}
 	}
 	private boolean checkAlive(){
 		if(currentHP<=0)
