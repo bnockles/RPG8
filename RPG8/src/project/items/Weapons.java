@@ -11,18 +11,19 @@ public class Weapons extends Item{
 	private boolean buyable;
 	private int cost;
 	private String rof;
-	private int rofRPS;
+	private double rofRPS;
 	private double reloadSpd;
 	private boolean secondaryFire;
 	private boolean canSilence;
 	private int gunNum;
 	private int ammoTotal;
+	private int pellets;
 	
 	
 
 	public Weapons(String name, String desc, Ammo ammo, int damage, int ammoClip, int ammoCapacity,
-			double criticalHit, int critHitMul, int weight, boolean buyable, int cost, String rof, int rofRPS, 
-			double reloadSpd, boolean secondaryFire, boolean canSilence, int effect, int gunNum) {
+			double criticalHit, int critHitMul, int weight, boolean buyable, int cost, String rof, double rofRPS, 
+			double reloadSpd, boolean secondaryFire, boolean canSilence, int effect, int pellets, int gunNum) {
 		super(name, desc,cost, effect);
 		
 		this.ammo = ammo;
@@ -41,9 +42,14 @@ public class Weapons extends Item{
 		canSilence = true;
 		this.gunNum = gunNum;
 		ammoTotal = ammoClip;
+		this.pellets = pellets;
+		//p
 	}
 	public int getAmmoTotal() {
 		return ammoTotal;
+	}
+	public int getPellets() {
+		return pellets;
 	}
 	public void setAmmoTotal(int ammoTotal) {
 		this.ammoTotal = ammoTotal;
@@ -142,7 +148,7 @@ public class Weapons extends Item{
 		return rof;
 	}
 
-	public int getRofRPS() {
+	public double getRofRPS() {
 		return rofRPS;
 	}
 

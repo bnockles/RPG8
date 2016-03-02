@@ -21,10 +21,7 @@ public interface ItemResources {
 	
 	//Weapons
 	/**
-	 * Weapons(name, desc, ammo, damage, ammoClip, ammoCapacity, criticalHit, critHitMul,
-	  		weight, buyable, cost, rof, rofRPS, reloadSpd, 
-	  		secondaryFire, canSilence, gunNum)
-	  	
+	 * 
 	  	How 'gunNum' works
 	  	
 	  	First Number:
@@ -41,24 +38,44 @@ public interface ItemResources {
 		Which gun in the category. ex pistol3GradeS1 is a pistol which is 2 and number of the pistol is 3
 		
 		So gunNum is 23
-
+		
+		Weapons(name, desc, ammo, damage, ammoClip, ammoCapacity, criticalHit, critHitMul,
+	  		weight, buyable, cost, rof, rofRPS, reloadSpd, 
+	  		secondaryFire, canSilence, effect, pellets, gunNum)
 	 */
+	//Pistols
 	Weapons pistol2GradeB1 = new Weapons("RIA-45S", "The Rancor Intelligence Arms pistol is a lightweight weapon that deals medium damage and also can be augmented with a secondary fire.", 
-			pistolAmmo, 33, 18, 7, .00, 2, 0, true, 150, "Semi", 0, .45, true, true, 0, 22);
+			pistolAmmo, 33, 18, 7, .00, 2, 0, true, 150, "Semi", 0, .45, true, true, 0, 0, 22);
 	Weapons pistol3GradeS1 = new Weapons("CT-Roaring Thunder", "Pistol", pistolAmmo, 62, 20, 7, .20, 2, 
-			1, false, 0, "Auto", 13, .55, true, true, 0, 23);
+			1, false, 0, "Auto", 13, .55, true, true, 0, 0, 23);
 	Weapons pistol4GradeA1 = new Weapons("Desert Phoenix", "Pistol", pistolAmmo, 88, 7, 7, .35, 2,
-			1, true, 1850, "Semi", 0, 1.2, false, false, 0, 24);
+			1, true, 1850, "Semi", 0, 1.2, false, false, 0, 0, 24);
+	
+	//Rifles
+		//Assault Rifle
+			Weapons rifles1GradeC1 = new Weapons("RIA-10S", "Rifles", rifleAmmo, 36, 40, 7, .10, 2,
+					3, true, 550, "Auto", 12, 2.4, false, true, 0, 0, 31);
+		//Sniper Rifles
+			Weapons rifles4GradeA3 = new Weapons("RIA-97A6", "Sniper Rifle", rifleAmmo, 120, 7, 7, .50, 2,
+					6, true, 1000, "Bolt", .7, 3.5, false, true, 0, 0, 34);
+	
+	//Heavy
+		//Shotguns
+			Weapons heavy1GradeB1 = new Weapons("Heavy Mustang", "Shotgun", shotgunAmmo, 75, 8, 7, .10, 2,
+					2, true, 380, "Auto", 1, .50, false, false, 0, 6, 41);
+		//Machine Guns
+			Weapons heavy4GradeB2 = new Weapons("RIA-10S", "Rifles", rifleAmmo, 42, 40, 7, .10, 2,
+					3, true, 550, "Auto", 12, 2.4, false, true, 0, 0, 31);
 	
 	//Test Guns
-	Weapons rifles1GradeA1 = new Weapons("M4A1", "Rifles", rifleAmmo, 36, 30, 210, .10, 2,
-			3, true, 1850, "Auto", 13, 1.3, false, true, 0, 31);
-	Weapons rifles2GradeA2 = new Weapons("NGM4", "Rifles", energyAmmo, 25, 40, 280, .10, 2,
-			2, true, 9850, "Auto", 12, 1.3, false, false, 0, 32);
+//	Weapons rifles2GradeA1 = new Weapons("M4A1", "Rifles", rifleAmmo, 36, 30, 210, .10, 2,
+//			3, true, 1850, "Auto", 13, 1.3, false, true, 0, 32);
+//	Weapons rifles3GradeA2 = new Weapons("NGM4", "Rifles", energyAmmo, 25, 40, 280, .10, 2,
+//			2, true, 9850, "Auto", 12, 1.3, false, false, 0, 33);
 	
 	Weapons[] Melee = { };
 	Weapons[] Pistol = { pistol2GradeB1, pistol3GradeS1, pistol4GradeA1};
-	Weapons[] Rifles = { rifles1GradeA1, rifles2GradeA2};
+	Weapons[] Rifles = { rifles1GradeC1, rifles4GradeA3 };
 	Weapons[] Heavy = { };
 	Weapons[] SMG = { };
 	Weapons[] Explosives = { };
