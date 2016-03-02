@@ -14,8 +14,18 @@ public class WeaponStore extends Store implements StoreInterface{
 	
 	int money;
 	static ArrayList<Integer> itemNu = new ArrayList<Integer>();
+	ArrayList<String> itemList = new ArrayList<String>(){{add("Weapon A"); add("Weapon B"); add("Weapon C"); add("Weapon D");}};
 	
-	
+	public ArrayList<String> getItemList() {
+		return itemList;
+	}
+
+
+	public void setItemList(ArrayList<String> itemList) {
+		this.itemList = itemList;
+	}
+
+
 	public WeaponStore(ArrayList<Integer> itemN, int money) {
 		super(itemNu);
 		// TODO Auto-generated constructor stub
@@ -23,6 +33,7 @@ public class WeaponStore extends Store implements StoreInterface{
 		for(int i = 0; i  < 3; i++){
 			itemNu.add(i, 0);
 		}
+		
 		//for(int i = 0; i < 3; i++){
 		//	itemN.add(i, itemNu.get(i));
 		//}
