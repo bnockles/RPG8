@@ -53,7 +53,7 @@ public class TownScreen extends Screen implements KeyListener{
 	
 	
 	//example
-	Building xxc = new Building(character,200,400);
+	Building xxc = new Building(character,200,400,true,"ArmorStore");
 	
 	
 	
