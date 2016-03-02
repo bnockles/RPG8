@@ -18,12 +18,14 @@ public class Weapons extends Item{
 	private int gunNum;
 	private int ammoTotal;
 	private int pellets;
+	private int splash;
+	private String gunImage;
 	
 	
-
 	public Weapons(String name, String desc, Ammo ammo, int damage, int ammoClip, int ammoCapacity,
 			double criticalHit, int critHitMul, int weight, boolean buyable, int cost, String rof, double rofRPS, 
-			double reloadSpd, boolean secondaryFire, boolean canSilence, int effect, int pellets, int gunNum) {
+			double reloadSpd, boolean secondaryFire, boolean canSilence, int effect, int pellets, int splash,
+			String gunImage,  int gunNum) {
 		super(name, desc,cost, effect);
 		
 		this.ammo = ammo;
@@ -43,7 +45,15 @@ public class Weapons extends Item{
 		this.gunNum = gunNum;
 		ammoTotal = ammoClip;
 		this.pellets = pellets;
-		//p
+		this.splash = splash;
+		this.gunImage = gunImage;
+	}
+
+	public int getSplash() {
+		return splash;
+	}
+	public String getGunImage() {
+		return gunImage;
 	}
 	public int getAmmoTotal() {
 		return ammoTotal;

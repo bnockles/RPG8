@@ -4,7 +4,7 @@ public interface ItemResources {
 	static final int NO_EFFECT = 0;
 	static final int FIRE = 1;
 	static final int CORROSIVE = 2;
-	static final int SHOCK = 3;
+	static final int STUN = 3;
 	static final int REGEN = 4;
 	
 	//Medkits
@@ -17,6 +17,10 @@ public interface ItemResources {
 	final Ammo rifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 0, 1, NO_EFFECT);
 	final Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, NO_EFFECT);
 	final Ammo SMGAmmo=new Ammo("SMG Ammo", "It's SMG ammo", 0, 1, NO_EFFECT);
+	final Ammo heavyAmmo = new Ammo("Heavy Ammo", "It's heavy ammo", 0, 1, NO_EFFECT);
+	final Ammo explosiveAmmo = new Ammo("Explosive Ammo", "It's explosive ammo", 0, 1, NO_EFFECT);
+	final Ammo grenadeAmmo = new Ammo("Grenade Ammo", "It's grenade ammo", 0, 1, NO_EFFECT);
+	final Ammo incendiaryGrenadeAmmo = new Ammo("Incendiary Grenade Ammo", "It's incendiary grenade ammo", 0, 1, FIRE);
 	final Ammo energyAmmo=new Ammo("Energy Ammo", "It's energy ammo", 0, 2, NO_EFFECT);
 	
 	//Weapons
@@ -41,44 +45,60 @@ public interface ItemResources {
 		
 		Weapons(name, desc, ammo, damage, ammoClip, ammoCapacity, criticalHit, critHitMul,
 	  		weight, buyable, cost, rof, rofRPS, reloadSpd, 
-	  		secondaryFire, canSilence, effect, pellets, gunNum)
+	  		secondaryFire, canSilence, effect, pellets, splash, gunImage, gunNum)
 	 */
+	//Melee
+	final Weapons melee1GradeC1 = new Weapons("Stun-Baton", "Melee Weapon", 
+			energyAmmo, 60, 0, 0, .10, 2, 0, true, 130, "Single", 1, 0, false, false, 0, 0, 0, "", 11);
+	
 	//Pistols
 	final Weapons pistol2GradeB1 = new Weapons("RIA-45S", "The Rancor Intelligence Arms pistol is a lightweight weapon that deals medium damage and also can be augmented with a secondary fire.", 
-			pistolAmmo, 33, 18, 7, .00, 2, 0, true, 150, "Semi", 0, .45, true, true, 0, 0, 22);
+			pistolAmmo, 33, 18, 7, .00, 2, 0, true, 150, "Semi", 0, .45, true, true, 0, 0, 0,"", 22);
 	final Weapons pistol3GradeS1 = new Weapons("CT-Roaring Thunder", "Pistol", pistolAmmo, 62, 20, 7, .20, 2, 
-			1, false, 0, "Auto", 13, .55, true, true, 0, 0, 23);
+			1, false, 0, "Auto", 13, .55, true, true, 0, 0, 0,"", 23);
 	final Weapons pistol4GradeA1 = new Weapons("Desert Phoenix", "Pistol", pistolAmmo, 88, 7, 7, .35, 2,
-			1, true, 1850, "Semi", 0, 1.2, false, false, 0, 0, 24);
+			1, true, 1850, "Semi", 0, 1.2, false, false, 0, 0, 0,"", 24);
 	
 	//Rifles
 		//Assault Rifle
 	final Weapons rifles1GradeC1 = new Weapons("RIA-10S", "Rifles", rifleAmmo, 36, 40, 7, .10, 2,
-					3, true, 550, "Auto", 12, 2.4, false, true, 0, 0, 31);
+			3, true, 550, "Auto", 12, 2.4, false, true, 0, 0, 0,"", 31);
+	final Weapons rifles3GradeA2 = new Weapons("NGM4", "Rifles", energyAmmo, 25, 40, 7, .10, 2,
+			2, true, 9850, "Auto", 12, 1.3, false, false, 0, 0, 0,"/images/items/NGM4.png", 33);
 		//Sniper Rifles
 	final Weapons rifles4GradeA3 = new Weapons("RIA-97A6", "Sniper Rifle", rifleAmmo, 120, 7, 7, .50, 2,
-					6, true, 1000, "Bolt", .7, 3.5, false, true, 0, 0, 34);
+			6, true, 1000, "Bolt", .7, 3.5, false, true, 0, 0, 0,"", 34);
 	
 	//Heavy
 		//Shotguns
 	final Weapons heavy1GradeB1 = new Weapons("Heavy Mustang", "Shotgun", shotgunAmmo, 75, 8, 7, .10, 2,
-					2, true, 380, "Auto", 1, .50, false, false, 0, 6, 41);
+			2, true, 380, "Auto", 1, .50, false, false, 0, 6, 0,"", 41);
 		//Machine Guns
-	final Weapons heavy4GradeB2 = new Weapons("RIA-10S", "Rifles", rifleAmmo, 42, 40, 7, .10, 2,
-					3, true, 550, "Auto", 12, 2.4, false, true, 0, 0, 31);
+	final Weapons heavy4GradeB2 = new Weapons("NG-60", "Machine Gun", heavyAmmo, 49, 60, 7, .10, 2,
+			4, true, 900, "Auto", 14, 4.3, true, false, 0, 0, 0,"", 44);
+	
+	//SMGS
+	final Weapons smg1GradeC1 = new Weapons("MP-600", "SMG", SMGAmmo, 25, 35, 7, .10, 2,
+			0, true, 430, "Auto", 16, 2.10, true, true, 0, 0, 0,"", 51);
+	final Weapons smg2GradeB1 = new Weapons("RIA-30", "SMG", SMGAmmo, 38, 40, 7, .10, 2,
+			1, true, 800, "Auto", 15, 2.20, false, true, 0, 0, 0,"", 52);
+	
+	//Explosives
+	final Weapons explosives1GradeC1 = new Weapons("RIA-EPS15", "Explosives", explosiveAmmo, 96, 1, 39, .10, 2,
+			3, true, 830, "Single", 0, 1.30, false, false, 0, 0, 140,"", 61);
+	final Weapons explosives6GradeB1 = new Weapons("M10-SuperFrag", "Explosives", grenadeAmmo, 200, 1, 9, .10, 2,
+			1, true, 400, "Single", 2, .20, false, false, 0, 0, 180,"", 66);
 	
 	//Test Guns
 //	Weapons rifles2GradeA1 = new Weapons("M4A1", "Rifles", rifleAmmo, 36, 30, 210, .10, 2,
 //			3, true, 1850, "Auto", 13, 1.3, false, true, 0, 32);
-//	Weapons rifles3GradeA2 = new Weapons("NGM4", "Rifles", energyAmmo, 25, 40, 280, .10, 2,
-//			2, true, 9850, "Auto", 12, 1.3, false, false, 0, 33);
 	
-	final Weapons[] Melee = { };
+	final Weapons[] Melee = { melee1GradeC1 };
 	final Weapons[] Pistol = { pistol2GradeB1, pistol3GradeS1, pistol4GradeA1};
-	final Weapons[] Rifles = { rifles1GradeC1, rifles4GradeA3 };
-	final Weapons[] Heavy = { };
-	final Weapons[] SMG = { };
-	final Weapons[] Explosives = { };
+	final Weapons[] Rifles = { rifles1GradeC1, rifles3GradeA2, rifles4GradeA3 };
+	final Weapons[] Heavy = { heavy1GradeB1, heavy4GradeB2};
+	final Weapons[] SMG = { smg1GradeC1, smg2GradeB1};
+	final Weapons[] Explosives = { explosives1GradeC1, explosives6GradeB1};
 	
 	// Misc
 	final Misc gold = new Misc("Gold", "Get more of this and you're rich!", true , 0, NO_EFFECT);
