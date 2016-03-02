@@ -63,6 +63,10 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	 * 		-GE_DEGREE ENEMIES' LINE OF SIGHT
 	 *		-KE_DEGREE
 	 *
+	 *
+	 * RESPONSIBILITY:
+	 * YIFAN - 
+	 *
 	 *	
 	 */
 	
@@ -77,7 +81,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int P_STRENGTH = 10;
 	public static final int P_LEVEL = 10;
 	
-	public static final int GE_SPEED = 10;
+	public static final int GE_SPEED = 1;
 	public static final int GE_X = 100;
 	public static final int GE_Y = 100;
 	public static final int GE_HP = 150;
@@ -91,7 +95,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int GE_VISION = 300;
 	public static final int GE_AWARE = 50;
 	
-	public static final int KE_SPEED = 10;
+	public static final int KE_SPEED = 1;
 	public static final int KE_X = 100;
 	public static final int KE_Y = 300;
 	public static final int KE_HP = 100;
@@ -117,7 +121,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int AROUND = 2;
 	public static final int GOTOPLAYER = 3;
 	
-	public static final int ENEMYMOVE = LEFT_RIGHT;
+	public static final int ENEMYMOVE = UP_DOWN;
 	
 	public static MCharacter character;
 	public static KEnemy enemy1;
@@ -254,12 +258,20 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			for(int i = 0; i < eBullets.size(); i++){
 				g2.drawImage(eBullets.get(i).getImage(), eBullets.get(i).getX(), eBullets.get(i).getY(), null);
 			}
-			g2.draw(enemy1.getVisioncone());
-			g2.draw(enemy2.getVisioncone());
+			g2.draw(getNColorVisionCone(enemy1,g2));
+			g2.draw(getNColorVisionCone(enemy2,g2));
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+	private Arc2D.Double getNColorVisionCone(EnemyAI enemy,Graphics2D g2){
+		if(enemy.isTargetLock()){
+			g2.setColor(Color.red);
+		}
+		else
+			g2.setColor(Color.green);
+		return enemy.getVisioncone();
 	}
 	private void checkProjectileRange() {
 		/**
