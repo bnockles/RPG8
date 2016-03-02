@@ -169,6 +169,14 @@ public class TownScreen extends Screen implements KeyListener{
 	public int getCurrentColumn(){
 		return currentColumn;
 	}
+	//work on transitioning
+	public void transitionEffects(int status,Graphics2D g2){
+		
+		
+		
+		update();
+		
+	}
 	//JIngwen CODE
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
