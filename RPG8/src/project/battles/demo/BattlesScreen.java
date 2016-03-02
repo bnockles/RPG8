@@ -122,6 +122,10 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int GOTOPLAYER = 3;
 	
 	public static final int ENEMYMOVE = UP_DOWN;
+	public static final int UP = 1;
+	public static final int DOWN = 2;
+	public static final int LEFT = 3;
+	public static final int RIGHT = 4;
 	
 	public static MCharacter character;
 	public static KEnemy enemy1;
@@ -423,18 +427,24 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			int cursorY = e.getY();
 			int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
 			int vy = calculateVComponentPlayerToCursor(10, cursorX, cursorY, false);
-			double rads = calculateDirectionAttackFromPlayer(cursorX, cursorY);
-			character.fire(character.getX(),character.getY(),vx,vy);//change it up
+			int direction = calculateDirectionAttackFromPlayer(cursorX, cursorY);
+			System.out.println(direction);
+			character.fire(character.getX(),character.getY(),vx,vy, direction);//change it up
 		}
 	}
-	private double calculateDirectionAttackFromPlayer(int cursorX2, int cursorY2) {
+	private int calculateDirectionAttackFromPlayer(int cursorX2, int cursorY2) {
 		int x = character.getX();
 		int y = character.getY();
 		int cursorX = cursorX2;
 		int cursorY = cursorY2;
-		double radians = Math.atan2((cursorY-y),(cursorX - x));
-		//if(radians>)
-		return radians;
+		int direction = UP;
+		double radians = Math.atan2((-cursorY+y),(cursorX - x));
+		System.out.println(radians);
+		if(radians>-Math.PI/4 || radians <= Math.PI/4)direction = RIGHT;
+		if(radians>Math.PI/4 && radians <= Math.PI*3/4)direction = UP;
+		if(radians>Math.PI*3/4 || radians <= -Math.PI*3/4)direction = LEFT;
+		if(radians<-Math.PI/4 && radians >= -Math.PI*3/4)direction = DOWN;
+		return direction;
 	}
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
