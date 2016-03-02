@@ -16,7 +16,7 @@ public abstract class EnemyAI extends Character{
 	private int visiondegree;
 	private int awareRange;
 	
-	protected boolean targetlock = false;
+	protected boolean targetLock = false;
 	protected boolean upAndDown = false;
 	protected boolean leftAndRight = false;
 	protected boolean goAround = false;
@@ -56,17 +56,17 @@ public abstract class EnemyAI extends Character{
 			//do something
 			//System.out.println("hello");
 			checkForPlayer();
-//			if(targetlock)
-//				reaction();
-//			if(leftAndRight)
-//				moveLeftAndRight();
-//			if(upAndDown)
-//				moveUpAndDown();
-//			if(goAround)
-//				moveAround();
-//			if(goToPlayer)
-//				goToPlayer();
-			wander();
+			if(targetLock)
+				reaction();
+			if(leftAndRight)
+				moveLeftAndRight();
+			if(upAndDown)
+				moveUpAndDown();
+			if(goAround)
+				moveAround();
+			if(goToPlayer)
+				goToPlayer();
+			//wander();
 			checkEnemiesAround();
 			if(maxHP/10>currentHP && alone){
 				System.out.println(maxHP+" "+currentHP);
@@ -103,11 +103,14 @@ public abstract class EnemyAI extends Character{
 		visioncone = new Arc2D.Double(arcX,arcY, visionrange, visionrange, begindegree, 90, Arc2D.PIE);
 		//90, 225 change it to line of sight degree - 45 degree + 45
 		if(visioncone.contains(BattlesScreen.character.getX(), BattlesScreen.character.getY())){
-			targetlock = true;
+			targetLock = true;
 		}
 	}
 	public Arc2D.Double getVisioncone() {
 		return visioncone;
+	}
+	public boolean isTargetLock() {
+		return targetLock;
 	}
 	private void moveAround(){
 		if(moveUp){
