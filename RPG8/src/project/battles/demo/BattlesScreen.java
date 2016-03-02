@@ -298,7 +298,6 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	}
 
 	@Override
-	
 	public void keyPressed(KeyEvent e) {
 		/**
 		 * Chieh-Huang Chen
@@ -318,32 +317,35 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		 */
 		GEnemy scenario1Enemy = new GEnemy(Enemy(),enemyG, visionG,weapon2,ENEMYMOVE);
 		KEnemy scenario2Enemy = new KEnemy(Enemy(),enemyG, visionG,weapon2,ENEMYMOVE);
-		int randomNumber = (int) (Math.random()*6+3);
-		int enemy1Num = (int) (Math.random()*3+1);
 		if(keyCode == KeyEvent.VK_8){
-			addEnemies(scenario1Enemy);
-			//enemiesOnScreen.add();
+			enemiesOnScreen.clear();
+			addEnemies(scenario1Enemy,scenario1Enemy);
+			
 		}
 		if(keyCode == KeyEvent.VK_9){
-			addEnemies(scenario2Enemy);
+			enemiesOnScreen.clear();
+			addEnemies(scenario2Enemy,scenario2Enemy);
 		}
 		if(keyCode == KeyEvent.VK_0){
-			for(int i=0; i<enemy1Num; i++)
-			{
-				enemiesOnScreen.add(scenario1Enemy);
-			}
-			for(int j=0; j<randomNumber-enemy1Num; j++){
-				enemiesOnScreen.add(scenario2Enemy);
-			}	
+			enemiesOnScreen.clear();
+			addEnemies(scenario1Enemy,scenario2Enemy);
 		}
 	}
-	public void addEnemies(EnemyAI a){ //add random number of enemies for scenarios
+	public void addEnemies(EnemyAI a, EnemyAI b){ //add random number of enemies for scenarios
+		/**
+		 * Yifan He
+		 */
 		int enemy1Num = (int) (Math.random()*3+1);
+		int randomNumber = (int) (Math.random()*6+3);
 		for(int i=0; i<enemy1Num; i++)
 		{
 			enemiesOnScreen.add(a);
 		}
+		for(int j=0; j<randomNumber-enemy1Num; j++){
+			enemiesOnScreen.add(b);
+		}
 	}
+	
 	@Override
 	public void keyReleased(KeyEvent e) {
 		/**
