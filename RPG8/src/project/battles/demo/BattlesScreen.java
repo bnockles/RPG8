@@ -411,8 +411,18 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			int cursorY = e.getY();
 			int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
 			int vy = calculateVComponentPlayerToCursor(10, cursorX, cursorY, false);
+			double rads = calculateDirectionAttackFromPlayer(cursorX, cursorY);
 			character.fire(character.getX(),character.getY(),vx,vy);//change it up
 		}
+	}
+	private double calculateDirectionAttackFromPlayer(int cursorX2, int cursorY2) {
+		int x = character.getX();
+		int y = character.getY();
+		int cursorX = cursorX2;
+		int cursorY = cursorY2;
+		double radians = Math.atan2((cursorY-y),(cursorX - x));
+		//if(radians>)
+		return radians;
 	}
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
