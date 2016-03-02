@@ -51,7 +51,11 @@ public class TownScreen extends Screen implements KeyListener{
 	int entranceX;//exact location on the cell where the entrance is
 	int entranceY;
 	
-	TownWanderer sprite;
+	
+	//example
+	Building xxc = new Building(character,200,400);
+	
+	
 	
 	public TownScreen(Game game, int gridWidth, int gridHeight){
 		super(game);
