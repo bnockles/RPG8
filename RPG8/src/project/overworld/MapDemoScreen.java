@@ -26,7 +26,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 	static Rectangle hitbox;
 	int obstacleNum;
 	String type;
-
+//hello
 	public MapDemoScreen(Game game) {
 		super(game);
 		obstacles = new ArrayList<Obstacle>();
