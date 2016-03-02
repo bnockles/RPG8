@@ -70,9 +70,6 @@ public class Hero {
 			storyDemo.Swarm.animate(storyDemo.AyaBack.get(1));
 		}
 		zero = !zero;
-		if(y <= 25){
-			setY(32);
-		}
 	}
 
 	public void moveDown() {
@@ -82,9 +79,6 @@ public class Hero {
 			storyDemo.Swarm.animate(storyDemo.AyaForward.get(1));
 		}
 		zero = !zero;
-		if(y >= storyDemo.height - 133){
-			setY(storyDemo.height - 137);
-		}
 	}
 
 	public void moveRight() {
@@ -95,9 +89,6 @@ public class Hero {
 			storyDemo.Swarm.animate(storyDemo.AyaRight.get(1));
 		}
 		zero = !zero;
-		if(x >= storyDemo.width - 33){
-			setX(storyDemo.width - 37);
-		}
 	}
 
 	public void moveLeft() {
@@ -107,9 +98,6 @@ public class Hero {
 			storyDemo.Swarm.animate(storyDemo.AyaLeft.get(1));
 		}
 		zero = !zero;
-		if(x <= 3){
-			setX(7);
-		}
 	}
 	
 	public void setStrength(int strength) {
@@ -125,6 +113,22 @@ public class Hero {
 			System.out.println("No Ammo");
 		}
 	}
+	
+	public void checkDimensions(){
+		if(y <= 25){
+			setY(32);
+		}
+		if(y >= storyDemo.height - 133){
+			setY(storyDemo.height - 137);
+		}
+		if(x <= 3){
+			setX(7);
+		}
+		if(x >= storyDemo.width - 33){
+			setX(storyDemo.width - 37);
+		}
+	}
+	
 	public void radio() {
 		Radio.radioCall();
 	}

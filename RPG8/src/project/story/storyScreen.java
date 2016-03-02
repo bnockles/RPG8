@@ -71,6 +71,8 @@ public class storyScreen extends Screen implements KeyListener{
 			else if(keyCode == KeyEvent.VK_R) {
 				storyDemo.Swarm.radio();
 			}
+			
+			storyDemo.Swarm.checkDimensions();
 			//if pressing keys should change the graphics, call update()
 			update();
 		}

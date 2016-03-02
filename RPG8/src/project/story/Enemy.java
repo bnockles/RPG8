@@ -23,12 +23,9 @@ public class Enemy {
 	public static int weapon = 10;
 	public int strength = 100;
 	
-	public Enemy(int x, int y) {
+	public Enemy(int x, int y, String picLocation) {
 		this.x = x;
 		this.y = y;
-	}
-
-	public void animate(String picLocation){
 		URL url = getClass().getResource(picLocation);
 		try {		
 			sprite = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -69,8 +66,5 @@ public class Enemy {
 	public int getY() {
 		return y;
 	}
-	
-
-	
 	
 }

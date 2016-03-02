@@ -33,9 +33,9 @@ public class storyDemo extends Game{
 	private static String back1 = "/images/heroes/back1.png";
 	private static String back2 = "/images/heroes/back2.png";
 	final static ArrayList<String> AyaStanding = new ArrayList<String>();
-	public static Hero Swarm = new Hero("Aya", 100, 100);
+	public static Hero Swarm = new Hero("Aya", 105, 105);
 	static boolean cutscene = false;
-	public static Enemy enemy = new Enemy(150, 150);
+//	public static Enemy enemy = new Enemy(150, 150, "/images/heroes/Enemy.jpg");
 	static int width = 500;
 	static int height = 500;
 	
@@ -60,8 +60,6 @@ public class storyDemo extends Game{
 		AyaStanding.add(back);
 		Swarm = new Hero("Aya Drevis", 105, 105);
 		Swarm.animate(AyaStanding.get(0));
-		enemy = new Enemy(150, 150);
-		enemy.animate("/images/heroes/Enemy.jpg");
 		if(Swarm.getX() <= width && Swarm.getY() >= height - 50){
 			
 		}
@@ -93,13 +91,15 @@ public class storyDemo extends Game{
 		g2.fillRect(0, 0, width, height);
 		g2.drawImage(landscape, 0, 0, null);
 		g2.drawImage(Swarm.getImage(), Swarm.getX(), Swarm.getY(), null);
-		g2.drawImage(enemy.getImage(), enemy.getX(), enemy.getY(), null);
+//		g2.drawImage(enemy.getImage(), enemy.getX(), enemy.getY(), null);
 		g2.drawRect(0, 0, 100, 100);
 		g2.setColor(Color.black);
-		g2.fillRect(0, height - 91, width, 91);
+		g2.drawString("You have entered a new area.", 200, 200);
+//		g2.setColor(Color.black);
+//		g2.fillRect(0, height - 91, width, 91);
 		EnemyDynamic.detectHit();
 		Cutscenes1.possibles();
-		//everytime anythign is done paint gets called.
+		//every time anything is done paint gets called.
 	}
 	
 	
