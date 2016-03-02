@@ -315,20 +315,18 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		/**
 		 * Yifan He
 		 */
-		GEnemy scenario1Enemy = new GEnemy(Enemy(),enemyG, visionG,weapon2,ENEMYMOVE);
-		KEnemy scenario2Enemy = new KEnemy(Enemy(),enemyG, visionG,weapon2,ENEMYMOVE);
+
 		if(keyCode == KeyEvent.VK_8){
 			enemiesOnScreen.clear();
-			addEnemies(scenario1Enemy,scenario1Enemy);
-			
+			addEnemies(enemy1,enemy1);
 		}
 		if(keyCode == KeyEvent.VK_9){
 			enemiesOnScreen.clear();
-			addEnemies(scenario2Enemy,scenario2Enemy);
+			addEnemies(enemy2,enemy2);
 		}
 		if(keyCode == KeyEvent.VK_0){
 			enemiesOnScreen.clear();
-			addEnemies(scenario1Enemy,scenario2Enemy);
+			addEnemies(enemy1,enemy2);
 		}
 	}
 	public void addEnemies(EnemyAI a, EnemyAI b){ //add random number of enemies for scenarios
