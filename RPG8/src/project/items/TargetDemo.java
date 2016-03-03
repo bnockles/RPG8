@@ -43,7 +43,7 @@ public class TargetDemo {
 					}
 				}
 			};
-			timer.scheduleAtFixedRate(countDown, 1000, 1000);
+			timer.scheduleAtFixedRate(countDown, 1000, 2000);
 				
 		}
 	}
