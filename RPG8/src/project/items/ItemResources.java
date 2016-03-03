@@ -15,10 +15,10 @@ public interface ItemResources {
 	//Ammo
 	final Ammo pistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 0, 1, NO_EFFECT);
 	final Ammo rifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 0, 1, NO_EFFECT);
-	final Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, NO_EFFECT);
-	final Ammo SMGAmmo=new Ammo("SMG Ammo", "It's SMG ammo", 0, 1, NO_EFFECT);
 	final Ammo heavyAmmo = new Ammo("Heavy Ammo", "It's heavy ammo", 0, 1, NO_EFFECT);
+	final Ammo SMGAmmo=new Ammo("SMG Ammo", "It's SMG ammo", 0, 1, NO_EFFECT);
 	final Ammo explosiveAmmo = new Ammo("Explosive Ammo", "It's explosive ammo", 0, 1, NO_EFFECT);
+	//final Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, NO_EFFECT);
 	final Ammo grenadeAmmo = new Ammo("Grenade Ammo", "It's grenade ammo", 0, 1, NO_EFFECT);
 	final Ammo incendiaryGrenadeAmmo = new Ammo("Incendiary Grenade Ammo", "It's incendiary grenade ammo", 0, 1, FIRE);
 	final Ammo energyAmmo=new Ammo("Energy Ammo", "It's energy ammo", 0, 2, NO_EFFECT);
@@ -71,7 +71,7 @@ public interface ItemResources {
 	
 	//Heavy
 		//Shotguns
-	final Weapons heavy1GradeB1 = new Weapons("Heavy Mustang", "Shotgun", shotgunAmmo, 75, 8, 7, .10, 2,
+	final Weapons heavy1GradeB1 = new Weapons("Heavy Mustang", "Shotgun", heavyAmmo, 75, 8, 7, .10, 2,
 			2, true, 380, "Auto", 1, .50, false, false, 0, 6, 0,"", 41);
 		//Machine Guns
 	final Weapons heavy4GradeB2 = new Weapons("NG-60", "Machine Gun", heavyAmmo, 49, 60, 7, .10, 2,
