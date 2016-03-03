@@ -18,6 +18,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 	ArrayList<Region> regions;
 	BufferedImage background;
 	static boolean touching;
+	static boolean playing;
 	static int xPos;
 	static int yPos;
 	static int xSize;
@@ -35,6 +36,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		regions = new ArrayList<Region>();
 		touching = false;
 		obstacleNum = -1;
+		playing = true;
 		xPos = 500;
 		yPos = 200;
 		xSize = 30;
@@ -44,18 +46,18 @@ public class MapDemoScreen extends Screen implements KeyListener {
 				"/images/Map/barrelblue.jpg", 0,true,true));
 		mapSections.add(new MainMap(0, "/images/Map/test.jpeg"));
 		mapSections.add(new MainMap(1, "/images/Map/test2.jpeg"));
-		boundaries.add(new Boundaries(0, 0, 100, 890, false, 0));
-		boundaries.add(new Boundaries(0, 580, 920, 140, false, 0));
-		boundaries.add(new Boundaries(0, 450, 200, 140, false, 0));
-		boundaries.add(new Boundaries(0, 0, 900, 65, false, 0));
-		boundaries.add(new Boundaries(690, 10, 230, 215, false, 0));
-		boundaries.add(new Boundaries(690, 270, 230, 400, false, 0));
-		boundaries.add(new Boundaries(550, 450, 150, 150, false, 0));
-		boundaries.add(new Boundaries(600, 400, 100, 50, false, 0));
-		boundaries.add(new Boundaries(180, 0, 900, 100, false, 1));
-		boundaries.add(new Boundaries(560, 0, 230, 700, false, 1));
-		boundaries.add(new Boundaries(180, 500, 230, 300, false, 1));
-		boundaries.add(new Boundaries(410, 400, 200, 500, false, 1));
+		boundaries.add(new Boundaries(0, 0, 100, 890, true, 0));
+		boundaries.add(new Boundaries(0, 580, 920, 140, true, 0));
+		boundaries.add(new Boundaries(0, 450, 200, 140, true, 0));
+		boundaries.add(new Boundaries(0, 0, 900, 65, true, 0));
+		boundaries.add(new Boundaries(690, 10, 230, 215, true, 0));
+		boundaries.add(new Boundaries(690, 270, 230, 400, true, 0));
+		boundaries.add(new Boundaries(550, 450, 150, 150, true, 0));
+		boundaries.add(new Boundaries(600, 400, 100, 50, true, 0));
+		boundaries.add(new Boundaries(180, 0, 900, 100, true, 1));
+		boundaries.add(new Boundaries(560, 0, 230, 700, true, 1));
+		boundaries.add(new Boundaries(180, 500, 230, 300, true, 1));
+		boundaries.add(new Boundaries(410, 400, 200, 500, true, 1));
 		boundaries.add(new Boundaries(0,0,width,1,false,-1));
 		boundaries.add(new Boundaries(width,0,1,height,false,-1));
 		boundaries.add(new Boundaries(0,0,1,height,false,-1));
@@ -63,7 +65,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		regions.add(new Region(920, 200, 68, 500, 1, 300, 300, 0));
 		regions.add(new Region(0, 200, 50, 400, 0, 300, 300, 1));
 	}
-
+	
 	public void checkCollision() {
 		hitbox = new Rectangle(xPos, yPos, xSize, ySize);
 		for (int i = 0; i < boundaries.size(); i++) {
@@ -72,6 +74,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 				touching = true;
 				type = "B";
 				obstacleNum = i;
+				checkPlayerState(boundaries.get(i));
 				return;
 			} else {
 				touching = false;
@@ -90,7 +93,11 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		}
 
 	}
-
+	public void checkPlayerState(Boundaries bound){
+		if(bound.isLethal()){
+			playing = false;
+		}
+	}
 	@Override
 	public KeyListener getKeyListener() {
 		// TODO Auto-generated method stub
@@ -109,9 +116,10 @@ public class MapDemoScreen extends Screen implements KeyListener {
 			}
 		}
 	}
-
+	
 	@Override
 	public void paintScreen(Graphics2D g2) {
+		if(playing){
 		for (int i = 0; i < mapSections.size(); i++) {
 			if (i == playerRegion) {
 				BufferedImage backgrnd = mapSections.get(i).getMap();
@@ -127,9 +135,12 @@ public class MapDemoScreen extends Screen implements KeyListener {
 								.getSizeY());
 			}
 		}
-		g2.setColor(Color.red);
-		g2.drawOval(xPos, yPos, 30, 30);
-
+		
+			g2.setColor(Color.red);
+			g2.drawOval(xPos, yPos, 30, 30);
+		}else{
+			g2.drawString("You LOST", 500, 500);
+		}
 	}
 	public void removeObstacle(){
 		if(obstacles.get(obstacleNum).getDest()){
@@ -176,7 +187,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 				used = true;
 			}
 		}else if (keyCode == KeyEvent.VK_DOWN) {
-			yPos = xPos +2;
+			yPos = yPos +2;
 			if (touching & !used) {
 				test = checkType(type);
 				yPos = test[1] - ySize-2;
