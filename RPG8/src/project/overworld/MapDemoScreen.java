@@ -44,14 +44,15 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		playerRegion = 0;
 		obstacles.add(new Obstacle("Barrel", 400, 200, 40, 70,
 				"/images/Map/barrelblue.jpg", 0,true,true));
+		obstacles.add(new Obstacle("Barrel2",300,200,40,70,"/images/Map/barrelblue.jpg",1,false,true));
 		mapSections.add(new MainMap(0, "/images/Map/test.jpeg"));
 		mapSections.add(new MainMap(1, "/images/Map/test2.jpeg"));
 		boundaries.add(new Boundaries(0, 0, 100, 890, true, 0));
 		boundaries.add(new Boundaries(0, 580, 920, 140, true, 0));
 		boundaries.add(new Boundaries(0, 450, 200, 140, true, 0));
 		boundaries.add(new Boundaries(0, 0, 900, 65, true, 0));
-		boundaries.add(new Boundaries(690, 10, 230, 215, true, 0));
-		boundaries.add(new Boundaries(690, 270, 230, 400, true, 0));
+		boundaries.add(new Boundaries(690, 10, 230, 215, false, 0));
+		boundaries.add(new Boundaries(690, 270, 230, 400, false, 0));
 		boundaries.add(new Boundaries(550, 450, 150, 150, true, 0));
 		boundaries.add(new Boundaries(600, 400, 100, 50, true, 0));
 		boundaries.add(new Boundaries(180, 0, 900, 100, true, 1));
@@ -139,7 +140,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 			g2.setColor(Color.red);
 			g2.drawOval(xPos, yPos, 30, 30);
 		}else{
-			g2.drawString("You LOST", 500, 500);
+			g2.drawString("You Died", 500, 500);
 		}
 	}
 	public void removeObstacle(){
