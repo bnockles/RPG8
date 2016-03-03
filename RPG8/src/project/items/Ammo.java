@@ -26,7 +26,7 @@ public class Ammo extends Item{
 	}
 
 	/** Type
-	 *[1-Regular, 2-Energy] 
+	 *[1-Regular, 2-Energy] Qing Ning Huang
 	 */
 	
 }
