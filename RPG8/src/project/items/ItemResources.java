@@ -53,11 +53,11 @@ public interface ItemResources {
 	
 	//Pistols
 	final Weapons pistol2GradeB1 = new Weapons("RIA-45S", "The Rancor Intelligence Arms pistol is a lightweight weapon that deals medium damage and also can be augmented with a secondary fire.", 
-			pistolAmmo, 33, 18, 7, .00, 2, 0, true, 150, "Semi", 0, .45, true, true, 0, 0, 0,"", 22);
+			pistolAmmo, 33, 18, 7, .00, 2, 0, true, 150, "Semi", 0, .45, true, true, 0, 0, 0,"/images/items/RIA-45S.png", 22);
 	final Weapons pistol3GradeS1 = new Weapons("CT-Roaring Thunder", "Pistol", pistolAmmo, 62, 20, 7, .20, 2, 
-			1, false, 0, "Auto", 13, .55, true, true, 0, 0, 0,"", 23);
+			1, false, 0, "Auto", 13, .55, true, true, 0, 0, 0,"/images/items/CT-Roaring Thunder.png", 23);
 	final Weapons pistol4GradeA1 = new Weapons("Desert Phoenix", "Pistol", pistolAmmo, 88, 7, 7, .35, 2,
-			1, true, 1850, "Semi", 0, 1.2, false, false, 0, 0, 0,"", 24);
+			1, true, 1850, "Semi", 0, 1.2, false, false, 0, 0, 0,"/images/items/Desert Phoenix.png", 24);
 	
 	//Rifles
 		//Assault Rifle
@@ -67,27 +67,27 @@ public interface ItemResources {
 			2, true, 9850, "Auto", 12, 1.3, false, false, 0, 0, 0,"/images/items/NGM4.png", 33);
 		//Sniper Rifles
 	final Weapons rifles4GradeA3 = new Weapons("RIA-97A6", "Sniper Rifle", rifleAmmo, 120, 7, 7, .50, 2,
-			6, true, 1000, "Bolt", .7, 3.5, false, true, 0, 0, 0,"", 34);
+			6, true, 1000, "Bolt", .7, 3.5, false, true, 0, 0, 0,"/images/items/RIA-97A6.png", 34);
 	
 	//Heavy
 		//Shotguns
 	final Weapons heavy1GradeB1 = new Weapons("Heavy Mustang", "Shotgun", heavyAmmo, 75, 8, 7, .10, 2,
-			2, true, 380, "Auto", 1, .50, false, false, 0, 6, 0,"", 41);
+			2, true, 380, "Auto", 1, .50, false, false, 0, 6, 0,"/images/items/Heavy Mustang.png", 41);
 		//Machine Guns
 	final Weapons heavy4GradeB2 = new Weapons("NG-60", "Machine Gun", heavyAmmo, 49, 60, 7, .10, 2,
-			4, true, 900, "Auto", 14, 4.3, true, false, 0, 0, 0,"", 44);
+			4, true, 900, "Auto", 14, 4.3, true, false, 0, 0, 0,"/images/items/NG-60.png", 44);
 	
 	//SMGS
 	final Weapons smg1GradeC1 = new Weapons("MP-600", "SMG", SMGAmmo, 25, 35, 7, .10, 2,
-			0, true, 430, "Auto", 16, 2.10, true, true, 0, 0, 0,"", 51);
+			0, true, 430, "Auto", 16, 2.10, true, true, 0, 0, 0,"/images/items/MP-600.png", 51);
 	final Weapons smg2GradeB1 = new Weapons("RIA-30", "SMG", SMGAmmo, 38, 40, 7, .10, 2,
-			1, true, 800, "Auto", 15, 2.20, false, true, 0, 0, 0,"", 52);
+			1, true, 800, "Auto", 15, 2.20, false, true, 0, 0, 0,"/images/items/RIA-30.png", 52);
 	
 	//Explosives
 	final Weapons explosives1GradeC1 = new Weapons("RIA-EPS15", "Explosives", explosiveAmmo, 96, 1, 39, .10, 2,
-			3, true, 830, "Single", 0, 1.30, false, false, 0, 0, 140,"", 61);
+			3, true, 830, "Single", 0, 1.30, false, false, 0, 0, 140,"/images/items/RIA-EPS15.png", 61);
 	final Weapons explosives6GradeB1 = new Weapons("M10-SuperFrag", "Explosives", grenadeAmmo, 200, 1, 9, .10, 2,
-			1, true, 400, "Single", 2, .20, false, false, 0, 0, 180,"", 66);
+			1, true, 400, "Single", 2, .20, false, false, 0, 0, 180,"/images/items/M10-SuperFrag.png", 66);
 	
 	//Test Guns
 //	Weapons rifles2GradeA1 = new Weapons("M4A1", "Rifles", rifleAmmo, 36, 30, 210, .10, 2,
