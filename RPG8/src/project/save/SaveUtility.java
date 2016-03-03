@@ -10,7 +10,16 @@ import java.util.Hashtable;
 
 public class SaveUtility {
 	
-	public static int numOfSaveFiles = 3;
+	public static final int numOfSaveFiles = 3;
+	
+	public static Save getSaveFile(int choice) {
+		if (choice < numOfSaveFiles && choice > -1) {
+			return new Save(choice);
+		} else {
+			System.out.printf("I'm sorry, but there are only %d save slots available\n", numOfSaveFiles);
+			return null;
+		}
+	}
 	
 	public static Hashtable doLoad(int fileNum) {
 		System.out.println("Loading...");
@@ -34,7 +43,7 @@ public class SaveUtility {
 		} catch(FileNotFoundException e) {
 			System.out.println("No File.");
 			System.out.println("Creating default save file.");
-			h = doDefaultSave();
+			// h = doDefaultSave();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -43,7 +52,7 @@ public class SaveUtility {
 		return h;
 	}
 	
-	private void doSave(Hashtable h, int fileNum) {
+	public static void doSave(Hashtable h, int fileNum) {
 		System.out.println("Saving...\n");
 		
 		try {
