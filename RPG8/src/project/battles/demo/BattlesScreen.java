@@ -120,6 +120,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int UP_DOWN = 1;
 	public static final int AROUND = 2;
 	public static final int GOTOPLAYER = 3;
+	public static final int WANDER = 4;
 	
 	public static final int ENEMYMOVE = UP_DOWN;
 	public static final int UP = 1;

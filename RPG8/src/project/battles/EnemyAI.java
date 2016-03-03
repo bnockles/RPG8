@@ -1,6 +1,7 @@
 package project.battles;
 
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
@@ -22,6 +23,7 @@ public abstract class EnemyAI extends Character{
 	protected boolean goAround = false;
 	protected boolean goToPlayer = false;
 	protected boolean direction = false;
+	protected boolean wander = false;
 	
 	protected boolean alone = true;
 	protected boolean left = false;
@@ -50,6 +52,8 @@ public abstract class EnemyAI extends Character{
 			goAround = true;
 		if(type == BattlesScreen.GOTOPLAYER)
 			goToPlayer = true;
+		if(type == BattlesScreen.WANDER)
+			wander = true;
 	}
 	public void GeneralEnemyAI(){
 		if(checkAlive()){
@@ -66,7 +70,9 @@ public abstract class EnemyAI extends Character{
 				moveAround();
 			if(goToPlayer)
 				goToPlayer();
-			//wander();
+			if(wander)
+				wander();
+			//checkForProjectiles(); // DO NOT IMPLEMENT THIS IF WE HAVEN'T FINISH COLLISIONS
 			checkEnemiesAround();
 			if(maxHP/10>currentHP && alone){
 				System.out.println(maxHP+" "+currentHP);
@@ -75,6 +81,26 @@ public abstract class EnemyAI extends Character{
 		}
 		//animation of death
 		//dropItem();
+	}
+	private void checkForObjects(){//Enemy can hide behind objects to block damage.
+		Point location;
+	}
+	private void checkForProjectiles(){
+		Point location;
+		for(Collision projectiles: BattlesScreen.pBullets){
+			location = new Point(projectiles.getX(),projectiles.getY());
+			if(awarenessRange.contains(location)){
+				if(location.getX()-awarenessRange.getCenterX()>0)
+					x--;
+				else
+					x++;
+				if(location.getY()-awarenessRange.getCenterY()>0)
+					y--;
+				else
+					y++;
+					
+			}
+		}
 	}
 	private void checkEnemiesAround(){
 		for(EnemyAI enemy:BattlesScreen.enemiesOnScreen){
