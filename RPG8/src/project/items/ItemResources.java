@@ -49,7 +49,7 @@ public interface ItemResources {
 	 */
 	//Melee
 	final Weapons melee1GradeC1 = new Weapons("Stun-Baton", "Melee Weapon", 
-			energyAmmo, 60, 0, 0, .10, 2, 0, true, 130, "Single", 1, 0, false, false, 0, 0, 0, "", 11);
+			energyAmmo, 60, 0, 0, .10, 2, 0, true, 130, "Single", 1, 0, false, false, 0, 0, 0, "/images/items/Stun-Baton.png", 11);
 	
 	//Pistols
 	final Weapons pistol2GradeB1 = new Weapons("RIA-45S", "The Rancor Intelligence Arms pistol is a lightweight weapon that deals medium damage and also can be augmented with a secondary fire.", 
