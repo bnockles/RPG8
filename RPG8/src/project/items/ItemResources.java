@@ -62,7 +62,7 @@ public interface ItemResources {
 	//Rifles
 		//Assault Rifle
 	final Weapons rifles1GradeC1 = new Weapons("RIA-10S", "Rifles", rifleAmmo, 36, 40, 7, .10, 2,
-			3, true, 550, "Auto", 12, 2.4, false, true, 0, 0, 0,"", 31);
+			3, true, 550, "Auto", 12, 2.4, false, true, 0, 0, 0,"/images/items/RIA-10S.png", 31);
 	final Weapons rifles3GradeA2 = new Weapons("NGM4", "Rifles", energyAmmo, 25, 40, 7, .10, 2,
 			2, true, 9850, "Auto", 12, 1.3, false, false, 0, 0, 0,"/images/items/NGM4.png", 33);
 		//Sniper Rifles
