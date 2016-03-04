@@ -149,11 +149,7 @@ public class Tooltip extends VerticalMenu{
 		Font font1 = new Font("Courier", Font.ROMAN_BASELINE, 50);
 		g2.setFont(font1);
 		g2.drawString(this.getTitle(), this.getX()+110, this.getY()+60);
-		BufferedImage img = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
-		try{
-			img = ImageIO.read(this.getFile());
-		}
-		catch(IOException e){};
+		BufferedImage img = returnImage(this.getFile(), 64, 64);
 		g2.drawImage(img, null, this.getX()+185, this.getY()+100);
 		Font font2 = new Font("Courier", Font.ROMAN_BASELINE, 25);
 		g2.setFont(font2);
@@ -168,11 +164,7 @@ public class Tooltip extends VerticalMenu{
 		Font font1 = new Font("Courier", Font.ROMAN_BASELINE, 50);
 		g2.setFont(font1);
 		g2.drawString(this.getTitle(), this.getX()+110, this.getY()+60);
-		BufferedImage img = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
-		try{
-			img = ImageIO.read(this.getFile());
-		}
-		catch(IOException e){};
+		BufferedImage img = returnImage(this.getFile(), 64, 64);
 		g2.drawImage(img, null, this.getX()+185, this.getY()+100);
 		Font font2 = new Font("Courier", Font.ROMAN_BASELINE, 25);
 		g2.setFont(font2);
@@ -214,5 +206,14 @@ public class Tooltip extends VerticalMenu{
 	public void setSellPrice(int sellPrice) {
 		this.sellPrice = sellPrice;
 	}
-
+	
+	public static BufferedImage returnImage(File file, int width, int height){
+		//this method will take a file and return a buffered image which could be used on the screen.
+		BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		try{
+			img = ImageIO.read(file);
+		}
+		catch(IOException e){};
+		return img;
+	}
 }
