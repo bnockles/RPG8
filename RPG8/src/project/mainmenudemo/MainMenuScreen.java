@@ -37,6 +37,14 @@ import java.applet.*;
 import java.awt.*;
 import java.applet.*;
 
+
+
+/**
+ * 
+ * @author Kevin Ramos
+ *
+ */
+
 public class MainMenuScreen extends Screen implements KeyListener{
 	
 	String[] options; 

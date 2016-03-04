@@ -5,6 +5,14 @@ import java.awt.Color;
 import project.directors.Game;
 import project.directors.Screen;
 
+
+/**
+ * 
+ * @author Kevin Ramos
+ *
+ */
+
+
 public class DynamicMenu {
 	
 	public static final int MAIN_MENU =0;
