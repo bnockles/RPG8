@@ -50,7 +50,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		URL explosiveurl = getClass().getResource(Explosives[0].getGunImage());
 
 		try {
-			melee = ImageIO.read(meleerul);
+			melee = ImageIO.read(meleeurl);
 			pistol = ImageIO.read(pistolurl);
 			rifle = ImageIO.read(rifleurl);
 			heavy = ImageIO.read(heavyurl);
