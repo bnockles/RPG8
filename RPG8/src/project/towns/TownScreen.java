@@ -101,12 +101,22 @@ public class TownScreen extends Screen implements KeyListener{
 			try{
 				backGround = ImageIO.read(getClass().getResource("/images/shop/pic.png"));
 				portalToTown = ImageIO.read(getClass().getResource("/images/maps/portaltown.png"));
+				
+				townPortalToWeapon = ImageIO.read(getClass().getResource("/images/maps/portalshop1.png"));
+				townPortalToArmor = ImageIO.read(getClass().getResource("/images/maps/portalshop2.png"));
+				townPortalToAmmo = ImageIO.read(getClass().getResource("/images/maps/portalshop3.png"));
+				
 				putin = new StoreNPC(450, 180, "Putin","/images/shop/hey.jpg");
 				trump = new StoreNPC(450, 180, "Trump","/images/shop/trump.jpg");
 				hillary = new StoreNPC(450, 180, "alien","/images/shop/hillary.jpg");
 				playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/shop/obama.jpg", 10000);
+				
 				portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
+				townPortalTooWeapon = new Building(townPortalToWeapon,250 - 50, game.getHeight() -200,true,"porttotown");
+				townPortalTooArmor = new Building(townPortalToArmor,450, 50,true,"porttotown");
+				townPortalTooAmmo = new Building(townPortalToAmmo,700, game.getHeight() -180,true,"porttotown");
 						//Building(BufferedImage image,int y, int x, boolean portal,String nameOfBuiliding){
+				
 			}
 			catch (IOException e) {
 				e.printStackTrace();
@@ -138,18 +148,24 @@ public class TownScreen extends Screen implements KeyListener{
 			paintShop(g2);
 			g2.drawImage(hillary.getNpc(), 420,150,250,180, null);
 			
-	    	g2.drawOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
-	    	g2.setColor(Color.WHITE);
-	    	g2.fillOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
+			g2.drawImage(portalTooTown.getImage(), 250 - 100, game.getHeight() -10 - 100, null);
+			
+//	    	g2.drawOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
+//	    	g2.setColor(Color.WHITE);
+//	    	g2.fillOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
 	    	
 	    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
 		}
 		if(status == AMMO_STORE){
 			paintShop(g2);
 			g2.drawImage(trump.getNpc(), 420,150,250,180, null);
-	    	g2.drawOval(750, game.getHeight() -110, 100, 100);
-	    	g2.setColor(Color.WHITE);
-	    	g2.fillOval(750, game.getHeight() -110, 100, 100);
+			
+			g2.drawImage(portalTooTown.getImage(), 750, game.getHeight() -110, null);
+			
+//	    	g2.drawOval(750, game.getHeight() -110, 100, 100);
+//	    	g2.setColor(Color.WHITE);
+//	    	g2.fillOval(750, game.getHeight() -110, 100, 100);
+	    	
 	    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
 		}
 		if(status == ARMOR_STORE){
@@ -159,7 +175,9 @@ public class TownScreen extends Screen implements KeyListener{
 //	    	g2.drawOval(450, 50, 100, 100);
 //	    	g2.setColor(Color.WHITE);
 //	    	g2.fillOval(450, 50, 100, 100);
+			
 	    	g2.drawImage(portalTooTown.getImage(), 450,50, null);
+	    	
 	    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
 		}
 		if (status == IN_SHOP_MENU){
@@ -177,9 +195,12 @@ public class TownScreen extends Screen implements KeyListener{
 			//Fei code
 			g2.drawImage(backgroundGrid[currentRow][currentColumn], 0, 0, null);
 			g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),200,150,null);
-			g2.drawOval(250 - 100, game.getHeight() -110, 100, 100);
-			g2.drawOval(450, 50, 100, 100);
-			g2.drawOval(750, game.getHeight() -110, 100, 100);
+			g2.drawImage(townPortalTooWeapon.getImage(), townPortalTooWeapon.getxcoord(),townPortalTooWeapon.getycoord(), null);
+			g2.drawImage(townPortalTooArmor.getImage(), townPortalTooArmor.getxcoord(),townPortalTooArmor.getycoord(), null);
+			g2.drawImage(townPortalTooAmmo.getImage(), townPortalTooAmmo.getxcoord(),townPortalTooAmmo.getycoord(), null);
+//			g2.drawOval(250 - 100, game.getHeight() -110, 100, 100);
+//			g2.drawOval(450, 50, 100, 100);
+//			g2.drawOval(750, game.getHeight() -110, 100, 100);
 			
 			g2.drawString("USE T IN CIRCLE TO GO THROUGH CIRCLE, USE SPACE IN SHOP TO ACCESS SHOP ", 400, 500);
 		}
