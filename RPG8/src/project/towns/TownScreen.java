@@ -253,7 +253,7 @@ public class TownScreen extends Screen implements KeyListener{
 
 					g2.setFont (myFont);
 				
-					g2.drawString("Attempting To Enter Weapon Store"  , 200, 500);
+					g2.drawString("Attempting To Enter Armor Store"  , 200, 500);
 				    	Timer t = new Timer();
 				    	t.schedule(new TimerTask() {
 
@@ -282,7 +282,7 @@ public class TownScreen extends Screen implements KeyListener{
 				    	               status2 = AMMO_STORE;
 				    	               update();	
 				    	            }
-				    	        }, 2000);
+				    	        }, 500);
 					
 				}
 				if(status ==WEAPON_STOREx  ){
@@ -301,7 +301,7 @@ public class TownScreen extends Screen implements KeyListener{
 				    	               status2 = WEAPON_STORE;
 				    	               update();	
 				    	            }
-				    	        }, 2000);
+				    	        }, 500);
 					
 				}
 				if(status ==TOWNx  ){
@@ -319,7 +319,7 @@ public class TownScreen extends Screen implements KeyListener{
 				    	               status = TOWN;
 				    	               update();	
 				    	            }
-				    	        }, 2000);
+				    	        }, 500);
 					
 				}
 		//}	
