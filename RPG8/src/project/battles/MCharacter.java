@@ -123,6 +123,7 @@ public class MCharacter extends Character{
 			//if(weapon instanceof Pistol) // this may be the way to check weapons
 				fireRifle(hostile,x,y,vx,vy);
 				weapon.reduceAmmoByOne();
+				//fireExplosive(hostile, x, y, vx+5, vy+5); ignore this /delete
 		}
 	}
 

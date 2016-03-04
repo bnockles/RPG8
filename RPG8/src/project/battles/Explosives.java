@@ -10,10 +10,14 @@ import project.items.Weapon;
 public class Explosives extends Collision {
 
 	protected Collision activeType;
-	
+	protected boolean isExploded;
+	protected BufferedImage sheet;
 	public Explosives(int x, int y, int damage, double vx, double vy, int range, BufferedImage image, boolean fromHostile) {
 		super(x, y);
-		activeType = new Projectiles(x, y, damage, vx, vy, range, image, fromHostile);
+		activeType = new Projectiles(x, y, 0, vx, vy, range, image, fromHostile);
+		isExploded = false;
+		paintImage();
+		sheet = UtilityMethods.getImageFromFile(this, "/images/slash/slash.png");
 	}
 
 	
@@ -25,8 +29,13 @@ public class Explosives extends Collision {
 
 	@Override
 	public void updateAndCheckAll() {//??????????
-		BufferedImage sheet = UtilityMethods.getImageFromFile(this, "/images/slash/slash.png");
-		if(activeType.isCollided()) activeType = new Melee(x, y, damage, sheet.getWidth(), sheet.getHeight(), 15, sheet, 0);
+		activeType.updateAndCheckAll();
+		x = activeType.getX();
+		y = activeType.getY();
+		if(activeType.isCollided() && !isExploded) {
+			activeType = new Melee(x, y, damage, sheet.getWidth(), sheet.getHeight(), 15, sheet, 0);
+		}
+		paintImage();
 		//change image
 	}
 
@@ -38,7 +47,7 @@ public class Explosives extends Collision {
 	@Override
 	public void paintImage() {
 		//explosive spritez
-		
+		image = activeType.getImage();
 	}
 
 }
