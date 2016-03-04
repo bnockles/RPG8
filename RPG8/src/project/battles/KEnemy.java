@@ -8,6 +8,10 @@ import project.save.ItemState;
 
 public class KEnemy extends EnemyAI{
 	
+	/*
+	 * Author :Andy Zheng
+	 */
+	
 	public KEnemy(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon,int type){
 		super(images,stats,vision,weapon,type);
 		this.weapon = weapon;
@@ -30,6 +34,9 @@ public class KEnemy extends EnemyAI{
 
 	@Override
 	protected void reaction() {
+		/*
+		 * Andy Zheng
+		 */
 		// TODO Auto-generated method stub
 		int vx = BattlesScreen.calculateVComponentPlayerToCursor(10, x, y, true);
 		int vy = BattlesScreen.calculateVComponentPlayerToCursor(10, x, y, false);
@@ -40,6 +47,9 @@ public class KEnemy extends EnemyAI{
 
 	@Override
 	protected void run() {
+		/*
+		 * Andy Zheng
+		 */
 		// TODO Auto-generated method stub
 		int distanceX = x - BattlesScreen.character.getX();
 		int distanceY = y - BattlesScreen.character.getY();
@@ -59,6 +69,9 @@ public class KEnemy extends EnemyAI{
 	}
 	
 	public void steriods(){
+		/*
+		 * Andy Zheng
+		 */
 		if (strength != BattlesScreen.KE_STRENGTH*2)
 		strength+= 1;
 	}
