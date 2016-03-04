@@ -14,4 +14,5 @@ public interface StoreInterface {
 	public void itemSellingInteraction();
 	
 	public void itemInteraction();
+
 }
