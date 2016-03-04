@@ -66,6 +66,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	 *
 	 * RESPONSIBILITY:
 	 * YIFAN - 
+	 * 		    
 	 *
 	 *	
 	 */
@@ -82,7 +83,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int P_LEVEL = 10;
 	
 	public static final int GE_SPEED = 1;
-	public static final int GE_X = 100;
+	public static final int GE_X = 100; //
 	public static final int GE_Y = 100;
 	public static final int GE_HP = 150;
 	public static final int GE_ARMOR = 100;
@@ -264,6 +265,9 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 //			g2.drawString("enemyK", enemy1.getX(), enemy1.getY()+25);
 //			g2.drawImage(enemy2.getImage(),enemy2.getX(),enemy2.getY(),null);
 //			g2.drawString("enemyG", enemy2.getX(), enemy2.getY()+25);
+			/**
+			 * Yifan He
+			 */
 			for(int i = 0; i < pBullets.size(); i++){
 				g2.drawImage(pBullets.get(i).getImage(), pBullets.get(i).getX(), pBullets.get(i).getY(), null);
 			}
@@ -328,7 +332,6 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		 */
 		if(keyCode == KeyEvent.VK_8){
 			enemiesOnScreen.clear(); //Clear the array list
-			
 			addEnemies(enemy1,enemy1);
 		}
 		if(keyCode == KeyEvent.VK_9){
