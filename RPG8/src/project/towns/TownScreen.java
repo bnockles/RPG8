@@ -24,8 +24,8 @@ import project.directors.Screen;
  *
  */
 public class TownScreen extends Screen implements KeyListener{
-	//Jingwen Code
-	BufferedImage backGround;
+	 //Jingwen Code
+	static BufferedImage backGround;
 	BufferedImage portalToTown;
 	BufferedImage townPortalToArmor;
 	BufferedImage townPortalToWeapon;
@@ -345,7 +345,7 @@ public class TownScreen extends Screen implements KeyListener{
 		g2.drawRect(60, itemx, 5, 5);
 		g2.fillRect(60, itemx, 5, 5);
 	}
-	public void paintShop(Graphics2D g2){
+	public static void paintShop(Graphics2D g2){
 		g2.drawImage(backGround,0,0, null);
     	g2.drawImage(backGround,0,288, null);
     	g2.drawImage(backGround,0,576, null);
