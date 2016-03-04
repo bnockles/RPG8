@@ -19,17 +19,17 @@ public interface ItemResources {
 	final Ammo SMGAmmo=new Ammo("SMG Ammo", "It's SMG ammo", 0, 1, NO_EFFECT);
 	final Ammo explosiveAmmo = new Ammo("Explosive Ammo", "It's explosive ammo", 0, 1, NO_EFFECT);
 	
-	final Ammo firePistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 0, 1, FIRE);
-	final Ammo fireRifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 0, 1, FIRE);
-	final Ammo fireHeavyAmmo = new Ammo("Heavy Ammo", "It's heavy ammo", 0, 1, FIRE);
-	final Ammo fireSMGAmmo=new Ammo("SMG Ammo", "It's SMG ammo", 0, 1, FIRE);
-	final Ammo fireExplosiveAmmo = new Ammo("Explosive Ammo", "It's explosive ammo", 0, 1, FIRE);
+	final Ammo firePistolAmmo=new Ammo("Burning Pistol Ammo", "It's burning pistol ammo", 0, 1, FIRE);
+	final Ammo fireRifleAmmo=new Ammo("Burning Rifle Ammo", "It's burning rifle ammo", 0, 1, FIRE);
+	final Ammo fireHeavyAmmo = new Ammo("Burning Heavy Ammo", "It's burning heavy ammo", 0, 1, FIRE);
+	final Ammo fireSMGAmmo=new Ammo("Burning SMG Ammo", "It's burning SMG ammo", 0, 1, FIRE);
+	final Ammo fireExplosiveAmmo = new Ammo("Burning Explosive Ammo", "It's burning explosive ammo", 0, 1, FIRE);
 	
-	final Ammo stunPistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 0, 1, STUN);
-	final Ammo stunRifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 0, 1, STUN);
-	final Ammo stunHeavyAmmo = new Ammo("Heavy Ammo", "It's heavy ammo", 0, 1, STUN);
-	final Ammo stunSMGAmmo=new Ammo("SMG Ammo", "It's SMG ammo", 0, 1, STUN);
-	final Ammo stunExplosiveAmmo = new Ammo("Explosive Ammo", "It's explosive ammo", 0, 1, STUN);
+	final Ammo stunPistolAmmo=new Ammo("Stunning Pistol Ammo", "It's stunning pistol ammo", 0, 1, STUN);
+	final Ammo stunRifleAmmo=new Ammo("Stunning Rifle Ammo", "It's stunning rifle ammo", 0, 1, STUN);
+	final Ammo stunHeavyAmmo = new Ammo("Stunning Heavy Ammo", "It's stunning heavy ammo", 0, 1, STUN);
+	final Ammo stunSMGAmmo=new Ammo("Stunning SMG Ammo", "It's stunning SMG ammo", 0, 1, STUN);
+	final Ammo stunExplosiveAmmo = new Ammo("Stunning Explosive Ammo", "It's stunning explosive ammo", 0, 1, STUN);
 	
 	//final Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, NO_EFFECT);
 	final Ammo grenadeAmmo = new Ammo("Grenade Ammo", "It's grenade ammo", 0, 1, NO_EFFECT);
