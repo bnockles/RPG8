@@ -82,7 +82,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int P_STRENGTH = 10;
 	public static final int P_LEVEL = 10;
 	
-	public static final int GE_SPEED = 1;
+	public static final int GE_SPEED = 10;
 	public static final int GE_X = 100; //
 	public static final int GE_Y = 100;
 	public static final int GE_HP = 150;
@@ -96,7 +96,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int GE_VISION = 300;
 	public static final int GE_AWARE = 50;
 	
-	public static final int KE_SPEED = 1;
+	public static final int KE_SPEED = 10;
 	public static final int KE_X = 100;
 	public static final int KE_Y = 300;
 	public static final int KE_HP = 100;
@@ -126,7 +126,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int GENEMY = 0;
 	public static final int KENEMY = 1;
 	
-	public static final int ENEMYMOVE = AROUND;
+	public static final int ENEMYMOVE = UP_DOWN;
 	public static final int UP = 1;
 	public static final int DOWN = 2;
 	public static final int LEFT = 3;
@@ -354,18 +354,28 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		 */
 		int enemy1Num = (int) (Math.random()*2+1);
 		int randomNumber = (int) (Math.random()*4+2);
+		int randomNumberX;
+		int randomNumberY;
 		for(int i=0; i<enemy1Num; i++)
 		{
+			randomNumberX = (int) (Math.random()*width-100);
+			randomNumberY = (int) (Math.random()*height-100);
 			if (a.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,visionK,weapon1,ENEMYMOVE));
 			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,visionK,weapon1,ENEMYMOVE));
-			enemiesOnScreen.get(i).setX((int) (Math.random()*400+100));
-			enemiesOnScreen.get(i).setY((int) (Math.random()*400+100));
+			enemiesOnScreen.get(i).setX(randomNumberX);
+			enemiesOnScreen.get(i).setY(randomNumberY);
+			enemiesOnScreen.get(i).setSpawnedX(randomNumberX);
+			enemiesOnScreen.get(i).setSpawnedY(randomNumberY);
 		}
 		for(int j=0; j<randomNumber-enemy1Num; j++){
-			if (b.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,visionK,weapon1,ENEMYMOVE));
+			randomNumberX = (int) (Math.random()*width-100);
+			randomNumberY = (int) (Math.random()*height-100);
+			if (a.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,visionK,weapon1,ENEMYMOVE));
 			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,visionK,weapon1,ENEMYMOVE));
-			enemiesOnScreen.get(enemy1Num+j).setX((int) (Math.random()*400+100));
-			enemiesOnScreen.get(enemy1Num+j).setY((int) (Math.random()*400+100));
+			enemiesOnScreen.get(j).setX(randomNumberX);
+			enemiesOnScreen.get(j).setY(randomNumberY);
+			enemiesOnScreen.get(j).setSpawnedX(randomNumberX);
+			enemiesOnScreen.get(j).setSpawnedY(randomNumberY);
 		}
 	}
 	

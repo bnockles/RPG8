@@ -67,16 +67,18 @@ public abstract class EnemyAI extends Character{
 			checkForPlayer();
 			if(targetLock)
 				reaction();
-			if(leftAndRight)
-				moveLeftAndRight();
-			if(upAndDown)
-				moveUpAndDown();
-			if(goAround)
-				moveAround();
-			if(goToPlayer)
-				goToPlayer();
-			if(wander)
-				wander();
+			else{
+				if(leftAndRight)
+					moveLeftAndRight();
+				if(upAndDown)
+					moveUpAndDown();
+				if(goAround)
+					moveAround();
+				if(goToPlayer)
+					goToPlayer();
+				if(wander)
+					wander();
+			}
 			//checkForProjectiles(); // DO NOT IMPLEMENT THIS IF WE HAVEN'T FINISH COLLISIONS
 			//checkEnemiesAround();
 			if(maxHP/10>currentHP && alone){
@@ -145,6 +147,12 @@ public abstract class EnemyAI extends Character{
 		return enemyClass;
 	}
 	
+	public void setSpawnedX(int spawnedX) {
+		this.spawnedX = spawnedX;
+	}
+	public void setSpawnedY(int spawnedY) {
+		this.spawnedY = spawnedY;
+	}
 	public boolean isTargetLock() {
 		return targetLock;
 	}
