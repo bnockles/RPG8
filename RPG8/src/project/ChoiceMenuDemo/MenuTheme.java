@@ -1,6 +1,11 @@
 package project.ChoiceMenuDemo;
 
 import java.awt.Color;
+/**
+ * 
+ * @author Maxwell Sulavko
+ *
+ */
 
 public class MenuTheme {
 	
