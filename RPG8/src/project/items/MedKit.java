@@ -1,5 +1,8 @@
 package project.items;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MedKit extends Item {
 	//stanley's class
 	private String name;
@@ -7,7 +10,8 @@ public class MedKit extends Item {
 	private int cost;
 	private int healthGained;
 	private int effect;
-
+		int duration=0;
+	Timer timer;
 	public MedKit(String name, String desc,int cost, int healthGained, int effect) {
 		super(name, desc, cost, effect);
 		this.healthGained=healthGained;
@@ -27,19 +31,22 @@ public class MedKit extends Item {
 			b.health=100;
 		}
 	}
-	public void regen(TargetDemo b){
+	public void regen(final TargetDemo b){
+		timer=new Timer();
+		final int healRegen=this.healthGained;
 		if(this.getEffect()==4){
-			int changed=0;
-			long timenow=System.nanoTime();
-			System.out.println(timenow);
-			while((System.nanoTime()-timenow)/1000000000<=10){
-				if((System.nanoTime()-timenow)/1000000000!=changed){
-					changed++;
-					b.health+=this.getHealthGained();
-					update();
-					//System.out.println("Health"+health);
+			final TimerTask countDown = new TimerTask(){
+				public void run(){
+					if(duration>5){
+						duration=0;
+						timer.cancel();
+					}else{
+						b.health+=healRegen;
+						duration++;
+					}
 				}
-			}
+			};
+			timer.scheduleAtFixedRate(countDown, 1000, 1000);
 		}
 	}
 
