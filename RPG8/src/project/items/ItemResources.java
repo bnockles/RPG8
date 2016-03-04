@@ -72,7 +72,7 @@ public interface ItemResources {
 	//Heavy
 		//Shotguns
 	final Weapons heavy1GradeB1 = new Weapons("Heavy Mustang", "Shotgun", heavyAmmo, 75, 8, 7, .10, 2,
-			2, true, 380, "Auto", 1, .50, false, false, NO_EFFECT, 6, 0,"/images/items/Heavy Mustang.png", 41);
+			2, true, 380, "Auto", 1, .50, false, false, NO_EFFECT, 6, 0,"/images/items/Heavy Mustang Drum.png", 41);
 		//Machine Guns
 	final Weapons heavy4GradeB2 = new Weapons("NG-60", "Machine Gun", heavyAmmo, 49, 60, 7, .10, 2,
 			4, true, 900, "Auto", 14, 4.3, true, false, NO_EFFECT, 0, 0,"/images/items/NG-60.png", 44);
