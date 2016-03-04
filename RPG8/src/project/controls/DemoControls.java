@@ -37,6 +37,7 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 	boolean effect = false;
 	double speed=walking;
 	double running=2;
+	double stealth=2;
 	double ablazedS = 1.5;
 	double poisonedS = 2.5;
 	int pCount=0;
@@ -55,7 +56,7 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 	}
 	
 	public String ramdomStatus(){
-		String  ramdom = (ramStatus[new Random().nextInt(ramStatus.length)]);
+		int  rng = (int)new Random().nextInt(ramStatus.length);
 		return ramdom;
 	}
 	
