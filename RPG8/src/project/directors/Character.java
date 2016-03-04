@@ -3,6 +3,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import project.battles.Explosives;
 import project.battles.Melee;
 import project.battles.Projectiles;
 import project.battles.demo.BattlesScreen;
@@ -137,14 +138,16 @@ public abstract class Character {
 		Melee attack = new Melee(posx,posy,0,50,50,15,sheet,rotation);
 		BattlesScreen.pBullets.add(attack);
 	}
-	public void useExplovies(){
-		//requires a new class
+	public void fireExplosive(boolean hostile, int x, int y, int vx, int vy){
+		Explosives bullet = new Explosives(x, y, weapon.getDamage(), vx, vy, weapon.getRange(), weapon.getProjectileImg(), hostile);
+		BattlesScreen.pBullets.add(bullet);
+		weapon.reduceAmmoByOne();
 	}
 	public void fireRifle(boolean hostile, int x, int y, int vx, int vy){
 		/**
 		 * Yifan
 		 */
-		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo,hostile);
+		Projectiles bullet = new Projectiles(x, y, weapon.getDamage(), vx, vy, weapon.getRange(), weapon.getProjectileImg(),hostile);
 		BattlesScreen.pBullets.add(bullet);
 		weapon.reduceAmmoByOne();
 	}
@@ -152,8 +155,8 @@ public abstract class Character {
 		/**
 		 * Yifan
 		 */
-		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo,hostile);
-		Projectiles bullet1 = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo,hostile);
+		Projectiles bullet = new Projectiles(x, y, weapon.getDamage(), vx, vy, weapon.getRange(), weapon.getProjectileImg(),hostile);
+		Projectiles bullet1 = new Projectiles(x, y, weapon.getDamage(), vx, vy, weapon.getRange(), weapon.getProjectileImg(),hostile);
 		BattlesScreen.pBullets.add(bullet);
 		BattlesScreen.pBullets.add(bullet1);
 		weapon.reduceAmmoByOne();
@@ -162,7 +165,7 @@ public abstract class Character {
 		/**
 		 * Yifan
 		 */
-		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo,hostile);
+		Projectiles bullet = new Projectiles(x, y, weapon.getDamage(), vx, vy, weapon.getRange(), weapon.getProjectileImg(),hostile);
 		BattlesScreen.pBullets.add(bullet);
 		weapon.reduceAmmoByOne();
 	}

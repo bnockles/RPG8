@@ -152,7 +152,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static int keycodedemo;
 	
 	Projectiles bullet;
-	Weapon weapon;
+	public static Weapon weapon;
 	Weapon weapon1;
 	Weapon weapon2;
 	int cursorX;
