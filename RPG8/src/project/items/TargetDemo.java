@@ -12,7 +12,7 @@ public class TargetDemo {
 	int duration=0;
 	boolean isBurned=false;
 	
-	
+
 	/**
 	 * @author Qing Ning Huang, Stanley Ren, Jia Liu
 	 */
