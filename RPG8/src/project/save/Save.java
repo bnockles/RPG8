@@ -1,5 +1,7 @@
 package project.save;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
 
 public class Save {
@@ -37,6 +39,10 @@ public class Save {
 		t.put(id, data);
 	}
 	
+	public void saveData(String id, ArrayList<Integer> data) {
+		t.put(id, data);
+	}
+	
 	// Read methods
 	public int getInt(String id) {
 		return (int)t.get(id);
@@ -56,5 +62,9 @@ public class Save {
 	
 	public String getString(String id) {
 		return t.get(id).toString();
+	}
+	
+	public ArrayList<Integer> getIntArrayList(String id) {
+		return (ArrayList<Integer>) t.get(id);
 	}
 }
