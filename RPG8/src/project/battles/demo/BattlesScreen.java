@@ -347,20 +347,20 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		/**
 		 * Yifan He
 		 */
-		int enemy1Num = (int) (Math.random()*3+1);
-		int randomNumber = (int) (Math.random()*6+3);
+		int enemy1Num = (int) (Math.random()*2+1);
+		int randomNumber = (int) (Math.random()*4+2);
 		for(int i=0; i<enemy1Num; i++)
 		{
-			EnemyAI instances =a;
-			instances.setX((int)Math.random()*500+100);
-			instances.setY((int)Math.random()*500+100);
-			enemiesOnScreen.add(instances);
+			if (a == enemy1) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,visionK,weapon1,ENEMYMOVE));
+			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,visionK,weapon1,ENEMYMOVE));
+			enemiesOnScreen.get(i).setX((int) (Math.random()*400+100));
+			enemiesOnScreen.get(i).setY((int) (Math.random()*400+100));
 		}
 		for(int j=0; j<randomNumber-enemy1Num; j++){
-			EnemyAI instances =b;
-			instances.setX((int)Math.random()*500+100);
-			instances.setY((int)Math.random()*500+100);
-			enemiesOnScreen.add(instances);
+			if (b == enemy1) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,visionK,weapon1,ENEMYMOVE));
+			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,visionK,weapon1,ENEMYMOVE));
+			enemiesOnScreen.get(enemy1Num+j).setX((int) (Math.random()*400+100));
+			enemiesOnScreen.get(enemy1Num+j).setY((int) (Math.random()*400+100));
 		}
 	}
 	
