@@ -14,6 +14,7 @@ import project.save.ItemState;
 
 public class MCharacter extends Character{
 	private int level;
+	private boolean rifle = true;
 	
 	ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 //	private String[] setLoadOut;
@@ -118,14 +119,24 @@ public class MCharacter extends Character{
 		}
 	}
 	public void fire(int x, int y, int vx, int vy, int direction) {
+		//rife is demo purpose only
 		useMelee(direction);
 		if(checkAmmo()){
 			//if(weapon instanceof Pistol) // this may be the way to check weapons
+			if(rifle)
 				fireRifle(hostile,x,y,vx,vy);
+			else
+				fireExplosive(hostile, x, y, vx, vy);
 				weapon.reduceAmmoByOne();
 //				fireExplosive(hostile, x, y, vx, vy);
 				//UNCOMMENT METHOD ABOVE TO TEST EXPLOSIVES
 		}
+	}
+	public boolean isRifle() {
+		return rifle;
+	}
+	public void setRifle(boolean rifle) {
+		this.rifle = rifle;
 	}
 
 }

@@ -83,7 +83,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int P_STRENGTH = 10;
 	public static final int P_LEVEL = 10;
 	
-	public static final int GE_SPEED = 10;
+	public static final int GE_SPEED = 5;
 	public static final int GE_X = 100; //
 	public static final int GE_Y = 100;
 	public static final int GE_HP = 150;
@@ -98,7 +98,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int GE_AWARE = 50;
 	public static final int GE_BPERSEC = 100;
 	
-	public static final int KE_SPEED = 10;
+	public static final int KE_SPEED = 5;
 	public static final int KE_X = 100;
 	public static final int KE_Y = 300;
 	public static final int KE_HP = 100;
@@ -118,7 +118,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int W_DMG = 10;
 	public static final int W_VELOCITY = 10;
 	public static final int W_AMMO = 200;
-	public static final int W_RANGE = 1000;
+	public static final int W_RANGE = 500;
 	
 	public static final int LEFT_RIGHT = 0;
 	public static final int UP_DOWN = 1;
@@ -263,6 +263,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			g2.drawString("Press A/S to -/+ the enemy's fire rate", 100, 300);
 			g2.drawString("Press D to reload ammo", 100, 350);
 			g2.drawString("Press Z/X to -/+ the enemy's moevement", 100, 400);
+			g2.drawString("Press 1 to use the rifle and 2 to use the explosives", 100, 450);
 			g2.setColor(Color.red);
 			timer.start();
 			g2.drawImage(character.getImage(),character.getX(),character.getY(),null);
@@ -388,6 +389,12 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 				if(enemiesOnScreen.get(i).getSpeed() < 15)
 					enemiesOnScreen.get(i).setSpeed(enemiesOnScreen.get(i).getSpeed()+1);
 			}
+		}
+		if(keyCode == KeyEvent.VK_1){
+			character.setRifle(true);
+		}
+		if(keyCode == KeyEvent.VK_2){
+			character.setRifle(false);
 		}
 	}
 	public void refreshEnemies(){
