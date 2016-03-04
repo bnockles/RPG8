@@ -32,8 +32,12 @@ public class Explosives extends Collision {
 		activeType.updateAndCheckAll();
 		x = activeType.getX();
 		y = activeType.getY();
+		if(activeType.isCollided() && isExploded) {
+			collided = true;
+		}
 		if(activeType.isCollided() && !isExploded) {
-			activeType = new Melee(x, y, damage, sheet.getWidth(), sheet.getHeight(), 15, sheet, 0);
+			activeType = new Melee(x, y, damage, 50, 50, 15, sheet, 0);
+			isExploded = true;
 		}
 		paintImage();
 		//change image
