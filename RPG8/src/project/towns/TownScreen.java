@@ -202,9 +202,9 @@ public class TownScreen extends Screen implements KeyListener{
 			//Fei code
 			g2.drawImage(backgroundGrid[currentRow][currentColumn], 0, 0, null);
 			g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),200,150,null);
-			g2.drawImage(townPortalTooWeapon.getImage(), townPortalTooWeapon.getxcoord(),townPortalTooWeapon.getycoord(), null);
-			g2.drawImage(townPortalTooArmor.getImage(), townPortalTooArmor.getxcoord(),townPortalTooArmor.getycoord(), null);
-			g2.drawImage(townPortalTooAmmo.getImage(), townPortalTooAmmo.getxcoord(),townPortalTooAmmo.getycoord(), null);
+			g2.drawImage(townPortalTooWeapon.getImage(), townPortalTooWeapon.getxcoord(),townPortalTooWeapon.getycoord(),150,150,  null);
+			g2.drawImage(townPortalTooArmor.getImage(), townPortalTooArmor.getxcoord(),townPortalTooArmor.getycoord(),150,150, null);
+			g2.drawImage(townPortalTooAmmo.getImage(), townPortalTooAmmo.getxcoord(),townPortalTooAmmo.getycoord(),150,150, null);
 //			g2.drawOval(250 - 100, game.getHeight() -110, 100, 100);
 //			g2.drawOval(450, 50, 100, 100);
 //			g2.drawOval(750, game.getHeight() -110, 100, 100);
@@ -351,22 +351,22 @@ public class TownScreen extends Screen implements KeyListener{
 					if(store.getMoney() > 1000){
 						double x = Math.random()*1001;
 						System.out.println(x);
-						if(x < 5){
+						if(x == 1){
 							lottry = 1000000;
 							directPayment(lottry, 1000);
 							System.out.println(lottry);
 						}
-						if(x > 5 && x< 50){
+						if(x > 2 && x< 5){
 							lottry = 50000;
 							directPayment(lottry, 1000);
 							System.out.println(lottry);
 						}
-						if(x > 50 && x< 200){
+						if(x > 5 && x< 100){
 							lottry = 1000;
 							directPayment(lottry, 1000);
 							System.out.println(lottry);
 						}
-						if(x > 200 && x< 500){
+						if(x > 100 && x< 500){
 							lottry = 500;
 							directPayment(lottry, 1000);
 							System.out.println(lottry);
