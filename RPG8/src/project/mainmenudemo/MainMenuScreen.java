@@ -10,10 +10,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -39,14 +45,17 @@ public class MainMenuScreen extends Screen implements KeyListener{
 	// I will add the pictures of the characters once the
 	//character group has chosen them
 	
-	private int selected;
 	
-	public MainMenuScreen(Game game, String[] names, String[] pictures,  Color[] col, String backgroundmusic) {
+	private int selected;
+	private int mtype;
+	
+	public MainMenuScreen(int type,Game game, String[] names, String[] pictures,  Color[] col, String backgroundmusic) {
 		super(game);
 		
-		//playSound(new File(backgroundmusic));
-		
 		selected=1;
+		mtype=type;
+		
+		if(type==0)playSound(new File(backgroundmusic));
 		
 		options=names;
 		pics=pictures;
@@ -77,7 +86,13 @@ public class MainMenuScreen extends Screen implements KeyListener{
 				this.game.setScreen(new TestScreen(this.game));
 		}
 		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
-			//this.game.setScreen(new MainMenuScreen(this.game));
+			this.game.setScreen(DynamicMenu.createMenu(0, this.game));
+		}
+		if(e.getKeyCode() == KeyEvent.VK_Q){
+			this.game.setScreen(DynamicMenu.createMenu(1, this.game));
+		}
+		if(e.getKeyCode() == KeyEvent.VK_W){
+			this.game.setScreen(DynamicMenu.createMenu(4, this.game));
 		}
 		
 	}
@@ -102,52 +117,79 @@ public class MainMenuScreen extends Screen implements KeyListener{
 
 	@Override
 	public void paintScreen(Graphics2D g2) {
-		g2.setColor(colors[0]);
-		g2.fillRect(0, 0, width, height);
-		g2.setColor(colors[1]);
 		
-		BufferedImage leftImage = null;
-		try {
-		    leftImage = ImageIO.read(new File(pics[0]));
-		} catch (IOException e) {
+		
+		if(mtype==4){
+			g2.setColor(colors[0]);
+			g2.fillRect(0, 0, width, height);
+			g2.setColor(colors[1]);
+			g2.fillRect(125,50, 750,200);
+			
+			Font times = new Font ("TimesRoman", Font.CENTER_BASELINE, 60);
+			Font subTimes = new Font ("TimesRoman", Font.ROMAN_BASELINE, 30);
+			g2.setFont(times);
+			g2.setColor(colors[2]);
+			g2.drawString(options[0], 340,165);
+			g2.setFont(subTimes);
+			int x=395;
+			int y=350;
+			for(int i=1;i<options.length;i++){
+				g2.drawString(options[i], x, y);
+				y+=50;
+			}
+//			g2.drawString(options[1], 395, 350);
+//			g2.drawString(options[2], 390, 470);
+//			g2.drawString(options[3], 420, 590);
+//			g2.drawString(options[4], 450, 710);
+			
+		}else{
+			g2.setColor(colors[0]);
+			g2.fillRect(0, 0, width, height);
+			g2.setColor(colors[1]);
+			
+			BufferedImage leftImage = null;
+			try {
+			    leftImage = ImageIO.read(new File(pics[0]));
+			} catch (IOException e) {
+			}
+			BufferedImage rightImage = null;
+			try {
+			    rightImage = ImageIO.read(new File(pics[1]));
+			} catch (IOException e) {
+			}
+			g2.drawImage(rightImage, 10, 330, 290, 412, null);
+			g2.drawImage(leftImage, 700, 330, 290, 412, null);
+			
+			g2.fillRect(125,50, 750,200);
+			
+	//		g2.fillRect(312, 280, 375,100);
+	//		g2.fillRect(312, 400, 375,100);
+	//		g2.fillRect(312, 520, 375,100);
+	//		g2.fillRect(312, 640, 375,100);
+			int y=280;
+			for(int i=0;i<options.length-1;i++){
+				g2.fillRect(312, y, 375,100);
+				y+=120;
+			}
+			// You really should use an array here
+			// yPos[n] array, with n being (selected - 1) -Wilson W.
+			int[] yPos={276,396,516,636};
+			y=yPos[selected-1];
+			g2.setColor(colors[2]);
+			g2.fillRect(308,y,383,108);
+			
+			
+			Font times = new Font ("TimesRoman", Font.CENTER_BASELINE, 60);
+			Font subTimes = new Font ("TimesRoman", Font.ROMAN_BASELINE, 50);
+			g2.setFont(times);
+			g2.setColor(colors[0]);
+			g2.drawString(options[0], 310,165);
+			g2.setFont(subTimes);
+			g2.drawString(options[1], 395, 350);
+			g2.drawString(options[2], 390, 470);
+			g2.drawString(options[3], 420, 590);
+			g2.drawString(options[4], 450, 710);
 		}
-		BufferedImage rightImage = null;
-		try {
-		    rightImage = ImageIO.read(new File(pics[1]));
-		} catch (IOException e) {
-		}
-		g2.drawImage(rightImage, 10, 330, 290, 412, null);
-		g2.drawImage(leftImage, 700, 330, 290, 412, null);
-		
-		g2.fillRect(125,50, 750,200);
-		
-//		g2.fillRect(312, 280, 375,100);
-//		g2.fillRect(312, 400, 375,100);
-//		g2.fillRect(312, 520, 375,100);
-//		g2.fillRect(312, 640, 375,100);
-		int y=280;
-		for(int i=0;i<options.length-1;i++){
-			g2.fillRect(312, y, 375,100);
-			y+=120;
-		}
-		// You really should use an array here
-		// yPos[n] array, with n being (selected - 1) -Wilson W.
-		int[] yPos={276,396,516,636};
-		y=yPos[selected-1];
-		g2.setColor(colors[2]);
-		g2.fillRect(308,y,383,108);
-		
-		
-		Font times = new Font ("TimesRoman", Font.CENTER_BASELINE, 60);
-		Font subTimes = new Font ("TimesRoman", Font.ROMAN_BASELINE, 50);
-		g2.setFont(times);
-		g2.setColor(Color.white);
-		g2.drawString(options[0], 310,165);
-		g2.setFont(subTimes);
-		g2.drawString(options[1], 395, 350);
-		g2.drawString(options[2], 390, 470);
-		g2.drawString(options[3], 420, 590);
-		g2.drawString(options[4], 450, 710);
 		
 	}
 	
