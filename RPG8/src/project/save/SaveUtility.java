@@ -15,13 +15,13 @@ import java.util.Hashtable;
 
 public class SaveUtility {
 	
-	public static final int numOfSaveFiles = 3;
+	public static final int NUM_OF_SAVE_FILES = 3;
 	
 	public static Save getSaveFile(int choice) {
-		if (choice < numOfSaveFiles && choice > -1) {
+		if (choice < NUM_OF_SAVE_FILES && choice > -1) {
 			return new Save(choice);
 		} else {
-			System.out.printf("I'm sorry, but there are only %d save slots available\n", numOfSaveFiles);
+			System.out.printf("I'm sorry, but there are only %d save slots available\n", NUM_OF_SAVE_FILES);
 			return null;
 		}
 	}
