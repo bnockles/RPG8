@@ -44,7 +44,8 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		playerRegion = 0;
 		obstacles.add(new Obstacle("Barrel", 400, 200, 40, 70,
 				"/images/Map/barrelblue.jpg", 0,true,true));
-		obstacles.add(new Obstacle("Barrel2",300,200,40,70,"/images/Map/barrelblue.jpg",1,false,true));
+		obstacles.add(new Obstacle("Barrel2",300,200,40,70,"/images/Map/barrelblue.jpg",1,true,true));
+		obstacles.add(new Obstacle("Crate",100,300,120,70,"/images/Map/crate.png",1,false,true));
 		mapSections.add(new MainMap(0, "/images/Map/test.jpeg"));
 		mapSections.add(new MainMap(1, "/images/Map/test2.jpeg"));
 		boundaries.add(new Boundaries(0, 0, 100, 890, true, 0));
