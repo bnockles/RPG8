@@ -30,6 +30,7 @@ public interface ItemResources {
 	final Ammo stunHeavyAmmo = new Ammo("Heavy Ammo", "It's heavy ammo", 0, 1, STUN);
 	final Ammo stunSMGAmmo=new Ammo("SMG Ammo", "It's SMG ammo", 0, 1, STUN);
 	final Ammo stunExplosiveAmmo = new Ammo("Explosive Ammo", "It's explosive ammo", 0, 1, STUN);
+	
 	//final Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, NO_EFFECT);
 	final Ammo grenadeAmmo = new Ammo("Grenade Ammo", "It's grenade ammo", 0, 1, NO_EFFECT);
 	final Ammo incendiaryGrenadeAmmo = new Ammo("Incendiary Grenade Ammo", "It's incendiary grenade ammo", 0, 1, FIRE);

@@ -19,7 +19,6 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 	
 	BufferedImage weaponEquiped;
 	int color=1;
-
 	BufferedImage melee;
 	BufferedImage pistol;
 	BufferedImage rifle;
