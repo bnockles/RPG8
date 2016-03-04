@@ -21,26 +21,13 @@ public class GEnemy extends EnemyAI{
 		this.boss = conditions[3];
 	}
 
-	public void distanceAway(){
-		float dist = (float) Math.sqrt(
-				Math.pow(spawnedX - spawnedY, 2) +
-				Math.pow(x - y, 2) );
-		if (dist > 100) backToSpawn();
-	}
-
-	public void backToSpawn(){
-		int  a = spawnedX - x;
-		int b = spawnedY - y;
-		x+= BattlesScreen.GE_SPEED * (Math.signum(a));
-		y+= BattlesScreen.GE_SPEED * (Math.signum(b));
-
-	}
 	@Override
 	protected void reaction() {
 		// TODO Auto-generated method stub
 		int vx = BattlesScreen.calculateVComponentPlayerToCursor(10, x, y, true);
 		int vy = BattlesScreen.calculateVComponentPlayerToCursor(10, x, y, false);
 		fire(x,y,-vx,-vy);
+		distanceAway();
 	}
 
 	@Override
@@ -62,6 +49,19 @@ public class GEnemy extends EnemyAI{
 			y--;
 		} 
 	}
+	
+	public void distanceAway(){
+		float dist = (float) Math.sqrt(
+				Math.pow(spawnedX - spawnedY, 2) +
+				Math.pow(x - y, 2) );
+		if (dist > 100) backToSpawn();
+	}
 
+	public void backToSpawn(){
+		int  a = spawnedX - x;
+		int b = spawnedY - y;
+		x+= speed * (Math.signum(a));
+		y+= speed * (Math.signum(b));
+	}
 
 }
