@@ -15,8 +15,8 @@ import project.directors.Game;
 import project.directors.Screen;
 
 public class ItemScreen extends Screen implements KeyListener,ItemResources{
-	TargetDemo you = new TargetDemo(100, Rifles[0],incendiaryGrenadeAmmo,0,0,"You");
-	TargetDemo enemy = new TargetDemo(100, Rifles[0],incendiaryGrenadeAmmo,0,0,"Enemy");
+	TargetDemo you = new TargetDemo(100, Rifles[0],rifleAmmo,0,0,"You");
+	TargetDemo enemy = new TargetDemo(100, Rifles[0],rifleAmmo,0,0,"Enemy");
 	
 	BufferedImage weaponEquiped;
 	int color=1;
@@ -62,20 +62,20 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		}
 	}
 	
-	public void drawWeapon(BufferedImage pic, Graphics2D g2, int color){
-
-		if(color==1)g2.setColor(Color.blue);
-		if(color==2)g2.setColor(Color.green);
-		if(color==3)g2.setColor(Color.yellow);
-		if(color==4)g2.setColor(Color.black);
-		if(color==5)g2.setColor(Color.orange);
-		if(color==6)g2.setColor(Color.red);
-		//System.out.println(pic.getWidth());
-		//g2.drawRect(265, 495, pic.getWidth()+60, pic.getHeight()+60);
-		g2.fillRect(265, 495, pic.getWidth()+60, pic.getHeight()+60);
-	
-		g2.drawImage(pic, 295, 525, pic.getWidth(), pic.getHeight(), null);			
-	}
+//	public void drawWeapon(BufferedImage pic, Graphics2D g2, int color){
+//
+//		if(color==1)g2.setColor(Color.blue);
+//		if(color==2)g2.setColor(Color.green);
+//		if(color==3)g2.setColor(Color.yellow);
+//		if(color==4)g2.setColor(Color.pink);
+//		if(color==5)g2.setColor(Color.orange);
+//		if(color==6)g2.setColor(Color.red);
+//		System.out.println(pic.getWidth());
+//		g2.drawRect(265, 495, pic.getWidth()+60, pic.getHeight()+60);
+//		g2.fillRect(265, 495, pic.getWidth()+60, pic.getHeight()+60);
+//	
+//		g2.drawImage(pic, 295, 525, pic.getWidth(), pic.getHeight(), null);			
+//	}
 	
 	@Override
 	public void paintScreen(Graphics2D g2) {
@@ -84,15 +84,17 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
-		g2.drawString("Press E to heal", 400, 145);
-		g2.drawString("Press S to do damage", 400, 170);
-		g2.drawString("Press R to reload", 400, 195);
-		g2.drawString("Press H to switch weapons", 400, 220);
+		g2.drawString("Press E to heal", 395, 145);
+		g2.drawString("Press S to do damage", 395, 170);
+		g2.drawString("Press R to reload", 395, 195);
+		g2.drawString("Press 1-6 to switch weapons", 395, 220);
+		g2.drawString("Press 7-9 to switch", 395, 245);
+		g2.drawString("different types of ammo", 415, 270);
 		drawStats(g2,30,70,you);
 		drawStats(g2,700,70,enemy);
 		drawStickMan(g2, 50, 350);
 		drawStickMan(g2,800,350);
-		drawWeapon(weaponEquiped, g2,color);
+		g2.drawImage(weaponEquiped, 295, 525, weaponEquiped.getWidth(), weaponEquiped.getHeight(), null);	
 		
 	}
 	public void drawStats(Graphics2D g2,int x,int y,TargetDemo target){
@@ -105,8 +107,11 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		g2.drawString("Clips: "+target.weapon.getAmmoCapacity(), x, y+75);
 		g2.drawString("Ammo in Clip: "+target.weapon.getAmmoTotal(), x, y+100);
 		g2.drawString("Current Weapon: "+target.weapon.getName(), x, y+125);
-		g2.drawString("Coins: "+target.coins, x, y+150);
-		g2.drawString("Scrap: "+target.scrap, x, y+175);
+		if(target.weapon.getGunNum()/10!=1){
+			g2.drawString("Current Ammo: "+target.ammo.getName(), x, y+150);			
+		}
+		g2.drawString("Coins: "+target.coins, x, y+175);
+		g2.drawString("Scrap: "+target.scrap, x, y+200);
 	}
 	public void drawStickMan(Graphics2D g2,int x,int y){
 		g2.drawOval(x,y, 40, 40);
@@ -161,6 +166,23 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 			if(e.getKeyCode()==KeyEvent.VK_S){
 				if(you.health>0){
 					you.attack(enemy);
+					int retaliate = (int)(Math.random()*101);
+					if(retaliate<50 && enemy.health>0){
+						enemy.attack(you);
+						if(retaliate<40){
+							enemy.reload();
+						}
+						if(retaliate<30){
+							smallkit.giveHealth(enemy);
+						}
+						if(retaliate<20){
+							if(enemy.weapon.getName().equals("RIA-10S")){
+								enemy.weapon =Pistol[0];
+							}else{
+								enemy.weapon =Rifles[0];
+							}
+						}
+					}
 					if(you.weapon.getAmmoTotal()>0){
 						you.coins+=10;
 						you.scrap+=1;
@@ -191,7 +213,23 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 				}
 			}
 			if(e.getKeyCode()==KeyEvent.VK_8){
-				
+				if(you.ammo.getEffect()!=0){
+					if(you.weapon.getGunNum()/10==2){
+						you.ammo = pistolAmmo;
+					}
+					if(you.weapon.getGunNum()/10==3){
+						you.ammo = rifleAmmo;
+					}
+					if(you.weapon.getGunNum()/10==4){
+						you.ammo = heavyAmmo;
+					}
+					if(you.weapon.getGunNum()/10==5){
+						you.ammo = SMGAmmo;
+					}
+					if(you.weapon.getGunNum()/10==6){
+						you.ammo = explosiveAmmo;
+					}
+				}
 			}
 			if(e.getKeyCode()==KeyEvent.VK_9){
 				if(you.ammo.getEffect()!=3){

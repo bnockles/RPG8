@@ -26,9 +26,11 @@ public class TargetDemo {
 	
 	public void attack(final TargetDemo target){
 		
-		if(this.weapon.getAmmoTotal()!=0){
+		if(this.weapon.getAmmoTotal()!=0 || this.weapon.getGunNum()/10 ==1){
 			target.health-=this.weapon.getDamage();
-			this.weapon.setAmmoTotal(this.weapon.getAmmoTotal()-1);
+			if(this.weapon.getGunNum()/10 !=1){
+				this.weapon.setAmmoTotal(this.weapon.getAmmoTotal()-1);				
+			}
 		}
 		if(target.health<0){
 			target.health=0;
@@ -58,23 +60,23 @@ public class TargetDemo {
 		if(ammo.getEffect() == 2){
 			
 		}
-		if(ammo.getEffect() == 3){
-			ItemScreen.isStun = true;
-			final int count = (int) (Math.random()*5+1);
-			final Timer timer = new Timer();
-			final TimerTask countDown = new TimerTask(){
-				public void run(){
-					if(duration>=count){
-						duration=0;
-						ItemScreen.isStun=false;
-						timer.cancel();
-					}else{
-						duration++;
-					}
-				}
-			};
-			timer.scheduleAtFixedRate(countDown, 1000, 1000);
-		}
+//		if(ammo.getEffect() == 3){
+//			ItemScreen.isStun = true;
+//			final int count = (int) (Math.random()*5+1);
+//			final Timer timer = new Timer();
+//			final TimerTask countDown = new TimerTask(){
+//				public void run(){
+//					if(duration>=count){
+//						duration=0;
+//						ItemScreen.isStun=false;
+//						timer.cancel();
+//					}else{
+//						duration++;
+//					}
+//				}
+//			};
+//			timer.scheduleAtFixedRate(countDown, 1000, 1000);
+//		}
 	}
 	
 	public void reload(){
