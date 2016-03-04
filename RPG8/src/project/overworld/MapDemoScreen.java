@@ -110,7 +110,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		}
 
 	}
-	public void checkPlayerState(Boundaries bound){
+	public static void checkPlayerState(Boundaries bound){
 		if(bound.isLethal()){
 			playing = false;
 		}
