@@ -126,7 +126,7 @@ public class MainMenuScreen extends Screen implements KeyListener{
 //		g2.fillRect(312, 520, 375,100);
 //		g2.fillRect(312, 640, 375,100);
 		int y=280;
-		for(int i=0;i<options.length;i++){
+		for(int i=0;i<options.length-1;i++){
 			g2.fillRect(312, y, 375,100);
 			y+=120;
 		}
