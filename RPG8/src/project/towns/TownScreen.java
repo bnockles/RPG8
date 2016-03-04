@@ -227,12 +227,12 @@ public class TownScreen extends Screen implements KeyListener{
 					g2.drawString("USE T IN CIRCLE TO GO THROUGH CIRCLE, USE SPACE IN SHOP TO ACCESS SHOP ", 400, 500);
 				}
 				if(status ==ARMOR_STOREx  ){
-					Font myFont = new Font ("Courier New", 1, 17);
+					Font myFont = new Font ("Courier New", 1, 27);
 					
 
 					g2.setFont (myFont);
 				
-					g2.drawString("Attempting To Enter BootLeg Armor Store"  , 400, 500);
+					g2.drawString("Attempting To Enter BootLeg Weapon Store"  , 200, 500);
 				    	Timer t = new Timer();
 				    	t.schedule(new TimerTask() {
 
@@ -245,12 +245,12 @@ public class TownScreen extends Screen implements KeyListener{
 					
 				}
 				if(status ==AMMO_STOREx  ){
-					Font myFont = new Font ("Courier New", 1, 17);
+					Font myFont = new Font ("Courier New", 1, 27);
 					
 
 					g2.setFont (myFont);
 				
-					g2.drawString("Attempting To Enter BootLeg Ammo Store"  , 400, 500);
+					g2.drawString("Attempting To Enter BootLeg Ammo Store"  , 200, 500);
 				    	Timer t = new Timer();
 				    	t.schedule(new TimerTask() {
 
@@ -263,12 +263,12 @@ public class TownScreen extends Screen implements KeyListener{
 					
 				}
 				if(status ==WEAPON_STOREx  ){
-					Font myFont = new Font ("Courier New", 1, 17);
+					Font myFont = new Font ("Courier New", 1, 27);
 					
 
 					g2.setFont (myFont);
 				
-					g2.drawString("Attempting To Enter BootLeg Weapon Store"  , 400, 500);
+					g2.drawString("Attempting To Enter BootLeg Weapon Store"  , 200, 500);
 				    	Timer t = new Timer();
 				    	t.schedule(new TimerTask() {
 
@@ -281,12 +281,12 @@ public class TownScreen extends Screen implements KeyListener{
 					
 				}
 				if(status ==TOWNx  ){
-					Font myFont = new Font ("Courier New", 1, 17);
+					Font myFont = new Font ("Courier New", 1, 27);
 					
 
 					g2.setFont (myFont);
 				
-					g2.drawString("Attempting To Enter Terrible  Town"  , 400, 500);
+					g2.drawString("Attempting To Enter Terrible  Town"  , 200, 500);
 				    	Timer t = new Timer();
 				    	t.schedule(new TimerTask() {
 
