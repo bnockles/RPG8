@@ -389,6 +389,7 @@ public class TownScreen extends Screen implements KeyListener{
 			playable.moveRight();
 		}
 		if(key == KeyEvent.VK_SPACE){
+			
 			if(status == WEAPON_STORE){
 				if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(180 - playable.getY()) <= 100){
 					status = IN_SHOP_MENU;
