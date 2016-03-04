@@ -25,6 +25,9 @@ public class TownScreen extends Screen implements KeyListener{
 	//Jingwen Code
 	BufferedImage backGround;
 	BufferedImage portalToTown;
+	BufferedImage townPortalToArmor;
+	BufferedImage townPortalToWeapon;
+	BufferedImage townPortalToAmmo;
 	
 	StoreNPC putin;
 	TownWanderer playable;
@@ -32,6 +35,9 @@ public class TownScreen extends Screen implements KeyListener{
 	WeaponStore storeA;
 	WeaponStore storeC;
 	Building portalTooTown;
+	Building townPortalTooArmor;
+	Building townPortalTooWeapon;
+	Building townPortalTooAmmo;
 	int status2;
 	int boxX = 50;
 	int boxY =80;
@@ -99,7 +105,7 @@ public class TownScreen extends Screen implements KeyListener{
 				trump = new StoreNPC(450, 180, "Trump","/images/shop/trump.jpg");
 				hillary = new StoreNPC(450, 180, "alien","/images/shop/hillary.jpg");
 				playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/shop/obama.jpg", 10000);
-				 portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
+				portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
 						//Building(BufferedImage image,int y, int x, boolean portal,String nameOfBuiliding){
 			}
 			catch (IOException e) {
@@ -172,9 +178,9 @@ public class TownScreen extends Screen implements KeyListener{
 			g2.drawImage(backgroundGrid[currentRow][currentColumn], 0, 0, null);
 			g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),200,150,null);
 			g2.drawOval(250 - 100, game.getHeight() -110, 100, 100);
-			//g2.drawOval(450, 50, 100, 100);
+			g2.drawOval(450, 50, 100, 100);
 			g2.drawOval(750, game.getHeight() -110, 100, 100);
-			g2.drawImage(portalToTown, 450, 50, null);
+			
 			g2.drawString("USE T IN CIRCLE TO GO THROUGH CIRCLE, USE SPACE IN SHOP TO ACCESS SHOP ", 400, 500);
 		}
 //		    }
