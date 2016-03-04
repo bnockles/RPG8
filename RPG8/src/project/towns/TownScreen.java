@@ -239,6 +239,7 @@ public class TownScreen extends Screen implements KeyListener{
 				    	            @Override
 				    	            public void run() {
 				    	               status = ARMOR_STORE;
+				    	               status2 = ARMOR_STORE;
 				    	               update();	
 				    	            }
 				    	        }, 4000);
@@ -257,6 +258,7 @@ public class TownScreen extends Screen implements KeyListener{
 				    	            @Override
 				    	            public void run() {
 				    	               status = AMMO_STORE;
+				    	               status2 = AMMO_STORE;
 				    	               update();	
 				    	            }
 				    	        }, 3000);
@@ -275,6 +277,7 @@ public class TownScreen extends Screen implements KeyListener{
 				    	            @Override
 				    	            public void run() {
 				    	               status = WEAPON_STORE;
+				    	               status2 = WEAPON_STORE;
 				    	               update();	
 				    	            }
 				    	        }, 4000);
