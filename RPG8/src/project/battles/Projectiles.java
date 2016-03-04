@@ -31,8 +31,10 @@ public class Projectiles extends Collision{
 	
 	//Pelham
 	public void checkCollision(){
-		if(getHitBox().intersects(BattlesScreen.enemy1.getBounds()) || getHitBox().intersects(BattlesScreen.enemy2.getBounds())){
-			collided = true; 
+		for(EnemyAI enemy: BattlesScreen.enemiesOnScreen){
+			if(getHitBox().intersects(enemy.getBounds())){
+				collided = true; 
+			}
 		}
 	}
 
