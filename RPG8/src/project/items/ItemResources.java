@@ -8,7 +8,7 @@ public interface ItemResources {
 	static final int REGEN = 4;
 	
 	//Medkits
-	final MedKit smallkit=new MedKit("Small Medkit","It's crap.",0, 10, NO_EFFECT);
+	final MedKit smallkit=new MedKit("Small Medkit","It's crap.",0, 5, REGEN);
 	final MedKit medkit=new MedKit("Medium Medkit","It's better.",0, 20, NO_EFFECT);
 	final MedKit bigkit=new MedKit("Big Medkit","It's the best.",0, 30, NO_EFFECT);
 	

@@ -65,7 +65,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		if(color==4)g2.setColor(Color.black);
 		if(color==5)g2.setColor(Color.orange);
 		if(color==6)g2.setColor(Color.red);
-		System.out.println(pic.getWidth());
+		//System.out.println(pic.getWidth());
 		//g2.drawRect(265, 495, pic.getWidth()+60, pic.getHeight()+60);
 		g2.fillRect(265, 495, pic.getWidth()+60, pic.getHeight()+60);
 	
