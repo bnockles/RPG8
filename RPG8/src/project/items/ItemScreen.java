@@ -84,12 +84,12 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
-		g2.drawString("Press E to heal", 395, 145);
-		g2.drawString("Press S to do damage", 395, 170);
-		g2.drawString("Press R to reload", 395, 195);
-		g2.drawString("Press 1-6 to switch weapons", 395, 220);
-		g2.drawString("Press 7-9 to switch", 395, 245);
-		g2.drawString("different types of ammo", 415, 270);
+		g2.drawString("Press E to heal", 425, 145);
+		g2.drawString("Press S to do damage", 425, 170);
+		g2.drawString("Press R to reload", 425, 195);
+		g2.drawString("Press 1-6 to switch weapons", 425, 220);
+		g2.drawString("Press 7-9 to switch", 425, 245);
+		g2.drawString("different types of ammo", 445, 270);
 		drawStats(g2,30,70,you);
 		drawStats(g2,700,70,enemy);
 		drawStickMan(g2, 50, 350);
