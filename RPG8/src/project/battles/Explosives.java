@@ -24,7 +24,7 @@ public class Explosives extends Collision {
 	}
 
 	@Override
-	public void updateAndCheckAll() {
+	public void updateAndCheckAll() {//??????????
 		BufferedImage sheet = UtilityMethods.getImageFromFile(this, "/images/slash/slash.png");
 		if(activeType.isCollided()) activeType = new Melee(x, y, damage, sheet.getWidth(), sheet.getHeight(), 15, sheet, 0);
 		//change image
