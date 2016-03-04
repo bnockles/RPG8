@@ -52,6 +52,7 @@ public class MainMenuScreen extends Screen implements KeyListener{
 	Color[] colors;
 	// I will add the pictures of the characters once the
 	//character group has chosen them
+	public Clip clip;
 	
 	
 	private int selected;
@@ -92,15 +93,18 @@ public class MainMenuScreen extends Screen implements KeyListener{
 			this.game.setScreen(new GridToSee(this.game));
 			if(selected==2)
 				this.game.setScreen(new TestScreen(this.game));
+			clip.stop();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
 			this.game.setScreen(DynamicMenu.createMenu(0, this.game));
 		}
 		if(e.getKeyCode() == KeyEvent.VK_Q){
 			this.game.setScreen(DynamicMenu.createMenu(1, this.game));
+			clip.stop();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_W){
 			this.game.setScreen(DynamicMenu.createMenu(4, this.game));
+			clip.stop();
 		}
 		
 	}
@@ -206,9 +210,10 @@ public class MainMenuScreen extends Screen implements KeyListener{
 	      try 
 	      {
 	       AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundName.getAbsoluteFile( ));
-	       Clip clip = AudioSystem.getClip( );
+	       clip = AudioSystem.getClip( );
 	       clip.open(audioInputStream);
 	       clip.start( );
+	       clip.loop(-1);
 	      }
 	      catch(Exception ex)
 	      {
