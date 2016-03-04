@@ -16,7 +16,7 @@ import project.directors.Screen;
 
 public class ItemScreen extends Screen implements KeyListener,ItemResources{
 	TargetDemo you = new TargetDemo(100, Rifles[0],rifleAmmo,0,0,"You");
-	TargetDemo enemy = new TargetDemo(100, Rifles[0],rifleAmmo,0,0,"Enemy");
+	TargetDemo enemy = new TargetDemo(100, Rifles[1],rifleAmmo,0,0,"Enemy");
 	
 	BufferedImage weaponEquiped;
 	int color=1;
@@ -184,9 +184,9 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 							}
 							if(retaliate<20){
 								if(enemy.weapon.getName().equals("RIA-10S")){
-									enemy.weapon =Pistol[0];
+									enemy.weapon =Pistol[1];
 								}else{
-									enemy.weapon =Rifles[0];
+									enemy.weapon =Rifles[1];
 								}
 							}
 						}
