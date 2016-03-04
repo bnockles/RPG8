@@ -162,7 +162,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 //			}
 		}
 		if(e.getKeyCode()==KeyEvent.VK_7){
-			if(you.weapon.getAmmo. )
+			
 		}
 		if(e.getKeyCode()==KeyEvent.VK_8){
 			
