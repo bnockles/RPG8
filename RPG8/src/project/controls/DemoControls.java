@@ -1,6 +1,6 @@
 package project.controls;
 
-/** author Vincent */
+/** author Vincent & Jacky*/
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -10,8 +10,13 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
 
 import project.directors.Game;
@@ -24,6 +29,10 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 	int y=300;
 	int walking=5;
 	int running=20;
+	int slow = 5;
+	int ablazedS = 2;
+	int poisonedS = 10;
+	
 	int speed=walking;
 	ArrayList<Integer> moving;
 	String s = "Press 1 to select Game controls. Press 2 to select Menu Controls.";
@@ -31,13 +40,49 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 	Boolean selection=false;
 	Boolean game=false;
 	Boolean menu=false;
+	String [] ramStatus = {"paralyzed","ablazed","poisoned"};
 
 	public DemoControls(Game game) {
 		super(game);
 		moving = new ArrayList<Integer>();
-		// TODO Auto-generated constructor stub
 	}
+	
+	public String ramdomStatus(){
+		String  ramdom = (ramStatus[new Random().nextInt(ramStatus.length)]);
+		return ramdom;
+	}
+	
+//	public static enum Mode{
+//		ALPHA,ALPHA2,ALPHA3
+//	}
+//	
+//	public static String generateRandomString(int length,Mode mode){
+//		
+//		StringBuffer buffer = new StringBuffer();
+//		String characters = "";
+//		switch(mode){
+//		case ALPHA:
+//			characters = "A";
+//			break;
+//		case ALPHA2:
+//			characters = "E";
+//			break;
+//		case ALPHA3:
+//			characters = "1";
+//			break;
+//		}
+//		int charactersLength = characters.length();
+//
+//		for (int i = 0; i < length; i++) {
+//			double index = Math.random() * charactersLength;
+//			buffer.append(characters.charAt((int) index));
+//		}
+//		return buffer.toString();
+//	}
+		// TODO Auto-generated constructor stub
 
+	
+	
 	@Override
 	public void moveUp() {
 		// TODO Auto-generated method stub
@@ -82,6 +127,7 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 				return;
 			}
 			s = "Swarm equipped his pistol";
+			
 		}
 		if(selection){
 			if(keyCode == KeyEvent.VK_W){
@@ -118,6 +164,26 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 				}
 				if(menu){
 					s = "You selected the choice on the right";
+				}
+			}
+			if(keyCode == KeyEvent.VK_P){
+				if(game){
+					s = ramdomStatus();
+					if(s == "paralyzed"){
+						s = "The current status of Swarm is paralyzed";
+						if(!moving.contains(keyCode)) moving.add(keyCode);
+						speed=slow;
+					}
+					if(s == "ablazed"){
+						s = "The current status of Swarm is ablazed";
+						if(!moving.contains(keyCode)) moving.add(keyCode);
+						speed = ablazedS;
+					}
+					if(s == "poisoned"){
+						s = "The current status of Swarm is poisoned";
+						if(!moving.contains(keyCode)) moving.add(keyCode);
+						speed = poisonedS;
+					}
 				}
 			}
 		}
