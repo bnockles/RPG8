@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import project.directors.Game;
 import project.directors.Screen;
-import project.mainmenudemo.DynamicMenu;
 import project.mainmenudemo.MainMenuScreen;
 import project.ChoiceMenuDemo.MenuTheme;
 
@@ -88,14 +87,26 @@ public class GridToSee extends Screen implements KeyListener{
 				selectMem = highl;
 				highl = 0;
 			}
-			if (choices == MINI_SUB){
+			/**if (choices == MINI_SUB){
+				if (highl == 0){
+					choice.set
+				}
+				if (highl == 1){
+					ChoiceDesc.setSel("N");
+				}
+				if (highl == 2){
+					ChoiceDesc.setSel("D");
+				}
+				if (highl == 3){
+					ChoiceDesc.setSel("C");
+				}
 				
-			}
+			}**/
 			choices = MINI_SUB;
 			update();
 		}	
 		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
-			this.game.setScreen(DynamicMenu.createMenu(DynamicMenu.MAIN_MENU, this.game));
+			this.game.setScreen(new MainMenuScreen(this.game));
 		}
 		if(e.getKeyCode()== KeyEvent.VK_C){
 			if (choices == MINI_SUB){
