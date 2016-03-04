@@ -59,8 +59,8 @@ public class GEnemy extends EnemyAI{
 	}
 
 	public void backToSpawn(){
-		int  a = spawnedX - x;
-		int b = spawnedY - y;
+		int  a = x - spawnedX;
+		int b = y -spawnedY;
 		x+= speed * (Math.signum(a));
 		y+= speed * (Math.signum(b));
 	}
