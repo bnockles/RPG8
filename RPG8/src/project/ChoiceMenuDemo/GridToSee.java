@@ -9,12 +9,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
-
 import project.directors.Game;
 import project.directors.Screen;
 import project.mainmenudemo.MainMenuScreen;
+import project.ChoiceMenuDemo.MenuTheme;
 
 /**
  * 
@@ -25,9 +24,12 @@ import project.mainmenudemo.MainMenuScreen;
 public class GridToSee extends Screen implements KeyListener{
 
 	boolean choices = false; //controls if control over main or sub menu
-	public static int highl = 0;
+	public int highl = 0;
+	
 	ArrayList<ChoiceDesc> choice;
-	Color selectBlue = new Color (30, 60, 100);
+	
+	
+
 	Font def = new Font ("Helvetica", Font.BOLD, 30);
 	Font smallerDef = new Font("Helvetica", Font.BOLD, 20);
 	int x = 123;
@@ -35,6 +37,7 @@ public class GridToSee extends Screen implements KeyListener{
 	int w = 234;
 	int x2 = 0;
 	int y2 = 0;
+	int numberOfBoxes = 0;
 	
 	
 	public GridToSee(Game game) {
@@ -47,35 +50,30 @@ public class GridToSee extends Screen implements KeyListener{
 		choice.add(new ChoiceDesc("Box 4", new File("resources/image2.gif"), "NOT", ""));
 		choice.add(new ChoiceDesc("Box 5", new File("resources/image3.png"), "STEAL", ""));
 		choice.add(new ChoiceDesc("Box 6", new File("resources/image4.png"), "Go right to go to start", ""));
-
+	
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT){
 			highl++;
-			System.out.println("move pls");
-			if(highl > 5) highl = 0;
-			
+			highl = highl % numberOfBoxes;
 			update();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_LEFT){
 			highl--;
-			if(highl < 0) highl = 5;
-			
+			if (highl < 0) highl = (highl + numberOfBoxes);
 			update();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_DOWN){
-			highl += 3;
-			if (highl > 5) highl = (highl - 6);
-			
+			highl += (numberOfBoxes/2);
+			highl = highl % numberOfBoxes;
 			update();
 		}
 		
 		if(e.getKeyCode() == KeyEvent.VK_UP){
-			highl-= 3;
-			if(highl < 0) highl = (highl + 6);
-			
+			highl -= (numberOfBoxes/2);
+			if (highl < 0) highl = (highl + numberOfBoxes);
 			update();
 		}
 		
@@ -89,27 +87,14 @@ public class GridToSee extends Screen implements KeyListener{
 		}
 	
 	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public KeyListener getKeyListener() {
-		// TODO Auto-generated method stub
-		return this;
-	}
-
-	@Override
+	
 	public void paintScreen(Graphics2D g2) {
+		if (choices == false) {
+			numberOfBoxes = 6;
+		}
+		else {
+			numberOfBoxes = 4;
+		}
 		
 		g2.setColor(Color.GRAY);
 		g2.fillRect(0, 0, width, height);
@@ -161,7 +146,7 @@ public class GridToSee extends Screen implements KeyListener{
 		
 	
 		if (choices  == false){
-			g2.setColor(selectBlue);
+			g2.setColor(selectBlue); 
 			g2.fillRect(x, y, w, w); //its a square anyway
 		}
 		
@@ -191,11 +176,12 @@ public class GridToSee extends Screen implements KeyListener{
 		if (choices == true){
 			int w2 = 50;
 			
-			
-			g2.setColor(Color.darkGray);
+			g2.setColor(Color.darkGray); //background of submenu
 			g2.fillRect(10, 40, 750, 600);
-			g2.setColor(selectBlue);
+			
+			g2.setColor(selectBlue); //Selection color
 			g2.fillRect(x2, y2, w2, w2);
+			
 			
 			g2.setColor(Color.white);
 			g2.drawString("Y", 100, 150);
@@ -204,5 +190,23 @@ public class GridToSee extends Screen implements KeyListener{
 			g2.drawString("C", 600, 550);
 		}
 	}
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public KeyListener getKeyListener() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+
 }
 

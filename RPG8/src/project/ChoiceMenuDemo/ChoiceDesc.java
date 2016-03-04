@@ -13,7 +13,6 @@ import project.menus.Selectable;
 public class ChoiceDesc implements Selectable{
 
 	public String name;
-	
 	public String des; //description
 	public File pic; //picture
 	public String sel; //selected
