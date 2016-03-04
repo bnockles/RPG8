@@ -125,7 +125,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(!isStun){
+		if(!you.isStunned){
 			if(e.getKeyCode()==KeyEvent.VK_E){
 				System.out.println(you.health);
 				smallkit.giveHealth(you);
@@ -139,26 +139,31 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 			if(e.getKeyCode()==KeyEvent.VK_2){
 				you.weapon = Pistol[0];
 				weaponEquiped = pistol;
+				you.ammo = pistolAmmo;
 				color=2;
 			}
 			if(e.getKeyCode()==KeyEvent.VK_3){
 				you.weapon = Rifles[0];
 				weaponEquiped = rifle;
+				you.ammo = rifleAmmo;
 				color=3;
 			}
 			if(e.getKeyCode()==KeyEvent.VK_4){
 				you.weapon = Heavy[0];
 				weaponEquiped = heavy;
+				you.ammo = heavyAmmo;
 				color=4;
 			}
 			if(e.getKeyCode()==KeyEvent.VK_5){
 				you.weapon = SMG[0];
 				weaponEquiped = smg;
+				you.ammo = SMGAmmo;
 				color=5;
 			}
 			if(e.getKeyCode()==KeyEvent.VK_6){
 				you.weapon = Explosives[0];
 				weaponEquiped = explosive;
+				you.ammo = explosiveAmmo;
 				color=6;
 			}
 			if(e.getKeyCode() == KeyEvent.VK_R){ 
@@ -167,23 +172,26 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 			if(e.getKeyCode()==KeyEvent.VK_S){
 				if(you.health>0){
 					you.attack(enemy);
-					int retaliate = (int)(Math.random()*101);
-					if(retaliate<50 && enemy.health>0){
-						enemy.attack(you);
-						if(retaliate<40){
-							enemy.reload();
-						}
-						if(retaliate<30){
-							smallkit.giveHealth(enemy);
-						}
-						if(retaliate<20){
-							if(enemy.weapon.getName().equals("RIA-10S")){
-								enemy.weapon =Pistol[0];
-							}else{
-								enemy.weapon =Rifles[0];
+					if(!enemy.isStunned){
+						int retaliate = (int)(Math.random()*101);
+						if(retaliate<50 && enemy.health>0){
+							enemy.attack(you);
+							if(retaliate<40){
+								enemy.reload();
+							}
+							if(retaliate<30){
+								smallkit.giveHealth(enemy);
+							}
+							if(retaliate<20){
+								if(enemy.weapon.getName().equals("RIA-10S")){
+									enemy.weapon =Pistol[0];
+								}else{
+									enemy.weapon =Rifles[0];
+								}
 							}
 						}
 					}
+					
 					if(you.weapon.getAmmoTotal()>0){
 						you.coins+=10;
 						you.scrap+=1;
