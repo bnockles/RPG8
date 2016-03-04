@@ -67,7 +67,7 @@ public class TargetDemo {
 			final Timer timer = new Timer();
 			final TimerTask countDown = new TimerTask(){
 				public void run(){
-					if(duration>=1){
+					if(duration>=3){
 						duration=0;
 						target.isStunned=false;
 						timer.cancel();
