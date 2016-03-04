@@ -32,18 +32,30 @@ public class MedKit extends Item {
 		}
 	}
 	public void regen(final TargetDemo b){
-		timer=new Timer();
+		
+		
 		final int healRegen=this.healthGained;
 		if(this.getEffect()==4){
+			try{
+				timer.cancel();
+			}
+			catch(NullPointerException e){
+				
+			}
+			timer=new Timer();
 			final TimerTask countDown = new TimerTask(){
+				boolean timerStack=false;
+
 				public void run(){
 					if(duration>5){
 						duration=0;
 						timer.cancel();
 					}else{
 						b.health+=healRegen;
+						if(b.health>100)b.health=100;
 						duration++;
 					}
+					this.timerStack=true;
 				}
 			};
 			timer.scheduleAtFixedRate(countDown, 1000, 1000);
