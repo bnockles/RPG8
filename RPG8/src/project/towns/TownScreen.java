@@ -1,6 +1,7 @@
 package project.towns;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -10,6 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.imageio.ImageIO;
 
@@ -50,7 +52,10 @@ public class TownScreen extends Screen implements KeyListener{
 	public static final int WEAPON_STORE = 0;
 	public static final int AMMO_STORE = 3;
 	public static final int ARMOR_STORE = 4;
-	public static final int R_SHOP = 5;
+	public static final int ARMOR_STOREx = 10;
+	public static final int AMMO_STOREx = 11;
+	public static final int WEAPON_STOREx = 12;
+	public static final int TOWNx = 13;
 	
 	ArrayList<Integer>itemN = new ArrayList<Integer>();
 	Timer timer = new Timer();
@@ -74,9 +79,8 @@ public class TownScreen extends Screen implements KeyListener{
 	int entraceColumn;
 	int entranceX;//exact location on the cell where the entrance is
 	int entranceY;
-	int lottry = 0;
 	StoreNPC trump;
-	StoreNPC hillary;
+	private StoreNPC hillary;
 	
 	//s
 	
@@ -111,7 +115,7 @@ public class TownScreen extends Screen implements KeyListener{
 				putin = new StoreNPC(450, 180, "Putin","/images/shop/hey.jpg");
 				trump = new StoreNPC(450, 180, "Trump","/images/shop/trump.jpg");
 				hillary = new StoreNPC(450, 180, "alien","/images/shop/hillary.jpg");
-				playable = new TownWanderer(450, game.getHeight()-170, "hero", "/images/shop/obama.jpg", 10000);
+				playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/shop/obama.jpg", 10000);
 				
 				portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
 				townPortalTooWeapon = new Building(townPortalToWeapon,250 - 50, game.getHeight() -200,true,"porttotown");
@@ -139,80 +143,162 @@ public class TownScreen extends Screen implements KeyListener{
 		// TODO Auto-generated method stub
 		return this;
 	}	
-	
+	boolean yx= false;
     //Jingwen COde
 	@Override
 	public void paintScreen(Graphics2D g2) {
 		// TODO Auto-generated method stub
 //		for (int y = 0; y < game.getWindowWidth(); y++) {
 //		    for (int x = 0; x < game.getWindowHeight(); x++){
-		if(status == WEAPON_STORE){
-			paintShop(g2);
-			g2.drawImage(hillary.getNpc(), 420,150,250,180, null);
-			
-			g2.drawImage(portalTooTown.getImage(), 250 - 100, game.getHeight() -10 - 100, null);
-			
-//	    	g2.drawOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
-//	    	g2.setColor(Color.WHITE);
-//	    	g2.fillOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
-	    	
-	    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
-		}
-		if(status == AMMO_STORE){
-			paintShop(g2);
-			g2.drawImage(trump.getNpc(), 420,150,250,180, null);
-			
-			g2.drawImage(portalTooTown.getImage(), 750, game.getHeight() -110, null);
-			
-//	    	g2.drawOval(750, game.getHeight() -110, 100, 100);
-//	    	g2.setColor(Color.WHITE);
-//	    	g2.fillOval(750, game.getHeight() -110, 100, 100);
-	    	
-	    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
-		}
-		if(status == ARMOR_STORE){
-			paintShop(g2);
-			g2.drawImage(putin.getNpc(), 390,game.getHeight() - 250,250,180, null);
-			
-//	    	g2.drawOval(450, 50, 100, 100);
-//	    	g2.setColor(Color.WHITE);
-//	    	g2.fillOval(450, 50, 100, 100);
-			
-	    	g2.drawImage(portalTooTown.getImage(), 450,50, null);
-	    	
-	    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
-		}
-		if (status == IN_SHOP_MENU){
-			if(status2 == WEAPON_STORE){
-				paintInShop(store, g2);
-			}
-			if(status2 == ARMOR_STORE){
-				paintInShop(storeA, g2);
-			}
-			if(status2 == AMMO_STORE){
-				paintInShop(storeC, g2);
-			}
-		}
-		if(status == R_SHOP){
-			g2.drawString("Press B to buy a lottry, 1000 each buy", 100, 50);
-			g2.drawString("Player cash: " + store.getMoney(),100,150);
-			g2.drawString("U won: " + lottry, 100, 250);
-		}
-		if (status == TOWN){
-			//Fei code
-			g2.drawImage(backgroundGrid[currentRow][currentColumn], 0, 0, null);
-			g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),200,150,null);
-			g2.drawImage(townPortalTooWeapon.getImage(), townPortalTooWeapon.getxcoord(),townPortalTooWeapon.getycoord(),150,150,  null);
-			g2.drawImage(townPortalTooArmor.getImage(), townPortalTooArmor.getxcoord(),townPortalTooArmor.getycoord(),150,150, null);
-			g2.drawImage(townPortalTooAmmo.getImage(), townPortalTooAmmo.getxcoord(),townPortalTooAmmo.getycoord(),150,150, null);
-//			g2.drawOval(250 - 100, game.getHeight() -110, 100, 100);
-//			g2.drawOval(450, 50, 100, 100);
-//			g2.drawOval(750, game.getHeight() -110, 100, 100);
-			g2.setColor(Color.GRAY);
-			g2.fillRect(20, game.getHeight()/3, 100, 200);
-			g2.drawString("USE T IN CIRCLE TO GO THROUGH CIRCLE, USE SPACE IN SHOP TO ACCESS SHOP ", 400, 500);
-			g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),200,150,null);
-		}
+		//while(yx == false){
+				if(status == WEAPON_STORE){
+					paintShop(g2);
+					g2.drawImage(hillary.getNpc(), 420,150,250,180, null);
+					
+					g2.drawImage(portalTooTown.getImage(), 250 - 100, game.getHeight() -10 - 100, null);
+					
+		//	    	g2.drawOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
+		//	    	g2.setColor(Color.WHITE);
+		//	    	g2.fillOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
+			    	
+			    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
+				}
+				if(status == AMMO_STORE){
+					paintShop(g2);
+					g2.drawImage(trump.getNpc(), 420,150,250,180, null);
+					
+					g2.drawImage(portalTooTown.getImage(), 750, game.getHeight() -110, null);
+					
+		//	    	g2.drawOval(750, game.getHeight() -110, 100, 100);
+		//	    	g2.setColor(Color.WHITE);
+		//	    	g2.fillOval(750, game.getHeight() -110, 100, 100);
+			    	
+			    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
+				}
+				if(status == ARMOR_STORE){
+					paintShop(g2);
+					g2.drawImage(putin.getNpc(), 390,game.getHeight() - 250,250,180, null);
+					
+		//	    	g2.drawOval(450, 50, 100, 100);
+		//	    	g2.setColor(Color.WHITE);
+		//	    	g2.fillOval(450, 50, 100, 100);
+					
+			    	g2.drawImage(portalTooTown.getImage(), 450,50, null);
+			    	
+			    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
+				}
+				if (status == IN_SHOP_MENU){
+					if(status2 == WEAPON_STORE){
+						paintInShop(store, g2);
+					}
+					if(status2 == ARMOR_STORE){
+						paintInShop(storeA, g2);
+					}
+					if(status2 == AMMO_STORE){
+						paintInShop(storeC, g2);
+						status = TOWN;
+					}
+				}
+				if (status == TOWN){
+					//Fei code
+					g2.drawImage(backgroundGrid[currentRow][currentColumn], 0, 0, null);
+					g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),200,150,null);
+					g2.drawImage(townPortalTooWeapon.getImage(), townPortalTooWeapon.getxcoord(),townPortalTooWeapon.getycoord(), null);
+					g2.drawImage(townPortalTooArmor.getImage(), townPortalTooArmor.getxcoord(),townPortalTooArmor.getycoord(), null);
+					g2.drawImage(townPortalTooAmmo.getImage(), townPortalTooAmmo.getxcoord(),townPortalTooAmmo.getycoord(), null);
+		//			g2.drawOval(250 - 100, game.getHeight() -110, 100, 100);
+		//			g2.drawOval(450, 50, 100, 100);
+		//			g2.drawOval(750, game.getHeight() -110, 100, 100);
+					
+					g2.drawString("USE T IN CIRCLE TO GO THROUGH CIRCLE, USE SPACE IN SHOP TO ACCESS SHOP ", 400, 500);
+					yx = true;
+				}
+				if (status == TOWN){
+					//Fei code
+					g2.drawImage(backgroundGrid[currentRow][currentColumn], 0, 0, null);
+					g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),200,150,null);
+					g2.drawImage(townPortalTooWeapon.getImage(), townPortalTooWeapon.getxcoord(),townPortalTooWeapon.getycoord(), null);
+					g2.drawImage(townPortalTooArmor.getImage(), townPortalTooArmor.getxcoord(),townPortalTooArmor.getycoord(), null);
+					g2.drawImage(townPortalTooAmmo.getImage(), townPortalTooAmmo.getxcoord(),townPortalTooAmmo.getycoord(), null);
+		//			g2.drawOval(250 - 100, game.getHeight() -110, 100, 100);
+		//			g2.drawOval(450, 50, 100, 100);
+		//			g2.drawOval(750, game.getHeight() -110, 100, 100);
+					
+					g2.drawString("USE T IN CIRCLE TO GO THROUGH CIRCLE, USE SPACE IN SHOP TO ACCESS SHOP ", 400, 500);
+				}
+				if(status ==ARMOR_STOREx  ){
+					Font myFont = new Font ("Courier New", 1, 17);
+					
+
+					g2.setFont (myFont);
+				
+					g2.drawString("Attempting To Enter BootLeg Armor Store"  , 400, 500);
+				    	Timer t = new Timer();
+				    	t.schedule(new TimerTask() {
+
+				    	            @Override
+				    	            public void run() {
+				    	               status = ARMOR_STORE;
+				    	               update();	
+				    	            }
+				    	        }, 4000);
+					
+				}
+				if(status ==AMMO_STOREx  ){
+					Font myFont = new Font ("Courier New", 1, 17);
+					
+
+					g2.setFont (myFont);
+				
+					g2.drawString("Attempting To Enter BootLeg Ammo Store"  , 400, 500);
+				    	Timer t = new Timer();
+				    	t.schedule(new TimerTask() {
+
+				    	            @Override
+				    	            public void run() {
+				    	               status = AMMO_STORE;
+				    	               update();	
+				    	            }
+				    	        }, 3000);
+					
+				}
+				if(status ==WEAPON_STOREx  ){
+					Font myFont = new Font ("Courier New", 1, 17);
+					
+
+					g2.setFont (myFont);
+				
+					g2.drawString("Attempting To Enter BootLeg Weapon Store"  , 400, 500);
+				    	Timer t = new Timer();
+				    	t.schedule(new TimerTask() {
+
+				    	            @Override
+				    	            public void run() {
+				    	               status = WEAPON_STORE;
+				    	               update();	
+				    	            }
+				    	        }, 4000);
+					
+				}
+				if(status ==TOWNx  ){
+					Font myFont = new Font ("Courier New", 1, 17);
+					
+
+					g2.setFont (myFont);
+				
+					g2.drawString("Attempting To Enter Terrible  Town"  , 400, 500);
+				    	Timer t = new Timer();
+				    	t.schedule(new TimerTask() {
+
+				    	            @Override
+				    	            public void run() {
+				    	               status = TOWN;
+				    	               update();	
+				    	            }
+				    	        }, 4000);
+					
+				}
+		//}	
 //		    }
 //		}
 	}
@@ -269,185 +355,142 @@ public class TownScreen extends Screen implements KeyListener{
 		
 	}
 	//JIngwen CODE
-		public void keyPressed(KeyEvent arg0) {
-			// TODO Auto-generated method stub
-			int key = arg0.getKeyCode();
-			if(key == KeyEvent.VK_UP){
-				if(status == IN_SHOP_MENU){
-					if(itemx > 92){
-						itemx-= 100;
-						boxY-= 100;
-					}
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		int key = arg0.getKeyCode();
+		if(key == KeyEvent.VK_UP){
+			if(status == IN_SHOP_MENU){
+				if(itemx > 92){
+					itemx-= 100;
+					boxY-= 100;
 				}
-				else
-					playable.moveUp();
+			}
+			else
+				playable.moveUp();
+				
+		}
+		if(key == KeyEvent.VK_DOWN){
+			if(status == IN_SHOP_MENU){
+			if(itemx < 392){
+				itemx+= 100;
+				boxY+= 100;
+				}
+			}
+			else
+				playable.moveDown();
+		}
+		if(key == KeyEvent.VK_LEFT){
+			playable.moveLeft();
+		}
+		if(key == KeyEvent.VK_RIGHT){
+			playable.moveRight();
+		}
+		if(key == KeyEvent.VK_SPACE){
+			if(status == WEAPON_STORE){
+				if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(180 - playable.getY()) <= 100){
+					status = IN_SHOP_MENU;
+				}
+			}
+			if(status == AMMO_STORE){
+				
+				if(Math.abs(420 - playable.getX()) <= 100 && Math.abs(150 - playable.getY()) <= 100){
+					status = IN_SHOP_MENU;
 					
-			}
-			if(key == KeyEvent.VK_DOWN){
-				if(status == IN_SHOP_MENU){
-				if(itemx < 392){
-					itemx+= 100;
-					boxY+= 100;
-					}
 				}
-				else
-					playable.moveDown();
+				System.out.print(status);
 			}
-			if(key == KeyEvent.VK_LEFT){
-				playable.moveLeft();
-			}
-			if(key == KeyEvent.VK_RIGHT){
-				playable.moveRight();
-			}
-			if(key == KeyEvent.VK_SPACE){
-				if(status == WEAPON_STORE){
-					if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(180 - playable.getY()) <= 100){
-						status = IN_SHOP_MENU;
-					}
-				}
-				if(status == AMMO_STORE){
-					
-					if(Math.abs(420 - playable.getX()) <= 100 && Math.abs(150 - playable.getY()) <= 100){
-						status = IN_SHOP_MENU;
-						
-					}
-					System.out.print(status);
-				}
-				if(status == ARMOR_STORE){
-					if(Math.abs(390 - playable.getX()) <= 100 && Math.abs(game.getHeight() - 250 - playable.getY()) <= 100){
-						status = IN_SHOP_MENU;
-					}
-				}
-				if(status == TOWN){
-					if(Math.abs(20 - playable.getX()) <= 100 && Math.abs(game.getHeight()/3 - playable.getY()) <= 100){
-						status = R_SHOP;
-					}
+			if(status == ARMOR_STORE){
+				if(Math.abs(390 - playable.getX()) <= 100 && Math.abs(game.getHeight() - 250 - playable.getY()) <= 100){
+					status = IN_SHOP_MENU;
 				}
 			}
-			if(key == KeyEvent.VK_ESCAPE){
-				if(status == IN_SHOP_MENU){
-					status = status2;
-				}
-				if(status == R_SHOP){
-					status = TOWN;
-				}
+		}
+		if(key == KeyEvent.VK_ESCAPE){
+			if(status == IN_SHOP_MENU){
+				status = status2;
 			}
-			if(key == KeyEvent.VK_B){
-				if(status == IN_SHOP_MENU){
-					if(status2 == WEAPON_STORE)
-					store.moneyInteraction(itemx);
-					storeA.AllInteraction(itemx);
-					storeC.AllInteraction(itemx);
+		}
+		if(key == KeyEvent.VK_B){
+			if(status == IN_SHOP_MENU){
+				if(status2 == WEAPON_STORE)
+				store.moneyInteraction(itemx);
+				storeA.AllInteraction(itemx);
+				storeC.AllInteraction(itemx);
+				if(status2 == ARMOR_STORE)
+				storeA.moneyInteraction(itemx);
+				storeC.AllInteraction(itemx);
+				store.AllInteraction(itemx);
+				if(status2 == AMMO_STORE)
+				storeC.moneyInteraction(itemx);
+				store.AllInteraction(itemx);
+				storeA.AllInteraction(itemx);
+			}
+		}
+		if(key == KeyEvent.VK_S){
+			if(status == IN_SHOP_MENU){
+				if(status2 == WEAPON_STORE)
+					store.moneySellingInteraction(itemx);
+					storeA.AllSellingInteraction(itemx);
+					storeC.AllSellingInteraction(itemx);
 					if(status2 == ARMOR_STORE)
-					storeA.moneyInteraction(itemx);
-					storeC.AllInteraction(itemx);
-					store.AllInteraction(itemx);
+					storeA.moneySellingInteraction(itemx);
+					storeC.AllSellingInteraction(itemx);
+					store.AllSellingInteraction(itemx);
 					if(status2 == AMMO_STORE)
-					storeC.moneyInteraction(itemx);
-					store.AllInteraction(itemx);
-					storeA.AllInteraction(itemx);
+					storeC.moneySellingInteraction(itemx);
+					store.AllSellingInteraction(itemx);
+					storeA.AllSellingInteraction(itemx);
+			}
+		}
+		if(key == KeyEvent.VK_T){
+			if(status == TOWN){
+				if(Math.abs(150 - playable.getX()) <= 100 && Math.abs(game.getHeight() -10 - 100 - playable.getY()) <= 100){
+					status = WEAPON_STOREx;
+					
 				}
-				if(status == R_SHOP){
-					if(store.getMoney() > 1000){
-						double x = Math.random()*1001;
-						System.out.println(x);
-						if(x == 1){
-							lottry = 1000000;
-							directPayment(lottry, 1000);
-							System.out.println(lottry);
-						}
-						if(x > 2 && x< 5){
-							lottry = 50000;
-							directPayment(lottry, 1000);
-							System.out.println(lottry);
-						}
-						if(x > 5 && x< 100){
-							lottry = 1000;
-							directPayment(lottry, 1000);
-							System.out.println(lottry);
-						}
-						if(x > 100 && x< 500){
-							lottry = 500;
-							directPayment(lottry, 1000);
-							System.out.println(lottry);
-						}
-						if(x > 500){
-							lottry = 100;
-							directPayment(lottry, 1000);
-							System.out.println(lottry);
-						}
-					}
+				if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(50 - playable.getY()) <= 100){
+					status = ARMOR_STOREx;
+					
+					
+				}
+				if(Math.abs(750 - playable.getX()) <= 100 && Math.abs(game.getHeight() -110 - playable.getY()) <= 100){
+					status = AMMO_STOREx;
+					//status2 = AMMO_STORE;
+					System.out.print("cxzcxzczxcxz");
 				}
 			}
-			if(key == KeyEvent.VK_S){
-				if(status == IN_SHOP_MENU){
-					if(status2 == WEAPON_STORE)
-						store.moneySellingInteraction(itemx);
-						storeA.AllSellingInteraction(itemx);
-						storeC.AllSellingInteraction(itemx);
-						if(status2 == ARMOR_STORE)
-						storeA.moneySellingInteraction(itemx);
-						storeC.AllSellingInteraction(itemx);
-						store.AllSellingInteraction(itemx);
-						if(status2 == AMMO_STORE)
-						storeC.moneySellingInteraction(itemx);
-						store.AllSellingInteraction(itemx);
-						storeA.AllSellingInteraction(itemx);
+			else if(status == WEAPON_STORE){
+				if(Math.abs(150 - playable.getX()) <= 100 && Math.abs(game.getHeight() -10 - 100 - playable.getY()) <= 100){
+					status = TOWNx;
 				}
 			}
-			if(key == KeyEvent.VK_T){
-				if(status == TOWN){
-					if(Math.abs(150 - playable.getX()) <= 100 && Math.abs(game.getHeight() -10 - 100 - playable.getY()) <= 100){
-						status = WEAPON_STORE;
-						status2 = WEAPON_STORE;
-					}
-					if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(50 - playable.getY()) <= 100){
-						status = ARMOR_STORE;
-						status2 = ARMOR_STORE;
-					}
-					if(Math.abs(750 - playable.getX()) <= 100 && Math.abs(game.getHeight() -110 - playable.getY()) <= 100){
-						status = AMMO_STORE;
-						status2 = AMMO_STORE;
-					}
+			else if(status == ARMOR_STORE){
+				if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(50 - playable.getY()) <= 100){
+					status = TOWNx;
 				}
-				else if(status == WEAPON_STORE){
-					if(Math.abs(150 - playable.getX()) <= 100 && Math.abs(game.getHeight() -10 - 100 - playable.getY()) <= 100){
-						status = TOWN;
-					}
-				}
-				else if(status == ARMOR_STORE){
-					if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(50 - playable.getY()) <= 100){
-						status = TOWN;
-					}
-				}
-				else if(status == AMMO_STORE){
-					System.out.print(status);
-					if(Math.abs(750 - playable.getX()) <= 100 && Math.abs(game.getHeight() -110 - playable.getY()) <= 100){
-						status = TOWN;
-						System.out.print(status);
-					}
+			}
+			else if(status == AMMO_STORE){
+				System.out.print(status);
+				if(Math.abs(750 - playable.getX()) <= 100 && Math.abs(game.getHeight() -110 - playable.getY()) <= 100){
+					status = TOWNx;
 					System.out.print(status);
 				}
+				System.out.print(status);
 			}
-				update();
 		}
-		
-		public void directPayment(int amount, int cost){
-			store.setMoney(store.getMoney()+amount - cost);
-			storeA.setMoney(store.getMoney()+amount - cost);
-			storeC.setMoney(store.getMoney()+amount - cost);
-		}
-		
-		@Override
-		public void keyReleased(KeyEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
+			update();
+	}
 
-		@Override
-		public void keyTyped(KeyEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
