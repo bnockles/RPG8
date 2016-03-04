@@ -351,10 +351,16 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		int randomNumber = (int) (Math.random()*6+3);
 		for(int i=0; i<enemy1Num; i++)
 		{
-			enemiesOnScreen.add(a);
+			EnemyAI instances =a;
+			instances.setX((int)Math.random()*500+100);
+			instances.setY((int)Math.random()*500+100);
+			enemiesOnScreen.add(instances);
 		}
 		for(int j=0; j<randomNumber-enemy1Num; j++){
-			enemiesOnScreen.add(b);
+			EnemyAI instances =b;
+			instances.setX((int)Math.random()*500+100);
+			instances.setY((int)Math.random()*500+100);
+			enemiesOnScreen.add(instances);
 		}
 	}
 	
