@@ -1,4 +1,5 @@
 //Jason Lyan ---> Corrected by Melvin Cherian
+//Collisions done by Pelham Van Cooten 
 package project.battles;
 
 import java.awt.image.BufferedImage;
@@ -27,14 +28,20 @@ public class Projectiles extends Collision{
 	public BufferedImage getImage() {
 		return image;
 	}
+	
+	//Pelham
+	public void checkCollision(){
+		if(getHitBox().intersects(BattlesScreen.enemy1.getBounds()) || getHitBox().intersects(BattlesScreen.enemy2.getBounds())){
+			collided = true; 
+		}
+	}
 
 	public void updatePosition(){
 		x += vx;
-		y += vy;/* what is this doe
-		if(hitBox.intersects(BattlesScreen.enemy1.getBounds())){
-			BattlesScreen.player.remove(this); 
-		}*/
+		y += vy;
+		
 	}
+	//I see where you were going with this, but it's with rectangles - Pelham 
 	public void checkRange(){//melvino
 		double distance = Math.sqrt(Math.pow((x-initX), 2) + Math.pow((y-initY), 2));
 		if(distance >= range)collided=true;
@@ -43,7 +50,8 @@ public class Projectiles extends Collision{
 	@Override
 	public void updateAndCheckAll(){
 		updatePosition();
-		checkRange();
+		//checkRange();
+		checkCollision(); 
 	}
 	
 	@Override

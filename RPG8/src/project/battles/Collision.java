@@ -1,5 +1,6 @@
 package project.battles;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import project.items.Weapon;
@@ -23,6 +24,11 @@ public abstract class Collision implements Collidable{
 	public Collision(int x, int y){
 		this.x = x;
 		this.y = y;
+	}
+	
+	//Pelham
+	public Rectangle getHitBox(){
+		return new Rectangle(x, y, image.getWidth(), image.getHeight());
 	}
 	public int getX() {
 		return x;
