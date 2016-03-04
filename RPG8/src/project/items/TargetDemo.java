@@ -11,16 +11,17 @@ public class TargetDemo {
 	Ammo ammo;
 	int duration=0;
 	boolean isBurned=false;
-
+	String name;
 	/**
 	 * @author Qing Ning Huang, Stanley Ren, Jia Liu
 	 */
-	public TargetDemo(int health,Weapons weapon,Ammo ammo,int coins,int scrap){
+	public TargetDemo(int health,Weapons weapon,Ammo ammo,int coins,int scrap,String name){
 		this.weapon = weapon;
 		this.health=health;
 		this.ammo=ammo;
 		this.coins=coins;
 		this.scrap=scrap;
+		this.name=name;
 	}
 	
 	public void attack(final TargetDemo target){

@@ -15,7 +15,8 @@ import project.directors.Game;
 import project.directors.Screen;
 
 public class ItemScreen extends Screen implements KeyListener,ItemResources{
-	TargetDemo you = new TargetDemo(100, Rifles[0],incendiaryGrenadeAmmo,0,0);
+	TargetDemo you = new TargetDemo(100, Rifles[0],incendiaryGrenadeAmmo,0,0,"You");
+	TargetDemo enemy = new TargetDemo(100, Rifles[0],incendiaryGrenadeAmmo,0,0,"Enemy");
 	
 	BufferedImage weaponEquiped;
 	int color=1;
@@ -78,33 +79,42 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 	
 	@Override
 	public void paintScreen(Graphics2D g2) {
-		Font tr=new Font("TimesRoman", Font.PLAIN, 28);
+		Font tr=new Font("TimesRoman", Font.PLAIN, 22);
 		g2.setFont(tr);
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
-		g2.setColor(Color.green);
-		g2.fillRect(30, 90, you.health, 20);
 		g2.setColor(Color.black);
-		g2.drawString("You", 30, 70);
-		g2.drawRect(30,90,100,20);
-		g2.drawString("Health: "+you.health+"/100", 400, 70);
-		g2.drawString("Press E to heal", 30, 135);
-		g2.drawString("Press S to take damage", 30, 160);
-		g2.drawString("Press R to reload", 30, 185);
-		g2.drawString("Press H to switch weapons", 30, 210);
-		g2.drawString("Clips: "+you.weapon.getAmmoCapacity(), 400, 135);
-		g2.drawString("Ammo in Clip: "+you.weapon.getAmmoTotal(), 400, 160);
-		g2.drawString("Current Weapon: "+you.weapon.getName(), 400, 185);
-		g2.drawString("Coins: "+you.coins, 400, 210);
-		g2.drawString("Scrap: "+you.scrap, 400, 235);
-		g2.drawOval(50, 250, 40, 40);
-		g2.drawLine(70,290,70,330);
-		g2.drawLine(70,290,50,310);
-		g2.drawLine(70,290,90,310);
-		g2.drawLine(70,330,50,350);
-		g2.drawLine(70,330,90,350);
+		g2.drawString("Press E to heal", 400, 145);
+		g2.drawString("Press S to do damage", 400, 170);
+		g2.drawString("Press R to reload", 400, 195);
+		g2.drawString("Press H to switch weapons", 400, 220);
+		drawStats(g2,30,70,you);
+		drawStats(g2,700,70,enemy);
+		drawStickMan(g2, 50, 350);
+		drawStickMan(g2,800,350);
 		drawWeapon(weaponEquiped, g2,color);
 		
+	}
+	public void drawStats(Graphics2D g2,int x,int y,TargetDemo target){
+		g2.setColor(Color.green);
+		g2.fillRect(x, y+30, target.health, 20);
+		g2.setColor(Color.black);
+		g2.drawString(target.name, x, y);
+		g2.drawRect(x,y+30,100,20);
+		g2.drawString("Health: "+target.health+"/100", x, y+25);
+		g2.drawString("Clips: "+target.weapon.getAmmoCapacity(), x, y+75);
+		g2.drawString("Ammo in Clip: "+target.weapon.getAmmoTotal(), x, y+100);
+		g2.drawString("Current Weapon: "+target.weapon.getName(), x, y+125);
+		g2.drawString("Coins: "+target.coins, x, y+150);
+		g2.drawString("Scrap: "+target.scrap, x, y+175);
+	}
+	public void drawStickMan(Graphics2D g2,int x,int y){
+		g2.drawOval(x,y, 40, 40);
+		g2.drawLine(x+20,y+40,x+20,y+80);
+		g2.drawLine(x+20,y+40,x,y+60);
+		g2.drawLine(x+20,y+40,x+40,y+60);
+		g2.drawLine(x+20,y+80,x,y+100);
+		g2.drawLine(x+20,y+80,x+40,y+100);
 	}
 
 	@Override
@@ -150,7 +160,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 			}
 			if(e.getKeyCode()==KeyEvent.VK_S){
 				if(you.health>0){
-					you.attack(you);
+					you.attack(enemy);
 					if(you.weapon.getAmmoTotal()>0){
 						you.coins+=10;
 						you.scrap+=1;
