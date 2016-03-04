@@ -59,7 +59,21 @@ public class TargetDemo {
 			
 		}
 		if(ammo.getEffect() == 3){
-			
+			ItemScreen.isStun = true;
+			final int count = (int) (Math.random()*5+1);
+			final Timer timer = new Timer();
+			final TimerTask countDown = new TimerTask(){
+				public void run(){
+					if(duration>=count){
+						duration=0;
+						ItemScreen.isStun=false;
+						timer.cancel();
+					}else{
+						duration++;
+					}
+				}
+			};
+			timer.scheduleAtFixedRate(countDown, 1000, 1000);
 		}
 	}
 	

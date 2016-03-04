@@ -26,7 +26,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 	BufferedImage heavy;
 	BufferedImage smg;
 	BufferedImage explosive;
-	
+	static Boolean isStun = false;
 	
 	
 	public ItemScreen(Game game) {
@@ -50,7 +50,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		URL explosiveurl = getClass().getResource(Explosives[0].getGunImage());
 
 		try {
-			melee = ImageIO.read(meleerul);
+			melee = ImageIO.read(meleeurl);
 			pistol = ImageIO.read(pistolurl);
 			rifle = ImageIO.read(rifleurl);
 			heavy = ImageIO.read(heavyurl);
@@ -110,68 +110,102 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode()==KeyEvent.VK_E){
-			System.out.println(you.health);
-			smallkit.giveHealth(you);
-			System.out.println(you.health);
-		}
-		if(e.getKeyCode()==KeyEvent.VK_1){
-			you.weapon = Melee[0];
-			weaponEquiped = melee;
-			color=1;
-		}
-		if(e.getKeyCode()==KeyEvent.VK_2){
-			you.weapon = Pistol[0];
-			weaponEquiped = pistol;
-			color=2;
-		}
-		if(e.getKeyCode()==KeyEvent.VK_3){
-			you.weapon = Rifles[0];
-			weaponEquiped = rifle;
-			color=3;
-		}
-		if(e.getKeyCode()==KeyEvent.VK_4){
-			you.weapon = Heavy[0];
-			weaponEquiped = heavy;
-			color=4;
-		}
-		if(e.getKeyCode()==KeyEvent.VK_5){
-			you.weapon = SMG[0];
-			weaponEquiped = smg;
-			color=5;
-		}
-		if(e.getKeyCode()==KeyEvent.VK_6){
-			you.weapon = Explosives[0];
-			weaponEquiped = explosive;
-			color=6;
-		}
-		if(e.getKeyCode() == KeyEvent.VK_R){ 
-			you.reload();
-		}
-		if(e.getKeyCode()==KeyEvent.VK_S){
-			if(you.health>0){
-				you.attack(you);
-				if(you.weapon.getAmmoTotal()>0){
-					you.coins+=10;
-					you.scrap+=1;
-					
-				}
+		if(!isStun){
+			if(e.getKeyCode()==KeyEvent.VK_E){
+				System.out.println(you.health);
+				smallkit.giveHealth(you);
+				System.out.println(you.health);
 			}
+			if(e.getKeyCode()==KeyEvent.VK_1){
+				you.weapon = Melee[0];
+				weaponEquiped = melee;
+				color=1;
+			}
+			if(e.getKeyCode()==KeyEvent.VK_2){
+				you.weapon = Pistol[0];
+				weaponEquiped = pistol;
+				color=2;
+			}
+			if(e.getKeyCode()==KeyEvent.VK_3){
+				you.weapon = Rifles[0];
+				weaponEquiped = rifle;
+				color=3;
+			}
+			if(e.getKeyCode()==KeyEvent.VK_4){
+				you.weapon = Heavy[0];
+				weaponEquiped = heavy;
+				color=4;
+			}
+			if(e.getKeyCode()==KeyEvent.VK_5){
+				you.weapon = SMG[0];
+				weaponEquiped = smg;
+				color=5;
+			}
+			if(e.getKeyCode()==KeyEvent.VK_6){
+				you.weapon = Explosives[0];
+				weaponEquiped = explosive;
+				color=6;
+			}
+			if(e.getKeyCode() == KeyEvent.VK_R){ 
+				you.reload();
+			}
+			if(e.getKeyCode()==KeyEvent.VK_S){
+				if(you.health>0){
+					you.attack(you);
+					if(you.weapon.getAmmoTotal()>0){
+						you.coins+=10;
+						you.scrap+=1;
+						
+					}
+				}
 //			if((int)(Math.random()*100+1)<45){
 //				target.attack(you);
 //			}
+			}
+			if(e.getKeyCode()==KeyEvent.VK_7){
+				if(you.ammo.getEffect()!=1){
+					if(you.weapon.getGunNum()/10==2){
+						you.ammo = firePistolAmmo;
+					}
+					if(you.weapon.getGunNum()/10==3){
+						you.ammo = fireRifleAmmo;
+					}
+					if(you.weapon.getGunNum()/10==4){
+						you.ammo = fireHeavyAmmo;
+					}
+					if(you.weapon.getGunNum()/10==5){
+						you.ammo = fireSMGAmmo;
+					}
+					if(you.weapon.getGunNum()/10==6){
+						you.ammo = fireExplosiveAmmo;
+					}
+				}
+			}
+			if(e.getKeyCode()==KeyEvent.VK_8){
+				
+			}
+			if(e.getKeyCode()==KeyEvent.VK_9){
+				if(you.ammo.getEffect()!=3){
+					if(you.weapon.getGunNum()/10==2){
+						you.ammo = stunPistolAmmo;
+					}
+					if(you.weapon.getGunNum()/10==3){
+						you.ammo = stunRifleAmmo;
+					}
+					if(you.weapon.getGunNum()/10==4){
+						you.ammo = stunHeavyAmmo;
+					}
+					if(you.weapon.getGunNum()/10==5){
+						you.ammo = stunSMGAmmo;
+					}
+					if(you.weapon.getGunNum()/10==6){
+						you.ammo = stunExplosiveAmmo;
+					}
+				}
+			}
+			update();
+			game.repaint();
 		}
-		if(e.getKeyCode()==KeyEvent.VK_7){
-			
-		}
-		if(e.getKeyCode()==KeyEvent.VK_8){
-			
-		}
-		if(e.getKeyCode()==KeyEvent.VK_9){
-	
-}
-		update();
-		game.repaint();
 		
 	}
 
