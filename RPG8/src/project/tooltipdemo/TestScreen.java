@@ -20,6 +20,7 @@ import project.directors.Game;
 import project.directors.Screen;
 import project.mainmenudemo.MainMenuScreen;
 import project.menus.Tooltip;
+import project.menus.TooltipOptions;
 
 public class TestScreen extends Screen implements KeyListener {
 
@@ -114,7 +115,7 @@ public class TestScreen extends Screen implements KeyListener {
 		g2.drawString(options.get(2).text, 180, 520);
 		g2.drawString(options.get(3).text, 180, 640);
 		
-		
+		System.out.println("Test" + TooltipOptions.getTooltip(TooltipOptions.TOOLTIP_INVENTORY).getDescription());
 	}
 
 }
