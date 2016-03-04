@@ -121,7 +121,7 @@ public class MCharacter extends Character{
 		useMelee(direction);
 		if(checkAmmo()){
 			//if(weapon instanceof Pistol) // this may be the way to check weapons
-				firePistol(hostile,x,y,vx,vy);
+				fireRifle(hostile,x,y,vx,vy);
 				weapon.reduceAmmoByOne();
 		}
 	}
