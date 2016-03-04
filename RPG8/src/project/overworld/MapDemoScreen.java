@@ -21,8 +21,22 @@ public class MapDemoScreen extends Screen implements KeyListener {
 	static boolean playing;
 	static int xPos;
 	static int yPos;
-	static int xSize;
-	static int ySize;
+	public static final String BOUNDARY = "B";
+	public static final String OBSTACLE = "O";
+	public static final int xSize = 30;
+	public static final int ySize = 30;
+	public static final int ZONE1 = 0;
+	public static final int ZONE2 = 1;
+	public static final int ALLZONES = -1;
+	public static final int TOWN = 2;
+	public static final int[] LANDINGZ1 = new int[]{870,228};
+	public static final int[] LANDINGZ2L = new int[]{94,250};
+	public static final int[] LANDINGZ2R = new int[]{362,294};
+	public static final int[] LANDINGTL = new int[]{76, 400};
+	public static final boolean DESTR = true;
+	public static final boolean INDES = false;
+	public static final boolean LETHAL = true;
+	public static final boolean NONLETH = false;
 	static int playerRegion;
 	static Rectangle hitbox;
 	int obstacleNum;
@@ -39,42 +53,43 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		playing = true;
 		xPos = 500;
 		yPos = 200;
-		xSize = 30;
-		ySize = 30;
 		playerRegion = 0;
-		obstacles.add(new Obstacle("Barrel", 400, 200, 40, 70,
-				"/images/Map/barrelblue.jpg", 0,true,true));
-		obstacles.add(new Obstacle("Barrel2",300,200,40,70,"/images/Map/barrelblue.jpg",1,true,true));
-		obstacles.add(new Obstacle("Crate",100,300,120,70,"/images/Map/crate.png",1,false,true));
+		obstacles.add(new Obstacle("Barrel", 400, 200, 40, 70,"/images/Map/barrelblue.jpg", 0,DESTR,true,false));
+		obstacles.add(new Obstacle("Barrel2",300,200,40,70,"/images/Map/barrelblue.jpg",1,INDES,true,false));
+		obstacles.add(new Obstacle("Crate",100,300,120,70,"/images/Map/crate.png",1,DESTR,true,false));
+		obstacles.add(new Obstacle("Town",400,200,120,120,"/images/Map/town.png",1,INDES,true,true));
 		mapSections.add(new MainMap(0, "/images/Map/test.jpeg"));
 		mapSections.add(new MainMap(1, "/images/Map/test2.jpeg"));
-		boundaries.add(new Boundaries(0, 0, 100, 890, true, 0));
-		boundaries.add(new Boundaries(0, 580, 920, 140, true, 0));
-		boundaries.add(new Boundaries(0, 450, 200, 140, true, 0));
-		boundaries.add(new Boundaries(0, 0, 900, 65, true, 0));
-		boundaries.add(new Boundaries(690, 10, 230, 215, false, 0));
-		boundaries.add(new Boundaries(690, 270, 230, 400, false, 0));
-		boundaries.add(new Boundaries(550, 450, 150, 150, true, 0));
-		boundaries.add(new Boundaries(600, 400, 100, 50, true, 0));
-		boundaries.add(new Boundaries(180, 0, 900, 100, true, 1));
-		boundaries.add(new Boundaries(560, 0, 230, 700, true, 1));
-		boundaries.add(new Boundaries(180, 500, 230, 300, true, 1));
-		boundaries.add(new Boundaries(410, 400, 200, 500, true, 1));
-		boundaries.add(new Boundaries(0,0,width,1,false,-1));
-		boundaries.add(new Boundaries(width,0,1,height,false,-1));
-		boundaries.add(new Boundaries(0,0,1,height,false,-1));
-		boundaries.add(new Boundaries(0,height,width,1,false,-1));
-		regions.add(new Region(920, 200, 68, 500, 1, 300, 300, 0));
-		regions.add(new Region(0, 200, 50, 400, 0, 300, 300, 1));
+		mapSections.add(new MainMap(2,"/images/Map/testTown.png"));
+		boundaries.add(new Boundaries(0, 0, 100, 890, LETHAL, ZONE1));
+		boundaries.add(new Boundaries(0, 580, 920, 140, LETHAL, ZONE1));
+		boundaries.add(new Boundaries(0, 450, 200, 140, LETHAL, ZONE1));
+		boundaries.add(new Boundaries(0, 0, 900, 65, LETHAL, ZONE1));
+		boundaries.add(new Boundaries(690, 10, 230, 215, NONLETH, ZONE1));
+		boundaries.add(new Boundaries(690, 270, 230, 400, NONLETH, ZONE1));
+		boundaries.add(new Boundaries(550, 450, 150, 150, LETHAL, ZONE1));
+		boundaries.add(new Boundaries(600, 400, 100, 50, LETHAL, ZONE1));
+		boundaries.add(new Boundaries(180, 0, 900, 100, LETHAL, ZONE2));
+		boundaries.add(new Boundaries(560, 0, 230, 700, LETHAL, ZONE2));
+		boundaries.add(new Boundaries(180, 500, 230, 300, LETHAL, ZONE1));
+		boundaries.add(new Boundaries(410, 400, 200, 500, LETHAL, ZONE1));
+		boundaries.add(new Boundaries(0,0,width,1,NONLETH,ALLZONES));
+		boundaries.add(new Boundaries(width,0,1,height,NONLETH,ALLZONES));
+		boundaries.add(new Boundaries(0,0,1,height,NONLETH,ALLZONES));
+		boundaries.add(new Boundaries(0,height,width,1,NONLETH,ALLZONES));
+		regions.add(new Region(920, 200, 68, 500, ZONE2, LANDINGZ2L[0], LANDINGZ2L[1], ZONE1));
+		regions.add(new Region(0, 200, 50, 400, ZONE1, LANDINGZ1[0], LANDINGZ1[1], ZONE2));
+		regions.add(new Region(400,200,120,120,TOWN,LANDINGTL[0],LANDINGTL[1],ZONE2));
+		regions.add(new Region(30,400,20,100,ZONE2,LANDINGZ2R[0],LANDINGZ2R[1],TOWN));
 	}
 	
 	public void checkCollision() {
 		hitbox = new Rectangle(xPos, yPos, xSize, ySize);
 		for (int i = 0; i < boundaries.size(); i++) {
 			if (boundaries.get(i).getBounds().intersects(hitbox)
-					&& (playerRegion == boundaries.get(i).getRegion() || boundaries.get(i).getRegion() == -1 )) {
+					&& (playerRegion == boundaries.get(i).getRegion() || boundaries.get(i).getRegion() == ALLZONES )) {
 				touching = true;
-				type = "B";
+				type = BOUNDARY;
 				obstacleNum = i;
 				checkPlayerState(boundaries.get(i));
 				return;
@@ -84,9 +99,9 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		}
 		for (int i = 0; i < obstacles.size(); i++) {
 			if (obstacles.get(i).getBounds().intersects(hitbox)
-					&& playerRegion == obstacles.get(i).getRegion() && obstacles.get(i).getState()) {
+					&& playerRegion == obstacles.get(i).getRegion() && obstacles.get(i).getState() && !obstacles.get(i).getPass()) {
 				touching = true;
-				type = "O";
+				type = OBSTACLE;
 				obstacleNum = i;
 				return;
 			} else {
@@ -144,14 +159,14 @@ public class MapDemoScreen extends Screen implements KeyListener {
 			g2.drawString("You Died", 500, 500);
 		}
 	}
-	public void removeObstacle(){
-		if(obstacles.get(obstacleNum).getDest()){
-			obstacles.get(obstacleNum).setState(false);
+	public void removeObstacle(int n){
+		if(obstacles.get(n).getDest()){
+			obstacles.get(n).setState(false);
 		}
 	}
 	public int[] checkType(String type) {
 		int[] num = new int[4];
-		if (type.equals("B")) {
+		if (type.equals(BOUNDARY)) {
 			for (int i = 0; i < boundaries.size(); i++) {
 				if (obstacleNum == i) {
 					num[0] = boundaries.get(i).getxPos();
@@ -161,7 +176,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 				}
 			}
 		}
-		if (type.equals("O")) {
+		if (type.equals(OBSTACLE)) {
 			for (int i = 0; i < obstacles.size(); i++) {
 				if (obstacleNum == i) {
 					num[0] = obstacles.get(i).getxPos();
@@ -211,8 +226,9 @@ public class MapDemoScreen extends Screen implements KeyListener {
 			}
 		}
 		if(keyCode == KeyEvent.VK_DELETE){
+			System.out.println(xPos + " " + yPos);
 			if(touching && type.equals("O")){
-				removeObstacle();
+				removeObstacle(obstacleNum);
 			}
 		}
 		touching = false;

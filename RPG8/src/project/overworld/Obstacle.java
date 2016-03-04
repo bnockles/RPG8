@@ -12,12 +12,14 @@ public class Obstacle extends Frame {
 	BufferedImage object;
 	boolean destructable;
 	boolean state;
+	boolean passable;
 
-	public Obstacle(String name, int xPos, int yPos, int sizeX, int sizeY, String image,int region,boolean destructable,boolean state) {
+	public Obstacle(String name, int xPos, int yPos, int sizeX, int sizeY, String image,int region,boolean destructable,boolean state,boolean passable) {
 		super(xPos, yPos, sizeX, sizeY,region);
 		this.name = name;
 		this.state = state;
 		this.destructable = destructable;
+		this.passable = passable;
 		if (image != "") {
 			this.image = image;
 			try {
@@ -30,6 +32,9 @@ public class Obstacle extends Frame {
 		} else {
 			this.image = "";
 		}
+	}
+	public boolean getPass(){
+		return passable;
 	}
 	public String getName() {
 		return name;
