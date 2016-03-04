@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -27,13 +29,19 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 	BufferedImage landscape;
 	int x=300;
 	int y=300;
-	int walking=5;
-	int running=20;
-	int slow = 5;
-	int ablazedS = 2;
-	int poisonedS = 10;
-	
-	int speed=walking;
+	double walking=15;
+	int statusCooldown = 9000;
+	int[] paralyzedCooldown = {2000,1000};
+	boolean paralyzed=false;
+	boolean blazed = false;
+	boolean poisoned;
+	boolean effect = false;
+	double speed=walking;
+	double running=2;
+	double ablazedS = 1.5;
+	double poisonedS = 2.5;
+	int pCount=0;
+	Timer effectTimer;
 	ArrayList<Integer> moving;
 	String s = "Press 1 to select Game controls. Press 2 to select Menu Controls.";
 	String idle="Swarm is idle";
@@ -110,6 +118,14 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int keyCode = e.getKeyCode();
+		if(keyCode == KeyEvent.VK_ESCAPE){
+			selection=false;
+			game=false;
+			menu=false;
+			paralyzed=false;
+			blazed=false;
+			s = "Press 1 to select Game controls. Press 2 to select Menu Controls.";
+		}
 		if(keyCode == KeyEvent.VK_1){
 			if(!selection){
 				selection=true;
@@ -153,7 +169,7 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 					s = "Swarm walked down";
 					if(!moving.contains(keyCode)) moving.add(keyCode);
 				}
-				if(menu){
+				if(game){
 					s = "You selected the choice on the bottom";
 				}
 			}
@@ -167,23 +183,27 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 				}
 			}
 			if(keyCode == KeyEvent.VK_P){
-				if(game){
+				if(game&&!effect){
 					s = ramdomStatus();
 					if(s == "paralyzed"){
 						s = "The current status of Swarm is paralyzed";
 						if(!moving.contains(keyCode)) moving.add(keyCode);
-						speed=slow;
+						countdown(null, paralyzedCooldown[0]);
 					}
 					if(s == "ablazed"){
 						s = "The current status of Swarm is ablazed";
 						if(!moving.contains(keyCode)) moving.add(keyCode);
-						speed = ablazedS;
+						blazed = true;
+						speed *= ablazedS;
 					}
 					if(s == "poisoned"){
 						s = "The current status of Swarm is poisoned";
 						if(!moving.contains(keyCode)) moving.add(keyCode);
-						speed = poisonedS;
+						speed /= poisonedS;
 					}
+					effect=true;
+					effectTimer = new Timer();
+					countdown(null, statusCooldown);
 				}
 			}
 		}
@@ -203,10 +223,12 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 			if(keyCode == KeyEvent.VK_G){
 				s = "Swarm equipped his explosive";
 			}
-			if(keyCode == KeyEvent.VK_SHIFT){
-				s = "Swarm started to sprint";
-				if(!moving.contains(moving.indexOf(keyCode))) moving.add(keyCode);
-				speed=running;
+			if(keyCode == KeyEvent.VK_SHIFT&&!blazed){
+				if(!moving.contains(moving.indexOf(keyCode))){
+					s = "Swarm started to sprint";
+					moving.add(keyCode);
+					speed*=running;
+				}
 			}
 			if(keyCode == KeyEvent.VK_E){
 				s = "Swarm interacted with something on the map";
@@ -248,6 +270,38 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 			};
 		}
 	}
+
+	private void countdown(Screen screen, final int count) {
+		final Timer t = new Timer();
+		t.schedule(new TimerTask(){
+			public void run(){
+				if(count==statusCooldown){
+					effect=false;
+					blazed=false;
+					speed=walking;
+					t.cancel();
+				}
+				if(count==paralyzedCooldown[0]){
+					paralyzed=true;
+					pCount++;
+					countdown(null, paralyzedCooldown[1]);
+				}
+				if(count==paralyzedCooldown[1]){
+					if(pCount<3){
+						paralyzed=false;
+						countdown(null, paralyzedCooldown[0]);
+					}else{
+						pCount=0;
+						effect=false;
+						paralyzed=false;
+						t.cancel();
+					}
+				}
+			}
+		}, count);
+		
+	}
+
 	public void mousePressed(MouseEvent e){
 		if(game){
 			if(e.getButton()==MouseEvent.BUTTON1){
@@ -276,9 +330,9 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 				s = idle;
 				moving.remove(moving.indexOf(keyCode));
 			}
-			if(keyCode==KeyEvent.VK_SHIFT){
+			if(keyCode==KeyEvent.VK_SHIFT&&moving.contains(keyCode)){
 				moving.remove(moving.indexOf(keyCode));
-				speed=walking;
+				speed/=running;
 				s="Swarm stopped sprinting";
 			}
 		}
@@ -304,10 +358,14 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 
 	private void checkMotion() {
 		// TODO Auto-generated method stub
-		if(moving.contains(KeyEvent.VK_W)) y-=speed;
-		if(moving.contains(KeyEvent.VK_A)) x-=speed;
-		if(moving.contains(KeyEvent.VK_S)) y+=speed;
-		if(moving.contains(KeyEvent.VK_D)) x+=speed;
+		if(!paralyzed){
+			if(moving.contains(KeyEvent.VK_W)) y-=speed;
+			if(moving.contains(KeyEvent.VK_A)) x-=speed;
+			if(moving.contains(KeyEvent.VK_S)) y+=speed;
+			if(moving.contains(KeyEvent.VK_D)) x+=speed;
+		}else{
+			s="Swarm can't move!";
+		}
 	}
 
 	@Override
