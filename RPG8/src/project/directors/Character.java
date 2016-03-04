@@ -112,7 +112,7 @@ public abstract class Character {
 		/**
 		 * Yifan
 		 */
-		Projectiles bullet = new Projectiles(x, y, weapon.getDamage(), vx, vy, weapon.getRange(), weapon.getProjectileImg());
+		Projectiles bullet = new Projectiles(x, y, weapon.getDamage(), vx, vy, weapon.getRange(), weapon.getProjectileImg(),hostile);
 		if(hostile)
 			BattlesScreen.eBullets.add(bullet);
 		else
@@ -144,7 +144,7 @@ public abstract class Character {
 		/**
 		 * Yifan
 		 */
-		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo,hostile);
 		BattlesScreen.pBullets.add(bullet);
 		weapon.reduceAmmoByOne();
 	}
@@ -152,8 +152,8 @@ public abstract class Character {
 		/**
 		 * Yifan
 		 */
-		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
-		Projectiles bullet1 = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo,hostile);
+		Projectiles bullet1 = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo,hostile);
 		BattlesScreen.pBullets.add(bullet);
 		BattlesScreen.pBullets.add(bullet1);
 		weapon.reduceAmmoByOne();
@@ -162,7 +162,7 @@ public abstract class Character {
 		/**
 		 * Yifan
 		 */
-		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo);
+		Projectiles bullet = new Projectiles(x, y, 0, vx, vy, 800, BattlesScreen.projectiledemo,hostile);
 		BattlesScreen.pBullets.add(bullet);
 		weapon.reduceAmmoByOne();
 	}

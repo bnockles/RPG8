@@ -15,8 +15,14 @@ public abstract class Collision implements Collidable{
 	protected int x;
 	protected int y;
 	protected boolean collided;
+	protected boolean fromHostile;
 	//protected int delayTime ... will implement later
 	
+	public Collision(int x, int y, int damage,boolean fromHostile){
+		this(x,y);
+		this.damage = damage;
+		this.fromHostile = fromHostile;
+	}
 	public Collision(int x, int y, int damage){
 		this(x,y);
 		this.damage = damage;

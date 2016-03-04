@@ -156,7 +156,7 @@ public abstract class EnemyAI extends Character{
 	public boolean isTargetLock() {
 		return targetLock;
 	}
-	private void moveAround(){
+	protected void moveAround(){
 		if(moveUp){
 			moveUp();
 			if(!moveUp){
@@ -180,7 +180,7 @@ public abstract class EnemyAI extends Character{
 				moveUp=true;
 		}
 	}
-	private void moveUpAndDown(){
+	protected void moveUpAndDown(){
 		if(moveUp){
 			moveUp();
 			if(!moveUp)
@@ -221,7 +221,7 @@ public abstract class EnemyAI extends Character{
 		}
 		x+=speed;
 	}
-	private void moveLeftAndRight(){
+	protected void moveLeftAndRight(){
 		if(moveRight){
 			moveRight();
 			if(!moveRight)
@@ -234,7 +234,7 @@ public abstract class EnemyAI extends Character{
 				moveRight = true;
 		}
 	}
-	private void goToPlayer(){
+	protected void goToPlayer(){
 		int pX = BattlesScreen.character.getX();
 		int pY = BattlesScreen.character.getY();
 		if(Math.abs(pX-x) < 10 && Math.abs(pY-y) < 10){
@@ -253,7 +253,7 @@ public abstract class EnemyAI extends Character{
 				y+=speed;
 		}
 	}
-	private void wander(){
+	protected void wander(){
 		if(moveUp||moveDown)
 			moveUpAndDown();
 		else

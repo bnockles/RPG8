@@ -35,6 +35,7 @@ public class KEnemy extends EnemyAI{
 		int vy = BattlesScreen.calculateVComponentPlayerToCursor(10, x, y, false);
 		fire(x,y,-vx,-vy);
 		steriods();
+		goToPlayer();
 	}
 
 	@Override

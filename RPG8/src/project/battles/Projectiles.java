@@ -12,10 +12,10 @@ public class Projectiles extends Collision{
 	protected double vy;
 	protected int range;
 	protected final int initX;
-	protected final int initY;	
+	protected final int initY;
 
-	public Projectiles(int x, int y, int damage, double vx, double vy, int range, BufferedImage image){
-		super(x, y, damage);
+	public Projectiles(int x, int y, int damage, double vx, double vy, int range, BufferedImage image, boolean fromHostile){
+		super(x, y, damage,fromHostile);
 		//this.bulletType = bulletType; //this needs more clarity because it has to be created
 		this.vx = vx;
 		this.vy = vy;
@@ -31,9 +31,16 @@ public class Projectiles extends Collision{
 	
 	//Pelham
 	public void checkCollision(){
-		for(EnemyAI enemy: BattlesScreen.enemiesOnScreen){
-			if(getHitBox().intersects(enemy.getBounds())){
-				collided = true; 
+		if(this.fromHostile){
+			if(getHitBox().intersects(BattlesScreen.character.getBounds())){
+				collided = true;
+			}
+		}
+		else{
+			for(EnemyAI enemy: BattlesScreen.enemiesOnScreen){
+				if(getHitBox().intersects(enemy.getBounds())){
+					collided = true; 
+				}
 			}
 		}
 	}

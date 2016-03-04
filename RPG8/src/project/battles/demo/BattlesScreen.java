@@ -115,7 +115,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int W_DMG = 10;
 	public static final int W_VELOCITY = 10;
 	public static final int W_AMMO = 100;
-	public static final int W_RANGE = 100;
+	public static final int W_RANGE = 1000;
 	
 	public static final int LEFT_RIGHT = 0;
 	public static final int UP_DOWN = 1;
@@ -126,7 +126,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int GENEMY = 0;
 	public static final int KENEMY = 1;
 	
-	public static final int ENEMYMOVE = UP_DOWN;
+	public static int ENEMYMOVE = UP_DOWN;
 	public static final int UP = 1;
 	public static final int DOWN = 2;
 	public static final int LEFT = 3;
@@ -146,6 +146,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	
 	public static BufferedImage projectiledemo;
 	public static BufferedImage weapondemo;
+	public static int keycodedemo;
 	
 	Projectiles bullet;
 	Weapon weapon;
@@ -173,7 +174,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	}
 	public void Projectile(){
 		projectiledemo = UtilityMethods.getImageFromFile(this, "/images/items/bullet.png");
-		bullet = new Projectiles(10, 10, 0, 10, 10, 100, projectiledemo);
+		//bullet = new Projectiles(10, 10, 0, 10, 10, 100, projectiledemo);
 	}
 	public void Weapon(){
 		 weapondemo = null;
@@ -255,7 +256,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			g2.setColor(Color.red);
 			timer.start();
 			g2.drawImage(character.getImage(),character.getX(),character.getY(),null);
-			g2.drawImage(bullet.getImage(), 100, 100, null);
+			//g2.drawImage(bullet.getImage(), 100, 100, null);
 			for (EnemyAI a : enemiesOnScreen){
 				a.GeneralEnemyAI();
 				g2.drawImage(a.getImage(),a.getX(),a.getY(),null);
@@ -331,22 +332,38 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			character.setWalking(true);
 		}
 		
-
+		//DEMO PURPOSES ONLY BELOW
 		/**
-		 * Yifan He
+		 * Chieh
 		 */
-		if(keyCode == KeyEvent.VK_8){
-			enemiesOnScreen.clear(); //Clear the array list
+		if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0 || keyCode == KeyEvent.VK_Q || keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_E || keyCode == KeyEvent.VK_R || keyCode == KeyEvent.VK_T){
+			if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0)
+				keycodedemo = keyCode;
+			
+			if(keyCode == KeyEvent.VK_Q)
+				ENEMYMOVE = UP_DOWN;
+			if(keyCode == KeyEvent.VK_W)
+				ENEMYMOVE = LEFT_RIGHT;
+			if(keyCode == KeyEvent.VK_E)
+				ENEMYMOVE = AROUND;
+			if(keyCode == KeyEvent.VK_R)
+				ENEMYMOVE = GOTOPLAYER;
+			if(keyCode == KeyEvent.VK_T)
+				ENEMYMOVE = WANDER;
+			refreshEnemies();
+		}
+	}
+	public void refreshEnemies(){
+		/**
+		 *  Yifan He
+		 */
+		enemiesOnScreen.clear();//Clear the array list
+		if(keycodedemo == KeyEvent.VK_8)
 			addEnemies(enemy1,enemy1);
-		}
-		if(keyCode == KeyEvent.VK_9){
-			enemiesOnScreen.clear();
+		if(keycodedemo == KeyEvent.VK_9)
 			addEnemies(enemy2,enemy2);
-		}
-		if(keyCode == KeyEvent.VK_0){
-			enemiesOnScreen.clear();
+		if(keycodedemo == KeyEvent.VK_0)
 			addEnemies(enemy1,enemy2);
-		}
 	}
 	public void addEnemies(EnemyAI a, EnemyAI b){ //add random number of enemies for scenarios
 		/**
@@ -437,7 +454,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			proposedNewX-=P_SPEED;
 			character.setX(proposedNewX);
 			character.setMoveLeft(true);
-		}
+		}	
 
 	}
 
@@ -486,13 +503,13 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	@Override
 	public void mousePressed(MouseEvent e) {//Jason Lyan
 		if(e.getButton() == MouseEvent.BUTTON1){
-			System.out.println("Hello");
+			//System.out.println("Hello");
 			int cursorX = e.getX();
 			int cursorY = e.getY();
 			int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
 			int vy = calculateVComponentPlayerToCursor(10, cursorX, cursorY, false);
 			int direction = calculateDirectionAttackFromPlayer(cursorX, cursorY);
-			System.out.println(direction);
+			//System.out.println(direction);
 			character.fire(character.getX(),character.getY(),vx,vy, direction);//change it up
 		}
 	}
@@ -503,7 +520,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		int cursorY = cursorY2;
 		int direction = UP;
 		double radians = Math.atan2((-cursorY+y),(cursorX - x));
-		System.out.println(radians);
+		//System.out.println(radians);
 		if(radians>-Math.PI/4 || radians <= Math.PI/4)direction = RIGHT;
 		if(radians>Math.PI/4 && radians <= Math.PI*3/4)direction = UP;
 		if(radians>Math.PI*3/4 || radians <= -Math.PI*3/4)direction = LEFT;
