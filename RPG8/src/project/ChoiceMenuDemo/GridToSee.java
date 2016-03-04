@@ -13,7 +13,6 @@ import javax.imageio.ImageIO;
 import project.directors.Game;
 import project.directors.Screen;
 import project.mainmenudemo.DynamicMenu;
-import project.mainmenudemo.MainMenuScreen;
 import project.ChoiceMenuDemo.MenuTheme;
 
 /**
@@ -37,18 +36,22 @@ public class GridToSee extends Screen implements KeyListener{
 	
 	Font def = new Font ("Helvetica", Font.BOLD, 30);
 	Font smallerDef = new Font("Helvetica", Font.BOLD, 20);
+	Font themeFont = new Font("Impact", Font.BOLD, 40);
+	
 	int x = 123;
 	int y = 128;
 	int w = 234;
 	int x2 = 0;
 	int y2 = 0;
+	int x3 = 0;
+	
 	int numberOfBoxes = 0;
 	int selectMem = 0;
 	
 	
 	public GridToSee(Game game) {
 		super(game);
-		MenuTheme.setTheme(1);
+		MenuTheme.setTheme(0);
 		this.choice = new ArrayList<ChoiceDesc>();
 		choice.add(new ChoiceDesc("Box 1", new File("resources/samusr.jpg"), "Go left to go to end", ""));
 		choice.add(new ChoiceDesc("Box 2", new File("resources/image1.jpg"), "PROPERTY OF MAX", ""));
@@ -88,9 +91,20 @@ public class GridToSee extends Screen implements KeyListener{
 				selectMem = highl;
 				highl = 0;
 			}
-			/**if (choices == MINI_SUB){
+			if (choices == THEME_MENU){
 				if (highl == 0){
-					choice.set
+					MenuTheme.setTheme(0);
+				}
+				if (highl == 1){
+					MenuTheme.setTheme(1);
+				}
+				choices = MAIN_GRID;
+				highl = selectMem;
+				return;
+			}
+			if (choices == MINI_SUB){
+				if (highl == 0){
+					ChoiceDesc.setSel("Y");
 				}
 				if (highl == 1){
 					ChoiceDesc.setSel("N");
@@ -101,13 +115,17 @@ public class GridToSee extends Screen implements KeyListener{
 				if (highl == 3){
 					ChoiceDesc.setSel("C");
 				}
-				
-			}**/
+				choices = MAIN_GRID;
+				highl = selectMem;
+				return; 
+			}
 			choices = MINI_SUB;
 			update();
 		}	
 		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
-			this.game.setScreen(DynamicMenu.createMenu(DynamicMenu.MAIN_MENU, this.game));
+			if (choices != MINI_SUB){
+				this.game.setScreen(DynamicMenu.createMenu(DynamicMenu.MAIN_MENU, this.game));
+			}
 		}
 		if(e.getKeyCode()== KeyEvent.VK_C){
 			if (choices == MINI_SUB){
@@ -116,7 +134,10 @@ public class GridToSee extends Screen implements KeyListener{
 			}	
 		}
 		if(e.getKeyCode()== KeyEvent.VK_D){
-			this.game.setScreen(new GridToSee(this.game));
+			if (choices != MINI_SUB){
+				choices = THEME_MENU;
+				highl = 0;
+			}
 		}	
 		
 	}
@@ -125,8 +146,11 @@ public class GridToSee extends Screen implements KeyListener{
 		if (choices == MAIN_GRID) {
 			numberOfBoxes = 6;
 		}
-		else {
+		else if (choices == MINI_SUB) {
 			numberOfBoxes = 4;
+		}
+		else if (choices == THEME_MENU) {
+			numberOfBoxes = 2;
 		}
 		
 		if (highl == 0){
@@ -134,12 +158,14 @@ public class GridToSee extends Screen implements KeyListener{
 			y = 128;
 			x2 = 125;
 			y2 = 265;
+			x3 = 100;
 		}
 		if (highl == 1){
 			x = 383;
 			y = 128;
 			x2 = 265;
 			y2 = 265;
+			x3 = 500;
 		}
 		if (highl == 2){
 			x = 643;
@@ -227,6 +253,7 @@ public class GridToSee extends Screen implements KeyListener{
 			g2.drawString(choice.get(selectMem).des, 506, 450);
 			
 			g2.setColor(Color.white);
+			g2.drawRect(105 , 240, 230, 230);
 			g2.setFont(def);
 			g2.drawString("Y", 140, 300);
 			g2.drawString("N", 280, 300);
@@ -234,7 +261,27 @@ public class GridToSee extends Screen implements KeyListener{
 			g2.drawString("C", 280, 440);
 		}
 		if (choices == THEME_MENU){
+			g2.setColor(MenuTheme.bR);
+			g2.fillRect(0, 0, width, height);
 			
+			//BR BLACK BOX
+			g2.setColor(MenuTheme.boxColor);
+			g2.fillRect(00, 130, 1000, 500);
+			
+			g2.setColor(MenuTheme.selectColor); //Selection color
+			g2.fillRect(x3, 200, 380, 350);
+			
+			g2.setColor(Color.WHITE);
+			//TWO BOXES WITH THEMES 
+			g2.drawRect(100, 200, 380, 350);
+			g2.drawRect(500, 200, 380, 350);
+			
+			g2.setFont(themeFont);
+			g2.drawString("DEFAULT THEME", 110, 240);
+			
+			g2.setColor(Color.GREEN);
+			g2.drawString("GREEN THEME", 510, 240);
+
 		}
 	}
 	@Override

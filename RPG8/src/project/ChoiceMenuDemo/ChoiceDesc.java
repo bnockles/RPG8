@@ -15,7 +15,7 @@ public class ChoiceDesc implements Selectable{
 	public String name;
 	public String des; //description
 	public File pic; //picture
-	public String sel; //selected
+	public static String sel; //selected
 	
 	public ChoiceDesc(String name, File pic, String des, String sel){
 		this.name = name;
@@ -46,5 +46,9 @@ public class ChoiceDesc implements Selectable{
 	public void setSelect(boolean b) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public static void setSel(String opt){
+		sel = opt;
 	}
 }

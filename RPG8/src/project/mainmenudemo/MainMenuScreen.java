@@ -44,7 +44,7 @@ public class MainMenuScreen extends Screen implements KeyListener{
 	public MainMenuScreen(Game game, String[] names, String[] pictures,  Color[] col, String backgroundmusic) {
 		super(game);
 		
-		playSound(new File(backgroundmusic));
+		//playSound(new File(backgroundmusic));
 		
 		selected=1;
 		
