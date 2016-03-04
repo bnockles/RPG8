@@ -1,7 +1,11 @@
 package project.mainmenudemo;
 
 
+import java.awt.Color;
+
+import project.directors.Game;
 import project.directors.Screen;
+import project.mainmenudemo.DynamicMenu;;
 
 public class MenuDemo extends project.directors.Game{
 		// TODO Auto-generated constructor stub
@@ -11,8 +15,10 @@ public class MenuDemo extends project.directors.Game{
 	}
 	
 	public void reset() {
-		Screen demoScreen = new MainMenuScreen(this);
+		Screen demoScreen = DynamicMenu.createMenu(0, this);
 		setScreen(demoScreen);
 		repaint();
 	}
+	
+
 }
