@@ -64,7 +64,7 @@ public class Hero {
 	}
 	
 	public void moveUp() {
-		y = y - 4;
+		y = y - 8;
 		if(zero)StoryScreen.Swarm.animate(StoryScreen.AyaBack.get(0));
 		else{
 			StoryScreen.Swarm.animate(StoryScreen.AyaBack.get(1));
@@ -73,7 +73,7 @@ public class Hero {
 	}
 
 	public void moveDown() {
-		y = y + 4;
+		y = y + 8;
 		if(zero)StoryScreen.Swarm.animate(StoryScreen.AyaForward.get(0));
 		else{
 			StoryScreen.Swarm.animate(StoryScreen.AyaForward.get(1));
@@ -82,7 +82,7 @@ public class Hero {
 	}
 
 	public void moveRight() {
-		x = x + 4;
+		x = x + 8;
 		
 		if(zero)StoryScreen.Swarm.animate(StoryScreen.AyaRight.get(0));
 		else{
@@ -92,7 +92,7 @@ public class Hero {
 	}
 
 	public void moveLeft() {
-		x = x - 4;
+		x = x - 8;
 		if(zero)StoryScreen.Swarm.animate(StoryScreen.AyaLeft.get(0));
 		else{
 			StoryScreen.Swarm.animate(StoryScreen.AyaLeft.get(1));

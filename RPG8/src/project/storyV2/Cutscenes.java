@@ -7,11 +7,12 @@ public abstract class Cutscenes {
 	BufferedImage image;
 	
 	public Cutscenes(){
-		
+		drawImage();
 	}
 	
-	protected final BufferedImage getBufferedImage(){
+	public final BufferedImage getBufferedImage(){
 		return image;
 		
 	}
+	protected abstract void drawImage();
 }

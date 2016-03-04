@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import project.directors.Game;
 import project.directors.Screen;
 import project.overworld.DemoOverworld;
+import project.storyV2.Cutscenes;
+import project.storyV2.IntroCut;
 
 public class StoryScreen extends Screen implements KeyListener {
 	
@@ -31,6 +33,7 @@ public class StoryScreen extends Screen implements KeyListener {
 	private static final int MOVE_UNIT = 5;
 	public static Hero Swarm;
 	public ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
+	public Cutscenes cutscene;
 	public StoryScreen(Game game) {
 		super(game);
 		AyaForward.add(forward1);
@@ -47,6 +50,7 @@ public class StoryScreen extends Screen implements KeyListener {
 		AyaStanding.add(back);
 		Swarm = new Hero("Aya Drevis", 105, 105);
 		Swarm.animate(AyaStanding.get(0));
+		cutscene =  new IntroCut();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -59,6 +63,7 @@ public class StoryScreen extends Screen implements KeyListener {
 	@Override
 	public void paintScreen(Graphics2D g2) {
 		// TODO Auto-generated method stub
+		g2.drawImage(cutscene.getBufferedImage(), 0, 0, null);
 		g2.drawImage(Swarm.getImage(), Swarm.getX(), Swarm.getY(), null);
 	}
 
