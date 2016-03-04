@@ -64,6 +64,19 @@ public class TargetDemo {
 		}
 		if(ammo.getEffect()==3){
 			target.isStunned=true;
+			final Timer timer = new Timer();
+			final TimerTask countDown = new TimerTask(){
+				public void run(){
+					if(duration>=1){
+						duration=0;
+						target.isStunned=false;
+						timer.cancel();
+					}else{
+						duration++;
+					}
+				}
+			};
+			timer.scheduleAtFixedRate(countDown, 1000, 1000);
 		}
 //		if(ammo.getEffect() == 3){
 //			ItemScreen.isStun = true;
