@@ -64,11 +64,6 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	 * 		-GE_DEGREE ENEMIES' LINE OF SIGHT
 	 *		-KE_DEGREE
 	 *
-	 *
-	 * RESPONSIBILITY:
-	 * YIFAN - 
-	 * 		    
-	 *
 	 *	
 	 */
 	
@@ -433,7 +428,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			randomNumberX = (int) (Math.random()*(width-100));
 			randomNumberY = (int) (Math.random()*(height-100));
 			int[] randomEnemyStats = {(int) (Math.random()*200+50),(int) (Math.random()*400+200),(int) (Math.random()*30+30),(int) (Math.random()*400+100)};
-			if (a.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,randomEnemyStats,weapon1,ENEMYMOVE));
+			if (b.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,randomEnemyStats,weapon1,ENEMYMOVE));
 			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,randomEnemyStats,weapon1,ENEMYMOVE));
 			enemiesOnScreen.get(j).setX(randomNumberX);
 			enemiesOnScreen.get(j).setY(randomNumberY);
