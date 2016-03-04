@@ -415,7 +415,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			randomNumberX = (int) (Math.random()*width-100);
 			randomNumberY = (int) (Math.random()*height-100);
 			if (a.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,statsK,weapon1,ENEMYMOVE));
-			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,statsK,weapon1,ENEMYMOVE));
+			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,statsG,weapon1,ENEMYMOVE));
 			enemiesOnScreen.get(i).setX(randomNumberX);
 			enemiesOnScreen.get(i).setY(randomNumberY);
 			enemiesOnScreen.get(i).setSpawnedX(randomNumberX);
@@ -425,7 +425,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			randomNumberX = (int) (Math.random()*(width-100));
 			randomNumberY = (int) (Math.random()*(height-100));
 			if (a.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,statsK,weapon1,ENEMYMOVE));
-			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,statsK,weapon1,ENEMYMOVE));
+			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,statsG,weapon1,ENEMYMOVE));
 			enemiesOnScreen.get(j).setX(randomNumberX);
 			enemiesOnScreen.get(j).setY(randomNumberY);
 			enemiesOnScreen.get(j).setSpawnedX(randomNumberX);
