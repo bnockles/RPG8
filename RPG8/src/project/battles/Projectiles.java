@@ -59,7 +59,7 @@ public class Projectiles extends Collision{
 	@Override
 	public void updateAndCheckAll(){
 		updatePosition();
-		//checkRange();
+		checkRange();
 		checkCollision(); 
 	}
 	
