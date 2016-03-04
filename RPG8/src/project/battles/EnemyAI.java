@@ -16,6 +16,8 @@ public abstract class EnemyAI extends Character{
 	private int visionrange;
 	private int visiondegree;
 	private int awareRange;
+	protected int spawnedX;
+	protected int spawnedY;
 	
 	protected boolean targetLock = false;
 	protected boolean upAndDown = false;
@@ -39,6 +41,8 @@ public abstract class EnemyAI extends Character{
 		this.visionrange = vision[0];
 		this.visiondegree = vision[1];
 		this.awareRange = vision[2];
+		this.spawnedX = stats[0];
+		this.spawnedY = stats[1];
 		awarenessRange = new Ellipse2D.Double(x-awareRange, y-awareRange, awareRange, awareRange);
 		
 		
@@ -82,6 +86,7 @@ public abstract class EnemyAI extends Character{
 		//animation of death
 		//dropItem();
 	}
+
 	private void checkForObjects(){//Enemy can hide behind objects to block damage.
 		Point location;
 	}
