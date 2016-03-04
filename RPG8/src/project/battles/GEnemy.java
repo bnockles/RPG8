@@ -11,6 +11,7 @@ public class GEnemy extends EnemyAI{
 	public GEnemy(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon, int type){
 		super(images,stats,vision,weapon,type);
 		this.weapon = weapon;
+		this.enemyClass = BattlesScreen.GENEMY;
 	}
 
 	public GEnemy(BufferedImage[][] images, int[] stats,int[] vision, Weapon weapon, int type, boolean[] conditions){

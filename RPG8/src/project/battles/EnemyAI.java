@@ -18,6 +18,7 @@ public abstract class EnemyAI extends Character{
 	private int awareRange;
 	protected int spawnedX;
 	protected int spawnedY;
+	protected int enemyClass;
 	
 	protected boolean targetLock = false;
 	protected boolean upAndDown = false;
@@ -77,7 +78,7 @@ public abstract class EnemyAI extends Character{
 			if(wander)
 				wander();
 			//checkForProjectiles(); // DO NOT IMPLEMENT THIS IF WE HAVEN'T FINISH COLLISIONS
-			checkEnemiesAround();
+			//checkEnemiesAround();
 			if(maxHP/10>currentHP && alone){
 				System.out.println(maxHP+" "+currentHP);
 				run();
@@ -140,6 +141,10 @@ public abstract class EnemyAI extends Character{
 	public Arc2D.Double getVisioncone() {
 		return visioncone;
 	}
+	public int getEnemyClass() {
+		return enemyClass;
+	}
+	
 	public boolean isTargetLock() {
 		return targetLock;
 	}

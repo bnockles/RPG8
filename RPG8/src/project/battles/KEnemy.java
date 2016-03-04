@@ -11,6 +11,7 @@ public class KEnemy extends EnemyAI{
 	public KEnemy(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon,int type){
 		super(images,stats,vision,weapon,type);
 		this.weapon = weapon;
+		this.enemyClass = BattlesScreen.KENEMY;
 	}
  
 	public KEnemy(BufferedImage[][] images, int[] stats,int[] vision, Weapon weapon, int type, boolean[] conditions){
