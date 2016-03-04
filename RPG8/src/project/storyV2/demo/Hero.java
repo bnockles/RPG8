@@ -65,18 +65,18 @@ public class Hero {
 	
 	public void moveUp() {
 		y = y - 4;
-		if(zero)StoryDemo.Swarm.animate(StoryDemo.AyaBack.get(0));
+		if(zero)StoryScreen.Swarm.animate(StoryScreen.AyaBack.get(0));
 		else{
-			StoryDemo.Swarm.animate(StoryDemo.AyaBack.get(1));
+			StoryScreen.Swarm.animate(StoryScreen.AyaBack.get(1));
 		}
 		zero = !zero;
 	}
 
 	public void moveDown() {
 		y = y + 4;
-		if(zero)StoryDemo.Swarm.animate(StoryDemo.AyaForward.get(0));
+		if(zero)StoryScreen.Swarm.animate(StoryScreen.AyaForward.get(0));
 		else{
-			StoryDemo.Swarm.animate(StoryDemo.AyaForward.get(1));
+			StoryScreen.Swarm.animate(StoryScreen.AyaForward.get(1));
 		}
 		zero = !zero;
 	}
@@ -84,18 +84,18 @@ public class Hero {
 	public void moveRight() {
 		x = x + 4;
 		
-		if(zero)StoryDemo.Swarm.animate(StoryDemo.AyaRight.get(0));
+		if(zero)StoryScreen.Swarm.animate(StoryScreen.AyaRight.get(0));
 		else{
-			StoryDemo.Swarm.animate(StoryDemo.AyaRight.get(1));
+			StoryScreen.Swarm.animate(StoryScreen.AyaRight.get(1));
 		}
 		zero = !zero;
 	}
 
 	public void moveLeft() {
 		x = x - 4;
-		if(zero)StoryDemo.Swarm.animate(StoryDemo.AyaLeft.get(0));
+		if(zero)StoryScreen.Swarm.animate(StoryScreen.AyaLeft.get(0));
 		else{
-			StoryDemo.Swarm.animate(StoryDemo.AyaLeft.get(1));
+			StoryScreen.Swarm.animate(StoryScreen.AyaLeft.get(1));
 		}
 		zero = !zero;
 	}
