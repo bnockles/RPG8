@@ -10,7 +10,8 @@ public class TargetDemo {
 	int scrap;
 	Ammo ammo;
 	int duration=0;
-	Timer timer = new Timer();
+	boolean isBurned=false;
+	
 	/**
 	 * @author Qing Ning Huang, Stanley Ren, Jia Liu
 	 */
@@ -28,22 +29,30 @@ public class TargetDemo {
 			target.health-=this.weapon.getDamage();
 			this.weapon.setAmmoTotal(this.weapon.getAmmoTotal()-1);
 		}
-		if(this.health<0){
-			this.health=0;
+		if(target.health<0){
+			target.health=0;
 		}
 		if(ammo.getEffect()==1){
-			final TimerTask countDown = new TimerTask(){
-				public void run(){
-					if(duration>5){
-						duration=0;
-						timer.cancel();
-					}else{
-						target.health -=5;
-						duration++;
+			if(!isBurned){
+				final Timer timer = new Timer();
+				final TimerTask countDown = new TimerTask(){
+					public void run(){
+						if(duration>=1){
+							duration=0;
+							isBurned=false;
+							timer.cancel();
+						}else{
+							target.health -=2;
+							if(target.health<0){
+								target.health=0;
+							}
+							duration++;
+						}
 					}
-				}
-			};
-			timer.scheduleAtFixedRate(countDown, 1000, 2000);
+				};
+				timer.scheduleAtFixedRate(countDown, 1000, 1000);
+				isBurned=true;
+			}
 				
 		}
 	}
