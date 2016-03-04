@@ -12,6 +12,7 @@ public class TargetDemo {
 	int duration=0;
 	boolean isBurned=false;
 	String name;
+	boolean isStunned;
 	/**
 	 * @author Qing Ning Huang, Stanley Ren, Jia Liu
 	 */
@@ -22,6 +23,7 @@ public class TargetDemo {
 		this.coins=coins;
 		this.scrap=scrap;
 		this.name=name;
+		isStunned=false;
 	}
 	
 	public void attack(final TargetDemo target){
@@ -59,6 +61,9 @@ public class TargetDemo {
 		}
 		if(ammo.getEffect() == 2){
 			
+		}
+		if(ammo.getEffect()==3){
+			target.isStunned=true;
 		}
 //		if(ammo.getEffect() == 3){
 //			ItemScreen.isStun = true;

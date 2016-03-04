@@ -112,6 +112,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		}
 		g2.drawString("Coins: "+target.coins, x, y+175);
 		g2.drawString("Scrap: "+target.scrap, x, y+200);
+		g2.drawString("Stunned: "+target.isStunned, x, y+225);
 	}
 	public void drawStickMan(Graphics2D g2,int x,int y){
 		g2.drawOval(x,y, 40, 40);
