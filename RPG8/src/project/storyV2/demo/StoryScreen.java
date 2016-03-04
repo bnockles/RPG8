@@ -80,8 +80,8 @@ public class StoryScreen extends Screen implements KeyListener {
 			//other keys don't get combined with other keys, so they don't need to be added
 			if(keyCode == KeyEvent.VK_SPACE){
 				//stuff that happens when the spacebar is pressed
-				Screen mainMenu = new DemoOverworld(game);
-				game.setScreen(mainMenu);
+//				Screen mainMenu = new DemoOverworld(game);
+//				game.setScreen(mainMenu);
 			}
 
 			if(keyCode == KeyEvent.VK_UP){
