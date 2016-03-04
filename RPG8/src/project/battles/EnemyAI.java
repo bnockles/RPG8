@@ -16,6 +16,7 @@ public abstract class EnemyAI extends Character{
 	private int visionrange;
 	private int visiondegree;
 	private int awareRange;
+	private int bulletpersec = 100;
 	protected int spawnedX;
 	protected int spawnedY;
 	protected int enemyClass;
@@ -36,12 +37,13 @@ public abstract class EnemyAI extends Character{
 	protected abstract void run();
 	protected int waitInterval;
 	
-	protected EnemyAI(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon, int type) {
+	protected EnemyAI(BufferedImage[][] images, int[] stats, int[] enemystats, Weapon weapon, int type) {
 		//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 		super(images, stats, false, weapon);
-		this.visionrange = vision[0];
-		this.visiondegree = vision[1];
-		this.awareRange = vision[2];
+		this.visionrange = enemystats[0];
+		this.visiondegree = enemystats[1];
+		this.awareRange = enemystats[2];
+		this.bulletpersec = enemystats[3];
 		this.spawnedX = stats[0];
 		this.spawnedY = stats[1];
 		awarenessRange = new Ellipse2D.Double(x-awareRange, y-awareRange, awareRange, awareRange);
@@ -152,6 +154,12 @@ public abstract class EnemyAI extends Character{
 	}
 	public void setSpawnedY(int spawnedY) {
 		this.spawnedY = spawnedY;
+	}
+	public int getBulletpersec() {
+		return bulletpersec;
+	}
+	public void setBulletpersec(int bulletpersec) {
+		this.bulletpersec = bulletpersec;
 	}
 	public boolean isTargetLock() {
 		return targetLock;
@@ -324,7 +332,7 @@ public abstract class EnemyAI extends Character{
 	}
 	public boolean waitInterval(int perSec){
 		waitInterval+= perSec;
-		if(waitInterval > 10){
+		if(waitInterval > 1000){
 			waitInterval = 0;
 			return true;
 		}
@@ -333,7 +341,7 @@ public abstract class EnemyAI extends Character{
 	@Override
 	public void fire(int x, int y, int vx, int vy) {
 		// TODO Auto-generated method stub
-		if(waitInterval(1)){
+		if(waitInterval(bulletpersec)){
 			if(checkAmmo()){
 				//if(weapon instanceof Pistol) // this may be the way to check weapons
 				firePistol(hostile,x,y,vx,vy);

@@ -1,6 +1,7 @@
 package project.battles.demo;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -95,6 +96,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int GE_DEGREE = 100;
 	public static final int GE_VISION = 300;
 	public static final int GE_AWARE = 50;
+	public static final int GE_BPERSEC = 100;
 	
 	public static final int KE_SPEED = 10;
 	public static final int KE_X = 100;
@@ -109,12 +111,13 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	public static final int KE_DEGREE = 100;
 	public static final int KE_VISION = 300;
 	public static final int KE_AWARE = 50;
+	public static final int KE_BPERSEC = 100;
 	
 	public static final int FPS = 30;
 	
 	public static final int W_DMG = 10;
 	public static final int W_VELOCITY = 10;
-	public static final int W_AMMO = 100;
+	public static final int W_AMMO = 200;
 	public static final int W_RANGE = 1000;
 	
 	public static final int LEFT_RIGHT = 0;
@@ -158,8 +161,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 	public int[] enemyG = {GE_X,GE_Y,GE_HP,GE_ARMOR,GE_SNEAK,GE_SPEED,GE_RECOVERY,GE_EXP,GE_STRENGTH,GE_LEVEL};
 	public int[] enemyK = {KE_X,KE_Y,KE_HP,KE_ARMOR,KE_SNEAK,KE_SPEED,KE_RECOVERY,KE_EXP,KE_STRENGTH,KE_LEVEL};
-	public int[] visionG = {GE_VISION, GE_DEGREE, GE_AWARE};
-	public int[] visionK = {KE_VISION, KE_DEGREE, KE_AWARE};
+	public int[] statsG = {GE_VISION, GE_DEGREE, GE_AWARE,GE_BPERSEC};
+	public int[] statsK = {KE_VISION, KE_DEGREE, KE_AWARE,KE_BPERSEC};
 	public int[] projectilestats = {W_DMG,W_VELOCITY,W_AMMO,W_RANGE};
 	public int[] playerstats = {P_X,P_Y,P_HP,P_ARMOR,P_SNEAK,P_SPEED,P_RECOVERY,P_EXP,P_STRENGTH,P_LEVEL};
 	public BattlesScreen(Game game){
@@ -236,8 +239,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		origimage1 = UtilityMethods.getImageFromFile(this, "/enemy/eright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/enemy/eright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		enemy1 = new KEnemy(animation,enemyK,visionK,weapon1,ENEMYMOVE);
-		enemy2 = new GEnemy(animation,enemyG, visionG,weapon2,ENEMYMOVE);
+		enemy1 = new KEnemy(animation,enemyK,statsK,weapon1,ENEMYMOVE);
+		enemy2 = new GEnemy(animation,enemyG, statsG,weapon2,ENEMYMOVE);
 		return animation;
 	}
 	@Override
@@ -252,7 +255,14 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
 		try{
+			g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
 			g2.drawString("Battles Team's Demo", 100, 100);
+			g2.drawString("Press the arrow keys to move", 100, 150);
+			g2.drawString("Press 7 8 9 to switch battle scenarios", 100, 200);
+			g2.drawString("Press Q W E R T to switch enemy movements", 100, 250);
+			g2.drawString("Press A/S to -/+ the enemy's fire rate", 100, 300);
+			g2.drawString("Press D to reload ammo", 100, 350);
+			g2.drawString("Press Z/X to -/+ the enemy's moevement", 100, 400);
 			g2.setColor(Color.red);
 			timer.start();
 			g2.drawImage(character.getImage(),character.getX(),character.getY(),null);
@@ -352,6 +362,33 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 				ENEMYMOVE = WANDER;
 			refreshEnemies();
 		}
+		if(keyCode == KeyEvent.VK_A)
+			for(int i=0;i<enemiesOnScreen.size();i++)
+				if(enemiesOnScreen.get(i).getBulletpersec() > 100)
+					enemiesOnScreen.get(i).setBulletpersec(enemiesOnScreen.get(i).getBulletpersec()-25);
+		if(keyCode == KeyEvent.VK_S)
+			for(int i=0;i<enemiesOnScreen.size();i++)
+				if(enemiesOnScreen.get(i).getBulletpersec() < 900){
+					enemiesOnScreen.get(i).setBulletpersec(enemiesOnScreen.get(i).getBulletpersec()+25);
+					System.out.println(enemiesOnScreen.get(i).getBulletpersec());
+				}
+		if(keyCode == KeyEvent.VK_D){
+			for(int i=0;i<enemiesOnScreen.size();i++){
+				enemiesOnScreen.get(i).getWeapon().setAmmo(1000);
+			}
+		}
+		if(keyCode == KeyEvent.VK_Z){
+			for(int i=0;i<enemiesOnScreen.size();i++){
+				if(enemiesOnScreen.get(i).getSpeed() > 0)
+					enemiesOnScreen.get(i).setSpeed(enemiesOnScreen.get(i).getSpeed()-1);
+			}
+		}
+		if(keyCode == KeyEvent.VK_X){
+			for(int i=0;i<enemiesOnScreen.size();i++){
+				if(enemiesOnScreen.get(i).getSpeed() < 15)
+					enemiesOnScreen.get(i).setSpeed(enemiesOnScreen.get(i).getSpeed()+1);
+			}
+		}
 	}
 	public void refreshEnemies(){
 		/**
@@ -377,8 +414,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		{
 			randomNumberX = (int) (Math.random()*width-100);
 			randomNumberY = (int) (Math.random()*height-100);
-			if (a.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,visionK,weapon1,ENEMYMOVE));
-			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,visionK,weapon1,ENEMYMOVE));
+			if (a.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,statsK,weapon1,ENEMYMOVE));
+			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,statsK,weapon1,ENEMYMOVE));
 			enemiesOnScreen.get(i).setX(randomNumberX);
 			enemiesOnScreen.get(i).setY(randomNumberY);
 			enemiesOnScreen.get(i).setSpawnedX(randomNumberX);
@@ -387,8 +424,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		for(int j=0; j<randomNumber-enemy1Num; j++){
 			randomNumberX = (int) (Math.random()*(width-100));
 			randomNumberY = (int) (Math.random()*(height-100));
-			if (a.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,visionK,weapon1,ENEMYMOVE));
-			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,visionK,weapon1,ENEMYMOVE));
+			if (a.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,statsK,weapon1,ENEMYMOVE));
+			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,statsK,weapon1,ENEMYMOVE));
 			enemiesOnScreen.get(j).setX(randomNumberX);
 			enemiesOnScreen.get(j).setY(randomNumberY);
 			enemiesOnScreen.get(j).setSpawnedX(randomNumberX);
@@ -454,8 +491,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			proposedNewX-=P_SPEED;
 			character.setX(proposedNewX);
 			character.setMoveLeft(true);
-		}	
-
+		}
 	}
 
 	public void update(){
