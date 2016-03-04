@@ -10,7 +10,7 @@ public class Building {
 	boolean portal;
 	String nameOfBuiliding;
 	
-	public Building(BufferedImage image,int y, int x, boolean portal,String nameOfBuiliding){
+	public Building(BufferedImage image,int x, int y, boolean portal,String nameOfBuiliding){
 		this.image = image;
 		this.y = y;
 		this.x = x;
@@ -19,20 +19,7 @@ public class Building {
 		//http://www.javatpoint.com/constructor
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	public  BufferedImage getImage(){
 		return image;

@@ -24,11 +24,14 @@ import project.directors.Screen;
 public class TownScreen extends Screen implements KeyListener{
 	//Jingwen Code
 	BufferedImage backGround;
+	BufferedImage portalToTown;
+	
 	StoreNPC putin;
 	TownWanderer playable;
 	WeaponStore store;
 	WeaponStore storeA;
 	WeaponStore storeC;
+	Building portalTooTown;
 	int status2;
 	int boxX = 50;
 	int boxY =80;
@@ -41,6 +44,7 @@ public class TownScreen extends Screen implements KeyListener{
 	public static final int WEAPON_STORE = 0;
 	public static final int AMMO_STORE = 3;
 	public static final int ARMOR_STORE = 4;
+	
 	ArrayList<Integer>itemN = new ArrayList<Integer>();
 	Timer timer = new Timer();
 	int status = TOWN;
@@ -90,10 +94,13 @@ public class TownScreen extends Screen implements KeyListener{
 			// TODO Auto-generated constructor stub
 			try{
 				backGround = ImageIO.read(getClass().getResource("/images/shop/pic.png"));
+				portalToTown = ImageIO.read(getClass().getResource("/images/maps/portaltown.png"));
 				putin = new StoreNPC(450, 180, "Putin","/images/shop/hey.jpg");
 				trump = new StoreNPC(450, 180, "Trump","/images/shop/trump.jpg");
 				hillary = new StoreNPC(450, 180, "alien","/images/shop/hillary.jpg");
 				playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/shop/obama.jpg", 10000);
+				 portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
+						//Building(BufferedImage image,int y, int x, boolean portal,String nameOfBuiliding){
 			}
 			catch (IOException e) {
 				e.printStackTrace();
@@ -124,9 +131,11 @@ public class TownScreen extends Screen implements KeyListener{
 		if(status == WEAPON_STORE){
 			paintShop(g2);
 			g2.drawImage(hillary.getNpc(), 420,150,250,180, null);
+			
 	    	g2.drawOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
 	    	g2.setColor(Color.WHITE);
 	    	g2.fillOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
+	    	
 	    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
 		}
 		if(status == AMMO_STORE){
@@ -140,9 +149,11 @@ public class TownScreen extends Screen implements KeyListener{
 		if(status == ARMOR_STORE){
 			paintShop(g2);
 			g2.drawImage(putin.getNpc(), 390,game.getHeight() - 250,250,180, null);
-	    	g2.drawOval(450, 50, 100, 100);
-	    	g2.setColor(Color.WHITE);
-	    	g2.fillOval(450, 50, 100, 100);
+			
+//	    	g2.drawOval(450, 50, 100, 100);
+//	    	g2.setColor(Color.WHITE);
+//	    	g2.fillOval(450, 50, 100, 100);
+	    	g2.drawImage(portalTooTown.getImage(), 450,50, null);
 	    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
 		}
 		if (status == IN_SHOP_MENU){
@@ -161,8 +172,9 @@ public class TownScreen extends Screen implements KeyListener{
 			g2.drawImage(backgroundGrid[currentRow][currentColumn], 0, 0, null);
 			g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),200,150,null);
 			g2.drawOval(250 - 100, game.getHeight() -110, 100, 100);
-			g2.drawOval(450, 50, 100, 100);
+			//g2.drawOval(450, 50, 100, 100);
 			g2.drawOval(750, game.getHeight() -110, 100, 100);
+			g2.drawImage(portalToTown, 450, 50, null);
 			g2.drawString("USE T IN CIRCLE TO GO THROUGH CIRCLE, USE SPACE IN SHOP TO ACCESS SHOP ", 400, 500);
 		}
 //		    }
