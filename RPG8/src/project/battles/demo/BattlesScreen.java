@@ -258,7 +258,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
 			g2.drawString("Battles Team's Demo", 100, 100);
 			g2.drawString("Press the arrow keys to move", 100, 150);
-			g2.drawString("Press 7 8 9 to switch battle scenarios", 100, 200);
+			g2.drawString("Press 8 9 0 to switch battle scenarios", 100, 200);
 			g2.drawString("Press Q W E R T to switch enemy movements", 100, 250);
 			g2.drawString("Press A/S to -/+ the enemy's fire rate", 100, 300);
 			g2.drawString("Press D to reload ammo", 100, 350);
@@ -422,7 +422,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			randomNumberX = (int) (Math.random()*width-100);
 			randomNumberY = (int) (Math.random()*height-100);
 			if (a.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,statsK,weapon1,ENEMYMOVE));
-			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,statsK,weapon1,ENEMYMOVE));
+			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,statsG,weapon1,ENEMYMOVE));
 			enemiesOnScreen.get(i).setX(randomNumberX);
 			enemiesOnScreen.get(i).setY(randomNumberY);
 			enemiesOnScreen.get(i).setSpawnedX(randomNumberX);
@@ -432,7 +432,7 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			randomNumberX = (int) (Math.random()*(width-100));
 			randomNumberY = (int) (Math.random()*(height-100));
 			if (a.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,statsK,weapon1,ENEMYMOVE));
-			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,statsK,weapon1,ENEMYMOVE));
+			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,statsG,weapon1,ENEMYMOVE));
 			enemiesOnScreen.get(j).setX(randomNumberX);
 			enemiesOnScreen.get(j).setY(randomNumberY);
 			enemiesOnScreen.get(j).setSpawnedX(randomNumberX);
