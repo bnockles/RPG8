@@ -385,8 +385,8 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 			enemiesOnScreen.get(i).setSpawnedY(randomNumberY);
 		}
 		for(int j=0; j<randomNumber-enemy1Num; j++){
-			randomNumberX = (int) (Math.random()*width-100);
-			randomNumberY = (int) (Math.random()*height-100);
+			randomNumberX = (int) (Math.random()*(width-100));
+			randomNumberY = (int) (Math.random()*(height-100));
 			if (a.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,visionK,weapon1,ENEMYMOVE));
 			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,visionK,weapon1,ENEMYMOVE));
 			enemiesOnScreen.get(j).setX(randomNumberX);

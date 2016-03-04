@@ -136,7 +136,7 @@ public abstract class EnemyAI extends Character{
 			begindegree+=270;
 		visioncone = new Arc2D.Double(arcX,arcY, visionrange, visionrange, begindegree, 90, Arc2D.PIE);
 		//90, 225 change it to line of sight degree - 45 degree + 45
-		if(visioncone.contains(BattlesScreen.character.getX(), BattlesScreen.character.getY())){
+		if(visioncone.intersects(BattlesScreen.character.getBounds())){
 			targetLock = true;
 		}
 	}
@@ -193,28 +193,28 @@ public abstract class EnemyAI extends Character{
 				moveUp = true;
 		}
 	}
-	private void moveUp(){
+	protected void moveUp(){
 		if(y-height<=0){
 			moveUp=false;
 			return;
 		}
 		y-=speed;
 	}
-	private void moveDown(){
+	protected void moveDown(){
 		if(BattlesScreen.height <= y+height){
 			moveDown=false;
 			return;
 		}
 		y+=speed;
 	}
-	private void moveLeft(){
+	protected void moveLeft(){
 		if(x<=0){
 			moveLeft = false;
 			return;
 		}
 		x-=speed;
 	}
-	private void moveRight(){
+	protected void moveRight(){
 		if(BattlesScreen.width <= x+width){
 			moveRight = false;
 			return;
@@ -338,7 +338,7 @@ public abstract class EnemyAI extends Character{
 				//if(weapon instanceof Pistol) // this may be the way to check weapons
 				firePistol(hostile,x,y,vx,vy);
 				weapon.reduceAmmoByOne();
-				System.out.println(BattlesScreen.eBullets.size());
+				//System.out.println(BattlesScreen.eBullets.size());
 			}
 		}
 	}

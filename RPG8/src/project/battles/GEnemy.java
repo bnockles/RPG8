@@ -8,6 +8,8 @@ import project.save.ItemState;
 
 public class GEnemy extends EnemyAI{
 
+	private boolean returnToSpawn = false;
+	
 	public GEnemy(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon, int type){
 		super(images,stats,vision,weapon,type);
 		this.weapon = weapon;
@@ -53,16 +55,34 @@ public class GEnemy extends EnemyAI{
 	
 	public void distanceAway(){
 		float dist = (float) Math.sqrt(
-				Math.pow(spawnedX - spawnedY, 2) +
-				Math.pow(x - y, 2) );
-		if (dist > 100) backToSpawn();
+				Math.pow(x - spawnedX, 2) +
+				Math.pow(y - spawnedY, 2) );
+		if (dist > 300 && returnToSpawn == false) 
+			returnToSpawn = true;
+		if(returnToSpawn){
+			backToSpawn();
+			if(dist < 50){
+				returnToSpawn = false;
+				targetLock = false;
+			}
+		}
+		else
+			goToPlayer();
+		//if (dist < 10) targetLock = false;
 	}
 
 	public void backToSpawn(){
-		int  a = x - spawnedX;
-		int b = y -spawnedY;
-		x+= speed * (Math.signum(a));
-		y+= speed * (Math.signum(b));
+		int  a = spawnedX - x;
+		int b = spawnedY - y;
+		if(Math.signum(a)<0){
+			moveLeft();
+		}
+		else
+			moveRight();
+		if(Math.signum(b)<0)
+			moveUp();
+		else
+			moveDown();
 	}
 
 }
