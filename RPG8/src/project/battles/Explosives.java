@@ -1,3 +1,5 @@
+//Jason Lyan & Melvin Cherian
+
 package project.battles;
 
 import java.awt.Rectangle;
@@ -17,7 +19,7 @@ public class Explosives extends Collision {
 		activeType = new Projectiles(x, y, 0, vx, vy, range, image, fromHostile);
 		isExploded = false;
 		paintImage();
-		sheet = UtilityMethods.getImageFromFile(this, "/images/slash/slash.png");
+		sheet = image;
 	}
 
 	
@@ -36,7 +38,7 @@ public class Explosives extends Collision {
 			collided = true;
 		}
 		if(activeType.isCollided() && !isExploded) {
-			activeType = new Melee(x, y, damage, 50, 50, 15, sheet, 0);
+			activeType = new Melee(x, y, damage, 100, 100, 15, sheet, 0);
 			isExploded = true;
 		}
 		paintImage();
