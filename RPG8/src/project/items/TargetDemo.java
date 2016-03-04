@@ -32,7 +32,7 @@ public class TargetDemo {
 		if(target.health<0){
 			target.health=0;
 		}
-		if(ammo.getEffect()==1){
+		if(ammo.getEffect() == 1){
 			if(!isBurned){
 				final Timer timer = new Timer();
 				final TimerTask countDown = new TimerTask(){
@@ -52,8 +52,13 @@ public class TargetDemo {
 				};
 				timer.scheduleAtFixedRate(countDown, 1000, 1000);
 				isBurned=true;
-			}
-				
+			}	
+		}
+		if(ammo.getEffect() == 2){
+			
+		}
+		if(ammo.getEffect() == 3){
+			
 		}
 	}
 	

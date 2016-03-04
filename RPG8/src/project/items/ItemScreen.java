@@ -15,12 +15,11 @@ import project.directors.Game;
 import project.directors.Screen;
 
 public class ItemScreen extends Screen implements KeyListener,ItemResources{
-	TargetDemo you = new TargetDemo(100, Rifles[1],incendiaryGrenadeAmmo,0,0);
+	TargetDemo you = new TargetDemo(100, Rifles[0],incendiaryGrenadeAmmo,0,0);
 	
 	BufferedImage weaponEquiped;
 	int color=1;
-	BufferedImage reG;
-	BufferedImage enG;
+
 	BufferedImage melee;
 	BufferedImage pistol;
 	BufferedImage rifle;
@@ -43,14 +42,20 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 	}
 
 	public void createImages() {
-		URL reGurl = getClass().getResource("/images/items/handgunStill.png");
-		URL enGurl = getClass().getResource("/images/items/energyGun.png");
-		URL rifleurl = getClass().getResource(Rifles[1].getGunImage());
+		URL meleeurl = getClass().getResource(Melee[0].getGunImage());
+		URL pistolurl = getClass().getResource(Pistol[0].getGunImage());
+		URL rifleurl = getClass().getResource(Rifles[0].getGunImage());
+		URL heavyurl = getClass().getResource(Heavy[0].getGunImage());
+		URL smgurl = getClass().getResource(SMG[0].getGunImage());
+		URL explosiveurl = getClass().getResource(Explosives[0].getGunImage());
 
 		try {
-			reG = ImageIO.read(reGurl);
-			enG = ImageIO.read(enGurl);
+			melee = ImageIO.read(meleerul);
+			pistol = ImageIO.read(pistolurl);
 			rifle = ImageIO.read(rifleurl);
+			heavy = ImageIO.read(heavyurl);
+			smg = ImageIO.read(smgurl);
+			explosive = ImageIO.read(explosiveurl);
 			weaponEquiped = rifle;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -121,7 +126,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 			color=2;
 		}
 		if(e.getKeyCode()==KeyEvent.VK_3){
-			you.weapon = Rifles[1];
+			you.weapon = Rifles[0];
 			weaponEquiped = rifle;
 			color=3;
 		}
@@ -156,6 +161,15 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 //				target.attack(you);
 //			}
 		}
+		if(e.getKeyCode()==KeyEvent.VK_7){
+			if(you.weapon.getAmmo. )
+		}
+		if(e.getKeyCode()==KeyEvent.VK_8){
+			
+		}
+		if(e.getKeyCode()==KeyEvent.VK_9){
+	
+}
 		update();
 		game.repaint();
 		
