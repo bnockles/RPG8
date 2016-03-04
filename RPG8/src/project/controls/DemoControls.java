@@ -34,7 +34,6 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 	int[] paralyzedCooldown = {2000,1000};
 	boolean paralyzed=false;
 	boolean blazed = false;
-	boolean poisoned;
 	boolean effect = false;
 	double speed=walking;
 	double running=2;
@@ -169,7 +168,7 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 					s = "Swarm walked down";
 					if(!moving.contains(keyCode)) moving.add(keyCode);
 				}
-				if(game){
+				if(menu){
 					s = "You selected the choice on the bottom";
 				}
 			}
