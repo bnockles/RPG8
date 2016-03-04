@@ -33,6 +33,7 @@ public class KEnemy extends EnemyAI{
 		int vx = BattlesScreen.calculateVComponentPlayerToCursor(10, x, y, true);
 		int vy = BattlesScreen.calculateVComponentPlayerToCursor(10, x, y, false);
 		fire(x,y,-vx,-vy);
+		steriods();
 	}
 
 	@Override
@@ -53,6 +54,11 @@ public class KEnemy extends EnemyAI{
 		else {
 			y--;
 		} 
+	}
+	
+	public void steriods(){
+		if (strength != BattlesScreen.KE_STRENGTH*2)
+		strength+= 1;
 	}
 
 }

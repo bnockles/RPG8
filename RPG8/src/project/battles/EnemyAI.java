@@ -86,6 +86,7 @@ public abstract class EnemyAI extends Character{
 		//animation of death
 		//dropItem();
 	}
+
 	private void checkForObjects(){//Enemy can hide behind objects to block damage.
 		Point location;
 	}
