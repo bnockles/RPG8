@@ -11,6 +11,7 @@ import java.util.Arrays;
 public class SaveMain {
 
 	public static void main(String[] args) {
+		// This would be moved to Game.java and replace the variable 'openGame'
 		Save file1 = SaveUtility.getSaveFile(1);
 		Save file2 = SaveUtility.getSaveFile(2);
 		

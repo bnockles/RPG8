@@ -1,5 +1,10 @@
 package project.save;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 /*
  * @author Wilson Wat
  * 
@@ -13,14 +18,34 @@ public class Save {
 	
 	private Hashtable t = new Hashtable();
 	private int fileNum;
+	private String name;
 	
-	public Save(int fileNum) {
+	public Save(int fileNum, String name) {
 		this.fileNum = fileNum;
+		this.name = name;
 		t = SaveUtility.doLoad(fileNum);
 	}
 	
 	public void saveData() {
-		SaveUtility.doSave(t, fileNum);
+		System.out.printf("Saving %s\'s File...\n\n", name);
+		
+		try {
+			// Creating File/Object output stream
+			FileOutputStream fileOut = new FileOutputStream("Save" + fileNum);
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+			// Writing Hashtable Object
+			out.writeObject(t);
+
+			// Closing all output streams
+			out.close();
+			fileOut.close();
+
+		} catch(FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
 	}
 	
 	// Save method
