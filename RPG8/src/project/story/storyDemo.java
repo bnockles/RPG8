@@ -35,7 +35,7 @@ public class storyDemo extends Game{
 	final static ArrayList<String> AyaStanding = new ArrayList<String>();
 	public static Hero Swarm = new Hero("Aya", 105, 105);
 	static boolean cutscene = false;
-//	public static Enemy enemy = new Enemy(150, 150, "/images/heroes/Enemy.jpg");
+	public static Enemy enemy = new Enemy(150, 150, "/images/heroes/Enemy.jpg");
 	static int width = 500;
 	static int height = 500;
 	
@@ -95,8 +95,8 @@ public class storyDemo extends Game{
 		g2.drawRect(0, 0, 100, 100);
 		g2.setColor(Color.black);
 		g2.drawString("You have entered a new area.", 200, 200);
-//		g2.setColor(Color.black);
-//		g2.fillRect(0, height - 91, width, 91);
+		g2.setColor(Color.black);
+		g2.fillRect(0, height - 91, width, 91);
 		EnemyDynamic.detectHit();
 		Cutscenes1.possibles();
 		//every time anything is done paint gets called.
