@@ -37,7 +37,7 @@ public class TargetDemo {
 		if(target.health<0){
 			target.health=0;
 		}
-		if(ammo.getEffect() == 1){
+		if(ammo.getEffect() == ItemResources.FIRE){
 			if(!isBurned){
 				final Timer timer = new Timer();
 				final TimerTask countDown = new TimerTask(){
@@ -59,10 +59,10 @@ public class TargetDemo {
 				isBurned=true;
 			}	
 		}
-		if(ammo.getEffect() == 2){
+		if(ammo.getEffect() == ItemResources.CORROSIVE){
 			
 		}
-		if(ammo.getEffect()==3){
+		if(ammo.getEffect()==ItemResources.STUN){
 			target.isStunned=true;
 			final Timer timer = new Timer();
 			final TimerTask countDown = new TimerTask(){

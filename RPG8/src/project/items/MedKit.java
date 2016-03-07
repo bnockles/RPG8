@@ -35,7 +35,7 @@ public class MedKit extends Item {
 		
 		
 		final int healRegen=this.healthGained;
-		if(this.getEffect()==4){
+		if(this.getEffect()==ItemResources.REGEN){
 			try{
 				timer.cancel();
 			}
