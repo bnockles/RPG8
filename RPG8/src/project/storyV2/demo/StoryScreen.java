@@ -1,5 +1,7 @@
 package project.storyV2.demo;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -34,6 +36,11 @@ public class StoryScreen extends Screen implements KeyListener {
 	public static Hero Swarm;
 	public ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 	public Cutscenes cutscene;
+	public String[][] params = {{"Mission 1: Recover the datapad", "Kill all enemies"},{"Side Mission: Install the backdoor", "Remain undetected"},{"Mission 5: Escape the facility", "Get out alive"}};
+	public ArrayList<Color> colors = new ArrayList<Color>();
+	public ArrayList<Font> fonts = new ArrayList<Font>();
+	public ArrayList<Cutscenes> cuts = new ArrayList<Cutscenes>();
+	public int counter = 0;
 	public StoryScreen(Game game) {
 		super(game);
 		AyaForward.add(forward1);
@@ -50,7 +57,20 @@ public class StoryScreen extends Screen implements KeyListener {
 		AyaStanding.add(back);
 		Swarm = new Hero("Aya Drevis", 105, 105);
 		Swarm.animate(AyaStanding.get(0));
-		cutscene =  new IntroCut();
+		Font temp = new Font("Onyx", Font.ITALIC, 32);
+		Font temp2 = new Font("Cochin", Font.BOLD, 48);
+		Font temp3 = new Font("Cracked", Font.PLAIN, 18);
+		fonts.add(temp);
+		fonts.add(temp2);
+		fonts.add(temp3);
+		colors.add(Color.BLUE);
+		colors.add(Color.RED);
+		colors.add(Color.GREEN);
+		colors.add(Color.ORANGE);
+		colors.add(Color.cyan);
+		colors.add(Color.darkGray);
+		cutscene =  new IntroCut("Mission 1: Recover the datapad", "Kill all enemies", temp, 30, 1000,800,colors);
+		cuts.add(cutscene);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -63,7 +83,9 @@ public class StoryScreen extends Screen implements KeyListener {
 	@Override
 	public void paintScreen(Graphics2D g2) {
 		// TODO Auto-generated method stub
-		g2.drawImage(cutscene.getBufferedImage(), 0, 0, null);
+		for(int i =0; i < cuts.size();i++){
+			g2.drawImage(cuts.get(i).getBufferedImage(), 0, 0, null);
+		}
 		g2.drawImage(Swarm.getImage(), Swarm.getX(), Swarm.getY(), null);
 	}
 
@@ -82,6 +104,11 @@ public class StoryScreen extends Screen implements KeyListener {
 				//stuff that happens when the spacebar is pressed
 //				Screen mainMenu = new DemoOverworld(game);
 //				game.setScreen(mainMenu);
+			}
+			if(keyCode == KeyEvent.VK_A){
+				int current = ++counter%3;
+				cutscene =  new IntroCut(params[current][0], params[current][1], fonts.get(current), 30, 1000,800,colors.subList(current, current+3));
+				cuts.add(cutscene);
 			}
 
 			if(keyCode == KeyEvent.VK_UP){
