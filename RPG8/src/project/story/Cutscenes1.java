@@ -11,8 +11,16 @@ import java.awt.RenderingHints;
 import java.awt.geom.Ellipse2D;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import project.directors.Game;
+import project.directors.Screen;
 @SuppressWarnings("serial")
-public abstract class Cutscenes1 extends Cutscenes {
+public abstract class Cutscenes1 extends Screen {
+	public Cutscenes1(Game game) {
+		super(game);
+		// TODO Auto-generated constructor stub
+	}
+
 	static int acceptableX;
 	static int acceptableY;
 	
