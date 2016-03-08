@@ -14,6 +14,7 @@ public class EnemyDynamic extends storyDemo{
 			strengthen();
 			enemy.randomX();
 			enemy.randomY();
+			
 		}
 	}
 

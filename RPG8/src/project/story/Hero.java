@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 
 public class Hero {
 
+	
 	BufferedImage sprite;
 	public String name;
 	public int x;

@@ -57,7 +57,6 @@ public abstract class Cutscenes1 extends Cutscenes {
 			setLocation(56565630, 565630);
 		}		
 		else if(acceptableX >= 0 && acceptableX <= 100 && acceptableY >= 0 && acceptableY <= 100){ 
-			//code to make cutscene here
 			
 		
 			

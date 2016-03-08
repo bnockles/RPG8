@@ -63,6 +63,7 @@ public class NPC {
 	
 	public int getX() {
 		return x;
+		
 	}
 
 	public int getY() {
