@@ -1,25 +1,17 @@
 package project.story;
 
 import java.util.Random;
-import java.util.Scanner;
-
 public class Radio extends storyDemo{
-	Scanner input = new Scanner( System.in );
+	static int count = 0;
 	public static void radioCall() {
 		//System.out.println("Ammo " + Enemy.weapon);
-		if(Math.abs(Swarm.getX()-npc1.getX()) + Math.abs(Swarm.getY()-npc1.getY()) < 200) {
-			System.out.println("Hello! Did you know you can shoot with the S key?");
-		}
-		if(Math.abs(Swarm.getX()-npc2.getX()) + Math.abs(Swarm.getY()-npc2.getY()) < 200) {
-			System.out.println("Hi! Nice to meet you!");
-		}
-		if(Math.abs(Swarm.getX()-npc3.getX()) + Math.abs(Swarm.getY()-npc3.getY()) < 200) {
-			System.out.println("I've had a long day. b   ");
+		if(Math.abs(Swarm.getX()-npc1.getX()) + Math.abs(Swarm.getY()-npc1.getY()) < 40) {
+			dialogue(npc1.getArray(), "");
 		}
 		/*if(Math.abs(Swarm.getX()-enemy.getX()) + Math.abs(Swarm.getY()-enemy.getY()) < 200) {
 			System.out.println("Enemy nearby");
 		}*/
-		else if(enemy.weapon < 4 && enemy.weapon > 0) {
+		/*else if(enemy.weapon < 4 && enemy.weapon > 0) {
 			System.out.println("Low Ammo");
 		}
 		/*else {
@@ -38,5 +30,25 @@ public class Radio extends storyDemo{
 			 * System.out.println(dialogue);
 			 */
 	}
+	public static void dialogue(String[] array) {
+		for(int i = 0; i < array.length; i++) {
+			System.out.println(array[i]);
+			
+			
+		}
+	}
+	public static void dialogue(String[] array, String response) {
+		System.out.println(response);
+		if(count > array.length-1)return;
+		else {
+			if(storyScreen.num == 1) {
+				System.out.println("Yes? Really?");
+			}
+			if(storyScreen.num == 2) {
+				System.out.println("No?");
+			}
+			System.out.println(array[count]);
+			count++;
+		}
 
-}
+	}}

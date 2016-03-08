@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints.Key;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -19,7 +20,7 @@ import project.overworld.DemoOverworld;
 
 @SuppressWarnings("unused")
 public class storyScreen extends Screen implements KeyListener{
-
+	public static int num;
 	private static final int MOVE_UNIT = 0;
 	public ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 	BufferedImage landscape;
@@ -70,6 +71,12 @@ public class storyScreen extends Screen implements KeyListener{
 			}
 			else if(keyCode == KeyEvent.VK_R) {
 				storyDemo.Swarm.radio();
+			}
+			else if(keyCode == KeyEvent.VK_Y) {
+				num = 1;
+			}
+			else if(keyCode == KeyEvent.VK_N) {
+				num = 2;
 			}
 			
 			storyDemo.Swarm.checkDimensions();

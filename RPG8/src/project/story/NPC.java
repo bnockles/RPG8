@@ -22,10 +22,12 @@ public class NPC {
 	int height = 46;
 	public static int weapon = 10;
 	public int strength = 100;
+	String[] array;
 	
-	public NPC(int x, int y, String picLocation) {
+	public NPC(int x, int y, String picLocation, String[] array) {
 		this.x = x;
 		this.y = y;
+		this.array = array;
 		URL url = getClass().getResource(picLocation);
 		try {		
 			sprite = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -65,6 +67,9 @@ public class NPC {
 
 	public int getY() {
 		return y;
+	}
+	public String[] getArray() {
+		return array;
 	}
 	
 }
