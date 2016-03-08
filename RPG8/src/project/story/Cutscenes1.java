@@ -1,9 +1,19 @@
 package project.story;
 
 import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
+
+import java.awt.RenderingHints;
+import java.awt.geom.Ellipse2D;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import project.directors.Game;
+import project.directors.Screen;
 @SuppressWarnings("serial")
 public abstract class Cutscenes1 extends Cutscenes {
 	static int acceptableX;
@@ -22,9 +32,9 @@ public abstract class Cutscenes1 extends Cutscenes {
 		if(acceptableX >= 0 && acceptableX <= 100 && acceptableY >= 0 && acceptableY <= 100){ 
 			//code to make cutscene here
 			
+
 		
 			BufferedImage image=new BufferedImage(1000, 800, BufferedImage.TYPE_INT_ARGB);
-			
 			Graphics2D g2 = (Graphics2D) image.getGraphics();
 			g2.setColor(Color.black);
 			g2.drawRect(250, 200, 200,100);

@@ -100,7 +100,7 @@ public class storyDemo extends Game{
 		g2.setColor(Color.black);
 		g2.fillRect(0, height - 91, width, 91);
 		EnemyDynamic.detectHit();
-		Cutscenes1.possibles();
+		//Cutscenes1.possibles();
 		//every time anything is done paint gets called.
 	}
 	

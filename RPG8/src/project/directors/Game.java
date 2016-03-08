@@ -38,7 +38,7 @@ public class Game extends JFrame{
 	private int windowWidth = 1000;
 	private int windowHeight = 800;
 	//the active Screen is the screen that is currently being updated and shown
-	private Screen activeScreen;
+	protected Screen activeScreen;
 	private SaveFile openGame;
 
 	//the states of the following screens should be preserved even when they are not being shown
