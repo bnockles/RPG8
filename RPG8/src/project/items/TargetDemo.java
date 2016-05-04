@@ -13,7 +13,7 @@ public class TargetDemo {
 	boolean isBurned=false;
 	String name;
 	boolean isStunned;
-	Armor armor;
+	int armor;
 	/**
 	 * @author Qing Ning Huang, Stanley Ren, Jia Liu
 	 */
@@ -24,14 +24,18 @@ public class TargetDemo {
 		this.coins=coins;
 		this.scrap=scrap;
 		this.name=name;
-		this.armor=armor;
+		this.armor=armor.getArmor();
 		isStunned=false;
 	}
 	
 	public void attack(final TargetDemo target){
 		
 		if(this.weapon.getAmmoTotal()!=0 || this.weapon.getGunNum()/10 ==1){
-			target.health-=this.weapon.getDamage();
+			int[] calcs = Armor.damageCalcs(this.weapon.getDamage(), target.health, target.armor);
+			target.health = calcs[0];
+			target.armor = calcs[1];
+			//target.health-=this.weapon.getDamage();
+			System.out.println(this.name + " Armor is: " + target.armor);
 			if(this.weapon.getGunNum()/10 !=1){
 				this.weapon.setAmmoTotal(this.weapon.getAmmoTotal()-1);				
 			}
