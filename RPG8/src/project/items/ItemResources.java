@@ -8,7 +8,8 @@ public interface ItemResources {
 	static final int REGEN = 4;
 	
 	//Armor
-	final Armor armor = new Armor("Armor", "It's Armor", 0, 0, 100);
+	final Armor yourarmor = new Armor("Armor", "It's Armor", 0, 0, 100);
+	final Armor enemyarmor = new Armor("Armor", "It's Armor", 0, 0, 100);
 	
 	//Medkits
 	final MedKit smallkit=new MedKit("Small Medkit","It's crap.",0, 5, REGEN);

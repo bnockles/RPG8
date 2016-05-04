@@ -15,8 +15,8 @@ import project.directors.Game;
 import project.directors.Screen;
 
 public class ItemScreen extends Screen implements KeyListener,ItemResources{
-	TargetDemo you = new TargetDemo(100, Rifles[0],rifleAmmo,0,0,"You");
-	TargetDemo enemy = new TargetDemo(100, Rifles[1],rifleAmmo,0,0,"Enemy");
+	TargetDemo you = new TargetDemo(100, Rifles[0],rifleAmmo,0,0,"You",yourarmor);
+	TargetDemo enemy = new TargetDemo(100, Rifles[1],rifleAmmo,0,0,"Enemy",enemyarmor);
 	
 	BufferedImage weaponEquiped;
 	int color=1;

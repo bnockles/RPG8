@@ -13,16 +13,18 @@ public class TargetDemo {
 	boolean isBurned=false;
 	String name;
 	boolean isStunned;
+	Armor armor;
 	/**
 	 * @author Qing Ning Huang, Stanley Ren, Jia Liu
 	 */
-	public TargetDemo(int health,Weapons weapon,Ammo ammo,int coins,int scrap,String name){
+	public TargetDemo(int health,Weapons weapon,Ammo ammo,int coins,int scrap,String name,Armor armor){
 		this.weapon = weapon;
 		this.health=health;
 		this.ammo=ammo;
 		this.coins=coins;
 		this.scrap=scrap;
 		this.name=name;
+		this.armor=armor;
 		isStunned=false;
 	}
 	
