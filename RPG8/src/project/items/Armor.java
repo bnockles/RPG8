@@ -2,10 +2,10 @@ package project.items;
 
 
 public class Armor extends Item{
-
-	public Armor(String name, String desc,int cost, int effect) {
-		super(name, desc,cost, effect);
-		// TODO Auto-generated constructor stub
+	int armor;
+	public Armor(String name, String desc,int cost, int effect, int armor) {
+		super(name, desc, cost, effect);
+		this.armor = armor;
 	}
 
 //	Armor reduces damage taken by all attacks except the plasma and stun gun. 

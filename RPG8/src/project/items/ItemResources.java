@@ -7,6 +7,9 @@ public interface ItemResources {
 	static final int STUN = 3;
 	static final int REGEN = 4;
 	
+	//Armor
+	final Armor armor = new Armor("Armor", "It's Armor", 0, 0, 100);
+	
 	//Medkits
 	final MedKit smallkit=new MedKit("Small Medkit","It's crap.",0, 5, REGEN);
 	final MedKit medkit=new MedKit("Medium Medkit","It's better.",0, 20, NO_EFFECT);
