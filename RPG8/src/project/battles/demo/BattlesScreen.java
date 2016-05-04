@@ -414,6 +414,16 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 		int randomNumberY;
 		for(int i=0; i<enemy1Num; i++)
 		{
+			/**
+			 * YIFAN READ THIS
+			 * constructor parameter String for Genemy(String s)
+			 * s represents the movement pattern
+			 * each set of letter and number gives the direction and how many steps the enemy takes
+			 *  interface called setmovement which has methods that does:
+			 *  - reads the string and interprets it
+			 *  - iterator that checks the index
+			*/
+			// enemies= new Genemy("w+10/s+3/d+5/a+8")
 			randomNumberX = (int) (Math.random()*width-100);
 			randomNumberY = (int) (Math.random()*height-100);
 			int[] randomEnemyStats = {(int) (Math.random()*300+100),(int) (Math.random()*400+200),(int) (Math.random()*30+30),(int) (Math.random()*400+100)};
