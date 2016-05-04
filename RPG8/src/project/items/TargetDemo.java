@@ -37,6 +37,7 @@ public class TargetDemo {
 		if(target.health<0){
 			target.health=0;
 		}
+		//Qing Ning
 		if(ammo.getEffect() == ItemResources.FIRE){
 			if(!isBurned){
 				final Timer timer = new Timer();

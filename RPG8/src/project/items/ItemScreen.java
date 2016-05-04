@@ -41,6 +41,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		return this;
 	}
 
+	//Qing Ning 
 	public void createImages() {
 		URL meleeurl = getClass().getResource(Melee[0].getGunImage());
 		URL pistolurl = getClass().getResource(Pistol[0].getGunImage());
@@ -77,6 +78,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 //		g2.drawImage(pic, 295, 525, pic.getWidth(), pic.getHeight(), null);			
 //	}
 	
+	//Stanley 
 	@Override
 	public void paintScreen(Graphics2D g2) {
 		Font tr=new Font("TimesRoman", Font.PLAIN, 22);
@@ -123,8 +125,10 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		g2.drawLine(x+20,y+80,x+40,y+100);
 	}
 
+
 	@Override
 	public void keyPressed(KeyEvent e) {
+		//Still Stanley
 		if(!you.isStunned){
 			if(e.getKeyCode()==KeyEvent.VK_E){
 				System.out.println(you.health);
@@ -169,6 +173,8 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 			if(e.getKeyCode() == KeyEvent.VK_R){ 
 				you.reload();
 			}
+			
+			//Qing Ning 
 			if(e.getKeyCode()==KeyEvent.VK_S){
 				if(you.health>0){
 					you.attack(enemy);
