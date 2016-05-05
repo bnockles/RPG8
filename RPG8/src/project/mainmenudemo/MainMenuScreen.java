@@ -19,6 +19,7 @@ import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -64,7 +65,7 @@ public class MainMenuScreen extends Screen implements KeyListener{
 		selected=1;
 		mtype=type;
 		
-		if(type==0)playSound(new File(backgroundmusic));
+		if(type==0)playSound(new File(backgroundmusic), true);
 		
 		options=names;
 		pics=pictures;
@@ -75,18 +76,19 @@ public class MainMenuScreen extends Screen implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		
+		File click = new File("resources/button-19.wav");
 		if(e.getKeyCode()== KeyEvent.VK_DOWN){
-			playSound(new File("resources/button-19.wav"));
+			playSound(click, false);
 			selected ++;
 			if(selected>4) selected=1;
 			update();
 		}
 		if(e.getKeyCode()== KeyEvent.VK_UP){
-			playSound(new File("resources/button-19.wav"));
+			playSound(click,false);
 			selected --;
 			if(selected<1) selected=4;
 			update();
-			
 		}
 		if(e.getKeyCode()== KeyEvent.VK_SPACE){
 			if(selected ==1)
@@ -205,7 +207,7 @@ public class MainMenuScreen extends Screen implements KeyListener{
 		
 	}
 	
-	 public void playSound(File soundName)
+	 public void playSound(File soundName, boolean loop)
 	    {
 	      try 
 	      {
@@ -213,7 +215,7 @@ public class MainMenuScreen extends Screen implements KeyListener{
 	       clip = AudioSystem.getClip( );
 	       clip.open(audioInputStream);
 	       clip.start( );
-	       clip.loop(-1);
+	       if(loop)clip.loop(-1);
 	      }
 	      catch(Exception ex)
 	      {
