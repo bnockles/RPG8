@@ -24,73 +24,42 @@ import javax.swing.SwingUtilities;
 import project.directors.Game;
 import project.directors.Screen;
 
-public class DemoControls extends project.directors.Screen implements KeyListener,MenuInteraction,BattlesInteraction, MouseListener{
-
+public class DemoControls2pointooooooo extends project.directors.Screen implements KeyListener,MenuInteraction,BattlesInteraction, MouseListener{
+	private Message message;
+	private Speed speed;
+	boolean effect = false;
+	ArrayList<Integer> moving;
+	ArrayList<Status> status;
+	private int x=300;
+	private int y=300;
 	BufferedImage landscape;
-	int x=300;
-	int y=300;
 	double walking=15;
+	private double running=1.5;
+	private double ablazedS = 1.2;
+	private double poisonedS = 0.6;
+	private Status paralyzed = new Status("paralyzed");
 	int statusCooldown = 9000;
 	int[] paralyzedCooldown = {2000,1000};
-	boolean paralyzed=false;
-	boolean blazed = false;
-	boolean poisoned;
-	boolean effect = false;
-	double speed=walking;
-	double running=2;
-	double ablazedS = 1.5;
-	double poisonedS = 2.5;
 	int pCount=0;
 	Timer effectTimer;
-	ArrayList<Integer> moving;
-	String s = "Press 1 to select Game controls. Press 2 to select Menu Controls.";
-	String idle="Swarm is idle";
 	Boolean selection=false;
 	Boolean game=false;
 	Boolean menu=false;
-	String [] ramStatus = {"paralyzed","ablazed","poisoned"};
+	int [] ramStatus = {0,1,2};
 
-	public DemoControls(Game game) {
+	public DemoControls2pointooooooo(Game game) {
 		super(game);
+		message = new Message("Press 1 to select Game controls. Press 2 to select Menu Controls.");
+		speed = new Speed(15,"walking");
 		moving = new ArrayList<Integer>();
+		status = new ArrayList<Status>();
 	}
 	
-	public String ramdomStatus(){
-		String  ramdom = (ramStatus[new Random().nextInt(ramStatus.length)]);
-		return ramdom;
+	public int ramdomStatus(){
+		int  random = ramStatus[(int) (Math.random()*(ramStatus.length))];
+		return random;
 	}
-	
-//	public static enum Mode{
-//		ALPHA,ALPHA2,ALPHA3
-//	}
-//	
-//	public static String generateRandomString(int length,Mode mode){
-//		
-//		StringBuffer buffer = new StringBuffer();
-//		String characters = "";
-//		switch(mode){
-//		case ALPHA:
-//			characters = "A";
-//			break;
-//		case ALPHA2:
-//			characters = "E";
-//			break;
-//		case ALPHA3:
-//			characters = "1";
-//			break;
-//		}
-//		int charactersLength = characters.length();
-//
-//		for (int i = 0; i < length; i++) {
-//			double index = Math.random() * charactersLength;
-//			buffer.append(characters.charAt((int) index));
-//		}
-//		return buffer.toString();
-//	}
-		// TODO Auto-generated constructor stub
-
-	
-	
+		
 	@Override
 	public void moveUp() {
 		// TODO Auto-generated method stub
@@ -122,201 +91,197 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 			selection=false;
 			game=false;
 			menu=false;
-			paralyzed=false;
-			blazed=false;
-			s = "Press 1 to select Game controls. Press 2 to select Menu Controls.";
+			message.setMessage("Press 1 to select Game controls. Press 2 to select Menu Controls.");
 		}
 		if(keyCode == KeyEvent.VK_1){
 			if(!selection){
 				selection=true;
 				game=true;
-				s="You selected game controls";
+				message.setMessage("You selected game controls");
 				return;
 			}
-			s = "Swarm equipped his melee weapon";
+			message.setMessage("Swarm equipped his melee weapon");
 		}
 		if(keyCode == KeyEvent.VK_2){
 			if(!selection){
 				selection=true;
 				menu=true;
-				s="You selected menu controls";
+				message.setMessage("You selected menu controls");
 				return;
 			}
-			s = "Swarm equipped his pistol";
+			message.setMessage("Swarm equipped his pistol");
 			
 		}
 		if(selection){
 			if(keyCode == KeyEvent.VK_W){
 				if(game){
-					s = "Swarm walked up";
+					message.setMessage("Swarm is "+speed.getSpeedName()+" up.");
 					if(!moving.contains(keyCode)) moving.add(keyCode);
 				}
 				if(menu){
-					s = "You selected the choice on the top";
+					message.setMessage("You selected the choice on the top");
 				}
 			}
 			if(keyCode == KeyEvent.VK_A){
 				if(game){
-					s = "Swarm walked left";
+					message.setMessage("Swarm is "+speed.getSpeedName()+" left.");
 					if(!moving.contains(keyCode)) moving.add(keyCode);
 				}
 				if(menu){
-					s = "You selected the choice on the left";
+					message.setMessage("You selected the choice on the left");
 				}
 			}
 			if(keyCode == KeyEvent.VK_S){
 				if(game){
-					s = "Swarm walked down";
+					message.setMessage("Swarm is "+speed.getSpeedName()+" down.");
 					if(!moving.contains(keyCode)) moving.add(keyCode);
 				}
-				if(game){
-					s = "You selected the choice on the bottom";
+				if(menu){
+					message.setMessage("You selected the choice on the bottom");
 				}
 			}
 			if(keyCode == KeyEvent.VK_D){
 				if(game){
-					s = "Swarm walked right";
+					message.setMessage("Swarm is "+speed.getSpeedName()+"  right.");
 					if(!moving.contains(keyCode)) moving.add(keyCode);
 				}
 				if(menu){
-					s = "You selected the choice on the right";
+					message.setMessage("You selected the choice on the right");
 				}
 			}
 			if(keyCode == KeyEvent.VK_P){
 				if(game&&!effect){
-					s = ramdomStatus();
-					if(s == "paralyzed"){
-						s = "The current status of Swarm is paralyzed";
+					int r = ramdomStatus();
+					if(r == 0){
+						message.setMessage("The current status of Swarm is paralyzed");
 						if(!moving.contains(keyCode)) moving.add(keyCode);
-						countdown(null, paralyzedCooldown[0]);
+						countdown(paralyzedCooldown[0]);
 					}
-					if(s == "ablazed"){
-						s = "The current status of Swarm is ablazed";
+					if(r == 1){
+						status.add(new Status("ablazed"));
+						message.setMessage("The current status of Swarm is "+status.get(0).getStatusName());
 						if(!moving.contains(keyCode)) moving.add(keyCode);
-						blazed = true;
-						speed *= ablazedS;
+						speed.setSpeed(speed.getSpeed()*ablazedS);
 					}
-					if(s == "poisoned"){
-						s = "The current status of Swarm is poisoned";
+					if(r == 2){
+						status.add(new Status("poisoned"));
+						message.setMessage("The current status of Swarm is "+status.get(0).getStatusName());
 						if(!moving.contains(keyCode)) moving.add(keyCode);
-						speed /= poisonedS;
+						speed.setSpeed(speed.getSpeed()*poisonedS);;
 					}
 					effect=true;
 					effectTimer = new Timer();
-					countdown(null, statusCooldown);
+					countdown(statusCooldown);
 				}
 			}
 		}
 		if(game){
 			if(keyCode == KeyEvent.VK_3){
-				s = "Swarm equipped his SMG";
+				message.setMessage("Swarm equipped his SMG");
 			}
 			if(keyCode == KeyEvent.VK_4){
-				s = "Swarm equipped his rifle";
+				message.setMessage("Swarm equipped his rifle");
 			}
 			if(keyCode == KeyEvent.VK_5){
-				s = "Swarm equipped his heavy";
+				message.setMessage("Swarm equipped his heavy");
 			}
 			if(keyCode == KeyEvent.VK_6){
-				s = "Swarm equipped his rocket launcher";
+				message.setMessage("Swarm equipped his rocket launcher");
 			}
 			if(keyCode == KeyEvent.VK_G){
-				s = "Swarm equipped his explosive";
+				message.setMessage("Swarm equipped his explosive");
 			}
-			if(keyCode == KeyEvent.VK_SHIFT&&!blazed){
+			if(keyCode == KeyEvent.VK_SHIFT&&(status.size()==0||status.size()>0&&status.get(0).getStatusName()!="ablazed")){
 				if(!moving.contains(moving.indexOf(keyCode))){
-					s = "Swarm started to sprint";
 					moving.add(keyCode);
-					speed*=running;
+					speed.setSpeedName("running");
 				}
 			}
 			if(keyCode == KeyEvent.VK_E){
-				s = "Swarm interacted with something on the map";
+				message.setMessage("Swarm interacted with something on the map");
 			}
 			if(keyCode == KeyEvent.VK_R){
-				s = "Swarm reloaded his weapon";
+				message.setMessage("Swarm reloaded his weapon");
 			}
 			if(keyCode == KeyEvent.VK_F){
-				s = "Swarm went on stealth mode";
+				message.setMessage("Swarm went on stealth mode");
 			}
 			if(keyCode == KeyEvent.VK_M){
-				s = "The player opens a transparent outline of the map";
+				message.setMessage("The player opens a transparent outline of the map");
 			}
 			if(keyCode == KeyEvent.VK_ESCAPE){
-				s = "The player opens the exit menu";
+				message.setMessage("The player opens the exit menu");
 			}
 		}
 		if(menu){
 			if(keyCode == 13){
-				s = "You have pressed Enter";
+				message.setMessage("You have pressed Enter");
 			};
 			if(keyCode == 16){
-				s = "You have pressed Shift";
+				message.setMessage("You have pressed Shift");
 			};
 			if(keyCode == 17){
-				s = "You have pressed Ctrl";
+				message.setMessage("You have pressed Ctrl");
 			};
 			if(keyCode == 18){
-				s = "You have pressed Alt";
+				message.setMessage("You have pressed Alt");
 			};
 			if(keyCode == 27){
-				s = "You have pressed Escape";
+				message.setMessage("You have pressed Escape");
 			};
 			if(keyCode == KeyEvent.VK_Z){
-				s = "You confirmed a selection";
+				message.setMessage("You confirmed a selection");
 			};
 			if(keyCode == KeyEvent.VK_X){
-				s = "You exited a screen";
+				message.setMessage("You exited a screen");
 			};
 		}
 	}
 
-	private void countdown(Screen screen, final int count) {
+	private void countdown(final int count) {
 		final Timer t = new Timer();
 		t.schedule(new TimerTask(){
 			public void run(){
 				if(count==statusCooldown){
 					effect=false;
-					blazed=false;
-					speed=walking;
 					t.cancel();
 				}
 				if(count==paralyzedCooldown[0]){
-					paralyzed=true;
+					status.add(paralyzed);
 					pCount++;
-					countdown(null, paralyzedCooldown[1]);
+					countdown(paralyzedCooldown[1]);
 				}
 				if(count==paralyzedCooldown[1]){
 					if(pCount<3){
-						paralyzed=false;
-						countdown(null, paralyzedCooldown[0]);
+						status.remove(paralyzed);
+						countdown(paralyzedCooldown[0]);
 					}else{
 						pCount=0;
+						status.remove(paralyzed);
 						effect=false;
-						paralyzed=false;
 						t.cancel();
 					}
 				}
 			}
 		}, count);
-		
+		speed.setSpeed(walking);
 	}
 
 	public void mousePressed(MouseEvent e){
 		if(game){
 			if(e.getButton()==MouseEvent.BUTTON1){
-				s = "Swarm fired his gun";
+				message.setMessage("Swarm fired his gun");
 			}
 			if(e.getButton()==MouseEvent.BUTTON3){
-				s = "Swarm fired his alternative shot";
+				message.setMessage("Swarm fired his alternative shot");
 			}
 		}
 		if(menu){
 			if(e.getButton()==MouseEvent.BUTTON1){
-				s = "You left clicked confirm";
+				message.setMessage("You left clicked confirm");
 			}
 			if(e.getButton()==MouseEvent.BUTTON3){
-				s = "You right clicked an exitted a menu";
+				message.setMessage("You right clicked an exitted a menu");
 			}
 		}
 	}
@@ -327,13 +292,15 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 		int keyCode = e.getKeyCode();
 		if(game){
 			if(keyCode==KeyEvent.VK_W||keyCode==KeyEvent.VK_A||keyCode==KeyEvent.VK_S||keyCode==KeyEvent.VK_D){
-				s = idle;
 				moving.remove(moving.indexOf(keyCode));
 			}
 			if(keyCode==KeyEvent.VK_SHIFT&&moving.contains(keyCode)){
 				moving.remove(moving.indexOf(keyCode));
-				speed/=running;
-				s="Swarm stopped sprinting";
+				speed.setSpeed(walking);
+				speed.setSpeedName("walking");
+			}
+			if(moving.size()==0){
+				message.setMessage("Swam is idle");
 			}
 		}
 	}
@@ -353,18 +320,18 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 	public void paintScreen(Graphics2D g2) {
 		checkMotion();
 		g2.setColor(Color.blue);
-		g2.drawString(s,x, y);
+		g2.drawString(message.getMessage(),x, y);
 	}
 
 	private void checkMotion() {
 		// TODO Auto-generated method stub
-		if(!paralyzed){
-			if(moving.contains(KeyEvent.VK_W)) y-=speed;
-			if(moving.contains(KeyEvent.VK_A)) x-=speed;
-			if(moving.contains(KeyEvent.VK_S)) y+=speed;
-			if(moving.contains(KeyEvent.VK_D)) x+=speed;
+		if(status.size()>0&&status.get(0).getStatusName()=="paralyzed"){
+			message.setMessage("Swarm can't move!");
 		}else{
-			s="Swarm can't move!";
+			if(moving.contains(KeyEvent.VK_W)) y-=speed.getSpeed();
+			if(moving.contains(KeyEvent.VK_A)) x-=speed.getSpeed();
+			if(moving.contains(KeyEvent.VK_S)) y+=speed.getSpeed();
+			if(moving.contains(KeyEvent.VK_D)) x+=speed.getSpeed();
 		}
 	}
 
