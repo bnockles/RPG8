@@ -113,41 +113,36 @@ public class DemoControls2pointooooooo extends project.directors.Screen implemen
 			
 		}
 		if(selection){
-			if(keyCode == KeyEvent.VK_W){
-				if(game){
-					message.setMessage("Swarm is "+speed.getSpeedName()+" up.");
+			if(keyCode == KeyEvent.VK_W||keyCode == KeyEvent.VK_A
+					||keyCode==KeyEvent.VK_S||keyCode == KeyEvent.VK_D){
+				if(keyCode == KeyEvent.VK_W){
+					if(game){
+						speed.setDirection(" up.");
+						if(!moving.contains(keyCode)) moving.add(keyCode);
+					}
+					if(menu){
+					}
+					speed.setDirection("top.");
+				}
+				if(keyCode == KeyEvent.VK_A){
+					speed.setDirection(" left.");
 					if(!moving.contains(keyCode)) moving.add(keyCode);
 				}
-				if(menu){
-					message.setMessage("You selected the choice on the top");
+				if(keyCode == KeyEvent.VK_S){
+					if(game){
+						speed.setDirection(" down.");
+						if(!moving.contains(keyCode)) moving.add(keyCode);
+					}
+					if(menu){
+						message.setMessage("You selected the choice on the bottom");
+					}
 				}
-			}
-			if(keyCode == KeyEvent.VK_A){
-				if(game){
-					message.setMessage("Swarm is "+speed.getSpeedName()+" left.");
+				if(keyCode == KeyEvent.VK_D){
+					speed.setDirection(" right.");
 					if(!moving.contains(keyCode)) moving.add(keyCode);
 				}
-				if(menu){
-					message.setMessage("You selected the choice on the left");
-				}
-			}
-			if(keyCode == KeyEvent.VK_S){
-				if(game){
-					message.setMessage("Swarm is "+speed.getSpeedName()+" down.");
-					if(!moving.contains(keyCode)) moving.add(keyCode);
-				}
-				if(menu){
-					message.setMessage("You selected the choice on the bottom");
-				}
-			}
-			if(keyCode == KeyEvent.VK_D){
-				if(game){
-					message.setMessage("Swarm is "+speed.getSpeedName()+"  right.");
-					if(!moving.contains(keyCode)) moving.add(keyCode);
-				}
-				if(menu){
-					message.setMessage("You selected the choice on the right");
-				}
+				if(game) message.setMessage("Swarm is "+speed.getSpeedName()+speed.getDirection());
+				else message.setMessage("You selected the choice on the "+speed.getDirection());
 			}
 			if(keyCode == KeyEvent.VK_P){
 				if(game&&!effect){
@@ -191,10 +186,12 @@ public class DemoControls2pointooooooo extends project.directors.Screen implemen
 			if(keyCode == KeyEvent.VK_G){
 				message.setMessage("Swarm equipped his explosive");
 			}
-			if(keyCode == KeyEvent.VK_SHIFT&&(status.size()==0||status.size()>0&&status.get(0).getStatusName()!="ablazed")){
+			if(keyCode == KeyEvent.VK_SHIFT&&(status.size()==0||(status.size()>0&&status.get(0).getStatusName()!="ablazed"))){
 				if(!moving.contains(moving.indexOf(keyCode))){
 					moving.add(keyCode);
 					speed.setSpeedName("running");
+					speed.setSpeed(speed.getSpeed()*running);
+					message.setMessage("Swarm is "+speed.getSpeedName()+speed.getDirection());
 				}
 			}
 			if(keyCode == KeyEvent.VK_E){
