@@ -1,5 +1,6 @@
 package project.items;
 
+//Get rid of crit stuff
 public class Weapons extends Item{
 	private Ammo ammo;
 	private int damage;
@@ -48,7 +49,12 @@ public class Weapons extends Item{
 		this.splash = splash;
 		this.gunImage = gunImage;
 	}
-
+	
+	public double[] showStats(){
+		double[] stats = {cost, damage, ammoClip, ammoCapacity, weight, rofRPS, reloadSpd, getEffect()};
+		return stats;
+	}
+	
 	public int getSplash() {
 		return splash;
 	}
