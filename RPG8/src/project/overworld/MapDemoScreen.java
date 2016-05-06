@@ -12,10 +12,10 @@ import project.directors.UtilityMethods;
 import java.util.ArrayList;
 
 public class MapDemoScreen extends Screen implements KeyListener {
-	ArrayList<Obstacle> obstacles;
-	ArrayList<MainMap> mapSections;
-	ArrayList<Boundaries> boundaries;
-	ArrayList<Region> regions;
+	static ArrayList<Obstacle> obstacles;
+	static ArrayList<MainMap> mapSections;
+	static ArrayList<Boundaries> boundaries;
+	static ArrayList<Region> regions;
 	BufferedImage background;
 	static boolean touching;
 	static boolean playing;
@@ -39,8 +39,8 @@ public class MapDemoScreen extends Screen implements KeyListener {
 	public static final boolean NONLETH = false;
 	static int playerRegion;
 	static Rectangle hitbox;
-	int obstacleNum;
-	String type;
+	static int obstacleNum;
+	static String type;
 //hello
 	public MapDemoScreen(Game game) {
 		super(game);
@@ -110,7 +110,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		}
 
 	}
-	public static void checkPlayerState(Boundaries bound){
+	public void checkPlayerState(Boundaries bound){
 		if(bound.isLethal()){
 			playing = false;
 		}
@@ -121,7 +121,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		return this;
 	}
 
-	public void changeRegion() {
+	public static void changeRegion() {
 		hitbox = new Rectangle(xPos, yPos, xSize, ySize);
 		for (int i = 0; i < regions.size(); i++) {
 			if (regions.get(i).getBounds().intersects(hitbox)
