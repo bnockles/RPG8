@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
+import project.battles.BattlesActions;
 import project.battles.Collision;
 import project.battles.EnemyAI;
 import project.battles.GEnemy;
@@ -31,7 +32,7 @@ import project.directors.Screen;
 import project.directors.UtilityMethods;
 import project.items.Weapon;
 
-public class BattlesScreen extends Screen implements ActionListener, KeyListener , MouseListener,MouseMotionListener{
+public class BattlesScreen extends Screen implements BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener{
 	/**
 	 * ***********CHANGES! MUST READ********************
 	 * RENAMING: 
@@ -596,6 +597,42 @@ public class BattlesScreen extends Screen implements ActionListener, KeyListener
 	}
 	@Override
 	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void fireWeapon(Mouse) {
+		int cursorX = e.getX();
+		int cursorY = e.getY();
+		int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
+		int vy = calculateVComponentPlayerToCursor(10, cursorX, cursorY, false);
+		int direction = calculateDirectionAttackFromPlayer(cursorX, cursorY);
+		//System.out.println(direction);
+		character.fire(character.getX(),character.getY(),vx,vy, direction);
+		
+	}
+	@Override
+	public void moveCharacterLeft() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void moveCharacterRight() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void moveCharacterUp() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void moveCharacterDown() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void reloadWeapon() {
 		// TODO Auto-generated method stub
 		
 	}
