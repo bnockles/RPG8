@@ -44,7 +44,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 	//Qing Ning 
 	public void createImages() {
 		URL meleeurl = getClass().getResource(Melee[0].getGunImage());
-		URL pistolurl = getClass().getResource(Pistol[0].getGunImage());
+		URL pistolurl = getClass().getResource(Pistol[2].getGunImage());
 		URL rifleurl = getClass().getResource(Rifles[0].getGunImage());
 		URL heavyurl = getClass().getResource(Heavy[0].getGunImage());
 		URL smgurl = getClass().getResource(SMG[0].getGunImage());
@@ -141,7 +141,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 				color=1;
 			}
 			if(e.getKeyCode()==KeyEvent.VK_2){
-				you.weapon = Pistol[0];
+				you.weapon = Pistol[2];
 				weaponEquiped = pistol;
 				you.ammo = pistolAmmo;
 				color=2;

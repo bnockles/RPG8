@@ -7,6 +7,9 @@ public interface ItemResources {
 	static final int STUN = 3;
 	static final int REGEN = 4;
 	
+	public int buy(Misc gold);
+	
+	
 	//Armor
 	final Armor yourarmor = new Armor("Armor", "It's Armor", 0, 0, 100);
 	final Armor enemyarmor = new Armor("Armor", "It's Armor", 0, 0, 100);

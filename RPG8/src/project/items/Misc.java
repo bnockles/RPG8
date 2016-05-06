@@ -10,5 +10,6 @@ public class Misc extends Item{
 		public Misc(String name, String desc,boolean coin, int cost, int effect){
 			super(name,desc, cost, effect);
 		}
+		
 	}
 
