@@ -3,12 +3,14 @@ package project.overworld;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
 public class MainMap {
 	int region;
 	BufferedImage map;
+	//ArrayList<> enemies;
 	public MainMap(int region,String image){
 		this.region = region;
 		try {
