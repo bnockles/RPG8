@@ -8,7 +8,7 @@ public interface ItemResources {
 	static final int REGEN = 4;
 	
 	public int buy(Misc gold);
-	
+	public int sell(Misc gold);
 	
 	//Armor
 	final Armor yourarmor = new Armor("Armor", "It's Armor", 0, 0, 100);
