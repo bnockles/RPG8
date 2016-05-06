@@ -3,7 +3,7 @@ package project.items;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TargetDemo {
+public class TargetDemo implements Target{
 	int health;
 	Weapons weapon;
 	int coins;

@@ -31,7 +31,7 @@ public class MedKit extends Item {
 			b.health=100;
 		}
 	}
-	public void regen(final TargetDemo b){
+	public void regen(final Target b){
 		
 		
 		final int healRegen=this.healthGained;
