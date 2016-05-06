@@ -10,10 +10,12 @@ public class MedKit extends Item {
 	private int cost;
 	private int healthGained;
 	private int effect;
+	private String itemImage;
+
 		int duration=0;
 	Timer timer;
-	public MedKit(String name, String desc,int cost, int healthGained, int effect) {
-		super(name, desc, cost, effect);
+	public MedKit(String name, String desc,int cost, int healthGained, int effect, String itemImage) {
+		super(name, desc, cost, effect, itemImage);
 		this.healthGained=healthGained;
 		this.effect=effect;
 		// TODO Auto-generated constructor stub
@@ -79,5 +81,9 @@ public class MedKit extends Item {
 
 	public int getHealthGained() {
 		return healthGained;
+	}
+	
+	public String getItemImage() {
+		return itemImage;
 	}
 }
