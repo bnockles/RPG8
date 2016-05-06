@@ -11,9 +11,10 @@ public abstract class Item implements Selectable {
 	private String description;
 	private int cost;
 	private int effect;
+	private String itemImage;
 	
 
-	public Item(String name,String desc,int cost, int effect){
+	public Item(String name,String desc,int cost, int effect, String itemImage){
 		this.name=name;
 		description=desc;
 		this.cost=cost;
@@ -53,6 +54,10 @@ public abstract class Item implements Selectable {
 	
 	public int getEffect() {
 		return effect;
+	}
+	
+	public String getItemImage() {
+		return itemImage;
 	}
 	
 	public void confirm() {
