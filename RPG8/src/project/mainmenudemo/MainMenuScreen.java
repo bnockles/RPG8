@@ -53,8 +53,8 @@ public class MainMenuScreen extends Screen implements KeyListener{
 	Color[] colors;
 	// I will add the pictures of the characters once the
 	//character group has chosen them
-	public Clip clip;
-	
+	public Clip loopClip;
+	public Clip quickClip;
 	
 	private int selected;
 	private int mtype;
@@ -65,7 +65,7 @@ public class MainMenuScreen extends Screen implements KeyListener{
 		selected=1;
 		mtype=type;
 		
-		if(type==0)playSound(new File(backgroundmusic), true);
+		if(type==DynamicMenu.MAIN_MENU) playSound(new File(backgroundmusic), true);
 		
 		options=names;
 		pics=pictures;
@@ -79,13 +79,13 @@ public class MainMenuScreen extends Screen implements KeyListener{
 		
 		File click = new File("resources/button-19.wav");
 		if(e.getKeyCode()== KeyEvent.VK_DOWN){
-			playSound(click, false);
+			playSound(click);
 			selected ++;
 			if(selected>4) selected=1;
 			update();
 		}
 		if(e.getKeyCode()== KeyEvent.VK_UP){
-			playSound(click,false);
+			playSound(click);
 			selected --;
 			if(selected<1) selected=4;
 			update();
@@ -95,18 +95,18 @@ public class MainMenuScreen extends Screen implements KeyListener{
 			this.game.setScreen(new GridToSee(this.game));
 			if(selected==2)
 				this.game.setScreen(new TestScreen(this.game));
-			clip.stop();
+			loopClip.stop();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
 			this.game.setScreen(DynamicMenu.createMenu(0, this.game));
 		}
 		if(e.getKeyCode() == KeyEvent.VK_Q){
 			this.game.setScreen(DynamicMenu.createMenu(1, this.game));
-			clip.stop();
+			loopClip.stop();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_W){
 			this.game.setScreen(DynamicMenu.createMenu(4, this.game));
-			clip.stop();
+			loopClip.stop();
 		}
 		
 	}
@@ -212,10 +212,11 @@ public class MainMenuScreen extends Screen implements KeyListener{
 	      try 
 	      {
 	       AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundName.getAbsoluteFile( ));
-	       clip = AudioSystem.getClip( );
-	       clip.open(audioInputStream);
-	       clip.start( );
-	       if(loop)clip.loop(-1);
+	       loopClip = AudioSystem.getClip( );
+	       loopClip.open(audioInputStream);
+	       loopClip.start( );
+	       loopClip.loop(-1);
+	       
 	      }
 	      catch(Exception ex)
 	      {
@@ -224,4 +225,21 @@ public class MainMenuScreen extends Screen implements KeyListener{
 	      }
 	    }
 
+	 
+	 public void playSound(File soundName)
+	    {
+	      try 
+	      {
+	       AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundName.getAbsoluteFile( ));
+	       quickClip = AudioSystem.getClip( );
+	       quickClip.open(audioInputStream);
+	       quickClip.start( );
+	       
+	      }
+	      catch(Exception ex)
+	      {
+	        System.out.println("Error with playing sound.");
+	        ex.printStackTrace( );
+	      }
+	    }
 }

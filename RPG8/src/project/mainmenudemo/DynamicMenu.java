@@ -20,6 +20,7 @@ public class DynamicMenu {
 	public static final int PAUSE_MENU=2;
 	public static final int GAME_OVER_MENU=3;
 	public static final int CREDITS_MENU=4;
+	public static final int ITEM_DESCRIPTION_MENU = 5;
 	
 	public static MainMenuScreen createMenu(int menuType, Game game){
 		String[] names=null;
@@ -48,6 +49,12 @@ public class DynamicMenu {
 			col=new Color[]{Color.white, Color.black, Color.darkGray};
 			backgroundmusic="resources/mainmenu.wav";
 		}
+		
+		if(menuType == ITEM_DESCRIPTION_MENU){
+			//
+		}
+		
+		
 		return new MainMenuScreen(type,game, names, pictures ,col, backgroundmusic);
 	}
 
