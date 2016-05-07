@@ -38,8 +38,8 @@ public abstract class Frame {
 			return true;
 		return false;
 	}
-	public boolean isSameZone(int n){
-		if(region == n || n == -1)
+	public boolean isSameZone(int r){
+		if(region == r || r == -1)
 			return true;
 		return false;
 	}
