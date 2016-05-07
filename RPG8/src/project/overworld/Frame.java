@@ -33,4 +33,14 @@ public abstract class Frame {
 	public int getRegion(){
 		return region;
 	}
+	public boolean isColliding(Rectangle r){
+		if(this.getBounds().intersects(r))
+			return true;
+		return false;
+	}
+	public boolean isSameZone(int n){
+		if(region == n || n == -1)
+			return true;
+		return false;
+	}
 }

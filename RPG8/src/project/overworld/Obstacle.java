@@ -51,4 +51,9 @@ public class Obstacle extends Frame {
 	public void setState(boolean state){
 		this.state = state;
 	}
+	public void removeObstacle(){
+		if(destructable){
+			state = false;
+		}
+	}
 }

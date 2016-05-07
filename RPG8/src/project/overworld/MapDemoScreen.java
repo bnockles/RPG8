@@ -86,8 +86,8 @@ public class MapDemoScreen extends Screen implements KeyListener {
 	public void checkCollision() {
 		hitbox = new Rectangle(xPos, yPos, xSize, ySize);
 		for (int i = 0; i < boundaries.size(); i++) {
-			if (boundaries.get(i).getBounds().intersects(hitbox)
-					&& (playerRegion == boundaries.get(i).getRegion() || boundaries.get(i).getRegion() == ALLZONES )) {
+			if (boundaries.get(i).isColliding(hitbox)
+					&& boundaries.get(i).isSameZone(playerRegion)) {
 				touching = true;
 				type = BOUNDARY;
 				obstacleNum = i;
@@ -98,8 +98,8 @@ public class MapDemoScreen extends Screen implements KeyListener {
 			}
 		}
 		for (int i = 0; i < obstacles.size(); i++) {
-			if (obstacles.get(i).getBounds().intersects(hitbox)
-					&& playerRegion == obstacles.get(i).getRegion() && obstacles.get(i).getState() && !obstacles.get(i).getPass()) {
+			if (obstacles.get(i).isColliding(hitbox)
+					&& obstacles.get(i).isSameZone(playerRegion) && (obstacles.get(i)).getState() && !(obstacles.get(i)).getPass()) {
 				touching = true;
 				type = OBSTACLE;
 				obstacleNum = i;
@@ -159,12 +159,8 @@ public class MapDemoScreen extends Screen implements KeyListener {
 			g2.drawString("You Died", 500, 500);
 		}
 	}
-	public void removeObstacle(int n){
-		if(obstacles.get(n).getDest()){
-			obstacles.get(n).setState(false);
-		}
-	}
-	public int[] checkType(String type) {
+	
+	public static int[] checkType(String type) {
 		int[] num = new int[4];
 		if (type.equals(BOUNDARY)) {
 			for (int i = 0; i < boundaries.size(); i++) {
@@ -228,7 +224,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		if(keyCode == KeyEvent.VK_DELETE){
 			System.out.println(xPos + " " + yPos);
 			if(touching && type.equals("O")){
-				removeObstacle(obstacleNum);
+				obstacles.get(obstacleNum).removeObstacle();
 			}
 		}
 		touching = false;
