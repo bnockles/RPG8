@@ -289,4 +289,22 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		return 0;
 	}
 
+	@Override
+	public int sell(Misc gold) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String printStats(double[] stats) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Item[] getItem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
