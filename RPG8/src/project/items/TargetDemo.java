@@ -110,4 +110,10 @@ public class TargetDemo implements Target{
 			this.weapon.setAmmoCapacity(this.weapon.getAmmoCapacity()-1);
 		}
 	}
+
+	@Override
+	public int getHealth() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
