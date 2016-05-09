@@ -161,6 +161,7 @@ public class SaveScreen extends JFrame {
 	// Getters for other teams to use when accessing data from the Hashtable
 	// An alternative would be to make the Hashtable public, that way the team can get the data
 	// they need without all these getters and their confusing data type conversions.
+	
 	public String getStringData(String key) {
 		return (String)t.get(key);
 	}

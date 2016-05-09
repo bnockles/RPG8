@@ -48,6 +48,10 @@ public class Save {
 		}		
 	}
 	
+	/*
+	 * Below are the read and write methods that teams will add according to their needs.
+	 */
+	
 	// Save method
 	public void saveData(String id, int data) {
 		t.put(id, data);
