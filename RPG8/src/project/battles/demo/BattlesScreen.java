@@ -359,17 +359,19 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 				ENEMYMOVE = WANDER;
 			refreshEnemies();
 		}
-		if(keyCode == KeyEvent.VK_A)
+		//Vincent
+		//WASD is used for moving.
+		if(keyCode == KeyEvent.VK_3)
 			for(int i=0;i<enemiesOnScreen.size();i++)
 				if(enemiesOnScreen.get(i).getBulletpersec() > 100)
 					enemiesOnScreen.get(i).setBulletpersec(enemiesOnScreen.get(i).getBulletpersec()-25);
-		if(keyCode == KeyEvent.VK_S)
+		if(keyCode == KeyEvent.VK_4)
 			for(int i=0;i<enemiesOnScreen.size();i++)
 				if(enemiesOnScreen.get(i).getBulletpersec() < 900){
 					enemiesOnScreen.get(i).setBulletpersec(enemiesOnScreen.get(i).getBulletpersec()+25);
 					System.out.println(enemiesOnScreen.get(i).getBulletpersec());
 				}
-		if(keyCode == KeyEvent.VK_D){
+		if(keyCode == KeyEvent.VK_5){
 			for(int i=0;i<enemiesOnScreen.size();i++){
 				enemiesOnScreen.get(i).getWeapon().setAmmo(1000);
 			}
@@ -476,25 +478,45 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 			return;
 		int proposedNewY=character.getY();
 		int proposedNewX=character.getX();
-		if(pressedKeys.contains(KeyEvent.VK_UP) && !pressedKeys.contains(KeyEvent.VK_DOWN)){
+//		if(pressedKeys.contains(KeyEvent.VK_UP) && !pressedKeys.contains(KeyEvent.VK_DOWN)){
+//			proposedNewY-=P_SPEED;
+//			character.setY(proposedNewY);
+//			character.setMoveUp(true);
+//		}
+//		if(!pressedKeys.contains(KeyEvent.VK_UP) && pressedKeys.contains(KeyEvent.VK_DOWN)){
+//			proposedNewY+=P_SPEED;
+//			character.setY(proposedNewY);
+//			character.setMoveDown(true);
+//		}
+//		if(pressedKeys.contains(KeyEvent.VK_RIGHT) && !pressedKeys.contains(KeyEvent.VK_LEFT)){
+//			proposedNewX+=P_SPEED;
+//			character.setX(proposedNewX);
+//			character.setMoveRight(true);
+//		}
+//		if(!pressedKeys.contains(KeyEvent.VK_RIGHT) && pressedKeys.contains(KeyEvent.VK_LEFT)){
+//			proposedNewX-=P_SPEED;
+//			character.setX(proposedNewX);
+//			character.setMoveLeft(true);
+//		}
+		if(pressedKeys.contains(KeyEvent.VK_W)){
 			proposedNewY-=P_SPEED;
 			character.setY(proposedNewY);
 			character.setMoveUp(true);
 		}
-		if(!pressedKeys.contains(KeyEvent.VK_UP) && pressedKeys.contains(KeyEvent.VK_DOWN)){
-			proposedNewY+=P_SPEED;
+		if(pressedKeys.contains(KeyEvent.VK_A)){
+			proposedNewY-=P_SPEED;
+			character.setY(proposedNewX);
+			character.setMoveUp(true);
+		}
+		if(pressedKeys.contains(KeyEvent.VK_S)){
+			proposedNewY-=P_SPEED;
 			character.setY(proposedNewY);
-			character.setMoveDown(true);
+			character.setMoveUp(true);
 		}
-		if(pressedKeys.contains(KeyEvent.VK_RIGHT) && !pressedKeys.contains(KeyEvent.VK_LEFT)){
-			proposedNewX+=P_SPEED;
-			character.setX(proposedNewX);
-			character.setMoveRight(true);
-		}
-		if(!pressedKeys.contains(KeyEvent.VK_RIGHT) && pressedKeys.contains(KeyEvent.VK_LEFT)){
-			proposedNewX-=P_SPEED;
-			character.setX(proposedNewX);
-			character.setMoveLeft(true);
+		if(pressedKeys.contains(KeyEvent.VK_D)){
+			proposedNewY-=P_SPEED;
+			character.setY(proposedNewY);
+			character.setMoveUp(true);
 		}
 	}
 
@@ -621,11 +643,6 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 	}
 	@Override
 	public void reloadWeapon() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void fireWeapon() {
 		// TODO Auto-generated method stub
 		
 	}
