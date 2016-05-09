@@ -11,37 +11,37 @@ public interface ItemResources {
 	public int sell(Misc gold);
 	
 	//Armor
-	final Armor yourarmor = new Armor("Armor", "It's Armor", 0, 0, 100);
-	final Armor enemyarmor = new Armor("Armor", "It's Armor", 0, 0, 100);
+	final Armor yourarmor = new Armor("Armor", "It's Armor", 0, 0, 100,"");
+	final Armor enemyarmor = new Armor("Armor", "It's Armor", 0, 0, 100,"");
 	
 	//Medkits
-	final MedKit smallkit=new MedKit("Small Medkit","It's crap.",0, 5, REGEN);
-	final MedKit medkit=new MedKit("Medium Medkit","It's better.",0, 20, NO_EFFECT);
-	final MedKit bigkit=new MedKit("Big Medkit","It's the best.",0, 30, NO_EFFECT);
+	final MedKit smallkit=new MedKit("Small Medkit","It's crap.",0, 5, REGEN,"");
+	final MedKit medkit=new MedKit("Medium Medkit","It's better.",0, 20, NO_EFFECT,"");
+	final MedKit bigkit=new MedKit("Big Medkit","It's the best.",0, 30, NO_EFFECT,"");
 	
 	//Ammo
-	final Ammo pistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 0, 1, NO_EFFECT);
-	final Ammo rifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 0, 1, NO_EFFECT);
-	final Ammo heavyAmmo = new Ammo("Heavy Ammo", "It's heavy ammo", 0, 1, NO_EFFECT);
-	final Ammo SMGAmmo=new Ammo("SMG Ammo", "It's SMG ammo", 0, 1, NO_EFFECT);
-	final Ammo explosiveAmmo = new Ammo("Explosive Ammo", "It's explosive ammo", 0, 1, NO_EFFECT);
+	final Ammo pistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 0, 1, NO_EFFECT,"");
+	final Ammo rifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 0, 1, NO_EFFECT,"");
+	final Ammo heavyAmmo = new Ammo("Heavy Ammo", "It's heavy ammo", 0, 1, NO_EFFECT,"");
+	final Ammo SMGAmmo=new Ammo("SMG Ammo", "It's SMG ammo", 0, 1, NO_EFFECT,"");
+	final Ammo explosiveAmmo = new Ammo("Explosive Ammo", "It's explosive ammo", 0, 1, NO_EFFECT,"");
 	
-	final Ammo firePistolAmmo=new Ammo("Burning Pistol Ammo", "It's burning pistol ammo", 0, 1, FIRE);
-	final Ammo fireRifleAmmo=new Ammo("Burning Rifle Ammo", "It's burning rifle ammo", 0, 1, FIRE);
-	final Ammo fireHeavyAmmo = new Ammo("Burning Heavy Ammo", "It's burning heavy ammo", 0, 1, FIRE);
-	final Ammo fireSMGAmmo=new Ammo("Burning SMG Ammo", "It's burning SMG ammo", 0, 1, FIRE);
-	final Ammo fireExplosiveAmmo = new Ammo("Burning Explosive Ammo", "It's burning explosive ammo", 0, 1, FIRE);
+	final Ammo firePistolAmmo=new Ammo("Burning Pistol Ammo", "It's burning pistol ammo", 0, 1, FIRE,"");
+	final Ammo fireRifleAmmo=new Ammo("Burning Rifle Ammo", "It's burning rifle ammo", 0, 1, FIRE,"");
+	final Ammo fireHeavyAmmo = new Ammo("Burning Heavy Ammo", "It's burning heavy ammo", 0, 1, FIRE,"");
+	final Ammo fireSMGAmmo=new Ammo("Burning SMG Ammo", "It's burning SMG ammo", 0, 1, FIRE,"");
+	final Ammo fireExplosiveAmmo = new Ammo("Burning Explosive Ammo", "It's burning explosive ammo", 0, 1, FIRE,"");
 	
-	final Ammo stunPistolAmmo=new Ammo("Stunning Pistol Ammo", "It's stunning pistol ammo", 0, 1, STUN);
-	final Ammo stunRifleAmmo=new Ammo("Stunning Rifle Ammo", "It's stunning rifle ammo", 0, 1, STUN);
-	final Ammo stunHeavyAmmo = new Ammo("Stunning Heavy Ammo", "It's stunning heavy ammo", 0, 1, STUN);
-	final Ammo stunSMGAmmo=new Ammo("Stunning SMG Ammo", "It's stunning SMG ammo", 0, 1, STUN);
-	final Ammo stunExplosiveAmmo = new Ammo("Stunning Explosive Ammo", "It's stunning explosive ammo", 0, 1, STUN);
+	final Ammo stunPistolAmmo=new Ammo("Stunning Pistol Ammo", "It's stunning pistol ammo", 0, 1, STUN,"");
+	final Ammo stunRifleAmmo=new Ammo("Stunning Rifle Ammo", "It's stunning rifle ammo", 0, 1, STUN,"");
+	final Ammo stunHeavyAmmo = new Ammo("Stunning Heavy Ammo", "It's stunning heavy ammo", 0, 1, STUN,"");
+	final Ammo stunSMGAmmo=new Ammo("Stunning SMG Ammo", "It's stunning SMG ammo", 0, 1, STUN,"");
+	final Ammo stunExplosiveAmmo = new Ammo("Stunning Explosive Ammo", "It's stunning explosive ammo", 0, 1, STUN,"");
 	
-	//final Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, NO_EFFECT);
-	final Ammo grenadeAmmo = new Ammo("Grenade Ammo", "It's grenade ammo", 0, 1, NO_EFFECT);
-	final Ammo incendiaryGrenadeAmmo = new Ammo("Incendiary Grenade Ammo", "It's incendiary grenade ammo", 0, 1, FIRE);
-	final Ammo energyAmmo=new Ammo("Energy Ammo", "It's energy ammo", 0, 2, NO_EFFECT);
+	//final Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, NO_EFFECT,"");
+	final Ammo grenadeAmmo = new Ammo("Grenade Ammo", "It's grenade ammo", 0, 1, NO_EFFECT,"");
+	final Ammo incendiaryGrenadeAmmo = new Ammo("Incendiary Grenade Ammo", "It's incendiary grenade ammo", 0, 1, FIRE,"");
+	final Ammo energyAmmo=new Ammo("Energy Ammo", "It's energy ammo", 0, 2, NO_EFFECT,"");
 	
 	//Weapons
 	/**
@@ -121,6 +121,6 @@ public interface ItemResources {
 	final Weapons[] Explosives = { explosives1GradeC1, explosives6GradeB1};
 	
 	// Misc
-	final Misc gold = new Misc("Gold", "Get more of this and you're rich!", true , 0, NO_EFFECT);
-	final Misc scrap = new Misc("Scrap Metal", "Useless trash.",false , 1, NO_EFFECT);
+	final Misc gold = new Misc("Gold", "Get more of this and you're rich!", true , 0, NO_EFFECT,"");
+	final Misc scrap = new Misc("Scrap Metal", "Useless trash.",false , 1, NO_EFFECT,"");
 }

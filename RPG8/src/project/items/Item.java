@@ -60,6 +60,10 @@ public abstract class Item implements Selectable {
 		return itemImage;
 	}
 	
+	public void displayItem(String name, String desc, String image){
+		
+	}
+	
 	public void confirm() {
 		// TODO Auto-generated method stub
 	

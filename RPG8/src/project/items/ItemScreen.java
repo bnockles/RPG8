@@ -43,12 +43,12 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 
 	//Qing Ning 
 	public void createImages() {
-		URL meleeurl = getClass().getResource(Melee[0].getGunImage());
-		URL pistolurl = getClass().getResource(Pistol[2].getGunImage());
-		URL rifleurl = getClass().getResource(Rifles[0].getGunImage());
-		URL heavyurl = getClass().getResource(Heavy[0].getGunImage());
-		URL smgurl = getClass().getResource(SMG[0].getGunImage());
-		URL explosiveurl = getClass().getResource(Explosives[0].getGunImage());
+		URL meleeurl = getClass().getResource(Melee[0].getItemImage());
+		URL pistolurl = getClass().getResource(Pistol[2].getItemImage());
+		URL rifleurl = getClass().getResource(Rifles[0].getItemImage());
+		URL heavyurl = getClass().getResource(Heavy[0].getItemImage());
+		URL smgurl = getClass().getResource(SMG[0].getItemImage());
+		URL explosiveurl = getClass().getResource(Explosives[0].getItemImage());
 
 		try {
 			melee = ImageIO.read(meleeurl);
