@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-public class MainMap {
+public class MainMap implements BattleInterface{
 	int region;
 	BufferedImage map;
 	ArrayList<Obstacle> obstacles;
@@ -26,16 +26,20 @@ public class MainMap {
 		}
 		
 	}
-	public int getRegion() {
-		return region;
-	}
-	public BufferedImage getMap() {
-		return map;
-	}
+	
 	public ArrayList<Obstacle> getObstacles(){
 		return obstacles;
 	}
 	public ArrayList<Boundaries> getBoundaries(){
 		return boundaries;
 	}
+	
+	public int getRegion() {
+		return region;
+	}
+	
+	public BufferedImage getMap() {
+		return map;
+	}
+
 }
