@@ -9,6 +9,7 @@ public interface ItemResources {
 	
 	public int buy(Misc gold);
 	public int sell(Misc gold);
+	public String printStats(double[] stats);
 	
 	//Armor
 	final Armor yourarmor = new Armor("Armor", "It's Armor", 0, 0, 100,"");
