@@ -1,9 +1,12 @@
 package project.save;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Hashtable;
 
 /*
  * @author Wilson Wat
@@ -17,21 +20,19 @@ import java.util.Hashtable;
 public class Save {
 	
 	private Hashtable t = new Hashtable();
-	private int fileNum;
 	private String name;
-	
-	public Save(int fileNum, String name) {
-		this.fileNum = fileNum;
+
+	public Save(String name) {
 		this.name = name;
-		t = SaveUtility.doLoad(fileNum);
+		this.t = doLoad();
 	}
 	
 	public void saveData() {
-		System.out.printf("Saving %s\'s File...\n\n", name);
+		System.out.printf("Saving %s.save\n", name);
 		
 		try {
 			// Creating File/Object output stream
-			FileOutputStream fileOut = new FileOutputStream("Save" + fileNum);
+			FileOutputStream fileOut = new FileOutputStream(name + ".save");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
 			// Writing Hashtable Object
@@ -48,11 +49,42 @@ public class Save {
 		}		
 	}
 	
-	/*
-	 * Below are the read and write methods that teams will add according to their needs.
-	 */
+	private Hashtable doLoad() {
+		System.out.printf("Loading %s.save\n", name);
+		
+		Hashtable h = new Hashtable();
+		
+		try {
+			// Creating File/Object input stream
+			FileInputStream fileIn = new FileInputStream(name + ".save");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+
+			// Loading Hashtable Object
+			h = (Hashtable)in.readObject();
+
+			// Closing all input streams
+			in.close();
+			fileIn.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch(FileNotFoundException e) {
+			System.out.println("No File.");
+			System.out.println("Creating default save file.");
+			// h = doDefaultSave();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println();
+		return h;
+	}
 	
 	// Save method
+	public void saveData(String id, String data) {
+		t.put(id, data);
+	}
+	
 	public void saveData(String id, int data) {
 		t.put(id, data);
 	}
@@ -66,10 +98,6 @@ public class Save {
 	}
 	
 	public void saveData(String id, boolean data) {
-		t.put(id, data);
-	}
-	
-	public void saveData(String id, String data) {
 		t.put(id, data);
 	}
 	
