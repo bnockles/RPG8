@@ -413,38 +413,27 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 		int randomNumber = (int) (Math.random()*4+2);
 		int randomNumberX;
 		int randomNumberY;
-		for(int i=0; i<enemy1Num; i++)
+		for(int i=0; i<enemy1Num+randomNumber; i++)
 		{
-			/**
-			 * YIFAN READ THIS
-			 * constructor parameter String for Genemy(String s)
-			 * s represents the movement pattern
-			 * each set of letter and number gives the direction and how many steps the enemy takes
-			 *  interface called setmovement which has methods that does:
-			 *  - reads the string and interprets it
-			 *  - iterator that checks the index
-			*/
-			// enemies= new Genemy("w+10/s+3/d+5/a+8")
+			EnemyAI temp;
+			if (i < enemy1Num) 
+				temp = a;
+			else
+				temp = b;
 			randomNumberX = (int) (Math.random()*width-100);
 			randomNumberY = (int) (Math.random()*height-100);
-			int[] randomEnemyStats = {(int) (Math.random()*300+100),(int) (Math.random()*400+200),(int) (Math.random()*30+30),(int) (Math.random()*400+100)};
-			if (a.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,randomEnemyStats,weapon1,ENEMYMOVE));
-			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,randomEnemyStats,weapon1,ENEMYMOVE));
+			int[] randomEnemyStats = {(int) (Math.random()*300+100),
+									(int) (Math.random()*400+200),
+									(int) (Math.random()*30+30),
+									(int) (Math.random()*400+100)};
+			if (temp.getEnemyClass() == KENEMY)
+				enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,randomEnemyStats,weapon1,ENEMYMOVE));
+			else 
+				enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,randomEnemyStats,weapon1,ENEMYMOVE));
 			enemiesOnScreen.get(i).setX(randomNumberX);
 			enemiesOnScreen.get(i).setY(randomNumberY);
 			enemiesOnScreen.get(i).setSpawnedX(randomNumberX);
 			enemiesOnScreen.get(i).setSpawnedY(randomNumberY);
-		}
-		for(int j=0; j<randomNumber-enemy1Num; j++){
-			randomNumberX = (int) (Math.random()*(width-100));
-			randomNumberY = (int) (Math.random()*(height-100));
-			int[] randomEnemyStats = {(int) (Math.random()*200+50),(int) (Math.random()*400+200),(int) (Math.random()*30+30),(int) (Math.random()*400+100)};
-			if (b.getEnemyClass() == KENEMY) enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,randomEnemyStats,weapon1,ENEMYMOVE));
-			else enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,randomEnemyStats,weapon1,ENEMYMOVE));
-			enemiesOnScreen.get(j).setX(randomNumberX);
-			enemiesOnScreen.get(j).setY(randomNumberY);
-			enemiesOnScreen.get(j).setSpawnedX(randomNumberX);
-			enemiesOnScreen.get(j).setSpawnedY(randomNumberY);
 		}
 	}
 	
