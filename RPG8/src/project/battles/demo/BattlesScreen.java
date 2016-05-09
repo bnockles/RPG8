@@ -589,8 +589,7 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public void fireWeapon(Mouse) {
+	public void fireWeapon(MouseEvent e) {
 		int cursorX = e.getX();
 		int cursorY = e.getY();
 		int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
@@ -622,6 +621,11 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 	}
 	@Override
 	public void reloadWeapon() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void fireWeapon() {
 		// TODO Auto-generated method stub
 		
 	}
