@@ -19,6 +19,7 @@ public abstract class Item implements Selectable {
 		description=desc;
 		this.cost=cost;
 		this.effect = effect;
+		this.itemImage=itemImage;
 		/** possible param String imageName
 		with a method that paint pictures
 		current status: no idea if we do or not
