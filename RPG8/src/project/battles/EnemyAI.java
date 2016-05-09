@@ -5,7 +5,6 @@ import java.awt.Point;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
-
 import project.battles.demo.BattlesScreen;
 import project.directors.Character;
 import project.items.Weapon;
@@ -66,7 +65,7 @@ public abstract class EnemyAI extends Character{
 		if(checkAlive()){
 			//do something
 			//System.out.println("hello");
-			checkForPlayer();
+			visioncone = checkForPlayer(this);
 			if(targetLock)
 				reaction();
 			else{
@@ -125,25 +124,35 @@ public abstract class EnemyAI extends Character{
 			return false;
 		return true;
 	}
-	private void checkForPlayer(){
+	public static Arc2D.Double checkForPlayer(EnemyAI enemy){
 		//System.out.println("hello");
-		int arcX = x+(width/2)-visionrange/2;
-		int arcY = y+(height/2)-visionrange/2;
+		int arcX = enemy.getX()+(enemy.getWidth()/2)-enemy.getVisionrange()/2;
+		int arcY = enemy.getY()+(enemy.getHeight()/2)-enemy.getVisionrange()/2;
 		int begindegree = 45;
-		if(moveLeft)
+		if(enemy.isMoveLeft())
 			begindegree+=90;
-		if(moveDown)
+		if(enemy.isMoveDown())
 			begindegree+=180;
-		if(moveRight)
+		if(enemy.isMoveRight())
 			begindegree+=270;
-		visioncone = new Arc2D.Double(arcX,arcY, visionrange, visionrange, begindegree, 90, Arc2D.PIE);
+		Arc2D.Double visioncone = new Arc2D.Double(arcX,arcY, enemy.getVisionrange(), enemy.getVisionrange(), begindegree, 90, Arc2D.PIE);
 		//90, 225 change it to line of sight degree - 45 degree + 45
 		if(visioncone.intersects(BattlesScreen.character.getBounds())){
-			targetLock = true;
+			enemy.setTargetLock(true);
 		}
+		return visioncone;
+	}
+	public void setTargetLock(boolean targetLock) {
+		this.targetLock = targetLock;
 	}
 	public Arc2D.Double getVisioncone() {
 		return visioncone;
+	}
+	public int getVisionrange() {
+		return visionrange;
+	}
+	public void setVisionrange(int visionrange) {
+		this.visionrange = visionrange;
 	}
 	public int getEnemyClass() {
 		return enemyClass;

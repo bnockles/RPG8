@@ -9,7 +9,7 @@ import project.battles.Projectiles;
 import project.battles.demo.BattlesScreen;
 import project.save.ItemState;
 import project.items.Weapon;
-public abstract class Character {
+public abstract class Character implements project.battles.Animation{
 
 	//public abstract ItemState getItems();
 	//public abstract OverworldSpriteControl move();
@@ -52,6 +52,18 @@ public abstract class Character {
 	
 	public Weapon weapon;
 	
+	public boolean isMoveUp() {
+		return moveUp;
+	}
+	public boolean isMoveDown() {
+		return moveDown;
+	}
+	public boolean isMoveLeft() {
+		return moveLeft;
+	}
+	public boolean isMoveRight() {
+		return moveRight;
+	}
 	protected Character(BufferedImage[][] images,int[] stats, boolean hostile, Weapon weapon){
 		//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 		// we might create allies if we do this hostile method.
