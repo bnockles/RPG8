@@ -8,7 +8,7 @@ public interface ItemResources {
 	static final int REGEN = 4;
 	
 	public int buy(Misc gold);
-	public int sell(Misc gold);
+	public int sell(Misc gold, Misc scrap);
 	public String printStats(double[] stats);
 	
 	//Armor
