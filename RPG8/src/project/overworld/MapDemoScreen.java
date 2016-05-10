@@ -99,29 +99,29 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		mapSections.add(new MainMap(1, "/images/Map/test2.jpeg", o2, b2));
 		mapSections.add(new MainMap(2, "/images/Map/testTown.png", o3, b3));
 		URL url = getClass().getResource("/images/Map/grey.jpg");
-		try {
-			i1 = ImageIO.read(url);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		URL url1 = getClass().getResource("images/Map/blue/jpg");
-		try {
-			i2 = ImageIO.read(url1);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		URL url2 = getClass().getResource("images/Map/green.jpg");
-		try {
-			i3 = ImageIO.read(url2);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		nums[0] = 8;
-		nums[1] = 9;
-		nums[2] = 0;
+//		try {
+//			i1 = ImageIO.read(url);
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//		URL url1 = getClass().getResource("images/Map/blue/jpg");
+//		try {
+//			i2 = ImageIO.read(url1);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		URL url2 = getClass().getResource("images/Map/green.jpg");
+//		try {
+//			i3 = ImageIO.read(url2);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		nums[0] = 8;
+//		nums[1] = 9;
+//		nums[2] = 0;
 	}
 
 	public void checkCollision() {
