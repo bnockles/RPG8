@@ -9,7 +9,7 @@ public class EnemyDynamic extends storyDemo{
 		System.out.println("enemy strength " + enemy.strength);
 	}
 	public static void detectHit() {
-		if(Math.abs(Swarm.getX()-enemy.getX()) + Math.abs(Swarm.getY()-enemy.getY()) < 20)
+//		if(Math.abs(Swarm.getX()-enemy.getX()) + Math.abs(Swarm.getY()-enemy.getY()) < 20)
 		{
 			strengthen();
 			enemy.randomX();
