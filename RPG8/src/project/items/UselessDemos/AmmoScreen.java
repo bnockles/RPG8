@@ -1,4 +1,4 @@
-package project.items;
+package project.items.UselessDemos;
 
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
