@@ -9,7 +9,12 @@ import java.awt.image.BufferedImage;
 import project.directors.Game;
 import project.directors.Screen;
 import project.directors.UtilityMethods;
+
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 public class MapDemoScreen extends Screen implements KeyListener {
 	static ArrayList<Region> regions; // use these to change areas
@@ -40,7 +45,9 @@ public class MapDemoScreen extends Screen implements KeyListener {
 	static int obstacleNum;
 	static String type;
 	static int zone;
-
+	static BufferedImage i1;
+	static BufferedImage i2;
+	static BufferedImage i3;
 	// hello
 	public MapDemoScreen(Game game) {
 		super(game);
@@ -90,6 +97,27 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		mapSections.add(new MainMap(0, "/images/Map/test.jpeg", o1, b1));
 		mapSections.add(new MainMap(1, "/images/Map/test2.jpeg", o2, b2));
 		mapSections.add(new MainMap(2, "/images/Map/testTown.png", o3, b3));
+		URL url = getClass().getResource("/images/Map/grey.jpg");
+		try {
+			i1 = ImageIO.read(url);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		URL url1 = getClass().getResource("images/Map/blue/jpg");
+		try {
+			i2 = ImageIO.read(url1);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		URL url2 = getClass().getResource("images/Map/green.jpg");
+		try {
+			i3 = ImageIO.read(url2);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void checkCollision() {
