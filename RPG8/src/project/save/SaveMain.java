@@ -21,11 +21,6 @@ public class SaveMain {
 		
 		System.out.println(file1.getInt("testInt"));
 		System.out.println(file1.getString("testString"));
-<<<<<<< HEAD
-=======
-		
-		file1.saveData();
->>>>>>> 27b4a1160dc90b015bea6ed1693ce06adc86041a
 		
 		ArrayList<Integer> testArr = new ArrayList<Integer>();
 		testArr.add(1);
@@ -34,15 +29,11 @@ public class SaveMain {
 		testArr.add(4);
 		
 		file2.saveData("testInventory", testArr);
-<<<<<<< HEAD
 		
 		Save[] saves = {file1, file2};
 		for (Save file: saves) {
 			file.saveData();
 		}
-=======
-		file2.saveData();
->>>>>>> 27b4a1160dc90b015bea6ed1693ce06adc86041a
 		
 		TestSave.testRead();
 	}
