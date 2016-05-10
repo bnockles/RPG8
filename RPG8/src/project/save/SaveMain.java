@@ -9,19 +9,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SaveMain {
+	
+	// This would be moved to Game.java and replace the variable 'openGame'
 
 	public static void main(String[] args) {
-		// This would be moved to Game.java and replace the variable 'openGame'
-		Save file1 = SaveUtility.getSaveFile(1);
-		Save file2 = SaveUtility.getSaveFile(2);
+		BattleSave file1 = new BattleSave("battles");
+		CharacterSave file2 = new CharacterSave("characters");
 		
 		file1.saveData("testInt", 1234);
 		file1.saveData("testString", "Hello world.");
 		
 		System.out.println(file1.getInt("testInt"));
 		System.out.println(file1.getString("testString"));
-
-		file1.saveData();
 		
 		ArrayList<Integer> testArr = new ArrayList<Integer>();
 		testArr.add(1);
@@ -31,10 +30,12 @@ public class SaveMain {
 		
 		file2.saveData("testInventory", testArr);
 		
-		ArrayList<Integer> resultArr = file2.getIntArrayList("testInventory");
-		System.out.println(Arrays.toString(resultArr.toArray()));
+		Save[] saves = {file1, file2};
+		for (Save file: saves) {
+			file.saveData();
+		}
 		
-		file2.saveData();
+		TestSave.testRead();
 	}
 
 }

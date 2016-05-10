@@ -15,13 +15,16 @@ import java.util.Hashtable;
 
 public class SaveUtility {
 	
+	/*
 	public static final int NAME_0 = 0;
 	public static final int NAME_1 = 1;
 	public static final int NAME_2 = 2;
 	
 	public static final int NUM_OF_SAVE_FILES = 3;
+	*/
 	
 	public static Save getSaveFile(int choice) {
+		/*
 		if (choice < NUM_OF_SAVE_FILES && choice > -1) {
 			if (choice == NAME_0) return new Save(choice, "Alice");
 			if (choice == NAME_1) return new Save(choice, "Bob");
@@ -30,6 +33,30 @@ public class SaveUtility {
 		
 		System.out.printf("I'm sorry, but there are only %d save slots available\n", NUM_OF_SAVE_FILES);
 		return null;
+		*/
+		return new Save();
+	}
+	
+	public static void saveData() {
+		System.out.println("Saving File");
+		
+		try {
+			// Creating File/Object output stream
+			FileOutputStream fileOut = new FileOutputStream("Save");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+			// Writing Hashtable Object
+			out.writeObject(t);
+
+			// Closing all output streams
+			out.close();
+			fileOut.close();
+
+		} catch(FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
 	}
 	
 	public static Hashtable doLoad(int fileNum) {
