@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-public class MainMap implements BattleInterface{
+public class MainMap{
 	int region;
 	BufferedImage map;
 	ArrayList<Obstacle> obstacles;
