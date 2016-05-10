@@ -7,6 +7,7 @@ public interface ItemResources {
 	static final int STUN = 3;
 	static final int REGEN = 4;
 	
+	//For Shops
 	public int buy(Misc gold);
 	public int sell(Misc gold, Misc scrap);
 	public String printStats(double[] stats);
