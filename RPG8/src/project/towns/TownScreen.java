@@ -59,7 +59,7 @@ public class TownScreen extends Screen implements KeyListener{
 	public static final int R_SHOP = 5;
 	ArrayList<Integer>itemN = new ArrayList<Integer>();
 	Timer timer = new Timer();
-	static int status = TOWN;
+	 int status = TOWN;
 	ArrayList<String> itemListW = new ArrayList<String>(){{add("Weapon A"); add("Weapon B"); add("Weapon C"); add("Weapon D");}};
 	ArrayList<String> itemListA = new ArrayList<String>(){{add("Armor A"); add("Armor B"); add("Armor C"); add("Armor D");}};
 	ArrayList<String> itemListC = new ArrayList<String>(){{add("Health"); add("Ammo A"); add("Ammo B"); add("Ammo C");}};
@@ -145,30 +145,30 @@ public class TownScreen extends Screen implements KeyListener{
 	}	
 	boolean yx= false;
 	int lottry;
-//	public void delay( Graphics2D g2,String msg,int x , int y , int status , int status2, int delaytime ){
-//		
-//		
-//		
-//		Font myFont = new Font ("Courier New", 1, 27);
-//	
-//		g2.setFont (myFont);
-//	
-//		g2.drawString(msg  , x, y);
-//		
-//	    	Timer t = new Timer();
-//	    	t.schedule(new TimerTask() {
-//
-//	    	            @Override
-//	    	            public void run() {
-////	    	               status = ARMOR_STORE;
-////	    	               status2 = ARMOR_STORE;
-////	    	               update();	
-////	    	            }
-////	    	        }, 2000);
-//		
-//		
-//		//hi
-//	}
+	public void delay( Graphics2D g2,String msg,int x , int y , final int statusx , final int statusxx, int delaytime ){
+		
+		
+		
+		Font myFont = new Font ("Courier New", 1, 27);
+	
+		g2.setFont (myFont);
+	
+		g2.drawString(msg  , x, y);
+		
+	    	Timer t = new Timer();
+	    	t.schedule(new TimerTask() {
+
+	    	            @Override
+	    	            public void run() {
+	    	               status = statusx;
+	    	               status2 =statusxx;
+	    	               update();	
+	    	            }
+	    	        }, delaytime);
+		
+		
+		//hids
+	}
     //Jingwen COde
 	public void paintScreen(Graphics2D g2) {
 		// TODO Auto-generated method stub
