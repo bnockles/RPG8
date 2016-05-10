@@ -48,6 +48,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 	static BufferedImage i1;
 	static BufferedImage i2;
 	static BufferedImage i3;
+	static int[] nums;
 	// hello
 	public MapDemoScreen(Game game) {
 		super(game);
@@ -118,6 +119,9 @@ public class MapDemoScreen extends Screen implements KeyListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		nums[0] = 8;
+		nums[1] = 9;
+		nums[2] = 0;
 	}
 
 	public void checkCollision() {
