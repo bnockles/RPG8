@@ -1,6 +1,5 @@
-package project.items;
+package project.items.UselessDemos;
 
-import project.items.MedKitScreen;
 import project.directors.Screen;
 
 public class MedKitDemo extends project.directors.Game{

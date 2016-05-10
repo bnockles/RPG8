@@ -1,4 +1,4 @@
-package project.items;
+package project.items.UselessDemos;
 
 import project.directors.Game;
 import project.directors.Screen;

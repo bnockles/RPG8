@@ -1,5 +1,5 @@
 
-package project.items;
+package project.items.UselessDemos;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
