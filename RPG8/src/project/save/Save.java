@@ -17,9 +17,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
 
-public class Save {
+public abstract class Save {
 	
-	private Hashtable t = new Hashtable();
+	protected Hashtable t;
 	private String name;
 
 	public Save(String name) {
@@ -101,11 +101,11 @@ public class Save {
 		t.put(id, data);
 	}
 	
-	public void saveData(String id, ArrayList<Integer> data) {
-		t.put(id, data);
+	// Read methods
+	public String getString(String id) {
+		return t.get(id).toString();
 	}
 	
-	// Read methods
 	public int getInt(String id) {
 		return (int)t.get(id);
 	}
@@ -122,11 +122,4 @@ public class Save {
 		return (boolean)t.get(id);
 	}
 	
-	public String getString(String id) {
-		return t.get(id).toString();
-	}
-	
-	public ArrayList<Integer> getIntArrayList(String id) {
-		return (ArrayList<Integer>) t.get(id);
-	}
 }

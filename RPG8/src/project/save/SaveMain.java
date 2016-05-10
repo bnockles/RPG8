@@ -13,23 +13,27 @@ public class SaveMain {
 	// This would be moved to Game.java and replace the variable 'openGame'
 
 	public static void main(String[] args) {
-		Save file1 = new Save("battles");
-		Save file2 = new Save("characters");
+		BattleSave file1 = new BattleSave("battles");
+		CharacterSave file2 = new CharacterSave("characters");
 		
 		file1.saveData("testInt", 1234);
 		file1.saveData("testString", "Hello world.");
 		
 		System.out.println(file1.getInt("testInt"));
 		System.out.println(file1.getString("testString"));
-
+		
 		file1.saveData();
 		
-		TestSave.testAdd();
+		ArrayList<Integer> testArr = new ArrayList<Integer>();
+		testArr.add(1);
+		testArr.add(2);
+		testArr.add(3);
+		testArr.add(4);
 		
-		ArrayList<Integer> resultArr = file2.getIntArrayList("testInventory");
-		System.out.println(Arrays.toString(resultArr.toArray()));
-		
+		file2.saveData("testInventory", testArr);
 		file2.saveData();
+		
+		TestSave.testRead();
 	}
 
 }
