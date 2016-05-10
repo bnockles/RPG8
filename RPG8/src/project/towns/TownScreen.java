@@ -145,6 +145,30 @@ public class TownScreen extends Screen implements KeyListener{
 	}	
 	boolean yx= false;
 	int lottry;
+	public void delay( Graphics2D g2,String msg,int x , int y , int status , int status2, int delaytime ){
+		
+		
+//		Font myFont = new Font ("Courier New", 1, 27);
+//		
+//
+//		g2.setFont (myFont);
+//	
+//		g2.drawString("Attempting To Enter Armor Store"  , 200, 500);
+//		
+//	    	Timer t = new Timer();
+//	    	t.schedule(new TimerTask() {
+//
+//	    	            @Override
+//	    	            public void run() {
+//	    	               status = ARMOR_STORE;
+//	    	               status2 = ARMOR_STORE;
+//	    	               update();	
+//	    	            }
+//	    	        }, 2000);
+		
+		
+		
+	}
     //Jingwen COde
 	@Override
 	public void paintScreen(Graphics2D g2) {
