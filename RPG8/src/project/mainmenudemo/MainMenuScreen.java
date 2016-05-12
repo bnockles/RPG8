@@ -133,7 +133,7 @@ public class MainMenuScreen extends Screen implements KeyListener{
 	public void paintScreen(Graphics2D g2) {
 		
 		
-		if(mtype==4){
+		if(mtype==DynamicMenu.CREDITS_MENU){
 			g2.setColor(colors[0]);
 			g2.fillRect(0, 0, width, height);
 			g2.setColor(colors[1]);
@@ -155,6 +155,32 @@ public class MainMenuScreen extends Screen implements KeyListener{
 //			g2.drawString(options[2], 390, 470);
 //			g2.drawString(options[3], 420, 590);
 //			g2.drawString(options[4], 450, 710);
+			
+		}else if(mtype==DynamicMenu.ITEM_DESCRIPTION_MENU){
+			g2.setColor(colors[0]);
+			g2.fillRect(0, 0, width, height);
+			g2.setColor(colors[1]);
+			
+			BufferedImage itemPic = null;
+			try {
+			    itemPic = ImageIO.read(new File(pics[0]));
+			} catch (IOException e) {
+			}
+			
+			
+			g2.fillRect(125,50, 750,200);
+		
+			g2.fillRect(350, 280, 375,100);
+			
+			g2.drawImage(itemPic, width/2-150 , height/2, 300, 300, null);
+			
+			Font times = new Font ("TimesRoman", Font.CENTER_BASELINE, 60);
+			Font subTimes = new Font ("TimesRoman", Font.CENTER_BASELINE, 50);
+			g2.setFont(times);
+			g2.setColor(colors[0]);
+			g2.drawString(options[0], width/2 - 40,165);
+			g2.setFont(subTimes);
+			g2.drawString(options[1], width/2 - 50, 350);
 			
 		}else{
 			g2.setColor(colors[0]);
