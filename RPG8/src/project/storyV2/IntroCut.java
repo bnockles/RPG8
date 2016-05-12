@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 import java.util.List;
 
 public class IntroCut extends Cutscenes {
@@ -34,7 +33,7 @@ public class IntroCut extends Cutscenes {
 		g2.setColor(palette.get(1));
 		g2.drawString(objective, (width-x-textWidth), y+textHeight);
 		this.image = image;
-		System.out.println(x);
+//		System.out.println(x);
 	}
 	private void makeAdjust(Graphics2D g2){
 		int textWidth = g2.getFontMetrics().stringWidth(missionName);
@@ -42,7 +41,7 @@ public class IntroCut extends Cutscenes {
 		double accel = (Math.abs(x+textWidth/2-(double)width/2))/(width);
 		if(crossed)accel = (Math.abs(x-textWidth/2+(double)width/2))/(width);
 		if(accel<.03)crossed = true;
-		System.out.println(accel);
+//		System.out.println(accel);
 		x += (x<(textWidth+width))?velocity*accel:0;
 	}
 

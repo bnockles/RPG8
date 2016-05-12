@@ -2,7 +2,6 @@ package project.storyV2;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BossCut extends Cutscenes {
