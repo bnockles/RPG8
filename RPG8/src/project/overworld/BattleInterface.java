@@ -5,6 +5,6 @@ import java.util.ArrayList;
 
 public interface BattleInterface {
 	
-	public boolean isDead(boolean state);
+	public boolean isDead();
 	
 }
