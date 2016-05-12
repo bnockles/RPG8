@@ -107,7 +107,11 @@ public class MapDemoScreen extends Screen implements KeyListener {
 			}
 		}
 	}
-
+	public static void teleportToZone(int zone,int[] coors){
+		playerRegion = zone;
+		xPos = coors[0];
+		yPos = coors[1];
+	}
 	public void checkCollision() {
 		hitbox = new Rectangle(xPos, yPos, xSize, ySize);
 		for (int i = 0; i < mapSections.size(); i++) {
