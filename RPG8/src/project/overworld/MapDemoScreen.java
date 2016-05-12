@@ -45,9 +45,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 	static int obstacleNum;
 	static String type;
 	static int zone;
-	static BufferedImage i1;
-	static BufferedImage i2;
-	static BufferedImage i3;
+	static ArrayList<BufferedImage> i1;
 	static int[] nums;
 	// hello
 	public MapDemoScreen(Game game) {
@@ -58,6 +56,7 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		ArrayList<Boundaries> b2 = new ArrayList<Boundaries>();
 		ArrayList<Obstacle> o3 = new ArrayList<Obstacle>();
 		ArrayList<Boundaries> b3 = new ArrayList<Boundaries>();
+		i1 = new ArrayList<BufferedImage>();
 		mapSections = new ArrayList<MainMap>();
 		regions = new ArrayList<Region>();
 		touching = false;
@@ -98,30 +97,15 @@ public class MapDemoScreen extends Screen implements KeyListener {
 		mapSections.add(new MainMap(0, "/images/Map/test.jpeg", o1, b1));
 		mapSections.add(new MainMap(1, "/images/Map/test2.jpeg", o2, b2));
 		mapSections.add(new MainMap(2, "/images/Map/testTown.png", o3, b3));
-		URL url = getClass().getResource("/images/Map/grey.jpg");
-//		try {
-//			i1 = ImageIO.read(url);
-//		} catch (IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-//		URL url1 = getClass().getResource("images/Map/blue/jpg");
-//		try {
-//			i2 = ImageIO.read(url1);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		URL url2 = getClass().getResource("images/Map/green.jpg");
-//		try {
-//			i3 = ImageIO.read(url2);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		nums[0] = 8;
-//		nums[1] = 9;
-//		nums[2] = 0;
+		String[] testingColors = {"/images/Map/blue.jpg","/images/Map/green.jpg","/images/Map/grey.jpg"};
+		for(int i = 0;i<3;i++){
+			try{
+				URL url = getClass().getResource(testingColors[i]);
+				i1.add(ImageIO.read(url));
+			}catch(IOException e){
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public void checkCollision() {
