@@ -44,47 +44,8 @@ public class TargetDemo implements Target{
 			target.health=0;
 		}
 		//Qing Ning
-		if(ammo.getEffect() == ItemResources.FIRE){
-			if(!isBurned){
-				final Timer timer = new Timer();
-				final TimerTask countDown = new TimerTask(){
-					public void run(){
-						if(duration>=1){
-							duration=0;
-							isBurned=false;
-							timer.cancel();
-						}else{
-							target.health -=2;
-							if(target.health<0){
-								target.health=0;
-							}
-							duration++;
-						}
-					}
-				};
-				timer.scheduleAtFixedRate(countDown, 1000, 1000);
-				isBurned=true;
-			}	
-		}
-		if(ammo.getEffect() == ItemResources.CORROSIVE){
-			
-		}
-		if(ammo.getEffect()==ItemResources.STUN){
-			target.isStunned=true;
-			final Timer timer = new Timer();
-			final TimerTask countDown = new TimerTask(){
-				public void run(){
-					if(duration>=3){
-						duration=0;
-						target.isStunned=false;
-						timer.cancel();
-					}else{
-						duration++;
-					}
-				}
-			};
-			timer.scheduleAtFixedRate(countDown, 1000, 1000);
-		}
+		ammo.applyEffect(ammo.getEffect(), target);
+		
 //		if(ammo.getEffect() == 3){
 //			ItemScreen.isStun = true;
 //			final int count = (int) (Math.random()*5+1);
