@@ -30,6 +30,7 @@ public class storyDemo extends Game{
 	public void reset(){
 		storyScreen screen = new storyScreen(this);
 		setScreen(screen);
+		activeScreen.update();
 		repaint();
 	}
 	

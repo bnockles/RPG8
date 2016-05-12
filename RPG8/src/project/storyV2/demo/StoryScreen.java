@@ -13,8 +13,8 @@ import project.storyV2.Cutscenes;
 import project.storyV2.IntroCut;
 
 public class StoryScreen extends Screen implements KeyListener {
-	
-	
+
+
 	private static final int MOVE_UNIT = 5;
 	public static Hero mc;
 	public ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
@@ -28,6 +28,7 @@ public class StoryScreen extends Screen implements KeyListener {
 	public int counter = 0;
 	public static int height;
 	public static int width;
+	private boolean disable = false;
 	public StoryScreen(Game game) {
 		super(game);
 		mc = new Hero("Aya Drevis", 105, 105);
@@ -62,11 +63,11 @@ public class StoryScreen extends Screen implements KeyListener {
 		}
 		g2.drawImage(mc.getImage(), mc.getX(), mc.getY(), null);
 	}
-	
+
 	public void setHeight(){
 		height = super.height;
 	}
-	
+
 	public void setWidth(){
 		width = super.width;
 	}
@@ -74,16 +75,21 @@ public class StoryScreen extends Screen implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int keyCode = e.getKeyCode();
-			//check if an arrow key is pressed and add it to pressedKeys if it is
-			if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT){
-				//only add keys if they aren't already in the ArrayList
-				if(!pressedKeys.contains(keyCode))pressedKeys.add(keyCode);
-			}
+		//check if an arrow key is pressed and add it to pressedKeys if it is
+		if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT){
+			//only add keys if they aren't already in the ArrayList
+			if(!pressedKeys.contains(keyCode))pressedKeys.add(keyCode);
+		}
 
-			//other keys don't get combined with other keys, so they don't need to be added
-			if(keyCode == KeyEvent.VK_SPACE){
-				//stuff that happens when the spacebar is pressed
-			}
+		//other keys don't get combined with other keys, so they don't need to be added
+		if(keyCode == KeyEvent.VK_SPACE){
+			//stuff that happens when the spacebar is pressed
+			disable = !disable;
+		}
+		if(disable){
+			if(pressedKeys.contains(keyCode))pressedKeys.remove(pressedKeys.indexOf(keyCode));
+		}
+		if(disable == false){
 			if(keyCode == KeyEvent.VK_A){
 				int current = ++counter%3;
 				cutscene =  new IntroCut(params[current][0], params[current][1], fonts.get(current), 30, 1000,800,colors.subList(current, current+3));
@@ -112,18 +118,18 @@ public class StoryScreen extends Screen implements KeyListener {
 			else if(keyCode == KeyEvent.VK_R) {
 				//Swarm.radio();
 			}
-			
-			mc.checkDimensions();
+		}
+		mc.checkDimensions();
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		int keyCode = e.getKeyCode();
-			//check if an arrow key is released and removes it from pressedKeys if it is
-			if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT){
-				pressedKeys.remove(pressedKeys.indexOf(keyCode));
-			}
-
+		//check if an arrow key is released and removes it from pressedKeys if it is
+		if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT){
+			if(pressedKeys.contains(keyCode))pressedKeys.remove(pressedKeys.indexOf(keyCode));
+		}
+		if(disable == false){
 			if(keyCode == KeyEvent.VK_UP){
 				mc.animate(mc.AyaStanding.get(3));
 			}
@@ -136,8 +142,8 @@ public class StoryScreen extends Screen implements KeyListener {
 			else if(keyCode == KeyEvent.VK_LEFT){
 				mc.animate(mc.AyaStanding.get(1));
 			}
-
-			respondToKeyInput();
+		}
+		respondToKeyInput();
 	}
 	private void respondToKeyInput() { 
 		if(pressedKeys.contains(KeyEvent.VK_UP) && !pressedKeys.contains(KeyEvent.VK_DOWN)) mc.setY(mc.getY() - MOVE_UNIT); 
@@ -148,7 +154,7 @@ public class StoryScreen extends Screen implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		
+
 	}
 
 }
