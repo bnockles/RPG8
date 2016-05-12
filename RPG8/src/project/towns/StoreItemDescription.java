@@ -4,10 +4,6 @@ import java.awt.Graphics2D;
 
 import project.directors.DescriptionBox;
 
-/**
- * @author bnockles
- *
- */
 public class StoreItemDescription extends DescriptionBox {
 
 	public StoreItemDescription(String description, int width, int height) {
