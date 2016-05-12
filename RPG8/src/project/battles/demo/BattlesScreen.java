@@ -647,7 +647,7 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 		character.setMoveDown(true);
 		character.setMoveRight(false);
 		character.setMoveUp(false);
-		character.setMoveDown(false);
+		character.setMoveLeft(false);
 		character.setFacingDown(true);
 		character.setFacingLeft(false);
 		character.setFacingRight(false);
