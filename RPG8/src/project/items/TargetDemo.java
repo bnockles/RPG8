@@ -35,7 +35,7 @@ public class TargetDemo implements Target{
 			target.health = calcs[0];
 			target.armor = calcs[1];
 			//target.health-=this.weapon.getDamage();
-			System.out.println(this.name + " Armor is: " + target.armor);
+			System.out.println(target.name + " Armor is: " + target.armor);
 			if(this.weapon.getGunNum()/10 !=1){
 				this.weapon.setAmmoTotal(this.weapon.getAmmoTotal()-1);				
 			}
