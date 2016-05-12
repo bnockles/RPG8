@@ -5,8 +5,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import project.menus.Selectable;
+import project.towns.ShopItems;
 
-public abstract class Item implements Selectable {
+public abstract class Item implements Selectable, ShopItems{
 	private String name;
 	private String description;
 	private int cost;
