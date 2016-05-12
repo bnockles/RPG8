@@ -61,7 +61,7 @@ public class Weapons extends Item{
 	
 	public String getWeaponType(int gNum) {
 		String weapon =  types[(gNum/10) - 1];
-		return weapon;
+		return weapon; 
 	}
 	
 	public int getGunNum() {
