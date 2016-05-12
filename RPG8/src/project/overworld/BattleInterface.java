@@ -3,6 +3,8 @@ package project.overworld;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import project.battles.demo.BattlesDemo;
+
 public interface BattleInterface {
 	final static int ZONE1 = 0;//starting screen
 	final static int ZONE2 = 1;//map to the right of start
@@ -14,5 +16,5 @@ public interface BattleInterface {
 	public int getCharRegion(Character c);
 	public int getCharY(Character c);
 	ArrayList<Character> getCharacter(ArrayList<Character> c);
-	BattleInterface getBattleInterface(BattleInterface b);
+	BattleInterface getBattleInterface(BattlesDemo b);
 }
