@@ -20,6 +20,7 @@ public class Weapons extends Item{
 	private int ammoTotal;
 	private int pellets;
 	private int splash;
+	private String[] types = {"Melee", "Pistols", "Rifles", "Heavy", "SMG", "Explosives"};
 	
 	
 	public Weapons(String name, String desc, Ammo ammo, int damage, int ammoClip, int ammoCapacity,
@@ -46,6 +47,25 @@ public class Weapons extends Item{
 		ammoTotal = ammoClip;
 		this.pellets = pellets;
 		this.splash = splash;
+	}
+	/**
+	 * 
+ 	First Number:
+	  	1. Melee 
+		2. Pistols
+		3. Rifles
+		4. Heavy
+		5. SMG
+		6. Explosives
+	*/
+	
+	public String getWeaponType(int gNum) {
+		String weapon =  types[(gNum/10) - 1];
+		return weapon;
+	}
+	
+	public int getGunNum() {
+		return gunNum;
 	}
 	
 	public double[] showStats(){
@@ -145,10 +165,6 @@ public class Weapons extends Item{
 
 	public void setCanSilence(boolean canSilence) {
 		this.canSilence = canSilence;
-	}
-
-	public int getGunNum() {
-		return gunNum;
 	}
 
 	public int getWeight() {
