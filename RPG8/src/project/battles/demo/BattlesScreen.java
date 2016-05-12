@@ -250,6 +250,7 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 		// TODO Auto-generated method stub
 		//checkMotion();
 		checkProjectileRange();
+		controller.determineMovement(this);
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
@@ -334,25 +335,25 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 		 * Chieh-Huang Chen
 		 */
 		int keyCode = e.getKeyCode();
-		if(keyCode == KeyEvent.VK_W){
-			if(!pressedKeys.contains(keyCode))
-				pressedKeys.add(keyCode);
-		}
-		if(keyCode == KeyEvent.VK_A){
-			if(!pressedKeys.contains(keyCode))
-				pressedKeys.add(keyCode);
-		}
-		if(keyCode == KeyEvent.VK_S){
-			if(!pressedKeys.contains(keyCode))
-				pressedKeys.add(keyCode);
-		}
-		if(keyCode == KeyEvent.VK_D){
-			if(!pressedKeys.contains(keyCode))
-				pressedKeys.add(keyCode);
-		}
-		if(!pressedKeys.isEmpty()){
-			character.setWalking(true);
-		}
+//		if(keyCode == KeyEvent.VK_W){
+//			if(!pressedKeys.contains(keyCode))
+//				pressedKeys.add(keyCode);
+//		}
+//		if(keyCode == KeyEvent.VK_A){
+//			if(!pressedKeys.contains(keyCode))
+//				pressedKeys.add(keyCode);
+//		}
+//		if(keyCode == KeyEvent.VK_S){
+//			if(!pressedKeys.contains(keyCode))
+//				pressedKeys.add(keyCode);
+//		}
+//		if(keyCode == KeyEvent.VK_D){
+//			if(!pressedKeys.contains(keyCode))
+//				pressedKeys.add(keyCode);
+//		}
+//		if(!pressedKeys.isEmpty()){
+//			character.setWalking(true);
+//		}
 		doSomething(keyCode);
 		//DEMO PURPOSES ONLY BELOW
 		/**
@@ -460,29 +461,11 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 		 * Chieh-Huang Chen
 		 */
 		int keyCode = e.getKeyCode();
-		if(keyCode == KeyEvent.VK_W){
-			pressedKeys.remove(pressedKeys.indexOf(keyCode));
-			character.setMoveUp(false);
-			character.setStopImage(character.getBsprite()[0]);
-		}
-		if(keyCode == KeyEvent.VK_S){
-			pressedKeys.remove(pressedKeys.indexOf(keyCode));
-			character.setMoveDown(false);
-			character.setStopImage(character.getFsprite()[0]);
-		}
-		if(keyCode == KeyEvent.VK_A){
-			pressedKeys.remove(pressedKeys.indexOf(keyCode));
-			character.setMoveLeft(false);
-			character.setStopImage(character.getLsprite()[0]);
-		}
-		if(keyCode == KeyEvent.VK_D){
-			pressedKeys.remove(pressedKeys.indexOf(keyCode));
-			character.setMoveRight(false);
-			character.setStopImage(character.getRsprite()[0]);
-		}
-		character.setFacingDirection();
-		if(pressedKeys.isEmpty())
-			character.setWalking(false);
+		controller.removeKeys(keyCode);
+		
+//		character.setFacingDirection();
+//		if(pressedKeys.isEmpty())
+//			character.setWalking(false);
 	}
 //	public void checkMotion() {
 //		/**
@@ -559,7 +542,7 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 	@Override
 	public void mousePressed(MouseEvent e) {//Jason Lyan
 		if(e.getButton() == MouseEvent.BUTTON1){
-			System.out.println("Hello");
+//			System.out.println("Hello");
 			int cursorX = e.getX();
 			int cursorY = e.getY();
 			int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
@@ -620,24 +603,56 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 		// TODO Auto-generated method stub
 		character.setX(character.getX()+-P_SPEED);
 		character.setMoveLeft(true);
+		character.setMoveRight(false);
+		character.setMoveUp(false);
+		character.setMoveDown(false);
+		character.setFacingLeft(true);
+		character.setFacingRight(false);
+		character.setFacingUp(false);
+		character.setFacingDown(false);
+		character.setStopImage(character.getLsprite()[0]);
 	}
 	@Override
 	public void moveCharacterRight() {
 		// TODO Auto-generated method stub
 		character.setX(character.getX()+P_SPEED);
 		character.setMoveRight(true);
+		character.setMoveLeft(false);
+		character.setMoveUp(false);
+		character.setMoveDown(false);
+		character.setFacingRight(true);
+		character.setFacingLeft(false);
+		character.setFacingUp(false);
+		character.setFacingDown(false);
+		character.setStopImage(character.getRsprite()[0]);
 	}
 	@Override
 	public void moveCharacterUp() {
 		// TODO Auto-generated method stub
 		character.setY(character.getY()-P_SPEED);
 		character.setMoveUp(true);
+		character.setMoveRight(false);
+		character.setMoveLeft(false);
+		character.setMoveDown(false);
+		character.setFacingUp(true);
+		character.setFacingRight(false);
+		character.setFacingLeft(false);
+		character.setFacingDown(false);
+		character.setStopImage(character.getBsprite()[0]);
 	}
 	@Override
 	public void moveCharacterDown() {
 		// TODO Auto-generated method stub
 		character.setY(character.getY()+P_SPEED);
 		character.setMoveDown(true);
+		character.setMoveRight(false);
+		character.setMoveUp(false);
+		character.setMoveDown(false);
+		character.setFacingDown(true);
+		character.setFacingLeft(false);
+		character.setFacingRight(false);
+		character.setFacingUp(false);
+		character.setStopImage(character.getFsprite()[0]);
 	}
 	@Override
 	public void reloadWeapon() {
@@ -645,6 +660,6 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 		
 	}
 	public void doSomething(int e){
-		controller.determineKeyAction(e,this);
+		controller.determineKeyAction(e);
 	}
 }
