@@ -13,4 +13,5 @@ public interface BattleInterface {
 	public int getCharX(Character c);
 	public int getCharRegion(Character c);
 	public int getCharY(Character c);
+	BattleInterface getBattleInterface(BattleInterface b);
 }
