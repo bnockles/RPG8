@@ -6,6 +6,8 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+
+import project.battles.EnemyDifficulty;
 import project.directors.Game;
 import project.directors.Screen;
 import project.directors.UtilityMethods;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-public class MapDemoScreen extends Screen implements KeyListener {
+public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty {
 	static ArrayList<Region> regions; // use these to change areas
 	static ArrayList<MainMap> mapSections;
 	BufferedImage background;
@@ -297,6 +299,26 @@ public class MapDemoScreen extends Screen implements KeyListener {
 
 	public int getPlayerRegion() {
 		return playerRegion;
+	}
+	@Override
+	public int getCharacterLevel() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int getMapLevel() {
+		
+		return playerRegion;
+	}
+	@Override
+	public int getProgress() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public String getBoss() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
