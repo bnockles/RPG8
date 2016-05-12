@@ -27,6 +27,9 @@ import project.battles.GEnemy;
 import project.battles.KEnemy;
 import project.battles.MCharacter;
 import project.battles.Projectiles;
+import project.controls.ActionDeterminer;
+import project.controls.Contoltles;
+import project.controls.DemoControls;
 import project.directors.Game;
 import project.directors.Screen;
 import project.directors.UtilityMethods;
@@ -153,7 +156,7 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 	Weapon weapon2;
 	int cursorX;
 	int cursorY;
-	
+	ActionDeterminer controller = new Contoltles();
 	//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 	public int[] enemyG = {GE_X,GE_Y,GE_HP,GE_ARMOR,GE_SNEAK,GE_SPEED,GE_RECOVERY,GE_EXP,GE_STRENGTH,GE_LEVEL};
 	public int[] enemyK = {KE_X,KE_Y,KE_HP,KE_ARMOR,KE_SNEAK,KE_SPEED,KE_RECOVERY,KE_EXP,KE_STRENGTH,KE_LEVEL};
@@ -245,7 +248,7 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 		 * Chieh-Huang Chen
 		 */
 		// TODO Auto-generated method stub
-		checkMotion();
+		//checkMotion();
 		checkProjectileRange();
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
@@ -331,34 +334,46 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 		 * Chieh-Huang Chen
 		 */
 		int keyCode = e.getKeyCode();
-		if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT){
+		if(keyCode == KeyEvent.VK_W){
+			if(!pressedKeys.contains(keyCode))
+				pressedKeys.add(keyCode);
+		}
+		if(keyCode == KeyEvent.VK_A){
+			if(!pressedKeys.contains(keyCode))
+				pressedKeys.add(keyCode);
+		}
+		if(keyCode == KeyEvent.VK_S){
+			if(!pressedKeys.contains(keyCode))
+				pressedKeys.add(keyCode);
+		}
+		if(keyCode == KeyEvent.VK_D){
 			if(!pressedKeys.contains(keyCode))
 				pressedKeys.add(keyCode);
 		}
 		if(!pressedKeys.isEmpty()){
 			character.setWalking(true);
 		}
-		
+		doSomething(keyCode);
 		//DEMO PURPOSES ONLY BELOW
 		/**
 		 * Chieh
 		 */
-		if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0 || keyCode == KeyEvent.VK_Q || keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_E || keyCode == KeyEvent.VK_R || keyCode == KeyEvent.VK_T){
-			if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0)
-				keycodedemo = keyCode;
-			
-			if(keyCode == KeyEvent.VK_Q)
-				ENEMYMOVE = UP_DOWN;
-			if(keyCode == KeyEvent.VK_W)
-				ENEMYMOVE = LEFT_RIGHT;
-			if(keyCode == KeyEvent.VK_E)
-				ENEMYMOVE = AROUND;
-			if(keyCode == KeyEvent.VK_R)
-				ENEMYMOVE = GOTOPLAYER;
-			if(keyCode == KeyEvent.VK_T)
-				ENEMYMOVE = WANDER;
-			refreshEnemies();
-		}
+//		if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0 || keyCode == KeyEvent.VK_Q || keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_E || keyCode == KeyEvent.VK_R || keyCode == KeyEvent.VK_T){
+//			if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0)
+//				keycodedemo = keyCode;
+//			
+//			if(keyCode == KeyEvent.VK_Q)
+//				ENEMYMOVE = UP_DOWN;
+//			if(keyCode == KeyEvent.VK_W)
+//				ENEMYMOVE = LEFT_RIGHT;
+//			if(keyCode == KeyEvent.VK_E)
+//				ENEMYMOVE = AROUND;
+//			if(keyCode == KeyEvent.VK_R)
+//				ENEMYMOVE = GOTOPLAYER;
+//			if(keyCode == KeyEvent.VK_T)
+//				ENEMYMOVE = WANDER;
+//			refreshEnemies();
+//		}
 		//Vincent
 		//WASD is used for moving.
 		if(keyCode == KeyEvent.VK_3)
@@ -445,22 +460,22 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 		 * Chieh-Huang Chen
 		 */
 		int keyCode = e.getKeyCode();
-		if(keyCode == KeyEvent.VK_UP){
+		if(keyCode == KeyEvent.VK_W){
 			pressedKeys.remove(pressedKeys.indexOf(keyCode));
 			character.setMoveUp(false);
 			character.setStopImage(character.getBsprite()[0]);
 		}
-		if(keyCode == KeyEvent.VK_DOWN){
+		if(keyCode == KeyEvent.VK_S){
 			pressedKeys.remove(pressedKeys.indexOf(keyCode));
 			character.setMoveDown(false);
 			character.setStopImage(character.getFsprite()[0]);
 		}
-		if(keyCode == KeyEvent.VK_LEFT){
+		if(keyCode == KeyEvent.VK_A){
 			pressedKeys.remove(pressedKeys.indexOf(keyCode));
 			character.setMoveLeft(false);
 			character.setStopImage(character.getLsprite()[0]);
 		}
-		if(keyCode == KeyEvent.VK_RIGHT){
+		if(keyCode == KeyEvent.VK_D){
 			pressedKeys.remove(pressedKeys.indexOf(keyCode));
 			character.setMoveRight(false);
 			character.setStopImage(character.getRsprite()[0]);
@@ -469,15 +484,13 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 		if(pressedKeys.isEmpty())
 			character.setWalking(false);
 	}
-	public void checkMotion() {
-		/**
-		 * Chieh-Huang Chen
-		 */
-		Graphics2D g = null;
-		if(pressedKeys == null)
-			return;
-		int proposedNewY=character.getY();
-		int proposedNewX=character.getX();
+//	public void checkMotion() {
+//		/**
+//		 * Chieh-Huang Chen
+//		 */
+//		Graphics2D g = null;
+//		if(pressedKeys == null)
+//			return;
 //		if(pressedKeys.contains(KeyEvent.VK_UP) && !pressedKeys.contains(KeyEvent.VK_DOWN)){
 //			proposedNewY-=P_SPEED;
 //			character.setY(proposedNewY);
@@ -498,27 +511,8 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 //			character.setX(proposedNewX);
 //			character.setMoveLeft(true);
 //		}
-		if(pressedKeys.contains(KeyEvent.VK_W)){
-			proposedNewY-=P_SPEED;
-			character.setY(proposedNewY);
-			character.setMoveUp(true);
-		}
-		if(pressedKeys.contains(KeyEvent.VK_A)){
-			proposedNewY-=P_SPEED;
-			character.setY(proposedNewX);
-			character.setMoveUp(true);
-		}
-		if(pressedKeys.contains(KeyEvent.VK_S)){
-			proposedNewY-=P_SPEED;
-			character.setY(proposedNewY);
-			character.setMoveUp(true);
-		}
-		if(pressedKeys.contains(KeyEvent.VK_D)){
-			proposedNewY-=P_SPEED;
-			character.setY(proposedNewY);
-			character.setMoveUp(true);
-		}
-	}
+//
+//	}
 
 	public void update(){
 		super.update();
@@ -565,7 +559,7 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 	@Override
 	public void mousePressed(MouseEvent e) {//Jason Lyan
 		if(e.getButton() == MouseEvent.BUTTON1){
-			//System.out.println("Hello");
+			System.out.println("Hello");
 			int cursorX = e.getX();
 			int cursorY = e.getY();
 			int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
@@ -624,27 +618,33 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 	@Override
 	public void moveCharacterLeft() {
 		// TODO Auto-generated method stub
-		
+		character.setX(character.getX()+-P_SPEED);
+		character.setMoveLeft(true);
 	}
 	@Override
 	public void moveCharacterRight() {
 		// TODO Auto-generated method stub
-		
+		character.setX(character.getX()+P_SPEED);
+		character.setMoveRight(true);
 	}
 	@Override
 	public void moveCharacterUp() {
 		// TODO Auto-generated method stub
-		
+		character.setY(character.getY()-P_SPEED);
+		character.setMoveUp(true);
 	}
 	@Override
 	public void moveCharacterDown() {
 		// TODO Auto-generated method stub
-		
+		character.setY(character.getY()+P_SPEED);
+		character.setMoveDown(true);
 	}
 	@Override
 	public void reloadWeapon() {
 		// TODO Auto-generated method stub
 		
 	}
-
+	public void doSomething(int e){
+		controller.determineKeyAction(e,this);
+	}
 }
