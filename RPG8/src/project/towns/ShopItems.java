@@ -1,8 +1,8 @@
 package project.towns;
 
+import java.util.ArrayList;
+
 public interface ShopItems {
-	
-	public boolean isSellable();
 	
 	public boolean isBuyable();
 	
@@ -11,4 +11,7 @@ public interface ShopItems {
 	public String getName();
 	
 	public String getDescription();
+	
+	
+	
 }

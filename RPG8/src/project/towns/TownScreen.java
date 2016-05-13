@@ -169,6 +169,7 @@ public class TownScreen extends Screen implements KeyListener{
 		
 		//hids
 	}
+	
     //Jingwen COde
 	public void paintScreen(Graphics2D g2) {
 		// TODO Auto-generated method stub
@@ -271,23 +272,26 @@ public class TownScreen extends Screen implements KeyListener{
 //					g2.drawString("USE T IN CIRCLE TO GO THROUGH CIRCLE, USE SPACE IN SHOP TO ACCESS SHOP ", 400, 500);
 //				}
 				if(status ==ARMOR_STOREx  ){
-					Font myFont = new Font ("Courier New", 1, 27);
 					
-
-					g2.setFont (myFont);
-				
-					g2.drawString("Attempting To Enter Armor Store"  , 200, 500);
-				    	Timer t = new Timer();
-				    	t.schedule(new TimerTask() {
-
-				    	            @Override
-				    	            public void run() {
-				    	               status = ARMOR_STORE;
-				    	               status2 = ARMOR_STORE;
-				    	               update();	
-				    	            }
-				    	        }, 2000);
-					
+					delay( g2,"Attempting To Enter Armor Store",200 , 500 ,  ARMOR_STORE ,  ARMOR_STORE,2000 );
+//					Font myFont = new Font ("Courier New", 1, 27);
+//					
+//
+//					g2.setFont (myFont);
+//				
+//					g2.drawString("Attempting To Enter Armor Store"  , 200, 500);
+//				    	Timer t = new Timer();
+//				    	t.schedule(new TimerTask() {
+//
+//				    	            @Override
+//				    	            public void run() {
+//				    	               status = ARMOR_STORE;
+//				    	               status2 = ARMOR_STORE;
+//				    	               update();	
+//				    	            }
+//				    	        }, 2000);
+//					
+//				}
 				}
 				if(status ==AMMO_STOREx  ){
 					Font myFont = new Font ("Courier New", 1, 27);
