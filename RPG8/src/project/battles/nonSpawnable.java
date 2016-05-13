@@ -13,4 +13,3 @@ public interface nonSpawnable {
 	public String getEnemyType();
 	public int getBackgroundNumber();
 }
-}
