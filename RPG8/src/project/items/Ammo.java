@@ -8,14 +8,16 @@ public class Ammo extends Item{
 	private String desc;
 	private int ammoType;
 	private String itemImage;
+	private boolean buyable;
 	
 
-	public Ammo(String name, String desc,int cost,int ammoType, int effect, String itemImage) {
-		super(name, desc, cost, effect, itemImage);
+	public Ammo(String name, String desc,int cost,int ammoType, int effect, String itemImage, boolean buyable) {
+		super(name, desc, cost, effect, itemImage, buyable);
 		// TODO Auto-generated constructor stub
 		this.name=name;
 		this.desc=desc;
 		this.ammoType=ammoType;
+		this.buyable=buyable;
 	}
 
 	public String getName() {
