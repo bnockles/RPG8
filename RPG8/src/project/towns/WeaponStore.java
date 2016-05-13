@@ -14,19 +14,19 @@ public class WeaponStore implements StoreInterface{
 	
 	int money;
 	ArrayList<Integer> itemNu = new ArrayList<Integer>();
-	ArrayList<String> itemList = new ArrayList<String>();
+	ArrayList<ShopItems> itemList = new ArrayList<ShopItems>();
 	
-	public ArrayList<String> getItemList() {
+	public ArrayList<ShopItems> getItemList() {
 		return itemList;
 	}
 
 
-	public void setItemList(ArrayList<String> itemList) {
+	public void setItemList(ArrayList<ShopItems> itemList) {
 		this.itemList = itemList;
 	}
 
 
-	public WeaponStore(ArrayList<Integer> itemN, int money, ArrayList<String> itemLists) {
+	public WeaponStore(ArrayList<Integer> itemN, int money, ArrayList<ShopItems> itemLists) {
 		// TODO Auto-generated constructor stub
 		this.money = money;
 		for(int i = 0; i  < itemLists.size(); i++){
