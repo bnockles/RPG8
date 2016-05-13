@@ -303,7 +303,7 @@ public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty
 	@Override
 	public int getCharacterLevel() {
 		// TODO Auto-generated method stub
-		return 0;
+		return playerRegion;
 	}
 	@Override
 	public int getMapLevel() {
@@ -312,8 +312,7 @@ public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty
 	}
 	@Override
 	public int getProgress() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 	@Override
 	public String getBoss() {
