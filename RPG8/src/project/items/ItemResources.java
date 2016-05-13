@@ -13,37 +13,37 @@ public interface ItemResources {
 	public String printStats(double[] stats);
 	
 	//Armor
-	final Armor yourarmor = new Armor("Armor", "It's Armor", 300, 0, 100,"");
-	final Armor enemyarmor = new Armor("Armor", "It's Armor", 0, 0, 100,"");
+	final Armor yourarmor = new Armor("Armor", "It's Armor", 300, 0, 100,"",true);
+	final Armor enemyarmor = new Armor("Armor", "It's Armor", 0, 0, 100,"",false);
 	
 	//Medkits
-	final MedKit smallkit=new MedKit("Small Medkit","It's crap.",100, 5, REGEN,"/images/items/Small Medkit.png");
-	final MedKit medkit=new MedKit("Medium Medkit","It's better.",500, 20, NO_EFFECT,"/images/items/Medium Medkit.png");
-	final MedKit bigkit=new MedKit("Big Medkit","It's the best.",1000, 30, NO_EFFECT,"/images/items/Large Medkit.png");
+	final MedKit smallkit=new MedKit("Small Medkit","It's crap.",100, 5, REGEN,"/images/items/Small Medkit.png",true);
+	final MedKit medkit=new MedKit("Medium Medkit","It's better.",500, 20, NO_EFFECT,"/images/items/Medium Medkit.png",true);
+	final MedKit bigkit=new MedKit("Big Medkit","It's the best.",1000, 30, NO_EFFECT,"/images/items/Large Medkit.png",true);
 	
 	//Ammo
-	final Ammo pistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 50, 1, NO_EFFECT,"/images/items/regular.png");
-	final Ammo rifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 50, 1, NO_EFFECT,"/images/items/regular.png");
-	final Ammo heavyAmmo = new Ammo("Heavy Ammo", "It's heavy ammo", 50, 1, NO_EFFECT,"/images/items/regular.png");
-	final Ammo SMGAmmo=new Ammo("SMG Ammo", "It's SMG ammo", 50, 1, NO_EFFECT,"/images/items/regular.png");
-	final Ammo explosiveAmmo = new Ammo("Explosive Ammo", "It's explosive ammo", 50, 1, NO_EFFECT,"/images/items/regular.png");
+	final Ammo pistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 50, 1, NO_EFFECT,"/images/items/regular.png",true);
+	final Ammo rifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 50, 1, NO_EFFECT,"/images/items/regular.png",true);
+	final Ammo heavyAmmo = new Ammo("Heavy Ammo", "It's heavy ammo", 50, 1, NO_EFFECT,"/images/items/regular.png",true);
+	final Ammo SMGAmmo=new Ammo("SMG Ammo", "It's SMG ammo", 50, 1, NO_EFFECT,"/images/items/regular.png",true);
+	final Ammo explosiveAmmo = new Ammo("Explosive Ammo", "It's explosive ammo", 50, 1, NO_EFFECT,"/images/items/regular.png",true);
 	
-	final Ammo firePistolAmmo=new Ammo("Burning Pistol Ammo", "It's burning pistol ammo", 150, 1, FIRE,"/images/items/burn.png");
-	final Ammo fireRifleAmmo=new Ammo("Burning Rifle Ammo", "It's burning rifle ammo", 150, 1, FIRE,"/images/items/burn.png");
-	final Ammo fireHeavyAmmo = new Ammo("Burning Heavy Ammo", "It's burning heavy ammo", 150, 1, FIRE,"/images/items/burn.png");
-	final Ammo fireSMGAmmo=new Ammo("Burning SMG Ammo", "It's burning SMG ammo", 150, 1, FIRE,"/images/items/burn.png");
-	final Ammo fireExplosiveAmmo = new Ammo("Burning Explosive Ammo", "It's burning explosive ammo", 150, 1, FIRE,"/images/items/burn.png");
+	final Ammo firePistolAmmo=new Ammo("Burning Pistol Ammo", "It's burning pistol ammo", 150, 1, FIRE,"/images/items/burn.png",true);
+	final Ammo fireRifleAmmo=new Ammo("Burning Rifle Ammo", "It's burning rifle ammo", 150, 1, FIRE,"/images/items/burn.png",true);
+	final Ammo fireHeavyAmmo = new Ammo("Burning Heavy Ammo", "It's burning heavy ammo", 150, 1, FIRE,"/images/items/burn.png",true);
+	final Ammo fireSMGAmmo=new Ammo("Burning SMG Ammo", "It's burning SMG ammo", 150, 1, FIRE,"/images/items/burn.png",true);
+	final Ammo fireExplosiveAmmo = new Ammo("Burning Explosive Ammo", "It's burning explosive ammo", 150, 1, FIRE,"/images/items/burn.png",true);
 	
-	final Ammo stunPistolAmmo=new Ammo("Stunning Pistol Ammo", "It's stunning pistol ammo", 100, 1, STUN,"/images/items/stun.png");
-	final Ammo stunRifleAmmo=new Ammo("Stunning Rifle Ammo", "It's stunning rifle ammo", 100, 1, STUN,"/images/items/stun.png");
-	final Ammo stunHeavyAmmo = new Ammo("Stunning Heavy Ammo", "It's stunning heavy ammo", 100, 1, STUN,"/images/items/stun.png");
-	final Ammo stunSMGAmmo=new Ammo("Stunning SMG Ammo", "It's stunning SMG ammo", 100, 1, STUN,"/images/items/stun.png");
-	final Ammo stunExplosiveAmmo = new Ammo("Stunning Explosive Ammo", "It's stunning explosive ammo", 100, 1, STUN,"/images/items/stun.png");
+	final Ammo stunPistolAmmo=new Ammo("Stunning Pistol Ammo", "It's stunning pistol ammo", 100, 1, STUN,"/images/items/stun.png",true);
+	final Ammo stunRifleAmmo=new Ammo("Stunning Rifle Ammo", "It's stunning rifle ammo", 100, 1, STUN,"/images/items/stun.png",true);
+	final Ammo stunHeavyAmmo = new Ammo("Stunning Heavy Ammo", "It's stunning heavy ammo", 100, 1, STUN,"/images/items/stun.png",true);
+	final Ammo stunSMGAmmo=new Ammo("Stunning SMG Ammo", "It's stunning SMG ammo", 100, 1, STUN,"/images/items/stun.png",true);
+	final Ammo stunExplosiveAmmo = new Ammo("Stunning Explosive Ammo", "It's stunning explosive ammo", 100, 1, STUN,"/images/items/stun.png",true);
 	
 	//final Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, NO_EFFECT,"");
-	final Ammo grenadeAmmo = new Ammo("Grenade Ammo", "It's grenade ammo", 0, 1, NO_EFFECT,"/images/items/M10-SuperFrag.png");
-	final Ammo incendiaryGrenadeAmmo = new Ammo("Incendiary Grenade Ammo", "It's incendiary grenade ammo", 0, 1, FIRE,"");
-	final Ammo energyAmmo=new Ammo("Energy Ammo", "It's energy ammo", 0, 2, NO_EFFECT,"");
+	final Ammo grenadeAmmo = new Ammo("Grenade Ammo", "It's grenade ammo", 0, 1, NO_EFFECT,"/images/items/M10-SuperFrag.png",true);
+	final Ammo incendiaryGrenadeAmmo = new Ammo("Incendiary Grenade Ammo", "It's incendiary grenade ammo", 0, 1, FIRE,"",true);
+	final Ammo energyAmmo=new Ammo("Energy Ammo", "It's energy ammo", 0, 2, NO_EFFECT,"",true);
 	
 	//Weapons
 	/**
