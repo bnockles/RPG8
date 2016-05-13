@@ -123,6 +123,12 @@ public interface ItemResources {
 	final Weapons[] SMG = { smg1GradeC1, smg2GradeB1};
 	final Weapons[] Explosives = { explosives1GradeC1, explosives6GradeB1};
 	final Weapons[][] AllWeapons = {Melee, Pistol, Rifles, Heavy, SMG, Explosives};
+	/** AllWeapons
+	 *Number of column                 [     0       ,      1       ,      2       ,      3        ,      4       ,         5        ]
+	 *The weapon type                   [ Melee   ,   Pistol   ,   Rifles   ,   Heavy   ,   SMG   ,   Explosives]
+	 *Amount of weapons per type  [     1       ,      3       ,      3       ,      2        ,      2       ,         2        ]
+	 * 
+	 */
 	
 	// Misc
 	final Misc gold = new Misc("Gold", "Get more of this and you're rich!", true , 0, NO_EFFECT,"/images/items/coin.png");
