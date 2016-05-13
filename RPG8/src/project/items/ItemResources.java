@@ -1,5 +1,6 @@
 package project.items;
 
+
 public interface ItemResources {
 	static final int NO_EFFECT = 0;
 	static final int FIRE = 1;
@@ -121,6 +122,7 @@ public interface ItemResources {
 	final Weapons[] Heavy = { heavy1GradeB1, heavy4GradeB2};
 	final Weapons[] SMG = { smg1GradeC1, smg2GradeB1};
 	final Weapons[] Explosives = { explosives1GradeC1, explosives6GradeB1};
+	final Weapons[][] AllWeapons = {Melee, Pistol, Rifles, Heavy, SMG, Explosives};
 	
 	// Misc
 	final Misc gold = new Misc("Gold", "Get more of this and you're rich!", true , 0, NO_EFFECT,"/images/items/coin.png");
