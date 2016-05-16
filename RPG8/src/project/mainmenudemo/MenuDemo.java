@@ -23,7 +23,7 @@ public class MenuDemo extends project.directors.Game{
 	}
 	
 	public void reset() {
-		Screen demoScreen = DynamicMenu.createMenu(0, this);
+		Screen demoScreen = DynamicMenu.createMenu(DynamicMenu.MAIN_MENU, this);
 		setScreen(demoScreen);
 		repaint();
 	}
