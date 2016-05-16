@@ -122,6 +122,14 @@ public interface ItemResources {
 	final Weapons[] Heavy = { heavy1GradeB1, heavy4GradeB2};
 	final Weapons[] SMG = { smg1GradeC1, smg2GradeB1};
 	final Weapons[] Explosives = { explosives1GradeC1, explosives6GradeB1};
+	
+	static final int MElEE_INDEX= 0;
+	static final int PISTOL_INDEX = 1;
+	static final int RIFLES_INDEX = 2;
+	static final int HEAVY_INDEX = 3;
+	static final int SMG_INDEX = 4;
+	static final int EXPLOSIVE_INDEX = 5;
+	
 	final Weapons[][] AllWeapons = {Melee, Pistol, Rifles, Heavy, SMG, Explosives};
 	/** AllWeapons
 	 *Number of column                 [     0       ,      1       ,      2       ,      3        ,      4       ,         5        ]
