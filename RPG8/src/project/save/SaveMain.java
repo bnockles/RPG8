@@ -1,6 +1,7 @@
 package project.save;
 
 import project.directors.Game;
+import project.directors.Screen;
 import project.directors.StartScreen;
 
 public class SaveMain extends Game {
@@ -9,7 +10,7 @@ public class SaveMain extends Game {
 	}
 	
 	public void reset() {
-		SaveScreen saveScreen = new SaveScreen(this);
+		Screen saveScreen = new SaveScreen(this);
 		setScreen(saveScreen);
 		activeScreen.update();
 		repaint();
