@@ -665,28 +665,37 @@ public class BattlesScreen extends Screen implements BattleInterface, BattlesAct
 	}
 	@Override
 	public boolean isDead(Character c) {
-		// TODO Auto-generated method stub
-		return false;
+		// for testing
+		long start= System.currentTimeMillis();
+		long end = start+15000; //15 seconds 
+		if(System.currentTimeMillis() < end) {
+		  return false;
+		}
+		return true;
 	}
 	@Override
 	public boolean killCharacter(Character c) {
 		// TODO Auto-generated method stub
+		if(character.getCurrentHP()<=0){
+			return true;
+		}
 		return false;
 	}
 	@Override
 	public int getCharX(Character c) {
 		// TODO Auto-generated method stub
-		return 0;
+		return character.getX();
 	}
 	@Override
 	public int getCharRegion(Character c) {
 		// TODO Auto-generated method stub
-		return 0;
+		return character.getY();
+		//IDK what character's region is.
 	}
 	@Override
 	public int getCharY(Character c) {
 		// TODO Auto-generated method stub
-		return 0;
+		return character.getY();
 	}
 	@Override
 	public ArrayList<Character> getCharacter(ArrayList<Character> c) {
