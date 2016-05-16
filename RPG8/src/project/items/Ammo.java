@@ -60,7 +60,23 @@ public class Ammo extends Item{
 			}	
 		}
 		if(eff == ItemResources.CORROSIVE){
-			
+			final Timer timer = new Timer();
+			final TimerTask countDown = new TimerTask(){
+				public void run(){
+					if(target.duration>=2){
+						target.armor*=2;
+						target.duration=0;
+						timer.cancel();
+					}else{
+						target.armor/=2;
+						if(target.health<0){
+							target.health=0;
+						}
+					}
+					target.duration++;
+				}
+			};
+			timer.scheduleAtFixedRate(countDown, 1000, 1000);
 		}
 		if(eff==ItemResources.STUN){
 			target.isStunned=true;

@@ -31,6 +31,7 @@ public class TargetDemo implements Target{
 	public void attack(final TargetDemo target){
 		
 		if(this.weapon.getAmmoTotal()!=0 || this.weapon.getGunNum()/10 ==1){
+			ammo.applyEffect(ammo.getEffect(), target);
 			int[] calcs = Armor.damageCalcs(this.weapon.getDamage(), target.health, target.armor);
 			target.health = calcs[0];
 			target.armor = calcs[1];
@@ -43,8 +44,6 @@ public class TargetDemo implements Target{
 		if(target.health<0){
 			target.health=0;
 		}
-		//Qing Ning
-		ammo.applyEffect(ammo.getEffect(), target);
 		
 //		if(ammo.getEffect() == 3){
 //			ItemScreen.isStun = true;
