@@ -28,6 +28,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 	BufferedImage smg;
 	BufferedImage explosive;
 	static Boolean isStun = false;
+	public static int selected=0;
 	
 	public ItemScreen(Game game) {	
 		super(game);
@@ -268,7 +269,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 				}
 			}
 			if(e.getKeyCode()==KeyEvent.VK_P){
-				createMenuForItem(game);
+				createMenuForItem(game, selected);
 			}
 			update();
 			game.repaint();
@@ -311,8 +312,8 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public void createMenuForItem(Game game){
-		Screen demoScreen = DynamicMenu.createMenu(DynamicMenu.ITEM_DESCRIPTION_MENU, game);
+	public static void createMenuForItem(Game game, int itemNumber){
+		Screen demoScreen = DynamicMenu.createMenu(DynamicMenu.ITEM_DESCRIPTION_MENU, game, itemNumber);
 		game.setScreen(demoScreen);
 	}
 

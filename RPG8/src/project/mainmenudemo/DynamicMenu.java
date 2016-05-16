@@ -25,8 +25,6 @@ public class DynamicMenu{
 	public static final int GAME_OVER_MENU=3;
 	public static final int CREDITS_MENU=4;
 	public static final int ITEM_DESCRIPTION_MENU = 5;
-	
-	public static int selected =4; 
 	public static final ArrayList<Item> arr = getItem();
 	
 	public static MainMenuScreen createMenu(int menuType, Game game){
@@ -57,16 +55,23 @@ public class DynamicMenu{
 			backgroundmusic="resources/mainmenu.wav";
 		}
 		
-		if(menuType == ITEM_DESCRIPTION_MENU){
-			//
-			names= new String[]{arr.get(selected).getDescription(), arr.get(selected).getName()};
-			pictures=new String[]{"resources"+arr.get(selected).getItemImage()};
-			col=new Color[]{Color.white, Color.black, Color.darkGray};
-		}
-		
 		return new MainMenuScreen(type,game, names, pictures ,col, backgroundmusic);
 	}
 
+	
+	public static MainMenuScreen createMenu(int menuType, Game game, int selected){
+		String[] names=null;
+		String[] pictures=null;
+		Color[] col=null;
+		String backgroundmusic="";
+		int type=menuType;
+
+			names= new String[]{arr.get(selected).getDescription(), arr.get(selected).getName()};
+			pictures=new String[]{"resources"+arr.get(selected).getItemImage()};
+			col=new Color[]{Color.white, Color.black, Color.darkGray};
+		
+		return new MainMenuScreen(type,game, names, pictures ,col, backgroundmusic);
+	}
 
 	public static ArrayList<Item> getItem() {
 		// TODO Auto-generated method stub

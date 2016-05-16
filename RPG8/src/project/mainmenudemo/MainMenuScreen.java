@@ -112,6 +112,16 @@ public class MainMenuScreen extends Screen implements KeyListener{
 			loopClip.stop();
 		}
 		
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT &&  mtype==DynamicMenu.ITEM_DESCRIPTION_MENU){
+			project.items.ItemScreen.selected++;
+			if(project.items.ItemScreen.selected>DynamicMenu.arr.size()-1) project.items.ItemScreen.selected=0;
+			project.items.ItemScreen.createMenuForItem(this.game, project.items.ItemScreen.selected);
+		}
+		if(e.getKeyCode() == KeyEvent.VK_LEFT &&  mtype==DynamicMenu.ITEM_DESCRIPTION_MENU){
+			project.items.ItemScreen.selected--;
+			if(project.items.ItemScreen.selected<0) project.items.ItemScreen.selected=DynamicMenu.arr.size()-1;
+			project.items.ItemScreen.createMenuForItem(this.game, project.items.ItemScreen.selected);
+		}
 	}
 
 	@Override
@@ -171,9 +181,9 @@ public class MainMenuScreen extends Screen implements KeyListener{
 			}
 			
 			
-			g2.fillRect(125,50, 750,200);
+			g2.fillRect(100,50, width-200,200);
 		
-			g2.fillRect(350, 280, 375,100);
+			g2.fillRect(100 , 280, width-200,100);
 			
 			g2.drawImage(itemPic, width/2-100 , height/2+100, null);
 			
@@ -181,9 +191,9 @@ public class MainMenuScreen extends Screen implements KeyListener{
 			Font subTimes = new Font ("TimesRoman", Font.CENTER_BASELINE, 50);
 			g2.setFont(times);
 			g2.setColor(colors[0]);
-			g2.drawString(options[0], width/2 - 40,165);
+			g2.drawString(options[0], 110 ,165);
 			g2.setFont(subTimes);
-			g2.drawString(options[1], width/2 - 50, 350);
+			g2.drawString(options[1], 110, 350);
 			
 		}else{
 			g2.setColor(colors[0]);
