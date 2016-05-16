@@ -7,8 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
-import project.battles.EnemyDifficulty;
-import project.battles.demo.BattlesDemo;
+import project.battles.overworldIntegration;
 import project.directors.Game;
 import project.directors.Screen;
 import project.directors.UtilityMethods;
@@ -19,11 +18,10 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty {
+public class MapDemoScreen extends Screen implements KeyListener,overworldIntegration {
 	static ArrayList<Region> regions; // use these to change areas
 	static ArrayList<MainMap> mapSections;
 	BufferedImage background;
-	BattleInterface b;
 	MapDemonstration g;
 	static boolean touching;
 	static boolean playing;
@@ -303,22 +301,6 @@ public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty
 		return ySize;
 	}
 
-	public int getPlayerRegion() {
-		return playerRegion;
-	}
-	
-	public int getCharacterLevel() {
-		// TODO Auto-generated method stub
-		return playerRegion;
-	}
-	
-	public int getMapLevel() {
-		return playerRegion;
-	}
-	
-	public int getProgress() {
-		return 1;
-	}
 	
 	public String getBoss() {
 		for(int i = 0;i<BOSSES.length;i++){
@@ -327,6 +309,24 @@ public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty
 			}
 		}
 		return null;
+	}
+	@Override
+	public int getRegion() {
+		
+		return playerRegion;
+	}
+	@Override
+	public String getEnemyType() {
+		for(int i = 0;i<BOSSES.length;i++){
+			if(playerRegion == i){
+				return BOSSES[i];
+			}
+		}
+		return BOSSES[0];
+	}
+	@Override
+	public int getBackgroundNumber() {
+		return playerRegion;
 	}
 	
 }
