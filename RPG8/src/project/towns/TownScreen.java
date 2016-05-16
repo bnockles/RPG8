@@ -7,8 +7,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -17,6 +15,7 @@ import javax.imageio.ImageIO;
 
 import project.directors.Game;
 import project.directors.Screen;
+import project.items.ItemResources;
 
 /**
  * 
@@ -60,9 +59,9 @@ public class TownScreen extends Screen implements KeyListener{
 	ArrayList<Integer>itemN = new ArrayList<Integer>();
 	Timer timer = new Timer();
 	 int status = TOWN;
-	ArrayList<String> itemListW = new ArrayList<String>(){{add("Weapon A"); add("Weapon B"); add("Weapon C"); add("Weapon D");}};
-	ArrayList<String> itemListA = new ArrayList<String>(){{add("Armor A"); add("Armor B"); add("Armor C"); add("Armor D");}};
-	ArrayList<String> itemListC = new ArrayList<String>(){{add("Health"); add("Ammo A"); add("Ammo B"); add("Ammo C");}};
+	ArrayList<ShopItems> itemListW = new ArrayList<ShopItems>(){{add(ItemResources.rifleAmmo); add("Weapon B"); add("Weapon C"); add("Weapon D");}};
+	ArrayList<ShopItems> itemListA = new ArrayList<ShopItems>(){{add(ItemResources.rifles1GradeC1); add(ItemResources.pistol4GradeA1); add("Armor C"); add("Armor D");}};
+	ArrayList<ShopItems> itemListC = new ArrayList<ShopItems>(){{add("Health"); add("Ammo A"); add("Ammo B"); add("Ammo C");}};
 	//Fei code
 	BufferedImage[][] backgroundGrid;
 	BufferedImage[][] obstacleGrid;
@@ -357,18 +356,17 @@ public class TownScreen extends Screen implements KeyListener{
 		g2.drawRect(boxX, boxY, 400, 30);
 		g2.drawString("Press B to buy and press S to sale.", 100, 50);
 		g2.drawString("Player cash: " + store.getMoney(), 400, 50);
-		g2.drawString(s.getItemList().get(0), 100, 100);
-		g2.drawString("U owned: " + s.itemNu.get(0), 300, 100);
-		g2.drawString(s.getItemList().get(1), 100, 200);
-		g2.drawString("U owned: " + s.itemNu.get(1), 300, 200);
-		g2.drawString(s.getItemList().get(2), 100, 300);
-		g2.drawString("U owned: " + s.itemNu.get(2), 300, 300);
-		g2.drawString(s.getItemList().get(3), 100, 400);
-		g2.drawString("U owned: " + s.itemNu.get(3), 300, 400);
-		g2.drawString("Price: 450", 200, 100);
-		g2.drawString("Price: 350", 200, 200);
-		g2.drawString("Price: 250", 200, 300);
-		g2.drawString("Price: 150", 200, 400);
+		
+		int y=100;
+		int count = 0;
+		for(ShopItems x: s.itemList){
+			g2.drawString("U owned: " + s.itemNu.get(count), 300, y);
+			g2.drawString(x.getName(), 100, y);
+			g2.drawString("price: " + x.getPrice(), 200, y);
+			y+=100;
+			
+		}
+
 		g2.drawRect(60, itemx, 5, 5);
 		g2.fillRect(60, itemx, 5, 5);
 	}
