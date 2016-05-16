@@ -131,8 +131,8 @@ public interface ItemResources {
 	 */
 	
 	// Misc
-	final Misc gold = new Misc("Gold", "Get more of this and you're rich!", true , 0, NO_EFFECT,"/images/items/coin.png");
-	final Misc scrap = new Misc("Scrap Metal", "Useless trash.",false , 1, NO_EFFECT,"/images/items/scrapMetal.png");
+	final Misc gold = new Misc("Gold", "Get more of this and you're rich!", true , 0, NO_EFFECT,"/images/items/coin.png", true);
+	final Misc scrap = new Misc("Scrap Metal", "Useless trash.",false , 1, NO_EFFECT,"/images/items/scrapMetal.png", true);
 	
 	public Item[] getItem();
 }
