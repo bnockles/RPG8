@@ -21,7 +21,7 @@ public class SaveScreen extends Screen implements KeyListener {
 		g2.setColor(Color.LIGHT_GRAY);
 		g2.fillRect(0, 0, width, height);
 		
-		String startText = "Press Space Bar to start";
+		String startText = "Testing texts";
 		UtilityMethods.centerText(g2, startText, width, height);
 	}
 
