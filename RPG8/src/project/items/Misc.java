@@ -9,7 +9,13 @@ public class Misc extends Item{
 		
 		public Misc(String name, String desc,boolean coin, int cost, int effect, String itemImage, boolean buyable){
 			super(name,desc, cost, effect, itemImage, buyable);
+			this.coin = coin;
 		}
+
+		public boolean isCoin() {
+			return coin;
+		}
+		
 		
 	}
 
