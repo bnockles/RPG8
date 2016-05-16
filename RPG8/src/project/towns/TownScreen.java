@@ -33,8 +33,8 @@ public class TownScreen extends Screen implements KeyListener{
 	StoreNPC putin;
 	TownWanderer playable;
 	WeaponStore store;
-	WeaponStore storeA;
-	WeaponStore storeC;
+	ArmorStore storeA;
+	ConsumStore storeC;
 	Building portalTooTown;
 	Building townPortalTooArmor;
 	Building townPortalTooWeapon;
@@ -59,9 +59,7 @@ public class TownScreen extends Screen implements KeyListener{
 	ArrayList<Integer>itemN = new ArrayList<Integer>();
 	Timer timer = new Timer();
 	 int status = TOWN;
-	ArrayList<ShopItems> itemListW = new ArrayList<ShopItems>(){{add(ItemResources.rifleAmmo); add("Weapon B"); add("Weapon C"); add("Weapon D");}};
-	ArrayList<ShopItems> itemListA = new ArrayList<ShopItems>(){{add(ItemResources.rifles1GradeC1); add(ItemResources.pistol4GradeA1); add("Armor C"); add("Armor D");}};
-	ArrayList<ShopItems> itemListC = new ArrayList<ShopItems>(){{add("Health"); add("Ammo A"); add("Ammo B"); add("Ammo C");}};
+
 	//Fei code
 	BufferedImage[][] backgroundGrid;
 	BufferedImage[][] obstacleGrid;
@@ -126,9 +124,9 @@ public class TownScreen extends Screen implements KeyListener{
 			catch (IOException e) {
 				e.printStackTrace();
 			}
-			store = new WeaponStore(itemN, playable.getMoney(), itemListW);
-			storeA = new WeaponStore(itemN, playable.getMoney(), itemListA);
-			storeC = new WeaponStore(itemN, playable.getMoney(), itemListC);
+			store = new WeaponStore(itemN, playable.getMoney());
+			//storeA = new WeaponStore(itemN, playable.getMoney(), itemListA);
+			//storeC = new WeaponStore(itemN, playable.getMoney(), itemListC);
 			getKeyListener();
 		
 		//qq
@@ -203,10 +201,6 @@ public class TownScreen extends Screen implements KeyListener{
 					paintShop(g2);
 					g2.drawImage(putin.getNpc(), 390,game.getHeight() - 250,250,180, null);
 					
-		//	    	g2.drawOval(450, 50, 100, 100);
-		//	    	g2.setColor(Color.WHITE);
-		//	    	g2.fillOval(450, 50, 100, 100);
-					
 			    	g2.drawImage(portalTooTown.getImage(), 450,50, null);
 			    	
 			    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
@@ -225,10 +219,10 @@ public class TownScreen extends Screen implements KeyListener{
 						paintInShop(store, g2);
 					}
 					if(status2 == ARMOR_STORE){
-						paintInShop(storeA, g2);
+						paintInShopA(storeA, g2);
 					}
 					if(status2 == AMMO_STORE){
-						paintInShop(storeC, g2);
+						paintInShopC(storeC, g2);
 					}
 				}
 				if (status == TOWN){
@@ -352,6 +346,44 @@ public class TownScreen extends Screen implements KeyListener{
 //		    }
 //		}
 	}
+	private void paintInShopC(ConsumStore s, Graphics2D g2) {
+		// TODO Auto-generated method stub
+		g2.drawRect(boxX, boxY, 400, 30);
+		g2.drawString("Press B to buy and press S to sale.", 100, 50);
+		g2.drawString("Player cash: " + store.getMoney(), 400, 50);
+		
+		int y=100;
+		int count = 0;
+		for(ShopItems x: s.itemListC){
+			g2.drawString("U owned: " + s.itemNC.get(count), 300, y);
+			g2.drawString(x.getName(), 100, y);
+			g2.drawString("price: " + x.getPrice(), 200, y);
+			y+=100;
+		}
+
+		g2.drawRect(60, itemx, 5, 5);
+		g2.fillRect(60, itemx, 5, 5);
+	}
+
+	private void paintInShopA(ArmorStore s, Graphics2D g2) {
+		// TODO Auto-generated method stub
+		g2.drawRect(boxX, boxY, 400, 30);
+		g2.drawString("Press B to buy and press S to sale.", 100, 50);
+		g2.drawString("Player cash: " + store.getMoney(), 400, 50);
+		
+		int y=100;
+		int count = 0;
+		for(ShopItems x: s.itemListA){
+			g2.drawString("U owned: " + s.itemNA.get(count), 300, y);
+			g2.drawString(x.getName(), 100, y);
+			g2.drawString("price: " + x.getPrice(), 200, y);
+			y+=100;
+		}
+
+		g2.drawRect(60, itemx, 5, 5);
+		g2.fillRect(60, itemx, 5, 5);
+	}
+
 	public void paintInShop(WeaponStore s, Graphics2D g2){
 		g2.drawRect(boxX, boxY, 400, 30);
 		g2.drawString("Press B to buy and press S to sale.", 100, 50);
@@ -359,12 +391,11 @@ public class TownScreen extends Screen implements KeyListener{
 		
 		int y=100;
 		int count = 0;
-		for(ShopItems x: s.itemList){
-			g2.drawString("U owned: " + s.itemNu.get(count), 300, y);
+		for(ShopItems x: s.itemListW){
+			g2.drawString("U owned: " + s.itemNuW.get(count), 300, y);
 			g2.drawString(x.getName(), 100, y);
 			g2.drawString("price: " + x.getPrice(), 200, y);
 			y+=100;
-			
 		}
 
 		g2.drawRect(60, itemx, 5, 5);

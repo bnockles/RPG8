@@ -15,4 +15,7 @@ public interface StoreInterface {
 	
 	public void itemInteraction();
 
+	public void AllSellingInteraction(int itemx);
+	
+	public void AllInteraction(int itemx);
 }
