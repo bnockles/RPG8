@@ -1,3 +1,5 @@
+//Pelham Van Cooten III
+
 package project.battles;
 
 public class EnemyLogEntry {
