@@ -6,8 +6,8 @@ import project.items.ItemResources;
 
 public class ArmorStore implements StoreInterface{
 
-	int money;
-	ArrayList<ShopItems> itemListA = new ArrayList<ShopItems>(){{add((ShopItems) ItemResources.rifles1GradeC1); add((ShopItems) ItemResources.rifles3GradeA2); add((ShopItems) ItemResources.rifles4GradeA3); add((ShopItems) ItemResources.pistol2GradeB1);}};
+	double money;
+	ArrayList<ShopItems> itemListA = new ArrayList<ShopItems>(){{add((ShopItems) ItemResources.yourarmor); add((ShopItems) ItemResources.medkit); add((ShopItems) ItemResources.smallkit); add((ShopItems) ItemResources.bigkit);}};
 	ArrayList<Integer> itemNA = new ArrayList<Integer>();
 	public ArmorStore(ArrayList<Integer> itemN, int money) {
 		this.money = money;
@@ -40,24 +40,26 @@ public class ArmorStore implements StoreInterface{
 	@Override
 	public void moneySellingInteraction(int itemx) {
 		// TODO Auto-generated method stub
-		if(itemx == 92){
-			if(itemNA.get(0) > 0){
-				itemNA.set(0, itemNA.get(0) - 1);
-				money = money + 450;
-			}
-		}
-		if(itemx == 192){
-			if(itemNA.get(1) > 0){
-				itemNA.set(1, itemNA.get(1) - 1);
-				money = money + 350;
-			}
-		}
-		if(itemx == 292){
-			if(itemNA.get(2) > 0){
-				itemNA.set(2, itemNA.get(2) - 1);
-				money = money + 250;
-			}
-		}
+		if(itemx == 92)
+			if(money >= 450){
+					itemNA.set(0, itemNA.get(0) + 1);
+					money = money - itemListA.get(0).getPrice();
+				}
+			if(itemx == 192)
+				if(money >= 350){
+					itemNA.set(1,itemNA.get(1) + 1);
+					money = money - itemListA.get(1).getPrice();
+				}
+			if(itemx == 292)
+				if(money >= 250){
+					itemNA.set(2, itemNA.get(2) + 1);
+					money = money - itemListA.get(2).getPrice();
+				}
+			if(itemx == 392)
+				if(money >= 250){
+					itemNA.set(3, itemNA.get(3) + 1);
+					money = money - itemListA.get(3).getPrice();
+				}
 	}
 	public void AllInteraction(int itemx) {
 		// TODO Auto-generated method stub
@@ -114,8 +116,13 @@ public class ArmorStore implements StoreInterface{
 		
 	}
 
-	public void setMoney(int money) {
-		this.money = money;
+	public void setMoney(double d) {
+		this.money = d;
+	}
+
+	public double getMoney() {
+		// TODO Auto-generated method stub
+		return money;
 	}
 
 }

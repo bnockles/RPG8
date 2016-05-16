@@ -13,7 +13,7 @@ import project.items.ItemResources;
  */
 public class WeaponStore implements StoreInterface{
 
-	int money;
+	double money;
 	ArrayList<Integer> itemNuW = new ArrayList<Integer>();
 	ArrayList<ShopItems> itemListW = new ArrayList<ShopItems>(){{add((ShopItems) ItemResources.rifles1GradeC1); add((ShopItems) ItemResources.rifles3GradeA2); add((ShopItems) ItemResources.rifles4GradeA3); add((ShopItems) ItemResources.pistol2GradeB1);}};
 	
@@ -43,31 +43,31 @@ public class WeaponStore implements StoreInterface{
 		if(itemx == 92)
 		if(money >= 450){
 				itemNuW.set(0, itemNuW.get(0) + 1);
-				money = money - 450;
+				money = money - itemListW.get(0).getPrice();
 			}
 		if(itemx == 192)
 			if(money >= 350){
 				itemNuW.set(1,itemNuW.get(1) + 1);
-				money -= 350;
+				money = money - itemListW.get(1).getPrice();
 			}
 		if(itemx == 292)
 			if(money >= 250){
 				itemNuW.set(2, itemNuW.get(2) + 1);
-				money -= 250;
+				money = money - itemListW.get(2).getPrice();
 			}
 		if(itemx == 392)
 			if(money >= 250){
 				itemNuW.set(3, itemNuW.get(3) + 1);
-				money -= 150;
+				money = money - itemListW.get(3).getPrice();
 			}
 		}
 	
-	public int getMoney() {
+	public double getMoney() {
 		return money;
 	}
 
-	public void setMoney(int money) {
-		this.money = money;
+	public void setMoney(double d) {
+		this.money = d;
 	}
 
 	@Override

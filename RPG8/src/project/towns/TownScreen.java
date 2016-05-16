@@ -125,8 +125,8 @@ public class TownScreen extends Screen implements KeyListener{
 				e.printStackTrace();
 			}
 			store = new WeaponStore(itemN, playable.getMoney());
-			//storeA = new WeaponStore(itemN, playable.getMoney(), itemListA);
-			//storeC = new WeaponStore(itemN, playable.getMoney(), itemListC);
+			storeA = new ArmorStore(itemN, playable.getMoney());
+			storeC = new ConsumStore(itemN, playable.getMoney());
 			getKeyListener();
 		
 		//qq
@@ -350,7 +350,7 @@ public class TownScreen extends Screen implements KeyListener{
 		// TODO Auto-generated method stub
 		g2.drawRect(boxX, boxY, 400, 30);
 		g2.drawString("Press B to buy and press S to sale.", 100, 50);
-		g2.drawString("Player cash: " + store.getMoney(), 400, 50);
+		g2.drawString("Player cash: " + storeC.getMoney(), 400, 50);
 		
 		int y=100;
 		int count = 0;
@@ -369,7 +369,7 @@ public class TownScreen extends Screen implements KeyListener{
 		// TODO Auto-generated method stub
 		g2.drawRect(boxX, boxY, 400, 30);
 		g2.drawString("Press B to buy and press S to sale.", 100, 50);
-		g2.drawString("Player cash: " + store.getMoney(), 400, 50);
+		g2.drawString("Player cash: " + storeA.getMoney(), 400, 50);
 		
 		int y=100;
 		int count = 0;
