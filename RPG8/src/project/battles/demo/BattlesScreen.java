@@ -34,8 +34,9 @@ import project.directors.Game;
 import project.directors.Screen;
 import project.directors.UtilityMethods;
 import project.items.Weapon;
+import project.overworld.BattleInterface;
 
-public class BattlesScreen extends Screen implements BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener{
+public class BattlesScreen extends Screen implements BattleInterface, BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener{
 	/**
 	 * ***********CHANGES! MUST READ********************
 	 * RENAMING: 
@@ -661,5 +662,35 @@ public class BattlesScreen extends Screen implements BattlesActions, ActionListe
 	}
 	public void doSomething(int e){
 		controller.determineKeyAction(e);
+	}
+	@Override
+	public boolean isDead(Character c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean killCharacter(Character c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public int getCharX(Character c) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int getCharRegion(Character c) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int getCharY(Character c) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public ArrayList<Character> getCharacter(ArrayList<Character> c) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

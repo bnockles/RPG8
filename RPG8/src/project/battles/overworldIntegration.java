@@ -1,6 +1,6 @@
 package project.battles;
 //Yifan He 
-public interface nonSpawnable {
+public interface overworldIntegration {
 //	// get info from overworld. 
 //		public ArrayList<Boundaries> getBoundaries();
 //		public ArrayList<Obstacle> getObstacles();
