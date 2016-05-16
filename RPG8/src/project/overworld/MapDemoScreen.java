@@ -22,7 +22,7 @@ public class MapDemoScreen extends Screen implements KeyListener,overworldIntegr
 	static ArrayList<Region> regions; // use these to change areas
 	static ArrayList<MainMap> mapSections;
 	BufferedImage background;
-	MapDemonstration g;
+	static MapDemonstration g;
 	static boolean touching;
 	static boolean playing;
 	static int xPos;
@@ -99,6 +99,7 @@ public class MapDemoScreen extends Screen implements KeyListener,overworldIntegr
 		regions.add(new Region(0, 200, 50, 400, ZONE1, LANDINGZ1[0], LANDINGZ1[1], ZONE2));
 		regions.add(new Region(400, 200, 120, 120, TOWN, LANDINGTL[0], LANDINGTL[1], ZONE2));
 		regions.add(new Region(30, 400, 20, 100, ZONE2, LANDINGZ2R[0], LANDINGZ2R[1], TOWN));
+		regions.add(new Region(400,200,80,100,ZONE1,LANDINGZ1[0],LANDINGZ1[1],ZONE1));
 		mapSections.add(new MainMap(0, "/images/Map/test.jpeg", o1, b1));
 		mapSections.add(new MainMap(1, "/images/Map/test2.jpeg", o2, b2));
 		mapSections.add(new MainMap(2, "/images/Map/testTown.png", o3, b3));
@@ -118,6 +119,7 @@ public class MapDemoScreen extends Screen implements KeyListener,overworldIntegr
 		xPos = coors[0];
 		yPos = coors[1];
 	}
+	
 	public void checkCollision() {
 		hitbox = new Rectangle(xPos, yPos, xSize, ySize);
 		for (int i = 0; i < mapSections.size(); i++) {
@@ -168,12 +170,16 @@ public class MapDemoScreen extends Screen implements KeyListener,overworldIntegr
 	public static void changeRegion() {
 		hitbox = new Rectangle(xPos, yPos, xSize, ySize);
 		for (int i = 0; i < regions.size(); i++) {
+			if(i == 4 && regions.get(i).getBounds().intersects(hitbox) && regions.get(i).getRegion() == playerRegion){
+				g.changeScreens();
+			}
 			if (regions.get(i).getBounds().intersects(hitbox) && regions.get(i).getRegion() == playerRegion) {
 				playerRegion = regions.get(i).getGoTo();
 				xPos = regions.get(i).getStartX();
 				yPos = regions.get(i).getStartY();
 				return;
 			}
+			
 		}
 	}
 
