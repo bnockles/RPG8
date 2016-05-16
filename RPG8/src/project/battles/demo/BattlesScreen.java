@@ -687,19 +687,30 @@ public class BattlesScreen extends Screen implements BattleInterface, BattlesAct
 		return character.getX();
 	}
 	@Override
-	public int getCharRegion(Character c) {
-		// TODO Auto-generated method stub
-		return character.getY();
-		//IDK what character's region is.
-	}
-	@Override
 	public int getCharY(Character c) {
 		// TODO Auto-generated method stub
 		return character.getY();
 	}
 	@Override
-	public ArrayList<Character> getCharacter(ArrayList<Character> c) {
+	public BufferedImage[] getFrontImage() {
 		// TODO Auto-generated method stub
-		return null;
+		return character.getFsprite();
 	}
+	@Override
+	public BufferedImage[] getBack() {
+		// TODO Auto-generated method stub
+		return character.getBsprite();
+	}
+	@Override
+	public BufferedImage[] getRight() {
+		// TODO Auto-generated method stub
+		return character.getRsprite();
+	}
+	@Override
+	public BufferedImage[] getLeft() {
+		// TODO Auto-generated method stub
+		return character.getLsprite();
+	}
+	
+
 }
