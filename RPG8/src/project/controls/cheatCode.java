@@ -1,9 +1,12 @@
 package project.controls;
 
+import java.awt.event.ActionEvent;
+
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.Timer;
+import javax.swing.Timer;
 
 import javax.sound.midi.Sequence;
 
@@ -30,12 +33,23 @@ public class cheatCode implements KeyListener {
 		Integer keyCode = e.getKeyCode();
 	
 	}
-
+	private void increment() {
+		input ="";
+		
+	}
+	ActionListener taskPerformer = new ActionListener(){
+		public void actionPerformed(ActionEvent evt){
+			input="";
+		}
+	};
+	
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		int keyCode = e.getKeyCode();
+		new Timer(2000,taskPerformer).start();
 		input += KeyEvent.getKeyText((Integer)(keyCode));
+		if(input.contains("C")){
 			if(input.contains("CHEATLEVEL")){
 				cheatLevel();
 				input = "";
@@ -48,10 +62,14 @@ public class cheatCode implements KeyListener {
 				cheatSpeed();
 				input = "";
 			}
-			if(input.contains("CHEATAMMO")){
+			if(input.contains("XCHEATAMMOX")){
 				cheatAmmo();
 				input = "";
 			}
+		}else{
+			input = null;
+		}
+			
 	}
 
 	private void cheatAmmo() {
