@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 import project.battles.EnemyDifficulty;
+import project.battles.demo.BattlesDemo;
 import project.directors.Game;
 import project.directors.Screen;
 import project.directors.UtilityMethods;
@@ -22,6 +23,8 @@ public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty
 	static ArrayList<Region> regions; // use these to change areas
 	static ArrayList<MainMap> mapSections;
 	BufferedImage background;
+	BattleInterface b;
+	MapDemonstration g;
 	static boolean touching;
 	static boolean playing;
 	static int xPos;
@@ -53,6 +56,7 @@ public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty
 	// hello
 	public MapDemoScreen(Game game) {
 		super(game);
+		g = (MapDemonstration) game;
 		ArrayList<Obstacle> o1 = new ArrayList<Obstacle>();
 		ArrayList<Obstacle> o2 = new ArrayList<Obstacle>();
 		ArrayList<Boundaries> b1 = new ArrayList<Boundaries>();
@@ -109,6 +113,7 @@ public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty
 				e.printStackTrace();
 			}
 		}
+		
 	}
 	public static void teleportToZone(int zone,int[] coors){
 		playerRegion = zone;
@@ -146,7 +151,6 @@ public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty
 			}
 		}
 	}
-
 	public void checkPlayerState(Boundaries bound) {
 		if (bound.isLethal()) {
 			playing = false;
@@ -253,6 +257,7 @@ public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty
 		}
 		if (keyCode == KeyEvent.VK_DELETE) {
 			System.out.println(xPos + " " + yPos);
+			g.changeScreens();
 			if (touching && type.equals(OBSTACLE)) {
 				mapSections.get(zone).getObstacles().get(obstacleNum).removeObstacle();
 			}

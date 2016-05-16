@@ -13,8 +13,10 @@ public interface BattleInterface {
 	public boolean isDead(Character c);
 	public boolean killCharacter(Character c);
 	public int getCharX(Character c);
-	public int getCharRegion(Character c);
 	public int getCharY(Character c);
-	ArrayList<Character> getCharacter(ArrayList<Character> c);
+	public BufferedImage[] getFrontImage();
+	public BufferedImage[] getBack();
+	public BufferedImage[] getRight();
+	public BufferedImage[] getLeft();
 	
 }
