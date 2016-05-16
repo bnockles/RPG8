@@ -5,21 +5,24 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import project.menus.Selectable;
+import project.towns.ShopItems;
 
-public abstract class Item implements Selectable {
+public abstract class Item implements Selectable, ShopItems{
 	private String name;
 	private String description;
 	private int cost;
 	private int effect;
 	private String itemImage;
+	private boolean buyable;
 	
 
-	public Item(String name,String desc,int cost, int effect, String itemImage){
+	public Item(String name,String desc,int cost, int effect, String itemImage, boolean buyable){
 		this.name=name;
 		description=desc;
 		this.cost=cost;
 		this.effect = effect;
 		this.itemImage=itemImage;
+		buyable = true;
 		/** possible param String imageName
 		with a method that paint pictures
 		current status: no idea if we do or not
@@ -40,6 +43,10 @@ public abstract class Item implements Selectable {
 //			}
 //		}
 		//System.out.println("Final Health"+health);
+	}
+	
+	public double getPrice(){
+		return getCost();
 	}
 	public int getCost() {
 		return cost;
@@ -64,6 +71,18 @@ public abstract class Item implements Selectable {
 	public void confirm() {
 		// TODO Auto-generated method stub
 	
+	}
+
+	public boolean isBuyable() {
+		return buyable;
+	}
+
+	public void setBuyable(boolean buyable) {
+		this.buyable = buyable;
+	}
+
+	public void setCost(int cost) {
+		this.cost = cost;
 	}
 
 	

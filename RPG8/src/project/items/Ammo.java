@@ -8,14 +8,16 @@ public class Ammo extends Item{
 	private String desc;
 	private int ammoType;
 	private String itemImage;
+	private boolean buyable;
 	
 
-	public Ammo(String name, String desc,int cost,int ammoType, int effect, String itemImage) {
-		super(name, desc, cost, effect, itemImage);
+	public Ammo(String name, String desc,int cost,int ammoType, int effect, String itemImage, boolean buyable) {
+		super(name, desc, cost, effect, itemImage, buyable);
 		// TODO Auto-generated constructor stub
 		this.name=name;
 		this.desc=desc;
 		this.ammoType=ammoType;
+		this.buyable=buyable;
 	}
 
 	public String getName() {
@@ -34,29 +36,29 @@ public class Ammo extends Item{
 		return itemImage;
 	}
 	
-	public void applyEffect(int eff){
-		int duration=0;
+	public void applyEffect(int eff,final TargetDemo target){
 		if(eff == ItemResources.FIRE){
+			if(!target.isBurned){
 				final Timer timer = new Timer();
 				final TimerTask countDown = new TimerTask(){
 					public void run(){
-						if(duration>=1){
-							duration=0;
-							
+						if(target.duration>=1){
+							target.duration=0;
+							target.isBurned=false;
 							timer.cancel();
 						}else{
 							target.health -=2;
 							if(target.health<0){
 								target.health=0;
 							}
-							duration++;
+							target.duration++;
 						}
 					}
 				};
 				timer.scheduleAtFixedRate(countDown, 1000, 1000);
+				target.isBurned=true;
 			}	
 		}
-	
 		if(eff == ItemResources.CORROSIVE){
 			
 		}
@@ -65,12 +67,12 @@ public class Ammo extends Item{
 			final Timer timer = new Timer();
 			final TimerTask countDown = new TimerTask(){
 				public void run(){
-					if(duration>=3){
-						duration=0;
+					if(target.duration>=3){
+						target.duration=0;
 						target.isStunned=false;
 						timer.cancel();
 					}else{
-						duration++;
+						target.duration++;
 					}
 				}
 			};

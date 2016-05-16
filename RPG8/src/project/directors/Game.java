@@ -17,8 +17,8 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import project.overworld.DemoOverworld;
-import project.save.ItemState;
-import project.save.SaveFile;
+import project.oldsave.ItemState;
+import project.oldsave.SaveFile;
 
 
 
@@ -68,7 +68,7 @@ public class Game extends JFrame{
 		timer.start();
 	}
 
-	private void applySettings() {
+	protected void applySettings() {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int monitorWidth = (int) screenSize.getWidth();
 		int monitorHeight = (int) screenSize.getHeight();
