@@ -12,14 +12,18 @@ import javax.imageio.ImageIO;
  */
 
 public class Hero {
-
+	private final static String[] AyaRight = {"/images/heroes/right1.png", "/images/heroes/right2.png"};
+	private final static String[] AyaLeft = {"/images/heroes/left1.png", "/images/heroes/left2.png"};	
+	private final static String[] AyaForward = {"/images/heroes/forward1.png", "/images/heroes/forward2.png"};
+	private final static String[] AyaBack = {"/images/heroes/back1.png", "/images/heroes/back2.png"};
+	private final static String[] AyaStanding = {"/images/heroes/sForward.png", "/images/heroes/sLeft.png", 
+		"/images/heroes/sRight.png", "/images/heroes/sBack.png"};
 	BufferedImage sprite;
-	public String name;
-	public int x;
-	public int y;
-	int width = 30;
-	int height = 46;
-	boolean zero = true;
+	private String name;
+	private int x;
+	private int y;
+	private int width = 30;
+	private int height = 46;
 	public static int weapon = 10;
 	public int strength = 100;
 	
@@ -27,6 +31,7 @@ public class Hero {
 		this.name = name;
 		this.x = x;
 		this.y = y;
+		animate(AyaStanding[0]);
 	}	
 	
 	public void animate(String picLocation){
@@ -47,6 +52,10 @@ public class Hero {
 		} 
 	}
 	
+	public String getName(){
+		return name;
+	}
+	
 	public int getX(){
 		return x;
 	}
@@ -65,51 +74,23 @@ public class Hero {
 	
 	public void moveUp() {
 		y = y - 4;
-		if(zero)storyDemo.Swarm.animate(storyDemo.AyaBack.get(0));
-		else{
-			storyDemo.Swarm.animate(storyDemo.AyaBack.get(1));
-		}
-		zero = !zero;
-		if(y <= 25){
-			setY(32);
-		}
+		
 	}
 
 	public void moveDown() {
 		y = y + 4;
-		if(zero)storyDemo.Swarm.animate(storyDemo.AyaForward.get(0));
-		else{
-			storyDemo.Swarm.animate(storyDemo.AyaForward.get(1));
-		}
-		zero = !zero;
-		if(y >= storyDemo.height - 133){
-			setY(storyDemo.height - 137);
-		}
+		
 	}
 
 	public void moveRight() {
 		x = x + 4;
 		
-		if(zero)storyDemo.Swarm.animate(storyDemo.AyaRight.get(0));
-		else{
-			storyDemo.Swarm.animate(storyDemo.AyaRight.get(1));
-		}
-		zero = !zero;
-		if(x >= storyDemo.width - 33){
-			setX(storyDemo.width - 37);
-		}
+		
 	}
 
 	public void moveLeft() {
 		x = x - 4;
-		if(zero)storyDemo.Swarm.animate(storyDemo.AyaLeft.get(0));
-		else{
-			storyDemo.Swarm.animate(storyDemo.AyaLeft.get(1));
-		}
-		zero = !zero;
-		if(x <= 3){
-			setX(7);
-		}
+		
 	}
 	
 	public void setStrength(int strength) {
@@ -125,8 +106,20 @@ public class Hero {
 			System.out.println("No Ammo");
 		}
 	}
-	public void radio() {
-		Radio.radioCall();
+	
+	public void checkDimensions(){
+		if(y <= 25){
+			setY(32);
+		}
+		if(y >= storyScreen.height - 133){
+			setY(storyScreen.height - 137);
+		}
+		if(x <= 3){
+			setX(7);
+		}
+		if(x >= storyScreen.width - 33){
+			setX(storyScreen.width - 37);
+		}
 	}
 	
 	public BufferedImage getImage(){

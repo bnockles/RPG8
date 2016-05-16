@@ -46,8 +46,6 @@ public abstract class EnemyAI extends Character{
 		this.spawnedX = stats[0];
 		this.spawnedY = stats[1];
 		awarenessRange = new Ellipse2D.Double(x-awareRange, y-awareRange, awareRange, awareRange);
-		
-		
 		this.hostile = true;
 		this.moveUp=true;
 		if(type == BattlesScreen.LEFT_RIGHT)

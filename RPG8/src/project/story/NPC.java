@@ -9,10 +9,10 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 /**
- * Samantha
+ * Muhammad
  */
 
-public class Enemy {
+public class NPC {
 
 	BufferedImage sprite;
 	public String name;
@@ -22,10 +22,12 @@ public class Enemy {
 	int height = 46;
 	public static int weapon = 10;
 	public int strength = 100;
+	String[] array;
 	
-	public Enemy(int x, int y, String picLocation) {
+	public NPC(int x, int y, String picLocation, String[] array) {
 		this.x = x;
 		this.y = y;
+		this.array = array;
 		URL url = getClass().getResource(picLocation);
 		try {		
 			sprite = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -66,5 +68,9 @@ public class Enemy {
 	public int getY() {
 		return y;
 	}
+	public String[] getArray() {
+		return array;
+	}
 	
 }
+

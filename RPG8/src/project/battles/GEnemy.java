@@ -13,13 +13,20 @@ public class GEnemy extends EnemyAI{
 	/*
 	 * Author :Andy Zheng
 	 */
-	
+	private int[] stats;
+	//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 	public GEnemy(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon, int type){
 		super(images,stats,vision,weapon,type);
 		this.weapon = weapon;
+		this.stats = stats;
 		this.enemyClass = BattlesScreen.GENEMY;
 	}
-
+	
+	public void scaleG(){
+		for (int i = 2; i < stats.length; i++){
+			stats[i] *= 1;
+		}
+	}
 	public GEnemy(BufferedImage[][] images, int[] stats,int[] vision, Weapon weapon, int type, boolean[] conditions){
 		super(images,stats,vision,weapon,type);
 		this.targetLock = conditions[0];
