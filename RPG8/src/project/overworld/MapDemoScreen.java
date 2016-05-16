@@ -42,6 +42,7 @@ public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty
 	public static final boolean INDES = false;
 	public static final boolean LETHAL = true;
 	public static final boolean NONLETH = false;
+	public static final String[] BOSSES = {"WATER","EARTH"};
 	static int playerRegion;
 	static Rectangle hitbox;
 	static int obstacleNum;
@@ -300,23 +301,27 @@ public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty
 	public int getPlayerRegion() {
 		return playerRegion;
 	}
-	@Override
+	
 	public int getCharacterLevel() {
 		// TODO Auto-generated method stub
 		return playerRegion;
 	}
-	@Override
+	
 	public int getMapLevel() {
 		
 		return playerRegion;
 	}
-	@Override
+	
 	public int getProgress() {
 		return 1;
 	}
-	@Override
+	
 	public String getBoss() {
-		// TODO Auto-generated method stub
+		for(int i = 0;i<BOSSES.length;i++){
+			if(playerRegion == i){
+				return BOSSES[i];
+			}
+		}
 		return null;
 	}
 
