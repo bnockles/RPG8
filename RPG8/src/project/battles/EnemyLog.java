@@ -4,10 +4,10 @@ package project.battles;
 import java.util.ArrayList;
 
 public class EnemyLog {
-		private ArrayList<EnemyLogEntry> eLog = new ArrayList<EnemyLogEntry>();
+		private ArrayList<EnemyLogEntry> eLog;
 		
 		public EnemyLog(){
-			//ArrayList<EnemyLogEntry> eLog = 
+			eLog = new ArrayList<EnemyLogEntry>();
 			
 		}
 		
@@ -18,7 +18,7 @@ public class EnemyLog {
 					break;
 				}
 				
-				eLog.add(new EnemyLogEntry(enemy.getName(), "Guard Enemy", enemy.getLevel(), enemy.getDeaths(), enemy.getKills()))
+				eLog.add(new EnemyLogEntry(enemy.getName(), "Guard Enemy", enemy.getLevel(), enemy.getDeaths(), enemy.getKills()));
 				
 				}
 			
@@ -31,7 +31,7 @@ public class EnemyLog {
 					break;
 				}
 			
-				eLog.add(new EnemyLogEntry(enemy.getName(), "Killer Enemy", enemy.getLevel(), enemy.getDeaths(), enemy.getKills()))
+				eLog.add(new EnemyLogEntry(enemy.getName(), "Killer Enemy", enemy.getLevel(), enemy.getDeaths(), enemy.getKills()));
 			
 			}
 			
