@@ -9,7 +9,7 @@ public interface overworldIntegration {
 //	public void weaponProjectiles(); //already made enemy static
 //	public int enemyNum(); //
 //	public void characterMovements();
-	public int getRegion();
-	public String getEnemyType();
-	public int getBackgroundNumber();
+	public int getRegion(); //the region changes as the character moves 
+	public String getEnemyType(); //the enemy type changes according to the region
+	public int getBackgroundNumber(); //the battle back ground will change according to the background Number
 }
