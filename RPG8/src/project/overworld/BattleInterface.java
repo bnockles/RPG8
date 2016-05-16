@@ -16,5 +16,5 @@ public interface BattleInterface {
 	public int getCharRegion(Character c);
 	public int getCharY(Character c);
 	ArrayList<Character> getCharacter(ArrayList<Character> c);
-	BattleInterface getBattleInterface(BattlesDemo b);
+	
 }

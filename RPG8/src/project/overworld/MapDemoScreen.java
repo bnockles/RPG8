@@ -308,7 +308,6 @@ public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty
 	}
 	
 	public int getMapLevel() {
-		
 		return playerRegion;
 	}
 	
@@ -324,5 +323,5 @@ public class MapDemoScreen extends Screen implements KeyListener,EnemyDifficulty
 		}
 		return null;
 	}
-
+	
 }
