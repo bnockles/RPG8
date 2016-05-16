@@ -9,7 +9,7 @@ import project.battles.Projectiles;
 import project.battles.demo.BattlesScreen;
 import project.save.ItemState;
 import project.items.Weapon;
-public abstract class Character implements project.battles.Animation{
+public abstract class Character implements project.battles.Animation, project.battles.HaveStats{
 
 	//public abstract ItemState getItems();
 	//public abstract OverworldSpriteControl move();

@@ -1,20 +1,18 @@
 package project.battles;
-import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import project.battles.demo.BattlesScreen;
 import project.directors.Character;
+import project.items.UsableItem;
 import project.items.Weapon;
 import project.save.ItemState;
 
-public class MCharacter extends Character{
+public class MCharacter extends Character implements CanUseItems{
 	private int level;
 	private boolean rifle = true;
+	private UsableItem item;
 	
 	ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 //	private String[] setLoadOut;
@@ -131,6 +129,9 @@ public class MCharacter extends Character{
 //				fireExplosive(hostile, x, y, vx, vy);
 				//UNCOMMENT METHOD ABOVE TO TEST EXPLOSIVES
 		}
+	}
+	public void useMedkit(){
+		item.useItem(this);
 	}
 	public boolean isRifle() {
 		return rifle;

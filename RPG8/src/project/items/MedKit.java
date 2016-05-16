@@ -1,9 +1,12 @@
 package project.items;
 
+
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MedKit extends Item {
+import project.battles.HaveStats;
+
+public class MedKit extends Item implements UsableItem{
 	//stanley's class
 	private String name;
 	private String desc;
@@ -26,14 +29,15 @@ public class MedKit extends Item {
 		int charHealth=b.getHealth();
 		charHealth+=this.healthGained;
 	}**/
-	public void giveHealth(TargetDemo b){
-		b.health+=this.healthGained;
+	public void giveHealth(HaveStats b){
+		int health= b.getCurrentHP()+this.healthGained;
+		b.setCurrentHP(health);
 		regen(b);
-		if(b.health>100){
-			b.health=100;
+		if(b.getCurrentHP()>b.getMaxHP()){
+			b.setCurrentHP(b.getMaxHP());
 		}
 	}
-	public void regen(final Target b){
+	public void regen(final HaveStats b){
 		
 		
 		final int healRegen=this.healthGained;
@@ -53,8 +57,10 @@ public class MedKit extends Item {
 						duration=0;
 						timer.cancel();
 					}else{
-						b.health+=healRegen;
-						if(b.health>100)b.health=100;
+						
+						int health= b.getCurrentHP()+healRegen;
+						b.setCurrentHP(health);
+						if(b.getCurrentHP()>b.getMaxHP())b.setCurrentHP(b.getMaxHP());
 						duration++;
 					}
 					this.timerStack=true;
@@ -86,4 +92,11 @@ public class MedKit extends Item {
 	public String getItemImage() {
 		return itemImage;
 	}
+
+	@Override
+	public void useItem(HaveStats c) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
