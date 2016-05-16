@@ -210,8 +210,8 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 //				target.attack(you);
 //			}
 			}
-			if(e.getKeyCode()==KeyEvent.VK_7){
-				if(you.ammo.getEffect()!=1){
+			if(e.getKeyCode()==KeyEvent.VK_8){
+				if(you.ammo.getEffect()!=ItemResources.FIRE){
 					if(you.weapon.getGunNum()/10==2){
 						you.ammo = firePistolAmmo;
 					}
@@ -229,8 +229,8 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 					}
 				}
 			}
-			if(e.getKeyCode()==KeyEvent.VK_8){
-				if(you.ammo.getEffect()!=0){
+			if(e.getKeyCode()==KeyEvent.VK_7){
+				if(you.ammo.getEffect()!=ItemResources.NO_EFFECT){
 					if(you.weapon.getGunNum()/10==2){
 						you.ammo = pistolAmmo;
 					}
@@ -249,7 +249,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 				}
 			}
 			if(e.getKeyCode()==KeyEvent.VK_9){
-				if(you.ammo.getEffect()!=3){
+				if(you.ammo.getEffect()!=ItemResources.STUN){
 					if(you.weapon.getGunNum()/10==2){
 						you.ammo = stunPistolAmmo;
 					}
@@ -264,6 +264,25 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 					}
 					if(you.weapon.getGunNum()/10==6){
 						you.ammo = stunExplosiveAmmo;
+					}
+				}
+			}
+			if(e.getKeyCode()==KeyEvent.VK_0){
+				if(you.ammo.getEffect()!=ItemResources.CORROSIVE){
+					if(you.weapon.getGunNum()/10==2){
+						you.ammo = corrosivePistolAmmo;
+					}
+					if(you.weapon.getGunNum()/10==3){
+						you.ammo = corrosiveRifleAmmo;
+					}
+					if(you.weapon.getGunNum()/10==4){
+						you.ammo = corrosiveHeavyAmmo;
+					}
+					if(you.weapon.getGunNum()/10==5){
+						you.ammo = corrosiveSMGAmmo;
+					}
+					if(you.weapon.getGunNum()/10==6){
+						you.ammo = corrosiveExplosiveAmmo;
 					}
 				}
 			}

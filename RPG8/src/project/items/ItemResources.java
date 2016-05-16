@@ -41,6 +41,12 @@ public interface ItemResources {
 	final Ammo stunSMGAmmo=new Ammo("Stunning SMG Ammo", "It's stunning SMG ammo", 100, 1, STUN,"/images/items/stun.png",true);
 	final Ammo stunExplosiveAmmo = new Ammo("Stunning Explosive Ammo", "It's stunning explosive ammo", 100, 1, STUN,"/images/items/stun.png",true);
 	
+	final Ammo corrosivePistolAmmo=new Ammo("Corrosive Pistol Ammo", "It's corrosive pistol ammo", 100, 1, CORROSIVE,"/images/items/corrosive.png",true);
+	final Ammo corrosiveRifleAmmo=new Ammo("Corrosive Rifle Ammo", "It's corrosive rifle ammo", 100, 1, CORROSIVE,"/images/items/corrosive.png",true);
+	final Ammo corrosiveHeavyAmmo = new Ammo("Corrosive Heavy Ammo", "It's corrosive heavy ammo", 100, 1, CORROSIVE,"/images/items/corrosive.png",true);
+	final Ammo corrosiveSMGAmmo=new Ammo("Corrosive SMG Ammo", "It's corrosive SMG ammo", 100, 1, CORROSIVE,"/images/items/corrosive.png",true);
+	final Ammo corrosiveExplosiveAmmo = new Ammo("Corrosive Explosive Ammo", "It's corrosive explosive ammo", 100, 1, CORROSIVE,"/images/items/corrosive.png",true);
+	
 	//final Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, NO_EFFECT,"");
 	final Ammo grenadeAmmo = new Ammo("Grenade Ammo", "It's grenade ammo", 0, 1, NO_EFFECT,"/images/items/M10-SuperFrag.png",true);
 	final Ammo incendiaryGrenadeAmmo = new Ammo("Incendiary Grenade Ammo", "It's incendiary grenade ammo", 0, 1, FIRE,"",true);
