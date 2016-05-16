@@ -7,7 +7,6 @@ import java.awt.event.KeyListener;
 
 import project.directors.Game;
 import project.directors.Screen;
-import project.directors.UtilityMethods;
 
 public class SaveScreen extends Screen implements KeyListener {
 
@@ -16,19 +15,16 @@ public class SaveScreen extends Screen implements KeyListener {
 		// TODO Auto-generated constructor stub
 	}
 	
+	@Override
 	public void paintScreen(Graphics2D g2) {
-		// TODO Auto-generated method stub
-		g2.setColor(Color.LIGHT_GRAY);
-		g2.fillRect(0, 0, width, height);
-		
-		String startText = "Testing texts";
-		UtilityMethods.centerText(g2, startText, width, height);
+		g2.setColor(Color.black);
+		g2.drawString("This Demo is working!", 30, 75);
 	}
 
 	@Override
 	public KeyListener getKeyListener() {
 		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
@@ -39,8 +35,9 @@ public class SaveScreen extends Screen implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			// Enter save or something like that
+		}
 	}
 
 	@Override
