@@ -17,32 +17,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
 
-public class Save {
+public abstract class Save {
 	
 	protected static Hashtable t;
 	private static String name;
-	private static int currentSave = 0;
 
-	/*
 	public Save(String name) {
 		this.name = name;
 		this.t = doLoad();
 	}
-	*/
-	
-	public static void chooseSave(int option) {
-		if (option >= 0 && option < 4)
-			currentSave = option;
-		name = "Save" + currentSave;
-		t = doLoad();
-	}
 	
 	public static void saveData() {
-		System.out.printf("Saving %s\n", name);
+		System.out.printf("Saving %s.save\n", name);
 		
 		try {
 			// Creating File/Object output stream
-			FileOutputStream fileOut = new FileOutputStream(name);
+			FileOutputStream fileOut = new FileOutputStream(name + ".save");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
 			// Writing Hashtable Object
@@ -59,14 +49,14 @@ public class Save {
 		}		
 	}
 	
-	private static Hashtable doLoad() {
-		System.out.printf("Loading %s\n", name);
+	private Hashtable doLoad() {
+		System.out.printf("Loading %s.save\n", name);
 		
 		Hashtable h = new Hashtable();
 		
 		try {
 			// Creating File/Object input stream
-			FileInputStream fileIn = new FileInputStream(name);
+			FileInputStream fileIn = new FileInputStream(name + ".save");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 
 			// Loading Hashtable Object
@@ -91,49 +81,44 @@ public class Save {
 	}
 	
 	// Save method
-	public static void saveData(String id, String data) {
+	public void saveData(String id, String data) {
 		t.put(id, data);
 	}
 	
-	public static void saveData(String id, int data) {
+	public void saveData(String id, int data) {
 		t.put(id, data);
 	}
 	
-	public static void saveData(String id, long data) {
+	public void saveData(String id, long data) {
 		t.put(id, data);
 	}
 	
-	public static void saveData(String id, double data) {
+	public void saveData(String id, double data) {
 		t.put(id, data);
 	}
 	
-	public static void saveData(String id, boolean data) {
+	public void saveData(String id, boolean data) {
 		t.put(id, data);
 	}
 	
 	// Read methods
-	public static String getString(String id) {
-		if (t.get(id) == null) return null;
+	public String getString(String id) {
 		return t.get(id).toString();
 	}
 	
-	public static int getInt(String id) {
-		if (t.get(id) == null) return 0;
+	public int getInt(String id) {
 		return (int)t.get(id);
 	}
 	
-	public static long getLong(String id) {
-		if (t.get(id) == null) return 0;
+	public long getLong(String id) {
 		return (long)t.get(id);
 	}
 	
-	public static double getDouble(String id) {
-		if (t.get(id) == null) return 0;
+	public double getDouble(String id) {
 		return (double)t.get(id);
 	}
 	
-	public static boolean getBoolean(String id) {
-		if (t.get(id) == null) return false;
+	public boolean getBoolean(String id) {
 		return (boolean)t.get(id);
 	}
 	
