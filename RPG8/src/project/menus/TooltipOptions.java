@@ -24,4 +24,12 @@ public class TooltipOptions {
 				"Title Here", new File("resources/image1.jpg"), "Description here",
 				234, 120);
 	}
+	
+	public static void makeBox(){
+		
+	}
+	
+	public static void editBox(){
+		
+	}
 }
