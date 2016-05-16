@@ -1,8 +1,6 @@
 package project.towns;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import project.directors.Game;
 import project.directors.Screen;
 /**

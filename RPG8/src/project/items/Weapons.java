@@ -27,7 +27,7 @@ public class Weapons extends Item{
 			double criticalHit, int critHitMul, int weight, boolean buyable, int cost, String rof, double rofRPS, 
 			double reloadSpd, boolean secondaryFire, boolean canSilence, int effect, int pellets, int splash,
 			String gunImage,  int gunNum) {
-		super(name, desc,cost, effect, gunImage);
+		super(name, desc,cost, effect, gunImage, buyable);
 		
 		this.ammo = ammo;
 		this.damage = damage;
@@ -131,22 +131,6 @@ public class Weapons extends Item{
 		this.critHitMul = critHitMul;
 	}
 
-	public boolean isBuyable() {
-		return buyable;
-	}
-
-	public void setBuyable(boolean buyable) {
-		this.buyable = buyable;
-	}
-
-	public int getCost() {
-		return cost;
-	}
-
-	public void setCost(int cost) {
-		this.cost = cost;
-	}
-
 	public double getReloadSpd() {
 		return reloadSpd;
 	}
@@ -178,5 +162,4 @@ public class Weapons extends Item{
 	public double getRofRPS() {
 		return rofRPS;
 	}
-
 }
