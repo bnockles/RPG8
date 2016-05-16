@@ -3,14 +3,20 @@ package project.overworld;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-public class MainMap {
+public class MainMap{
 	int region;
 	BufferedImage map;
-	public MainMap(int region,String image){
+	ArrayList<Obstacle> obstacles;
+	ArrayList<Boundaries> boundaries;
+	//ArrayList<> enemies;
+	public MainMap(int region,String image,ArrayList<Obstacle> o,ArrayList<Boundaries> b){
 		this.region = region;
+		obstacles = o;
+		boundaries = b;
 		try {
 			URL url = getClass().getResource(image);
 			this.map = ImageIO.read(url);
@@ -18,11 +24,22 @@ public class MainMap {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
+	
+	public ArrayList<Obstacle> getObstacles(){
+		return obstacles;
+	}
+	public ArrayList<Boundaries> getBoundaries(){
+		return boundaries;
+	}
+	
 	public int getRegion() {
 		return region;
 	}
+	
 	public BufferedImage getMap() {
 		return map;
 	}
+
 }

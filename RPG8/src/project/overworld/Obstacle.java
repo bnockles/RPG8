@@ -12,6 +12,7 @@ public class Obstacle extends Frame {
 	BufferedImage object;
 	boolean destructable;
 	boolean state;
+	boolean passable;
 
 	public Obstacle(String name, int xPos, int yPos, int sizeX, int sizeY, String image,int region,boolean destructable,boolean state) {
 		super(xPos, yPos, sizeX, sizeY,region);
@@ -45,5 +46,10 @@ public class Obstacle extends Frame {
 	}
 	public void setState(boolean state){
 		this.state = state;
+	}
+	public void removeObstacle(){
+		if(destructable){
+			state = false;
+		}
 	}
 }

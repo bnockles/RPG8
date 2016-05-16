@@ -1,5 +1,7 @@
 package project.overworld;
 
+import java.awt.Rectangle;
+
 public class Region extends Frame {
 	int goTo;
 	int startX;
@@ -19,4 +21,6 @@ public class Region extends Frame {
 	public int getStartY() {
 		return startY;
 	}
+	
+	
 }
