@@ -30,13 +30,14 @@ import project.battles.Projectiles;
 import project.controls.ActionDeterminer;
 import project.controls.Contoltles;
 import project.controls.DemoControls;
+import project.controls.cheatCodeInterface;
 import project.directors.Game;
 import project.directors.Screen;
 import project.directors.UtilityMethods;
 import project.items.Weapon;
 import project.overworld.BattleInterface;
 
-public class BattlesScreen extends Screen implements BattleInterface, BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener{
+public class BattlesScreen extends Screen implements cheatCodeInterface,BattleInterface, BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener{
 	/**
 	 * ***********CHANGES! MUST READ********************
 	 * RENAMING: 
@@ -710,6 +711,31 @@ public class BattlesScreen extends Screen implements BattleInterface, BattlesAct
 	public BufferedImage[] getLeft() {
 		// TODO Auto-generated method stub
 		return character.getLsprite();
+	}
+	@Override
+	public void cheatLevel() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void cheatDamage() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void cheatSpeed() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void cheatAmmo() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public cheatCodeInterface getCCI(cheatCodeInterface c) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 
