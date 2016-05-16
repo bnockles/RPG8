@@ -60,10 +60,9 @@ public class DynamicMenu{
 		if(menuType == ITEM_DESCRIPTION_MENU){
 			//
 			names= new String[]{arr.get(selected).getDescription(), arr.get(selected).getName()};
-			pictures=new String[]{arr.get(selected).getItemImage()};
+			pictures=new String[]{"resources"+arr.get(selected).getItemImage()};
 			col=new Color[]{Color.white, Color.black, Color.darkGray};
 		}
-		
 		
 		return new MainMenuScreen(type,game, names, pictures ,col, backgroundmusic);
 	}

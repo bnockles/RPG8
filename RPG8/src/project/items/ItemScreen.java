@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 
 import project.directors.Game;
 import project.directors.Screen;
+import project.mainmenudemo.DynamicMenu;
 
 public class ItemScreen extends Screen implements KeyListener,ItemResources{
 	TargetDemo you = new TargetDemo(100, Rifles[0],rifleAmmo,0,0,"You",yourarmor);
@@ -28,10 +29,10 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 	BufferedImage explosive;
 	static Boolean isStun = false;
 	
-	
-	public ItemScreen(Game game) {
+	public ItemScreen(Game game) {	
 		super(game);
 		createImages();
+//		createMenuForItem(game);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -40,6 +41,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		// TODO Auto-generated method stub
 		return this;
 	}
+	
 
 	//Qing Ning 
 	public void createImages() {
@@ -265,6 +267,9 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 					}
 				}
 			}
+			if(e.getKeyCode()==KeyEvent.VK_P){
+				createMenuForItem(game);
+			}
 			update();
 			game.repaint();
 		}
@@ -305,6 +310,10 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 	public Item[] getItem() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public void createMenuForItem(Game game){
+		Screen demoScreen = DynamicMenu.createMenu(DynamicMenu.ITEM_DESCRIPTION_MENU, game);
+		game.setScreen(demoScreen);
 	}
 
 }
