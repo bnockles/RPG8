@@ -22,9 +22,10 @@ public class MapDemonstration extends Game {
 		setScreen(MapDemoScreen);
 	}
 	public void changeScreens(){
-		Screen demo = new BattlesScreen(this);
-		setScreen(demo);
+		Screen demoScreen = new BattlesScreen(this);
+		setScreen(demoScreen);
 		addMouseListener((MouseListener) demoScreen);
+		repaint();
 	}
 	
 	
