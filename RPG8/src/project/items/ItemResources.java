@@ -14,7 +14,7 @@ public interface ItemResources {
 	public String printStats(double[] stats);
 	
 	//Armor
-	final Armor yourarmor = new Armor("Armor", "It's Armor", 300, 0, 100,"",true);
+	final Armor yourarmor = new Armor("Armor", "It's Armor", 300, 0, 100,"/images/items/Armor.png",true);
 	final Armor enemyarmor = new Armor("Armor", "It's Armor", 0, 0, 100,"",false);
 	
 	//Medkits
@@ -96,7 +96,7 @@ public interface ItemResources {
 			2, true, 9850, "Auto", 12, 1.3, false, false, NO_EFFECT, 0, 0,"/images/items/NGM4.png", 33);
 		//Sniper Rifles
 	final Weapons rifles4GradeA3 = new Weapons("RIA-97A6", "Sniper Rifle", rifleAmmo, 120, 7, 7, .50, 2,
-			6, true, 1000, "Bolt", .7, 3.5, false, true, NO_EFFECT, 0, 0,"/images/items/RIA-97A6.png", 34);
+			6, true, 1000, "Bolt", .7, 3.5, false, true, NO_EFFECT, 0, 0,"/images/items/RIA-97A6S.png", 34);
 	
 	//Heavy
 		//Shotguns
@@ -128,6 +128,20 @@ public interface ItemResources {
 	final Weapons[] Heavy = { heavy1GradeB1, heavy4GradeB2};
 	final Weapons[] SMG = { smg1GradeC1, smg2GradeB1};
 	final Weapons[] Explosives = { explosives1GradeC1, explosives6GradeB1};
+	
+	static final int ARMOR_INDEX= 0;
+	static final int SMALLKIT_INDEX = 1;
+	static final int MED_INDEX = 2;
+	static final int BIG_INDEX = 3;
+	static final int PISTOLAMMO_INDEX = 4;
+	static final int RIFLEAMMO_INDEX = 5;
+	static final int FIREPISTOLAMMO_INDEX = 6;
+	static final int FIRERIFLEAMMO_INDEX = 7;
+	static final int STUNPISTOLAMMO_INDEX = 8;
+	static final int STUNRIFLEAMMO_INDEX = 9;
+	
+	final Item[] MiscItems = {yourarmor, smallkit , medkit, bigkit, pistolAmmo, rifleAmmo, firePistolAmmo, 
+			fireRifleAmmo, stunPistolAmmo, stunRifleAmmo,};
 	
 	static final int MElEE_INDEX= 0;
 	static final int PISTOL_INDEX = 1;
