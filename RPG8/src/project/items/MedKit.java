@@ -96,7 +96,7 @@ public class MedKit extends Item implements UsableItem{
 	@Override
 	public void useItem(HaveStats c) {
 		// TODO Auto-generated method stub
-		
+		giveHealth(c);
 	}
 
 }

@@ -19,6 +19,8 @@ public abstract class EnemyAI extends Character{
 	protected int spawnedX;
 	protected int spawnedY;
 	protected int enemyClass;
+	protected int kills;
+	protected int deaths; 
 	
 	protected boolean targetLock = false;
 	protected boolean upAndDown = false;

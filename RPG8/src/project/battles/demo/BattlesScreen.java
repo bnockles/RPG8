@@ -30,13 +30,14 @@ import project.battles.Projectiles;
 import project.controls.ActionDeterminer;
 import project.controls.Contoltles;
 import project.controls.DemoControls;
+import project.controls.cheatCodeInterface;
 import project.directors.Game;
 import project.directors.Screen;
 import project.directors.UtilityMethods;
 import project.items.Weapon;
 import project.overworld.BattleInterface;
 
-public class BattlesScreen extends Screen implements BattleInterface, BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener{
+public class BattlesScreen extends Screen implements cheatCodeInterface,BattleInterface, BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener{
 	/**
 	 * ***********CHANGES! MUST READ********************
 	 * RENAMING: 
@@ -687,19 +688,55 @@ public class BattlesScreen extends Screen implements BattleInterface, BattlesAct
 		return character.getX();
 	}
 	@Override
-	public int getCharRegion(Character c) {
-		// TODO Auto-generated method stub
-		return character.getY();
-		//IDK what character's region is.
-	}
-	@Override
 	public int getCharY(Character c) {
 		// TODO Auto-generated method stub
 		return character.getY();
 	}
 	@Override
-	public ArrayList<Character> getCharacter(ArrayList<Character> c) {
+	public BufferedImage[] getFrontImage() {
+		// TODO Auto-generated method stub
+		return character.getFsprite();
+	}
+	@Override
+	public BufferedImage[] getBack() {
+		// TODO Auto-generated method stub
+		return character.getBsprite();
+	}
+	@Override
+	public BufferedImage[] getRight() {
+		// TODO Auto-generated method stub
+		return character.getRsprite();
+	}
+	@Override
+	public BufferedImage[] getLeft() {
+		// TODO Auto-generated method stub
+		return character.getLsprite();
+	}
+	@Override
+	public void cheatLevel() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void cheatDamage() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void cheatSpeed() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void cheatAmmo() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public cheatCodeInterface getCCI(cheatCodeInterface c) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+
 }
