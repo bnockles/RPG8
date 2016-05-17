@@ -81,7 +81,8 @@ public interface ItemResources {
 			energyAmmo, 60, 0, 0, .10, 2, 0, true, 130, "Single", 1, 0, false, false, NO_EFFECT, 0, 0, "/images/items/Stun-Baton.png", 11);
 	
 	//Pistols
-	final Weapons pistol2GradeB1 = new Weapons("RIA-45S", "The Rancor Intelligence Arms pistol is a lightweight weapon that deals medium damage and also can be augmented with a secondary fire.", 
+	final Weapons pistol2GradeB1 = new Weapons("RIA-45S", 
+			"The Rancor Intelligence Arms pistol is a lightweight weapon that deals medium damage and also can be augmented with a secondary fire.", 
 			pistolAmmo, 33, 18, 7, .00, 2, 0, true, 150, "Semi", 0, .45, true, true, NO_EFFECT, 0, 0,"/images/items/RIA-45S.png", 22);
 	final Weapons pistol3GradeS1 = new Weapons("CT-Roaring Thunder", "Pistol", pistolAmmo, 62, 20, 7, .20, 2, 
 			1, false, 0, "Auto", 13, .55, true, true, NO_EFFECT, 0, 0,"/images/items/CT-Roaring Thunder.png", 23);
@@ -104,8 +105,10 @@ public interface ItemResources {
 			2, true, 380, "Auto", 1, .50, false, false, NO_EFFECT, 6, 0,"/images/items/Heavy Mustang Drum.png", 41);
 		//Machine Guns
 	final Weapons heavy4GradeB2 = new Weapons("NG-60", "Machine Gun", heavyAmmo, 49, 60, 7, .10, 2,
-			4, true, 900, "Auto", 14, 4.3, true, false, NO_EFFECT, 0, 0,"/images/items/NG-60.png", 44);
-	final Weapons heavy7GradeB2 = new Weapons("Vulcan-Minigun", "Machine Gun", heavyAmmo, 125, 500, 2, .50, 4,
+			6, true, 900, "Auto", 14, 4.3, true, false, NO_EFFECT, 0, 0,"/images/items/NG-60.png", 44);
+	final Weapons heavy5GradeA3 = new Weapons("RIA-125S", "Machine Gun", heavyAmmo, 68, 125, 7, .10, 2,
+			5, true, 1900, "Auto", 17, 4.1, true, false, NO_EFFECT, 0, 0,"/images/items/RIA-125S.png", 44);
+	final Weapons heavy7GradeS4 = new Weapons("Vulcan-Minigun", "Machine Gun", heavyAmmo, 125, 500, 2, .50, 4,
 			10, true, 9900, "Auto", 100, 3.9, false, false, NO_EFFECT, 0, 0,"/images/items/Vulcan-Minigun.png", 44);
 	
 	
@@ -128,7 +131,7 @@ public interface ItemResources {
 	final Weapons[] Melee = { melee1GradeC1 };
 	final Weapons[] Pistol = { pistol2GradeB1, pistol3GradeS1, pistol4GradeA1};
 	final Weapons[] Rifles = { rifles1GradeC1, rifles3GradeA2, rifles4GradeA3 };
-	final Weapons[] Heavy = { heavy1GradeB1, heavy4GradeB2, heavy7GradeB2};
+	final Weapons[] Heavy = { heavy1GradeB1, heavy4GradeB2, heavy5GradeA3, heavy7GradeS4};
 	final Weapons[] SMG = { smg1GradeC1, smg2GradeB1};
 	final Weapons[] Explosives = { explosives1GradeC1, explosives6GradeB1};
 	
