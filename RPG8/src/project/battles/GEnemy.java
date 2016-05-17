@@ -6,7 +6,7 @@ import project.battles.demo.BattlesScreen;
 import project.items.Weapon;
 import project.save.ItemState;
 
-public class GEnemy extends EnemyAI{
+public class GEnemy extends EnemyAI implements LoggableEnemy{
 
 	private boolean returnToSpawn = false;
 	
@@ -79,7 +79,6 @@ public class GEnemy extends EnemyAI{
 		}
 		else
 			goToPlayer();
-		//if (dist < 10) targetLock = false;
 	}
 
 	public void backToSpawn(){
@@ -94,6 +93,30 @@ public class GEnemy extends EnemyAI{
 			moveUp();
 		else
 			moveDown();
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "GEnemy";
+	}
+
+	@Override
+	public int getLevel() {
+		// TODO Auto-generated method stub
+		return stats[9];
+	}
+
+	@Override
+	public int getDeaths() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getKills() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
