@@ -6,7 +6,7 @@ import project.battles.demo.BattlesScreen;
 import project.items.Weapon;
 import project.save.ItemState;
 
-public class KEnemy extends EnemyAI{
+public class KEnemy extends EnemyAI implements LoggableEnemy{
 	
 	/*
 	 * Author :Andy Zheng
@@ -75,6 +75,30 @@ public class KEnemy extends EnemyAI{
 		 */
 		if (strength != BattlesScreen.KE_STRENGTH*2)
 		strength+= 1;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "KEnemy";
+	}
+
+	@Override
+	public int getLevel() {
+		// TODO Auto-generated method stub
+		return stats[9];
+	}
+
+	@Override
+	public int getDeaths() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getKills() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
