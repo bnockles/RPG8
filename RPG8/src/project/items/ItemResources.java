@@ -107,9 +107,9 @@ public interface ItemResources {
 	final Weapons heavy4GradeB2 = new Weapons("NG-60", "Machine Gun", heavyAmmo, 49, 60, 7, .10, 2,
 			6, true, 900, "Auto", 14, 4.3, true, false, NO_EFFECT, 0, 0,"/images/items/NG-60.png", 44);
 	final Weapons heavy5GradeA3 = new Weapons("RIA-125S", "Machine Gun", heavyAmmo, 68, 125, 7, .10, 2,
-			5, true, 1900, "Auto", 17, 4.1, true, false, NO_EFFECT, 0, 0,"/images/items/RIA-125S.png", 44);
+			5, true, 1900, "Auto", 17, 4.1, true, false, NO_EFFECT, 0, 0,"/images/items/RIA-125S.png", 45);
 	final Weapons heavy7GradeS4 = new Weapons("Vulcan-Minigun", "Machine Gun", heavyAmmo, 125, 500, 2, .50, 4,
-			10, true, 9900, "Auto", 100, 3.9, false, false, NO_EFFECT, 0, 0,"/images/items/Vulcan-Minigun.png", 44);
+			10, true, 9900, "Auto", 100, 3.9, false, false, NO_EFFECT, 0, 0,"/images/items/Vulcan-Minigun.png", 47);
 	
 	
 	//SMGS
@@ -122,7 +122,9 @@ public interface ItemResources {
 	final Weapons explosives1GradeC1 = new Weapons("RIA-EPS15", "Explosives", explosiveAmmo, 96, 1, 39, .10, 2,
 			3, true, 830, "Single", 0, 1.30, false, false, NO_EFFECT, 0, 140,"/images/items/RIA-EPS15.png", 61);
 	final Weapons explosives6GradeB1 = new Weapons("M10-SuperFrag", "Explosives", grenadeAmmo, 200, 1, 9, .10, 2,
-			1, true, 400, "Single", 2, .20, false, false, NO_EFFECT, 0, 180,"/images/items/M10-SuperFrag.png", 66);
+			1, true, 40, "Single", 2, .20, false, false, NO_EFFECT, 0, 180,"/images/items/M10-SuperFrag.png", 66);
+	final Weapons explosives7GradeB2 = new Weapons("M11-Incendiary", "Explosives", grenadeAmmo, 70, 1, 9, .10, 2,
+			1, true, 60, "Single", 2, .20, false, false, FIRE, 0, 280,"/images/items/Incendiary Grenade.png", 67);
 	
 	//Test Guns
 //	Weapons rifles2GradeA1 = new Weapons("M4A1", "Rifles", rifleAmmo, 36, 30, 210, .10, 2,
@@ -133,7 +135,7 @@ public interface ItemResources {
 	final Weapons[] Rifles = { rifles1GradeC1, rifles3GradeA2, rifles4GradeA3 };
 	final Weapons[] Heavy = { heavy1GradeB1, heavy4GradeB2, heavy5GradeA3, heavy7GradeS4};
 	final Weapons[] SMG = { smg1GradeC1, smg2GradeB1};
-	final Weapons[] Explosives = { explosives1GradeC1, explosives6GradeB1};
+	final Weapons[] Explosives = { explosives1GradeC1, explosives6GradeB1, explosives7GradeB2};
 	
 	static final int ARMOR_INDEX= 0;
 	static final int SMALLKIT_INDEX = 1;
