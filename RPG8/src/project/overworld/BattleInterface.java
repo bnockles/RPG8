@@ -10,10 +10,10 @@ public interface BattleInterface {
 	final static int ZONE2 = 1;//map to the right of start
 	final static int TOWN = 2;//the town
 	
-	public boolean isDead(Character c);
-	public boolean killCharacter(Character c);
-	public int getCharX(Character c);
-	public int getCharY(Character c);
+	public boolean isDead();
+	public boolean killCharacter();
+	public int getCharX();
+	public int getCharY();
 	public BufferedImage[] getFrontImage();
 	public BufferedImage[] getBack();
 	public BufferedImage[] getRight();
