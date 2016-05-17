@@ -92,8 +92,8 @@ public interface ItemResources {
 		//Assault Rifle
 	final Weapons rifles1GradeC1 = new Weapons("RIA-10S", "Rifles", rifleAmmo, 36, 40, 7, .10, 2,
 			3, true, 550, "Auto", 12, 2.4, false, true, NO_EFFECT, 0, 0,"/images/items/RIA-10S.png", 31);
-	final Weapons rifles3GradeA2 = new Weapons("NGM4", "Rifles", energyAmmo, 25, 40, 7, .10, 2,
-			2, true, 9850, "Auto", 12, 1.3, false, false, NO_EFFECT, 0, 0,"/images/items/NGM4.png", 33);
+	final Weapons rifles3GradeA2 = new Weapons("NG-BR40", "Rifles", rifleAmmo, 25, 40, 7, .10, 2,
+			2, true, 9850, "Auto", 12, 1.3, false, false, NO_EFFECT, 0, 0,"/images/items/NG-BR40.png", 33);
 		//Sniper Rifles
 	final Weapons rifles4GradeA3 = new Weapons("RIA-97A6", "Sniper Rifle", rifleAmmo, 120, 7, 7, .50, 2,
 			6, true, 1000, "Bolt", .7, 3.5, false, true, NO_EFFECT, 0, 0,"/images/items/RIA-97A6S.png", 34);
@@ -105,6 +105,9 @@ public interface ItemResources {
 		//Machine Guns
 	final Weapons heavy4GradeB2 = new Weapons("NG-60", "Machine Gun", heavyAmmo, 49, 60, 7, .10, 2,
 			4, true, 900, "Auto", 14, 4.3, true, false, NO_EFFECT, 0, 0,"/images/items/NG-60.png", 44);
+	final Weapons heavy7GradeB2 = new Weapons("Vulcan-Minigun", "Machine Gun", heavyAmmo, 125, 500, 2, .50, 4,
+			10, true, 9900, "Auto", 100, 3.9, false, false, NO_EFFECT, 0, 0,"/images/items/Vulcan-Minigun.png", 44);
+	
 	
 	//SMGS
 	final Weapons smg1GradeC1 = new Weapons("MP-600", "SMG", SMGAmmo, 25, 35, 7, .10, 2,
@@ -125,7 +128,7 @@ public interface ItemResources {
 	final Weapons[] Melee = { melee1GradeC1 };
 	final Weapons[] Pistol = { pistol2GradeB1, pistol3GradeS1, pistol4GradeA1};
 	final Weapons[] Rifles = { rifles1GradeC1, rifles3GradeA2, rifles4GradeA3 };
-	final Weapons[] Heavy = { heavy1GradeB1, heavy4GradeB2};
+	final Weapons[] Heavy = { heavy1GradeB1, heavy4GradeB2, heavy7GradeB2};
 	final Weapons[] SMG = { smg1GradeC1, smg2GradeB1};
 	final Weapons[] Explosives = { explosives1GradeC1, explosives6GradeB1};
 	
@@ -154,7 +157,7 @@ public interface ItemResources {
 	/** AllWeapons
 	 *Number of column                 [     0       ,      1       ,      2       ,      3        ,      4       ,         5        ]
 	 *The weapon type                   [ Melee   ,   Pistol   ,   Rifles   ,   Heavy   ,   SMG   ,   Explosives]
-	 *Amount of weapons per type  [     1       ,      3       ,      3       ,      2        ,      2       ,         2        ]
+	 *Amount of weapons per type  [     1       ,      3       ,      3       ,      3        ,      2       ,         2        ]
 	 * 
 	 */
 	
