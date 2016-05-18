@@ -31,6 +31,7 @@ public class GridToSee extends Screen implements KeyListener{
 	int choices = MAIN_GRID; //controls if control over main or sub menu
 	
 	public int highl = 0;
+	public int temp = 0;
 	
 	ArrayList<ChoiceDesc> choice;
 	
@@ -91,6 +92,7 @@ public class GridToSee extends Screen implements KeyListener{
 				selectMem = highl;
 				highl = 0;
 			}
+			int temp = highl;
 			if (choices == THEME_MENU){
 				if (highl == 0){
 					MenuTheme.setTheme(0);
@@ -100,20 +102,22 @@ public class GridToSee extends Screen implements KeyListener{
 				}
 				choices = MAIN_GRID;
 				highl = selectMem;
+				temp = highl;
 				return;
 			}
 			if (choices == MINI_SUB){
+				
 				if (highl == 0){
-					ChoiceDesc.setSel("Y");
+					choice.get(temp).setSel("Y");
 				}
 				if (highl == 1){
-					ChoiceDesc.setSel("N");
+					choice.get(temp).setSel("N");
 				}
 				if (highl == 2){
-					ChoiceDesc.setSel("D");
+					choice.get(temp).setSel("D");
 				}
 				if (highl == 3){
-					ChoiceDesc.setSel("C");
+					choice.get(temp).setSel("C");
 				}
 				choices = MAIN_GRID;
 				highl = selectMem;
@@ -190,8 +194,8 @@ public class GridToSee extends Screen implements KeyListener{
 		
 
 		if (choices  == MAIN_GRID){
-			g2.setColor(MenuTheme.bR);
-			g2.fillRect(0, 0, width, height);
+
+
 			
 			g2.setColor(MenuTheme.boxColor);
 			
