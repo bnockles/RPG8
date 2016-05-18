@@ -93,11 +93,7 @@ public class TownScreen extends Screen implements KeyListener{
 		currentColumn = 0;
 		//example of starting screen for town but not actual
 		
-			try{
-				backgroundGrid[currentRow][currentColumn] = ImageIO.read(getClass().getResource( "/images/maps/image1background.png" ) );
-			}
-			catch (IOException e) {
-			}
+			
 			//JINGWEN CODE
 			for(int i = 0; i < 3; i++) itemN.add(i, 0);
 			// TODO Auto-generated constructor stub
@@ -251,100 +247,28 @@ public class TownScreen extends Screen implements KeyListener{
 					
 					yx = true;
 				}
-//				if (status == TOWN){
-//					//Fei code
-//					g2.drawImage(backgroundGrid[currentRow][currentColumn], 0, 0, null);
-//					g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),200,150,null);
-//					g2.drawImage(townPortalTooWeapon.getImage(), townPortalTooWeapon.getxcoord(),townPortalTooWeapon.getycoord(), null);
-//					g2.drawImage(townPortalTooArmor.getImage(), townPortalTooArmor.getxcoord(),townPortalTooArmor.getycoord(), null);
-//					g2.drawImage(townPortalTooAmmo.getImage(), townPortalTooAmmo.getxcoord(),townPortalTooAmmo.getycoord(), null);
-//		//			g2.drawOval(250 - 100, game.getHeight() -110, 100, 100);
-//		//			g2.drawOval(450, 50, 100, 100);
-//		//			g2.drawOval(750, game.getHeight() -110, 100, 100);
-//					
-//					g2.drawString("USE T IN CIRCLE TO GO THROUGH CIRCLE, USE SPACE IN SHOP TO ACCESS SHOP ", 400, 500);
-//				}
+//			
 				if(status ==ARMOR_STOREx  ){
 					
-					delay( g2,"Attempting To Enter Armor Store",200 , 500 ,  ARMOR_STORE ,  ARMOR_STORE,2000 );
-//					Font myFont = new Font ("Courier New", 1, 27);
-//					
-//
-//					g2.setFont (myFont);
-//				
-//					g2.drawString("Attempting To Enter Armor Store"  , 200, 500);
-//				    	Timer t = new Timer();
-//				    	t.schedule(new TimerTask() {
-//
-//				    	            @Override
-//				    	            public void run() {
-//				    	               status = ARMOR_STORE;
-//				    	               status2 = ARMOR_STORE;
-//				    	               update();	
-//				    	            }
-//				    	        }, 2000);
-//					
-//				}
+					delay( g2,"Attempting To Enter Armor Store",200 , 500 ,  ARMOR_STORE ,  ARMOR_STORE,350 );
+
 				}
 				if(status ==AMMO_STOREx  ){
-					Font myFont = new Font ("Courier New", 1, 27);
-					
+					delay( g2,"Attempting To Enter Ammo Store",200 , 500 ,  AMMO_STORE ,  AMMO_STORE,350 );
 
-					g2.setFont (myFont);
-				
-					g2.drawString("Attempting To Enter Ammo Store"  , 200, 500);
-				    	Timer t = new Timer();
-				    	t.schedule(new TimerTask() {
-
-				    	            @Override
-				    	            public void run() {
-				    	               status = AMMO_STORE;
-				    	               status2 = AMMO_STORE;
-				    	               update();	
-				    	            }
-				    	        }, 500);
 					
 				}
 				if(status ==WEAPON_STOREx  ){
-					Font myFont = new Font ("Courier New", 1, 27);
-					
+					delay( g2,"Attempting To Enter Weapon Store",200 , 500 , WEAPON_STORE , WEAPON_STORE ,350 );
 
-					g2.setFont (myFont);
-				
-					g2.drawString("Attempting To Enter Weapon Store"  , 200, 500);
-				    	Timer t = new Timer();
-				    	t.schedule(new TimerTask() {
-
-				    	            @Override
-				    	            public void run() {
-				    	               status = WEAPON_STORE;
-				    	               status2 = WEAPON_STORE;
-				    	               update();	
-				    	            }
-				    	        }, 500);
 					
 				}
 				if(status ==TOWNx  ){
-					Font myFont = new Font ("Courier New", 1, 27);
-					
+					delay( g2,"Attempting To Enter Town",200 , 500 , TOWN , TOWNx ,350 );
 
-					g2.setFont (myFont);
-				
-					g2.drawString("Attempting To Enter  Town"  , 200, 500);
-				    	Timer t = new Timer();
-				    	t.schedule(new TimerTask() {
-
-				    	            @Override
-				    	            public void run() {
-				    	               status = TOWN;
-				    	               update();	
-				    	            }
-				    	        }, 500);
 					
 				}
-		//}	
-//		    }
-//		}
+
 	}
 	private void paintInShopC(ConsumStore s, Graphics2D g2) {
 		// TODO Auto-generated method stub
