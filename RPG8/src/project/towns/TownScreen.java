@@ -31,7 +31,7 @@ public class TownScreen extends Screen implements KeyListener{
 	BufferedImage townPortalToAmmo;
 	
 	StoreNPC putin;
-	TownWanderer playable;
+	static TownWanderer playable;
 	WeaponStore store;
 	ArmorStore storeA;
 	ConsumStore storeC;
@@ -269,7 +269,7 @@ public class TownScreen extends Screen implements KeyListener{
 		// TODO Auto-generated method stub
 		g2.drawRect(boxX, boxY, 400, 30);
 		g2.drawString("Press B to buy and press S to sale.", 100, 50);
-		g2.drawString("Player cash: " + storeC.getMoney(), 400, 50);
+		g2.drawString("Player cash: " + playable.getMoney(), 400, 50);
 		
 		int y=100;
 		int count = 0;
@@ -288,7 +288,7 @@ public class TownScreen extends Screen implements KeyListener{
 		// TODO Auto-generated method stub
 		g2.drawRect(boxX, boxY, 400, 30);
 		g2.drawString("Press B to buy and press S to sale.", 100, 50);
-		g2.drawString("Player cash: " + storeA.getMoney(), 400, 50);
+		g2.drawString("Player cash: " + playable.getMoney(), 400, 50);
 		
 		int y=100;
 		int count = 0;
@@ -306,7 +306,7 @@ public class TownScreen extends Screen implements KeyListener{
 	public void paintInShop(WeaponStore s, Graphics2D g2){
 		g2.drawRect(boxX, boxY, 400, 30);
 		g2.drawString("Press B to buy and press S to sale.", 100, 50);
-		g2.drawString("Player cash: " + store.getMoney(), 400, 50);
+		g2.drawString("Player cash: " + playable.getMoney(), 400, 50);
 		
 		int y=100;
 		int count = 0;
