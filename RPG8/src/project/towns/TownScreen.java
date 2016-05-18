@@ -165,19 +165,14 @@ public class TownScreen extends Screen implements KeyListener{
 	
     //Jingwen COde
 	public void paintScreen(Graphics2D g2) {
-		// TODO Auto-generated method stub
-//		for (int y = 0; y < game.getWindowWidth(); y++) {
-//		    for (int x = 0; x < game.getWindowHeight(); x++){
-		//while(yx == false){
+	
 				if(status == WEAPON_STORE){
 					paintShop(g2);
 					g2.drawImage(hillary.getNpc(), 420,150,250,180, null);
 					
 					g2.drawImage(portalTooTown.getImage(), 250 - 100, game.getHeight() -10 - 100, null);
 					
-		//	    	g2.drawOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
-		//	    	g2.setColor(Color.WHITE);
-		//	    	g2.fillOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
+		
 			    	
 			    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
 				}
