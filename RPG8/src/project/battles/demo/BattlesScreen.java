@@ -468,6 +468,8 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		 */
 		int keyCode = e.getKeyCode();
 		controller.removeKeys(keyCode);
+		if(pressedKeys.isEmpty())
+			character.setWalking(false);//YOGTSERIGBSDFIOB
 		
 //		character.setFacingDirection();
 //		if(pressedKeys.isEmpty())
@@ -667,6 +669,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 	}
 	public void doSomething(int e){
 		controller.determineKeyAction(e);
+		controller.checkEmpty(character);
 	}
 	@Override
 	public boolean isDead() { //Yifan He 
