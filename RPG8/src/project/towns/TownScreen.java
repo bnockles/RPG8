@@ -588,16 +588,16 @@ public class TownScreen extends Screen implements KeyListener{
 			if(status == IN_SHOP_MENU){
 				if(status2 == WEAPON_STORE)
 					store.moneySellingInteraction(itemx);
-					storeA.AllSellingInteraction(itemx);
-					storeC.AllSellingInteraction(itemx);
+					//storeA.AllSellingInteraction(itemx);
+					//storeC.AllSellingInteraction(itemx);
 					if(status2 == ARMOR_STORE)
 					storeA.moneySellingInteraction(itemx);
-					storeC.AllSellingInteraction(itemx);
-					store.AllSellingInteraction(itemx);
+					//storeC.AllSellingInteraction(itemx);
+					//store.AllSellingInteraction(itemx);
 					if(status2 == AMMO_STORE)
 					storeC.moneySellingInteraction(itemx);
-					store.AllSellingInteraction(itemx);
-					storeA.AllSellingInteraction(itemx);
+					//store.AllSellingInteraction(itemx);
+					//storeA.AllSellingInteraction(itemx);
 			}
 		}
 		if(key == KeyEvent.VK_T){
