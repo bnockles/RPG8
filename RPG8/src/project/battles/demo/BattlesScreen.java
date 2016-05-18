@@ -364,9 +364,10 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		/**
 		 * Chieh
 		 */
-//		if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0 || keyCode == KeyEvent.VK_Q || keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_E || keyCode == KeyEvent.VK_R || keyCode == KeyEvent.VK_T){
-//			if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0)
-//				keycodedemo = keyCode;
+		if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0 || keyCode == KeyEvent.VK_Q || keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_E || keyCode == KeyEvent.VK_R || keyCode == KeyEvent.VK_T){
+			if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0)
+				keycodedemo = keyCode;
+			//PLEASE DON'T DELETE THE THREE LINES ABOVE - YIFAN HE
 //			
 //			if(keyCode == KeyEvent.VK_Q)
 //				ENEMYMOVE = UP_DOWN;
@@ -378,8 +379,8 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 //				ENEMYMOVE = GOTOPLAYER;
 //			if(keyCode == KeyEvent.VK_T)
 //				ENEMYMOVE = WANDER;
-//			refreshEnemies();
-//		}
+			refreshEnemies();//PLEASE DON'T DELETE - YIFAN HE
+		}
 		//Vincent
 		//WASD is used for moving.
 		if(keyCode == KeyEvent.VK_3)
@@ -437,7 +438,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		int randomNumberX;
 		int randomNumberY;
 		for(int i=0; i<enemy1Num+randomNumber; i++)
-		{
+		{ // the enemy appears every 4 seconds until the total enemy numbers reach the temp;
 			EnemyAI temp;
 			if (i < enemy1Num) 
 				temp = a;
@@ -668,7 +669,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		controller.determineKeyAction(e);
 	}
 	@Override
-	public boolean isDead(Character c) {
+	public boolean isDead() { //Yifan He 
 		// for testing
 		long start= System.currentTimeMillis();
 		long end = start+15000; //15 seconds 
@@ -678,7 +679,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		return true;
 	}
 	@Override
-	public boolean killCharacter(Character c) {
+	public boolean killCharacter() { //Yifan He 
 		// TODO Auto-generated method stub
 		if(character.getCurrentHP()<=0){
 			return true;
@@ -686,32 +687,32 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		return false;
 	}
 	@Override
-	public int getCharX(Character c) {
+	public int getCharX() {//Yifan He 
 		// TODO Auto-generated method stub
 		return character.getX();
 	}
 	@Override
-	public int getCharY(Character c) {
+	public int getCharY() {//Yifan He 
 		// TODO Auto-generated method stub
 		return character.getY();
 	}
 	@Override
-	public BufferedImage[] getFrontImage() {
+	public BufferedImage[] getFrontImage() {//Yifan He 
 		// TODO Auto-generated method stub
 		return character.getFsprite();
 	}
 	@Override
-	public BufferedImage[] getBack() {
+	public BufferedImage[] getBack() {//Yifan He 
 		// TODO Auto-generated method stub
 		return character.getBsprite();
 	}
 	@Override
-	public BufferedImage[] getRight() {
+	public BufferedImage[] getRight() {//Yifan He 
 		// TODO Auto-generated method stub
 		return character.getRsprite();
 	}
 	@Override
-	public BufferedImage[] getLeft() {
+	public BufferedImage[] getLeft() {//Yifan He 
 		// TODO Auto-generated method stub
 		return character.getLsprite();
 	}
