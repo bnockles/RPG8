@@ -1,6 +1,6 @@
 package project.controls;
 
-/** author Vincent & Jacky */
+/** author Jacky */
 
 import java.awt.event.MouseListener;
 

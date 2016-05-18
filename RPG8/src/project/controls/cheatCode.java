@@ -22,11 +22,9 @@ public class cheatCode implements KeyListener, CheatCodeDeterminer {
 	boolean battle = false;
 	ArrayList<Integer> sequence = new ArrayList<Integer>();
 	String input = "";
-	//cheatCodeInterface c = cheatCodeInterface.getCCI(this); 
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -48,51 +46,8 @@ public class cheatCode implements KeyListener, CheatCodeDeterminer {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		int keyCode = e.getKeyCode();
-		new Timer(2000,taskPerformer).start();
-		input += KeyEvent.getKeyText((Integer)(keyCode));
-		if(input.contains("C")){
-			if(input.contains("CHEATLEVEL")){
-				cheatLevel();
-				input = "";
-			}
-			if(input.contains("CHEATDAMAGE")){
-				cheatDamage();
-				input = "";
-			}
-			if(input.contains("CHEATSPEED")){
-				cheatSpeed();
-				input = "";
-			}
-			if(input.contains("XCHEATAMMOX")){
-				cheatAmmo();
-				input = "";
-			}
-		}else{
-			input = null;
-		}
-			
 	}
 
-	private void cheatAmmo() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void cheatSpeed() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void cheatDamage() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void cheatLevel() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
@@ -101,9 +56,30 @@ public class cheatCode implements KeyListener, CheatCodeDeterminer {
 	}
 
 	@Override
-	public void determineValidCheatCode(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void determineValidCheatCode(KeyEvent e, cheatCodeInterface battles) {
+		int keyCode = e.getKeyCode();
+		new Timer(2000,taskPerformer).start();
+		input += KeyEvent.getKeyText((Integer)(keyCode));
+		if(input.contains("C")){
+			if(input.contains("CHEATLEVEL")){
+				battles.cheatLevel();
+				input = "";
+			}
+			if(input.contains("CHEATDAMAGE")){
+				battles.cheatDamage();
+				input = "";
+			}
+			if(input.contains("CHEATSPEED")){
+				battles.cheatSpeed();
+				input = "";
+			}
+			if(input.contains("XCHEATAMMOX")){
+				battles.cheatAmmo();
+				input = "";
+			}
+		}else{
+			input = null;
+		}
 	}
 
 }
