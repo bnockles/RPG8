@@ -71,11 +71,11 @@ public class SaveScreen extends Screen implements KeyListener {
 			Save.chooseSave(currSelection);
 			this.game.setScreen(new GridToSee(this.game));
 		}
-		if(e.getKeyCode()== KeyEvent.VK_DOWN){
+		if (e.getKeyCode()== KeyEvent.VK_DOWN) {
 			currSelection = (currSelection + 1) % 3;
 			update();
 		}
-		if(e.getKeyCode()== KeyEvent.VK_UP){
+		if (e.getKeyCode()== KeyEvent.VK_UP) {
 			currSelection = currSelection - 1;
 			if (currSelection < 0) currSelection = 2;
 			update();
