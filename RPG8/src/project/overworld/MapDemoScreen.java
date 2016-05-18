@@ -29,8 +29,8 @@ public class MapDemoScreen extends Screen implements KeyListener,overworldIntegr
 	static int yPos;
 	public static final String BOUNDARY = "B";
 	public static final String OBSTACLE = "O";
-	public static final int xSize = 30;
-	public static final int ySize = 30;
+	public static final int xSize = 40;
+	public static final int ySize = 40;
 	public static final int ZONE1 = 0;
 	public static final int ZONE2 = 1;
 	public static final int ALLZONES = -1;

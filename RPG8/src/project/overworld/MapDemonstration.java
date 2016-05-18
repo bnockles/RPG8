@@ -12,29 +12,32 @@ import project.directors.Screen;
 
 public class MapDemonstration extends Game {
 	static BufferedImage[] playerImg;
+	static boolean gameState;
+	static MapDemoScreen mapDemo;
+	static BattlesScreen batt;
 	public static void main(String[] args){
-		new MapDemonstration();
-		
+		new MapDemonstration();	
 	}
 	public MapDemonstration(){
 		super();
 	}
 	public void reset() {
-		MapDemoScreen MapDemoScreen = new MapDemoScreen(this);
-		BattlesScreen d = new BattlesScreen(this);
-		playerImg = d.getFrontImage();
-		setScreen(MapDemoScreen);
+		mapDemo = new MapDemoScreen(this);
+		batt = new BattlesScreen(this);
+		playerImg = batt.getFrontImage();
+		setScreen(mapDemo);
 	}
 	public void changeScreens(){
-		BattlesScreen demoScreen = new BattlesScreen(this);
-		setScreen(demoScreen);
-		addMouseListener((MouseListener) demoScreen);
-		
+		setScreen(batt);
+		addMouseListener((MouseListener) batt);
 		repaint();
+		test();
+	}
+	public void test(){
+		
 	}
 	public void changeScreensM(){
-		MapDemoScreen demoScreen = new MapDemoScreen(this);
-		setScreen(demoScreen);
+		setScreen(mapDemo);
 		repaint();
 		
 	}
