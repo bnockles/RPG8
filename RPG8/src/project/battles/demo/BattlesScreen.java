@@ -672,14 +672,20 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		controller.checkEmpty(character);
 	}
 	@Override
-	public boolean isDead() { //Yifan He 
-		// for testing
-		long start= System.currentTimeMillis();
-		long end = start+15000; //15 seconds 
-		if(System.currentTimeMillis() < end) {
-		  return false;
+	boolean test = false;
+	ActionListener taskPerformer = new ActionListener(){
+		public void actionPerformed(ActionEvent evt){
+			test = true;
 		}
-		return true;
+	};
+	
+	Timer temp = new Timer(2000,taskPerformer);
+	@Override
+	public boolean isDead(){ //Yifan He 
+		// for testing
+		temp.setRepeats(false);
+		temp.start();
+		return test;
 	}
 	@Override
 	public boolean killCharacter() { //Yifan He 
