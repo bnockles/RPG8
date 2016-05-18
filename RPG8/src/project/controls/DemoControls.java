@@ -1,6 +1,6 @@
 package project.controls;
 
-/** author Vincent & Jacky*/
+/** author Jacky & Vincent*/
 
 import java.awt.Color;
 
