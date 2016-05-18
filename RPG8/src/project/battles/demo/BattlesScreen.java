@@ -259,6 +259,10 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
+		if(isDead()){ //YIFAN TESTING
+			g2.drawString("After 5 seconds, this shows up (Because character will die and "
+					+ "we will exit back to the overworld", 100, 600);
+		}
 		try{
 			g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
 			g2.drawString("Battles Team's Demo", 100, 100);
@@ -671,7 +675,8 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		controller.determineKeyAction(e);
 		controller.checkEmpty(character);
 	}
-	@Override
+
+	 //Yifan He 
 	boolean test = false;
 	ActionListener taskPerformer = new ActionListener(){
 		public void actionPerformed(ActionEvent evt){
@@ -679,7 +684,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		}
 	};
 	
-	Timer temp = new Timer(2000,taskPerformer);
+	Timer temp = new Timer(5000,taskPerformer);
 	@Override
 	public boolean isDead(){ //Yifan He 
 		// for testing
@@ -690,10 +695,9 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 	@Override
 	public boolean killCharacter() { //Yifan He 
 		// TODO Auto-generated method stub
-		if(character.getCurrentHP()<=0){
-			return true;
-		}
-		return false;
+		temp.setRepeats(false);
+		temp.start();
+		return test;
 	}
 	@Override
 	public int getCharX() {//Yifan He 
