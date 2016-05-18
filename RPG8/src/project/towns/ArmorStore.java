@@ -61,7 +61,7 @@ public class ArmorStore implements StoreInterface{
 					TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListA.get(3).getPrice());
 				}
 	}
-
+	
 	public void setMoney(double d) {
 		this.money = d;
 	}
