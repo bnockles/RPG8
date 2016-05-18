@@ -172,7 +172,7 @@ public class TownScreen extends Screen implements KeyListener{
 					
 					g2.drawImage(portalTooTown.getImage(), 250 - 100, game.getHeight() -10 - 100, null);
 					
-		
+					//portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
 			    	
 			    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
 				}
