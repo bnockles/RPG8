@@ -21,7 +21,7 @@ public class TownWanderer {
 	String name;
 	BufferedImage sprite;
 	ArrayList<Integer> itemNu = new ArrayList<Integer>();
-	int money;
+	double money;
 	public TownWanderer(int x, int y, String name, String imageLocation, int money){
 		this.name = name;
 		this.money=money;
@@ -42,12 +42,12 @@ public class TownWanderer {
 		}
 	}
 
-	public int getMoney() {
+	public double getMoney() {
 		return money;
 	}
 
-	public void setMoney(int money) {
-		this.money = money;
+	public void setMoney(double d) {
+		this.money = d;
 	}
 
 	public int getX() {

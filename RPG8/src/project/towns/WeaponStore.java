@@ -26,9 +26,9 @@ public class WeaponStore implements StoreInterface{
 		return itemListW;
 	}
 
-	public WeaponStore(ArrayList<Integer> itemN, int money) {
+	public WeaponStore(ArrayList<Integer> itemN, double d) {
 		// TODO Auto-generated constructor stub
-		this.money = money;
+		this.money = d;
 		for(int i = 0; i  < itemListW.size(); i++){
 			itemNuW.add(i, 0);
 		}
@@ -43,26 +43,23 @@ public class WeaponStore implements StoreInterface{
 		if(itemx == 92)
 		if(money >= 450){
 				itemNuW.set(0, itemNuW.get(0) + 1);
-				System.out.println(itemListW.get(0).getPrice());
-				money = money - itemListW.get(0).getPrice();
-				System.out.println(money);
+				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(0).getPrice());
 			}
 		if(itemx == 192)
 			if(money >= 350){
 				itemNuW.set(1,itemNuW.get(1) + 1);
-				money = money - itemListW.get(1).getPrice();
+				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(1).getPrice());
 			}
 		if(itemx == 292)
 			if(money >= 250){
 				itemNuW.set(2, itemNuW.get(2) + 1);
-				money = money - itemListW.get(2).getPrice();
+				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(2).getPrice());
 			}
 		if(itemx == 392)
 			if(money >= 250){
 				itemNuW.set(3, itemNuW.get(3) + 1);
-				money = money - itemListW.get(3).getPrice();
+				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(3).getPrice());
 			}
-		System.out.println(money);
 		}
 	
 	public double getMoney() {
@@ -106,45 +103,52 @@ public class WeaponStore implements StoreInterface{
 		// TODO Auto-generated method stub
 		if(itemx == 92){
 			if(itemNuW.get(0) > 0){
-				money = money + 450;
+				TownScreen.playable.setMoney(itemListW.get(0).getPrice() + TownScreen.playable.getMoney());
 			}
 		}
 		if(itemx == 192){
 			if(itemNuW.get(1) > 0){
-				money = money + 350;
+				
 			}
 		}
 		if(itemx == 292){
 			if(itemNuW.get(2) > 0){
-				money = money + 250;
+				
 			}
 		}
 		if(itemx == 392){
 			if(itemNuW.get(2) > 0){
-				money = money + 150;
+				
 			}
 		}
 	}
 	
 	public void AllInteraction(int itemx) {
 		// TODO Auto-generated method stub
-		if(itemx == 92)
-		if(money >= 450){
-				money = money - 450;
-			}
-		if(itemx == 192)
-			if(money >= 350){
-				money -= 350;
-			}
-		if(itemx == 292)
-			if(money >= 250){
-				money -= 250;
-			}
-		if(itemx == 392)
-			if(money >= 250){
-				money -= 150;
-			}
+			if(itemx == 92)
+			if(money >= 450){
+					
+				}
+			if(itemx == 192)
+				if(money >= 350){
+					;
+				}
+			if(itemx == 292)
+				if(money >= 250){
+					
+				}
+			if(itemx == 392)
+				if(money >= 250){
+					
+				}
+			
 		}
+
+	@Override
+	public void itemSellingInteraction() {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public void itemInteraction() {
@@ -152,11 +156,6 @@ public class WeaponStore implements StoreInterface{
 		
 	}
 
-	@Override
-	public void itemSellingInteraction() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
 }
