@@ -91,7 +91,7 @@ public class MainMenuScreen extends Screen implements KeyListener{
 			if(selected<1) selected=4;
 			update();
 		}
-		if(e.getKeyCode()== KeyEvent.VK_SPACE){
+		if(e.getKeyCode()== KeyEvent.VK_SPACE && mtype != DynamicMenu.ITEM_DESCRIPTION_MENU){
 			if(selected ==1)
 			this.game.setScreen(new GridToSee(this.game));
 			if(selected==2)

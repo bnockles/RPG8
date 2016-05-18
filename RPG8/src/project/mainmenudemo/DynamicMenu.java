@@ -76,19 +76,11 @@ public class DynamicMenu{
 	public static ArrayList<Item> getItem() {
 		// TODO Auto-generated method stub
 		ArrayList<Item> arr= new ArrayList<Item>();
-		for(int i=0; i<ItemResources.Melee.length;i++)
-			arr.add(ItemResources.Melee[i]);
-		for(int i=0; i<ItemResources.Pistol.length;i++)
-			arr.add(ItemResources.Pistol[i]);
-		for(int i=0; i<ItemResources.Rifles.length;i++)
-			arr.add(ItemResources.Rifles[i]);
-		for(int i=0; i<ItemResources.Heavy.length;i++)
-			arr.add(ItemResources.Heavy[i]);
-		for(int i=0; i<ItemResources.SMG.length;i++)
-			arr.add(ItemResources.SMG[i]);
-		for(int i=0; i<ItemResources.Explosives.length;i++)
-			arr.add(ItemResources.Explosives[i]);
-		
+		for(int i=0; i<ItemResources.AllWeapons.length;i++){
+			for(int j=0; j<ItemResources.AllWeapons[i].length; j++){
+				arr.add(ItemResources.AllWeapons[i][j]);
+			}
+		}
 		
 		return arr;
 	}
