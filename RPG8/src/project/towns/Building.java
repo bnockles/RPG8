@@ -30,6 +30,11 @@ public class Building {
 	public  int getycoord(){
 		return y;
 	}
+	
+	public  void setxcoord( int x){
+		this.x = x;
+	}
+	
 	public  void setycoord( int y){
 		this.y = y;
 	}

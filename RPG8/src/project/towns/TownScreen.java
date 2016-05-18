@@ -169,7 +169,7 @@ public class TownScreen extends Screen implements KeyListener{
 				if(status == WEAPON_STORE){
 					paintShop(g2);
 					g2.drawImage(hillary.getNpc(), 420,150,250,180, null);
-					
+					portalTooTown.
 					g2.drawImage(portalTooTown.getImage(), 250 - 100, game.getHeight() -10 - 100, null);
 					
 					//portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
@@ -278,6 +278,7 @@ public class TownScreen extends Screen implements KeyListener{
 			g2.drawString(x.getName(), 100, y);
 			g2.drawString("price: " + x.getPrice(), 200, y);
 			y+=100;
+			count++;
 		}
 
 		g2.drawRect(60, itemx, 5, 5);
@@ -297,6 +298,7 @@ public class TownScreen extends Screen implements KeyListener{
 			g2.drawString(x.getName(), 100, y);
 			g2.drawString("price: " + x.getPrice(), 200, y);
 			y+=100;
+			count++;
 		}
 
 		g2.drawRect(60, itemx, 5, 5);
@@ -315,6 +317,7 @@ public class TownScreen extends Screen implements KeyListener{
 			g2.drawString(x.getName(), 100, y);
 			g2.drawString("price: " + x.getPrice(), 200, y);
 			y+=100;
+			count++;
 		}
 
 		g2.drawRect(60, itemx, 5, 5);
