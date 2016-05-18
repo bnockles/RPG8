@@ -9,10 +9,10 @@ public class TargetDemo implements Target{
 	int coins;
 	int scrap;
 	Ammo ammo;
-	int duration=0;
 	boolean isBurned=false;
-	String name;
+	boolean isCorrosive=false;
 	boolean isStunned;
+	String name;
 	int armor;
 	/**
 	 * @author Qing Ning Huang, Stanley Ren, Jia Liu
@@ -31,8 +31,8 @@ public class TargetDemo implements Target{
 	public void attack(final TargetDemo target){
 		
 		if(this.weapon.getAmmoTotal()!=0 || this.weapon.getGunNum()/10 ==1){
-			ammo.applyEffect(ammo.getEffect(), target);
 			int[] calcs = Armor.damageCalcs(this.weapon.getDamage(), target.health, target.armor);
+			ammo.applyEffect(ammo.getEffect(), target);
 			target.health = calcs[0];
 			target.armor = calcs[1];
 			//target.health-=this.weapon.getDamage();

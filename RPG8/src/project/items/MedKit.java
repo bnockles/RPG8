@@ -10,8 +10,7 @@ public class MedKit extends Item {
 	private int cost;
 	private int healthGained;
 	private int effect;
-	private String itemImage;
-
+	int count;
 		int duration=0;
 	Timer timer;
 	public MedKit(String name, String desc,int cost, int healthGained, int effect, String itemImage, boolean buyable) {
@@ -33,12 +32,13 @@ public class MedKit extends Item {
 			b.health=100;
 		}
 	}
-	public void regen(final Target b){
-		
-		
+	public void regen(final TargetDemo b){
+		System.out.println("CALL REGEN");
+	
 		final int healRegen=this.healthGained;
 		if(this.getEffect()==ItemResources.REGEN){
-			try{
+			try{	
+				count=0;
 				timer.cancel();
 			}
 			catch(NullPointerException e){
@@ -49,10 +49,12 @@ public class MedKit extends Item {
 				boolean timerStack=false;
 
 				public void run(){
+					System.out.println("REGEN"+count);
 					if(duration>5){
 						duration=0;
 						timer.cancel();
 					}else{
+						count++;
 						b.health+=healRegen;
 						if(b.health>100)b.health=100;
 						duration++;
@@ -82,8 +84,5 @@ public class MedKit extends Item {
 	public int getHealthGained() {
 		return healthGained;
 	}
-	
-	public String getItemImage() {
-		return itemImage;
-	}
+
 }

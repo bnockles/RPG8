@@ -93,7 +93,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		g2.drawString("Press S to do damage", 425, 170);
 		g2.drawString("Press R to reload", 425, 195);
 		g2.drawString("Press 1-6 to switch weapons", 425, 220);
-		g2.drawString("Press 7-9 to switch", 425, 245);
+		g2.drawString("Press 7-0 to switch", 425, 245);
 		g2.drawString("different types of ammo", 445, 270);
 		drawStats(g2,30,70,you);
 		drawStats(g2,700,70,enemy);
