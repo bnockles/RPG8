@@ -16,7 +16,7 @@ public class Building {
 		this.x = x;
 		this.portal = portal;
 		this.nameOfBuiliding = nameOfBuiliding;
-		//http://www.javatpoint.com/constructor
+		
 	}
 	
 
@@ -32,5 +32,8 @@ public class Building {
 	}
 	public boolean getIsPortal(){
 		return portal;
+	}
+	public void setPortal(boolean x){
+		this.portal = portal;
 	}
 }
