@@ -21,6 +21,7 @@ import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
 import project.battles.BattlesActions;
+import project.battles.CheatCodeDeterminer;
 import project.battles.Collision;
 import project.battles.EnemyAI;
 import project.battles.GEnemy;
@@ -30,6 +31,7 @@ import project.battles.Projectiles;
 import project.controls.ActionDeterminer;
 import project.controls.Contoltles;
 import project.controls.DemoControls;
+import project.controls.cheatCode;
 import project.controls.cheatCodeInterface;
 import project.directors.Game;
 import project.directors.Screen;
@@ -159,6 +161,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 	int cursorX;
 	int cursorY;
 	ActionDeterminer controller = new Contoltles();
+	CheatCodeDeterminer cheater = new cheatCode();
 	//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 	public int[] enemyG = {GE_X,GE_Y,GE_HP,GE_ARMOR,GE_SNEAK,GE_SPEED,GE_RECOVERY,GE_EXP,GE_STRENGTH,GE_LEVEL};
 	public int[] enemyK = {KE_X,KE_Y,KE_HP,KE_ARMOR,KE_SNEAK,KE_SPEED,KE_RECOVERY,KE_EXP,KE_STRENGTH,KE_LEVEL};
@@ -666,7 +669,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		controller.determineKeyAction(e);
 	}
 	@Override
-	public boolean isDead() {
+	public boolean isDead() { //Yifan He 
 		// for testing
 		long start= System.currentTimeMillis();
 		long end = start+15000; //15 seconds 
@@ -676,7 +679,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		return true;
 	}
 	@Override
-	public boolean killCharacter() {
+	public boolean killCharacter() { //Yifan He 
 		// TODO Auto-generated method stub
 		if(character.getCurrentHP()<=0){
 			return true;
@@ -684,59 +687,59 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		return false;
 	}
 	@Override
-	public int getCharX() {
+	public int getCharX() {//Yifan He 
 		// TODO Auto-generated method stub
 		return character.getX();
 	}
 	@Override
-	public int getCharY() {
+	public int getCharY() {//Yifan He 
 		// TODO Auto-generated method stub
 		return character.getY();
 	}
 	@Override
-	public BufferedImage[] getFrontImage() {
+	public BufferedImage[] getFrontImage() {//Yifan He 
 		// TODO Auto-generated method stub
 		return character.getFsprite();
 	}
 	@Override
-	public BufferedImage[] getBack() {
+	public BufferedImage[] getBack() {//Yifan He 
 		// TODO Auto-generated method stub
 		return character.getBsprite();
 	}
 	@Override
-	public BufferedImage[] getRight() {
+	public BufferedImage[] getRight() {//Yifan He 
 		// TODO Auto-generated method stub
 		return character.getRsprite();
 	}
 	@Override
-	public BufferedImage[] getLeft() {
+	public BufferedImage[] getLeft() {//Yifan He 
 		// TODO Auto-generated method stub
 		return character.getLsprite();
 	}
 	@Override
 	public void cheatLevel() {
 		// TODO Auto-generated method stub
-		
+		character.gainExp(1000);
 	}
 	@Override
 	public void cheatDamage() {
 		// TODO Auto-generated method stub
-		
+		character.setStrength(100);
 	}
 	@Override
 	public void cheatSpeed() {
 		// TODO Auto-generated method stub
-		
+		character.setSpeed(16);
 	}
 	@Override
 	public void cheatAmmo() {
 		// TODO Auto-generated method stub
-		
+		character.getWeapon().setAmmo(1000000);
 	}
 	@Override
 	public cheatCodeInterface getCCI(cheatCodeInterface c) {
 		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 	
 

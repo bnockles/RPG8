@@ -10,7 +10,9 @@ import javax.swing.Timer;
 
 import javax.sound.midi.Sequence;
 
-public class cheatCode implements KeyListener {
+import project.battles.CheatCodeDeterminer;
+
+public class cheatCode implements KeyListener, CheatCodeDeterminer {
 
 	boolean cheatLevel = false; 
 	boolean cheatDamage = false;
@@ -94,6 +96,12 @@ public class cheatCode implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void determineValidCheatCode(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
