@@ -23,17 +23,17 @@ public class ArmorStore implements StoreInterface{
 		if(itemx == 92)
 			if(money >= 450){
 					itemNA.set(0, itemNA.get(0) + 1);
-					money = money - itemListA.get(0).getPrice();
+					TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListA.get(0).getPrice());
 				}
 			if(itemx == 192)
 				if(money >= 350){
 					itemNA.set(1,itemNA.get(1) + 1);
-					money = money - itemListA.get(1).getPrice();
+					TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListA.get(1).getPrice());
 				}
 			if(itemx == 292)
 				if(money >= 250){
 					itemNA.set(2, itemNA.get(2) + 1);
-					money = money - itemListA.get(2).getPrice();
+					TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListA.get(2).getPrice());
 				}
 	}
 
@@ -43,22 +43,22 @@ public class ArmorStore implements StoreInterface{
 		if(itemx == 92)
 			if(itemNA.get(0) > 0){
 					itemNA.set(0, itemNA.get(0) - 1);
-					money = money - itemListA.get(0).getPrice();
+					TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListA.get(0).getPrice());
 				}
 			if(itemx == 192)
 				if(itemNA.get(0) > 0){
 					itemNA.set(1,itemNA.get(1) - 1);
-					money = money - itemListA.get(1).getPrice();
+					TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListA.get(1).getPrice());
 				}
 			if(itemx == 292)
 				if(itemNA.get(0) > 0){
 					itemNA.set(2, itemNA.get(2) - 1);
-					money = money - itemListA.get(2).getPrice();
+					TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListA.get(2).getPrice());
 				}
 			if(itemx == 392)
 				if(itemNA.get(0) > 0){
 					itemNA.set(3, itemNA.get(3) - 1);
-					money = money - itemListA.get(3).getPrice();
+					TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListA.get(3).getPrice());
 				}
 	}
 
