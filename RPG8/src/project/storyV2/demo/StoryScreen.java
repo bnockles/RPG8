@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import project.directors.Game;
 import project.directors.Screen;
@@ -14,7 +15,7 @@ import project.storyV2.Cutscenes;
 import project.storyV2.IntroCut;
 
 public class StoryScreen extends Screen implements KeyListener {
-	
+
 	final static ArrayList<String> AyaForward = new ArrayList<String>();
 	private static String forward = "/images/heroes/sForward.png";
 	private static String forward1 = "/images/heroes/forward1.png";
@@ -41,6 +42,13 @@ public class StoryScreen extends Screen implements KeyListener {
 	public ArrayList<Font> fonts = new ArrayList<Font>();
 	public ArrayList<Cutscenes> cuts = new ArrayList<Cutscenes>();
 	public int counter = 0;
+	public boolean decide = true;
+	public int SwarmsXpos;
+	public int SwarmsYpos;
+	public boolean play = true;
+	public ArrayList<Integer> travelled  = new ArrayList<Integer>();
+	//getenemykilled interface for melvin
+	//unlocked location for me
 	public StoryScreen(Game game) {
 		super(game);
 		AyaForward.add(forward1);
@@ -69,12 +77,144 @@ public class StoryScreen extends Screen implements KeyListener {
 		colors.add(Color.ORANGE);
 		colors.add(Color.cyan);
 		colors.add(Color.darkGray);
-		cutscene =  new IntroCut("Mission 1: Recover the datapad", "Kill all enemies", temp, 30, 1000,800,colors);
+		cutscene =  new IntroCut("Mission 1: Recover the datapad", "Kill all enemie", temp, 30, 1000,800,colors);
+
 		cuts.add(cutscene);
+		cuts.remove(cutscene);
+		//=================
+	
+		
+
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+
+	public void checkFor(){
+		//only haveo ne cutscene play at a time
+		//no moving in cutscene
+		while(play == true){
+			if(SwarmsXpos >= 0 && SwarmsXpos <= 700 && SwarmsXpos >= 0 && SwarmsYpos <=700){
+				Font temp = new Font("Onyx", Font.ITALIC, 32);
+				cutscene =  new IntroCut("You are entering", "a highly dangerous area", temp, 30, 1000,800,colors);
+
+				cuts.add(cutscene);
+
+
+
+				stopmovement();
+
+				dontplayforawhile();
+
+
+
+			}
+
+
+			//cutscene number two
+			if(SwarmsXpos >= 0 && SwarmsXpos <= 0 && SwarmsXpos >= 0 && SwarmsYpos <=0){
+				Font temp = new Font("Onyx", Font.ITALIC, 32);
+				cutscene =  new IntroCut("Wander this area to", "search for the lost key", temp, 30, 1000,800,colors);
+
+				cuts.add(cutscene);
+
+
+			
+				stopmovement();
+				dontplayforawhile();
+
+
+
+			}
+			
+			if(SwarmsXpos >= 0 && SwarmsXpos <= 0 && SwarmsXpos >= 0 && SwarmsYpos <=0){
+				Font temp = new Font("Onyx", Font.ITALIC, 32);
+				cutscene =  new IntroCut("Final boss fight", "dodge his projectiles!", temp, 30, 1000,800,colors);
+
+				cuts.add(cutscene);
+
+
+
+				stopmovement();
+				dontplayforawhile();
+
+
+
+			}
+
+
+
+
+		}
+		
+		
+		
+		
+		
+	}
+
+	public void dontplayforawhile(){
+		Thread s = new Thread(new Runnable() {
+			public void run() {
+				play = false;
+				while (play == false){
+					try {
+						Thread.sleep(15000);
+						play = true;
+					} 
+					catch(InterruptedException ex) {
+						Thread.currentThread().interrupt();
+					}
+				}	
+			}
+		});
+		s.start();
+	}
+// interface EnemySpawnable{
+//	int getEnemyLevels();
+	
+	
+	
+//interface EnemyCreator{
+//	PoopMan getEnemyCharacter(EnemySpawnable b);
+	
+//interface PoopMan{
+//	BufferedImage getBufferedImage();
+//	int getX();
+//	int getY();
+
+
+	public void stopmovement(){
+		//decide = false;
+		//long now = System.currentTimeMillis();
+		//while (System.currentTimeMillis() < now + 3000) {
+
+		//}
+		//decide = true;
+
+
+
+		Thread t = new Thread(new Runnable() {
+			public void run() {
+				decide = false;
+				while (decide == false){
+					try {
+						Thread.sleep(7000);
+						decide = true;
+					} 
+					catch(InterruptedException ex) {
+						Thread.currentThread().interrupt();
+					}
+				}	
+			}
+		});
+		t.start();}
+
+public void addlocation(){
+	travelled.add(Swarm.getX());
+	travelled.add(Swarm.getY());
+};
+
+	
 	public KeyListener getKeyListener() {
 		// TODO Auto-generated method stub
 		return this;
@@ -93,75 +233,91 @@ public class StoryScreen extends Screen implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		int keyCode = e.getKeyCode();
-			//check if an arrow key is pressed and add it to pressedKeys if it is
-			if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT){
-				//only add keys if they aren't already in the ArrayList
-				if(!pressedKeys.contains(keyCode))pressedKeys.add(keyCode);
-			}
+		//check if an arrow key is pressed and add it to pressedKeys if it is
+		if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT){
+			//only add keys if they aren't already in the ArrayList
+			if(!pressedKeys.contains(keyCode))pressedKeys.add(keyCode);
+		}
 
-			//other keys don't get combined with other keys, so they don't need to be added
-			if(keyCode == KeyEvent.VK_SPACE){
-				//stuff that happens when the spacebar is pressed
-//				Screen mainMenu = new DemoOverworld(game);
-//				game.setScreen(mainMenu);
-			}
-			if(keyCode == KeyEvent.VK_A){
-				int current = ++counter%3;
-				cutscene =  new IntroCut(params[current][0], params[current][1], fonts.get(current), 30, 1000,800,colors.subList(current, current+3));
-				cuts.add(cutscene);
-			}
+		//other keys don't get combined with other keys, so they don't need to be added
+		if(keyCode == KeyEvent.VK_SPACE){
+			//stuff that happens when the spacebar is pressed
+			//				Screen mainMenu = new DemoOverworld(game);
+			//				game.setScreen(mainMenu);
+		}
+		if(keyCode == KeyEvent.VK_A){
+			int current = ++counter%3;
+			cutscene =  new IntroCut(params[current][0], params[current][1], fonts.get(current), 30, 1000,800,colors.subList(current, current+3));
+			cuts.add(cutscene);
+		}
 
-			if(keyCode == KeyEvent.VK_UP){
-				Swarm.animate(AyaStanding.get(3));
-				Swarm.moveUp();
+		if(keyCode == KeyEvent.VK_UP){
+			if(decide == true){
+			Swarm.animate(AyaStanding.get(3));
+			Swarm.moveUp();
+			SwarmsYpos = Swarm.getY();
+			checkFor();
 			}
-			
-		
-			else if(keyCode == KeyEvent.VK_DOWN){			
-				Swarm.animate(AyaStanding.get(0));
-				Swarm.moveDown();
+		}
+
+
+		else if(keyCode == KeyEvent.VK_DOWN){	
+			if(decide == true){
+			Swarm.animate(AyaStanding.get(0));
+			Swarm.moveDown();
+			SwarmsYpos = Swarm.getY();
+			checkFor();
 			}
-			else if(keyCode == KeyEvent.VK_RIGHT){
-				Swarm.animate(AyaStanding.get(2));
-				Swarm.moveRight();
+		}
+		else if(keyCode == KeyEvent.VK_RIGHT){
+			if(decide == true){
+			Swarm.animate(AyaStanding.get(2));
+			Swarm.moveRight();
+			SwarmsXpos = Swarm.getX();
+			checkFor();
 			}
-			else if(keyCode == KeyEvent.VK_LEFT){
-				Swarm.animate(AyaStanding.get(1));
-				Swarm.moveLeft();
+		}
+		else if(keyCode == KeyEvent.VK_LEFT){
+			if(decide == true){
+			Swarm.animate(AyaStanding.get(1));
+			Swarm.moveLeft();
+			SwarmsXpos = Swarm.getX();
+			checkFor();
 			}
-			else if(keyCode == KeyEvent.VK_S) {
-				//Swarm.shoot();
-			}
-			else if(keyCode == KeyEvent.VK_R) {
-				//Swarm.radio();
-			}
-			
-			Swarm.checkDimensions();
+		}
+		else if(keyCode == KeyEvent.VK_S) {
+			//Swarm.shoot();
+		}
+		else if(keyCode == KeyEvent.VK_R) {
+			//Swarm.radio();
+		}
+
+		Swarm.checkDimensions();
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		int keyCode = e.getKeyCode();
-			//check if an arrow key is released and removes it from pressedKeys if it is
-			if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT){
-				pressedKeys.remove(pressedKeys.indexOf(keyCode));
-			}
+		//check if an arrow key is released and removes it from pressedKeys if it is
+		if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT){
+			pressedKeys.remove(pressedKeys.indexOf(keyCode));
+		}
 
-			if(keyCode == KeyEvent.VK_UP){
-				Swarm.animate(AyaStanding.get(3));
-			}
-			else if(keyCode == KeyEvent.VK_DOWN){			
-				Swarm.animate(AyaStanding.get(0));
-			}
-			else if(keyCode == KeyEvent.VK_RIGHT){
-				Swarm.animate(AyaStanding.get(2));
-			}
-			else if(keyCode == KeyEvent.VK_LEFT){
-				Swarm.animate(AyaStanding.get(1));
-			}
+		if(keyCode == KeyEvent.VK_UP){
+			Swarm.animate(AyaStanding.get(3));
+		}
+		else if(keyCode == KeyEvent.VK_DOWN){			
+			Swarm.animate(AyaStanding.get(0));
+		}
+		else if(keyCode == KeyEvent.VK_RIGHT){
+			Swarm.animate(AyaStanding.get(2));
+		}
+		else if(keyCode == KeyEvent.VK_LEFT){
+			Swarm.animate(AyaStanding.get(1));
+		}
 
-			respondToKeyInput();
+		respondToKeyInput();
 	}
 	private void respondToKeyInput() { 
 		if(pressedKeys.contains(KeyEvent.VK_UP) && !pressedKeys.contains(KeyEvent.VK_DOWN)) Swarm.setY(Swarm.getY() - MOVE_UNIT); 
@@ -173,7 +329,7 @@ public class StoryScreen extends Screen implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
