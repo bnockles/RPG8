@@ -199,8 +199,9 @@ public class MapDemoScreen extends Screen implements KeyListener,overworldIntegr
 					}
 				}
 			}
-			g2.setColor(Color.red);
-			g2.drawOval(xPos, yPos, 30, 30);
+			
+			BufferedImage[] b = g.getPI();
+			UtilityMethods.scaleImage(g2, b[0], xPos, yPos, xSize, ySize);
 		} else {
 			g2.drawString("You Died", 500, 500);
 		}
