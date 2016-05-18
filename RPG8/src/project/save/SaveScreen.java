@@ -6,10 +6,15 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import project.ChoiceMenuDemo.GridToSee;
 import project.directors.Game;
 import project.directors.Screen;
+import project.mainmenudemo.MainMenuScreen;
+import project.tooltipdemo.TestScreen;
 
 public class SaveScreen extends Screen implements KeyListener {
+	
+	private int currSelection = 0;
 
 	public SaveScreen(Game game) {
 		super(game);
@@ -33,10 +38,18 @@ public class SaveScreen extends Screen implements KeyListener {
 		g2.setFont(serif);
 		
 		// Option Boxes
-		for (int i = 1; i< 4; i++) {
-			g2.fillRect(100, 175 * i + 75, width - 200, 100);
-			g2.fillRect(100, 175 * i + 72 + 2, width - 200, 100);
-			g2.drawString("Save File " + 1, 120, 175 * i + 75);
+		for (int i = 0; i < 3; i++) {
+			// Print bigger rectangle for selected option
+			if (i == currSelection) {
+				g2.setColor(new Color(189, 195, 199));
+				g2.fillRect(90, 175 * i + 250 - 10, width - 200 + 20, 100 + 20);
+			}
+			
+			g2.setColor(new Color(149, 165, 166));
+			g2.fillRect(100, 175 * i + 250, width - 200, 100);
+			
+			g2.setColor(new Color(44, 62, 80));
+			g2.drawString("Save File " + (i + 1) , 120, 175 * i + 250 + 66);
 		}
 	}
 
@@ -55,7 +68,17 @@ public class SaveScreen extends Screen implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-			// Enter save or something like that
+			Save.chooseSave(currSelection);
+			this.game.setScreen(new GridToSee(this.game));
+		}
+		if(e.getKeyCode()== KeyEvent.VK_DOWN){
+			currSelection = (currSelection + 1) % 3;
+			update();
+		}
+		if(e.getKeyCode()== KeyEvent.VK_UP){
+			currSelection = currSelection - 1;
+			if (currSelection < 0) currSelection = 2;
+			update();
 		}
 	}
 
