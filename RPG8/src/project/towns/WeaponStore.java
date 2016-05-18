@@ -43,7 +43,9 @@ public class WeaponStore implements StoreInterface{
 		if(itemx == 92)
 		if(money >= 450){
 				itemNuW.set(0, itemNuW.get(0) + 1);
+				System.out.println(itemListW.get(0).getPrice());
 				money = money - itemListW.get(0).getPrice();
+				System.out.println(money);
 			}
 		if(itemx == 192)
 			if(money >= 350){
@@ -60,6 +62,7 @@ public class WeaponStore implements StoreInterface{
 				itemNuW.set(3, itemNuW.get(3) + 1);
 				money = money - itemListW.get(3).getPrice();
 			}
+		System.out.println(money);
 		}
 	
 	public double getMoney() {
@@ -76,27 +79,25 @@ public class WeaponStore implements StoreInterface{
 		if(itemx == 92){
 			if(itemNuW.get(0) > 0){
 				itemNuW.set(0, itemNuW.get(0) - 1);
-				money = money + 450;
+				money = money + itemListW.get(0).getPrice();
 			}
 		}
 		if(itemx == 192){
 			if(itemNuW.get(1) > 0){
 				itemNuW.set(1, itemNuW.get(1) - 1);
-				money = money + 350;
+				money = money + itemListW.get(1).getPrice();
 			}
 		}
 		if(itemx == 292){
 			if(itemNuW.get(2) > 0){
 				itemNuW.set(2, itemNuW.get(2) - 1);
-				money = money + 250;
+				money = money + itemListW.get(2).getPrice();
 			}
 		}
 		if(itemx == 392){
-			System.out.print("test");
 			if(itemNuW.get(3) > 0){
 				itemNuW.set(3, itemNuW.get(3) - 1);
-				money = money + 150;
-				System.out.print("test");
+				money = money + itemListW.get(3).getPrice();
 			}
 		}
 	}
