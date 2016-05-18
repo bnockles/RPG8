@@ -9,8 +9,8 @@ public class ConsumStore implements StoreInterface {
 	double money;
 	ArrayList<Integer> itemNC = new ArrayList<Integer>();
 	ArrayList<ShopItems> itemListC = new ArrayList<ShopItems>(){{add((ShopItems) ItemResources.rifleAmmo); add((ShopItems) ItemResources.fireRifleAmmo); add((ShopItems) ItemResources.stunRifleAmmo); add((ShopItems) ItemResources.pistolAmmo);}};
-	public ConsumStore(ArrayList<Integer> itemN, int money) {
-		this.money = money;
+	public ConsumStore(ArrayList<Integer> itemN, double d) {
+		this.money = d;
 		for(int i = 0; i  < itemListC.size(); i++){
 			itemNC.add(i, 0);
 		}
@@ -41,49 +41,7 @@ public class ConsumStore implements StoreInterface {
 					money = money - itemListC.get(3).getPrice();
 				}
 	}
-	public void AllSellingInteraction(int itemx) {
-		// TODO Auto-generated method stub
-		if(itemx == 92){
-			if(itemNC.get(0) > 0){
-				money = money + 450;
-			}
-		}
-		if(itemx == 192){
-			if(itemNC.get(1) > 0){
-				money = money + 350;
-			}
-		}
-		if(itemx == 292){
-			if(itemNC.get(2) > 0){
-				money = money + 250;
-			}
-		}
-		if(itemx == 392){
-			if(itemNC.get(3) > 0){
-				money = money + 150;
-			}
-		}
-	}
-	public void AllInteraction(int itemx) {
-		// TODO Auto-generated method stub
-		if(itemx == 92)
-		if(money >= 450){
-				money = money - 450;
-			}
-		if(itemx == 192)
-			if(money >= 350){
-				money -= 350;
-			}
-		if(itemx == 292)
-			if(money >= 250){
-				money -= 250;
-			}
-		if(itemx == 392)
-			if(money >= 250){
-				money -= 150;
-			}
-		}
-
+	
 	@Override
 	public void moneySellingInteraction(int itemx) {
 		// TODO Auto-generated method stub
@@ -113,17 +71,6 @@ public class ConsumStore implements StoreInterface {
 		}
 	}
 
-	@Override
-	public void itemSellingInteraction() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void itemInteraction() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	public double getMoney() {
 		return money;

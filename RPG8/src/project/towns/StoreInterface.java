@@ -11,11 +11,4 @@ public interface StoreInterface {
 	
 	public void moneySellingInteraction(int x);
 	
-	public void itemSellingInteraction();
-	
-	public void itemInteraction();
-
-	public void AllSellingInteraction(int itemx);
-	
-	public void AllInteraction(int itemx);
 }

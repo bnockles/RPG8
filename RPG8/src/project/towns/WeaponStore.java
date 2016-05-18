@@ -76,85 +76,29 @@ public class WeaponStore implements StoreInterface{
 		if(itemx == 92){
 			if(itemNuW.get(0) > 0){
 				itemNuW.set(0, itemNuW.get(0) - 1);
-				money = money + itemListW.get(0).getPrice();
+				TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListW.get(0).getPrice());
 			}
 		}
 		if(itemx == 192){
 			if(itemNuW.get(1) > 0){
 				itemNuW.set(1, itemNuW.get(1) - 1);
-				money = money + itemListW.get(1).getPrice();
+				TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListW.get(1).getPrice());
 			}
 		}
 		if(itemx == 292){
 			if(itemNuW.get(2) > 0){
 				itemNuW.set(2, itemNuW.get(2) - 1);
-				money = money + itemListW.get(2).getPrice();
+				TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListW.get(2).getPrice());
 			}
 		}
 		if(itemx == 392){
 			if(itemNuW.get(3) > 0){
 				itemNuW.set(3, itemNuW.get(3) - 1);
-				money = money + itemListW.get(3).getPrice();
+				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(3).getPrice());
 			}
 		}
 	}
 
-	public void AllSellingInteraction(int itemx) {
-		// TODO Auto-generated method stub
-		if(itemx == 92){
-			if(itemNuW.get(0) > 0){
-				TownScreen.playable.setMoney(itemListW.get(0).getPrice() + TownScreen.playable.getMoney());
-			}
-		}
-		if(itemx == 192){
-			if(itemNuW.get(1) > 0){
-				
-			}
-		}
-		if(itemx == 292){
-			if(itemNuW.get(2) > 0){
-				
-			}
-		}
-		if(itemx == 392){
-			if(itemNuW.get(2) > 0){
-				
-			}
-		}
-	}
-	
-	public void AllInteraction(int itemx) {
-		// TODO Auto-generated method stub
-			if(itemx == 92)
-			if(money >= 450){
-					
-				}
-			if(itemx == 192)
-				if(money >= 350){
-					;
-				}
-			if(itemx == 292)
-				if(money >= 250){
-					
-				}
-			if(itemx == 392)
-				if(money >= 250){
-					
-				}
-			
-		}
-
-	@Override
-	public void itemSellingInteraction() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void itemInteraction() {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 	
