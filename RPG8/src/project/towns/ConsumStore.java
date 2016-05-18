@@ -11,7 +11,7 @@ public class ConsumStore implements StoreInterface {
 	ArrayList<ShopItems> itemListC = new ArrayList<ShopItems>(){{add((ShopItems) ItemResources.rifleAmmo); add((ShopItems) ItemResources.fireRifleAmmo); add((ShopItems) ItemResources.stunRifleAmmo); add((ShopItems) ItemResources.pistolAmmo);}};
 	public ConsumStore(ArrayList<Integer> itemN, int money) {
 		this.money = money;
-		for(int i = 0; i  < itemNC.size(); i++){
+		for(int i = 0; i  < itemListC.size(); i++){
 			itemNC.add(i, 0);
 		}
 		// TODO Auto-generated constructor stub
@@ -59,7 +59,7 @@ public class ConsumStore implements StoreInterface {
 			}
 		}
 		if(itemx == 392){
-			if(itemNC.get(2) > 0){
+			if(itemNC.get(3) > 0){
 				money = money + 150;
 			}
 		}
@@ -102,6 +102,12 @@ public class ConsumStore implements StoreInterface {
 		if(itemx == 292){
 			if(itemNC.get(2) > 0){
 				itemNC.set(2, itemNC.get(2) - 1);
+				money = money + 250;
+			}
+		}
+		if(itemx == 392){
+			if(itemNC.get(3) > 0){
+				itemNC.set(3, itemNC.get(3) - 1);
 				money = money + 250;
 			}
 		}

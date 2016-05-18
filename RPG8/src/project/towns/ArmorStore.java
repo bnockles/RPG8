@@ -7,11 +7,11 @@ import project.items.ItemResources;
 public class ArmorStore implements StoreInterface{
 
 	double money;
-	ArrayList<ShopItems> itemListA = new ArrayList<ShopItems>(){{add((ShopItems) ItemResources.yourarmor); add((ShopItems) ItemResources.medkit); add((ShopItems) ItemResources.smallkit); add((ShopItems) ItemResources.bigkit);}};
+	ArrayList<ShopItems> itemListA = new ArrayList<ShopItems>(){{add((ShopItems) ItemResources.yourarmor);};};
 	ArrayList<Integer> itemNA = new ArrayList<Integer>();
 	public ArmorStore(ArrayList<Integer> itemN, int money) {
 		this.money = money;
-		for(int i = 0; i  < 3; i++){
+		for(int i = 0; i  < itemListA.size(); i++){
 			itemNA.add(i, 0);
 		}
 		// TODO Auto-generated constructor stub

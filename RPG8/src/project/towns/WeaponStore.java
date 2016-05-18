@@ -92,9 +92,11 @@ public class WeaponStore implements StoreInterface{
 			}
 		}
 		if(itemx == 392){
-			if(itemNuW.get(2) > 0){
+			System.out.print("test");
+			if(itemNuW.get(3) > 0){
 				itemNuW.set(3, itemNuW.get(3) - 1);
 				money = money + 150;
+				System.out.print("test");
 			}
 		}
 	}
