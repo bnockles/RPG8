@@ -8,6 +8,6 @@ package project.menus;
 
 public interface StringCenterer {
 
-	public int centerString(String s, int whereBoxBeginsX, int widthOfBox, int widthOfCharacter);//returns an int for a place where the string will begin. 
+	public int centerString(String s, int whereBoxBeginsX, int widthOfBox, int widthOfEachCharacterInPixels);//returns an int for a place where the string will begin. 
 	//for Muhammed.
 }
