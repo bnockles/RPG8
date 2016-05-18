@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -23,10 +24,40 @@ public class Hero {
 	public static int weapon = 10;
 	public int strength = 100;
 	
+	private final static ArrayList<String> AyaForward = new ArrayList<String>();
+	private static String forward = "/images/heroes/sForward.png";
+	private static String forward1 = "/images/heroes/forward1.png";
+	private static String forward2 = "/images/heroes/forward2.png";
+	private final static ArrayList<String> AyaLeft = new ArrayList<String>();
+	private static String left = "/images/heroes/sLeft.png";
+	private static String left1 = "/images/heroes/left1.png";
+	private static String left2 = "/images/heroes/left2.png";
+	private final static ArrayList<String> AyaRight = new ArrayList<String>();
+	private static String right = "/images/heroes/sRight.png";
+	private static String right1 = "/images/heroes/right1.png";
+	private static String right2 = "/images/heroes/right2.png";
+	private final static ArrayList<String> AyaBack = new ArrayList<String>();
+	private static String back = "/images/heroes/sBack.png";
+	private static String back1 = "/images/heroes/back1.png";
+	private static String back2 = "/images/heroes/back2.png";
+	public final ArrayList<String> AyaStanding = new ArrayList<String>();
+	
 	public Hero(String name, int x, int y){
 		this.name = name;
 		this.x = x;
 		this.y = y;
+		AyaForward.add(forward1);
+		AyaForward.add(forward2);
+		AyaLeft.add(left1);
+		AyaLeft.add(left2);
+		AyaRight.add(right1);
+		AyaRight.add(right2);
+		AyaBack.add(back1);
+		AyaBack.add(back2);
+		AyaStanding.add(forward);
+		AyaStanding.add(left);
+		AyaStanding.add(right);
+		AyaStanding.add(back);
 	}	
 	
 	public void animate(String picLocation){
@@ -65,18 +96,18 @@ public class Hero {
 	
 	public void moveUp() {
 		y = y - 8;
-		if(zero)StoryScreen.Swarm.animate(StoryScreen.AyaBack.get(0));
+		if(zero)animate(AyaBack.get(0));
 		else{
-			StoryScreen.Swarm.animate(StoryScreen.AyaBack.get(1));
+			animate(AyaBack.get(1));
 		}
 		zero = !zero;
 	}
 
 	public void moveDown() {
 		y = y + 8;
-		if(zero)StoryScreen.Swarm.animate(StoryScreen.AyaForward.get(0));
+		if(zero)animate(AyaForward.get(0));
 		else{
-			StoryScreen.Swarm.animate(StoryScreen.AyaForward.get(1));
+			animate(AyaForward.get(1));
 		}
 		zero = !zero;
 	}
@@ -84,18 +115,18 @@ public class Hero {
 	public void moveRight() {
 		x = x + 8;
 		
-		if(zero)StoryScreen.Swarm.animate(StoryScreen.AyaRight.get(0));
+		if(zero)animate(AyaRight.get(0));
 		else{
-			StoryScreen.Swarm.animate(StoryScreen.AyaRight.get(1));
+			animate(AyaRight.get(1));
 		}
 		zero = !zero;
 	}
 
 	public void moveLeft() {
 		x = x - 8;
-		if(zero)StoryScreen.Swarm.animate(StoryScreen.AyaLeft.get(0));
+		if(zero)animate(AyaLeft.get(0));
 		else{
-			StoryScreen.Swarm.animate(StoryScreen.AyaLeft.get(1));
+			animate(AyaLeft.get(1));
 		}
 		zero = !zero;
 	}
@@ -118,14 +149,14 @@ public class Hero {
 		if(y <= 25){
 			setY(32);
 		}
-		if(y >= 1000 - 133){
-			setY(800 - 137);
+		if(y >= StoryScreen.height- height){
+			setY(StoryScreen.height - height);
 		}
-		if(x <= 3){
-			setX(7);
+		if(x <= 0){
+			setX(0);
 		}
-		if(x >= 1000 - 33){
-			setX(800 - 37);
+		if(x >= StoryScreen.width - width){
+			setX(StoryScreen.width - width);
 		}
 	}
 	

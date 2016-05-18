@@ -12,7 +12,6 @@ public class IntroCut extends Cutscenes {
 	protected boolean crossed;
 	public int something;
 	public IntroCut(String missionName, String objective, Font font, int time, int width, int height, List<Color> list){
-	
 		super(missionName, objective, font, time, width, height, list);
 		BufferedImage image=new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2 = (Graphics2D) image.getGraphics();

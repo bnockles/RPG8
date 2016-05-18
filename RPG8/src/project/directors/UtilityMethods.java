@@ -4,6 +4,12 @@ import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+
+import project.battles.demo.BattlesScreen;
 
 public class UtilityMethods {
 
@@ -30,7 +36,6 @@ public class UtilityMethods {
 	
 	
 	public static void scaleImage(Graphics2D g2,BufferedImage originalImage, int x, int y, int newWidth, int newHeight){
-		
 		int w = originalImage.getWidth();
 		int h = originalImage.getHeight();
 		g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
@@ -38,5 +43,41 @@ public class UtilityMethods {
 
 
 	}
+	public static BufferedImage getImageFromFile(Object battlesScreen, String string) {
+		// TODO Auto-generated method stub
+		URL url = battlesScreen.getClass().getResource(string);
+		try {
+			BufferedImage check = ImageIO.read(url);
+			return check;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
+	public static BufferedImage getScaledImage(BufferedImage original, int width, int height) {
+		// TODO Auto-generated method stub
+		BufferedImage result = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g2 = result.createGraphics();
+		g2.drawImage(original,0,0,width,height,0,0,original.getWidth(),original.getHeight(),null);
+		return result;
+	}
+
+	public static BufferedImage[] addImage(BufferedImage origimage0, BufferedImage origimage1, BufferedImage origimage2) {
+		// TODO Auto-generated method stub
+		BufferedImage [] images = new BufferedImage[3];
+		images[0] = origimage0;
+		images[1] = origimage1;
+		images[2] = origimage2;
+		return images;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

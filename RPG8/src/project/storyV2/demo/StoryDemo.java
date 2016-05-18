@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import project.directors.Game;
 import project.story.Hero;
-
+@SuppressWarnings("serial")
 public class StoryDemo extends Game {
 	
 	public static void main(String[] args) {
