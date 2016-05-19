@@ -1,5 +1,7 @@
 package project.menus;
 
+import java.awt.Graphics2D;
+
 /**
  * Mark Mozgovoy
  */
@@ -23,5 +25,15 @@ public class TooltipOptions {
 		return new Tooltip(450, 230, 492, 220,
 				"Title Here", new File("resources/image1.jpg"), "Description here",
 				234, 120);
+	}
+	
+	public static Tooltip makeBox(){
+		return getTooltip(TOOLTIP_DIALOGUE);
+	}
+	public static void drawBox(Graphics2D g2, Tooltip t){
+		t.drawTooltipDialogue(g2);
+	}
+	public static void editBox(Tooltip t){
+		
 	}
 }
