@@ -34,6 +34,7 @@ public class MapDemonstration extends Game {
 	public void changeScreens() {
 		setScreen(batt);
 		addMouseListener((MouseListener) batt);
+		System.out.println("C");
 		repaint();
 		test();
 	}
@@ -43,7 +44,9 @@ public class MapDemonstration extends Game {
 		t.schedule(new TimerTask() {
 			public void run() {
 				if(batt.isDead()){
+					gameState = false;
 					t.cancel();
+					t.purge();
 					changeScreensM();
 				}
 			}
@@ -59,6 +62,9 @@ public class MapDemonstration extends Game {
 
 	public BufferedImage[] getPI() {
 		return playerImg;
+	}
+	public boolean gameState(){
+		return gameState;
 	}
 
 }

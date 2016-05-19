@@ -152,7 +152,7 @@ public class MapDemoScreen extends Screen implements KeyListener,overworldIntegr
 		}
 	}
 	public void checkPlayerState(Boundaries bound) {
-		if (bound.isLethal()) {
+		if (bound.isLethal() || !g.gameState()) {
 			playing = false;
 		}
 	}
