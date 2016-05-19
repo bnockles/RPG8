@@ -3,6 +3,7 @@ package project.controls;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import project.battles.BattlesActions;
+import project.battles.MCharacter;
 
 public class Contoltles implements ActionDeterminer{
 	ArrayList<Integer> moving = new ArrayList<Integer>();
@@ -32,5 +33,13 @@ public class Contoltles implements ActionDeterminer{
 		if(moving.contains(KeyEvent.VK_S)) thing.moveCharacterDown();
 		if(moving.contains(KeyEvent.VK_D)) thing.moveCharacterRight();
 		
+	}
+
+	@Override
+	public void checkEmpty(MCharacter c) {
+		// TODO Auto-generated method stub
+		if(moving.isEmpty()){
+			c.setWalking(false);
+		}
 	}
 }

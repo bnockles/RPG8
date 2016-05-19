@@ -259,6 +259,10 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
+		if(isDead()){ //YIFAN TESTING
+			g2.drawString("After 5 seconds, this shows up (Because character will die and "
+					+ "we will exit back to the overworld", 100, 600);
+		}
 		try{
 			g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
 			g2.drawString("Battles Team's Demo", 100, 100);
@@ -468,6 +472,8 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		 */
 		int keyCode = e.getKeyCode();
 		controller.removeKeys(keyCode);
+		if(pressedKeys.isEmpty())
+			character.setWalking(false);//YOGTSERIGBSDFIOB
 		
 //		character.setFacingDirection();
 //		if(pressedKeys.isEmpty())
@@ -667,24 +673,31 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 	}
 	public void doSomething(int e){
 		controller.determineKeyAction(e);
+		controller.checkEmpty(character);
 	}
-	@Override
-	public boolean isDead() { //Yifan He 
-		// for testing
-		long start= System.currentTimeMillis();
-		long end = start+15000; //15 seconds 
-		if(System.currentTimeMillis() < end) {
-		  return false;
+
+	 //Yifan He 
+	boolean test = false;
+	ActionListener taskPerformer = new ActionListener(){
+		public void actionPerformed(ActionEvent evt){
+			test = true;
 		}
-		return true;
+	};
+	
+	Timer temp = new Timer(5000,taskPerformer);
+	@Override
+	public boolean isDead(){ //Yifan He 
+		// for testing
+		temp.setRepeats(false);
+		temp.start();
+		return test;
 	}
 	@Override
 	public boolean killCharacter() { //Yifan He 
 		// TODO Auto-generated method stub
-		if(character.getCurrentHP()<=0){
-			return true;
-		}
-		return false;
+		temp.setRepeats(false);
+		temp.start();
+		return test;
 	}
 	@Override
 	public int getCharX() {//Yifan He 
