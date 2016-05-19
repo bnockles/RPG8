@@ -40,6 +40,79 @@ public class Ammo extends Item{
 	}
 	
 	public void applyEffect(int eff,final TargetDemo target){
+		if(eff != ItemResources.NO_EFFECT){
+			final Timer timer = new Timer();
+			
+			final TimerTask applyBurn = new TimerTask(){
+				public void run(){
+					if(burnDuration>=5){
+						burnDuration=0;
+						target.isBurned=false;
+						timer.cancel();
+					}else{
+						System.out.println("BURNING");
+						target.health -=5;
+						if(target.health<0){
+							target.health=0;
+						}
+						burnDuration++;
+					}
+				}
+			};
+			
+			final TimerTask applyCorrosive = new TimerTask(){
+				public void run(){
+					System.out.println("CORR");
+					if(corrodeDuration==0){
+						
+						target.armor/=2;
+						System.out.println("Corroded Armor" + target.armor);
+						
+					}
+					if(corrodeDuration>=4){
+						target.armor*=2;
+						System.out.println("Normal Armor" + target.armor);
+						corrodeDuration=0;
+						target.isCorrosive=false;
+						timer.cancel();
+						System.out.println("now:"+target.name + " Armor is: " + target.armor);
+					}
+					corrodeDuration++;
+					if(target.health<0){
+						target.health=0;
+					}
+				}
+			};
+			
+			final TimerTask applyStun = new TimerTask(){
+				public void run(){
+					System.out.println("STUNNED");
+					if(stunDuration>=3){
+						stunDuration=0;
+						target.isStunned=false;
+						timer.cancel();
+					}else{
+						stunDuration++;
+					}
+				}
+			};
+			
+			if(eff==ItemResources.FIRE && !target.isBurned){
+				target.isBurned=true;
+				timer.scheduleAtFixedRate(applyBurn, 1000, 1000);
+			}
+			if(eff==ItemResources.CORROSIVE && !target.isCorrosive){
+				target.isCorrosive=true;
+				timer.scheduleAtFixedRate(applyCorrosive, 1000, 1000);
+			}
+			if(eff==ItemResources.STUN){
+				target.isStunned=true;
+				timer.scheduleAtFixedRate(applyStun, 1000, 1000);
+			}
+		}
+		
+		
+		
 		if(eff == ItemResources.FIRE){
 			if(!target.isBurned){
 				final Timer timer = new Timer();
