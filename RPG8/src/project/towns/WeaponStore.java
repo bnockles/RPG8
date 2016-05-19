@@ -15,8 +15,10 @@ public class WeaponStore implements StoreInterface{
 
 	double money;
 	ArrayList<Integer> itemNuW = new ArrayList<Integer>();
-	ArrayList<ShopItems> itemListW = new ArrayList<ShopItems>(){{add((ShopItems) ItemResources.rifles1GradeC1); add((ShopItems) ItemResources.rifles3GradeA2); add((ShopItems) ItemResources.rifles4GradeA3); add((ShopItems) ItemResources.pistol2GradeB1);}};
-	
+	ArrayList<ShopItems> itemListW = new ArrayList<ShopItems>();
+	ArrayList<String> itemListWDes = new ArrayList<String>();
+	ArrayList<String> itemListWPics = new ArrayList<String>();
+	int count = ItemResources.Melee.length + ItemResources.Rifles.length + ItemResources.Pistol.length + ItemResources.Heavy.length + ItemResources.SMG.length;
 	
 	public void setItemListW(ArrayList<ShopItems> itemListW) {
 		this.itemListW = itemListW;
@@ -31,6 +33,8 @@ public class WeaponStore implements StoreInterface{
 		this.money = d;
 		for(int i = 0; i  < itemListW.size(); i++){
 			itemNuW.add(i, 0);
+			itemListWDes.add(i, itemListW.get(i).getDescription());
+			//itemListWPics.add(i, itemListW.get(i));
 		}
 		//for(int i = 0; i < 3; i++){
 		//	itemN.add(i, itemNu.get(i));
@@ -40,6 +44,7 @@ public class WeaponStore implements StoreInterface{
 	@Override
 	public void moneyInteraction(int itemx) {
 		// TODO Auto-generated method stub
+		//to be simplified
 		if(itemx == 92)
 		if(money >= 450){
 				itemNuW.set(0, itemNuW.get(0) + 1);
@@ -61,6 +66,7 @@ public class WeaponStore implements StoreInterface{
 				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(3).getPrice());
 			}
 		}
+	
 	
 	public double getMoney() {
 		return money;
