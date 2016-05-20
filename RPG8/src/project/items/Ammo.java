@@ -63,6 +63,7 @@ public class Ammo extends Item{
 			final TimerTask applyCorrosive = new TimerTask(){
 				public void run(){
 					System.out.println("CORR");
+					System.out.println("COOR DURATION"+corrodeDuration);
 					if(corrodeDuration==0){
 						
 						target.armor/=2;
@@ -72,12 +73,13 @@ public class Ammo extends Item{
 					if(corrodeDuration>=4){
 						target.armor*=2;
 						System.out.println("Normal Armor" + target.armor);
-						corrodeDuration=0;
+						corrodeDuration=-1;
 						target.isCorrosive=false;
 						timer.cancel();
 						System.out.println("now:"+target.name + " Armor is: " + target.armor);
 					}
 					corrodeDuration++;
+					System.out.println("NEXT COOR"+corrodeDuration);
 					if(target.health<0){
 						target.health=0;
 					}

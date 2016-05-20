@@ -105,10 +105,17 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 	public void drawStats(Graphics2D g2,int x,int y,TargetDemo target){
 		g2.setColor(Color.green);
 		g2.fillRect(x, y+30, target.health, 20);
+		if(target.isCorrosive){
+			g2.setColor(new Color(53,107,34));
+		}
+		else g2.setColor(Color.cyan);
+		g2.fillRect(x+105, y+30, target.armor, 20);
 		g2.setColor(Color.black);
 		g2.drawString(target.name, x, y);
-		g2.drawRect(x,y+30,100,20);
-		g2.drawString("Health: "+target.health+"/100", x, y+25);
+		g2.drawRect(x-1,y+29,101,21);
+		g2.drawRect(x+104,y+29,101,21);
+		g2.drawString("Health: "+target.health, x, y+25);
+		g2.drawString("Armor: "+target.armor, x+105, y+25);
 		g2.drawString("Clips: "+target.weapon.getAmmoCapacity(), x, y+75);
 		g2.drawString("Ammo in Clip: "+target.weapon.getAmmoTotal(), x, y+100);
 		g2.drawString("Current Weapon: "+target.weapon.getName(), x, y+125);
