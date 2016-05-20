@@ -36,6 +36,8 @@ public abstract class EnemyAI extends Character{
 	protected boolean boss = false;
 	protected abstract void reaction();
 	protected abstract void run();
+	protected abstract void backToSpawn();
+	protected abstract void goToPlayer();;
 	protected int waitInterval;
 	
 	protected EnemyAI(BufferedImage[][] images, int[] stats, int[] enemystats, Weapon weapon, int type) {
@@ -91,6 +93,9 @@ public abstract class EnemyAI extends Character{
 		//dropItem();
 	}
 
+	
+
+	
 	private void checkForObjects(){//Enemy can hide behind objects to block damage.
 		Point location;
 	}
@@ -251,25 +256,7 @@ public abstract class EnemyAI extends Character{
 				moveRight = true;
 		}
 	}
-	protected void goToPlayer(){
-		int pX = BattlesScreen.character.getX();
-		int pY = BattlesScreen.character.getY();
-		if(Math.abs(pX-x) < 10 && Math.abs(pY-y) < 10){
-			x = (int) (Math.random()*600);
-			y = (int) (Math.random()*600);
-			//System.out.println(x + " " + y);
-		}
-		else{
-			if(pX-x<0)
-				x-=speed;
-			else
-				x+=speed;
-			if(pY-y<0)
-				y-=speed;
-			else
-				y+=speed;
-		}
-	}
+
 	protected void wander(){
 		if(moveUp||moveDown)
 			moveUpAndDown();

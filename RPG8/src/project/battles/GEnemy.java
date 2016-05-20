@@ -50,26 +50,59 @@ public class GEnemy extends EnemyAI implements LoggableEnemy{
 		int distanceX = x - BattlesScreen.character.getX();
 		int distanceY = y - BattlesScreen.character.getY();
 		if (distanceX >= 0){
-			x++;
+			moveRight();
 		}
 		else {
-			x--;
+			moveLeft();
 		}
 
 		if (distanceY >= 0) {
-			y++;
+			moveUp();
 		}
 		else {
-			y--;
+			moveDown();
 		} 
+	}
+	
+	protected void goToPlayer(){
+		int pX = BattlesScreen.character.getX();
+		int pY = BattlesScreen.character.getY();
+		if(Math.abs(pX-x) < 10 && Math.abs(pY-y) < 10){
+			returnToSpawn = true;
+			targetLock = false;
+		}
+		else{
+			if(pX-x<0)
+				moveLeft();
+			else
+				moveRight();
+			if(pY-y<0)
+				moveUp();
+			else
+				moveDown();
+		}
+	}
+	
+	public void backToSpawn(){
+		int  a = spawnedX - x;
+		int b = spawnedY - y;
+		if(a<0){
+			moveLeft();
+		}
+		else
+			moveRight();
+		if(b<0)
+			moveUp();
+		else
+			moveDown();
 	}
 	
 	public void distanceAway(){
 		float dist = (float) Math.sqrt(
 				Math.pow(x - spawnedX, 2) +
 				Math.pow(y - spawnedY, 2) );
-		if (dist > 300 && returnToSpawn == false) 
-			returnToSpawn = true;
+		System.out.println(dist);
+		if (dist > 300 && returnToSpawn == false) returnToSpawn = true;
 		if(returnToSpawn){
 			backToSpawn();
 			if(dist < 50){
@@ -80,20 +113,8 @@ public class GEnemy extends EnemyAI implements LoggableEnemy{
 		else
 			goToPlayer();
 	}
+	
 
-	public void backToSpawn(){
-		int  a = spawnedX - x;
-		int b = spawnedY - y;
-		if(Math.signum(a)<0){
-			moveLeft();
-		}
-		else
-			moveRight();
-		if(Math.signum(b)<0)
-			moveUp();
-		else
-			moveDown();
-	}
 
 	@Override
 	public String getName() {
