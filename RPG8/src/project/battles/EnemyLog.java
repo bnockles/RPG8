@@ -6,9 +6,14 @@ import java.util.ArrayList;
 public class EnemyLog {
 		private ArrayList<EnemyLogEntry> eLog;
 		
+		public ArrayList<EnemyLogEntry> geteLog() {
+			return eLog;
+		}
+
 		public EnemyLog(){
 			eLog = new ArrayList<EnemyLogEntry>();
-			
+			eLog.add(new EnemyLogEntry("Shahid","guy",5,5,5));
+			eLog.add(new EnemyLogEntry("Dog","guy",5,5,5));
 		}
 		
 		public void addEnemy(GEnemy enemy){
