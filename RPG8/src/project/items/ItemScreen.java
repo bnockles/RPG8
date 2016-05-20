@@ -103,12 +103,13 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		
 	}
 	public void drawStats(Graphics2D g2,int x,int y,TargetDemo target){
-		g2.setColor(Color.green);
+		if(target.isBurned) g2.setColor(new Color(227,92,48));
+		else g2.setColor(Color.green);
 		g2.fillRect(x, y+30, target.health, 20);
 		if(target.isCorrosive){
 			g2.setColor(new Color(53,107,34));
 		}
-		else g2.setColor(Color.cyan);
+		else g2.setColor(new Color(33,187,237));
 		g2.fillRect(x+105, y+30, target.armor, 20);
 		g2.setColor(Color.black);
 		g2.drawString(target.name, x, y);
