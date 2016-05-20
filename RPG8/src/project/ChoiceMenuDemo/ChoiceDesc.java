@@ -13,7 +13,6 @@ import project.menus.Selectable;
 public class ChoiceDesc implements Selectable{
 
 	public String name;
-	
 	public String des; //description
 	public File pic; //picture
 	public String sel; //selected
@@ -47,5 +46,9 @@ public class ChoiceDesc implements Selectable{
 	public void setSelect(boolean b) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void setSel(String opt){
+		sel = opt;
 	}
 }

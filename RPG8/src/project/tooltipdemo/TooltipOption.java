@@ -14,11 +14,15 @@ public class TooltipOption implements Selectable {
 	public String text;
 	public File file;
 	public String description;
+	public int buyPrice;
+	public int sellPrice;
 	
-	public TooltipOption(String text, File file, String description){
+	public TooltipOption(String text, File file, String description, int buyPrice){
 		this.text = text;
 		this.file = file;
 		this.description = description;
+		this.buyPrice = buyPrice;
+		this.sellPrice = this.buyPrice/2;
 	}
 	
 	@Override
