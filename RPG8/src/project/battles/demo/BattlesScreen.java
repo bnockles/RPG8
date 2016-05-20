@@ -252,7 +252,6 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		/**
 		 * Chieh-Huang Chen
 		 */
-		// TODO Auto-generated method stub
 		//checkMotion();
 		checkProjectileRange();
 		controller.determineMovement(this);
@@ -334,7 +333,6 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 
 	@Override
 	public KeyListener getKeyListener() {
-		// TODO Auto-generated method stub
 		return this;
 	}
 
@@ -368,7 +366,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		/**
 		 * Chieh
 		 */
-		if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0 || keyCode == KeyEvent.VK_Q || keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_E || keyCode == KeyEvent.VK_R || keyCode == KeyEvent.VK_T){
+		if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0 || keyCode == KeyEvent.VK_Q  || keyCode == KeyEvent.VK_E || keyCode == KeyEvent.VK_R || keyCode == KeyEvent.VK_T){
 			if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0)
 				keycodedemo = keyCode;
 			//PLEASE DON'T DELETE THE THREE LINES ABOVE - YIFAN HE

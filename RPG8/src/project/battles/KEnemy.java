@@ -45,7 +45,7 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		steriods();
 		goToPlayer();
 	}
-
+	
 	@Override
 	protected void run() {
 		/*
@@ -75,6 +75,37 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		 */
 		if (strength != BattlesScreen.KE_STRENGTH*2)
 		strength+= 1;
+	}
+	protected void goToPlayer(){
+		int pX = BattlesScreen.character.getX();
+		int pY = BattlesScreen.character.getY();
+		if(Math.abs(pX-x) < 100 && Math.abs(pY-y) < 100){
+			backToSpawn();
+		}
+		else{
+			if(pX-x<0)
+				x-=speed;
+			else
+				x+=speed;
+			if(pY-y<0)
+				y-=speed;
+			else
+				y+=speed;
+		}
+	}
+	
+	public void backToSpawn(){
+		int  a = spawnedX - x;
+		int b = spawnedY - y;
+		if(a<0){
+			x+=speed;
+		}
+		else
+			x-=speed;
+		if(b<0)
+			y+=speed;
+		else
+			y-=speed;
 	}
 
 	@Override
