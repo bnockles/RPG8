@@ -2,6 +2,7 @@ package project.items;
 
 import project.items.ItemDemo;
 import project.items.ItemScreen;
+import project.mainmenudemo.DynamicMenu;
 import project.directors.Game;
 import project.directors.Screen;
 
@@ -21,7 +22,7 @@ public class ItemDemo extends Game {
 	public void reset() {
 		Screen demoScreen = new ItemScreen(this);
 		setScreen(demoScreen);
-		repaint();
+		repaint();	
+		
 	}
-
 }

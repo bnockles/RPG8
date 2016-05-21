@@ -18,8 +18,10 @@ import javax.imageio.ImageIO;
 
 import project.directors.Game;
 import project.directors.Screen;
+import project.mainmenudemo.DynamicMenu;
 import project.mainmenudemo.MainMenuScreen;
 import project.menus.Tooltip;
+import project.menus.TooltipOptions;
 
 public class TestScreen extends Screen implements KeyListener {
 
@@ -29,10 +31,10 @@ public class TestScreen extends Screen implements KeyListener {
 	public TestScreen(Game game) {
 		super(game);
 		this.options = new ArrayList<TooltipOption>();
-		options.add(new TooltipOption("Option 1", new File("resources/image1.jpg"), "Sample description"));
-		options.add(new TooltipOption("Option 2", new File("resources/image2.gif"), "Another description"));
-		options.add(new TooltipOption("Option 3", new File("resources/image3.png"), "Getting tired"));
-		options.add(new TooltipOption("Option 4", new File("resources/image4.png"), "Another description again"));
+		options.add(new TooltipOption("Option 1", new File("resources/image1.jpg"), "Sample description", 200));
+		options.add(new TooltipOption("Option 2", new File("resources/image2.gif"), "Another description", 300));
+		options.add(new TooltipOption("Option 3", new File("resources/image3.png"), "Getting tired", 600));
+		options.add(new TooltipOption("Option 4", new File("resources/image4.png"), "Another description again", 1000));
 	}
 
 	/**
@@ -56,7 +58,7 @@ public class TestScreen extends Screen implements KeyListener {
 			update();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
-			this.game.setScreen(new MainMenuScreen(this.game));
+			this.game.setScreen(DynamicMenu.createMenu(DynamicMenu.MAIN_MENU, this.game));
 		}
 	}
 
@@ -84,10 +86,10 @@ public class TestScreen extends Screen implements KeyListener {
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
 		g2.setColor(Color.black);
-		g2.fillRect(112, 220, 375, 100);
-		g2.fillRect(112, 340, 375, 100);
-		g2.fillRect(112, 460, 375, 100);
-		g2.fillRect(112, 580, 375, 100);
+		g2.fillRect(112, 130, 375, 100);
+		g2.fillRect(112, 250, 375, 100);
+		g2.fillRect(112, 370, 375, 100);
+		g2.fillRect(112, 490, 375, 100);
 		
 		//Fonts created.
 		Font font1 = new Font("Courier", Font.ROMAN_BASELINE, 50);
@@ -95,26 +97,49 @@ public class TestScreen extends Screen implements KeyListener {
 		g2.setFont(font1);
 		
 		//Selected Option drawn.
-		int[] yOptions = {218, 338, 458, 578};
+		int[] yOptions = {128, 248, 368, 488};
 		int y = yOptions[selection];
 		g2.setColor(Color.yellow);
 		g2.fillRect(110, y, 379, 104);
 		
 		//Tooltip Drawn
-		Tooltip testTool = new Tooltip(450, 230, 492, 220,
-				options.get(selection).text, options.get(selection).file, options.get(selection).description,
-				234, 120);
-		testTool.drawTooltip(g2);
+//		Tooltip testTool = new Tooltip(450, 230, 492, 220,
+//				options.get(selection).text, options.get(selection).file, options.get(selection).description,
+//				234, 120);
+		
+		
+		//Tooltip drawn using instances.
+		Tooltip testTool = TooltipOptions.getTooltip(TooltipOptions.TOOLTIP_INVENTORY);
+		testTool.setTitle(options.get(selection).text);
+		testTool.setFile(options.get(selection).file);
+		testTool.setDescription(options.get(selection).description);
+		
+		testTool.drawTooltipInventory(g2);
+		
+		Tooltip testTool2 = TooltipOptions.getTooltip(TooltipOptions.TOOLTIP_STORE);
+		testTool2.setTitle(options.get(selection).text);
+		testTool2.setFile(options.get(selection).file);
+		testTool2.setDescription(options.get(selection).description);
+		testTool2.setBuyPrice(options.get(selection).buyPrice);
+		testTool2.setSellPrice(options.get(selection).sellPrice);
+		
+		testTool2.drawTooltipStore(g2);
+		
+		Tooltip testTool3 = TooltipOptions.getTooltip(TooltipOptions.TOOLTIP_DIALOGUE);
+		testTool3.setTitle(options.get(selection).text);
+		testTool3.setDescription(options.get(selection).description);
+		
+		testTool3.drawTooltipDialogue(g2);
 		
 		//Option buttons' text drawn.
 		g2.setFont(font1);
 		g2.setColor(Color.white);
-		g2.drawString(options.get(0).text, 180, 280);
-		g2.drawString(options.get(1).text, 180, 400);
-		g2.drawString(options.get(2).text, 180, 520);
-		g2.drawString(options.get(3).text, 180, 640);
+		g2.drawString(options.get(0).text, 180, 190);
+		g2.drawString(options.get(1).text, 180, 310);
+		g2.drawString(options.get(2).text, 180, 430);
+		g2.drawString(options.get(3).text, 180, 550);
 		
-		
+		//System.out.println("Test " + TooltipOptions.getTooltip(TooltipOptions.TOOLTIP_INVENTORY).getDescription());
 	}
 
 }

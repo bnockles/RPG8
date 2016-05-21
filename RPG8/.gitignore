@@ -4,6 +4,7 @@
 *-
 
 # OS generated files
+/../.DS_Store
 .DS_Store
 .DS_Store?
 ._*
@@ -13,4 +14,4 @@ ehthumbs.db
 Thumbs.db
 
 # RPG8 save files
-*.save
+Save*
