@@ -51,7 +51,7 @@ public class MedKit extends Item {
 					if(b.health==0) regenTimer.cancel();
 					b.isRegen=true;
 					System.out.println("REGEN"+count);
-					if(regenDuration>5){
+					if(regenDuration>3){
 						b.isRegen=false;
 						regenDuration=0;
 						regenTimer.cancel();

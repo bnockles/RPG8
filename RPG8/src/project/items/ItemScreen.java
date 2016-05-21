@@ -125,6 +125,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 			g2.drawString("[REGENERATING]", x+65, y+300);
 		}
 		else{
+			g2.setColor(Color.green);
 			g2.drawString("[----------]",x+65, y+300);
 		}
 		if(target.isCorrosive){
