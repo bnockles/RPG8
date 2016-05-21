@@ -111,9 +111,9 @@ public class TownScreen extends Screen implements KeyListener{
 				playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/shop/obama.jpg", 10000);
 				
 				portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
-				townPortalTooWeapon = new Building(townPortalToWeapon,250 - 50, game.getHeight() -200,true,"porttotown");
-				townPortalTooArmor = new Building(townPortalToArmor,450, 50,true,"porttotown");
-				townPortalTooAmmo = new Building(townPortalToAmmo,700, game.getHeight() -180,true,"porttotown");
+				townPortalTooWeapon = new Building(townPortalToWeapon,250 - 50, game.getHeight() -200,true,"weaponStore");
+				townPortalTooArmor = new Building(townPortalToArmor,450, 50,true,"armorStore");
+				townPortalTooAmmo = new Building(townPortalToAmmo,700, game.getHeight() -180,true,"ammoStore");
 						//Building(BufferedImage image,int y, int x, boolean portal,String nameOfBuiliding){
 				
 			}
@@ -173,7 +173,10 @@ public class TownScreen extends Screen implements KeyListener{
 				if(status == WEAPON_STORE){
 					paintShop(g2);
 					g2.drawImage(hillary.getNpc(), 420,150,250,180, null);
-					g2.drawImage(portalTooTown.getImage(), 250 - 100, game.getHeight() -10 - 100, null);
+					portalTooTown.setxcoord(150);
+					portalTooTown.setycoord(game.getHeight() -110);
+					
+					g2.drawImage(portalTooTown.getImage(), portalTooTown.getxcoord(),  portalTooTown.getycoord(), null);
 					
 					//portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
 			    	

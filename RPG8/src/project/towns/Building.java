@@ -31,6 +31,9 @@ public class Building {
 	public  int getycoord(){
 		return y;
 	}
+	public  String  getName(){
+		return nameOfBuiliding;
+	}
 	
 	public  void setxcoord( int x){
 		this.x = x;
