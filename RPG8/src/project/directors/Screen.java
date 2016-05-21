@@ -5,16 +5,15 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
-import project.mainmenudemo.MainMenuScreen;
+
 
 public abstract class Screen implements Visible{
 
 	protected Game game;//all screens must be able to reference the Game instance in order to change to a different screen
 	BufferedImage screenImage;//what the screen displays
-	public int width;//width
-	public int height;//height
+	public static int width;//width
+	public static int height;//height
 	KeyListener keyListener;//every screen is either itself a KeyListener or contains implementations of KeyListeners (menus)
-	public static int count = 0;
 	
 	public Screen(Game game) {
 		this.game = game;

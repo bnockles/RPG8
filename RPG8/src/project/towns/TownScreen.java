@@ -138,6 +138,10 @@ public class TownScreen extends Screen implements KeyListener{
 	}	
 	boolean yx= false;
 	int lottry;
+	
+	
+	
+	
 	public void delay( Graphics2D g2,String msg,int x , int y , final int statusx , final int statusxx, int delaytime ){
 		
 		
