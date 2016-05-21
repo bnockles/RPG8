@@ -86,15 +86,21 @@ public interface ItemResources {
 			pistolAmmo, 33, 18, 7, .00, 2, 0, true, 150, "Semi", 0, .45, true, true, NO_EFFECT, 0, 0,"/images/items/RIA-45S.png", 22);
 	final Weapons pistol3GradeS1 = new Weapons("CT-Roaring Thunder", "Pistol", pistolAmmo, 62, 20, 7, .20, 2, 
 			1, false, 0, "Auto", 13, .55, true, true, NO_EFFECT, 0, 0,"/images/items/CT-Roaring Thunder.png", 23);
-	final Weapons pistol4GradeA1 = new Weapons("Desert Phoenix", "Pistol", pistolAmmo, 88, 7, 7, .35, 2,
+	final Weapons pistol4GradeA1 = new Weapons("Desert Phoenix", "Magnum Pistol", pistolAmmo, 77, 7, 7, .35, 2,
 			1, true, 1850, "Semi", 0, 1.2, false, false, NO_EFFECT, 0, 0,"/images/items/Desert Phoenix.png", 24);
+	final Weapons pistol5GradeA2 = new Weapons("NG-45", "Revolver Pistol", pistolAmmo, 85, 6, 60, .25, 2,
+			1, true, 2350, "Semi", 0, 1.5, false, false, NO_EFFECT, 0, 0,"/images/items/NG-45.png", 25);
+	final Weapons pistol6GradeA3 = new Weapons("Desert Eagle", "Magnum Pistol", pistolAmmo, 70, 7, 7, .35, 2,
+			1, true, 1850, "Semi", 0, 1.2, false, false, NO_EFFECT, 0, 0,"/images/items/Desert Phoenix Steel Edition.png", 26);
 	
 	//Rifles
 		//Assault Rifle
 	final Weapons rifles1GradeC1 = new Weapons("RIA-10S", "Rifles", rifleAmmo, 36, 40, 7, .10, 2,
 			3, true, 550, "Auto", 12, 2.4, false, true, NO_EFFECT, 0, 0,"/images/items/RIA-10S.png", 31);
-	final Weapons rifles3GradeA2 = new Weapons("NG-BR40", "Rifles", rifleAmmo, 25, 40, 7, .10, 2,
-			2, true, 9850, "Auto", 12, 1.3, false, false, NO_EFFECT, 0, 0,"/images/items/NG-BR40.png", 33);
+	final Weapons rifles2GradeB1 = new Weapons("NG-BR40", "Rifles", rifleAmmo, 28, 35, 7, .10, 2,
+			2, true, 1250, "Auto", 14, 1.2, false, false, NO_EFFECT, 0, 0,"/images/items/NG-BR40.png", 32);
+	final Weapons rifles3GradeS1 = new Weapons("CT-Decimator", "Rifles", rifleAmmo, 57, 50, 7, .30, 2,
+			2, true, 7850, "Auto", 12, 2.3, false, false, NO_EFFECT, 0, 0,"/images/items/CT-Decimator.png", 33);
 		//Sniper Rifles
 	final Weapons rifles4GradeA3 = new Weapons("RIA-97A6", "Sniper Rifle", rifleAmmo, 120, 7, 7, .50, 2,
 			6, true, 1000, "Bolt", .7, 3.5, false, true, NO_EFFECT, 0, 0,"/images/items/RIA-97A6S.png", 34);
@@ -131,8 +137,8 @@ public interface ItemResources {
 //			3, true, 1850, "Auto", 13, 1.3, false, true, 0, 32);
 	
 	final Weapons[] Melee = { melee1GradeC1 };
-	final Weapons[] Pistol = { pistol2GradeB1, pistol3GradeS1, pistol4GradeA1};
-	final Weapons[] Rifles = { rifles1GradeC1, rifles3GradeA2, rifles4GradeA3 };
+	final Weapons[] Pistol = { pistol2GradeB1, pistol3GradeS1, pistol4GradeA1, pistol6GradeA3, pistol5GradeA2};
+	final Weapons[] Rifles = { rifles1GradeC1, rifles2GradeB1, rifles3GradeS1, rifles4GradeA3  };
 	final Weapons[] Heavy = { heavy1GradeB1, heavy4GradeB2, heavy5GradeA3, heavy7GradeS4};
 	final Weapons[] SMG = { smg1GradeC1, smg2GradeB1};
 	final Weapons[] Explosives = { explosives1GradeC1, explosives6GradeB1, explosives7GradeB2};
@@ -162,7 +168,7 @@ public interface ItemResources {
 	/** AllWeapons
 	 *Number of column                 [     0       ,      1       ,      2       ,      3        ,      4       ,         5        ]
 	 *The weapon type                   [ Melee   ,   Pistol   ,   Rifles   ,   Heavy   ,   SMG   ,   Explosives]
-	 *Amount of weapons per type  [     1       ,      3       ,      3       ,      3        ,      2       ,         2        ]
+	 *Amount of weapons per type  [     1       ,      5       ,      4       ,      4        ,      2       ,         2        ]
 	 * 
 	 */
 	
