@@ -12,6 +12,7 @@ public class TargetDemo implements Target{
 	boolean isBurned=false;
 	boolean isCorrosive=false;
 	boolean isStunned;
+	boolean isRegen=false;
 	String name;
 	int armor;
 	/**

@@ -11,8 +11,8 @@ public class MedKit extends Item {
 	private int healthGained;
 	private int effect;
 	int count;
-		int duration=0;
-	Timer timer;
+	int regenDuration=0;
+	Timer regenTimer;
 	public MedKit(String name, String desc,int cost, int healthGained, int effect, String itemImage, boolean buyable) {
 		super(name, desc, cost, effect, itemImage, buyable);
 		this.healthGained=healthGained;
@@ -40,30 +40,31 @@ public class MedKit extends Item {
 		if(this.getEffect()==ItemResources.REGEN){
 			try{	
 				count=0;
-				timer.cancel();
+				regenTimer.cancel();
 			}
 			catch(NullPointerException e){
 			}
-			timer=new Timer();
+			regenTimer=new Timer();
 			final TimerTask countDown = new TimerTask(){
 				boolean timerStack=false;
-
 				public void run(){
-					if(b.health==0) timer.cancel();
+					if(b.health==0) regenTimer.cancel();
+					b.isRegen=true;
 					System.out.println("REGEN"+count);
-					if(duration>5){
-						duration=0;
-						timer.cancel();
+					if(regenDuration>5){
+						b.isRegen=false;
+						regenDuration=0;
+						regenTimer.cancel();
 					}else{
 						count++;
 						b.health+=healRegen;
 						if(b.health>100)b.health=100;
-						duration++;
+						regenDuration++;
 					}
 					this.timerStack=true;
 				}
 			};
-			timer.scheduleAtFixedRate(countDown, 1000, 1000);
+			regenTimer.scheduleAtFixedRate(countDown, 1000, 1000);
 		}
 	}
 

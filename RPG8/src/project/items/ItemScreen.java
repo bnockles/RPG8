@@ -97,10 +97,17 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		g2.drawString("different types of ammo", 445, 270);
 		drawStats(g2,30,70,you);
 		drawStats(g2,700,70,enemy);
-		drawStickMan(g2, 20, 360);
-		drawStickMan(g2,770,360);
+		drawStickMan(g2, 20, 385);
+		drawStickMan(g2,770,385);
 		g2.drawImage(weaponEquiped, 295, 525, weaponEquiped.getWidth(), weaponEquiped.getHeight(), null);	
 		
+	}
+	public void drawOutline(Graphics2D g2,int x1, int y1,int x2,int y2, Color c,int size){
+		//x-1,y+29,101,21
+		g2.setColor(c);
+		for(int i=0;i<size;i++){
+			g2.drawRect(x1+i,y1+i,x2-(2*i),y2-(2*i));
+		}
 	}
 	public void drawStats(Graphics2D g2,int x,int y,TargetDemo target){
 		g2.drawString("Status:", x, y+225);
@@ -110,16 +117,23 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		}
 		else{
 			g2.setColor(Color.green);
-			g2.drawString("[COOL]",x+65, y+250);
+			g2.drawString("[----------]",x+65, y+250);
 		}
 		g2.fillRect(x, y+30, target.health, 20);
+		if(target.isRegen){
+			drawOutline(g2,x-1,y+29,101,21,new Color(255,153,255),5);
+			g2.drawString("[REGENERATING]", x+65, y+300);
+		}
+		else{
+			g2.drawString("[----------]",x+65, y+300);
+		}
 		if(target.isCorrosive){
 			g2.setColor(new Color(53,107,34));
 			g2.drawString("[CORRODED]", x+65, y+275);
 		}
 		else{
 			g2.setColor(new Color(33,187,237));
-			g2.drawString("[STRUCTURED]", x+65, y+275);
+			g2.drawString("[----------]", x+65, y+275);
 		}
 		g2.fillRect(x+105, y+30, target.armor, 20);
 		if(target.isStunned){
@@ -128,7 +142,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		}
 		else{
 			g2.setColor(Color.DARK_GRAY);
-			g2.drawString("[GROUNDED]",x+65, y+225);
+			g2.drawString("[----------]",x+65, y+225);
 		}
 		g2.setColor(Color.black);
 		g2.drawString(target.name, x, y);
