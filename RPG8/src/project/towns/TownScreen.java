@@ -169,7 +169,6 @@ public class TownScreen extends Screen implements KeyListener{
 				if(status == WEAPON_STORE){
 					paintShop(g2);
 					g2.drawImage(hillary.getNpc(), 420,150,250,180, null);
-					portalTooTown.
 					g2.drawImage(portalTooTown.getImage(), 250 - 100, game.getHeight() -10 - 100, null);
 					
 					//portalTooTown = new Building(portalToTown,450,50,true,"porttotown");

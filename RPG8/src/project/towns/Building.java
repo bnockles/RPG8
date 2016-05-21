@@ -9,6 +9,7 @@ public class Building {
 	BufferedImage image;
 	boolean portal;
 	String nameOfBuiliding;
+
 	
 	public Building(BufferedImage image,int x, int y, boolean portal,String nameOfBuiliding){
 		this.image = image;
