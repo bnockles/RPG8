@@ -186,7 +186,9 @@ public class TownScreen extends Screen implements KeyListener{
 					paintShop(g2);
 					g2.drawImage(trump.getNpc(), 420,150,250,180, null);
 					
-					g2.drawImage(portalTooTown.getImage(), 750, game.getHeight() -110, null);
+					portalTooTown.setxcoord(750);
+					portalTooTown.setycoord(game.getHeight() -110);
+					g2.drawImage(portalTooTown.getImage(), portalTooTown.getxcoord(),  portalTooTown.getycoord(), null);
 					
 		//	    	g2.drawOval(750, game.getHeight() -110, 100, 100);
 		//	    	g2.setColor(Color.WHITE);
@@ -197,8 +199,9 @@ public class TownScreen extends Screen implements KeyListener{
 				if(status == ARMOR_STORE){
 					paintShop(g2);
 					g2.drawImage(putin.getNpc(), 390,game.getHeight() - 250,250,180, null);
-					
-			    	g2.drawImage(portalTooTown.getImage(), 450,50, null);
+					portalTooTown.setxcoord(450);
+					portalTooTown.setycoord(50);
+			    	g2.drawImage(portalTooTown.getImage(), portalTooTown.getxcoord(),portalTooTown.getycoord(), null);
 			    	
 			    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
 				}
