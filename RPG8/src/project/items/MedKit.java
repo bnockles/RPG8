@@ -26,6 +26,7 @@ public class MedKit extends Item {
 		charHealth+=this.healthGained;
 	}**/
 	public void giveHealth(TargetDemo b){
+		if(b.health==0) return;
 		b.health+=this.healthGained;
 		regen(b);
 		if(b.health>100){
@@ -42,13 +43,13 @@ public class MedKit extends Item {
 				timer.cancel();
 			}
 			catch(NullPointerException e){
-				
 			}
 			timer=new Timer();
 			final TimerTask countDown = new TimerTask(){
 				boolean timerStack=false;
 
 				public void run(){
+					if(b.health==0) timer.cancel();
 					System.out.println("REGEN"+count);
 					if(duration>5){
 						duration=0;

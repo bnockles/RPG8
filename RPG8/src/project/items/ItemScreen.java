@@ -97,20 +97,39 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		g2.drawString("different types of ammo", 445, 270);
 		drawStats(g2,30,70,you);
 		drawStats(g2,700,70,enemy);
-		drawStickMan(g2, 50, 350);
-		drawStickMan(g2,800,350);
+		drawStickMan(g2, 20, 360);
+		drawStickMan(g2,770,360);
 		g2.drawImage(weaponEquiped, 295, 525, weaponEquiped.getWidth(), weaponEquiped.getHeight(), null);	
 		
 	}
 	public void drawStats(Graphics2D g2,int x,int y,TargetDemo target){
-		if(target.isBurned) g2.setColor(new Color(227,92,48));
-		else g2.setColor(Color.green);
+		g2.drawString("Status:", x, y+225);
+		if(target.isBurned){
+			g2.setColor(new Color(227,92,48));
+			g2.drawString("[BURNED]", x+65, y+250);
+		}
+		else{
+			g2.setColor(Color.green);
+			g2.drawString("[COOL]",x+65, y+250);
+		}
 		g2.fillRect(x, y+30, target.health, 20);
 		if(target.isCorrosive){
 			g2.setColor(new Color(53,107,34));
+			g2.drawString("[CORRODED]", x+65, y+275);
 		}
-		else g2.setColor(new Color(33,187,237));
+		else{
+			g2.setColor(new Color(33,187,237));
+			g2.drawString("[STRUCTURED]", x+65, y+275);
+		}
 		g2.fillRect(x+105, y+30, target.armor, 20);
+		if(target.isStunned){
+			g2.setColor(new Color(255,215,0));
+			g2.drawString("[STUNNED]",x+65, y+225);
+		}
+		else{
+			g2.setColor(Color.DARK_GRAY);
+			g2.drawString("[GROUNDED]",x+65, y+225);
+		}
 		g2.setColor(Color.black);
 		g2.drawString(target.name, x, y);
 		g2.drawRect(x-1,y+29,101,21);
@@ -123,9 +142,9 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		if(target.weapon.getGunNum()/10!=1){
 			g2.drawString("Current Ammo: "+target.ammo.getName(), x, y+150);			
 		}
+		else g2.drawString("Melee",x,y+150);
 		g2.drawString("Coins: "+target.coins, x, y+175);
 		g2.drawString("Scrap: "+target.scrap, x, y+200);
-		g2.drawString("Stunned: "+target.isStunned, x, y+225);
 	}
 	public void drawStickMan(Graphics2D g2,int x,int y){
 		g2.drawOval(x,y, 40, 40);
