@@ -93,6 +93,7 @@ public interface ItemResources {
 	final Weapons pistol6GradeA3 = new Weapons("Desert Eagle", "Magnum Pistol", pistolAmmo, 70, 7, 7, .35, 2,
 			1, true, 1850, "Semi", 0, 1.2, false, false, NO_EFFECT, 0, 0,"/images/items/Desert Phoenix Steel Edition.png", 26);
 	
+	
 	//Rifles
 		//Assault Rifle
 	final Weapons rifles1GradeC1 = new Weapons("RIA-10S", "Rifles", rifleAmmo, 36, 40, 7, .10, 2,
