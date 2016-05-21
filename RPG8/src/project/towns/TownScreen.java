@@ -76,6 +76,7 @@ public class TownScreen extends Screen implements KeyListener{
 	int entraceColumn;
 	int entranceX;//exact location on the cell where the entrance is
 	int entranceY;
+	int sleepTime = 350;
 	StoreNPC trump;
 	StoreNPC hillary;
 	
@@ -235,11 +236,6 @@ public class TownScreen extends Screen implements KeyListener{
 
 					g2.drawImage(townPortalTooAmmo.getImage(), townPortalTooAmmo.getxcoord(),townPortalTooAmmo.getycoord(),150,150, null);
 
-//					g2.drawOval(250 - 100, game.getHeight() -110, 100, 100);
-
-//					g2.drawOval(450, 50, 100, 100);
-
-//					g2.drawOval(750, game.getHeight() -110, 100, 100);
 
 					g2.setColor(Color.GRAY);
 
@@ -254,21 +250,21 @@ public class TownScreen extends Screen implements KeyListener{
 //			
 				if(status ==ARMOR_STOREx  ){
 					
-					delay( g2,"Attempting To Enter Armor Store",200 , 500 ,  ARMOR_STORE ,  ARMOR_STORE,350 );
+					delay( g2,"Attempting To Enter Armor Store",200 , 500 ,  ARMOR_STORE ,  ARMOR_STORE,sleepTime );
 
 				}
 				if(status ==AMMO_STOREx  ){
-					delay( g2,"Attempting To Enter Ammo Store",200 , 500 ,  AMMO_STORE ,  AMMO_STORE,350 );
+					delay( g2,"Attempting To Enter Ammo Store",200 , 500 ,  AMMO_STORE ,  AMMO_STORE,sleepTime );
 
 					
 				}
 				if(status ==WEAPON_STOREx  ){
-					delay( g2,"Attempting To Enter Weapon Store",200 , 500 , WEAPON_STORE , WEAPON_STORE ,350 );
+					delay( g2,"Attempting To Enter Weapon Store",200 , 500 , WEAPON_STORE , WEAPON_STORE ,sleepTime );
 
 					
 				}
 				if(status ==TOWNx  ){
-					delay( g2,"Attempting To Enter Town",200 , 500 , TOWN , TOWNx ,350 );
+					delay( g2,"Attempting To Enter Town",200 , 500 , TOWN , TOWNx ,sleepTime );
 
 					
 				}
