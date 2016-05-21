@@ -140,4 +140,10 @@ public class GEnemy extends EnemyAI implements LoggableEnemy{
 		return 0;
 	}
 
+	@Override
+	protected void dodge() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

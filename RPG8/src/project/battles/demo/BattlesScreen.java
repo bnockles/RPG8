@@ -74,7 +74,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 	 *
 	 *	
 	 */
-	
+
 	public static final int P_SPEED = 8;
 	public static final int P_X = 300;
 	public static final int P_Y = 300;
@@ -85,7 +85,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 	public static final int P_EXP = 0;
 	public static final int P_STRENGTH = 10;
 	public static final int P_LEVEL = 10;
-	
+
 	public static final int GE_SPEED = 5;
 	public static final int GE_X = 100; //
 	public static final int GE_Y = 100;
@@ -100,7 +100,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 	public static final int GE_VISION = 300;
 	public static final int GE_AWARE = 50;
 	public static final int GE_BPERSEC = 100;
-	
+
 	public static final int KE_SPEED = 5;
 	public static final int KE_X = 100;
 	public static final int KE_Y = 300;
@@ -115,45 +115,45 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 	public static final int KE_VISION = 300;
 	public static final int KE_AWARE = 50;
 	public static final int KE_BPERSEC = 100;
-	
+
 	public static final int FPS = 30;
-	
+
 	public static final int W_DMG = 10;
 	public static final int W_VELOCITY = 10;
 	public static final int W_AMMO = 200;
 	public static final int W_RANGE = 500;
-	
+
 	public static final int LEFT_RIGHT = 0;
 	public static final int UP_DOWN = 1;
 	public static final int AROUND = 2;
 	public static final int GOTOPLAYER = 3;
 	public static final int WANDER = 4;
-	
+
 	public static final int GENEMY = 0;
 	public static final int KENEMY = 1;
-	
+
 	public static int ENEMYMOVE = UP_DOWN;
 	public static final int UP = 1;
 	public static final int DOWN = 2;
 	public static final int LEFT = 3;
 	public static final int RIGHT = 4;
-	
+
 	public static MCharacter character;
 	public static KEnemy enemy1;
 	public static GEnemy enemy2;
-	
+
 	public static ArrayList<EnemyAI> enemiesOnScreen= new ArrayList<EnemyAI>();
 	public static ArrayList<Collision> pBullets = new ArrayList<Collision>();
 	public static ArrayList<Collision> eBullets = new ArrayList<Collision>();
-	
+
 	Timer timer = new Timer(FPS,this);
 	public static ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 	public static ArrayList<Integer> pressedMouse = new ArrayList<Integer>();
-	
+
 	public static BufferedImage projectiledemo;
 	public static BufferedImage weapondemo;
 	public static int keycodedemo;
-	
+
 	Projectiles bullet;
 	public static Weapon weapon;
 	Weapon weapon1;
@@ -184,11 +184,11 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		//bullet = new Projectiles(10, 10, 0, 10, 10, 100, projectiledemo);
 	}
 	public void Weapon(){
-		 weapondemo = null;
-		 BufferedImage [] pics = new BufferedImage [4];
-		 weapon = new Weapon(pics,projectiledemo,projectilestats);
-		 weapon1 = new Weapon(pics,projectiledemo,projectilestats);
-		 weapon2 = new Weapon(pics,projectiledemo,projectilestats);
+		weapondemo = null;
+		BufferedImage [] pics = new BufferedImage [4];
+		weapon = new Weapon(pics,projectiledemo,projectilestats);
+		weapon1 = new Weapon(pics,projectiledemo,projectilestats);
+		weapon2 = new Weapon(pics,projectiledemo,projectilestats);
 	}
 	public void MainCharacter(){
 		/**
@@ -276,20 +276,22 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 			timer.start();
 			g2.drawImage(character.getImage(),character.getX(),character.getY(),null);
 			//g2.drawImage(bullet.getImage(), 100, 100, null);
-			for (EnemyAI a : enemiesOnScreen){
-				a.GeneralEnemyAI();
-				g2.drawImage(a.getImage(),a.getX(),a.getY(),null);
-				g2.setColor(Color.BLACK);
-				if(a.getEnemyClass() == BattlesScreen.KENEMY)
-					g2.drawString("enemyK", a.getX(), a.getY()+100);
-				else
-					g2.drawString("enemyG", a.getX(), a.getY()+100);
-				g2.draw(getNColorVisionCone(a,g2));
+			if (!enemiesOnScreen.isEmpty()){
+				for (EnemyAI a : enemiesOnScreen){
+					a.GeneralEnemyAI();
+					g2.drawImage(a.getImage(),a.getX(),a.getY(),null);
+					g2.setColor(Color.BLACK);
+					if(a.getEnemyClass() == BattlesScreen.KENEMY)
+						g2.drawString("enemyK", a.getX(), a.getY()+100);
+					else
+						g2.drawString("enemyG", a.getX(), a.getY()+100);
+					g2.draw(getNColorVisionCone(a,g2));
+				}
 			}
-//			g2.drawImage(enemy1.getImage(),enemy1.getX(),enemy1.getY(),null);
-//			g2.drawString("enemyK", enemy1.getX(), enemy1.getY()+25);
-//			g2.drawImage(enemy2.getImage(),enemy2.getX(),enemy2.getY(),null);
-//			g2.drawString("enemyG", enemy2.getX(), enemy2.getY()+25);
+			//			g2.drawImage(enemy1.getImage(),enemy1.getX(),enemy1.getY(),null);
+			//			g2.drawString("enemyK", enemy1.getX(), enemy1.getY()+25);
+			//			g2.drawImage(enemy2.getImage(),enemy2.getX(),enemy2.getY(),null);
+			//			g2.drawString("enemyG", enemy2.getX(), enemy2.getY()+25);
 			/**
 			 * Yifan He
 			 */
@@ -299,8 +301,8 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 			for(int i = 0; i < eBullets.size(); i++){
 				g2.drawImage(eBullets.get(i).getImage(), eBullets.get(i).getX(), eBullets.get(i).getY(), null);
 			}
-//			g2.draw(getNColorVisionCone(enemy1,g2));
-//			g2.draw(getNColorVisionCone(enemy2,g2));
+			//			g2.draw(getNColorVisionCone(enemy1,g2));
+			//			g2.draw(getNColorVisionCone(enemy2,g2));
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -342,25 +344,25 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		 * Chieh-Huang Chen
 		 */
 		int keyCode = e.getKeyCode();
-//		if(keyCode == KeyEvent.VK_W){
-//			if(!pressedKeys.contains(keyCode))
-//				pressedKeys.add(keyCode);
-//		}
-//		if(keyCode == KeyEvent.VK_A){
-//			if(!pressedKeys.contains(keyCode))
-//				pressedKeys.add(keyCode);
-//		}
-//		if(keyCode == KeyEvent.VK_S){
-//			if(!pressedKeys.contains(keyCode))
-//				pressedKeys.add(keyCode);
-//		}
-//		if(keyCode == KeyEvent.VK_D){
-//			if(!pressedKeys.contains(keyCode))
-//				pressedKeys.add(keyCode);
-//		}
-//		if(!pressedKeys.isEmpty()){
-//			character.setWalking(true);
-//		}
+		//		if(keyCode == KeyEvent.VK_W){
+		//			if(!pressedKeys.contains(keyCode))
+		//				pressedKeys.add(keyCode);
+		//		}
+		//		if(keyCode == KeyEvent.VK_A){
+		//			if(!pressedKeys.contains(keyCode))
+		//				pressedKeys.add(keyCode);
+		//		}
+		//		if(keyCode == KeyEvent.VK_S){
+		//			if(!pressedKeys.contains(keyCode))
+		//				pressedKeys.add(keyCode);
+		//		}
+		//		if(keyCode == KeyEvent.VK_D){
+		//			if(!pressedKeys.contains(keyCode))
+		//				pressedKeys.add(keyCode);
+		//		}
+		//		if(!pressedKeys.isEmpty()){
+		//			character.setWalking(true);
+		//		}
 		doSomething(keyCode);
 		//DEMO PURPOSES ONLY BELOW
 		/**
@@ -370,21 +372,23 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 			if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0)
 				keycodedemo = keyCode;
 			//PLEASE DON'T DELETE THE THREE LINES ABOVE - YIFAN HE
-//			
-//			if(keyCode == KeyEvent.VK_Q)
-//				ENEMYMOVE = UP_DOWN;
-//			if(keyCode == KeyEvent.VK_W)
-//				ENEMYMOVE = LEFT_RIGHT;
-//			if(keyCode == KeyEvent.VK_E)
-//				ENEMYMOVE = AROUND;
-//			if(keyCode == KeyEvent.VK_R)
-//				ENEMYMOVE = GOTOPLAYER;
-//			if(keyCode == KeyEvent.VK_T)
-//				ENEMYMOVE = WANDER;
+			//			
+			//			if(keyCode == KeyEvent.VK_Q)
+			//				ENEMYMOVE = UP_DOWN;
+			//			if(keyCode == KeyEvent.VK_W)
+			//				ENEMYMOVE = LEFT_RIGHT;
+			//			if(keyCode == KeyEvent.VK_E)
+			//				ENEMYMOVE = AROUND;
+			//			if(keyCode == KeyEvent.VK_R)
+			//				ENEMYMOVE = GOTOPLAYER;
+			//			if(keyCode == KeyEvent.VK_T)
+			//				ENEMYMOVE = WANDER;
 			refreshEnemies();//PLEASE DON'T DELETE - YIFAN HE
 		}
 		//Vincent
 		//WASD is used for moving.
+		if(keyCode == KeyEvent.VK_J)
+			character.weapon.setAmmo(1000);
 		if(keyCode == KeyEvent.VK_3)
 			for(int i=0;i<enemiesOnScreen.size();i++)
 				if(enemiesOnScreen.get(i).getBulletpersec() > 100)
@@ -449,9 +453,9 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 			randomNumberX = (int) (Math.random()*width-100);
 			randomNumberY = (int) (Math.random()*height-100);
 			int[] randomEnemyStats = {(int) (Math.random()*300+100),
-									(int) (Math.random()*400+200),
-									(int) (Math.random()*30+30),
-									(int) (Math.random()*400+100)};
+					(int) (Math.random()*400+200),
+					(int) (Math.random()*30+30),
+					(int) (Math.random()*400+100)};
 			if (temp.getEnemyClass() == KENEMY)
 				enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,randomEnemyStats,weapon1,ENEMYMOVE));
 			else 
@@ -462,7 +466,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 			enemiesOnScreen.get(i).setSpawnedY(randomNumberY);
 		}
 	}
-	
+
 	@Override
 	public void keyReleased(KeyEvent e) {
 		/**
@@ -472,47 +476,47 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		controller.removeKeys(keyCode);
 		if(pressedKeys.isEmpty())
 			character.setWalking(false);//YOGTSERIGBSDFIOB
-		
-//		character.setFacingDirection();
-//		if(pressedKeys.isEmpty())
-//			character.setWalking(false);
+
+		//		character.setFacingDirection();
+		//		if(pressedKeys.isEmpty())
+		//			character.setWalking(false);
 	}
-//	public void checkMotion() {
-//		/**
-//		 * Chieh-Huang Chen
-//		 */
-//		Graphics2D g = null;
-//		if(pressedKeys == null)
-//			return;
-//		if(pressedKeys.contains(KeyEvent.VK_UP) && !pressedKeys.contains(KeyEvent.VK_DOWN)){
-//			proposedNewY-=P_SPEED;
-//			character.setY(proposedNewY);
-//			character.setMoveUp(true);
-//		}
-//		if(!pressedKeys.contains(KeyEvent.VK_UP) && pressedKeys.contains(KeyEvent.VK_DOWN)){
-//			proposedNewY+=P_SPEED;
-//			character.setY(proposedNewY);
-//			character.setMoveDown(true);
-//		}
-//		if(pressedKeys.contains(KeyEvent.VK_RIGHT) && !pressedKeys.contains(KeyEvent.VK_LEFT)){
-//			proposedNewX+=P_SPEED;
-//			character.setX(proposedNewX);
-//			character.setMoveRight(true);
-//		}
-//		if(!pressedKeys.contains(KeyEvent.VK_RIGHT) && pressedKeys.contains(KeyEvent.VK_LEFT)){
-//			proposedNewX-=P_SPEED;
-//			character.setX(proposedNewX);
-//			character.setMoveLeft(true);
-//		}
-//
-//	}
+	//	public void checkMotion() {
+	//		/**
+	//		 * Chieh-Huang Chen
+	//		 */
+	//		Graphics2D g = null;
+	//		if(pressedKeys == null)
+	//			return;
+	//		if(pressedKeys.contains(KeyEvent.VK_UP) && !pressedKeys.contains(KeyEvent.VK_DOWN)){
+	//			proposedNewY-=P_SPEED;
+	//			character.setY(proposedNewY);
+	//			character.setMoveUp(true);
+	//		}
+	//		if(!pressedKeys.contains(KeyEvent.VK_UP) && pressedKeys.contains(KeyEvent.VK_DOWN)){
+	//			proposedNewY+=P_SPEED;
+	//			character.setY(proposedNewY);
+	//			character.setMoveDown(true);
+	//		}
+	//		if(pressedKeys.contains(KeyEvent.VK_RIGHT) && !pressedKeys.contains(KeyEvent.VK_LEFT)){
+	//			proposedNewX+=P_SPEED;
+	//			character.setX(proposedNewX);
+	//			character.setMoveRight(true);
+	//		}
+	//		if(!pressedKeys.contains(KeyEvent.VK_RIGHT) && pressedKeys.contains(KeyEvent.VK_LEFT)){
+	//			proposedNewX-=P_SPEED;
+	//			character.setX(proposedNewX);
+	//			character.setMoveLeft(true);
+	//		}
+	//
+	//	}
 
 	public void update(){
 		super.update();
-//		Graphics2D g2 = (Graphics2D)getImage().getGraphics();
-//		EnemyAI.paintArc(g2);
+		//		Graphics2D g2 = (Graphics2D)getImage().getGraphics();
+		//		EnemyAI.paintArc(g2);
 	}
-	
+
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -532,7 +536,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		System.out.println("6: " + velocityScalar*(Math.sin(Math.atan2((y-cursorY),(cursorX - x)))));*/
 		if(isX)return (int) (velocityScalar*(Math.cos(Math.atan2((cursorY-y),(cursorX - x)))));
 		return (int) (velocityScalar*(Math.sin(Math.atan2((cursorY-y),(cursorX - x)))));
-		
+
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -552,7 +556,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 	@Override
 	public void mousePressed(MouseEvent e) {//Jason Lyan
 		if(e.getButton() == MouseEvent.BUTTON1){
-//			System.out.println("Hello");
+			//			System.out.println("Hello");
 			int cursorX = e.getX();
 			int cursorY = e.getY();
 			int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
@@ -591,12 +595,12 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	public void fireWeapon(MouseEvent e) {
 		int cursorX = e.getX();
@@ -606,7 +610,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		int direction = calculateDirectionAttackFromPlayer(cursorX, cursorY);
 		//System.out.println(direction);
 		character.fire(character.getX(),character.getY(),vx,vy, direction);
-		
+
 	}
 	@Override
 	public void moveCharacterLeft() {
@@ -667,21 +671,21 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 	@Override
 	public void reloadWeapon() {
 		// TODO Auto-generated method stub
-		
+
 	}
 	public void doSomething(int e){
 		controller.determineKeyAction(e);
 		controller.checkEmpty(character);
 	}
 
-	 //Yifan He 
+	//Yifan He 
 	boolean test = false;
 	ActionListener taskPerformer = new ActionListener(){
 		public void actionPerformed(ActionEvent evt){
 			test = true;
 		}
 	};
-	
+
 	Timer temp = new Timer(5000,taskPerformer);
 	@Override
 	public boolean isDead(){ //Yifan He 
@@ -752,6 +756,6 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		// TODO Auto-generated method stub
 		return this;
 	}
-	
+
 
 }
