@@ -39,7 +39,8 @@ public class Projectiles extends Collision{
 		else{
 			for(EnemyAI enemy: BattlesScreen.enemiesOnScreen){
 				if(getHitBox().intersects(enemy.getBounds())){
-					collided = true; 
+					collided = true;
+					enemy.setCurrentHP(enemy.getCurrentHP()-10);
 				}
 			}
 		}

@@ -12,16 +12,16 @@ import project.directors.Screen;
 import project.storyV2.Cutscenes;
 import project.storyV2.IntroCut;
 
-public class StoryScreen extends Screen implements KeyListener {
-
-
+public class StoryScreen extends Screen implements KeyListener,project.battles.EnemyDifficulty {
 	private static final int MOVE_UNIT = 5;
+	private static final String STEALTH = "0";
+	private static final String ATTACK = "1";
 	public static Hero mc;
 	public ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 	public Cutscenes cutscene;
-	public String[][] params = {{"Mission 1: Recover the datapad", "Kill all enemies"},
-			{"Side Mission: Install the backdoor", "Remain undetected"},
-			{"Mission 5: Escape the facility", "Get out alive"}};
+	private String[][] params = {{"Mission 1: Recover the datapad", "Kill all enemies", "1", ATTACK},
+			{"Side Mission: Install the backdoor", "Remain undetected", "1.5", STEALTH},
+			{"Mission 5: Escape the facility", "Get out alive", "5", ATTACK}};
 	public ArrayList<Color> colors = new ArrayList<Color>();
 	public ArrayList<Font> fonts = new ArrayList<Font>();
 	public ArrayList<Cutscenes> cuts = new ArrayList<Cutscenes>();
@@ -29,6 +29,7 @@ public class StoryScreen extends Screen implements KeyListener {
 	public static int height;
 	public static int width;
 	private boolean disable = false;
+	private int current = 0;
 	public StoryScreen(Game game) {
 		super(game);
 		mc = new Hero("Aya Drevis", 105, 105);
@@ -45,7 +46,7 @@ public class StoryScreen extends Screen implements KeyListener {
 		colors.add(Color.ORANGE);
 		colors.add(Color.cyan);
 		colors.add(Color.darkGray);
-		cutscene =  new IntroCut("Mission 1: Recover the datapad", "Kill all enemies", temp, 30, 1000,800,colors);
+		cutscene =  new IntroCut(params[current][0], params[current][1], temp, 30, 1000,800,colors);
 		cuts.add(cutscene);
 		setHeight();
 		setWidth();
@@ -91,7 +92,7 @@ public class StoryScreen extends Screen implements KeyListener {
 		}
 		if(disable == false){
 			if(keyCode == KeyEvent.VK_A){
-				int current = ++counter%3;
+				current = ++counter%3;
 				cutscene =  new IntroCut(params[current][0], params[current][1], fonts.get(current), 30, 1000,800,colors.subList(current, current+3));
 				cuts.add(cutscene);
 			}
@@ -157,4 +158,31 @@ public class StoryScreen extends Screen implements KeyListener {
 
 	}
 
+	@Override
+	public int getCharacterLevel() {
+		// TODO Auto-generated method stub
+		return -10;
+	}
+
+	@Override
+	public int getMapLevel() {
+		// TODO Auto-generated method stub
+		return Integer.parseInt(params[current][3]);
+	}
+
+	@Override
+	public int getProgress() {
+		// TODO Auto-generated method stub
+		return Integer.parseInt(params[current][2]);
+	}
+
+	@Override
+	public String getBoss() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public String getMission(){
+		return params[current][1];
+	}
 }

@@ -1,13 +1,15 @@
 package project.battles;
 
+import java.awt.geom.Arc2D;
 import java.awt.image.BufferedImage;
+import java.util.Collection;
 
 import project.battles.demo.BattlesScreen;
 import project.items.Weapon;
 import project.save.ItemState;
 
 public class KEnemy extends EnemyAI implements LoggableEnemy{
-	
+
 	/*
 	 * Author :Andy Zheng
 	 */
@@ -18,7 +20,7 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		this.stats = stats;
 		this.enemyClass = BattlesScreen.KENEMY;
 	}
- 
+
 	public KEnemy(BufferedImage[][] images, int[] stats,int[] vision, Weapon weapon, int type, boolean[] conditions){
 		super(images,stats,vision,weapon,type);
 		this.targetLock = conditions[0];
@@ -42,39 +44,78 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		int vx = BattlesScreen.calculateVComponentPlayerToCursor(10, x, y, true);
 		int vy = BattlesScreen.calculateVComponentPlayerToCursor(10, x, y, false);
 		fire(x,y,-vx,-vy);
-		steriods();
 		goToPlayer();
+	}
+
+	protected Collision nearestBullet(){
+		Collision nearest = null;
+		int close = Integer.MAX_VALUE;
+		for (Collision a: BattlesScreen.pBullets){
+			int distance = (int) distance(a.getX(),a.getY(),x,y);
+			if (distance < close){
+				close = distance;
+				nearest = a;
+			}
+		}
+		return nearest;
+	}
+	protected void dodge(){
+		Collision bulletToDodge = nearestBullet();
+		if (bulletToDodge != null){
+			int bX = bulletToDodge.getX();
+			int bY = bulletToDodge.getY();
+			if(distance(bX,bY,x,y) <= 50){
+				if (bX - x > 0) moveLeft();
+				else
+					moveRight();
+//				if (bY - y > 0) moveDown();
+//				else
+//					moveUp();
+			}
+		}
 	}
 
 	@Override
 	protected void run() {
-		/*
-		 * Andy Zheng
-		 */
-		// TODO Auto-generated method stub
 		int distanceX = x - BattlesScreen.character.getX();
 		int distanceY = y - BattlesScreen.character.getY();
 		if (distanceX >= 0){
-			x++;
+			moveRight();
 		}
 		else {
-			x--;
+			moveLeft();
 		}
-		
+
 		if (distanceY >= 0) {
-			y++;
+			moveDown();
 		}
 		else {
-			y--;
+			moveUp();
 		} 
 	}
-	
-	public void steriods(){
-		/*
-		 * Andy Zheng
-		 */
-		if (strength != BattlesScreen.KE_STRENGTH*2)
-		strength+= 1;
+
+	protected void goToPlayer(){
+		int pX = BattlesScreen.character.getX();
+		int pY = BattlesScreen.character.getY();
+		if(Math.abs(pX-x) <= 200 && Math.abs(pY-y) <= 200){
+			Arc2D.Double temp = checkForPlayer(this);
+			if(temp.intersects(BattlesScreen.character.getBounds())){
+				setTargetLock(true);
+			}
+			else{
+				setTargetLock(false);
+			}
+		}
+		else{
+			if(pX-x<0)
+				moveLeft();
+			else
+				moveRight();
+			if(pY-y<0)
+				moveUp();
+			else
+				moveDown();
+		}
 	}
 
 	@Override
@@ -100,5 +141,6 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 }

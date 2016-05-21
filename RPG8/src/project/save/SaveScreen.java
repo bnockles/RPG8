@@ -1,187 +1,91 @@
 package project.save;
 
-/*
- * @author Wilson Wat
- * 
- */
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import project.ChoiceMenuDemo.GridToSee;
+import project.directors.Game;
+import project.directors.Screen;
+import project.mainmenudemo.MainMenuScreen;
+import project.tooltipdemo.TestScreen;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Enumeration;
-import java.util.Hashtable;
+public class SaveScreen extends Screen implements KeyListener {
+	
+	private int currSelection = 0;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-public class SaveScreen extends JFrame {
-
-	private static final long serialVersionUID = 1L;
-
-	private Hashtable t = doLoad();
-
-	private JPanel jp = new JPanel();
-	private JLabel jl = new JLabel();
-	private JTextField jt = new JTextField(16);
-	private JButton charLevel = new SubmitButton("Set charLevel", jl, jt, t);
-	private JButton charHealth = new SubmitButton("Set charHealth", jl, jt, t);
-	private JButton charPosX = new SubmitButton("Set charPosX", jl, jt, t);
-	private JButton charPosY = new SubmitButton("Set charPosY", jl, jt, t);
-
-	private JButton saveButton = new JButton("Save");
-	private JButton loadButton = new JButton("Print");
-	private JButton resetButton = new JButton("Reset");
-
-	public SaveScreen() {
-		setTitle("Save Game Demo");
-		setVisible(true);
-		setSize(320, 200);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-		jp.add(jt);
-		jp.add(jl);
-		jp.add(charLevel);
-		jp.add(charHealth);
-		jp.add(charPosX);
-		jp.add(charPosY);
-		jp.add(saveButton);
-		jp.add(loadButton);
-		jp.add(resetButton);
-
-		saveButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				doSave();
-			}
-		});
-
-		loadButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Loading is actually only only done once here, oops.
-				// Loading is done only when this class is created.
-				// This is a misleading method.
-				// What this button actually does is print loaded data.
-				
-				// t = doLoad(); --- This breaks the code.
-				printAll(t);
-			}
-		});
-
-		resetButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				doDefaultSave();
-			}
-		});
-
-		add(jp);
-	}
-
-	private void doSave() {
-		System.out.println("Saving...\n");
-
-		try {
-			// Creating File/Object output stream
-			FileOutputStream fileOut = new FileOutputStream("RPG8.save");
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-
-			// Writing Hashtable Object
-			out.writeObject(t);
-
-			// Closing all output streams
-			out.close();
-			fileOut.close();
-
-		} catch(FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private Hashtable doLoad() {
-		System.out.println("Loading...");
-		
-		Hashtable h = new Hashtable();
-		
-		try {
-			// Creating File/Object input stream
-			FileInputStream fileIn = new FileInputStream("RPG8.save");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-
-			// Loading Hashtable Object
-			h = (Hashtable)in.readObject();
-
-			// Closing all input streams
-			in.close();
-			fileIn.close();
-
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch(FileNotFoundException e) {
-			System.out.println("No File.");
-			System.out.println("Creating default save file.");
-			t = new Hashtable();
-			doDefaultSave();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		System.out.println();
-		return h;
-	}
-
-	private void doDefaultSave() {		
-		t.put("charHealth", 100);
-		t.put("charPosX", 400);
-		t.put("charPosY", 400);
-		t.put("charName", "B.J. Blazkowicz");
-		t.put("testDouble", Math.PI);
-		
-		doSave();
-	}
-	private void printAll(Hashtable h) {
-		System.out.println("Printing all loaded elements...\n");
-		for (Enumeration e = h.keys(); e.hasMoreElements(); ) {
-			Object obj = e.nextElement();
-			System.out.printf("%s = %s\n", obj, h.get(obj));
-		}
-
-		System.out.println("\nTesting null values: charLevel is " + h.get("charLevel"));
+	public SaveScreen(Game game) {
+		super(game);
+		// TODO Auto-generated constructor stub
 	}
 	
-	
-	// Getters for other teams to use when accessing data from the Hashtable
-	// An alternative would be to make the Hashtable public, that way the team can get the data
-	// they need without all these getters and their confusing data type conversions.
-	public String getStringData(String key) {
-		return (String)t.get(key);
-	}
-
-	public int getIntData(String key) {
-		try {
-			return (int)t.get(key);
-		} catch (ClassCastException e) {
-			return Integer.parseInt((String)t.get(key));
-		} catch (NullPointerException e) {
-			return Integer.MIN_VALUE;
+	@Override
+	public void paintScreen(Graphics2D g2) {
+		// Header
+		Font sansSerif = new Font("Helvetica", Font.PLAIN, 60);
+		Font serif = new Font("Times", Font.PLAIN, 46);
+		
+		g2.setColor(new Color(44, 62, 80));
+		g2.fillRect(0, 0, width, height);
+		
+		g2.setColor(new Color(149, 165, 166));
+		g2.fillRect(100, 100, 100, 100);
+		
+		g2.setFont(sansSerif);
+		g2.drawString("Save Selection", 220, 200);
+		g2.setFont(serif);
+		
+		// Option Boxes
+		for (int i = 0; i < 3; i++) {
+			// Print bigger rectangle for selected option
+			if (i == currSelection) {
+				g2.setColor(new Color(189, 195, 199));
+				g2.fillRect(90, 175 * i + 250 - 10, width - 200 + 20, 100 + 20);
+			}
+			
+			g2.setColor(new Color(149, 165, 166));
+			g2.fillRect(100, 175 * i + 250, width - 200, 100);
+			
+			g2.setColor(new Color(44, 62, 80));
+			g2.drawString("Save File " + (i + 1) , 120, 175 * i + 250 + 66);
 		}
 	}
 
-	public double getDoubleData(String key) {
-		try {
-			return (double)t.get(key);
-		} catch (ClassCastException e) {
-			return Double.parseDouble((String)t.get(key));
-		} catch (NullPointerException e) {
-			return Double.MIN_VALUE;
+	@Override
+	public KeyListener getKeyListener() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			Save.chooseSave(currSelection);
+			this.game.setScreen(new GridToSee(this.game));
+		}
+		if (e.getKeyCode()== KeyEvent.VK_DOWN) {
+			currSelection = (currSelection + 1) % 3;
+			update();
+		}
+		if (e.getKeyCode()== KeyEvent.VK_UP) {
+			currSelection = currSelection - 1;
+			if (currSelection < 0) currSelection = 2;
+			update();
 		}
 	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
