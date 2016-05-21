@@ -16,13 +16,14 @@ import javax.imageio.ImageIO;
 import project.directors.Game;
 import project.directors.Screen;
 import project.items.ItemResources;
+import project.storyV2.TownPart;
 
 /**
  * 
  * @author Fei and Jingwen
  *
  */
-public class TownScreen extends Screen implements KeyListener{
+public class TownScreen extends Screen implements KeyListener,TownPart{
 	 //Jingwen Code
 	static BufferedImage backGround;
 	BufferedImage portalToTown;
@@ -569,6 +570,13 @@ public class TownScreen extends Screen implements KeyListener{
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
+		
+	}
+
+	@Override
+	public void changeTownStatus() {
+		// TODO Auto-generated method stub
+		TownOpened = false;
 	}
 	
 	
