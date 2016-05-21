@@ -30,6 +30,7 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 	BufferedImage townPortalToArmor;
 	BufferedImage townPortalToWeapon;
 	BufferedImage townPortalToAmmo;
+	Boolean TownOpened = false;
 	
 	StoreNPC putin;
 	static TownWanderer playable;
@@ -576,7 +577,7 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 	@Override
 	public void changeTownStatus() {
 		// TODO Auto-generated method stub
-		TownOpened = false;
+		TownOpened = true;
 	}
 	
 	
