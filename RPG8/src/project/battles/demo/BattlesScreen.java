@@ -275,13 +275,20 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		checkProjectileRange();
 		controller.determineMovement(this);
 //<<<<<<< HEAD
+//<<<<<<< HEAD
 		g2.setColor(Color.white);
 //=======
 		MapDemoScreen temp = project.overworld.MapDemonstration.mapDemo;
 		int numb = temp.getBackgroundNumber();
 		g2.setColor(temp.getRegionColor(numb));
 //>>>>>>> branch 'battles' of https://github.com/bnockles/RPG8.git
+//=======
+		MapDemoScreen temp = project.overworld.MapDemonstration.mapDemo;
+		int numb = temp.getBackgroundNumber();
+		g2.setColor(temp.getRegionColor(numb));
+//>>>>>>> branch 'battles' of https://github.com/bnockles/RPG8.git
 		g2.fillRect(0, 0, width, height);
+//<<<<<<< HEAD
 //<<<<<<< HEAD
 //		int numb = project.overworld.MapDemonstration.mapDemo.getBackgroundNumber();
 //		if(numb ==0 && previousRegion!=0){
@@ -293,13 +300,12 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 //				previousRegion=numb;
 //			}
 //		}
-//=======
+
 		String enemyType = temp.getEnemyType(numb);
 		if(previousRegion!=0 && enemyType.equals("enemy1")){
 			addEnemies(enemy1,enemy1);
 			previousRegion=numb;
 		}
-//>>>>>>> branch 'battles' of https://github.com/bnockles/RPG8.git
 		g2.setColor(Color.black);
 		try{
 			if(isDead()){ //YIFAN TESTING
@@ -307,6 +313,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 						+ "we will exit back to the overworld", 100, 600);
 			}
 			g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
+//<<<<<<< HEAD
 //<<<<<<< HEAD
 //			g2.drawString("Battles Team's Demo", 100, 100);
 //			g2.drawString("Press the arrow keys to move", 100, 150);
@@ -318,6 +325,8 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 //			g2.drawString("Press 1 to use the rifle and 2 to use the explosives", 100, 450);
 //			g2.setColor(Color.green);
 //=======
+//=======
+//>>>>>>> branch 'battles' of https://github.com/bnockles/RPG8.git
 //			g2.drawString("Battles Team's Demo", 100, 100);
 //			g2.drawString("Press the arrow keys to move", 100, 150);
 //			g2.drawString("Press 8 9 0 to switch battle scenarios", 100, 200);
