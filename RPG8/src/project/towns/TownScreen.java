@@ -518,7 +518,7 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 		if(key == KeyEvent.VK_T){
 			if(status == TOWN){
 				if(Math.abs(150 - playable.getX()) <= 100 && Math.abs(game.getHeight() -10 - 100 - playable.getY()) <= 100 && TownOpened == true){
-					
+					TownsInfo.getTownInfo("weapon");
 					status = WEAPON_STOREx;
 					
 				}
