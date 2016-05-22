@@ -28,6 +28,7 @@ import project.battles.GEnemy;
 import project.battles.KEnemy;
 import project.battles.MCharacter;
 import project.battles.Projectiles;
+import project.battles.overworldIntegration;
 import project.controls.ActionDeterminer;
 import project.controls.Contoltles;
 import project.controls.DemoControls;
@@ -42,6 +43,7 @@ import project.items.MedKit;
 import project.items.Misc;
 import project.items.Weapon;
 import project.overworld.BattleInterface;
+import project.overworld.MapDemoScreen;
 
 public class BattlesScreen extends Screen implements ItemResources,cheatCodeInterface,BattleInterface, BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener{
 	/**
@@ -78,7 +80,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	 *
 	 *	
 	 */
-
+	
 	public static final int P_SPEED = 8;
 	public static final int P_X = 300;
 	public static final int P_Y = 300;
@@ -262,6 +264,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		enemy2 = new GEnemy(animation,enemyG, statsG,weapon2,ENEMYMOVE);
 		return animation;
 	}
+	int previousRegion = 5;
 	@Override
 	public void paintScreen(Graphics2D g2) {
 		/**
@@ -270,14 +273,24 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		//checkMotion();
 		checkProjectileRange();
 		controller.determineMovement(this);
-		g2.setColor(Color.white);
+		g2.setColor(Color.blue);
 		g2.fillRect(0, 0, width, height);
-		g2.setColor(Color.black);
-		if(isDead()){ //YIFAN TESTING
-			g2.drawString("After 5 seconds, this shows up (Because character will die and "
-					+ "we will exit back to the overworld", 100, 600);
+		int numb = project.overworld.MapDemonstration.mapDemo.getBackgroundNumber();
+		if(numb ==0 && previousRegion!=0){
+			g2.setColor(Color.yellow);
+			g2.fillRect(0, 0, width, height);
+			String enemyType = project.overworld.MapDemonstration.mapDemo.getEnemyType(numb);
+			if(enemyType.equals("enemy1")){
+				addEnemies(enemy1,enemy1);
+				previousRegion=numb;
+			}
 		}
+		g2.setColor(Color.black);
 		try{
+			if(isDead()){ //YIFAN TESTING
+				g2.drawString("After 5 seconds, this shows up (Because character will die and "
+						+ "we will exit back to the overworld", 100, 600);
+			}
 			g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
 			g2.drawString("Battles Team's Demo", 100, 100);
 			g2.drawString("Press the arrow keys to move", 100, 150);
@@ -701,7 +714,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		}
 	};
 
-	Timer temp = new Timer(5000,taskPerformer);
+	Timer temp = new Timer(100000,taskPerformer);
 	@Override
 	public boolean isDead(){ //Yifan He 
 		// for testing
