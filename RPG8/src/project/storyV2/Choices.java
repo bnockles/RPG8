@@ -1,3 +1,5 @@
+package project.storyV2;
+
 
 public interface Choices {
 	//This function will create a selectable menu box with two choices and those two choices will be displayed with strings
