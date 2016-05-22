@@ -14,7 +14,7 @@ public class ChoiceDemo extends project.directors.Game{
 	}
 
 	public void reset() {
-		Screen testGrid = new GridToSee(this);
+		Screen testGrid = new ChatLog(this);
 		setScreen(testGrid);
 		repaint();
 	}

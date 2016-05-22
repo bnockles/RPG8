@@ -1,5 +1,6 @@
 package project.overworld;
 
+import java.awt.Rectangle;
 
 public class Boundaries extends Frame {
 	public boolean lethal;
@@ -10,4 +11,5 @@ public class Boundaries extends Frame {
 	public boolean isLethal() {
 		return lethal;
 	}
+	
 }

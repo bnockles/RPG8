@@ -1,6 +1,6 @@
 package project.controls;
 
-/** author Vincent & Jacky */
+/** author Jacky */
 
 import java.awt.event.MouseListener;
 
@@ -13,7 +13,6 @@ public class ControlsDemo extends project.directors.Game{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	public static void main(String[] args) {
 		ControlsDemo demo = new ControlsDemo();
 	}

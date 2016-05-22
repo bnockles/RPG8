@@ -1,53 +1,71 @@
 //Jason Lyan ---> Corrected by Melvin Cherian
+//Collisions done by Pelham Van Cooten 
 package project.battles;
 
 import java.awt.image.BufferedImage;
 
+import project.battles.demo.BattlesScreen;
 import project.items.Weapon;
 
 public class Projectiles extends Collision{
-	protected BufferedImage pImgSrc;
 	protected double vx;
 	protected double vy;
 	protected int range;
 	protected final int initX;
 	protected final int initY;
-	protected boolean collided;
 
-	public Projectiles(int x, int y, int damage, double vx, double vy, int range, BufferedImage pImgSrc){
-		super(x, y, damage);
+	public Projectiles(int x, int y, int damage, double vx, double vy, int range, BufferedImage image, boolean fromHostile){
+		super(x, y, damage,fromHostile);
 		//this.bulletType = bulletType; //this needs more clarity because it has to be created
 		this.vx = vx;
 		this.vy = vy;
-		this.pImgSrc = pImgSrc;
+		this.image = image;
 		this.initX = x;
 		this.initY = y;
 		this.range= range;
 		collided = false;
 	}
-	public BufferedImage getpImgSrc() {
-		return pImgSrc;
+	public BufferedImage getImage() {
+		return image;
+	}
+	
+	//Pelham
+	public void checkCollision(){
+		if(this.fromHostile){
+			if(getHitBox().intersects(BattlesScreen.character.getBounds())){
+				collided = true;
+			}
+		}
+		else{
+			for(EnemyAI enemy: BattlesScreen.enemiesOnScreen){
+				if(getHitBox().intersects(enemy.getBounds())){
+					collided = true;
+					enemy.setCurrentHP(enemy.getCurrentHP()-10);
+				}
+			}
+		}
 	}
 
 	public void updatePosition(){
 		x += vx;
 		y += vy;
+		
 	}
-	public boolean isCollided() {
-		return collided;
-	}
+	//I see where you were going with this, but it's with rectangles - Pelham 
 	public void checkRange(){//melvino
 		double distance = Math.sqrt(Math.pow((x-initX), 2) + Math.pow((y-initY), 2));
 		if(distance >= range)collided=true;
 	}
 	
+	@Override
 	public void updateAndCheckAll(){
 		updatePosition();
 		checkRange();
+		checkCollision(); 
 	}
 	
 	@Override
-	void collideWith(Character C) {//Working on this
+	public void collideWith(Character C) {//Working on this
 		// TBD after discussing
 		collided = true;
 	}
