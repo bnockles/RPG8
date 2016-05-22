@@ -31,7 +31,8 @@ public class WeaponStore implements StoreInterface{
 	public WeaponStore(ArrayList<Integer> itemN, double d) {
 		// TODO Auto-generated constructor stub
 		this.money = d;
-		for(int i = 0; i  < itemListW.size(); i++){
+		for(int i = 0; i  < count; i++){
+			itemListW.add(ItemResources.AllWeapons)
 			itemNuW.add(i, 0);
 			itemListWDes.add(i, itemListW.get(i).getDescription());
 			//itemListWPics.add(i, itemListW.get(i));
@@ -44,37 +45,37 @@ public class WeaponStore implements StoreInterface{
 	@Override
 	public void moneyInteraction(int itemx) {
 		// TODO Auto-generated method stub
+		int x = 92;
+		for(int i = 0; i < count; i++){
+			if(itemx == x){
+				itemNuW.set(i, itemNuW.get(i) + 1);
+				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(i).getPrice());
+			}
+			x+=100;
+		}
 		//to be simplified
-		if(itemx == 92)
-		if(money >= 450){
-				itemNuW.set(0, itemNuW.get(0) + 1);
-				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(0).getPrice());
-			}
-		if(itemx == 192)
-			if(money >= 350){
-				itemNuW.set(1,itemNuW.get(1) + 1);
-				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(1).getPrice());
-			}
-		if(itemx == 292)
-			if(money >= 250){
-				itemNuW.set(2, itemNuW.get(2) + 1);
-				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(2).getPrice());
-			}
-		if(itemx == 392)
-			if(money >= 250){
-				itemNuW.set(3, itemNuW.get(3) + 1);
-				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(3).getPrice());
-			}
+//		if(itemx == 92)
+//		if(money >= 450){
+//				itemNuW.set(0, itemNuW.get(0) + 1);
+//				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(0).getPrice());
+//			}
+//		if(itemx == 192)
+//			if(money >= 350){
+//				itemNuW.set(1,itemNuW.get(1) + 1);
+//				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(1).getPrice());
+//			}
+//		if(itemx == 292)
+//			if(money >= 250){
+//				itemNuW.set(2, itemNuW.get(2) + 1);
+//				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(2).getPrice());
+//			}
+//		if(itemx == 392)
+//			if(money >= 250){
+//				itemNuW.set(3, itemNuW.get(3) + 1);
+//				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(3).getPrice());
+//			}
 		}
 	
-	
-	public double getMoney() {
-		return money;
-	}
-
-	public void setMoney(double d) {
-		this.money = d;
-	}
 
 	@Override
 	public void moneySellingInteraction(int itemx) {
