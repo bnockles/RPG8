@@ -24,7 +24,7 @@ import project.storyV2.TownPart;
  *
  */
 public class TownScreen extends Screen implements KeyListener,TownPart{
-	 //Jingwen Code
+	 //Fei Code
 	static BufferedImage backGround;
 	BufferedImage portalToTown;
 	BufferedImage townPortalToArmor;
@@ -535,7 +535,7 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 				if(Math.abs(750 - playable.getX()) <= 100 && Math.abs(game.getHeight() -110 - playable.getY()) <= 100){
 					status = AMMO_STOREx;
 					//status2 = AMMO_STORE;
-					System.out.print("cxzcxzczxcxz");
+					
 				}
 			}
 			else if(status == WEAPON_STORE){
