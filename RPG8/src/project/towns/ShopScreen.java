@@ -66,12 +66,11 @@ public class ShopScreen extends Screen implements KeyListener{
 //		    for (int x = 0; x < game.getWindowHeight(); x++){
 		if(status == 2){
 			paintInShop(TownScreen.store, g2);
-			System.out.print("ayy lmao");
-		}
-		if (status == 3){
-			paintInShopA(TownScreen.storeA, g2);
 		}
 		if (status == 4){
+			paintInShopA(TownScreen.storeA, g2);
+		}
+		if (status == 3){
 			paintInShopC(TownScreen.storeC, g2);
 		}
 //		    }
@@ -79,10 +78,11 @@ public class ShopScreen extends Screen implements KeyListener{
 	}
 	private void paintInShopC(ConsumStore s, Graphics2D g2) {
 		// TODO Auto-generated method stub
-		g2.drawRect(boxX, boxY, 900, 30);
+		//g2.drawRect(boxX, boxY, 900, 30);
 		g2.drawString("Press B to buy and press S to sale.", 100, 50);
 		g2.drawString("Player cash: " + playable.getMoney(), 400, 50);
 		int y=100;
+		int y2 = 100;
 		int count = 0;
 		for(ShopItems x: s.itemListC){
 			g2.drawString("U owned: " + s.itemNC.get(count), 400, y);
@@ -90,13 +90,14 @@ public class ShopScreen extends Screen implements KeyListener{
 			g2.drawString("price: " + x.getPrice(), 300, y);
 			g2.drawString(x.getDescription(), 500, y);
 			try {
-				itemI = ImageIO.read(getClass().getResource("/images/items/" + x.getName() + ".png"));
+				itemI = ImageIO.read(getClass().getResource("/images/items/burn.png"));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			g2.drawImage(itemI,800,y, null);
+			g2.drawImage(itemI, 650, y2, 30, 30, null);
 			y+=100;
+			y2+=100;
 			count++;
 		}
 
@@ -106,11 +107,12 @@ public class ShopScreen extends Screen implements KeyListener{
 
 	private void paintInShopA(ArmorStore s, Graphics2D g2) {
 		// TODO Auto-generated method stub
-		g2.drawRect(boxX, boxY, 900, 30);
+		//g2.drawRect(boxX, boxY, 900, 30);
 		g2.drawString("Press B to buy and press S to sale.", 100, 50);
 		g2.drawString("Player cash: " + playable.getMoney(), 400, 50);
 		
 		int y=100;
+		int y2 =100;
 		int count = 0;
 		for(ShopItems x: s.itemListA){
 			g2.drawString("U owned: " + s.itemNA.get(count), 400, y);
@@ -123,7 +125,7 @@ public class ShopScreen extends Screen implements KeyListener{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			g2.drawImage(itemI,800,y, null);
+			g2.drawImage(itemI, 650, y2, 50, 50, null);
 			y+=100;
 			count++;
 		}
@@ -172,10 +174,21 @@ public class ShopScreen extends Screen implements KeyListener{
 			}
 		}
 		if(key == KeyEvent.VK_DOWN){
-			if(itemx < 92 + (TownScreen.getStore().getItemListW().size()-1)*100){
+			if(status == 2)
+			if(itemx < 92 + (store.getItemListW().size()-1)*100){
 				itemx+= 100;
 				boxY+= 100;
 			}
+			if(status == 3)
+				if(itemx < 92 + (storeC.getItemListC().size()-1)*100){
+					itemx+= 100;
+					boxY+= 100;
+				}
+			if(status == 2)
+				if(itemx < 92 + (storeA.getItemListA().size()-1)*100){
+					itemx+= 100;
+					boxY+= 100;
+				}
 		}
 		if(key == KeyEvent.VK_ESCAPE){
 			Screen Screen = new TownScreen(game, 3, 3, status, store, storeA, storeC, playable);
@@ -184,28 +197,39 @@ public class ShopScreen extends Screen implements KeyListener{
 		if(key == KeyEvent.VK_RIGHT){
 			if(status < 4){
 				status++;
+				itemx = 92;
 			}
 		}
 		if(key == KeyEvent.VK_LEFT){
 			if(status > 2){
 				status--;
+				itemx = 92;
 			}
 		}
 		if(key == KeyEvent.VK_B){
-			if(status == 2)
-			store.moneyInteraction(itemx);
-			if(status == 3)
-			storeA.moneyInteraction(itemx);
-			if(status == 4)
-			storeC.moneyInteraction(itemx);
+			if(status == 2){
+				if(store.getItemListW().get(itemx/100).getPrice() < playable.getMoney())
+				store.moneyInteraction(itemx);
+			}
+			if(status == 4){
+				if(storeA.getItemListA().get(itemx/100).getPrice() < playable.getMoney())
+				storeA.moneyInteraction(itemx);
+			}
+			if(status == 3){
+				if(storeC.getItemListC().get(itemx/100).getPrice() < playable.getMoney())
+				storeC.moneyInteraction(itemx);
+			}
 		}
 		if(key == KeyEvent.VK_S){
 				if(status == 2)
-				store.moneySellingInteraction(itemx);
-				if(status == 3)
-				storeA.moneySellingInteraction(itemx);
+					if(store.getItemNuW().get(itemx/100) > 0)
+						store.moneySellingInteraction(itemx);
 				if(status == 4)
-				storeC.moneySellingInteraction(itemx);
+					if(storeA.getItemNA().get(itemx/100) > 0)
+							storeA.moneySellingInteraction(itemx);
+				if(status == 3)
+					if(storeC.getItemNC().get(itemx/100) > 0)
+						storeC.moneySellingInteraction(itemx);
 		}
 			update();
 	}

@@ -51,6 +51,10 @@ public class WeaponStore implements StoreInterface{
 		//}
 	}
 
+	public ArrayList<Integer> getItemNuW() {
+		return itemNuW;
+	}
+
 	public double getMoney() {
 		return money;
 	}

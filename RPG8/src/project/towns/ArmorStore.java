@@ -1,5 +1,6 @@
 package project.towns;
 
+import java.awt.Component;
 import java.util.ArrayList;
 
 import project.items.ItemResources;
@@ -7,12 +8,14 @@ import project.items.ItemResources;
 public class ArmorStore implements StoreInterface{
 
 	double money;
-	ArrayList<ShopItems> itemListA = new ArrayList<ShopItems>(){{add((ShopItems) ItemResources.yourarmor);};};
+	ArrayList<ShopItems> itemListA = new ArrayList<ShopItems>(){{add(ItemResources.yourarmor);};};
 	ArrayList<Integer> itemNA = new ArrayList<Integer>();
+	ArrayList<String> itemListADes = new ArrayList<String>();
 	public ArmorStore(ArrayList<Integer> itemN, double d) {
 		this.money = d;
 		for(int i = 0; i  < itemListA.size(); i++){
 			itemNA.add(i, 0);
+			itemListADes.add(i, itemListA.get(i).getDescription());
 		}
 		// TODO Auto-generated constructor stub
 	}
@@ -20,46 +23,27 @@ public class ArmorStore implements StoreInterface{
 	@Override
 	public void moneyInteraction(int itemx) {
 		// TODO Auto-generated method stub
-		if(itemx == 92)
-			if(money >= 450){
-					itemNA.set(0, itemNA.get(0) + 1);
-					TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListA.get(0).getPrice());
-				}
-			if(itemx == 192)
-				if(money >= 350){
-					itemNA.set(1,itemNA.get(1) + 1);
-					TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListA.get(1).getPrice());
-				}
-			if(itemx == 292)
-				if(money >= 250){
-					itemNA.set(2, itemNA.get(2) + 1);
-					TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListA.get(2).getPrice());
-				}
+		int x = 92;
+		for(int i = 0; i < 1; i++){
+			if(itemx == x){
+				itemNA.set(i, itemNA.get(i) + 1);
+				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListA.get(i).getPrice());
+			}
+			x+=100;
+		}
 	}
 
 	@Override
 	public void moneySellingInteraction(int itemx) {
 		// TODO Auto-generated method stub
-		if(itemx == 92)
-			if(itemNA.get(0) > 0){
-					itemNA.set(0, itemNA.get(0) - 1);
-					TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListA.get(0).getPrice());
-				}
-			if(itemx == 192)
-				if(itemNA.get(0) > 0){
-					itemNA.set(1,itemNA.get(1) - 1);
-					TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListA.get(1).getPrice());
-				}
-			if(itemx == 292)
-				if(itemNA.get(0) > 0){
-					itemNA.set(2, itemNA.get(2) - 1);
-					TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListA.get(2).getPrice());
-				}
-			if(itemx == 392)
-				if(itemNA.get(0) > 0){
-					itemNA.set(3, itemNA.get(3) - 1);
-					TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListA.get(3).getPrice());
-				}
+		int x = 92;
+		for(int i = 0; i < 1; i++){
+			if(itemx == x){
+				itemNA.set(i, itemNA.get(i) - 1);
+				TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListA.get(i).getPrice());
+			}
+			x+=100;
+		}
 	}
 	 
 	public void setMoney(double d) {
@@ -70,5 +54,15 @@ public class ArmorStore implements StoreInterface{
 		// TODO Auto-generated method stub
 		return money;
 	}
+
+	public ArrayList<ShopItems> getItemListA() {
+		return itemListA;
+	}
+
+	public ArrayList<Integer> getItemNA() {
+		return itemNA;
+	}
+
+
 
 }
