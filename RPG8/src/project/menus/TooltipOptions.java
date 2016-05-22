@@ -1,5 +1,7 @@
 package project.menus;
-
+/**
+ * @author Mark Mozgovoy
+ */
 import java.awt.Graphics2D;
 
 /**
@@ -29,23 +31,36 @@ public class TooltipOptions implements DisplayBox {
 				234, 120);
 	}
 	
-	@Override
-	public Tooltip makeBox(String charName, String msg) {
+	public static Tooltip makeBoxStatic(String charName, String msg){
 		Tooltip t = TooltipOptions.getTooltip(TOOLTIP_DIALOGUE);
-		editBox(t, charName, msg);
+		editBoxStatic(t, charName, msg);
 		return t;
 	}
-
-	@Override
-	public void editBox(Tooltip box, String charName, String msg) {
-		// TODO Auto-generated method stub
+	
+	public static void editBoxStatic(Tooltip box, String charName, String msg){
 		box.setTitle(charName);
 		box.setDescription(msg);
 	}
-
+	
+	public static void drawBoxStatic(Tooltip t, Graphics2D g2) {
+		// TODO Auto-generated method stub
+		t.drawTooltipDialogue(g2);
+	}
+	
+	@Override
+	public Tooltip makeBox(String charName, String msg) {
+		return makeBoxStatic(charName, msg);
+	}
+	
+	@Override
+	public void editBox(Tooltip box, String charName, String msg) {
+		// TODO Auto-generated method stub
+		editBoxStatic(box, charName, msg);
+	}
+	
 	@Override
 	public void drawBox(Tooltip t, Graphics2D g2) {
 		// TODO Auto-generated method stub
-		t.drawTooltipDialogue(g2);
+		drawBoxStatic(t, g2);
 	}
 }

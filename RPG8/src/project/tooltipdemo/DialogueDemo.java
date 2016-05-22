@@ -1,5 +1,7 @@
 package project.tooltipdemo;
-
+/**
+ * @author Mark Mozgovoy & Maxwell Sulavko
+ */
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -15,17 +17,21 @@ import project.ChoiceMenuDemo.MenuTheme;
 import project.directors.Game;
 import project.directors.Screen;
 import project.menus.Tooltip;
+import project.menus.TooltipOptions;
 
 public class DialogueDemo extends Screen implements KeyListener {
-
+	Tooltip t = TooltipOptions.makeBoxStatic("Icefrog", "How do you feel about me ruining dota?");
 	public DialogueDemo(Game game) {
 		super(game);
 	}
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {
+	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.getKeyCode() == KeyEvent.VK_SPACE){
+			TooltipOptions.editBoxStatic(t, "Icefrog", "LMAO");
+			update();
+		}
 	}
 
 	@Override
@@ -65,6 +71,7 @@ public class DialogueDemo extends Screen implements KeyListener {
 		
 		//g2.drawString("THIS IS A GOOD TEST", 200, 100);
 		
+		TooltipOptions.drawBoxStatic(t, g2);
 	}
 	
 	public void delayTime(){

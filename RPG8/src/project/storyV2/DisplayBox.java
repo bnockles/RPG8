@@ -1,5 +1,7 @@
 package project.storyV2;
-
+/**
+ * @author Muhammad Shahid
+ */
 import java.awt.Graphics2D;
 
 import project.menus.Tooltip;
