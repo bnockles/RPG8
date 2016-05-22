@@ -49,7 +49,7 @@ public class DialogueDemo extends Screen implements KeyListener {
 	@Override
 	public KeyListener getKeyListener() {
 		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
