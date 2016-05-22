@@ -2,7 +2,7 @@ package project.towns;
 
 public interface  TownInfo {
 	
-	public String getTownInfo (String str);
+	public void getTownInfo (String str);
 	
 	
 	
@@ -27,19 +27,22 @@ public interface  TownInfo {
 	 * 
 	 * example of use --  for momo to call w/e that story is activated
 	 * 
-	 * TownPart townPt = new TownPart();
+	 * TownPart townPt;
 	 * townPt.changeTownStatus(); 
 	 * 
 	 * 
 	 * 
 	 * 
 	 * Momo puts this where he needs 
+	 * variable string ; 
 	 * 
 	 * method body for getTownInfo
 	 * 
-	 * if(str.equals("weaponStore") return "weaponStore";
-	 * if(str.equals("ammoStore") return "ammoStore";
-	 * if(str.equals("armorStore") return "armorStore";
+	 * if(str.equals("weaponStore") string = "weaponStore";
+	 * if(str.equals("ammoStore") string = "ammoStore";
+	 * if(str.equals("armorStore") string = "armorStore";
+	 * 
+	 * to use the method - > if(string)  == whichever then idk a message appears? maybe more options for story?
 	 * 
 	 *  
 	 */

@@ -31,6 +31,7 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 	BufferedImage townPortalToWeapon;
 	BufferedImage townPortalToAmmo;
 	Boolean TownOpened = false;
+	TownInfo TownsInfo;
 	
 	StoreNPC putin;
 	static TownWanderer playable;
