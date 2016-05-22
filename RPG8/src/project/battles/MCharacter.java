@@ -8,7 +8,7 @@ import project.battles.demo.BattlesScreen;
 import project.directors.Character;
 import project.items.UsableItem;
 import project.items.Weapon;
-import project.save.ItemState;
+//import project.save.ItemState;
 
 public class MCharacter extends Character implements CanUseItems{
 	private int level;
