@@ -81,9 +81,9 @@ public interface ItemResources {
 			energyAmmo, 60, 0, 0, .10, 2, 0, true, 130, "Single", 1, 0, false, false, NO_EFFECT, 0, 0, "/images/items/Stun-Baton.png", 11);
 	
 	//Pistols
-	final Weapons pistol2GradeB1 = new Weapons("RIA-45S", 
-			"The Rancor Intelligence Arms pistol is a lightweight weapon that deals medium damage and also can be augmented with a secondary fire.", 
-			pistolAmmo, 33, 18, 7, .00, 2, 0, true, 150, "Semi", 0, .45, true, true, NO_EFFECT, 0, 0,"/images/items/RIA-45S.png", 22);
+	final Weapons pistol2GradeB1 = new Weapons("RIA-45S", "Pistol", pistolAmmo, 33, 18, 7, .00, 2, 
+			0, true, 150, "Semi", 0, .45, true, true, NO_EFFECT, 0, 0,"/images/items/RIA-45S.png", 22);
+	//The Rancor Intelligence Arms pistol is a lightweight weapon that deals medium damage and also can be augmented with a secondary fire.
 	final Weapons pistol3GradeS1 = new Weapons("CT-Roaring Thunder", "Pistol", pistolAmmo, 62, 20, 7, .20, 2, 
 			1, false, 0, "Auto", 13, .55, true, true, NO_EFFECT, 0, 0,"/images/items/CT-Roaring Thunder.png", 23);
 	final Weapons pistol4GradeA1 = new Weapons("Desert Phoenix", "Magnum Pistol", pistolAmmo, 77, 7, 7, .35, 2,
