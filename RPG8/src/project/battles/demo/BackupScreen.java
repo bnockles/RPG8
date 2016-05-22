@@ -285,16 +285,23 @@ public class BackupScreen extends Screen implements ItemResources,cheatCodeInter
 			}
 			g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
 
-			g2.drawString("Battles Team's Demo", 100, 100);
-			g2.drawString("Press the arrow keys to move", 100, 150);
+			g2.drawString("Battles Team's Backup Demo", 100, 100);
+			g2.drawString("Press WASD to move", 100, 150);
 			g2.drawString("Press 8 9 0 to switch battle scenarios", 100, 200);
 			g2.drawString("Press Q W E R T to switch enemy movements", 100, 250);
 			g2.drawString("Press A/S to -/+ the enemy's fire rate", 100, 300);
 			g2.drawString("Press D to reload ammo", 100, 350);
 			g2.drawString("Press Z/X to -/+ the enemy's moevement", 100, 400);
 			g2.drawString("Press 1 to use the rifle and 2 to use the explosives", 100, 450);
+			g2.drawString("Current HP: "+character.getCurrentHP()+"       Max HP: "+character.getMaxHP(),100,500);
 			g2.setColor(Color.green);
 			timer.start();
+			for(int i =0; i<medkits.size();i++){
+				if(character.stepOnMedkit(medkits.get(i))){
+					medkits.remove(i);
+					i--;
+				}
+			}
 			for(MedKit medkit:medkits){
 				g2.draw(MCharacter.checkForMedKit(character, medkit));
 				if(medkit.getVisible()){

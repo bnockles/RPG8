@@ -5,6 +5,7 @@ import java.awt.geom.Arc2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import project.battles.demo.BackupScreen;
 import project.battles.demo.BattlesScreen;
 import project.directors.Character;
 import project.items.Item;
@@ -16,7 +17,6 @@ import project.items.Weapon;
 public class MCharacter extends Character implements CanUseItems{
 	private int level;
 	private boolean rifle = true;
-	private UsableItem item;
 
 	ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 	//	private String[] setLoadOut;
@@ -27,6 +27,7 @@ public class MCharacter extends Character implements CanUseItems{
 		this.level = stats[9];
 		this.visionrange = stats2[0];
 		this.visiondegree = stats2[1];
+		this.currentHP = maxHP-50;
 //		this.awareRange = stats2[2];
 //		this.bulletpersec = stats2[3];
 	}
@@ -159,8 +160,17 @@ public static Arc2D.Double checkForMedKit(MCharacter c,MedKit medkit){
 	}
 	return visioncone;
 }
-public void useMedkit(){
-	item.useItem(this);
+
+public void useMedkit(MedKit medkit){
+	medkit.useItem(this);
+}
+public boolean stepOnMedkit(MedKit medkit){
+	if(medkit.getRectitem().intersects(getBounds())){
+		System.out.println("hi");
+		this.useMedkit(medkit);
+		return true;
+	}
+	return false;
 }
 public boolean isRifle() {
 	return rifle;
