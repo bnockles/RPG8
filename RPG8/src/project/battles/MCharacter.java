@@ -1,11 +1,14 @@
 package project.battles;
 
 import java.awt.event.KeyEvent;
+import java.awt.geom.Arc2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import project.battles.demo.BattlesScreen;
 import project.directors.Character;
+import project.items.Item;
+import project.items.MedKit;
 import project.items.UsableItem;
 import project.items.Weapon;
 //import project.save.ItemState;
@@ -18,10 +21,14 @@ public class MCharacter extends Character implements CanUseItems{
 	ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 	//	private String[] setLoadOut;
 
-	public MCharacter(BufferedImage[][] images, int[] stats, Weapon weapon){
+	public MCharacter(BufferedImage[][] images, int[] stats,int[] stats2, Weapon weapon){
 		//this is where we change stats for characters
 		super(images,stats,false,weapon);
 		this.level = stats[9];
+		this.visionrange = stats2[0];
+		this.visiondegree = stats2[1];
+//		this.awareRange = stats2[2];
+//		this.bulletpersec = stats2[3];
 	}
 	public int getLevel() {
 		return level;
@@ -133,8 +140,23 @@ public void fire(int x, int y, int vx, int vy, int direction) {
 		//UNCOMMENT METHOD ABOVE TO TEST EXPLOSIVES
 	}
 }
-public static void searchForMedKits(){
-	
+public static Arc2D.Double checkForMedKit(MCharacter c){
+	//System.out.println("hello");
+	int arcX = c.getX()+(c.getWidth()/2)-c.getVisionrange()/2;
+	int arcY = c.getY()+(c.getHeight()/2)-c.getVisionrange()/2;
+	int begindegree = 45;
+	if(c.isMoveLeft())
+		begindegree+=90;
+	if(c.isMoveDown())
+		begindegree+=180;
+	if(c.isMoveRight())
+		begindegree+=270;
+	Arc2D.Double visioncone = new Arc2D.Double(arcX,arcY, c.getVisionrange(), c.getVisionrange(), begindegree, 90, Arc2D.PIE);
+	//90, 225 change it to line of sight degree - 45 degree + 45
+//	if(visioncone.intersects(BattlesScreen.character.getBounds())){
+//		c.setTargetLock(true);
+//	} change to medkit
+	return visioncone;
 }
 public void useMedkit(){
 	item.useItem(this);

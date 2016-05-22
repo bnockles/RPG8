@@ -14,6 +14,7 @@ public class MedKit extends Item implements UsableItem{
 	private int healthGained;
 	private int effect;
 	private String itemImage;
+	private boolean visible = false;
 	int count;
 	int regenDuration=0;
 	Timer regenTimer;
