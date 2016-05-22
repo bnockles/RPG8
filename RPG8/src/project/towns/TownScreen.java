@@ -112,9 +112,9 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 				townPortalToArmor = ImageIO.read(getClass().getResource("/images/maps/portalshop2.png"));
 				townPortalToAmmo = ImageIO.read(getClass().getResource("/images/maps/portalshop3.png"));
 				
-				putin = new StoreNPC(450, 180, "Putin","/images/shop/hey.jpg");
-				trump = new StoreNPC(450, 180, "Trump","/images/shop/trump.jpg");
-				hillary = new StoreNPC(450, 180, "alien","/images/shop/hillary.jpg");
+				putin = new StoreNPC(450, 180, "Putin","/images/shop/bait4.jpg");
+				trump = new StoreNPC(450, 180, "Trump","/images/shop/bait3.jpg");
+				hillary = new StoreNPC(450, 180, "alien","/images/shop/bait1.png");
 				
 				portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
 				townPortalTooWeapon = new Building(townPortalToWeapon,250 - 50, game.getHeight() -200,true,"weaponStore");
@@ -188,7 +188,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 	
 				if(status == WEAPON_STORE){
 					paintShop(g2);
-					g2.drawImage(hillary.getNpc(), 420,150,250,180, null);
+					g2.drawImage(hillary.getNpc(), 420,150,400,200, null);
 					portalTooTown.setxcoord(150);
 					portalTooTown.setycoord(game.getHeight() -110);
 					
@@ -200,7 +200,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 				}
 				if(status == AMMO_STORE){
 					paintShop(g2);
-					g2.drawImage(trump.getNpc(), 420,150,250,180, null);
+					g2.drawImage(trump.getNpc(), 420,150,400,200, null);
 					
 					portalTooTown.setxcoord(750);
 					portalTooTown.setycoord(game.getHeight() -110);
@@ -214,7 +214,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 				}
 				if(status == ARMOR_STORE){
 					paintShop(g2);
-					g2.drawImage(putin.getNpc(), 390,game.getHeight() - 250,250,180, null);
+					g2.drawImage(putin.getNpc(), 390,game.getHeight() - 250,400,200, null);
 					portalTooTown.setxcoord(450);
 					portalTooTown.setycoord(50);
 			    	g2.drawImage(portalTooTown.getImage(), portalTooTown.getxcoord(),portalTooTown.getycoord(), null);
