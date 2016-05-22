@@ -252,9 +252,9 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 					g2.drawImage(townPortalTooAmmo.getImage(), townPortalTooAmmo.getxcoord(),townPortalTooAmmo.getycoord(),150,150, null);
 
 
-					g2.setColor(Color.GRAY);
+					//g2.setColor(Color.GRAY);
 
-					g2.fillRect(20, game.getHeight()/3, 100, 200);
+					//g2.fillRect(20, game.getHeight()/3, 100, 200);
 					
 					g2.drawString("USE T IN CIRCLE TO GO THROUGH CIRCLE, USE SPACE IN SHOP TO ACCESS SHOP ", 400, 500);
 				
