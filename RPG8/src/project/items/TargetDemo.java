@@ -95,4 +95,16 @@ public class TargetDemo implements Target, project.battles.HaveStats{
 		// TODO Auto-generated method stub
 		health=currentHP;
 	}
+
+	@Override
+	public boolean isRegen() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setRegen(boolean regen) {
+		// TODO Auto-generated method stub
+		
+	}
 }

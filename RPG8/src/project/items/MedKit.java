@@ -53,10 +53,10 @@ public class MedKit extends Item implements UsableItem{
 				boolean timerStack=false;
 				public void run(){
 					if(b.getCurrentHP()==0) regenTimer.cancel();
-					b.isRegen=true;
+					b.setRegen(true);
 					System.out.println("REGEN"+count);
 					if(regenDuration>3){
-						b.isRegen=false;
+						b.setRegen(false);
 						regenDuration=0;
 						regenTimer.cancel();
 					}else{int health= b.getCurrentHP()+healRegen;
