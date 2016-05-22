@@ -8,7 +8,9 @@ import java.awt.Graphics2D;
 
 import java.io.File;
 
-public class TooltipOptions {
+import project.storyV2.DisplayBox;
+
+public class TooltipOptions implements DisplayBox {
 	public static final int TOOLTIP_INVENTORY = 0;
 	public static final int TOOLTIP_STORE = 1;
 	public static final int TOOLTIP_DIALOGUE = 2;
