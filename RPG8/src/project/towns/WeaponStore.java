@@ -31,8 +31,22 @@ public class WeaponStore implements StoreInterface{
 	public WeaponStore(ArrayList<Integer> itemN, double d) {
 		// TODO Auto-generated constructor stub
 		this.money = d;
+		for(int x = 0; x < ItemResources.Pistol.length; x++){
+			itemListW.add(ItemResources.Pistol[x]);
+		}
+		for(int x = 0; x < ItemResources.Heavy.length; x++){
+			itemListW.add(ItemResources.Heavy[x]);
+		}
+		for(int x = 0; x < ItemResources.SMG.length; x++){
+			itemListW.add(ItemResources.SMG[x]);
+		}
+		for(int x = 0; x < ItemResources.Rifles.length; x++){
+			itemListW.add(ItemResources.Rifles[x]);
+		}
+		for(int x = 0; x < ItemResources.Melee.length; x++){
+			itemListW.add(ItemResources.Melee[x]);
+		}
 		for(int i = 0; i  < count; i++){
-			itemListW.add(ItemResources.AllWeapons);
 			itemNuW.add(i, 0);
 			itemListWDes.add(i, itemListW.get(i).getDescription());
 			//itemListWPics.add(i, itemListW.get(i));
@@ -40,6 +54,14 @@ public class WeaponStore implements StoreInterface{
 		//for(int i = 0; i < 3; i++){
 		//	itemN.add(i, itemNu.get(i));
 		//}
+	}
+
+	public double getMoney() {
+		return money;
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
 	}
 
 	@Override
