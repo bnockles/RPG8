@@ -145,6 +145,16 @@ public boolean isRifle() {
 public void setRifle(boolean rifle) {
 	this.rifle = rifle;
 }
+@Override
+public boolean isRegen() {
+	// TODO Auto-generated method stub
+	return false;
+}
+@Override
+public void setRegen(boolean regen) {
+	// TODO Auto-generated method stub
+	
+}
 
 }
 

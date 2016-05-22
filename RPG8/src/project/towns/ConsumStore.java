@@ -2,15 +2,16 @@ package project.towns;
 
 import java.util.ArrayList;
 
-public class ConsumStore extends Store implements StoreInterface {
-	
-	int money;
-	static ArrayList<Integer> itemNC = new ArrayList<Integer>();
+import project.items.ItemResources;
 
-	public ConsumStore(ArrayList<Integer> itemN, int money) {
-		super(itemNC);
-		this.money = money;
-		for(int i = 0; i  < 3; i++){
+public class ConsumStore implements StoreInterface {
+	
+	double money;
+	ArrayList<Integer> itemNC = new ArrayList<Integer>();
+	ArrayList<ShopItems> itemListC = new ArrayList<ShopItems>(){{add((ShopItems) ItemResources.rifleAmmo); add((ShopItems) ItemResources.fireRifleAmmo); add((ShopItems) ItemResources.stunRifleAmmo); add((ShopItems) ItemResources.pistolAmmo);}};
+	public ConsumStore(ArrayList<Integer> itemN, double d) {
+		this.money = d;
+		for(int i = 0; i  < itemListC.size(); i++){
 			itemNC.add(i, 0);
 		}
 		// TODO Auto-generated constructor stub
@@ -22,20 +23,25 @@ public class ConsumStore extends Store implements StoreInterface {
 		if(itemx == 92)
 			if(money >= 450){
 					itemNC.set(0, itemNC.get(0) + 1);
-					money = money - 450;
+					money = money - itemListC.get(0).getPrice();
 				}
 			if(itemx == 192)
 				if(money >= 350){
 					itemNC.set(1,itemNC.get(1) + 1);
-					money -= 350;
-			}
+					money = money - itemListC.get(1).getPrice();
+				}
 			if(itemx == 292)
 				if(money >= 250){
 					itemNC.set(2, itemNC.get(2) + 1);
-					money -= 250;
-			}
+					money = money - itemListC.get(2).getPrice();
+				}
+			if(itemx == 392)
+				if(money >= 250){
+					itemNC.set(3, itemNC.get(3) + 1);
+					money = money - itemListC.get(3).getPrice();
+				}
 	}
-
+	
 	@Override
 	public void moneySellingInteraction(int itemx) {
 		// TODO Auto-generated method stub
@@ -57,27 +63,22 @@ public class ConsumStore extends Store implements StoreInterface {
 				money = money + 250;
 			}
 		}
+		if(itemx == 392){
+			if(itemNC.get(3) > 0){
+				itemNC.set(3, itemNC.get(3) - 1);
+				money = money + 250;
+			}
+		}
 	}
 
-	@Override
-	public void itemSellingInteraction() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void itemInteraction() {
-		// TODO Auto-generated method stub
-		
-	}
 	
-	public int getMoney() {
+	public double getMoney() {
 		return money;
 	}
 
 
-	public void setMoney(int money) {
-		this.money = money;
+	public void setMoney(double d) {
+		this.money = d;
 	}
 
 }

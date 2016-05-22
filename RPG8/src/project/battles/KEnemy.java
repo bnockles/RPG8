@@ -142,5 +142,17 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		return 0;
 	}
 
+	@Override
+	public boolean isRegen() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setRegen(boolean regen) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

@@ -9,6 +9,7 @@ public class Building {
 	BufferedImage image;
 	boolean portal;
 	String nameOfBuiliding;
+
 	
 	public Building(BufferedImage image,int x, int y, boolean portal,String nameOfBuiliding){
 		this.image = image;
@@ -16,7 +17,7 @@ public class Building {
 		this.x = x;
 		this.portal = portal;
 		this.nameOfBuiliding = nameOfBuiliding;
-		//http://www.javatpoint.com/constructor
+		
 	}
 	
 
@@ -30,7 +31,23 @@ public class Building {
 	public  int getycoord(){
 		return y;
 	}
+	public  String  getName(){
+		return nameOfBuiliding;
+	}
+	
+	public  void setxcoord( int x){
+		this.x = x;
+	}
+	
+	public  void setycoord( int y){
+		this.y = y;
+	}
+	
+	
 	public boolean getIsPortal(){
 		return portal;
+	}
+	public void setPortal(boolean x){
+		this.portal = portal;
 	}
 }
