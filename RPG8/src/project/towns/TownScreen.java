@@ -144,7 +144,7 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 	
 	
 	
-	
+	int sleepTimer = 1000;
 	public void delay( Graphics2D g2,String msg,int x , int y , final int statusx , final int statusxx, int delaytime ){
 		
 		
@@ -155,16 +155,20 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 	
 		g2.drawString(msg  , x, y);
 		
-	    	Timer t = new Timer();
+	    	final Timer t = new Timer();
 	    	t.schedule(new TimerTask() {
 
 	    	            @Override
 	    	            public void run() {
-	    	               status = statusx;
-	    	               status2 =statusxx;
-	    	               update();	
+	    	             
+	    	            	 update();
+	    	              
+	    	               
+	    	             
 	    	            }
 	    	        }, delaytime);
+	    	  status = statusx;
+              status2 =statusxx;
 		
 		
 		//hids
@@ -257,21 +261,21 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 //			
 				if(status ==ARMOR_STOREx  ){
 					
-					delay( g2,"Attempting To Enter Armor Store",200 , 500 ,  ARMOR_STORE ,  ARMOR_STORE,350 );
+					delay( g2,"Attempting To Enter Armor Store",200 , 500 ,  ARMOR_STORE ,  ARMOR_STORE,sleepTimer );
 
 				}
 				if(status ==AMMO_STOREx  ){
-					delay( g2,"Attempting To Enter Ammo Store",200 , 500 ,  AMMO_STORE ,  AMMO_STORE,350 );
+					delay( g2,"Attempting To Enter Ammo Store",200 , 500 ,  AMMO_STORE ,  AMMO_STORE,sleepTimer );
 
 					
 				}
 				if(status ==WEAPON_STOREx  ){
-					delay( g2,"Attempting To Enter Weapon Store",200 , 500 , WEAPON_STORE , WEAPON_STORE ,350 );
+					delay( g2,"Attempting To Enter Weapon Store",200 , 500 , WEAPON_STORE , WEAPON_STORE ,sleepTimer );
 
 					
 				}
 				if(status ==TOWNx  ){
-					delay( g2,"Attempting To Enter Town",200 , 500 , TOWN , TOWNx ,350 );
+					delay( g2,"Attempting To Enter Town",200 , 500 , TOWN , TOWNx ,sleepTimer );
 
 					
 				}
