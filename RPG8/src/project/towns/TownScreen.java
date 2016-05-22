@@ -169,6 +169,7 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 	    	        }, delaytime);
 	    	  status = statusx;
               status2 =statusxx;
+              //dsa
 		
 		
 		//hids
