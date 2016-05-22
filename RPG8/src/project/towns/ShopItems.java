@@ -12,6 +12,5 @@ public interface ShopItems {
 	
 	public String getDescription();
 	
-	
-	
+	public String getItemImage();	
 }

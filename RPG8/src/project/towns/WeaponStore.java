@@ -18,7 +18,7 @@ public class WeaponStore implements StoreInterface{
 	ArrayList<ShopItems> itemListW = new ArrayList<ShopItems>();
 	ArrayList<String> itemListWDes = new ArrayList<String>();
 	ArrayList<String> itemListWPics = new ArrayList<String>();
-	int count = ItemResources.Rifles.length + ItemResources.Pistol.length + ItemResources.Heavy.length;
+	int count = ItemResources.Rifles.length-1 + ItemResources.Pistol.length + ItemResources.Heavy.length;
 	
 	public void setItemListW(ArrayList<ShopItems> itemListW) {
 		this.itemListW = itemListW;
@@ -37,7 +37,7 @@ public class WeaponStore implements StoreInterface{
 		for(int x = 0; x < ItemResources.Heavy.length; x++){
 			itemListW.add(ItemResources.Heavy[x]);
 		}
-		for(int x = 0; x < ItemResources.Rifles.length; x++){
+		for(int x = 0; x < ItemResources.Rifles.length-1; x++){
 			itemListW.add(ItemResources.Rifles[x]);
 		}
 		for(int i = 0; i  < count; i++){
@@ -97,30 +97,19 @@ public class WeaponStore implements StoreInterface{
 	@Override
 	public void moneySellingInteraction(int itemx) {
 		// TODO Auto-generated method stub
-		if(itemx == 92){
-			if(itemNuW.get(0) > 0){
-				itemNuW.set(0, itemNuW.get(0) - 1);
-				TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListW.get(0).getPrice());
+		int x = 92;
+		for(int i = 0; i < count; i++){
+			if(itemx == x){
+				itemNuW.set(i, itemNuW.get(i) - 1);
+				TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListW.get(i).getPrice());
 			}
+			x+=100;
 		}
-		if(itemx == 192){
-			if(itemNuW.get(1) > 0){
-				itemNuW.set(1, itemNuW.get(1) - 1);
-				TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListW.get(1).getPrice());
-			}
-		}
-		if(itemx == 292){
-			if(itemNuW.get(2) > 0){
-				itemNuW.set(2, itemNuW.get(2) - 1);
-				TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListW.get(2).getPrice());
-			}
-		}
-		if(itemx == 392){
-			if(itemNuW.get(3) > 0){
-				itemNuW.set(3, itemNuW.get(3) - 1);
-				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(3).getPrice());
-			}
-		}
+	}
+
+	public String getItemImage(int x) {
+		// TODO Auto-generated method stub
+		return itemListW.get(x).getItemImage();
 	}
 
 

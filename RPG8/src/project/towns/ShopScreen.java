@@ -20,6 +20,7 @@ import javax.imageio.ImageIO;
 import project.directors.Game;
 import project.directors.Screen;
 import project.directors.Visible;
+import project.items.ItemResources;
 
 public class ShopScreen extends Screen implements KeyListener{
 	
@@ -35,10 +36,11 @@ public class ShopScreen extends Screen implements KeyListener{
 	WeaponStore store;
 	ArmorStore storeA;
 	ConsumStore storeC;
-	
+	BufferedImage t;
 	ArrayList<Integer>itemN = new ArrayList<Integer>();
 	Timer timer = new Timer();
 	int status;
+	BufferedImage itemI;
 	public ShopScreen(Game game, int status, WeaponStore a, ArmorStore b, ConsumStore c, TownWanderer s) {
 		super(game);
 		getKeyListener();
@@ -47,6 +49,7 @@ public class ShopScreen extends Screen implements KeyListener{
 		storeA = b;
 		storeC = c;
 		playable = s;
+		t = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
 	}	
 
 	@Override
@@ -78,14 +81,21 @@ public class ShopScreen extends Screen implements KeyListener{
 		// TODO Auto-generated method stub
 		g2.drawRect(boxX, boxY, 900, 30);
 		g2.drawString("Press B to buy and press S to sale.", 100, 50);
-		g2.drawString("Player cash: " + TownScreen.playable.getMoney(), 400, 50);
-		
+		g2.drawString("Player cash: " + playable.getMoney(), 400, 50);
 		int y=100;
 		int count = 0;
 		for(ShopItems x: s.itemListC){
 			g2.drawString("U owned: " + s.itemNC.get(count), 400, y);
 			g2.drawString(x.getName(), 100, y);
 			g2.drawString("price: " + x.getPrice(), 300, y);
+			g2.drawString(x.getDescription(), 500, y);
+			try {
+				itemI = ImageIO.read(getClass().getResource("/images/items/" + x.getName() + ".png"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			g2.drawImage(itemI,800,y, null);
 			y+=100;
 			count++;
 		}
@@ -98,7 +108,7 @@ public class ShopScreen extends Screen implements KeyListener{
 		// TODO Auto-generated method stub
 		g2.drawRect(boxX, boxY, 900, 30);
 		g2.drawString("Press B to buy and press S to sale.", 100, 50);
-		g2.drawString("Player cash: " + TownScreen.playable.getMoney(), 400, 50);
+		g2.drawString("Player cash: " + playable.getMoney(), 400, 50);
 		
 		int y=100;
 		int count = 0;
@@ -106,6 +116,14 @@ public class ShopScreen extends Screen implements KeyListener{
 			g2.drawString("U owned: " + s.itemNA.get(count), 400, y);
 			g2.drawString(x.getName(), 100, y);
 			g2.drawString("price: " + x.getPrice(), 300, y);
+			g2.drawString(x.getDescription(), 500, y);
+			try {
+				itemI = ImageIO.read(getClass().getResource("/images/items/" + x.getName() + ".png"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			g2.drawImage(itemI,800,y, null);
 			y+=100;
 			count++;
 		}
@@ -114,16 +132,27 @@ public class ShopScreen extends Screen implements KeyListener{
 		g2.fillRect(60, itemx, 5, 5);
 	}
 	public void paintInShop(WeaponStore s, Graphics2D g2){
-		g2.drawRect(boxX, boxY, 900, 30);
+		//g2.drawRect(boxX, boxY, 900, 30);
 		g2.drawString("Press B to buy and press S to sale.", 100, 50);
-		g2.drawString("Player cash: " + TownScreen.playable.getMoney(), 400, 50);
+		g2.drawString("Player cash: " + playable.getMoney(), 400, 50);
 		
 		int y=100;
+		int y2 = 100; 
 		int count = 0;
 		for(ShopItems x: s.itemListW){
 			g2.drawString("U owned: " + s.itemNuW.get(count), 400, y);
 			g2.drawString(x.getName(), 100, y);
 			g2.drawString("price: " + x.getPrice(), 300, y);
+			g2.drawString(x.getDescription(), 500, y);
+			URL url = getClass().getResource(x.getItemImage());
+			try {
+				itemI = ImageIO.read(url);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			g2.drawImage(itemI, 650, y2, 200, 100, null);	
+			y2+=100;
 			y+=100;
 			count++;
 		}
@@ -164,23 +193,19 @@ public class ShopScreen extends Screen implements KeyListener{
 		}
 		if(key == KeyEvent.VK_B){
 			if(status == 2)
-			TownScreen.getStore().moneyInteraction(itemx);
+			store.moneyInteraction(itemx);
 			if(status == 3)
-			TownScreen.getStoreA().moneyInteraction(itemx);
+			storeA.moneyInteraction(itemx);
 			if(status == 4)
-			TownScreen.getStoreC().moneyInteraction(itemx);
+			storeC.moneyInteraction(itemx);
 		}
 		if(key == KeyEvent.VK_S){
-			if(status == 1){
-				TownScreen.getStore().moneySellingInteraction(itemx);
-			}
-		}
-		if(key == KeyEvent.VK_T){
-			if(status == 0){
-				if(Math.abs(150 - playable.getX()) <= 100 || Math.abs(game.getHeight() -10 - 100 - playable.getY()) <= 100){
-					status = 2;
-				}
-			}
+				if(status == 2)
+				store.moneySellingInteraction(itemx);
+				if(status == 3)
+				storeA.moneySellingInteraction(itemx);
+				if(status == 4)
+				storeC.moneySellingInteraction(itemx);
 		}
 			update();
 	}
