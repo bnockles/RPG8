@@ -274,33 +274,14 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		//checkMotion();
 		checkProjectileRange();
 		controller.determineMovement(this);
-//<<<<<<< HEAD
-//<<<<<<< HEAD
 		g2.setColor(Color.white);
-//=======
+		/**
+		 * Yifan He
+		 */
 		MapDemoScreen temp = project.overworld.MapDemonstration.mapDemo;
 		int numb = temp.getBackgroundNumber();
 		g2.setColor(temp.getRegionColor(numb));
-//>>>>>>> branch 'battles' of https://github.com/bnockles/RPG8.git
-//=======
-		MapDemoScreen temp = project.overworld.MapDemonstration.mapDemo;
-		int numb = temp.getBackgroundNumber();
-		g2.setColor(temp.getRegionColor(numb));
-//>>>>>>> branch 'battles' of https://github.com/bnockles/RPG8.git
 		g2.fillRect(0, 0, width, height);
-//<<<<<<< HEAD
-//<<<<<<< HEAD
-//		int numb = project.overworld.MapDemonstration.mapDemo.getBackgroundNumber();
-//		if(numb ==0 && previousRegion!=0){
-//			g2.setColor(Color.yellow);
-//			g2.fillRect(0, 0, width, height);
-//			String enemyType = project.overworld.MapDemonstration.mapDemo.getEnemyType(numb);
-//			if(enemyType.equals("enemy1")){
-//				addEnemies(enemy1,enemy1);
-//				previousRegion=numb;
-//			}
-//		}
-
 		String enemyType = temp.getEnemyType(numb);
 		if(previousRegion!=0 && enemyType.equals("enemy1")){
 			addEnemies(enemy1,enemy1);
@@ -313,30 +294,15 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 						+ "we will exit back to the overworld", 100, 600);
 			}
 			g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
-//<<<<<<< HEAD
-//<<<<<<< HEAD
-//			g2.drawString("Battles Team's Demo", 100, 100);
-//			g2.drawString("Press the arrow keys to move", 100, 150);
-//			g2.drawString("Press 8 9 0 to switch battle scenarios", 100, 200);
-//			g2.drawString("Press Q W E R T to switch enemy movements", 100, 250);
-//			g2.drawString("Press A/S to -/+ the enemy's fire rate", 100, 300);
-//			g2.drawString("Press D to reload ammo", 100, 350);
-//			g2.drawString("Press Z/X to -/+ the enemy's moevement", 100, 400);
-//			g2.drawString("Press 1 to use the rifle and 2 to use the explosives", 100, 450);
-//			g2.setColor(Color.green);
-//=======
-//=======
-//>>>>>>> branch 'battles' of https://github.com/bnockles/RPG8.git
-//			g2.drawString("Battles Team's Demo", 100, 100);
-//			g2.drawString("Press the arrow keys to move", 100, 150);
-//			g2.drawString("Press 8 9 0 to switch battle scenarios", 100, 200);
-//			g2.drawString("Press Q W E R T to switch enemy movements", 100, 250);
-//			g2.drawString("Press A/S to -/+ the enemy's fire rate", 100, 300);
-//			g2.drawString("Press D to reload ammo", 100, 350);
-//			g2.drawString("Press Z/X to -/+ the enemy's moevement", 100, 400);
-//			g2.drawString("Press 1 to use the rifle and 2 to use the explosives", 100, 450);
+			//			g2.drawString("Battles Team's Demo", 100, 100);
+			//			g2.drawString("Press the arrow keys to move", 100, 150);
+			//			g2.drawString("Press 8 9 0 to switch battle scenarios", 100, 200);
+			//			g2.drawString("Press Q W E R T to switch enemy movements", 100, 250);
+			//			g2.drawString("Press A/S to -/+ the enemy's fire rate", 100, 300);
+			//			g2.drawString("Press D to reload ammo", 100, 350);
+			//			g2.drawString("Press Z/X to -/+ the enemy's moevement", 100, 400);
+			//			g2.drawString("Press 1 to use the rifle and 2 to use the explosives", 100, 450);
 			g2.setColor(Color.red);
-//>>>>>>> branch 'battles' of https://github.com/bnockles/RPG8.git
 			timer.start();
 			g2.draw(MCharacter.checkForMedKit(character, medkits.get(0)));
 			g2.setColor(Color.red);
