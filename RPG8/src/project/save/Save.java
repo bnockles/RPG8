@@ -22,6 +22,7 @@ public class Save {
 	protected static Hashtable t;
 	private static String name;
 	private static int currentSave = 0;
+	private static boolean newFile = false;
 
 	/*
 	public Save(String name) {
@@ -35,6 +36,8 @@ public class Save {
 			currentSave = option;
 		name = "Save" + currentSave;
 		t = doLoad();
+		TestSave.test(newFile);
+		newFile = false;
 	}
 	
 	public static void saveData() {
@@ -81,6 +84,7 @@ public class Save {
 		} catch(FileNotFoundException e) {
 			System.out.println("No File.");
 			System.out.println("Creating default save file.");
+			newFile = true;
 			// h = doDefaultSave();
 		} catch (IOException e) {
 			e.printStackTrace();
