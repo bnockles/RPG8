@@ -19,8 +19,8 @@ public interface ItemResources {
 	
 	//Medkits
 	final MedKit smallkit=new MedKit("Small Medkit","It's crap.",100, 5, REGEN,"/images/items/Small Medkit.png",true,100,100);
-	final MedKit medkit=new MedKit("Medium Medkit","It's better.",500, 20, NO_EFFECT,"/images/items/Medium Medkit.png",true,200,200);
-	final MedKit bigkit=new MedKit("Big Medkit","It's the best.",1000, 30, NO_EFFECT,"/images/items/Large Medkit.png",true,300,300);
+	final MedKit medkit=new MedKit("Medium Medkit","It's better.",500, 20, NO_EFFECT,"/images/items/Medium Medkit.png",true,300,500);
+	final MedKit bigkit=new MedKit("Big Medkit","It's the best.",1000, 30, NO_EFFECT,"/images/items/Large Medkit.png",true,500,500);
 	
 	//Ammo
 	final Ammo pistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 50, 1, NO_EFFECT,"/images/items/regular.png",true);

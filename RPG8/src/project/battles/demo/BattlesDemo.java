@@ -25,7 +25,8 @@ public class BattlesDemo extends project.directors.Game{
 		setVisible(true);
 	}
 	public void reset() {
-		Screen demoScreen = new BattlesScreen(this);
+		//Screen demoScreen = new BattlesScreen(this);
+		Screen demoScreen = new BackupScreen(this);
 		setScreen(demoScreen);
 		addMouseListener((MouseListener) demoScreen);
 		repaint();
