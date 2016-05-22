@@ -59,7 +59,7 @@ public class Save {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}		
+		}
 	}
 	
 	private static Hashtable doLoad() {

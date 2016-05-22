@@ -20,6 +20,7 @@ public class TestSave {
 			readFile();
 		} else {
 			// This is only here for the demo
+			/*
 			Save.saveData("PlayerLevel", 15);
 			Save.saveData("StoryProgress", 10);
 			
@@ -30,6 +31,7 @@ public class TestSave {
 			
 			ItemSave.saveData("PlayerItems", items);
 			Save.saveData();
+			*/
 			readFile();
 		}
 	}
