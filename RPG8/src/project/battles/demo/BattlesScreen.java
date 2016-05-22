@@ -93,7 +93,11 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	public static final int P_EXP = 0;
 	public static final int P_STRENGTH = 10;
 	public static final int P_LEVEL = 10;
-
+	public static final int P_DEGREE = 100;
+	public static final int P_VISION = 300;
+	public static final int P_AWARE = 50;
+	public static final int P_BPERSEC = 100;
+	
 	public static final int GE_SPEED = 5;
 	public static final int GE_X = 100; //
 	public static final int GE_Y = 100;
@@ -176,6 +180,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	public int[] enemyK = {KE_X,KE_Y,KE_HP,KE_ARMOR,KE_SNEAK,KE_SPEED,KE_RECOVERY,KE_EXP,KE_STRENGTH,KE_LEVEL};
 	public int[] statsG = {GE_VISION, GE_DEGREE, GE_AWARE,GE_BPERSEC};
 	public int[] statsK = {KE_VISION, KE_DEGREE, KE_AWARE,KE_BPERSEC};
+	public int[] statsP = {P_VISION, P_DEGREE, P_AWARE,P_BPERSEC};
 	public int[] projectilestats = {W_DMG,W_VELOCITY,W_AMMO,W_RANGE};
 	public int[] playerstats = {P_X,P_Y,P_HP,P_ARMOR,P_SNEAK,P_SPEED,P_RECOVERY,P_EXP,P_STRENGTH,P_LEVEL};
 	public BattlesScreen(Game game){
@@ -184,6 +189,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		Weapon();
 		MainCharacter();
 		Enemy();
+		Medkit();
 		//enemiesOnScreen.add(enemy1);
 		//enemiesOnScreen.add(enemy2); change the type later
 		update();
@@ -229,7 +235,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		origimage1 = UtilityMethods.getImageFromFile(this, "/maincharacter/mright2.png");
 		origimage2 = UtilityMethods.getImageFromFile(this, "/maincharacter/mright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
-		character =  new MCharacter(animation,playerstats,weapon);
+		character =  new MCharacter(animation,playerstats,statsP,weapon);
 	}
 	public void Medkit(){
 		medkits.add(smallkit);
@@ -297,8 +303,23 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		//			g2.drawString("Press D to reload ammo", 100, 350);
 		//			g2.drawString("Press Z/X to -/+ the enemy's moevement", 100, 400);
 		//			g2.drawString("Press 1 to use the rifle and 2 to use the explosives", 100, 450);
-		g2.setColor(Color.red);
+		g2.drawString("Current HP: "+character.getCurrentHP()+"     Max HP: "+character.getMaxHP(),100,500);
+		
+		g2.setColor(Color.green);
 		timer.start();
+		for(int i=0;i<medkits.size();i++){
+			if(character.stepsOn(medkits.get(i))){
+				medkits.remove(i);
+				i--;
+			}
+		}
+		for(MedKit medkit:medkits){
+			g2.draw(MCharacter.checkForMedKit(character, medkit));
+			if(medkit.getVisible()){
+				g2.drawImage(medkit.getItemBImage(),medkit.getX(),medkit.getY(),null);
+			}
+		}
+		g2.setColor(Color.red);
 		g2.drawImage(character.getImage(),character.getX(),character.getY(),null);
 		try{
 			for (EnemyAI a : enemiesOnScreen){
