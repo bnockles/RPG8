@@ -32,7 +32,7 @@ public class WeaponStore implements StoreInterface{
 		// TODO Auto-generated constructor stub
 		this.money = d;
 		for(int i = 0; i  < count; i++){
-			itemListW.add(ItemResources.AllWeapons)
+			itemListW.add(ItemResources.AllWeapons);
 			itemNuW.add(i, 0);
 			itemListWDes.add(i, itemListW.get(i).getDescription());
 			//itemListWPics.add(i, itemListW.get(i));
