@@ -25,8 +25,6 @@ public class DynamicMenu{
 	public static final int GAME_OVER_MENU=3;
 	public static final int CREDITS_MENU=4;
 	public static final int ITEM_DESCRIPTION_MENU = 5;
-	
-	public static int selected =4; 
 	public static final ArrayList<Item> arr = getItem();
 	
 	public static MainMenuScreen createMenu(int menuType, Game game){
@@ -57,34 +55,32 @@ public class DynamicMenu{
 			backgroundmusic="resources/mainmenu.wav";
 		}
 		
-		if(menuType == ITEM_DESCRIPTION_MENU){
-			//
+		return new MainMenuScreen(type,game, names, pictures ,col, backgroundmusic);
+	}
+
+	
+	public static MainMenuScreen createMenu(int menuType, Game game, int selected){
+		String[] names=null;
+		String[] pictures=null;
+		Color[] col=null;
+		String backgroundmusic="";
+		int type=menuType;
+
 			names= new String[]{arr.get(selected).getDescription(), arr.get(selected).getName()};
-			pictures=new String[]{arr.get(selected).getItemImage()};
+			pictures=new String[]{"resources"+arr.get(selected).getItemImage()};
 			col=new Color[]{Color.white, Color.black, Color.darkGray};
-		}
-		
 		
 		return new MainMenuScreen(type,game, names, pictures ,col, backgroundmusic);
 	}
 
-
 	public static ArrayList<Item> getItem() {
 		// TODO Auto-generated method stub
 		ArrayList<Item> arr= new ArrayList<Item>();
-		for(int i=0; i<ItemResources.Melee.length;i++)
-			arr.add(ItemResources.Melee[i]);
-		for(int i=0; i<ItemResources.Pistol.length;i++)
-			arr.add(ItemResources.Pistol[i]);
-		for(int i=0; i<ItemResources.Rifles.length;i++)
-			arr.add(ItemResources.Rifles[i]);
-		for(int i=0; i<ItemResources.Heavy.length;i++)
-			arr.add(ItemResources.Heavy[i]);
-		for(int i=0; i<ItemResources.SMG.length;i++)
-			arr.add(ItemResources.SMG[i]);
-		for(int i=0; i<ItemResources.Explosives.length;i++)
-			arr.add(ItemResources.Explosives[i]);
-		
+		for(int i=0; i<ItemResources.AllWeapons.length;i++){
+			for(int j=0; j<ItemResources.AllWeapons[i].length; j++){
+				arr.add(ItemResources.AllWeapons[i][j]);
+			}
+		}
 		
 		return arr;
 	}
