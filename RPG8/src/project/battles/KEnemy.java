@@ -6,7 +6,7 @@ import java.util.Collection;
 
 import project.battles.demo.BattlesScreen;
 import project.items.Weapon;
-import project.save.ItemState;
+//import project.save.ItemState;
 
 public class KEnemy extends EnemyAI implements LoggableEnemy{
 
@@ -29,10 +29,10 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		this.boss = conditions[3];
 	}
 
-	public ItemState getItems() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public ItemState getItems() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 
 	@Override

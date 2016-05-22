@@ -3,7 +3,9 @@ package project.items;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TargetDemo implements Target{
+import project.battles.HaveStats;
+
+public class TargetDemo implements Target,HaveStats{
 	int health;
 	Weapons weapon;
 	int coins;
@@ -114,6 +116,23 @@ public class TargetDemo implements Target{
 	@Override
 	public int getHealth() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 0; // chieh here just to comment stuff, why 0?
+	}
+	@Override
+	public int getMaxHP() {
+		// TODO Auto-generated method stub
+		return 100;
+	}
+
+	@Override
+	public int getCurrentHP() {
+		// TODO Auto-generated method stub
+		return health;
+	}
+
+	@Override
+	public void setCurrentHP(int currentHP) {
+		// TODO Auto-generated method stub
+		health = currentHP;
 	}
 }

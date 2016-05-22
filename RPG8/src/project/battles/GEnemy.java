@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 import project.battles.demo.BattlesScreen;
 import project.items.Weapon;
-import project.save.ItemState;
+//import project.save.ItemState;
 
 public class GEnemy extends EnemyAI implements LoggableEnemy{
 
