@@ -13,9 +13,11 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Arc2D;
 import java.awt.image.BufferedImage;
+import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 import javax.imageio.ImageIO;
 import javax.swing.Timer;
@@ -80,7 +82,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	 *
 	 *	
 	 */
-	
+
 	public static final int P_SPEED = 8;
 	public static final int P_X = 300;
 	public static final int P_Y = 300;
@@ -269,64 +271,60 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		checkProjectileRange();
 		controller.determineMovement(this);
 		MapDemoScreen temp = project.overworld.MapDemonstration.mapDemo;
-		int numb = temp.getBackgroundNumber();
-		g2.setColor(temp.getRegionColor(numb));
-		g2.fillRect(0, 0, width, height);
-		String enemyType = temp.getEnemyType(numb);
-		if(previousRegion!=0 && enemyType.equals("enemy1")){
-			addEnemies(enemy1,enemy1);
-			previousRegion=numb;
-		}
-		g2.setColor(Color.black);
 		try{
-			if(isDead()){ //YIFAN TESTING
-				g2.drawString("After 5 seconds, this shows up (Because character will die and "
-						+ "we will exit back to the overworld", 100, 600);
+			int numb = temp.getBackgroundNumber();
+			g2.setColor(temp.getRegionColor(numb));
+			g2.fillRect(0, 0, width, height);
+			String enemyType = temp.getEnemyType(numb);
+			if(previousRegion!=0 && enemyType.equals("enemy1")){
+				addEnemies(enemy1,enemy1);
+				previousRegion=numb;
 			}
-			g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
-//			g2.drawString("Battles Team's Demo", 100, 100);
-//			g2.drawString("Press the arrow keys to move", 100, 150);
-//			g2.drawString("Press 8 9 0 to switch battle scenarios", 100, 200);
-//			g2.drawString("Press Q W E R T to switch enemy movements", 100, 250);
-//			g2.drawString("Press A/S to -/+ the enemy's fire rate", 100, 300);
-//			g2.drawString("Press D to reload ammo", 100, 350);
-//			g2.drawString("Press Z/X to -/+ the enemy's moevement", 100, 400);
-//			g2.drawString("Press 1 to use the rifle and 2 to use the explosives", 100, 450);
-			g2.setColor(Color.red);
-			timer.start();
-			g2.drawImage(character.getImage(),character.getX(),character.getY(),null);
-			//g2.drawImage(bullet.getImage(), 100, 100, null);
-			if (!enemiesOnScreen.isEmpty()){
-				for (EnemyAI a : enemiesOnScreen){
-					a.GeneralEnemyAI();
-					g2.drawImage(a.getImage(),a.getX(),a.getY(),null);
-					g2.setColor(Color.BLACK);
-					if(a.getEnemyClass() == BattlesScreen.KENEMY)
-						g2.drawString("enemyK", a.getX(), a.getY()+100);
-					else
-						g2.drawString("enemyG", a.getX(), a.getY()+100);
-					g2.draw(getNColorVisionCone(a,g2));
-				}
-			}
-			//			g2.drawImage(enemy1.getImage(),enemy1.getX(),enemy1.getY(),null);
-			//			g2.drawString("enemyK", enemy1.getX(), enemy1.getY()+25);
-			//			g2.drawImage(enemy2.getImage(),enemy2.getX(),enemy2.getY(),null);
-			//			g2.drawString("enemyG", enemy2.getX(), enemy2.getY()+25);
-			/**
-			 * Yifan He
-			 */
-			for(int i = 0; i < pBullets.size(); i++){
-				g2.drawImage(pBullets.get(i).getImage(), pBullets.get(i).getX(), pBullets.get(i).getY(), null);
-			}
-			for(int i = 0; i < eBullets.size(); i++){
-				g2.drawImage(eBullets.get(i).getImage(), eBullets.get(i).getX(), eBullets.get(i).getY(), null);
-			}
-			//			g2.draw(getNColorVisionCone(enemy1,g2));
-			//			g2.draw(getNColorVisionCone(enemy2,g2));
+		}catch(NullPointerException e){
+			
+		}	
+		g2.setColor(Color.black);
+		if(isDead()){ //YIFAN TESTING
+			g2.drawString("After 5 seconds, this shows up (Because character will die and "
+					+ "we will exit back to the overworld", 100, 600);
 		}
-		catch(Exception e){
-			e.printStackTrace();
+		g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
+		//			g2.drawString("Battles Team's Demo", 100, 100);
+		//			g2.drawString("Press the arrow keys to move", 100, 150);
+		//			g2.drawString("Press 8 9 0 to switch battle scenarios", 100, 200);
+		//			g2.drawString("Press Q W E R T to switch enemy movements", 100, 250);
+		//			g2.drawString("Press A/S to -/+ the enemy's fire rate", 100, 300);
+		//			g2.drawString("Press D to reload ammo", 100, 350);
+		//			g2.drawString("Press Z/X to -/+ the enemy's moevement", 100, 400);
+		//			g2.drawString("Press 1 to use the rifle and 2 to use the explosives", 100, 450);
+		g2.setColor(Color.red);
+		timer.start();
+		g2.drawImage(character.getImage(),character.getX(),character.getY(),null);
+		try{
+			for (EnemyAI a : enemiesOnScreen){
+				a.GeneralEnemyAI();
+				g2.drawImage(a.getImage(),a.getX(),a.getY(),null);
+				g2.setColor(Color.BLACK);
+				if(a.getEnemyClass() == BattlesScreen.KENEMY)
+					g2.drawString("enemyK", a.getX(), a.getY()+100);
+				else
+					g2.drawString("enemyG", a.getX(), a.getY()+100);
+				g2.draw(getNColorVisionCone(a,g2));
+			}
 		}
+		catch(ConcurrentModificationException e){
+		}
+		/**
+		 * Yifan He
+		 */
+		for(int i = 0; i < pBullets.size(); i++){
+			g2.drawImage(pBullets.get(i).getImage(), pBullets.get(i).getX(), pBullets.get(i).getY(), null);
+		}
+		for(int i = 0; i < eBullets.size(); i++){
+			g2.drawImage(eBullets.get(i).getImage(), eBullets.get(i).getX(), eBullets.get(i).getY(), null);
+		}
+		//			g2.draw(getNColorVisionCone(enemy1,g2));
+		//			g2.draw(getNColorVisionCone(enemy2,g2));
 	}
 	private Arc2D.Double getNColorVisionCone(EnemyAI enemy,Graphics2D g2){
 		if(enemy.isTargetLock()){
@@ -459,7 +457,6 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		/**
 		 * Yifan He
 		 */
-		
 		int enemy1Num = (int) (Math.random()*2+1);
 		int randomNumber = (int) (Math.random()*4+2);
 		int randomNumberX;
@@ -485,6 +482,11 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 			enemiesOnScreen.get(i).setY(randomNumberY);
 			enemiesOnScreen.get(i).setSpawnedX(randomNumberX);
 			enemiesOnScreen.get(i).setSpawnedY(randomNumberY);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				System.out.println("321213");
+			}
 		}
 	}
 
@@ -540,7 +542,6 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 	public static int calculateVComponentPlayerToCursor(int velocityScalar, int cursorX, int cursorY, boolean isX){
@@ -564,7 +565,6 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		/**
 		 * Chieh-Huang Chen
 		 */
-		// TODO Auto-generated method stub/
 		for(int i=0;i<pBullets.size();i++){
 			pBullets.get(i).updateAndCheckAll();
 		}
@@ -577,13 +577,11 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	@Override
 	public void mousePressed(MouseEvent e) {//Jason Lyan
 		if(e.getButton() == MouseEvent.BUTTON1){
-			//			System.out.println("Hello");
 			int cursorX = e.getX();
 			int cursorY = e.getY();
 			int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
 			int vy = calculateVComponentPlayerToCursor(10, cursorX, cursorY, false);
 			int direction = calculateDirectionAttackFromPlayer(cursorX, cursorY);
-			//System.out.println(direction);
 			character.fire(character.getX(),character.getY(),vx,vy, direction);//change it up
 		}
 	}
@@ -594,7 +592,6 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		int cursorY = cursorY2;
 		int direction = UP;
 		double radians = Math.atan2((-cursorY+y),(cursorX - x));
-		//System.out.println(radians);
 		if(radians>-Math.PI/4 || radians <= Math.PI/4)direction = RIGHT;
 		if(radians>Math.PI/4 && radians <= Math.PI*3/4)direction = UP;
 		if(radians>Math.PI*3/4 || radians <= -Math.PI*3/4)direction = LEFT;
@@ -602,25 +599,20 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		return direction;
 	}
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 	}
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 	}
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 	}
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+
 	}
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 	public void fireWeapon(MouseEvent e) {
@@ -629,13 +621,11 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		int vx = calculateVComponentPlayerToCursor(10, cursorX, cursorY, true);
 		int vy = calculateVComponentPlayerToCursor(10, cursorX, cursorY, false);
 		int direction = calculateDirectionAttackFromPlayer(cursorX, cursorY);
-		//System.out.println(direction);
 		character.fire(character.getX(),character.getY(),vx,vy, direction);
 
 	}
 	@Override
 	public void moveCharacterLeft() {
-		// TODO Auto-generated method stub
 		character.setX(character.getX()+-P_SPEED);
 		character.setMoveLeft(true);
 		character.setMoveRight(false);
@@ -649,7 +639,6 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	}
 	@Override
 	public void moveCharacterRight() {
-		// TODO Auto-generated method stub
 		character.setX(character.getX()+P_SPEED);
 		character.setMoveRight(true);
 		character.setMoveLeft(false);
@@ -663,7 +652,6 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	}
 	@Override
 	public void moveCharacterUp() {
-		// TODO Auto-generated method stub
 		character.setY(character.getY()-P_SPEED);
 		character.setMoveUp(true);
 		character.setMoveRight(false);
@@ -677,7 +665,6 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	}
 	@Override
 	public void moveCharacterDown() {
-		// TODO Auto-generated method stub
 		character.setY(character.getY()+P_SPEED);
 		character.setMoveDown(true);
 		character.setMoveRight(false);
@@ -691,8 +678,6 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	}
 	@Override
 	public void reloadWeapon() {
-		// TODO Auto-generated method stub
-
 	}
 	public void doSomething(int e){
 		controller.determineKeyAction(e);
@@ -717,49 +702,44 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	}
 	@Override
 	public boolean killCharacter() { //Yifan He 
-		// TODO Auto-generated method stub
 		temp.setRepeats(false);
 		temp.start();
 		return test;
 	}
 	@Override
 	public int getCharX() {//Yifan He 
-		// TODO Auto-generated method stub
 		return character.getX();
 	}
 	@Override
 	public int getCharY() {//Yifan He 
-		// TODO Auto-generated method stub
+
 		return character.getY();
 	}
 	@Override
 	public BufferedImage[] getFrontImage() {//Yifan He 
-		// TODO Auto-generated method stub
 		return character.getFsprite();
 	}
 	@Override
 	public BufferedImage[] getBack() {//Yifan He 
-		// TODO Auto-generated method stub
+
 		return character.getBsprite();
 	}
 	@Override
 	public BufferedImage[] getRight() {//Yifan He 
-		// TODO Auto-generated method stub
 		return character.getRsprite();
 	}
 	@Override
 	public BufferedImage[] getLeft() {//Yifan He 
-		// TODO Auto-generated method stub
+
 		return character.getLsprite();
 	}
 	@Override
 	public void cheatLevel() {
-		// TODO Auto-generated method stub
 		character.gainExp(1000);
 	}
 	@Override
 	public void cheatDamage() {
-		// TODO Auto-generated method stub
+
 		character.setStrength(100);
 	}
 	@Override
