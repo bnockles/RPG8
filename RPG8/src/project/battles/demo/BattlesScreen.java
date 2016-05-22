@@ -708,7 +708,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		}
 	};
 
-	Timer temp = new Timer(1000,taskPerformer);
+	Timer temp = new Timer(10000,taskPerformer);
 	@Override
 	public boolean isDead(){ //Yifan He 
 		// for testing
