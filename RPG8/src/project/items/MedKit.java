@@ -14,8 +14,8 @@ public class MedKit extends Item {
 
 		int duration=0;
 	Timer timer;
-	public MedKit(String name, String desc,int cost, int healthGained, int effect, String itemImage) {
-		super(name, desc, cost, effect, itemImage);
+	public MedKit(String name, String desc,int cost, int healthGained, int effect, String itemImage, boolean buyable) {
+		super(name, desc, cost, effect, itemImage, buyable);
 		this.healthGained=healthGained;
 		this.effect=effect;
 		// TODO Auto-generated constructor stub

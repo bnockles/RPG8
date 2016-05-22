@@ -1,5 +1,6 @@
 package project.items;
 
+
 public interface ItemResources {
 	static final int NO_EFFECT = 0;
 	static final int FIRE = 1;
@@ -7,42 +8,43 @@ public interface ItemResources {
 	static final int STUN = 3;
 	static final int REGEN = 4;
 	
+	//For Shops
 	public int buy(Misc gold);
 	public int sell(Misc gold, Misc scrap);
 	public String printStats(double[] stats);
 	
 	//Armor
-	final Armor yourarmor = new Armor("Armor", "It's Armor", 0, 0, 100,"");
-	final Armor enemyarmor = new Armor("Armor", "It's Armor", 0, 0, 100,"");
+	final Armor yourarmor = new Armor("Armor", "It's Armor", 300, 0, 100,"",true);
+	final Armor enemyarmor = new Armor("Armor", "It's Armor", 0, 0, 100,"",false);
 	
 	//Medkits
-	final MedKit smallkit=new MedKit("Small Medkit","It's crap.",0, 5, REGEN,"");
-	final MedKit medkit=new MedKit("Medium Medkit","It's better.",0, 20, NO_EFFECT,"");
-	final MedKit bigkit=new MedKit("Big Medkit","It's the best.",0, 30, NO_EFFECT,"");
+	final MedKit smallkit=new MedKit("Small Medkit","It's crap.",100, 5, REGEN,"/images/items/Small Medkit.png",true);
+	final MedKit medkit=new MedKit("Medium Medkit","It's better.",500, 20, NO_EFFECT,"/images/items/Medium Medkit.png",true);
+	final MedKit bigkit=new MedKit("Big Medkit","It's the best.",1000, 30, NO_EFFECT,"/images/items/Large Medkit.png",true);
 	
 	//Ammo
-	final Ammo pistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 0, 1, NO_EFFECT,"");
-	final Ammo rifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 0, 1, NO_EFFECT,"");
-	final Ammo heavyAmmo = new Ammo("Heavy Ammo", "It's heavy ammo", 0, 1, NO_EFFECT,"");
-	final Ammo SMGAmmo=new Ammo("SMG Ammo", "It's SMG ammo", 0, 1, NO_EFFECT,"");
-	final Ammo explosiveAmmo = new Ammo("Explosive Ammo", "It's explosive ammo", 0, 1, NO_EFFECT,"");
+	final Ammo pistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 50, 1, NO_EFFECT,"/images/items/regular.png",true);
+	final Ammo rifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 50, 1, NO_EFFECT,"/images/items/regular.png",true);
+	final Ammo heavyAmmo = new Ammo("Heavy Ammo", "It's heavy ammo", 50, 1, NO_EFFECT,"/images/items/regular.png",true);
+	final Ammo SMGAmmo=new Ammo("SMG Ammo", "It's SMG ammo", 50, 1, NO_EFFECT,"/images/items/regular.png",true);
+	final Ammo explosiveAmmo = new Ammo("Explosive Ammo", "It's explosive ammo", 50, 1, NO_EFFECT,"/images/items/regular.png",true);
 	
-	final Ammo firePistolAmmo=new Ammo("Burning Pistol Ammo", "It's burning pistol ammo", 0, 1, FIRE,"");
-	final Ammo fireRifleAmmo=new Ammo("Burning Rifle Ammo", "It's burning rifle ammo", 0, 1, FIRE,"");
-	final Ammo fireHeavyAmmo = new Ammo("Burning Heavy Ammo", "It's burning heavy ammo", 0, 1, FIRE,"");
-	final Ammo fireSMGAmmo=new Ammo("Burning SMG Ammo", "It's burning SMG ammo", 0, 1, FIRE,"");
-	final Ammo fireExplosiveAmmo = new Ammo("Burning Explosive Ammo", "It's burning explosive ammo", 0, 1, FIRE,"");
+	final Ammo firePistolAmmo=new Ammo("Burning Pistol Ammo", "It's burning pistol ammo", 150, 1, FIRE,"/images/items/burn.png",true);
+	final Ammo fireRifleAmmo=new Ammo("Burning Rifle Ammo", "It's burning rifle ammo", 150, 1, FIRE,"/images/items/burn.png",true);
+	final Ammo fireHeavyAmmo = new Ammo("Burning Heavy Ammo", "It's burning heavy ammo", 150, 1, FIRE,"/images/items/burn.png",true);
+	final Ammo fireSMGAmmo=new Ammo("Burning SMG Ammo", "It's burning SMG ammo", 150, 1, FIRE,"/images/items/burn.png",true);
+	final Ammo fireExplosiveAmmo = new Ammo("Burning Explosive Ammo", "It's burning explosive ammo", 150, 1, FIRE,"/images/items/burn.png",true);
 	
-	final Ammo stunPistolAmmo=new Ammo("Stunning Pistol Ammo", "It's stunning pistol ammo", 0, 1, STUN,"");
-	final Ammo stunRifleAmmo=new Ammo("Stunning Rifle Ammo", "It's stunning rifle ammo", 0, 1, STUN,"");
-	final Ammo stunHeavyAmmo = new Ammo("Stunning Heavy Ammo", "It's stunning heavy ammo", 0, 1, STUN,"");
-	final Ammo stunSMGAmmo=new Ammo("Stunning SMG Ammo", "It's stunning SMG ammo", 0, 1, STUN,"");
-	final Ammo stunExplosiveAmmo = new Ammo("Stunning Explosive Ammo", "It's stunning explosive ammo", 0, 1, STUN,"");
+	final Ammo stunPistolAmmo=new Ammo("Stunning Pistol Ammo", "It's stunning pistol ammo", 100, 1, STUN,"/images/items/stun.png",true);
+	final Ammo stunRifleAmmo=new Ammo("Stunning Rifle Ammo", "It's stunning rifle ammo", 100, 1, STUN,"/images/items/stun.png",true);
+	final Ammo stunHeavyAmmo = new Ammo("Stunning Heavy Ammo", "It's stunning heavy ammo", 100, 1, STUN,"/images/items/stun.png",true);
+	final Ammo stunSMGAmmo=new Ammo("Stunning SMG Ammo", "It's stunning SMG ammo", 100, 1, STUN,"/images/items/stun.png",true);
+	final Ammo stunExplosiveAmmo = new Ammo("Stunning Explosive Ammo", "It's stunning explosive ammo", 100, 1, STUN,"/images/items/stun.png",true);
 	
 	//final Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, NO_EFFECT,"");
-	final Ammo grenadeAmmo = new Ammo("Grenade Ammo", "It's grenade ammo", 0, 1, NO_EFFECT,"");
-	final Ammo incendiaryGrenadeAmmo = new Ammo("Incendiary Grenade Ammo", "It's incendiary grenade ammo", 0, 1, FIRE,"");
-	final Ammo energyAmmo=new Ammo("Energy Ammo", "It's energy ammo", 0, 2, NO_EFFECT,"");
+	final Ammo grenadeAmmo = new Ammo("Grenade Ammo", "It's grenade ammo", 0, 1, NO_EFFECT,"/images/items/M10-SuperFrag.png",true);
+	final Ammo incendiaryGrenadeAmmo = new Ammo("Incendiary Grenade Ammo", "It's incendiary grenade ammo", 0, 1, FIRE,"",true);
+	final Ammo energyAmmo=new Ammo("Energy Ammo", "It's energy ammo", 0, 2, NO_EFFECT,"",true);
 	
 	//Weapons
 	/**
@@ -121,9 +123,24 @@ public interface ItemResources {
 	final Weapons[] SMG = { smg1GradeC1, smg2GradeB1};
 	final Weapons[] Explosives = { explosives1GradeC1, explosives6GradeB1};
 	
+	static final int MElEE_INDEX= 0;
+	static final int PISTOL_INDEX = 1;
+	static final int RIFLES_INDEX = 2;
+	static final int HEAVY_INDEX = 3;
+	static final int SMG_INDEX = 4;
+	static final int EXPLOSIVE_INDEX = 5;
+	
+	final Weapons[][] AllWeapons = {Melee, Pistol, Rifles, Heavy, SMG, Explosives};
+	/** AllWeapons
+	 *Number of column                 [     0       ,      1       ,      2       ,      3        ,      4       ,         5        ]
+	 *The weapon type                   [ Melee   ,   Pistol   ,   Rifles   ,   Heavy   ,   SMG   ,   Explosives]
+	 *Amount of weapons per type  [     1       ,      3       ,      3       ,      2        ,      2       ,         2        ]
+	 * 
+	 */
+	
 	// Misc
-	final Misc gold = new Misc("Gold", "Get more of this and you're rich!", true , 0, NO_EFFECT,"");
-	final Misc scrap = new Misc("Scrap Metal", "Useless trash.",false , 1, NO_EFFECT,"");
+	final Misc gold = new Misc("Gold", "Get more of this and you're rich!", true , 10, NO_EFFECT,"/images/items/coin.png", false);
+	final Misc scrap = new Misc("Scrap Metal", "Useless trash.",false , 2, NO_EFFECT,"/images/items/scrapMetal.png", true);
 	
 	public Item[] getItem();
 }

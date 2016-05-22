@@ -20,13 +20,14 @@ public class Weapons extends Item{
 	private int ammoTotal;
 	private int pellets;
 	private int splash;
+	private String[] types = {"Melee", "Pistols", "Rifles", "Heavy", "SMG", "Explosives"};
 	
 	
 	public Weapons(String name, String desc, Ammo ammo, int damage, int ammoClip, int ammoCapacity,
 			double criticalHit, int critHitMul, int weight, boolean buyable, int cost, String rof, double rofRPS, 
 			double reloadSpd, boolean secondaryFire, boolean canSilence, int effect, int pellets, int splash,
 			String gunImage,  int gunNum) {
-		super(name, desc,cost, effect, gunImage);
+		super(name, desc,cost, effect, gunImage, buyable);
 		
 		this.ammo = ammo;
 		this.damage = damage;
@@ -46,6 +47,25 @@ public class Weapons extends Item{
 		ammoTotal = ammoClip;
 		this.pellets = pellets;
 		this.splash = splash;
+	}
+	/**
+	 * 
+ 	First Number:
+	  	1. Melee 
+		2. Pistols
+		3. Rifles
+		4. Heavy
+		5. SMG
+		6. Explosives
+	*/
+	
+	public String getWeaponType(int gNum) {
+		String weapon =  types[(gNum/10) - 1];
+		return weapon; 
+	}
+	
+	public int getGunNum() {
+		return gunNum;
 	}
 	
 	public double[] showStats(){
@@ -111,22 +131,6 @@ public class Weapons extends Item{
 		this.critHitMul = critHitMul;
 	}
 
-	public boolean isBuyable() {
-		return buyable;
-	}
-
-	public void setBuyable(boolean buyable) {
-		this.buyable = buyable;
-	}
-
-	public int getCost() {
-		return cost;
-	}
-
-	public void setCost(int cost) {
-		this.cost = cost;
-	}
-
 	public double getReloadSpd() {
 		return reloadSpd;
 	}
@@ -147,10 +151,6 @@ public class Weapons extends Item{
 		this.canSilence = canSilence;
 	}
 
-	public int getGunNum() {
-		return gunNum;
-	}
-
 	public int getWeight() {
 		return weight;
 	}
@@ -162,5 +162,4 @@ public class Weapons extends Item{
 	public double getRofRPS() {
 		return rofRPS;
 	}
-
 }

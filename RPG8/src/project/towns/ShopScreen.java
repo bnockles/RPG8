@@ -42,7 +42,7 @@ public class ShopScreen extends Screen implements KeyListener{
 		try{
 			backGround = ImageIO.read(getClass().getResource("/images/shop/pic.png"));
 			character = ImageIO.read(getClass().getResource("/images/shop/Reddit-alien.png"));
-			playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/sprites/standing.png");
+			playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/sprites/standing.png", itemx);
 		}
 		catch (IOException e) {
 			e.printStackTrace();

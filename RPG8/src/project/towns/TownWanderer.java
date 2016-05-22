@@ -21,8 +21,10 @@ public class TownWanderer {
 	String name;
 	BufferedImage sprite;
 	ArrayList<Integer> itemNu = new ArrayList<Integer>();
-	public TownWanderer(int x, int y, String name, String imageLocation){
+	double money;
+	public TownWanderer(int x, int y, String name, String imageLocation, int money){
 		this.name = name;
+		this.money=money;
 		int width = 200;
 		int height = 200;
 		this.x = x;
@@ -38,6 +40,14 @@ public class TownWanderer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public double getMoney() {
+		return money;
+	}
+
+	public void setMoney(double d) {
+		this.money = d;
 	}
 
 	public int getX() {

@@ -6,8 +6,8 @@ public class Armor extends Item{
 
 	private String itemImage;
 	
-	public Armor(String name, String desc,int cost, int effect, int armor, String itemImage) {
-		super(name, desc, cost, effect, itemImage);
+	public Armor(String name, String desc,int cost, int effect, int armor, String itemImage, boolean buyable) {
+		super(name, desc, cost, effect, itemImage, buyable);
 		this.armor = armor;
 	}
 
@@ -40,9 +40,5 @@ public class Armor extends Item{
 	
 	public int getArmor(){
 		return armor;
-	}
-	
-	public String getItemImage() {
-		return itemImage;
 	}
 }
