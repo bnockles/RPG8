@@ -13,7 +13,7 @@ import project.directors.Screen;
 public class MapDemonstration extends Game {
 	static BufferedImage[] playerImg;
 	static boolean gameState;
-	static MapDemoScreen mapDemo;
+	 public static MapDemoScreen mapDemo; 
 	static BattlesScreen batt;
 
 	public static void main(String[] args) {
@@ -34,7 +34,7 @@ public class MapDemonstration extends Game {
 	public void changeScreens() {
 		setScreen(batt);
 		addMouseListener((MouseListener) batt);
-		System.out.println("C");
+		//System.out.println("C");
 		repaint();
 		test();
 	}
