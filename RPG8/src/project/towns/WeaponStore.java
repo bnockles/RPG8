@@ -18,7 +18,7 @@ public class WeaponStore implements StoreInterface{
 	ArrayList<ShopItems> itemListW = new ArrayList<ShopItems>();
 	ArrayList<String> itemListWDes = new ArrayList<String>();
 	ArrayList<String> itemListWPics = new ArrayList<String>();
-	int count = ItemResources.Melee.length + ItemResources.Rifles.length + ItemResources.Pistol.length + ItemResources.Heavy.length + ItemResources.SMG.length;
+	int count = ItemResources.Rifles.length + ItemResources.Pistol.length + ItemResources.Heavy.length;
 	
 	public void setItemListW(ArrayList<ShopItems> itemListW) {
 		this.itemListW = itemListW;
@@ -37,18 +37,13 @@ public class WeaponStore implements StoreInterface{
 		for(int x = 0; x < ItemResources.Heavy.length; x++){
 			itemListW.add(ItemResources.Heavy[x]);
 		}
-		for(int x = 0; x < ItemResources.SMG.length; x++){
-			itemListW.add(ItemResources.SMG[x]);
-		}
 		for(int x = 0; x < ItemResources.Rifles.length; x++){
 			itemListW.add(ItemResources.Rifles[x]);
-		}
-		for(int x = 0; x < ItemResources.Melee.length; x++){
-			itemListW.add(ItemResources.Melee[x]);
 		}
 		for(int i = 0; i  < count; i++){
 			itemNuW.add(i, 0);
 			itemListWDes.add(i, itemListW.get(i).getDescription());
+			System.out.println(itemListWDes.get(i));
 			//itemListWPics.add(i, itemListW.get(i));
 		}
 		//for(int i = 0; i < 3; i++){

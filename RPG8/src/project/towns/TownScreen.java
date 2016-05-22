@@ -33,9 +33,9 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 	
 	StoreNPC putin;
 	static TownWanderer playable;
-	WeaponStore store;
-	ArmorStore storeA;
-	ConsumStore storeC;
+	static WeaponStore store;
+	static ArmorStore storeA;
+	static ConsumStore storeC;
 	Building portalTooTown;
 	Building townPortalTooArmor;
 	Building townPortalTooWeapon;
@@ -47,9 +47,9 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 	int y;
 	int itemx = 92;
 	int itemy = 60;
-	public static final int TOWN = 2;
+	public static final int TOWN = 0;
 	public static final int IN_SHOP_MENU = 1;
-	public static final int WEAPON_STORE = 0;
+	public static final int WEAPON_STORE = 2;
 	public static final int AMMO_STORE = 3;
 	public static final int ARMOR_STORE = 4;
 	public static final int ARMOR_STOREx = 10;
@@ -59,7 +59,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 	public static final int R_SHOP = 5;
 	ArrayList<Integer>itemN = new ArrayList<Integer>();
 	Timer timer = new Timer();
-	 int status = TOWN;
+	int status = TOWN;
 
 	//Fei code
 	BufferedImage[][] backgroundGrid;
@@ -83,13 +83,18 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 	
 	//s
 	
-	public TownScreen(Game game, int gridWidth, int gridHeight){
+	public TownScreen(Game game, int gridWidth, int gridHeight, int status, WeaponStore a, ArmorStore b, ConsumStore c, TownWanderer s){
 		super(game);
-		
+		this.status = status;
 		this.gridColumns=gridWidth;
 		this.gridRows=gridHeight;
 		backgroundGrid = new BufferedImage[gridHeight][gridWidth];
 		obstacleGrid = new BufferedImage[gridHeight][gridWidth];
+		
+		store = a;
+		storeA = b;
+		storeC = c;
+		playable = s;
 		
 		currentRow = 1;// starting position when the character enters town
 		currentColumn = 0;
@@ -110,7 +115,6 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 				putin = new StoreNPC(450, 180, "Putin","/images/shop/hey.jpg");
 				trump = new StoreNPC(450, 180, "Trump","/images/shop/trump.jpg");
 				hillary = new StoreNPC(450, 180, "alien","/images/shop/hillary.jpg");
-				playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/shop/obama.jpg", 10000);
 				
 				portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
 				townPortalTooWeapon = new Building(townPortalToWeapon,250 - 50, game.getHeight() -200,true,"weaponStore");
@@ -122,14 +126,23 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 			catch (IOException e) {
 				e.printStackTrace();
 			}
-			store = new WeaponStore(itemN, playable.getMoney());
-			storeA = new ArmorStore(itemN, playable.getMoney());
-			storeC = new ConsumStore(itemN, playable.getMoney());
+			
 			getKeyListener();
 		
 		//qq
 		
 		
+	}
+	public static WeaponStore getStore() {
+		return store;
+	}
+
+	public static ArmorStore getStoreA() {
+		return storeA;
+	}
+
+	public static ConsumStore getStoreC() {
+		return storeC;
 	}
 	//Fei code
 
@@ -281,9 +294,9 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 		int y=100;
 		int count = 0;
 		for(ShopItems x: s.itemListC){
-			g2.drawString("U owned: " + s.itemNC.get(count), 300, y);
+			g2.drawString("U owned: " + s.itemNC.get(count), 400, y);
 			g2.drawString(x.getName(), 100, y);
-			g2.drawString("price: " + x.getPrice(), 200, y);
+			g2.drawString("price: " + x.getPrice(), 300, y);
 			y+=100;
 			count++;
 		}
@@ -301,9 +314,9 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 		int y=100;
 		int count = 0;
 		for(ShopItems x: s.itemListA){
-			g2.drawString("U owned: " + s.itemNA.get(count), 300, y);
+			g2.drawString("U owned: " + s.itemNA.get(count), 400, y);
 			g2.drawString(x.getName(), 100, y);
-			g2.drawString("price: " + x.getPrice(), 200, y);
+			g2.drawString("price: " + x.getPrice(), 300, y);
 			y+=100;
 			count++;
 		}
@@ -313,16 +326,16 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 	}
 
 	public void paintInShop(WeaponStore s, Graphics2D g2){
-		g2.drawRect(boxX, boxY, 400, 30);
+		g2.drawRect(boxX, boxY, 900, 30);
 		g2.drawString("Press B to buy and press S to sale.", 100, 50);
 		g2.drawString("Player cash: " + playable.getMoney(), 400, 50);
 		
 		int y=100;
 		int count = 0;
 		for(ShopItems x: s.itemListW){
-			g2.drawString("U owned: " + s.itemNuW.get(count), 300, y);
+			g2.drawString("U owned: " + s.itemNuW.get(count), 400, y);
 			g2.drawString(x.getName(), 100, y);
-			g2.drawString("price: " + x.getPrice(), 200, y);
+			g2.drawString("price: " + x.getPrice(), 300, y);
 			y+=100;
 			count++;
 		}
@@ -373,7 +386,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 		}
 		if(key == KeyEvent.VK_DOWN){
 			if(status == IN_SHOP_MENU){
-			if(itemx < 392){
+			if(itemx < 92 + (store.getItemListW().size()-1)*100){
 				itemx+= 100;
 				boxY+= 100;
 				}
@@ -392,12 +405,16 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 			if(status == WEAPON_STORE){
 				if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(180 - playable.getY()) <= 100){
 					status = IN_SHOP_MENU;
+					Screen s = new ShopScreen(game, WEAPON_STORE, store, storeA, storeC, playable);
+					game.setScreen(s);
 				}
 			}
 			if(status == AMMO_STORE){
 				
 				if(Math.abs(420 - playable.getX()) <= 100 && Math.abs(150 - playable.getY()) <= 100){
 					status = IN_SHOP_MENU;
+					Screen s = new ShopScreen(game, AMMO_STORE, store, storeA, storeC, playable);
+					game.setScreen(s);
 					
 				}
 				System.out.print(status);
@@ -405,6 +422,8 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 			if(status == ARMOR_STORE){
 				if(Math.abs(390 - playable.getX()) <= 100 && Math.abs(game.getHeight() - 250 - playable.getY()) <= 100){
 					status = IN_SHOP_MENU;
+					Screen s = new ShopScreen(game, AMMO_STORE, store, storeA, storeC, playable);
+					game.setScreen(s);
 				}
 			}
 			if(status == TOWN){
