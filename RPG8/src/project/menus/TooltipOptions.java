@@ -44,7 +44,7 @@ public class TooltipOptions implements DisplayBox {
 	}
 
 	@Override
-	public void drawBox(Graphics2D g2) {
+	public void drawBox(Tooltip t, Graphics2D g2) {
 		// TODO Auto-generated method stub
 		t.drawTooltipDialogue(g2);
 	}

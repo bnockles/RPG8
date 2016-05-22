@@ -7,6 +7,6 @@ import project.menus.Tooltip;
 public interface DisplayBox {
 	public Tooltip makeBox(String charName, String msg);
 	public void editBox(Tooltip box, String charName, String msg);
-    public void drawBox(Graphics2D g2);
+    public void drawBox(Tooltip t, Graphics2D g2);
 
 }
