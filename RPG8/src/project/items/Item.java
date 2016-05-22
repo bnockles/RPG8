@@ -1,8 +1,11 @@
 package project.items;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.imageio.ImageIO;
 
 import project.menus.Selectable;
 import project.towns.ShopItems;
@@ -44,7 +47,18 @@ public abstract class Item implements Selectable, ShopItems{
 //		}
 		//System.out.println("Final Health"+health);
 	}
-	
+	int[] getDimensions(){
+		int[] array={0,0};
+		try {
+			BufferedImage dimension=ImageIO.read(getClass().getResource(getItemImage()));
+			array[0]=dimension.getWidth();
+			array[1]=dimension.getHeight();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Failed reading.");
+		}
+		return array;
+	}
 	public double getPrice(){
 		return getCost();
 	}
