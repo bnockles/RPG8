@@ -37,11 +37,15 @@ import project.controls.cheatCodeInterface;
 import project.directors.Game;
 import project.directors.Screen;
 import project.directors.UtilityMethods;
+import project.items.Item;
+import project.items.ItemResources;
+import project.items.MedKit;
+import project.items.Misc;
 import project.items.Weapon;
 import project.overworld.BattleInterface;
 import project.overworld.MapDemoScreen;
 
-public class BattlesScreen extends Screen implements cheatCodeInterface,BattleInterface, BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener{
+public class BattlesScreen extends Screen implements ItemResources,cheatCodeInterface,BattleInterface, BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener{
 	/**
 	 * ***********CHANGES! MUST READ********************
 	 * RENAMING: 
@@ -144,6 +148,7 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 	public static KEnemy enemy1;
 	public static GEnemy enemy2;
 
+	public static ArrayList<MedKit> medkits = new ArrayList<MedKit>();
 	public static ArrayList<EnemyAI> enemiesOnScreen= new ArrayList<EnemyAI>();
 	public static ArrayList<Collision> pBullets = new ArrayList<Collision>();
 	public static ArrayList<Collision> eBullets = new ArrayList<Collision>();
@@ -223,6 +228,11 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 		origimage2 = UtilityMethods.getImageFromFile(this, "/maincharacter/mright3.png");
 		animation[3] = UtilityMethods.addImage(origimage0,origimage1,origimage2);
 		character =  new MCharacter(animation,playerstats,weapon);
+	}
+	public void Medkit(){
+		medkits.add(smallkit);
+		medkits.add(medkit);
+		medkits.add(bigkit);
 	}
 	public BufferedImage[][] Enemy(){
 		/**
@@ -768,6 +778,26 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 	public cheatCodeInterface getCCI(cheatCodeInterface c) {
 		// TODO Auto-generated method stub
 		return this;
+	}
+	@Override
+	public int buy(Misc gold) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int sell(Misc gold, Misc scrap) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public String printStats(double[] stats) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Item[] getItem() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

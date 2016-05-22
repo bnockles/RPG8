@@ -133,6 +133,9 @@ public void fire(int x, int y, int vx, int vy, int direction) {
 		//UNCOMMENT METHOD ABOVE TO TEST EXPLOSIVES
 	}
 }
+public static void searchForMedKits(){
+	
+}
 public void useMedkit(){
 	item.useItem(this);
 }
@@ -141,6 +144,16 @@ public boolean isRifle() {
 }
 public void setRifle(boolean rifle) {
 	this.rifle = rifle;
+}
+@Override
+public boolean isRegen() {
+	// TODO Auto-generated method stub
+	return false;
+}
+@Override
+public void setRegen(boolean regen) {
+	// TODO Auto-generated method stub
+	
 }
 
 }

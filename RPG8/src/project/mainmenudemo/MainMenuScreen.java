@@ -27,6 +27,7 @@ import javax.sound.sampled.Clip;
 
 import project.ChoiceMenuDemo.ChoiceDemo;
 import project.ChoiceMenuDemo.GridToSee;
+import project.demo.ItemScreen;
 import project.directors.Game;
 import project.directors.Screen;
 import project.menus.ChoiceMenuDemo;
@@ -90,14 +91,16 @@ public class MainMenuScreen extends Screen implements KeyListener{
 			if(selected<1) selected=4;
 			update();
 		}
-		if(e.getKeyCode()== KeyEvent.VK_SPACE){
+		if(e.getKeyCode()== KeyEvent.VK_SPACE && mtype != DynamicMenu.ITEM_DESCRIPTION_MENU){
 			if(selected ==1)
 			this.game.setScreen(new GridToSee(this.game));
 			if(selected==2)
 				this.game.setScreen(new TestScreen(this.game));
 			loopClip.stop();
 		}
-		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
+		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE && mtype==DynamicMenu.ITEM_DESCRIPTION_MENU){
+			this.game.setScreen(new project.items.ItemScreen(this.game));
+		}else if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
 			this.game.setScreen(DynamicMenu.createMenu(0, this.game));
 		}
 		if(e.getKeyCode() == KeyEvent.VK_Q){
@@ -109,6 +112,16 @@ public class MainMenuScreen extends Screen implements KeyListener{
 			loopClip.stop();
 		}
 		
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT &&  mtype==DynamicMenu.ITEM_DESCRIPTION_MENU){
+			project.items.ItemScreen.selected++;
+			if(project.items.ItemScreen.selected>DynamicMenu.arr.size()-1) project.items.ItemScreen.selected=0;
+			project.items.ItemScreen.createMenuForItem(this.game, project.items.ItemScreen.selected);
+		}
+		if(e.getKeyCode() == KeyEvent.VK_LEFT &&  mtype==DynamicMenu.ITEM_DESCRIPTION_MENU){
+			project.items.ItemScreen.selected--;
+			if(project.items.ItemScreen.selected<0) project.items.ItemScreen.selected=DynamicMenu.arr.size()-1;
+			project.items.ItemScreen.createMenuForItem(this.game, project.items.ItemScreen.selected);
+		}
 	}
 
 	@Override
@@ -169,19 +182,19 @@ public class MainMenuScreen extends Screen implements KeyListener{
 			}
 			
 			
-			g2.fillRect(125,50, 750,200);
+			g2.fillRect(100,50, width-200,200);
 		
-			g2.fillRect(350, 280, 375,100);
+			g2.fillRect(100 , 280, width-200,100);
 			
-			g2.drawImage(itemPic, width/2-150 , height/2, 300, 300, null);
+			g2.drawImage(itemPic, width/2-100 , height/2+100, null);
 			
 			Font times = new Font ("TimesRoman", Font.CENTER_BASELINE, 60);
 			Font subTimes = new Font ("TimesRoman", Font.CENTER_BASELINE, 50);
 			g2.setFont(times);
 			g2.setColor(colors[0]);
-			g2.drawString(options[0], width/2 - 40,165);
+			g2.drawString(options[0], 110 ,165);
 			g2.setFont(subTimes);
-			g2.drawString(options[1], width/2 - 50, 350);
+			g2.drawString(options[1], 110, 350);
 			
 		}else{
 			g2.setColor(colors[0]);
