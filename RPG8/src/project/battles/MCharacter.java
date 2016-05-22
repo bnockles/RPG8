@@ -133,6 +133,9 @@ public void fire(int x, int y, int vx, int vy, int direction) {
 		//UNCOMMENT METHOD ABOVE TO TEST EXPLOSIVES
 	}
 }
+public static void searchForMedKits(){
+	
+}
 public void useMedkit(){
 	item.useItem(this);
 }
