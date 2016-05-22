@@ -140,7 +140,7 @@ public void fire(int x, int y, int vx, int vy, int direction) {
 		//UNCOMMENT METHOD ABOVE TO TEST EXPLOSIVES
 	}
 }
-public static Arc2D.Double checkForMedKit(MCharacter c){
+public static Arc2D.Double checkForMedKit(MCharacter c,MedKit medkit){
 	//System.out.println("hello");
 	int arcX = c.getX()+(c.getWidth()/2)-c.getVisionrange()/2;
 	int arcY = c.getY()+(c.getHeight()/2)-c.getVisionrange()/2;
@@ -153,9 +153,10 @@ public static Arc2D.Double checkForMedKit(MCharacter c){
 		begindegree+=270;
 	Arc2D.Double visioncone = new Arc2D.Double(arcX,arcY, c.getVisionrange(), c.getVisionrange(), begindegree, 90, Arc2D.PIE);
 	//90, 225 change it to line of sight degree - 45 degree + 45
-//	if(visioncone.intersects(BattlesScreen.character.getBounds())){
-//		c.setTargetLock(true);
-//	} change to medkit
+	
+	if(visioncone.intersects(medkit.getRectitem())){
+		medkit.setVisible(true);
+	}
 	return visioncone;
 }
 public void useMedkit(){

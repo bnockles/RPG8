@@ -187,6 +187,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		Weapon();
 		MainCharacter();
 		Enemy();
+		Medkit();
 		//enemiesOnScreen.add(enemy1);
 		//enemiesOnScreen.add(enemy2); change the type later
 		update();
@@ -273,18 +274,18 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		//checkMotion();
 		checkProjectileRange();
 		controller.determineMovement(this);
-		g2.setColor(Color.blue);
+		g2.setColor(Color.white);
 		g2.fillRect(0, 0, width, height);
-		int numb = project.overworld.MapDemonstration.mapDemo.getBackgroundNumber();
-		if(numb ==0 && previousRegion!=0){
-			g2.setColor(Color.yellow);
-			g2.fillRect(0, 0, width, height);
-			String enemyType = project.overworld.MapDemonstration.mapDemo.getEnemyType(numb);
-			if(enemyType.equals("enemy1")){
-				addEnemies(enemy1,enemy1);
-				previousRegion=numb;
-			}
-		}
+//		int numb = project.overworld.MapDemonstration.mapDemo.getBackgroundNumber();
+//		if(numb ==0 && previousRegion!=0){
+//			g2.setColor(Color.yellow);
+//			g2.fillRect(0, 0, width, height);
+//			String enemyType = project.overworld.MapDemonstration.mapDemo.getEnemyType(numb);
+//			if(enemyType.equals("enemy1")){
+//				addEnemies(enemy1,enemy1);
+//				previousRegion=numb;
+//			}
+//		}
 		g2.setColor(Color.black);
 		try{
 			if(isDead()){ //YIFAN TESTING
@@ -300,9 +301,17 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 			g2.drawString("Press D to reload ammo", 100, 350);
 			g2.drawString("Press Z/X to -/+ the enemy's moevement", 100, 400);
 			g2.drawString("Press 1 to use the rifle and 2 to use the explosives", 100, 450);
-			g2.setColor(Color.red);
+			g2.setColor(Color.green);
 			timer.start();
+			g2.draw(MCharacter.checkForMedKit(character, medkits.get(0)));
+			g2.setColor(Color.red);
 			g2.drawImage(character.getImage(),character.getX(),character.getY(),null);
+			for(MedKit medkit:medkits){
+				if(medkit.getVisible()){
+					g2.drawImage(medkit.getItemBImage(),medkit.getX(),medkit.getY(),null);
+				}
+				System.out.println(medkit.getX()+ "      "+ medkit.getY());
+			}
 			//g2.drawImage(bullet.getImage(), 100, 100, null);
 			if (!enemiesOnScreen.isEmpty()){
 				for (EnemyAI a : enemiesOnScreen){

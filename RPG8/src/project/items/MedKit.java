@@ -1,10 +1,13 @@
 package project.items;
 
 
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import project.battles.HaveStats;
+import project.directors.UtilityMethods;
 
 public class MedKit extends Item implements UsableItem{
 	//stanley's class
@@ -18,14 +21,35 @@ public class MedKit extends Item implements UsableItem{
 	int count;
 	int regenDuration=0;
 	Timer regenTimer;
-	public MedKit(String name, String desc,int cost, int healthGained, int effect, String itemImage, boolean buyable) {
+	public MedKit(String name, String desc,int cost, int healthGained, int effect, String itemImage, boolean buyable,int x, int y) {
 		super(name, desc, cost, effect, itemImage, buyable);
 		this.healthGained=healthGained;
 		this.effect=effect;
 		this.itemImage=itemImage;
-		// TODO Auto-generated constructor stub
+		this.itemBImage = UtilityMethods.getImageFromFile(this, itemImage);
+		rectitem = new Rectangle(x,y,itemBImage.getWidth(),itemBImage.getHeight());
+		this.x = x;
+		this.y = y;
 	}
 	
+	public BufferedImage getItemBImage(){
+		return itemBImage;
+	}
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+	public boolean getVisible(){
+		return visible;
+	}
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
+	public Rectangle getRectitem() {
+		return rectitem;
+	}
 	//Health regained by clicking to use
 	/**public int giveHealth(Character b){
 		int charHealth=b.getHealth();
