@@ -29,13 +29,23 @@ public class TooltipOptions implements DisplayBox {
 				234, 120);
 	}
 	
-	public static Tooltip makeBox(){
-		return getTooltip(TOOLTIP_DIALOGUE);
+	@Override
+	public Tooltip makeBox(String charName, String msg) {
+		Tooltip t = TooltipOptions.getTooltip(TOOLTIP_DIALOGUE);
+		editBox(t, charName, msg);
+		return t;
 	}
-	public static void drawBox(Graphics2D g2, Tooltip t){
+
+	@Override
+	public void editBox(Tooltip box, String charName, String msg) {
+		// TODO Auto-generated method stub
+		box.setTitle(charName);
+		box.setDescription(msg);
+	}
+
+	@Override
+	public void drawBox(Graphics2D g2) {
+		// TODO Auto-generated method stub
 		t.drawTooltipDialogue(g2);
-	}
-	public static void editBox(Tooltip t){
-		//will condense all set statements from tooltip into 1 method
 	}
 }
