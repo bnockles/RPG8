@@ -15,7 +15,7 @@ public abstract class EnemyAI extends Character{
 	private int visionrange;
 	private int visiondegree;
 	private int awareRange;
-	private int bulletpersec = 100;
+	private int bulletpersec = 0;
 	protected int spawnedX;
 	protected int spawnedY;
 	protected int enemyClass;

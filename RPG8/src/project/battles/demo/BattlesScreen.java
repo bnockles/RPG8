@@ -482,11 +482,6 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 			enemiesOnScreen.get(i).setY(randomNumberY);
 			enemiesOnScreen.get(i).setSpawnedX(randomNumberX);
 			enemiesOnScreen.get(i).setSpawnedY(randomNumberY);
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				System.out.println("321213");
-			}
 		}
 	}
 
