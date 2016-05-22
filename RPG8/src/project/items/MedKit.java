@@ -13,6 +13,7 @@ public class MedKit extends Item implements UsableItem{
 	private int cost;
 	private int healthGained;
 	private int effect;
+	private String itemImage;
 	int count;
 	int regenDuration=0;
 	Timer regenTimer;
@@ -20,6 +21,7 @@ public class MedKit extends Item implements UsableItem{
 		super(name, desc, cost, effect, itemImage, buyable);
 		this.healthGained=healthGained;
 		this.effect=effect;
+		this.itemImage=itemImage;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -28,29 +30,16 @@ public class MedKit extends Item implements UsableItem{
 		int charHealth=b.getHealth();
 		charHealth+=this.healthGained;
 	}**/
-<<<<<<< HEAD
-	public void giveHealth(TargetDemo b){
-		if(b.health==0) return;
-		b.health+=this.healthGained;
-=======
 	public void giveHealth(HaveStats b){
 		int health= b.getCurrentHP()+this.healthGained;
 		b.setCurrentHP(health);
->>>>>>> refs/heads/battles
 		regen(b);
 		if(b.getCurrentHP()>b.getMaxHP()){
 			b.setCurrentHP(b.getMaxHP());
 		}
 	}
-<<<<<<< HEAD
-	public void regen(final TargetDemo b){
-		System.out.println("CALL REGEN");
-	
-=======
 	public void regen(final HaveStats b){
-		
-		
->>>>>>> refs/heads/battles
+
 		final int healRegen=this.healthGained;
 		if(this.getEffect()==ItemResources.REGEN){
 			try{	
@@ -63,26 +52,18 @@ public class MedKit extends Item implements UsableItem{
 			final TimerTask countDown = new TimerTask(){
 				boolean timerStack=false;
 				public void run(){
-					if(b.health==0) regenTimer.cancel();
+					if(b.getCurrentHP()==0) regenTimer.cancel();
 					b.isRegen=true;
 					System.out.println("REGEN"+count);
 					if(regenDuration>3){
 						b.isRegen=false;
 						regenDuration=0;
 						regenTimer.cancel();
-					}else{
-<<<<<<< HEAD
+					}else{int health= b.getCurrentHP()+healRegen;
 						count++;
-						b.health+=healRegen;
-						if(b.health>100)b.health=100;
-						regenDuration++;
-=======
-						
-						int health= b.getCurrentHP()+healRegen;
 						b.setCurrentHP(health);
 						if(b.getCurrentHP()>b.getMaxHP())b.setCurrentHP(b.getMaxHP());
-						duration++;
->>>>>>> refs/heads/battles
+						regenDuration++;
 					}
 					this.timerStack=true;
 				}
@@ -109,9 +90,6 @@ public class MedKit extends Item implements UsableItem{
 	public int getHealthGained() {
 		return healthGained;
 	}
-<<<<<<< HEAD
-=======
-	
 	public String getItemImage() {
 		return itemImage;
 	}
@@ -121,6 +99,5 @@ public class MedKit extends Item implements UsableItem{
 		// TODO Auto-generated method stub
 		giveHealth(c);
 	}
->>>>>>> refs/heads/battles
 
 }
