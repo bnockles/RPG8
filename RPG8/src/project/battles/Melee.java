@@ -79,4 +79,10 @@ public class Melee extends Collision{
 		
 	}
 
+	@Override
+	Rectangle getBounds() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

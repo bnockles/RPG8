@@ -29,10 +29,10 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		this.boss = conditions[3];
 	}
 
-//	public ItemState getItems() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	//	public ItemState getItems() {
+	//		// TODO Auto-generated method stub
+	//		return null;
+	//	}
 
 
 	@Override
@@ -60,17 +60,21 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		return nearest;
 	}
 	protected void dodge(){
+		Arc2D.Double temp = checkForPlayer(this);
 		Collision bulletToDodge = nearestBullet();
-		if (bulletToDodge != null){
+		if (bulletToDodge != null && temp.intersects(bulletToDodge.getHitBox())){
 			int bX = bulletToDodge.getX();
 			int bY = bulletToDodge.getY();
-			if(distance(bX,bY,x,y) <= 50){
-				if (bX - x > 0) moveLeft();
+			int distance = (int) distance(bX,bY,x,y);
+			if(distance < 100){
+				if (bX - x > 0)
+					moveLeft(); 
 				else
 					moveRight();
-//				if (bY - y > 0) moveDown();
-//				else
-//					moveUp();
+				if (bY - y > 0)
+					moveDown();
+				else
+					moveUp();
 			}
 		}
 	}
@@ -151,7 +155,7 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 	@Override
 	public void setRegen(boolean regen) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 

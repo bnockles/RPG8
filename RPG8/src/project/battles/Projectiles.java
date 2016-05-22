@@ -2,6 +2,7 @@
 //Collisions done by Pelham Van Cooten 
 package project.battles;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import project.battles.demo.BattlesScreen;
@@ -29,11 +30,16 @@ public class Projectiles extends Collision{
 		return image;
 	}
 	
+	public Rectangle getBounds(){
+		return new Rectangle(x, y, 20, 20);
+	}
+	
 	//Pelham
 	public void checkCollision(){
 		if(this.fromHostile){
 			if(getHitBox().intersects(BattlesScreen.character.getBounds())){
 				collided = true;
+				BattlesScreen.pBullets.remove(this);
 			}
 		}
 		else{
@@ -41,6 +47,7 @@ public class Projectiles extends Collision{
 				if(getHitBox().intersects(enemy.getBounds())){
 					collided = true;
 					enemy.setCurrentHP(enemy.getCurrentHP()-10);
+					BattlesScreen.eBullets.remove(this);
 				}
 			}
 		}

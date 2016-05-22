@@ -65,10 +65,11 @@ public abstract class EnemyAI extends Character{
 	}
 	public void GeneralEnemyAI(){
 		if(checkAlive()){
-			dodge();
 			visioncone = checkForPlayer(this);
-			if(targetLock)
+			if(targetLock){
+				dodge();
 				reaction();
+			}
 			else{
 				if(leftAndRight)
 					moveLeftAndRight();

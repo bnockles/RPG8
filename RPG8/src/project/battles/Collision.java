@@ -18,6 +18,7 @@ public abstract class Collision implements Collidable{
 	protected boolean fromHostile;
 	//protected int delayTime ... will implement later
 	
+	abstract Rectangle getBounds();
 	public Collision(int x, int y, int damage,boolean fromHostile){
 		this(x,y);
 		this.damage = damage;
@@ -36,6 +37,7 @@ public abstract class Collision implements Collidable{
 	public Rectangle getHitBox(){
 		return new Rectangle(x, y, image.getWidth(), image.getHeight());
 	}
+	
 	public int getX() {
 		return x;
 	}

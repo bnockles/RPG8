@@ -56,4 +56,11 @@ public class Explosives extends Collision {
 		image = activeType.getImage();
 	}
 
+
+	@Override
+	Rectangle getBounds() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
