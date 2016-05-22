@@ -13,6 +13,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import project.storyV2.Center;
+
 public class Tooltip extends VerticalMenu{
 	
 	private int width = 200;
@@ -180,11 +182,11 @@ public class Tooltip extends VerticalMenu{
 		g2.setColor(Color.yellow);
 		Font font1 = new Font("Courier", Font.ROMAN_BASELINE, 30);
 		g2.setFont(font1);
-		g2.drawString(this.getTitle() + " says...", this.getX()+300, this.getY()+60);
+		g2.drawString(this.getTitle() + " says...", /**this.getX()+300**/Center.centerStringStatic(this.getTitle(), this.getX(), this.getWidth(), 40), this.getY()+60);
 		Font font2 = new Font("Courier", Font.ROMAN_BASELINE, 25);
 		g2.setFont(font2);
 		g2.setColor(Color.white);
-		g2.drawString(this.getDescription(), this.getX()+50, this.getY()+105);
+		g2.drawString(this.getDescription(), /**this.getX()+50**/Center.centerStringStatic(this.getDescription(), this.getX(), this.getWidth(), 15), this.getY()+105);
 	}
 
 	public int getBuyPrice() {
