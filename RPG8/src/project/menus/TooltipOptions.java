@@ -34,6 +34,6 @@ public class TooltipOptions {
 		t.drawTooltipDialogue(g2);
 	}
 	public static void editBox(Tooltip t){
-		
+		//will condense all set statements from tooltip into 1 method
 	}
 }

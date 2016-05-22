@@ -27,6 +27,7 @@ import javax.sound.sampled.Clip;
 
 import project.ChoiceMenuDemo.ChoiceDemo;
 import project.ChoiceMenuDemo.GridToSee;
+import project.demo.ItemScreen;
 import project.directors.Game;
 import project.directors.Screen;
 import project.menus.ChoiceMenuDemo;
@@ -97,7 +98,9 @@ public class MainMenuScreen extends Screen implements KeyListener{
 				this.game.setScreen(new TestScreen(this.game));
 			loopClip.stop();
 		}
-		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
+		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE && mtype==DynamicMenu.ITEM_DESCRIPTION_MENU){
+			this.game.setScreen(new project.items.ItemScreen(this.game));
+		}else if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
 			this.game.setScreen(DynamicMenu.createMenu(0, this.game));
 		}
 		if(e.getKeyCode() == KeyEvent.VK_Q){
@@ -172,7 +175,7 @@ public class MainMenuScreen extends Screen implements KeyListener{
 		
 			g2.fillRect(350, 280, 375,100);
 			
-			g2.drawImage(itemPic, width/2-150 , height/2, 300, 300, null);
+			g2.drawImage(itemPic, width/2-100 , height/2+100, null);
 			
 			Font times = new Font ("TimesRoman", Font.CENTER_BASELINE, 60);
 			Font subTimes = new Font ("TimesRoman", Font.CENTER_BASELINE, 50);

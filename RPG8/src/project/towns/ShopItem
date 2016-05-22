@@ -1,0 +1,11 @@
+public interface ShopItem{
+ boolean isSellable();
+
+ int price();
+
+ String name();
+
+ int category();
+
+ boolean isBuyable();
+} 
