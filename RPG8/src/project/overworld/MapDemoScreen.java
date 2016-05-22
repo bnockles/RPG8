@@ -95,11 +95,11 @@ public class MapDemoScreen extends Screen implements KeyListener,overworldIntegr
 		b2.add(new Boundaries(width, 0, 1, height, NONLETH, ALLZONES));
 		b2.add(new Boundaries(0, 0, 1, height, NONLETH, ALLZONES));
 		b2.add(new Boundaries(0, height, width, 1, NONLETH, ALLZONES));
-		regions.add(new Region("enemy1",920, 200, 68, 500, ZONE2, LANDINGZ2L[0], LANDINGZ2L[1], ZONE1));
-		regions.add(new Region("enemy1",0, 200, 50, 400, ZONE1, LANDINGZ1[0], LANDINGZ1[1], ZONE2));
-		regions.add(new Region("enemy1",400, 200, 120, 120, TOWN, LANDINGTL[0], LANDINGTL[1], ZONE2));
-		regions.add(new Region("enemy1",30, 400, 20, 100, ZONE2, LANDINGZ2R[0], LANDINGZ2R[1], TOWN));
-		regions.add(new Region("enemy1",400,200,80,100,ZONE1,LANDINGZ1[0],LANDINGZ1[1],ZONE1));
+		regions.add(new Region("enemy1",Color.green, 920, 200, 68, 500, ZONE2, LANDINGZ2L[0], LANDINGZ2L[1], ZONE1));
+		regions.add(new Region("enemy1",Color.blue, 0, 200, 50, 400, ZONE1, LANDINGZ1[0], LANDINGZ1[1], ZONE2));
+		regions.add(new Region("enemy1",Color.yellow, 400, 200, 120, 120, TOWN, LANDINGTL[0], LANDINGTL[1], ZONE2));
+		regions.add(new Region("enemy1",Color.GRAY, 30, 400, 20, 100, ZONE2, LANDINGZ2R[0], LANDINGZ2R[1], TOWN));
+		regions.add(new Region("enemy1",Color.cyan, 400,200,80,100,ZONE1,LANDINGZ1[0],LANDINGZ1[1],ZONE1));
 		mapSections.add(new MainMap(0, "/images/Map/test.jpeg", o1, b1));
 		mapSections.add(new MainMap(1, "/images/Map/test2.jpeg", o2, b2));
 		mapSections.add(new MainMap(2, "/images/Map/testTown.png", o3, b3));
@@ -318,9 +318,8 @@ public class MapDemoScreen extends Screen implements KeyListener,overworldIntegr
 		return null;
 	}
 	@Override
-	public int getRegion() {
-		
-		return playerRegion;
+	public  Color getRegionColor(int a){
+		return regions.get(a).getColor();
 	}
 	@Override
 	public String getEnemyType(int a) {
