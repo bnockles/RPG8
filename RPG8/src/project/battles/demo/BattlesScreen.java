@@ -340,8 +340,12 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 			for (EnemyAI a : enemiesOnScreen){
 				a.GeneralEnemyAI();
 				if (temp1 == previousRegion){
-					a.scale();
-					temp1 = previousRegion;
+					try{
+						a.scale();
+						temp1 = previousRegion;
+					}catch(NullPointerException e){
+						
+					}
 				}
 				g2.drawImage(a.getImage(),a.getX(),a.getY(),null);
 				g2.setColor(Color.BLACK);
