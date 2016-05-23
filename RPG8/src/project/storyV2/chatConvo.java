@@ -1,3 +1,4 @@
+package project.storyV2;
 
 public class chatConvo {
 	String charName;
