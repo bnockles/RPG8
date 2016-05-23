@@ -107,7 +107,7 @@ public class GEnemy extends EnemyAI implements LoggableEnemy{
 		float dist = (float) Math.sqrt(
 				Math.pow(x - spawnedX, 2) +
 				Math.pow(y - spawnedY, 2) );
-		if (dist > 300 && returnToSpawn == false) returnToSpawn = true;
+		if (dist > 700 && returnToSpawn == false) returnToSpawn = true;
 		if(returnToSpawn){
 			backToSpawn();
 			if(dist < 50){
