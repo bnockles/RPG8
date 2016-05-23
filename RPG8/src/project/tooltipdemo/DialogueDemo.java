@@ -23,7 +23,7 @@ import project.menus.TooltipOptions;
 
 public class DialogueDemo extends Screen implements KeyListener {
 	
-	String[][] branchNone = {{"Icefrog", "How do you feel about me ruining dota?"}, 
+	static String[][] branchNone = {{"Icefrog", "How do you feel about me ruining dota?"}, 
 							{"Everyone", "Bad."}, 
 							{"Icefrog", "Now that's what I like to hear!"},
 							{"Everyone", "I hate you with a passion."},
@@ -37,9 +37,9 @@ public class DialogueDemo extends Screen implements KeyListener {
 						{"Icefrog", "Good onya."},
 						{"Everyone", "In the end we all lose."}};
 	
-	int name = 0;
+	static int name = 0;
 	boolean notAChoice = true;
-	boolean nChosen = true;
+	static boolean nChosen = true;
 	boolean log = false;
 	String[][] memory = new String[branchNone.length+branch1.length][branchNone[0].length+branch1[0].length];
 	int x;
@@ -165,6 +165,35 @@ public class DialogueDemo extends Screen implements KeyListener {
 		    //Handle exception
 		}
 	}
-	
+
+
+	public static String[][] getBranchNone() {
+		return branchNone;
+	}
+
+
+	public String[][] getBranch1() {
+		return branch1;
+	}
+
+
+	public String[][] getBranch2() {
+		return branch2;
+	}
+
+
+	public static int getName() {
+		return name;
+	}
+
+
+	public static boolean isnChosen() {
+		return nChosen;
+	}
+
+
+	public String[][] getMemory() {
+		return memory;
+	}
 
 }

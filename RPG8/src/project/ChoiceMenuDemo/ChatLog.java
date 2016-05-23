@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import project.directors.Game;
 import project.directors.Screen;
 import project.storyV2.Choices;
+import project.tooltipdemo.DialogueDemo;
 
 public class ChatLog{
 
@@ -16,7 +17,15 @@ public class ChatLog{
 	 */
 	
 	public static String[][] chatLogged(String[][] arr, Graphics2D g2) {
-		
+	
+		for (int r = 0; r < DialogueDemo.getBranchNone().length - DialogueDemo.getName(); r++) {
+			for (int c = 0; c < DialogueDemo.getBranchNone()[0].length; c++) {
+				arr[r][c] = DialogueDemo.getBranchNone()[r][c];
+				int row = r;
+				int col = c;
+			}
+		}
+		if (DialogueDemo.isnChosen() == true){}
 		return arr;
 	}
 
