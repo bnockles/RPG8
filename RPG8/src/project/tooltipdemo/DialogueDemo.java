@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import javax.imageio.ImageIO;
 
@@ -29,11 +30,11 @@ public class DialogueDemo extends Screen implements KeyListener {
 							{"Everyone", "I hate you with a passion."},
 							{"Icefrog", "Not like you can do anything about it."}};
 	//Quit Playing game Option 1
-	String[][] branch1 = {{"Everyone", "We'll just all stop playing."},
+	static String[][] branch1 = {{"Everyone", "We'll just all stop playing."},
 						{"Icefrog", "Oh god I forgot its just a game!"},
 						{"Everyone", "In the end we all lose."}};
 	//Stay with the rage Option 2
-	String[][] branch2 = {{"Everyone", "There's nothing we can do"},
+	static String[][] branch2 = {{"Everyone", "There's nothing we can do"},
 						{"Icefrog", "Good onya."},
 						{"Everyone", "In the end we all lose."}};
 	
@@ -44,7 +45,7 @@ public class DialogueDemo extends Screen implements KeyListener {
 	String[][] memory = new String[branchNone.length+branch1.length][branchNone[0].length+branch1[0].length];
 	int x;
 	int y;
-	int c = 0;
+	static int c = 0;
 	Tooltip t = TooltipOptions.makeBoxStatic(branchNone[name][0], branchNone[name][1]);
 	//Game itself
 	public DialogueDemo(Game game) {
@@ -155,6 +156,7 @@ public class DialogueDemo extends Screen implements KeyListener {
 		//THIS IS THE LOG BOYS
 		if (log) {
 			memory = ChatLog.chatLogged(memory, g2);
+			System.out.println(Arrays.deepToString(memory));
 		}
 	}
 	
@@ -172,16 +174,19 @@ public class DialogueDemo extends Screen implements KeyListener {
 	}
 
 
-	public String[][] getBranch1() {
+	public static String[][] getBranch1() {
 		return branch1;
 	}
 
 
-	public String[][] getBranch2() {
+	public static String[][] getBranch2() {
 		return branch2;
 	}
 
-
+	public static int getC() {
+		return c;
+	}
+	
 	public static int getName() {
 		return name;
 	}

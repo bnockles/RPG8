@@ -17,15 +17,23 @@ public class ChatLog{
 	 */
 	
 	public static String[][] chatLogged(String[][] arr, Graphics2D g2) {
-	
-		for (int r = 0; r < DialogueDemo.getBranchNone().length - DialogueDemo.getName(); r++) {
+		int row = 0;
+		for (int r = 0; r < DialogueDemo.getName(); r++) {
+			row++;
 			for (int c = 0; c < DialogueDemo.getBranchNone()[0].length; c++) {
 				arr[r][c] = DialogueDemo.getBranchNone()[r][c];
-				int row = r;
-				int col = c;
 			}
 		}
-		if (DialogueDemo.isnChosen() == true){}
+		if (DialogueDemo.isnChosen() == false){
+			for (int r = 0; r < DialogueDemo.getName(); r++) {
+				for (int c = 0; c < DialogueDemo.getBranchNone()[0].length; c++) {
+					if (DialogueDemo.getC() == 0)
+						arr[row][c] = DialogueDemo.getBranch1()[r][c];
+					else
+						arr[row][c] = DialogueDemo.getBranch2()[r][c];
+				}
+			}
+		}			
 		return arr;
 	}
 
