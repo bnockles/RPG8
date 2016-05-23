@@ -19,17 +19,10 @@ import java.util.Hashtable;
 
 public class Save {
 	
-	protected static Hashtable t = doLoad();
+	protected static Hashtable t;
 	private static String name;
 	private static int currentSave = 0;
 	private static boolean newFile = false;
-
-	/*
-	public Save(String name) {
-		this.name = name;
-		this.t = doLoad();
-	}
-	*/
 	
 	public static void chooseSave(int option) {
 		if (option >= 0 && option < 4)
