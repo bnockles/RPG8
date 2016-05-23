@@ -72,9 +72,8 @@ public class TargetDemo implements Target, project.battles.HaveStats{
 	@Override
 	public int getHealth() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 0; // chieh here just to comment stuff, why 0?
 	}
-
 	@Override
 	public int getMaxHP() {
 		// TODO Auto-generated method stub
@@ -90,7 +89,7 @@ public class TargetDemo implements Target, project.battles.HaveStats{
 	@Override
 	public void setCurrentHP(int currentHP) {
 		// TODO Auto-generated method stub
-		health=currentHP;
+		health = currentHP;
 	}
 
 	@Override

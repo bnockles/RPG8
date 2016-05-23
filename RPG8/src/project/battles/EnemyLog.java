@@ -3,6 +3,8 @@
 package project.battles;
 import java.util.ArrayList;
 
+import project.save.BattleSave;
+
 public class EnemyLog {
 		private ArrayList<EnemyLogEntry> eLog;
 		
@@ -10,21 +12,20 @@ public class EnemyLog {
 			return eLog;
 		}
 
-		public EnemyLog(){
-			eLog = new ArrayList<EnemyLogEntry>();
-			eLog.add(new EnemyLogEntry("Shahid","guy",5,5,5));
-			eLog.add(new EnemyLogEntry("Dog","guy",5,5,5));
+		public EnemyLog(ArrayList<EnemyLogEntry> enemyLog){
+			eLog = enemyLog;
 		}
 		
 		public void addEnemy(GEnemy enemy){
 			for(EnemyLogEntry e: eLog){
 				if(e.getEnemyName() == enemy.getName()){
 					//increment enemykills or enemykilled by 1
+					BattleSave.saveEnemyLogData("100", eLog);
 					break;
 				}
 				
 				eLog.add(new EnemyLogEntry(enemy.getName(), "Guard Enemy", enemy.getLevel(), enemy.getDeaths(), enemy.getKills()));
-				
+				BattleSave.saveEnemyLogData("100", eLog);
 				}
 			
 		}
@@ -33,11 +34,12 @@ public class EnemyLog {
 			for(EnemyLogEntry e: eLog){
 				if(e.getEnemyName() == enemy.getName()){
 					//increment enemykills or enemykilled by 1
+					BattleSave.saveEnemyLogData("100", eLog);
 					break;
 				}
 			
 				eLog.add(new EnemyLogEntry(enemy.getName(), "Killer Enemy", enemy.getLevel(), enemy.getDeaths(), enemy.getKills()));
-			
+				BattleSave.saveEnemyLogData("100", eLog);
 			}
 			
 		}

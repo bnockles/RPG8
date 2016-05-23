@@ -1,5 +1,6 @@
 package project.items;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Timer;
@@ -17,8 +18,11 @@ public abstract class Item implements Selectable, ShopItems{
 	private int effect;
 	private String itemImage;
 	private boolean buyable;
+	protected BufferedImage itemBImage;
+	protected int x;
+	protected int y;
+	protected Rectangle rectitem;
 	
-
 	public Item(String name,String desc,int cost, int effect, String itemImage, boolean buyable){
 		this.name=name;
 		description=desc;

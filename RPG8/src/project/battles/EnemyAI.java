@@ -10,10 +10,7 @@ import project.directors.Character;
 import project.items.Weapon;
 
 public abstract class EnemyAI extends Character{
-	private Arc2D.Double visioncone;
 	private Ellipse2D.Double awarenessRange;
-	private int visionrange;
-	private int visiondegree;
 	private int awareRange;
 	private int bulletpersec = 100;
 	protected int spawnedX;
@@ -38,15 +35,16 @@ public abstract class EnemyAI extends Character{
 	protected abstract void run();
 	protected abstract void goToPlayer();
 	protected abstract void dodge();
+	public abstract void scale();
 	protected int waitInterval;
 	
-	protected EnemyAI(BufferedImage[][] images, int[] stats, int[] enemystats, Weapon weapon, int type) {
+	protected EnemyAI(BufferedImage[][] images, int[] stats, int[] stats2, Weapon weapon, int type) {
 		//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 		super(images, stats, false, weapon);
-		this.visionrange = enemystats[0];
-		this.visiondegree = enemystats[1];
-		this.awareRange = enemystats[2];
-		this.bulletpersec = enemystats[3];
+		this.visionrange = stats2[0];
+		this.visiondegree = stats2[1];
+		this.awareRange = stats2[2];
+		this.bulletpersec = stats2[3];
 		this.spawnedX = stats[0];
 		this.spawnedY = stats[1];
 		awarenessRange = new Ellipse2D.Double(x-awareRange, y-awareRange, awareRange, awareRange);
@@ -65,10 +63,11 @@ public abstract class EnemyAI extends Character{
 	}
 	public void GeneralEnemyAI(){
 		if(checkAlive()){
-			//dodge();
 			visioncone = checkForPlayer(this);
-			if(targetLock)
+			if(targetLock){
+				dodge();
 				reaction();
+			}
 			else{
 				if(leftAndRight)
 					moveLeftAndRight();

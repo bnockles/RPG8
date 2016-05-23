@@ -7,8 +7,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -17,25 +15,29 @@ import javax.imageio.ImageIO;
 
 import project.directors.Game;
 import project.directors.Screen;
+import project.items.ItemResources;
+import project.storyV2.TownPart;
 
 /**
  * 
  * @author Fei and Jingwen
  *
  */
-public class TownScreen extends Screen implements KeyListener{
+public class TownScreen extends Screen implements KeyListener,TownPart{
 	 //Jingwen Code
 	static BufferedImage backGround;
 	BufferedImage portalToTown;
 	BufferedImage townPortalToArmor;
 	BufferedImage townPortalToWeapon;
 	BufferedImage townPortalToAmmo;
+	Boolean TownOpened = false;
+	TownInfo TownsInfo;
 	
 	StoreNPC putin;
-	TownWanderer playable;
+	static TownWanderer playable;
 	WeaponStore store;
-	WeaponStore storeA;
-	WeaponStore storeC;
+	ArmorStore storeA;
+	ConsumStore storeC;
 	Building portalTooTown;
 	Building townPortalTooArmor;
 	Building townPortalTooWeapon;
@@ -60,9 +62,7 @@ public class TownScreen extends Screen implements KeyListener{
 	ArrayList<Integer>itemN = new ArrayList<Integer>();
 	Timer timer = new Timer();
 	 int status = TOWN;
-	ArrayList<String> itemListW = new ArrayList<String>(){{add("Weapon A"); add("Weapon B"); add("Weapon C"); add("Weapon D");}};
-	ArrayList<String> itemListA = new ArrayList<String>(){{add("Armor A"); add("Armor B"); add("Armor C"); add("Armor D");}};
-	ArrayList<String> itemListC = new ArrayList<String>(){{add("Health"); add("Ammo A"); add("Ammo B"); add("Ammo C");}};
+
 	//Fei code
 	BufferedImage[][] backgroundGrid;
 	BufferedImage[][] obstacleGrid;
@@ -96,11 +96,7 @@ public class TownScreen extends Screen implements KeyListener{
 		currentColumn = 0;
 		//example of starting screen for town but not actual
 		
-			try{
-				backgroundGrid[currentRow][currentColumn] = ImageIO.read(getClass().getResource( "/images/maps/image1background.png" ) );
-			}
-			catch (IOException e) {
-			}
+			
 			//JINGWEN CODE
 			for(int i = 0; i < 3; i++) itemN.add(i, 0);
 			// TODO Auto-generated constructor stub
@@ -118,18 +114,18 @@ public class TownScreen extends Screen implements KeyListener{
 				playable = new TownWanderer(450, game.getHeight()-115, "hero", "/images/shop/obama.jpg", 10000);
 				
 				portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
-				townPortalTooWeapon = new Building(townPortalToWeapon,250 - 50, game.getHeight() -200,true,"porttotown");
-				townPortalTooArmor = new Building(townPortalToArmor,450, 50,true,"porttotown");
-				townPortalTooAmmo = new Building(townPortalToAmmo,700, game.getHeight() -180,true,"porttotown");
+				townPortalTooWeapon = new Building(townPortalToWeapon,250 - 50, game.getHeight() -200,true,"weaponStore");
+				townPortalTooArmor = new Building(townPortalToArmor,450, 50,true,"armorStore");
+				townPortalTooAmmo = new Building(townPortalToAmmo,700, game.getHeight() -180,true,"ammoStore");
 						//Building(BufferedImage image,int y, int x, boolean portal,String nameOfBuiliding){
 				
 			}
 			catch (IOException e) {
 				e.printStackTrace();
 			}
-			store = new WeaponStore(itemN, playable.getMoney(), itemListW);
-			storeA = new WeaponStore(itemN, playable.getMoney(), itemListA);
-			storeC = new WeaponStore(itemN, playable.getMoney(), itemListC);
+			store = new WeaponStore(itemN, playable.getMoney());
+			storeA = new ArmorStore(itemN, playable.getMoney());
+			storeC = new ConsumStore(itemN, playable.getMoney());
 			getKeyListener();
 		
 		//qq
@@ -145,6 +141,10 @@ public class TownScreen extends Screen implements KeyListener{
 	}	
 	boolean yx= false;
 	int lottry;
+	
+	
+	
+	
 	public void delay( Graphics2D g2,String msg,int x , int y , final int statusx , final int statusxx, int delaytime ){
 		
 		
@@ -172,19 +172,16 @@ public class TownScreen extends Screen implements KeyListener{
 	
     //Jingwen COde
 	public void paintScreen(Graphics2D g2) {
-		// TODO Auto-generated method stub
-//		for (int y = 0; y < game.getWindowWidth(); y++) {
-//		    for (int x = 0; x < game.getWindowHeight(); x++){
-		//while(yx == false){
+	
 				if(status == WEAPON_STORE){
 					paintShop(g2);
 					g2.drawImage(hillary.getNpc(), 420,150,250,180, null);
+					portalTooTown.setxcoord(150);
+					portalTooTown.setycoord(game.getHeight() -110);
 					
-					g2.drawImage(portalTooTown.getImage(), 250 - 100, game.getHeight() -10 - 100, null);
+					g2.drawImage(portalTooTown.getImage(), portalTooTown.getxcoord(),  portalTooTown.getycoord(), null);
 					
-		//	    	g2.drawOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
-		//	    	g2.setColor(Color.WHITE);
-		//	    	g2.fillOval(250 - 100, game.getHeight() -10 - 100, 100, 100);
+					//portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
 			    	
 			    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
 				}
@@ -192,7 +189,9 @@ public class TownScreen extends Screen implements KeyListener{
 					paintShop(g2);
 					g2.drawImage(trump.getNpc(), 420,150,250,180, null);
 					
-					g2.drawImage(portalTooTown.getImage(), 750, game.getHeight() -110, null);
+					portalTooTown.setxcoord(750);
+					portalTooTown.setycoord(game.getHeight() -110);
+					g2.drawImage(portalTooTown.getImage(), portalTooTown.getxcoord(),  portalTooTown.getycoord(), null);
 					
 		//	    	g2.drawOval(750, game.getHeight() -110, 100, 100);
 		//	    	g2.setColor(Color.WHITE);
@@ -203,12 +202,9 @@ public class TownScreen extends Screen implements KeyListener{
 				if(status == ARMOR_STORE){
 					paintShop(g2);
 					g2.drawImage(putin.getNpc(), 390,game.getHeight() - 250,250,180, null);
-					
-		//	    	g2.drawOval(450, 50, 100, 100);
-		//	    	g2.setColor(Color.WHITE);
-		//	    	g2.fillOval(450, 50, 100, 100);
-					
-			    	g2.drawImage(portalTooTown.getImage(), 450,50, null);
+					portalTooTown.setxcoord(450);
+					portalTooTown.setycoord(50);
+			    	g2.drawImage(portalTooTown.getImage(), portalTooTown.getxcoord(),portalTooTown.getycoord(), null);
 			    	
 			    	g2.drawImage(playable.getImage(), playable.getX(),playable.getY(),200,150, null);
 				}
@@ -226,10 +222,10 @@ public class TownScreen extends Screen implements KeyListener{
 						paintInShop(store, g2);
 					}
 					if(status2 == ARMOR_STORE){
-						paintInShop(storeA, g2);
+						paintInShopA(storeA, g2);
 					}
 					if(status2 == AMMO_STORE){
-						paintInShop(storeC, g2);
+						paintInShopC(storeC, g2);
 					}
 				}
 				if (status == TOWN){
@@ -258,117 +254,84 @@ public class TownScreen extends Screen implements KeyListener{
 					
 					yx = true;
 				}
-//				if (status == TOWN){
-//					//Fei code
-//					g2.drawImage(backgroundGrid[currentRow][currentColumn], 0, 0, null);
-//					g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),200,150,null);
-//					g2.drawImage(townPortalTooWeapon.getImage(), townPortalTooWeapon.getxcoord(),townPortalTooWeapon.getycoord(), null);
-//					g2.drawImage(townPortalTooArmor.getImage(), townPortalTooArmor.getxcoord(),townPortalTooArmor.getycoord(), null);
-//					g2.drawImage(townPortalTooAmmo.getImage(), townPortalTooAmmo.getxcoord(),townPortalTooAmmo.getycoord(), null);
-//		//			g2.drawOval(250 - 100, game.getHeight() -110, 100, 100);
-//		//			g2.drawOval(450, 50, 100, 100);
-//		//			g2.drawOval(750, game.getHeight() -110, 100, 100);
-//					
-//					g2.drawString("USE T IN CIRCLE TO GO THROUGH CIRCLE, USE SPACE IN SHOP TO ACCESS SHOP ", 400, 500);
-//				}
+//			
 				if(status ==ARMOR_STOREx  ){
 					
-					delay( g2,"Attempting To Enter Armor Store",200 , 500 ,  ARMOR_STORE ,  ARMOR_STORE,2000 );
-//					Font myFont = new Font ("Courier New", 1, 27);
-//					
-//
-//					g2.setFont (myFont);
-//				
-//					g2.drawString("Attempting To Enter Armor Store"  , 200, 500);
-//				    	Timer t = new Timer();
-//				    	t.schedule(new TimerTask() {
-//
-//				    	            @Override
-//				    	            public void run() {
-//				    	               status = ARMOR_STORE;
-//				    	               status2 = ARMOR_STORE;
-//				    	               update();	
-//				    	            }
-//				    	        }, 2000);
-//					
-//				}
+					delay( g2,"Attempting To Enter Armor Store",200 , 500 ,  ARMOR_STORE ,  ARMOR_STORE,350 );
+
 				}
 				if(status ==AMMO_STOREx  ){
-					Font myFont = new Font ("Courier New", 1, 27);
-					
+					delay( g2,"Attempting To Enter Ammo Store",200 , 500 ,  AMMO_STORE ,  AMMO_STORE,350 );
 
-					g2.setFont (myFont);
-				
-					g2.drawString("Attempting To Enter Ammo Store"  , 200, 500);
-				    	Timer t = new Timer();
-				    	t.schedule(new TimerTask() {
-
-				    	            @Override
-				    	            public void run() {
-				    	               status = AMMO_STORE;
-				    	               status2 = AMMO_STORE;
-				    	               update();	
-				    	            }
-				    	        }, 500);
 					
 				}
 				if(status ==WEAPON_STOREx  ){
-					Font myFont = new Font ("Courier New", 1, 27);
-					
+					delay( g2,"Attempting To Enter Weapon Store",200 , 500 , WEAPON_STORE , WEAPON_STORE ,350 );
 
-					g2.setFont (myFont);
-				
-					g2.drawString("Attempting To Enter Weapon Store"  , 200, 500);
-				    	Timer t = new Timer();
-				    	t.schedule(new TimerTask() {
-
-				    	            @Override
-				    	            public void run() {
-				    	               status = WEAPON_STORE;
-				    	               status2 = WEAPON_STORE;
-				    	               update();	
-				    	            }
-				    	        }, 500);
 					
 				}
 				if(status ==TOWNx  ){
-					Font myFont = new Font ("Courier New", 1, 27);
-					
+					delay( g2,"Attempting To Enter Town",200 , 500 , TOWN , TOWNx ,350 );
 
-					g2.setFont (myFont);
-				
-					g2.drawString("Attempting To Enter  Town"  , 200, 500);
-				    	Timer t = new Timer();
-				    	t.schedule(new TimerTask() {
-
-				    	            @Override
-				    	            public void run() {
-				    	               status = TOWN;
-				    	               update();	
-				    	            }
-				    	        }, 500);
 					
 				}
-		//}	
-//		    }
-//		}
+
 	}
+	private void paintInShopC(ConsumStore s, Graphics2D g2) {
+		// TODO Auto-generated method stub
+		g2.drawRect(boxX, boxY, 400, 30);
+		g2.drawString("Press B to buy and press S to sale.", 100, 50);
+		g2.drawString("Player cash: " + playable.getMoney(), 400, 50);
+		
+		int y=100;
+		int count = 0;
+		for(ShopItems x: s.itemListC){
+			g2.drawString("U owned: " + s.itemNC.get(count), 300, y);
+			g2.drawString(x.getName(), 100, y);
+			g2.drawString("price: " + x.getPrice(), 200, y);
+			y+=100;
+			count++;
+		}
+
+		g2.drawRect(60, itemx, 5, 5);
+		g2.fillRect(60, itemx, 5, 5);
+	}
+
+	private void paintInShopA(ArmorStore s, Graphics2D g2) {
+		// TODO Auto-generated method stub
+		g2.drawRect(boxX, boxY, 400, 30);
+		g2.drawString("Press B to buy and press S to sale.", 100, 50);
+		g2.drawString("Player cash: " + playable.getMoney(), 400, 50);
+		
+		int y=100;
+		int count = 0;
+		for(ShopItems x: s.itemListA){
+			g2.drawString("U owned: " + s.itemNA.get(count), 300, y);
+			g2.drawString(x.getName(), 100, y);
+			g2.drawString("price: " + x.getPrice(), 200, y);
+			y+=100;
+			count++;
+		}
+
+		g2.drawRect(60, itemx, 5, 5);
+		g2.fillRect(60, itemx, 5, 5);
+	}
+
 	public void paintInShop(WeaponStore s, Graphics2D g2){
 		g2.drawRect(boxX, boxY, 400, 30);
 		g2.drawString("Press B to buy and press S to sale.", 100, 50);
-		g2.drawString("Player cash: " + store.getMoney(), 400, 50);
-		g2.drawString(s.getItemList().get(0), 100, 100);
-		g2.drawString("U owned: " + s.itemNu.get(0), 300, 100);
-		g2.drawString(s.getItemList().get(1), 100, 200);
-		g2.drawString("U owned: " + s.itemNu.get(1), 300, 200);
-		g2.drawString(s.getItemList().get(2), 100, 300);
-		g2.drawString("U owned: " + s.itemNu.get(2), 300, 300);
-		g2.drawString(s.getItemList().get(3), 100, 400);
-		g2.drawString("U owned: " + s.itemNu.get(3), 300, 400);
-		g2.drawString("Price: 450", 200, 100);
-		g2.drawString("Price: 350", 200, 200);
-		g2.drawString("Price: 250", 200, 300);
-		g2.drawString("Price: 150", 200, 400);
+		g2.drawString("Player cash: " + playable.getMoney(), 400, 50);
+		
+		int y=100;
+		int count = 0;
+		for(ShopItems x: s.itemListW){
+			g2.drawString("U owned: " + s.itemNuW.get(count), 300, y);
+			g2.drawString(x.getName(), 100, y);
+			g2.drawString("price: " + x.getPrice(), 200, y);
+			y+=100;
+			count++;
+		}
+
 		g2.drawRect(60, itemx, 5, 5);
 		g2.fillRect(60, itemx, 5, 5);
 	}
@@ -397,14 +360,7 @@ public class TownScreen extends Screen implements KeyListener{
 	public int getCurrentColumn(){
 		return currentColumn;
 	}
-	//work on transitioning
-	public void transitionEffects(int status,Graphics2D g2){
-		
-		
-		
-		update();
-		
-	}
+
 	//JIngwen CODE
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
@@ -481,16 +437,10 @@ public class TownScreen extends Screen implements KeyListener{
 			if(status == IN_SHOP_MENU){
 				if(status2 == WEAPON_STORE)
 				store.moneyInteraction(itemx);
-				storeA.AllInteraction(itemx);
-				storeC.AllInteraction(itemx);
 				if(status2 == ARMOR_STORE)
 				storeA.moneyInteraction(itemx);
-				storeC.AllInteraction(itemx);
-				store.AllInteraction(itemx);
 				if(status2 == AMMO_STORE)
 				storeC.moneyInteraction(itemx);
-				store.AllInteraction(itemx);
-				storeA.AllInteraction(itemx);
 			}
 				if(status == R_SHOP){
 
@@ -559,16 +509,10 @@ public class TownScreen extends Screen implements KeyListener{
 			if(status == IN_SHOP_MENU){
 				if(status2 == WEAPON_STORE)
 					store.moneySellingInteraction(itemx);
-					storeA.AllSellingInteraction(itemx);
-					storeC.AllSellingInteraction(itemx);
 					if(status2 == ARMOR_STORE)
 					storeA.moneySellingInteraction(itemx);
-					storeC.AllSellingInteraction(itemx);
-					store.AllSellingInteraction(itemx);
 					if(status2 == AMMO_STORE)
 					storeC.moneySellingInteraction(itemx);
-					store.AllSellingInteraction(itemx);
-					storeA.AllSellingInteraction(itemx);
 			}
 		}
 		if(key == KeyEvent.VK_T){
@@ -628,6 +572,13 @@ public class TownScreen extends Screen implements KeyListener{
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
+		
+	}
+
+	@Override
+	public void changeTownStatus() {
+		// TODO Auto-generated method stub
+		TownOpened = true;
 	}
 	
 	

@@ -1,6 +1,6 @@
 package project.directors;
 import java.awt.Rectangle;
-
+import java.awt.geom.Arc2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ import project.battles.Explosives;
 import project.battles.Melee;
 import project.battles.Projectiles;
 import project.battles.demo.BattlesScreen;
-import project.save.ItemState;
+//import project.save.ItemState;
 import project.items.Weapon;
 public abstract class Character implements project.battles.Animation, project.battles.HaveStats{
 
@@ -19,6 +19,10 @@ public abstract class Character implements project.battles.Animation, project.ba
 	protected BufferedImage[] lsprite;
 	protected BufferedImage[] rsprite;
 	protected BufferedImage stopImage;
+	
+	protected Arc2D.Double visioncone;
+	protected int visionrange;
+	protected int visiondegree;
 	
 	protected int count;
 	protected boolean moveUp = false;
@@ -94,6 +98,24 @@ public abstract class Character implements project.battles.Animation, project.ba
 		this.hostile = hostile;
 		
 		this.weapon = weapon;
+	}
+	public Arc2D.Double getVisioncone() {
+		return visioncone;
+	}
+	public void setVisioncone(Arc2D.Double visioncone) {
+		this.visioncone = visioncone;
+	}
+	public int getVisionrange() {
+		return visionrange;
+	}
+	public void setVisionrange(int visionrange) {
+		this.visionrange = visionrange;
+	}
+	public int getVisiondegree() {
+		return visiondegree;
+	}
+	public void setVisiondegree(int visiondegree) {
+		this.visiondegree = visiondegree;
 	}
 	//ABSTRACT BELOW
 	public abstract BufferedImage getImage();

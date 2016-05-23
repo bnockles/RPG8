@@ -1,10 +1,11 @@
 package project.battles;
+import project.storyV2.demo.*;
 
 import java.awt.image.BufferedImage;
 
 import project.battles.demo.BattlesScreen;
 import project.items.Weapon;
-import project.save.ItemState;
+//import project.save.ItemState;
 
 public class GEnemy extends EnemyAI implements LoggableEnemy{
 
@@ -18,14 +19,18 @@ public class GEnemy extends EnemyAI implements LoggableEnemy{
 	public GEnemy(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon, int type){
 		super(images,stats,vision,weapon,type);
 		this.weapon = weapon;
-		this.stats = stats;
+		this.stats = BattlesScreen.enemyG;
 		this.enemyClass = BattlesScreen.GENEMY;
 	}
 	
-	public void scaleG(){
-		for (int i = 2; i < stats.length; i++){
-			stats[i] *= 1;
-		}
+	public void scale(){
+		try{
+			for (int i = 2; i < stats.length; i++){
+				stats[i] *= StoryDemo.storyScreen.getMissionLevel();
+			}
+		}catch(NullPointerException e){
+			
+		}	
 	}
 	public GEnemy(BufferedImage[][] images, int[] stats,int[] vision, Weapon weapon, int type, boolean[] conditions){
 		super(images,stats,vision,weapon,type);
@@ -33,6 +38,7 @@ public class GEnemy extends EnemyAI implements LoggableEnemy{
 		this.left = conditions[1];
 		this.up = conditions[2];
 		this.boss = conditions[3];
+		this.stats = BattlesScreen.enemyG;
 	}
 
 	@Override
@@ -101,8 +107,7 @@ public class GEnemy extends EnemyAI implements LoggableEnemy{
 		float dist = (float) Math.sqrt(
 				Math.pow(x - spawnedX, 2) +
 				Math.pow(y - spawnedY, 2) );
-		System.out.println(dist);
-		if (dist > 300 && returnToSpawn == false) returnToSpawn = true;
+		if (dist > 700 && returnToSpawn == false) returnToSpawn = true;
 		if(returnToSpawn){
 			backToSpawn();
 			if(dist < 50){
@@ -142,6 +147,18 @@ public class GEnemy extends EnemyAI implements LoggableEnemy{
 
 	@Override
 	protected void dodge() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isRegen() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setRegen(boolean regen) {
 		// TODO Auto-generated method stub
 		
 	}

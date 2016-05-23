@@ -1,12 +1,14 @@
 package project.battles;
 
 import java.awt.geom.Arc2D;
+import project.storyV2.demo.StoryDemo;
 import java.awt.image.BufferedImage;
 import java.util.Collection;
 
 import project.battles.demo.BattlesScreen;
 import project.items.Weapon;
-import project.save.ItemState;
+//import project.save.ItemState;
+import project.storyV2.demo.StoryDemo;
 
 public class KEnemy extends EnemyAI implements LoggableEnemy{
 
@@ -17,22 +19,23 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 	public KEnemy(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon,int type){
 		super(images,stats,vision,weapon,type);
 		this.weapon = weapon;
-		this.stats = stats;
+		this.stats = BattlesScreen.enemyK;
 		this.enemyClass = BattlesScreen.KENEMY;
 	}
 
 	public KEnemy(BufferedImage[][] images, int[] stats,int[] vision, Weapon weapon, int type, boolean[] conditions){
 		super(images,stats,vision,weapon,type);
+		this.stats = BattlesScreen.enemyK;
 		this.targetLock = conditions[0];
 		this.left = conditions[1];
 		this.up = conditions[2];
 		this.boss = conditions[3];
 	}
 
-	public ItemState getItems() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	//	public ItemState getItems() {
+	//		// TODO Auto-generated method stub
+	//		return null;
+	//	}
 
 
 	@Override
@@ -45,6 +48,12 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		int vy = BattlesScreen.calculateVComponentPlayerToCursor(10, x, y, false);
 		fire(x,y,-vx,-vy);
 		goToPlayer();
+	}
+
+	public void scale(){
+		for (int i = 2; i < stats.length; i++){
+			stats[i] *= StoryDemo.storyScreen.getMissionLevel();
+		}
 	}
 
 	protected Collision nearestBullet(){
@@ -60,17 +69,21 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		return nearest;
 	}
 	protected void dodge(){
+		Arc2D.Double temp = checkForPlayer(this);
 		Collision bulletToDodge = nearestBullet();
-		if (bulletToDodge != null){
+		if (bulletToDodge != null && temp.intersects(bulletToDodge.getHitBox())){
 			int bX = bulletToDodge.getX();
 			int bY = bulletToDodge.getY();
-			if(distance(bX,bY,x,y) <= 50){
-				if (bX - x > 0) moveLeft();
+			int distance = (int) distance(bX,bY,x,y);
+			if(distance < 100){
+				if (bX - x > 0)
+					moveLeft(); 
 				else
 					moveRight();
-//				if (bY - y > 0) moveDown();
-//				else
-//					moveUp();
+				if (bY - y > 0)
+					moveDown();
+				else
+					moveUp();
 			}
 		}
 	}
@@ -97,16 +110,7 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 	protected void goToPlayer(){
 		int pX = BattlesScreen.character.getX();
 		int pY = BattlesScreen.character.getY();
-		if(Math.abs(pX-x) <= 200 && Math.abs(pY-y) <= 200){
-			Arc2D.Double temp = checkForPlayer(this);
-			if(temp.intersects(BattlesScreen.character.getBounds())){
-				setTargetLock(true);
-			}
-			else{
-				setTargetLock(false);
-			}
-		}
-		else{
+		if (distance(pX,pY,x,y) > 100){
 			if(pX-x<0)
 				moveLeft();
 			else
@@ -140,6 +144,18 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 	public int getKills() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public boolean isRegen() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setRegen(boolean regen) {
+		// TODO Auto-generated method stub
+
 	}
 
 
