@@ -1,8 +1,5 @@
 package project.items;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class TargetDemo implements Target, project.battles.HaveStats{
 	int health;
 	Weapons weapon;
