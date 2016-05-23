@@ -310,7 +310,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		}
 		g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
 		g2.drawString("Battles Team's Demo", 100, 100);
-	//	g2.drawString("Press WASD to move", 100, 150);
+		g2.drawString("Press WASD to move", 100, 150);
 		//g2.drawString("Press 8,9,0 to change scenrios", 100, 200);
 		//			g2.drawString("Press 8 9 0 to switch battle scenarios", 100, 200);
 		//			g2.drawString("Press Q W E R T to switch enemy movements", 100, 250);
