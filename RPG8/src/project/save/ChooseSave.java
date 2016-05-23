@@ -15,7 +15,7 @@ public class ChooseSave {
 		Scanner in = new Scanner(System.in);
 		
 		System.out.println("Pick a save file: ");
-		Save.chooseSave(in.nextInt());
+		//Save.chooseSave(in.nextInt());
 		
 		// Save.saveData("something", "A String!");
 		// Save.saveData("test2", 3.14);
@@ -26,7 +26,7 @@ public class ChooseSave {
 		testArr.add(3);
 		testArr.add(4);
 		
-		// BattleSave.saveData("testArr", testArr);
+		//BattleSave.saveData("testArr", testArr);
 		// BattleSave.saveData();
 		
 		System.out.println("Testing load: " + Save.getString("something"));

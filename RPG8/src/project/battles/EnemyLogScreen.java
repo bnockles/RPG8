@@ -14,7 +14,7 @@ public class EnemyLogScreen extends MainMenuScreen implements KeyListener {
 	//encounter box? add enemy to list when there is a certain range, display info in menu (POINT2D)
 	//save list 
 	
-	 
+	public static int enemySelected = 0;
 	
 	public EnemyLogScreen(Game game, EnemyLogEntry e) {
 		super(4, game, new String[]{e.getEnemyName(), "Enemy Type: "+e.getEnemyType(), "Amount of Times Killed: "+ e.getTimesKilled(), "Amount of Kills: "+ e.getEnemyKills()}, new String[]{""}, new Color[]{Color.white, Color.black, Color.darkGray}, null);
@@ -23,6 +23,7 @@ public class EnemyLogScreen extends MainMenuScreen implements KeyListener {
 	/**
 	 * @param args
 	 */
+	
 
 	@Override
 	public KeyListener getKeyListener() {
@@ -31,9 +32,20 @@ public class EnemyLogScreen extends MainMenuScreen implements KeyListener {
 	}
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {
+	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.getKeyCode()== KeyEvent.VK_RIGHT){
+			
+			enemySelected++;
+			if(enemySelected>EnemyLogDemo.eLog.size()-1){
+				enemySelected = 0; 
+			}
+			System.out.println(enemySelected);
+			this.game.reset();
+			
+			
+			
+		}
 		
 	}
 
