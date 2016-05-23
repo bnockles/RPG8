@@ -46,7 +46,9 @@ public class DialogueDemo extends Screen implements KeyListener {
 	int x;
 	int y;
 	static int c = 0;
+	
 	Tooltip t = TooltipOptions.makeBoxStatic(branchNone[name][0], branchNone[name][1]);
+	
 	//Game itself
 	public DialogueDemo(Game game) {
 		super(game);

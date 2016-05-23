@@ -10,8 +10,6 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.imageio.ImageIO;
 
@@ -179,7 +177,6 @@ public class Tooltip extends VerticalMenu{
 	}
 	
 	public void drawTooltipDialogue(Graphics2D g2) {
-		Timer timer = new Timer();
 		g2.setColor(Color.black);
 		g2.fillRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
 		g2.setColor(Color.yellow);
