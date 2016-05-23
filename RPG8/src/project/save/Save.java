@@ -19,7 +19,7 @@ import java.util.Hashtable;
 
 public class Save {
 	
-	protected static Hashtable t;
+	protected static Hashtable t = doLoad();
 	private static String name;
 	private static int currentSave = 0;
 	private static boolean newFile = false;
