@@ -114,7 +114,8 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 				mc.moveLeft();
 			}
 			else if(keyCode == KeyEvent.VK_S) {
-				//Swarm.shoot();
+				Screen testScreen = new DialogueDemo(game);
+				game.setScreen(testScreen);
 			}
 			else if(keyCode == KeyEvent.VK_R) {
 				//Swarm.radio();
