@@ -158,31 +158,17 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 
 	}
 
-	@Override
-	public int getCharacterLevel() {
-		// TODO Auto-generated method stub
-		return -10;
+	public String getMission(){
+		return params[current][1];
 	}
 
 	@Override
-	public int getMapLevel() {
-		// TODO Auto-generated method stub
-		return Integer.parseInt(params[current][3]);
-	}
-
-	@Override
-	public int getProgress() {
-		// TODO Auto-generated method stub
+	public int getMissionLevel() {
 		return Integer.parseInt(params[current][2]);
 	}
 
 	@Override
-	public String getBoss() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public String getMission(){
-		return params[current][1];
+	public int getObjective(int mission) {
+		return Integer.parseInt(params[mission][3]);
 	}
 }

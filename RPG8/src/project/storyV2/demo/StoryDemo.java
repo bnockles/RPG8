@@ -5,6 +5,7 @@ import project.directors.Game;
 @SuppressWarnings("serial")
 public class StoryDemo extends Game {
 	
+	public static StoryScreen storyScreen;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new StoryDemo();
@@ -14,7 +15,7 @@ public class StoryDemo extends Game {
 		
 	}
 	public void reset(){
-		StoryScreen storyScreen = new StoryScreen(this);
+		storyScreen = new StoryScreen(this);
 		setScreen(storyScreen);
 		activeScreen.update();
 		repaint();
