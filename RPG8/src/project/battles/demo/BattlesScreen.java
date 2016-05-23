@@ -268,6 +268,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		enemy2 = new GEnemy(animation,enemyG, statsG,weapon2,ENEMYMOVE);
 		return animation;
 	}
+	
 	int temp1 =0;
 	int previousRegion = 5;
 	@Override
@@ -308,7 +309,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 			g2.drawString("After 100 seconds or if the character dies, this shows up (if the character still doesn't die and "
 					+ "we will exit back to the overworld", 100, 600);
 		}
-		g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
+		g2.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 		g2.drawString("Battles Team's Demo", 100, 100);
 		g2.drawString("Press WASD to move", 100, 150);
 		//g2.drawString("Press 8,9,0 to change scenrios", 100, 200);

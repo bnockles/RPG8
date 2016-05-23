@@ -1,6 +1,7 @@
 package project.battles;
 
 import java.awt.geom.Arc2D;
+import project.storyV2.demo.StoryDemo;
 import java.awt.image.BufferedImage;
 import java.util.Collection;
 
@@ -109,16 +110,7 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 	protected void goToPlayer(){
 		int pX = BattlesScreen.character.getX();
 		int pY = BattlesScreen.character.getY();
-		if(Math.abs(pX-x) <= 200 && Math.abs(pY-y) <= 200){
-			Arc2D.Double temp = checkForPlayer(this);
-			if(temp.intersects(BattlesScreen.character.getBounds())){
-				setTargetLock(true);
-			}
-			else{
-				setTargetLock(false);
-			}
-		}
-		else{
+		if (distance(pX,pY,x,y) > 100){
 			if(pX-x<0)
 				moveLeft();
 			else
