@@ -9,28 +9,93 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-
 import javax.imageio.ImageIO;
 
+import project.ChoiceMenuDemo.ChatLog;
 import project.ChoiceMenuDemo.MenuTheme;
 import project.directors.Game;
 import project.directors.Screen;
 import project.menus.Tooltip;
 import project.menus.TooltipOptions;
 
+
 public class DialogueDemo extends Screen implements KeyListener {
-	Tooltip t = TooltipOptions.makeBoxStatic("Icefrog", "How do you feel about me ruining dota?");
+	
+	String[][] branchNone = {{"Icefrog", "How do you feel about me ruining dota?"}, 
+							{"Everyone", "Bad."}, 
+							{"Icefrog", "Now that's what I like to hear!"},
+							{"Everyone", "I hate you with a passion."},
+							{"Icefrog", "Not like you can do anything about it."}};
+	//Quit Playing game Option 1
+	String[][] branch1 = {{"Everyone", "We'll just all stop playing."},
+						{"Icefrog", "Oh god I forgot its just a game!"},
+						{"Everyone", "In the end we all lose."}};
+	//Stay with the rage Option 2
+	String[][] branch2 = {{"Everyone", "There's nothing we can do"},
+						{"Icefrog", "Good onya."},
+						{"Everyone", "In the end we all lose."}};
+	
+	int name = 0;
+	boolean notAChoice = true;
+	boolean nChosen = true;
+	int x;
+	int y;
+	int c = 0;
+	Tooltip t = TooltipOptions.makeBoxStatic(branchNone[name][0], branchNone[name][1]);
+	//Game itself
 	public DialogueDemo(Game game) {
 		super(game);
 	}
 
-	@Override
+	
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		if(e.getKeyCode() == KeyEvent.VK_SPACE){
-			TooltipOptions.editBoxStatic(t, "Icefrog", "LMAO");
+		if (e.getKeyCode() == KeyEvent.VK_SPACE){
+			if (notAChoice && nChosen){
+				name++;
+				if (name == 5) {
+					notAChoice = !notAChoice;
+				}
+				else TooltipOptions.editBoxStatic(t, branchNone[name][0], branchNone[name][1]);
+			}
+			else if (c == 0){
+				notAChoice = true;
+				nChosen = false;
+				if (name > branch1.length) name = 0;
+				TooltipOptions.editBoxStatic(t, branch1[name][0], branch1[name][1]);
+				name++;
+			}
+			else if (c == 1){
+				notAChoice = true;
+				nChosen = false;
+				if (name > branch2.length) name = 0;
+				TooltipOptions.editBoxStatic(t, branch2[name][0], branch2[name][1]);
+				name++;
+			}
 			update();
+		}
+		if (e.getKeyCode() == KeyEvent.VK_UP){
+			if (!notAChoice){
+				c--;
+				if (c < 0) c = 1;
+			}
+			update();
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN){
+			if (!notAChoice){
+				c++;
+				c = c % 2;
+			}
+			update();
+		}
+		if(c == 0) {
+			x = 653;
+			y = 447;
+		}
+		else {
+			x = 653;
+			y = 527;
 		}
 	}
 
@@ -39,13 +104,11 @@ public class DialogueDemo extends Screen implements KeyListener {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public KeyListener getKeyListener() {
 		// TODO Auto-generated method stub
@@ -67,11 +130,14 @@ public class DialogueDemo extends Screen implements KeyListener {
 		
 		//Text To Appear
 		g2.setColor(Color.BLACK);
-		g2.drawString("THIS IS A BAD TEST", 100, 100);
-		
-		//g2.drawString("THIS IS A GOOD TEST", 200, 100);
-		
 		TooltipOptions.drawBoxStatic(t, g2);
+		
+		//name = 5
+		if (name == 5){
+			ChatLog.choiceMenu("QUIT PLAYING", "KEEP PLAYING", g2);
+			g2.setColor(Color.WHITE);
+			g2.drawRect(x, y, 195, 30);
+		}
 	}
 	
 	public void delayTime(){
