@@ -73,7 +73,7 @@ public class cheatCode implements KeyListener, CheatCodeDeterminer {
 				battles.cheatSpeed();
 				input = "";
 			}
-			if(input.contains("XCHEATAMMOX")){
+			if(input.contains("CHEATAMMO")){
 				battles.cheatAmmo();
 				input = "";
 			}
