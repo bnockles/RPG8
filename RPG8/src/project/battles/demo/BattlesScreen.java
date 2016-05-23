@@ -84,7 +84,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	 *	
 	 */
 
-	public static final int P_SPEED = 8;
+	public static int P_SPEED = 8;
 	public static final int P_X = 300;
 	public static final int P_Y = 300;
 	public static final int P_HP = 100;
@@ -540,6 +540,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		 */
 		int keyCode = e.getKeyCode();
 		controller.removeKeys(keyCode);
+		cheater.determineValidCheatCode(e, this);
 		if(pressedKeys.isEmpty())
 			character.setWalking(false);//YOGTSERIGBSDFIOB
 
@@ -792,7 +793,8 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	@Override
 	public void cheatSpeed() {
 		// TODO Auto-generated method stub
-		character.setSpeed(16);
+		P_SPEED = 32;
+		character.setSpeed(32);
 	}
 	@Override
 	public void cheatAmmo() {
