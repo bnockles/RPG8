@@ -156,9 +156,8 @@ public class DialogueDemo extends Screen implements KeyListener {
 		}
 		
 		//THIS IS THE LOG BOYS
-		if (log) {
+		if (log && notAChoice) {
 			memory = ChatLog.chatLogged(memory, g2);
-			System.out.println(Arrays.deepToString(memory));
 		}
 	}
 	

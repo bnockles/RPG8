@@ -19,21 +19,35 @@ public class ChatLog{
 	public static String[][] chatLogged(String[][] arr, Graphics2D g2) {
 		int row = 0;
 		for (int r = 0; r < DialogueDemo.getName(); r++) {
-			row++;
 			for (int c = 0; c < DialogueDemo.getBranchNone()[0].length; c++) {
 				arr[r][c] = DialogueDemo.getBranchNone()[r][c];
 			}
+			row++;
 		}
 		if (DialogueDemo.isnChosen() == false){
 			for (int r = 0; r < DialogueDemo.getName(); r++) {
+				row++;
 				for (int c = 0; c < DialogueDemo.getBranchNone()[0].length; c++) {
 					if (DialogueDemo.getC() == 0)
-						arr[row][c] = DialogueDemo.getBranch1()[r][c];
+						arr[row - 1][c] = DialogueDemo.getBranch1()[r][c];
 					else
-						arr[row][c] = DialogueDemo.getBranch2()[r][c];
+						arr[row - 1][c] = DialogueDemo.getBranch2()[r][c];
 				}
+				
 			}
-		}			
+		}
+		//MAKE BR BLACK
+		g2.setColor(Color.BLACK);
+		g2.fillRect(0, 0, 1000, 800);
+		//MAKE THE TEXT APPEAR
+		g2.setColor(Color.white);
+		int x = 100;
+		int y = 100;
+		for (int i = 0; i < row; i++) {
+			g2.drawString(arr[i][0] + ":", x, y);
+			g2.drawString(arr[i][1], x + 150, y);
+			y += 30;
+		}
 		return arr;
 	}
 
