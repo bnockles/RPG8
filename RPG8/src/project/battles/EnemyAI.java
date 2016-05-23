@@ -35,13 +35,12 @@ public abstract class EnemyAI extends Character{
 	protected abstract void run();
 	protected abstract void goToPlayer();
 	protected abstract void dodge();
-	protected abstract void scale();
+	public abstract void scale();
 	protected int waitInterval;
 	
 	protected EnemyAI(BufferedImage[][] images, int[] stats, int[] stats2, Weapon weapon, int type) {
 		//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 		super(images, stats, false, weapon);
-		scale();
 		this.visionrange = stats2[0];
 		this.visiondegree = stats2[1];
 		this.awareRange = stats2[2];

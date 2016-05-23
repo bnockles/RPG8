@@ -18,13 +18,13 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 	public KEnemy(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon,int type){
 		super(images,stats,vision,weapon,type);
 		this.weapon = weapon;
-		this.stats = stats;
+		this.stats = BattlesScreen.enemyK;
 		this.enemyClass = BattlesScreen.KENEMY;
 	}
-	
+
 	public KEnemy(BufferedImage[][] images, int[] stats,int[] vision, Weapon weapon, int type, boolean[] conditions){
 		super(images,stats,vision,weapon,type);
-		this.stats = stats;
+		this.stats = BattlesScreen.enemyK;
 		this.targetLock = conditions[0];
 		this.left = conditions[1];
 		this.up = conditions[2];
@@ -48,16 +48,11 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		fire(x,y,-vx,-vy);
 		goToPlayer();
 	}
-	
-	public void scale(){
 
-			try{
-				for (int i = 2; i < stats.length; i++){
-					stats[i] *= StoryDemo.storyScreen.getMissionLevel();
-				}
-			}catch(NullPointerException e){
-				
-			}	
+	public void scale(){
+		for (int i = 2; i < stats.length; i++){
+			stats[i] *= StoryDemo.storyScreen.getMissionLevel();
+		}
 	}
 
 	protected Collision nearestBullet(){

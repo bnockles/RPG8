@@ -177,8 +177,8 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	ActionDeterminer controller = new Contoltles();
 	CheatCodeDeterminer cheater = new cheatCode();
 	//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
-	public int[] enemyG = {GE_X,GE_Y,GE_HP,GE_ARMOR,GE_SNEAK,GE_SPEED,GE_RECOVERY,GE_EXP,GE_STRENGTH,GE_LEVEL};
-	public int[] enemyK = {KE_X,KE_Y,KE_HP,KE_ARMOR,KE_SNEAK,KE_SPEED,KE_RECOVERY,KE_EXP,KE_STRENGTH,KE_LEVEL};
+	public static int[] enemyG = {GE_X,GE_Y,GE_HP,GE_ARMOR,GE_SNEAK,GE_SPEED,GE_RECOVERY,GE_EXP,GE_STRENGTH,GE_LEVEL};
+	public static int[] enemyK = {KE_X,KE_Y,KE_HP,KE_ARMOR,KE_SNEAK,KE_SPEED,KE_RECOVERY,KE_EXP,KE_STRENGTH,KE_LEVEL};
 	public int[] statsG = {GE_VISION, GE_DEGREE, GE_AWARE,GE_BPERSEC};
 	public int[] statsK = {KE_VISION, KE_DEGREE, KE_AWARE,KE_BPERSEC};
 	public int[] statsP = {P_VISION, P_DEGREE, P_AWARE,P_BPERSEC};
@@ -268,6 +268,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		enemy2 = new GEnemy(animation,enemyG, statsG,weapon2,ENEMYMOVE);
 		return animation;
 	}
+	int temp1 =0;
 	int previousRegion = 5;
 	@Override
 	public void paintScreen(Graphics2D g2) {
@@ -292,7 +293,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		}	
 		g2.setColor(Color.black);
 		if(isDead()){ //YIFAN TESTING
-			g2.drawString("After 100 seconds, this shows up (if the character still doesn't die and "
+			g2.drawString("After 100 seconds or if the character dies, this shows up (if the character still doesn't die and "
 					+ "we will exit back to the overworld", 100, 600);
 		}
 		g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
@@ -326,12 +327,16 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		try{
 			for (EnemyAI a : enemiesOnScreen){
 				a.GeneralEnemyAI();
+				if (temp1 == previousRegion){
+					a.scale();
+					temp1 = previousRegion;
+				}
 				g2.drawImage(a.getImage(),a.getX(),a.getY(),null);
 				g2.setColor(Color.BLACK);
 				if(a.getEnemyClass() == BattlesScreen.KENEMY)
-					g2.drawString("enemyK", a.getX(), a.getY()+100);
+					g2.drawString("enemyK  " + a.getCurrentHP(), a.getX(), a.getY()+100);
 				else
-					g2.drawString("enemyG", a.getX(), a.getY()+100);
+					g2.drawString("enemyG  " + a.getCurrentHP(), a.getX(), a.getY()+100);
 				g2.draw(getNColorVisionCone(a,g2));
 			}
 		}
