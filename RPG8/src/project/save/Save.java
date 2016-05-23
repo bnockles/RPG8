@@ -24,6 +24,11 @@ public class Save {
 	private static int currentSave = 0;
 	private static boolean newFile = false;
 	
+	static {
+		name = "Save" + currentSave;
+		t = doLoad();
+	}
+	
 	public static void chooseSave(int option) {
 		if (option >= 0 && option < 4)
 			currentSave = option;
