@@ -60,6 +60,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 	ArrayList<Integer>itemN = new ArrayList<Integer>();
 	Timer timer = new Timer();
 	int status = TOWN;
+	boolean TownOpened = false;
 
 	//Fei code
 	BufferedImage[][] backgroundGrid;
@@ -173,13 +174,13 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 
 	    	            @Override
 	    	            public void run() {
-	    	               status = statusx;
-	    	               status2 =statusxx;
+	    	            
 	    	               update();	
 	    	            }
 	    	        }, delaytime);
 		
-		
+	    	   status = statusx;
+               status2 =statusxx;
 		//hids
 	}
 	
@@ -535,7 +536,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 					status = WEAPON_STOREx;
 					
 				}
-				if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(50 - playable.getY()) <= 100){
+				if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(50 - playable.getY()) <= 100 && TownOpened != false){
 					status = ARMOR_STOREx;
 					
 					
@@ -590,7 +591,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 
 	@Override
 	public void changeTownStatus() {
-		TownOpened = !TownOpened;
+		TownOpened = true;
 		
 	}
 	
