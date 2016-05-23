@@ -292,12 +292,13 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		}	
 		g2.setColor(Color.black);
 		if(isDead()){ //YIFAN TESTING
-			g2.drawString("After 5 seconds, this shows up (Because character will die and "
+			g2.drawString("After 100 seconds, this shows up (if the character still doesn't die and "
 					+ "we will exit back to the overworld", 100, 600);
 		}
 		g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
 					g2.drawString("Battles Team's Demo", 100, 100);
 					g2.drawString("Press WASD to move", 100, 150);
+					g2.drawString("Press 8,9,0 to change scenrios", 100, 200);
 		//			g2.drawString("Press 8 9 0 to switch battle scenarios", 100, 200);
 		//			g2.drawString("Press Q W E R T to switch enemy movements", 100, 250);
 		//			g2.drawString("Press A/S to -/+ the enemy's fire rate", 100, 300);
@@ -709,10 +710,14 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		}
 	};
 
-	Timer temp = new Timer(10000,taskPerformer);
+	Timer temp = new Timer(100000,taskPerformer);
 	@Override
 	public boolean isDead(){ //Yifan He 
 		// for testing
+		if(character.getCurrentHP()==0){
+			return true;
+		}
+		//CHARACTER DIES OR AFTER 100 SECONDS
 		temp.setRepeats(false);
 		temp.start();
 		return test;
