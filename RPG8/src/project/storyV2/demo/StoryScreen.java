@@ -1,4 +1,4 @@
-package project.storyV2.demo;
+ package project.storyV2.demo;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -11,6 +11,7 @@ import project.directors.Game;
 import project.directors.Screen;
 import project.storyV2.Cutscenes;
 import project.storyV2.IntroCut;
+import project.storyV2.NPC;
 import project.tooltipdemo.DialogueDemo;
 
 public class StoryScreen extends Screen implements KeyListener,project.battles.EnemyDifficulty {
@@ -18,6 +19,7 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 	private static final String STEALTH = "0";
 	private static final String ATTACK = "1";
 	public static Hero mc;
+	public static NPC npc;
 	public ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 	public Cutscenes cutscene;
 	private String[][] params = {{"Mission 1: Recover the datapad", "Kill all enemies", "1", ATTACK},
@@ -35,6 +37,7 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 		super(game);
 		mc = new Hero("Aya Drevis", 105, 105);
 		mc.animate(mc.AyaStanding.get(0));
+		npc = new NPC(300,300,"/image1.jpg");
 		Font temp = new Font("Onyx", Font.ITALIC, 32);
 		Font temp2 = new Font("Cochin", Font.BOLD, 48);
 		Font temp3 = new Font("Cracked", Font.PLAIN, 18);
@@ -64,6 +67,7 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 			g2.drawImage(cuts.get(i).getBufferedImage(), 0, 0, null);
 		}
 		g2.drawImage(mc.getImage(), mc.getX(), mc.getY(), null);
+		g2.drawImage(npc.getImage(), npc.getX(), npc.getY(), null);
 	}
 
 	public void setHeight(){
