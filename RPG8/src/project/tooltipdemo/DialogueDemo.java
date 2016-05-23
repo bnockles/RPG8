@@ -40,6 +40,8 @@ public class DialogueDemo extends Screen implements KeyListener {
 	int name = 0;
 	boolean notAChoice = true;
 	boolean nChosen = true;
+	boolean log = false;
+	String[][] memory = new String[branchNone.length+branch1.length][branchNone[0].length+branch1[0].length];
 	int x;
 	int y;
 	int c = 0;
@@ -105,6 +107,9 @@ public class DialogueDemo extends Screen implements KeyListener {
 			x = 653;
 			y = 527;
 		}
+		if (e.getKeyCode() == KeyEvent.VK_C){
+			log = !log;
+		}
 	}
 
 	@Override
@@ -145,6 +150,11 @@ public class DialogueDemo extends Screen implements KeyListener {
 			ChatLog.choiceMenu("QUIT PLAYING", "KEEP PLAYING", g2);
 			g2.setColor(Color.WHITE);
 			g2.drawRect(x, y, 195, 30);
+		}
+		
+		//THIS IS THE LOG BOYS
+		if (log) {
+			memory = ChatLog.chatLogged(memory, g2);
 		}
 	}
 	

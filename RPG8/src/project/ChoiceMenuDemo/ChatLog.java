@@ -9,26 +9,15 @@ import project.directors.Game;
 import project.directors.Screen;
 import project.storyV2.Choices;
 
-public class ChatLog extends Screen {
+public class ChatLog{
 
 	/**
-	 * @param args
+	 * author Maxwell Sulavko
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-	public ChatLog(Game game) {
-		super(game);
-	}	
 	
-	public void paintScreen(Graphics2D g2) {
-		g2.setColor(MenuTheme.greenBR);
-		g2.fillRect(0, 0, width, height);
+	public static String[][] chatLogged(String[][] arr, Graphics2D g2) {
 		
-		//Text To Appear
-		g2.setColor(Color.BLACK);
-		g2.drawString("THIS IS A TEST", 100, 100);
+		return arr;
 	}
 
 	public static void choiceMenu(String string, String string2, Graphics2D g2) {
@@ -39,9 +28,5 @@ public class ChatLog extends Screen {
 		g2.drawString(string, 660, 470);
 		g2.drawString(string2, 660, 550);
 	}
-	@Override
-	public KeyListener getKeyListener() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }
