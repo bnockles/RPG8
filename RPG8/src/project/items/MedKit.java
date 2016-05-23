@@ -56,6 +56,7 @@ public class MedKit extends Item implements UsableItem{
 		charHealth+=this.healthGained;
 	}**/
 	public void giveHealth(HaveStats b){
+		if(b.getCurrentHP()==0)return;
 		int health= b.getCurrentHP()+this.healthGained;
 		b.setCurrentHP(health);
 		regen(b);
