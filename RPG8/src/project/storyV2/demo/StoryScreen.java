@@ -11,6 +11,7 @@ import project.directors.Game;
 import project.directors.Screen;
 import project.storyV2.Cutscenes;
 import project.storyV2.IntroCut;
+import project.tooltipdemo.DialogueDemo;
 
 public class StoryScreen extends Screen implements KeyListener,project.battles.EnemyDifficulty {
 	private static final int MOVE_UNIT = 5;
