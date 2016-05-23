@@ -60,6 +60,10 @@ public class DialogueDemo extends Screen implements KeyListener {
 				else TooltipOptions.editBoxStatic(t, branchNone[name][0], branchNone[name][1]);
 			}
 			else if (c == 0){
+				if (name == 3){
+					delayTime();
+					System.exit(0);
+				}
 				notAChoice = true;
 				nChosen = false;
 				if (name > branch1.length) name = 0;
@@ -67,11 +71,15 @@ public class DialogueDemo extends Screen implements KeyListener {
 				name++;
 			}
 			else if (c == 1){
+				if (name == 3){
+					delayTime();
+					System.exit(0);
+				}
 				notAChoice = true;
 				nChosen = false;
 				if (name > branch2.length) name = 0;
 				TooltipOptions.editBoxStatic(t, branch2[name][0], branch2[name][1]);
-				name++;
+				name++;	 
 			}
 			update();
 		}
@@ -142,7 +150,7 @@ public class DialogueDemo extends Screen implements KeyListener {
 	
 	public void delayTime(){
 		try {
-		    TimeUnit.SECONDS.sleep(5);
+		    TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
 		    //Handle exception
 		}
