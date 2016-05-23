@@ -282,6 +282,18 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 			int numb = temp.getBackgroundNumber();
 			g2.setColor(temp.getRegionColor(numb));
 			g2.fillRect(0, 0, width, height);
+			if(keycodedemo == KeyEvent.VK_8){
+				g2.setColor(Color.LIGHT_GRAY);
+				g2.fillRect(0, 0, width, height);
+			}
+			if(keycodedemo == KeyEvent.VK_9){
+				g2.setColor(Color.DARK_GRAY );
+				g2.fillRect(0, 0, width, height);
+			}
+			if(keycodedemo == KeyEvent.VK_0){
+				g2.setColor(Color.GRAY);
+				g2.fillRect(0, 0, width, height);
+			}
 			String enemyType = temp.getEnemyType(numb);
 			if(previousRegion!=0 && enemyType.equals("enemy1")){
 				addEnemies(enemy1,enemy1);
@@ -292,13 +304,13 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		}	
 		g2.setColor(Color.black);
 		if(isDead()){ //YIFAN TESTING
-			g2.drawString("After 100 seconds, this shows up (if the character still doesn't die and "
+			g2.drawString("After 100 seconds or if the character dies, this shows up (if the character still doesn't die and "
 					+ "we will exit back to the overworld", 100, 600);
 		}
 		g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
 		g2.drawString("Battles Team's Demo", 100, 100);
 		g2.drawString("Press WASD to move", 100, 150);
-		g2.drawString("Press 8,9,0 to change scenrios", 100, 200);
+		//g2.drawString("Press 8,9,0 to change scenrios", 100, 200);
 		//			g2.drawString("Press 8 9 0 to switch battle scenarios", 100, 200);
 		//			g2.drawString("Press Q W E R T to switch enemy movements", 100, 250);
 		//			g2.drawString("Press A/S to -/+ the enemy's fire rate", 100, 300);
