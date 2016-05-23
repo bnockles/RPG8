@@ -48,7 +48,7 @@ import project.overworld.BattleInterface;
 import project.overworld.MapDemoScreen;
 
 public class BattlesScreen extends Screen implements ItemResources,cheatCodeInterface,BattleInterface, BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener,project.storyV2.StoryProgress{
-	
+
 	/**
 	 * ***********CHANGES! MUST READ********************
 	 * RENAMING: 
@@ -98,7 +98,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	public static final int P_VISION = 300;
 	public static final int P_AWARE = 50;
 	public static final int P_BPERSEC = 100;
-	
+
 	public static final int GE_SPEED = 5;
 	public static final int GE_X = 100; //
 	public static final int GE_Y = 100;
@@ -288,7 +288,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 				previousRegion=numb;
 			}
 		}catch(NullPointerException e){
-			
+
 		}	
 		g2.setColor(Color.black);
 		if(isDead()){ //YIFAN TESTING
@@ -296,9 +296,9 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 					+ "we will exit back to the overworld", 100, 600);
 		}
 		g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
-					g2.drawString("Battles Team's Demo", 100, 100);
-					g2.drawString("Press WASD to move", 100, 150);
-					g2.drawString("Press 8,9,0 to change scenrios", 100, 200);
+		g2.drawString("Battles Team's Demo", 100, 100);
+		g2.drawString("Press WASD to move", 100, 150);
+		g2.drawString("Press 8,9,0 to change scenrios", 100, 200);
 		//			g2.drawString("Press 8 9 0 to switch battle scenarios", 100, 200);
 		//			g2.drawString("Press Q W E R T to switch enemy movements", 100, 250);
 		//			g2.drawString("Press A/S to -/+ the enemy's fire rate", 100, 300);
@@ -306,7 +306,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		//			g2.drawString("Press Z/X to -/+ the enemy's moevement", 100, 400);
 		//			g2.drawString("Press 1 to use the rifle and 2 to use the explosives", 100, 450);
 		g2.drawString("Current HP: "+character.getCurrentHP()+"     Max HP: "+character.getMaxHP(),100,500);
-		
+
 		g2.setColor(Color.green);
 		timer.start();
 		for(int i=0;i<medkits.size();i++){
@@ -481,26 +481,30 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		 * Yifan He
 		 */
 		int enemy1Num = (int) (Math.random()*2+1);
-		int randomNumber = (int) (Math.random()*4+2);
-		int randomNumberX;
-		int randomNumberY;
-		for(int i=0; i<enemy1Num+randomNumber; i++)
+		int enemy2Num = (int) (Math.random()*4+2);
+		for(int i=0; i<enemy1Num+enemy2Num; i++)
 		{ // the enemy appears every 4 seconds until the total enemy numbers reach the temp;
 			EnemyAI temp;
 			if (i < enemy1Num) 
 				temp = a;
 			else
 				temp = b;
-			randomNumberX = (int) (Math.random()*width-100);
-			randomNumberY = (int) (Math.random()*height-100);
+			int randomNumberX = (int) (Math.random()*(width-100)+100);
+			int randomNumberY = (int) (Math.random()*(height-100)+100);
+			while (EnemyAI.distance(randomNumberX,randomNumberY,character.getX(),character.getY())<200){
+				randomNumberX = (int) (Math.random()*(width-100)+100);
+				randomNumberY = (int) (Math.random()*(height-100)+100);
+			}
 			int[] randomEnemyStats = {(int) (Math.random()*300+100),
 					(int) (Math.random()*400+200),
 					(int) (Math.random()*30+30),
 					(int) (Math.random()*400+100)};
+			//GE_VISION, GE_DEGREE, GE_AWARE,GE_BPERSEC
 			if (temp.getEnemyClass() == KENEMY)
 				enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,randomEnemyStats,weapon1,ENEMYMOVE));
 			else 
 				enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,randomEnemyStats,weapon1,ENEMYMOVE));
+
 			enemiesOnScreen.get(i).setX(randomNumberX);
 			enemiesOnScreen.get(i).setY(randomNumberY);
 			enemiesOnScreen.get(i).setSpawnedX(randomNumberX);
