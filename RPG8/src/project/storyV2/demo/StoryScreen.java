@@ -11,6 +11,7 @@ import project.directors.Game;
 import project.directors.Screen;
 import project.storyV2.Cutscenes;
 import project.storyV2.IntroCut;
+import project.tooltipdemo.DialogueDemo;
 
 public class StoryScreen extends Screen implements KeyListener,project.battles.EnemyDifficulty {
 	private static final int MOVE_UNIT = 5;
@@ -114,7 +115,8 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 				mc.moveLeft();
 			}
 			else if(keyCode == KeyEvent.VK_S) {
-				//Swarm.shoot();
+				Screen testScreen = new DialogueDemo(game);
+				game.setScreen(testScreen);
 			}
 			else if(keyCode == KeyEvent.VK_R) {
 				//Swarm.radio();
