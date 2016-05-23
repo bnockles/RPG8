@@ -1,6 +1,7 @@
 package project.battles;
 
 import java.awt.event.KeyEvent;
+import java.awt.geom.Arc2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -140,11 +141,15 @@ public class MCharacter extends Character implements CanUseItems{
 	public void setRifle(boolean rifle) {
 		this.rifle = rifle;
 	}
-
+	public void LookForMedKit(ArrayList<UsableItem> medkits){
+		//returns to make medkit visbile
+		//use player's invisible vision to look for medkit everytime
+		//for(int i=0;i<medkits.size();i++)
+	}
 }
 
 		//	@Override
-		//	public ItemState getItems() {
+		//	public ItemState getItems()
 		//		// TODO Auto-generated method stub
 		//		return null;
 		//	}
