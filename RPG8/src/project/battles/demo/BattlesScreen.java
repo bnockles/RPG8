@@ -47,7 +47,8 @@ import project.items.Weapon;
 import project.overworld.BattleInterface;
 import project.overworld.MapDemoScreen;
 
-public class BattlesScreen extends Screen implements ItemResources,cheatCodeInterface,BattleInterface, BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener{
+public class BattlesScreen extends Screen implements ItemResources,cheatCodeInterface,BattleInterface, BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener,project.storyV2.StoryProgress{
+	
 	/**
 	 * ***********CHANGES! MUST READ********************
 	 * RENAMING: 
@@ -792,6 +793,15 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 	public Item[] getItem() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public int getMCLevel() {
+		return character.getLevel();
+	}
+	@Override
+	public boolean levelPass() {
+		// TODO Auto-generated method stub
+		return enemiesOnScreen.isEmpty();
 	}
 
 

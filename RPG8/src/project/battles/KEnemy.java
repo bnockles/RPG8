@@ -7,6 +7,7 @@ import java.util.Collection;
 import project.battles.demo.BattlesScreen;
 import project.items.Weapon;
 //import project.save.ItemState;
+import project.storyV2.demo.StoryDemo;
 
 public class KEnemy extends EnemyAI implements LoggableEnemy{
 
@@ -20,9 +21,10 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		this.stats = stats;
 		this.enemyClass = BattlesScreen.KENEMY;
 	}
-
+	
 	public KEnemy(BufferedImage[][] images, int[] stats,int[] vision, Weapon weapon, int type, boolean[] conditions){
 		super(images,stats,vision,weapon,type);
+		this.stats = stats;
 		this.targetLock = conditions[0];
 		this.left = conditions[1];
 		this.up = conditions[2];
@@ -45,6 +47,17 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		int vy = BattlesScreen.calculateVComponentPlayerToCursor(10, x, y, false);
 		fire(x,y,-vx,-vy);
 		goToPlayer();
+	}
+	
+	public void scale(){
+
+			try{
+				for (int i = 2; i < stats.length; i++){
+					stats[i] *= StoryDemo.storyScreen.getMissionLevel();
+				}
+			}catch(NullPointerException e){
+				
+			}	
 	}
 
 	protected Collision nearestBullet(){

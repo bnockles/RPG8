@@ -1,4 +1,5 @@
 package project.battles;
+import project.storyV2.demo.*;
 
 import java.awt.image.BufferedImage;
 
@@ -22,10 +23,14 @@ public class GEnemy extends EnemyAI implements LoggableEnemy{
 		this.enemyClass = BattlesScreen.GENEMY;
 	}
 	
-	public void scaleG(){
-		for (int i = 2; i < stats.length; i++){
-			stats[i] *= 1;
-		}
+	public void scale(){
+		try{
+			for (int i = 2; i < stats.length; i++){
+				stats[i] *= StoryDemo.storyScreen.getMissionLevel();
+			}
+		}catch(NullPointerException e){
+			
+		}	
 	}
 	public GEnemy(BufferedImage[][] images, int[] stats,int[] vision, Weapon weapon, int type, boolean[] conditions){
 		super(images,stats,vision,weapon,type);
@@ -33,6 +38,7 @@ public class GEnemy extends EnemyAI implements LoggableEnemy{
 		this.left = conditions[1];
 		this.up = conditions[2];
 		this.boss = conditions[3];
+		this.stats = stats;
 	}
 
 	@Override

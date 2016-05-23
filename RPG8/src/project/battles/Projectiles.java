@@ -39,7 +39,7 @@ public class Projectiles extends Collision{
 		if(this.fromHostile){
 			if(getHitBox().intersects(BattlesScreen.character.getBounds())){
 				collided = true;
-				BattlesScreen.character.setCurrentHP(BattlesScreen.character.getCurrentHP()-10);
+				if (BattlesScreen.character.getCurrentHP()>0)BattlesScreen.character.setCurrentHP(BattlesScreen.character.getCurrentHP()-1);
 				BattlesScreen.pBullets.remove(this);
 			}
 		}
