@@ -60,7 +60,9 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 	ArrayList<Integer>itemN = new ArrayList<Integer>();
 	Timer timer = new Timer();
 	int status = TOWN;
-	boolean TownOpened = false;
+	
+	TownPart TownPartInfo;
+	
 
 	//Fei code
 	BufferedImage[][] backgroundGrid;
@@ -537,6 +539,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 					
 				}
 				if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(50 - playable.getY()) <= 100 && townPortalTooArmor.getIsPortal() != false){
+					TownPartInfo.getTownInfo("armor");
 					status = ARMOR_STOREx;
 					
 					
