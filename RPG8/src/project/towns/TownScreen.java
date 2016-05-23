@@ -119,7 +119,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 				
 				portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
 				townPortalTooWeapon = new Building(townPortalToWeapon,250 - 50, game.getHeight() -200,true,"weaponStore");
-				townPortalTooArmor = new Building(townPortalToArmor,450, 50,true,"armorStore");
+				townPortalTooArmor = new Building(townPortalToArmor,450, 50,false,"armorStore");
 				townPortalTooAmmo = new Building(townPortalToAmmo,700, game.getHeight() -180,true,"ammoStore");
 						//Building(BufferedImage image,int y, int x, boolean portal,String nameOfBuiliding){
 				
@@ -536,7 +536,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 					status = WEAPON_STOREx;
 					
 				}
-				if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(50 - playable.getY()) <= 100 && TownOpened != false){
+				if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(50 - playable.getY()) <= 100 && townPortalTooArmor.getIsPortal() != false){
 					status = ARMOR_STOREx;
 					
 					
@@ -591,7 +591,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 
 	@Override
 	public void changeTownStatus() {
-		TownOpened = true;
+		townPortalTooArmor.setPortal(true);
 		
 	}
 	
