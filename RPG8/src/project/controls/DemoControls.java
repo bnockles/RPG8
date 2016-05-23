@@ -277,7 +277,7 @@ public class DemoControls extends project.directors.Screen implements KeyListene
 					input = "";
 					s ="You have cheated your speed";
 				}
-				if(input.contains("CHEATLAMMO")){
+				if(input.contains("CHEATAMMO")){
 					cheatLevel = true;
 					input = "";
 					s ="You have cheated your ammo";
