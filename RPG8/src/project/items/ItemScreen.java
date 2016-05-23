@@ -243,7 +243,7 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 						}
 					}
 					
-					if(you.weapon.getAmmoTotal()>0 ||you.weapon.getGunNum()/10!=1){
+					if((you.weapon.getAmmoTotal()>0 ||you.weapon.getGunNum()/10!=1)&&enemy.getCurrentHP()>0){
 						you.coins+=10;
 						you.scrap+=1;
 						
