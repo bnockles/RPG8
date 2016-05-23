@@ -19,7 +19,7 @@ public class GEnemy extends EnemyAI implements LoggableEnemy{
 	public GEnemy(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon, int type){
 		super(images,stats,vision,weapon,type);
 		this.weapon = weapon;
-		this.stats = stats;
+		this.stats = BattlesScreen.enemyG;
 		this.enemyClass = BattlesScreen.GENEMY;
 	}
 	
@@ -38,7 +38,7 @@ public class GEnemy extends EnemyAI implements LoggableEnemy{
 		this.left = conditions[1];
 		this.up = conditions[2];
 		this.boss = conditions[3];
-		this.stats = stats;
+		this.stats = BattlesScreen.enemyG;
 	}
 
 	@Override
@@ -107,7 +107,6 @@ public class GEnemy extends EnemyAI implements LoggableEnemy{
 		float dist = (float) Math.sqrt(
 				Math.pow(x - spawnedX, 2) +
 				Math.pow(y - spawnedY, 2) );
-		System.out.println(dist);
 		if (dist > 300 && returnToSpawn == false) returnToSpawn = true;
 		if(returnToSpawn){
 			backToSpawn();
