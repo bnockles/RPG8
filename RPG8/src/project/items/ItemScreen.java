@@ -332,6 +332,9 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 			if(e.getKeyCode()==KeyEvent.VK_P){
 				createMenuForItem(game, selected);
 			}
+			if(e.getKeyCode()==KeyEvent.VK_P){
+				createMenuForItem(game);
+			}
 			update();
 			game.repaint();
 		}
@@ -373,8 +376,13 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		// TODO Auto-generated method stub
 		return null;
 	}
+<<<<<<< HEAD
 	public static void createMenuForItem(Game game, int itemNumber){
 		Screen demoScreen = DynamicMenu.createMenu(DynamicMenu.ITEM_DESCRIPTION_MENU, game, itemNumber);
+=======
+	public void createMenuForItem(Game game){
+		Screen demoScreen = DynamicMenu.createMenu(DynamicMenu.ITEM_DESCRIPTION_MENU, game);
+>>>>>>> refs/heads/develop
 		game.setScreen(demoScreen);
 	}
 

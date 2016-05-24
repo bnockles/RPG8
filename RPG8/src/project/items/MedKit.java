@@ -17,11 +17,18 @@ public class MedKit extends Item implements UsableItem{
 	private int healthGained;
 	private int effect;
 	private String itemImage;
+<<<<<<< HEAD
 	private boolean visible = false;
 	int count;
 	int regenDuration=0;
 	Timer regenTimer;
 	public MedKit(String name, String desc,int cost, int healthGained, int effect, String itemImage, boolean buyable,int x, int y) {
+=======
+
+		int duration=0;
+	Timer timer;
+	public MedKit(String name, String desc,int cost, int healthGained, int effect, String itemImage, boolean buyable) {
+>>>>>>> refs/heads/develop
 		super(name, desc, cost, effect, itemImage, buyable);
 		this.healthGained=healthGained;
 		this.effect=effect;

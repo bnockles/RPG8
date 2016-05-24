@@ -13,7 +13,7 @@ public class TooltipDemo extends project.directors.Game{
 	}
 	
 	public void reset() {
-		Screen testScreen = new TestScreen(this);
+		Screen testScreen = new DialogueDemo(this);
 		setScreen(testScreen);
 		repaint();
 	}

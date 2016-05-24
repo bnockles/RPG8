@@ -69,6 +69,10 @@ public class DynamicMenu{
 			names= new String[]{arr.get(selected).getDescription(), arr.get(selected).getName()};
 			pictures=new String[]{"resources"+arr.get(selected).getItemImage()};
 			col=new Color[]{Color.white, Color.black, Color.darkGray};
+<<<<<<< HEAD
+=======
+		}
+>>>>>>> refs/heads/develop
 		
 		return new MainMenuScreen(type,game, names, pictures ,col, backgroundmusic);
 	}

@@ -24,8 +24,8 @@ public class SaveScreen extends Screen implements KeyListener {
 	@Override
 	public void paintScreen(Graphics2D g2) {
 		// Header
-		Font sansSerif = new Font("Helvetica", Font.PLAIN, 60);
-		Font serif = new Font("Times", Font.PLAIN, 46);
+		Font sansSerif = new Font("Helvetica", Font.PLAIN, 42);
+		Font serif = new Font("Times", Font.PLAIN, 42);
 		
 		g2.setColor(new Color(44, 62, 80));
 		g2.fillRect(0, 0, width, height);
@@ -33,9 +33,9 @@ public class SaveScreen extends Screen implements KeyListener {
 		g2.setColor(new Color(149, 165, 166));
 		g2.fillRect(100, 100, 100, 100);
 		
-		g2.setFont(sansSerif);
-		g2.drawString("Save Selection", 220, 200);
 		g2.setFont(serif);
+		g2.drawString("Save Selection", 220, 200);
+		g2.setFont(sansSerif);
 		
 		// Option Boxes
 		for (int i = 0; i < 3; i++) {

@@ -22,19 +22,20 @@ public class Save {
 	protected static Hashtable t;
 	private static String name;
 	private static int currentSave = 0;
-
-	/*
-	public Save(String name) {
-		this.name = name;
-		this.t = doLoad();
+	private static boolean newFile = false;
+	
+	static {
+		name = "Save" + currentSave;
+		t = doLoad();
 	}
-	*/
 	
 	public static void chooseSave(int option) {
 		if (option >= 0 && option < 4)
 			currentSave = option;
 		name = "Save" + currentSave;
 		t = doLoad();
+		TestSave.test(newFile);
+		newFile = false;
 	}
 	
 	public static void saveData() {
@@ -56,7 +57,7 @@ public class Save {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}		
+		}
 	}
 	
 	private static Hashtable doLoad() {
@@ -81,6 +82,7 @@ public class Save {
 		} catch(FileNotFoundException e) {
 			System.out.println("No File.");
 			System.out.println("Creating default save file.");
+			newFile = true;
 			// h = doDefaultSave();
 		} catch (IOException e) {
 			e.printStackTrace();

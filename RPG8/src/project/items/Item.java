@@ -6,11 +6,19 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+<<<<<<< HEAD
 import javax.imageio.ImageIO;
+=======
+import project.menus.Selectable;
+import project.towns.ShopItems;
+>>>>>>> refs/heads/develop
 
+<<<<<<< HEAD
 import project.menus.Selectable;
 import project.towns.ShopItems;
 
+=======
+>>>>>>> refs/heads/develop
 public abstract class Item implements Selectable, ShopItems{
 	private String name;
 	private String description;
@@ -18,11 +26,18 @@ public abstract class Item implements Selectable, ShopItems{
 	private int effect;
 	private String itemImage;
 	private boolean buyable;
+<<<<<<< HEAD
 	protected BufferedImage itemBImage;
 	protected int x;
 	protected int y;
 	protected Rectangle rectitem;
+=======
+>>>>>>> refs/heads/develop
 	
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/heads/develop
 	public Item(String name,String desc,int cost, int effect, String itemImage, boolean buyable){
 		this.name=name;
 		description=desc;
@@ -51,6 +66,7 @@ public abstract class Item implements Selectable, ShopItems{
 //		}
 		//System.out.println("Final Health"+health);
 	}
+<<<<<<< HEAD
 	int[] getDimensions(){
 		int[] array={0,0};
 		try {
@@ -63,6 +79,9 @@ public abstract class Item implements Selectable, ShopItems{
 		}
 		return array;
 	}
+=======
+	
+>>>>>>> refs/heads/develop
 	public double getPrice(){
 		return getCost();
 	}

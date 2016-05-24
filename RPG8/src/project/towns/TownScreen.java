@@ -24,7 +24,11 @@ import project.storyV2.TownPart;
  *
  */
 public class TownScreen extends Screen implements KeyListener,TownPart{
+<<<<<<< HEAD
 	 //Jingwen Code
+=======
+	 //Fei Code
+>>>>>>> refs/heads/develop
 	static BufferedImage backGround;
 	BufferedImage portalToTown;
 	BufferedImage townPortalToArmor;
@@ -144,6 +148,7 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 	
 	
 	
+<<<<<<< HEAD
 	
 	public void delay( Graphics2D g2,String msg,int x , int y , final int statusx , final int statusxx, int delaytime ){
 		
@@ -165,6 +170,34 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 	    	               update();	
 	    	            }
 	    	        }, delaytime);
+=======
+	int sleepTimer = 1000;
+	public void delay( Graphics2D g2,String msg,int x , int y , final int statusx , final int statusxx, int delaytime ){
+		
+		
+		
+		Font myFont = new Font ("Courier New", 1, 27);
+	
+		g2.setFont (myFont);
+	
+		g2.drawString(msg  , x, y);
+		
+	    	final Timer t = new Timer();
+	    	t.schedule(new TimerTask() {
+
+	    	            @Override
+	    	            public void run() {
+	    	             
+	    	            	 update();
+	    	              
+	    	               
+	    	             
+	    	            }
+	    	        }, delaytime);
+	    	  status = statusx;
+              status2 =statusxx;
+              //dsa
+>>>>>>> refs/heads/develop
 		
 		
 		//hids
@@ -257,6 +290,7 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 //			
 				if(status ==ARMOR_STOREx  ){
 					
+<<<<<<< HEAD
 					delay( g2,"Attempting To Enter Armor Store",200 , 500 ,  ARMOR_STORE ,  ARMOR_STORE,350 );
 
 				}
@@ -272,6 +306,23 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 				}
 				if(status ==TOWNx  ){
 					delay( g2,"Attempting To Enter Town",200 , 500 , TOWN , TOWNx ,350 );
+=======
+					delay( g2,"Attempting To Enter Armor Store",200 , 500 ,  ARMOR_STORE ,  ARMOR_STORE,sleepTimer );
+
+				}
+				if(status ==AMMO_STOREx  ){
+					delay( g2,"Attempting To Enter Ammo Store",200 , 500 ,  AMMO_STORE ,  AMMO_STORE,sleepTimer );
+
+					
+				}
+				if(status ==WEAPON_STOREx  ){
+					delay( g2,"Attempting To Enter Weapon Store",200 , 500 , WEAPON_STORE , WEAPON_STORE ,sleepTimer );
+
+					
+				}
+				if(status ==TOWNx  ){
+					delay( g2,"Attempting To Enter Town",200 , 500 , TOWN , TOWNx ,sleepTimer );
+>>>>>>> refs/heads/develop
 
 					
 				}
@@ -517,6 +568,7 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 		}
 		if(key == KeyEvent.VK_T){
 			if(status == TOWN){
+<<<<<<< HEAD
 				if(Math.abs(150 - playable.getX()) <= 100 && Math.abs(game.getHeight() -10 - 100 - playable.getY()) <= 100){
 					status = WEAPON_STOREx;
 					
@@ -530,6 +582,22 @@ public class TownScreen extends Screen implements KeyListener,TownPart{
 					status = AMMO_STOREx;
 					//status2 = AMMO_STORE;
 					System.out.print("cxzcxzczxcxz");
+=======
+				if(Math.abs(150 - playable.getX()) <= 100 && Math.abs(game.getHeight() -10 - 100 - playable.getY()) <= 100 && TownOpened == true){
+					TownsInfo.getTownInfo("weapon");
+					status = WEAPON_STOREx;
+					
+				}
+				if(Math.abs(450 - playable.getX()) <= 100 && Math.abs(50 - playable.getY()) <= 100){
+					status = ARMOR_STOREx;
+					
+					
+				}
+				if(Math.abs(750 - playable.getX()) <= 100 && Math.abs(game.getHeight() -110 - playable.getY()) <= 100){
+					status = AMMO_STOREx;
+					//status2 = AMMO_STORE;
+					
+>>>>>>> refs/heads/develop
 				}
 			}
 			else if(status == WEAPON_STORE){

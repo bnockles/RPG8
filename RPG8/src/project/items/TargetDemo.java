@@ -43,6 +43,11 @@ public class TargetDemo implements Target, project.battles.HaveStats{
 		if(target.health<0){
 			target.health=0;
 		}
+<<<<<<< HEAD
+=======
+		//Qing Ning
+		ammo.applyEffect(ammo.getEffect(), target);
+>>>>>>> refs/heads/develop
 		
 //		if(ammo.getEffect() == 3){
 //			ItemScreen.isStun = true;
