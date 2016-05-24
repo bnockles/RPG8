@@ -1,4 +1,5 @@
 package project.directors;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Arc2D;
 import java.awt.image.BufferedImage;
@@ -8,6 +9,7 @@ import project.battles.Explosives;
 import project.battles.Melee;
 import project.battles.Projectiles;
 import project.battles.demo.BattlesScreen;
+import project.battles.EnemyAI;
 //import project.save.ItemState;
 import project.items.Weapon;
 public abstract class Character implements project.battles.Animation, project.battles.HaveStats{
@@ -143,7 +145,13 @@ public abstract class Character implements project.battles.Animation, project.ba
 		}
 		return true;
 	}
-	
+	public float getAngle(Point target) {
+		float angle = (float) (180-Math.toDegrees(Math.atan2(y-target.y,x-target.x)));
+		if(angle < 0){
+			angle += 360;
+		}
+		return angle;
+	}
 	public void firePistol(boolean hostile, int x, int y, int vx, int vy){//target location
 		/**
 		 * Yifan

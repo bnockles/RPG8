@@ -431,8 +431,8 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		/**
 		 * Chieh
 		 */
-		if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0 || keyCode == KeyEvent.VK_Q  || keyCode == KeyEvent.VK_E || keyCode == KeyEvent.VK_R || keyCode == KeyEvent.VK_T){
-			if(keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0)
+		if(keyCode == KeyEvent.VK_7 || keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0 || keyCode == KeyEvent.VK_Q  || keyCode == KeyEvent.VK_E || keyCode == KeyEvent.VK_R || keyCode == KeyEvent.VK_T){
+			if(keyCode == KeyEvent.VK_7 || keyCode == KeyEvent.VK_8 || keyCode == KeyEvent.VK_9 || keyCode == KeyEvent.VK_0)
 				keycodedemo = keyCode;
 			//PLEASE DON'T DELETE THE THREE LINES ABOVE - YIFAN HE
 			//			
@@ -491,6 +491,8 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		 *  Yifan He
 		 */
 		enemiesOnScreen.clear();//Clear the array list
+		if(keycodedemo == KeyEvent.VK_7)
+			andyDemo(enemy1,enemy2);
 		if(keycodedemo == KeyEvent.VK_8)
 			addEnemies(enemy1,enemy1);
 		if(keycodedemo == KeyEvent.VK_9)
@@ -533,7 +535,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 			enemiesOnScreen.get(i).setSpawnedY(randomNumberY);
 		}
 	}
-
+	
 	@Override
 	public void keyReleased(KeyEvent e) {
 		/**
@@ -836,6 +838,37 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 		// TODO Auto-generated method stub
 		return enemiesOnScreen.isEmpty();
 	}
+	public void andyDemo(EnemyAI a, EnemyAI b){ //add random number of enemies for scenarios
+		/**
+		 * Yifan He
+		 */
+		for(int i=0; i<2; i++)
+		{
+			EnemyAI temp;
+			if (i < 1) 
+				temp = a;
+			else
+				temp = b;
+			int randomNumberX = (int) (Math.random()*(width-100)+100);
+			int randomNumberY = (int) (Math.random()*(height-100)+100);
+			while (EnemyAI.distance(randomNumberX,randomNumberY,character.getX(),character.getY())<200){
+				randomNumberX = (int) (Math.random()*(width-100)+100);
+				randomNumberY = (int) (Math.random()*(height-100)+100);
+			}
+			int[] randomEnemyStats = {(int) (Math.random()*300+100),
+					(int) (Math.random()*400+200),
+					(int) (Math.random()*30+30),
+					(int) (Math.random()*400+100)};
+			if (temp.getEnemyClass() == KENEMY)
+				enemiesOnScreen.add(new KEnemy(Enemy(),enemyK,randomEnemyStats,weapon1,ENEMYMOVE));
+			else 
+				enemiesOnScreen.add(new GEnemy(Enemy(),enemyG,randomEnemyStats,weapon1,ENEMYMOVE));
 
+			enemiesOnScreen.get(i).setX(randomNumberX);
+			enemiesOnScreen.get(i).setY(randomNumberY);
+			enemiesOnScreen.get(i).setSpawnedX(randomNumberX);
+			enemiesOnScreen.get(i).setSpawnedY(randomNumberY);
+		}
+	}
 
 }

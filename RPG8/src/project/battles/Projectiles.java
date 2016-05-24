@@ -2,6 +2,7 @@
 //Collisions done by Pelham Van Cooten 
 package project.battles;
 
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
@@ -14,7 +15,6 @@ public class Projectiles extends Collision{
 	protected int range;
 	protected final int initX;
 	protected final int initY;
-
 	public Projectiles(int x, int y, int damage, double vx, double vy, int range, BufferedImage image, boolean fromHostile){
 		super(x, y, damage,fromHostile);
 		//this.bulletType = bulletType; //this needs more clarity because it has to be created
