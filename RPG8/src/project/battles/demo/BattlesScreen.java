@@ -354,6 +354,7 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 					g2.drawString("enemyK  " + a.getCurrentHP(), a.getX(), a.getY()+100);
 				else
 					g2.drawString("enemyG  " + a.getCurrentHP(), a.getX(), a.getY()+100);
+				g2.drawString("Level: " + BattlesScreen.enemyG[9], a.getX(), a.getY()+70);
 				g2.draw(getNColorVisionCone(a,g2));
 			}
 		}
@@ -869,6 +870,11 @@ public class BattlesScreen extends Screen implements ItemResources,cheatCodeInte
 			enemiesOnScreen.get(i).setSpawnedX(randomNumberX);
 			enemiesOnScreen.get(i).setSpawnedY(randomNumberY);
 		}
+	}
+	@Override
+	public void setFireType(boolean b) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

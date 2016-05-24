@@ -16,7 +16,7 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 	/*
 	 * Author :Andy Zheng
 	 */
-	private int[] stats;
+	public int[] stats;
 	public KEnemy(BufferedImage[][] images, int[] stats, int[] vision, Weapon weapon,int type){
 		super(images,stats,vision,weapon,type);
 		this.weapon = weapon;
