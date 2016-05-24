@@ -68,6 +68,8 @@ public abstract class EnemyAI extends Character{
 		if(type == BattlesScreen.WANDER)
 			wander = true;
 	}
+	
+	
 	public void setDirection(){
 		//		moveUp = false;
 		//		moveDown = false;
@@ -82,6 +84,15 @@ public abstract class EnemyAI extends Character{
 		if (enemyRotation > 225 && enemyRotation < 315) facingDown = true;
 		if ((enemyRotation > 315 && enemyRotation < 360) ||(enemyRotation > 0 && enemyRotation < 45)) facingRight = true;
 	}
+	
+	//Pelham
+//	public void checkDistanceFromMain(){
+//		Point enemy = new Point(x,y); 
+//		if (enemy.distance(MCharacter.getMainCharPoint()) < 50){
+//			//eLog.addEnemy(this); 
+//		}
+//	}
+	
 	public void GeneralEnemyAI(){
 		if(checkAlive()){
 			setDirection();

@@ -23,10 +23,13 @@ public class EnemyLogDemo extends Game implements KeyListener {
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		//KEnemy Pel = new Character(100, 100);
+		//Character Dude = new Character(100,100); 
+		
 		
 		eLog.add(new EnemyLogEntry("Shahid","Boss",5,5,15));
 		eLog.add(new EnemyLogEntry("Mercenary","Killer Enemy",2,7,5));
-		//BattleSave.saveEnemyLogData("100", eLog); *throws null pointer exception
+		BattleSave.saveEnemyLogData("100", eLog); 
 		//Created enemy log and saved before creating new game
 		
 		EnemyLogDemo pelhamDemo = new EnemyLogDemo();
@@ -35,7 +38,7 @@ public class EnemyLogDemo extends Game implements KeyListener {
 	
 	public void reset() {
 		
-		EnemyLog enlog = new EnemyLog(eLog);  // BattleSave.getEnemyLogData("100") loads enemy log from before
+		EnemyLog enlog = new EnemyLog(BattleSave.getEnemyLogData("100"));  //loads enemy log from before
 		EnemyLogScreen pelScreen = new EnemyLogScreen(this, enlog.geteLog().get(EnemyLogScreen.enemySelected));
 		System.out.println(EnemyLogScreen.enemySelected);
 		setScreen(pelScreen);

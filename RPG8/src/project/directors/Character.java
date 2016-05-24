@@ -101,6 +101,12 @@ public abstract class Character implements project.battles.Animation, project.ba
 		
 		this.weapon = weapon;
 	}
+	
+	public Character(int xPos, int yPos){
+		x = xPos;
+		y = yPos;
+	}
+	
 	public Arc2D.Double getVisioncone() {
 		return visioncone;
 	}
