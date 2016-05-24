@@ -14,8 +14,8 @@ public class BattleSave extends Save{
 	}
 	
 	public static void saveEnemyLogData(String id, ArrayList<EnemyLogEntry> eData) {
-		saveData(); 
 		t.put(id, eData);
+		
 		
 	}
 		public static ArrayList<EnemyLogEntry> getEnemyLogData(String id) {

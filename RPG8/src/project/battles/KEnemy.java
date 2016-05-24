@@ -35,6 +35,21 @@ public class KEnemy extends EnemyAI implements LoggableEnemy{
 		this.boss = conditions[3];
 		returnToSpawn = false;
 		}
+	
+	public KEnemy(int xPos, int yPos){
+		super((BufferedImage[][])null, (int[])null, (int[])null, (Weapon)null, 1); 
+		x = xPos;
+		y = yPos; 
+	}	
+	
+	public void findRange(MCharacter m, EnemyLog l){
+		Point ePoint = new Point(x,y); 
+		if (m.getPoint().distance(ePoint) < 50){
+			l.addEnemy(this); 
+		}
+	}
+
+
 
 	@Override
 	protected void reaction() {

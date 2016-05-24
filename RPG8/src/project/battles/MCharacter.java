@@ -1,5 +1,6 @@
 package project.battles;
 
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Arc2D;
 import java.awt.image.BufferedImage;
@@ -16,6 +17,17 @@ import project.items.Weapon;
 public class MCharacter extends Character implements CanUseItems{
 	private int level;
 	private boolean rifle = true;
+	private Point characterLoc = new Point(x,y); 
+	
+	public MCharacter(int xPos, int yPos){
+		super(null,null,false,null);
+		x = xPos;
+		y = yPos;		
+	}	
+	public Point getPoint(){
+		return characterLoc; 
+	}
+
 
 	ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 	//	private String[] setLoadOut;

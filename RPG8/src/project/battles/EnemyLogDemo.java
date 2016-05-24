@@ -17,14 +17,15 @@ public class EnemyLogDemo extends Game implements KeyListener {
 	 */
 	
 	public static ArrayList<EnemyLogEntry> eLog = new ArrayList<EnemyLogEntry>(); //example purposes
+	KEnemy Pel = new KEnemy(100, 100);
+	MCharacter Dude = new MCharacter(100,100); 
 	
 	public EnemyLogDemo(){
 		super(); 
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//KEnemy Pel = new KEnemy(100, 100);
-		//MCharacter Dude = new MCharacter(100,100); 
+		
 		
 		
 		eLog.add(new EnemyLogEntry("Shahid","Boss",5,5,15));
@@ -39,7 +40,7 @@ public class EnemyLogDemo extends Game implements KeyListener {
 	public void reset() {
 		
 		EnemyLog enlog = new EnemyLog(BattleSave.getEnemyLogData("100"));  //loads enemy log from before
-		//Pel.findRange(Dude, enLog)
+		Pel.findRange(Dude, enlog);
 		EnemyLogScreen pelScreen = new EnemyLogScreen(this, enlog.geteLog().get(EnemyLogScreen.enemySelected));
 		System.out.println(EnemyLogScreen.enemySelected);
 		setScreen(pelScreen);
