@@ -9,4 +9,5 @@ public interface BattlesActions {
 	public void moveCharacterUp();
 	public void moveCharacterDown();
 	public void reloadWeapon();
+	public void setFireType(boolean b);
 }

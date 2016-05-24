@@ -43,6 +43,7 @@ public abstract class EnemyAI extends Character{
 	protected int enemyRotation;
 	protected boolean returnToSpawn;
 	protected int waitInterval;
+	public String[] stats;
 
 	protected EnemyAI(BufferedImage[][] images, int[] stats, int[] stats2, Weapon weapon, int type) {
 		//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
