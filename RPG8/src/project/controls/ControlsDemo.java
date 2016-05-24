@@ -18,7 +18,7 @@ public class ControlsDemo extends project.directors.Game{
 	}
 
 	public void reset() {
-		Screen demoScreen = new DemoControls(this);
+		Screen demoScreen = new DemoControls2pointooooooo(this);
 		setScreen(demoScreen);
 		addMouseListener((MouseListener) demoScreen);
 		repaint();

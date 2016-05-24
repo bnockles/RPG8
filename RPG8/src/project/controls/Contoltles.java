@@ -1,17 +1,13 @@
 package project.controls;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import project.battles.BattlesActions;
 import project.battles.MCharacter;
 
 public class Contoltles implements ActionDeterminer{
 	ArrayList<Integer> moving = new ArrayList<Integer>();
-	@Override
-	public void determineMouseAction(int n, BattlesActions thing) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void determineKeyAction(int n) {
@@ -26,14 +22,6 @@ public class Contoltles implements ActionDeterminer{
 		if(moving.contains(n))moving.remove(n);
 	}
 
-	@Override
-	public void determineMovement(BattlesActions thing) {
-		if(moving.contains(KeyEvent.VK_W)) thing.moveCharacterUp();
-		if(moving.contains(KeyEvent.VK_A)) thing.moveCharacterLeft();
-		if(moving.contains(KeyEvent.VK_S)) thing.moveCharacterDown();
-		if(moving.contains(KeyEvent.VK_D)) thing.moveCharacterRight();
-		
-	}
 
 	@Override
 	public void checkEmpty(MCharacter c) {
@@ -41,5 +29,28 @@ public class Contoltles implements ActionDeterminer{
 		if(moving.isEmpty()){
 			c.setWalking(false);
 		}
+	}
+	
+	@Override
+	public void determineMovement(BattlesActions thing) {
+		if(moving.contains(KeyEvent.VK_W)) thing.moveCharacterUp();
+		if(moving.contains(KeyEvent.VK_A)) thing.moveCharacterLeft();
+		if(moving.contains(KeyEvent.VK_S)) thing.moveCharacterDown();
+		if(moving.contains(KeyEvent.VK_D)) thing.moveCharacterRight();	
+		if(moving.contains(KeyEvent.VK_1)) thing.setFireType(true);
+		if(moving.contains(KeyEvent.VK_2)) thing.setFireType(false);
+		if(moving.contains(KeyEvent.VK_R)) thing.reloadWeapon(); 
+	}
+	
+	//if left mouse click isn't the only mousebutton used
+	@Override
+	public void determineMouseAction(MouseEvent e, BattlesActions thing) {
+		// TODO Auto-generated method stub
+		if(e.getButton()==MouseEvent.BUTTON1)thing.fireWeapon(e);
+	}
+	@Override
+	public ArrayList<Integer> getList() {
+		// TODO Auto-generated method stub
+		return moving;
 	}
 }
