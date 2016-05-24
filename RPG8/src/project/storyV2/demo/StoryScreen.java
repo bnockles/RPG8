@@ -14,7 +14,8 @@ import project.storyV2.IntroCut;
 import project.storyV2.NPC;
 import project.tooltipdemo.DialogueDemo;
 
-public class StoryScreen extends Screen implements KeyListener,project.battles.EnemyDifficulty {
+public class StoryScreen extends Screen implements KeyListener,project.battles.EnemyDifficulty,project.towns.TownInfo {
+	public String townCheck = null;
 	private static final int MOVE_UNIT = 5;
 	private static final String STEALTH = "0";
 	private static final String ATTACK = "1";
@@ -119,8 +120,11 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 				mc.moveLeft();
 			}
 			else if(keyCode == KeyEvent.VK_S) {
-				Screen testScreen = new DialogueDemo(game);
-				game.setScreen(testScreen);
+				if(Math.abs(mc.getX()-npc.getX()) + Math.abs(mc.getY()-npc.getY()) < 20) {
+					
+					Screen testScreen = new DialogueDemo(game);
+					game.setScreen(testScreen);
+				}
 			}
 			else if(keyCode == KeyEvent.VK_R) {
 				//Swarm.radio();
@@ -190,5 +194,10 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 	
 	public String getMission(){
 		return params[current][1];
+	}
+	public void getTownInfo(String str) {
+		if(str.equals("weapon"))townCheck = "weaponStore";
+		if(str.equals("ammo"))townCheck = "ammoStore";
+		if(str.equals("armor"))townCheck = "armorStore";
 	}
 }
