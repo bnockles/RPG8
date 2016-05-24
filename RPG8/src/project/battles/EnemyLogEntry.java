@@ -36,8 +36,32 @@ public class EnemyLogEntry {
 	public void setEnemyType(String enemyType) {
 		this.enemyType = enemyType;
 	}
+
+	public int getEnemyLevel() {
+		return enemyLevel;
+	}
+
+	public void setEnemyLevel(int enemyLevel) {
+		this.enemyLevel = enemyLevel;
+	}
+
+	public int getTimesKilled() {
+		return timesKilled;
+	}
+
+	public void setTimesKilled(int timesKilled) {
+		this.timesKilled = timesKilled;
+	}
+
+	public int getEnemyKills() {
+		return enemyKills;
+	}
+
+	public void setEnemyKills(int enemyKills) {
+		this.enemyKills = enemyKills;
+	}
 	
-	
+
 	
 	
 	

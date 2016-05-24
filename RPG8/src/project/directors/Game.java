@@ -17,8 +17,8 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import project.overworld.DemoOverworld;
-import project.save.ItemState;
-import project.save.SaveFile;
+import project.oldsave.ItemState;
+import project.oldsave.SaveFile;
 
 
 

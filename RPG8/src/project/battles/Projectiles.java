@@ -2,6 +2,8 @@
 //Collisions done by Pelham Van Cooten 
 package project.battles;
 
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import project.battles.demo.BattlesScreen;
@@ -13,7 +15,6 @@ public class Projectiles extends Collision{
 	protected int range;
 	protected final int initX;
 	protected final int initY;
-
 	public Projectiles(int x, int y, int damage, double vx, double vy, int range, BufferedImage image, boolean fromHostile){
 		super(x, y, damage,fromHostile);
 		//this.bulletType = bulletType; //this needs more clarity because it has to be created
@@ -29,17 +30,25 @@ public class Projectiles extends Collision{
 		return image;
 	}
 	
+	public Rectangle getBounds(){
+		return new Rectangle(x, y, 20, 20);
+	}
+	
 	//Pelham
 	public void checkCollision(){
 		if(this.fromHostile){
 			if(getHitBox().intersects(BattlesScreen.character.getBounds())){
 				collided = true;
+				if (BattlesScreen.character.getCurrentHP()>0)BattlesScreen.character.setCurrentHP(BattlesScreen.character.getCurrentHP()-1);
+				BattlesScreen.pBullets.remove(this);
 			}
 		}
 		else{
 			for(EnemyAI enemy: BattlesScreen.enemiesOnScreen){
 				if(getHitBox().intersects(enemy.getBounds())){
-					collided = true; 
+					collided = true;
+					enemy.setCurrentHP(enemy.getCurrentHP()-10);
+					BattlesScreen.eBullets.remove(this);
 				}
 			}
 		}

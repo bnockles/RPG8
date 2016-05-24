@@ -13,6 +13,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import project.storyV2.Center;
+
 public class Tooltip extends VerticalMenu{
 	
 	private int width = 200;
@@ -24,7 +26,18 @@ public class Tooltip extends VerticalMenu{
 	private String title;
 	private File file;
 	private String description;
+	private int buyPrice;
+	private int sellPrice;
+	private Color color;
 	
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
 	public Tooltip(int width, int height, int x, int y, String title, File file, String description, int imgX, int imgY) {
 		super(width, height);
 		this.width = width;
@@ -36,6 +49,34 @@ public class Tooltip extends VerticalMenu{
 		this.file = file;
 		this.imgX = imgX;
 		this.imgY = imgY;
+		this.color = Color.yellow;
+	}
+	
+	public Tooltip(int width, int height, int x, int y, String title, File file, String description, int imgX, int imgY, int buyPrice, int sellPrice) {
+		super(width, height);
+		this.width = width;
+		this.height = height;
+		this.description = description;
+		this.x = x;
+		this.y = y;
+		this.title = title;
+		this.file = file;
+		this.imgX = imgX;
+		this.imgY = imgY;
+		this.buyPrice = buyPrice;
+		this.sellPrice = sellPrice;
+		this.color = Color.yellow;
+	}
+	
+	public Tooltip(int width, int height, int x, int y, String title, String description) {
+		super(width, height);
+		this.width = width;
+		this.height = height;
+		this.description = description;
+		this.x = x;
+		this.y = y;
+		this.title = title;
+		this.color = Color.yellow;
 	}
 	
 	public String getTitle() {
@@ -77,14 +118,6 @@ public class Tooltip extends VerticalMenu{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public Tooltip(int width, int height, int x, int y, String title, String description) {
-		super(width, height);
-		this.x = x;
-		this.y = y;
-		this.title = title;
-		this.description = description;
-	}
 	
 	public void setWidth(int width) {
 		this.width = width;
@@ -123,16 +156,14 @@ public class Tooltip extends VerticalMenu{
 		//A tooltip doesn't have selections. Other menus will take care of this.
 	}
 
-	public void drawTooltip(Graphics2D g2){
+	public void drawTooltipInventory(Graphics2D g2){
 		g2.setColor(Color.black);
 		g2.fillRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
 		g2.setColor(Color.yellow);
+		Font font1 = new Font("Courier", Font.ROMAN_BASELINE, 50);
+		g2.setFont(font1);
 		g2.drawString(this.getTitle(), this.getX()+110, this.getY()+60);
-		BufferedImage img = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
-		try{
-			img = ImageIO.read(this.getFile());
-		}
-		catch(IOException e){};
+		BufferedImage img = returnImage(this.getFile(), 64, 64);
 		g2.drawImage(img, null, this.getX()+185, this.getY()+100);
 		Font font2 = new Font("Courier", Font.ROMAN_BASELINE, 25);
 		g2.setFont(font2);
@@ -140,4 +171,63 @@ public class Tooltip extends VerticalMenu{
 		g2.drawString(this.getDescription(), this.getX()+50, this.getY()+200);
 	}
 	
+	public void drawTooltipStore(Graphics2D g2) {
+		g2.setColor(Color.black);
+		g2.fillRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
+		g2.setColor(Color.yellow);
+		Font font1 = new Font("Courier", Font.ROMAN_BASELINE, 50);
+		g2.setFont(font1);
+		g2.drawString(this.getTitle(), this.getX()+110, this.getY()+60);
+		BufferedImage img = returnImage(this.getFile(), 64, 64);
+		g2.drawImage(img, null, this.getX()+185, this.getY()+100);
+		Font font2 = new Font("Courier", Font.ROMAN_BASELINE, 25);
+		g2.setFont(font2);
+		g2.setColor(Color.white);
+		g2.drawString(this.getDescription(), this.getX()+50, this.getY()+200);
+		g2.drawString("Buy Price: $"+this.getBuyPrice()+"", this.getX()+50, this.getY()+230);
+		g2.drawString("Sell Price: $"+this.getSellPrice()+"", this.getX()+50, this.getY()+260);
+	}
+	
+	public void drawTooltipDialogue(Graphics2D g2) {
+		g2.setColor(Color.black);
+		g2.fillRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
+		g2.setColor(this.color);
+		Font font1 = new Font("Courier", Font.ROMAN_BASELINE, 30);
+		g2.setFont(font1);
+		g2.drawString(this.getTitle() + " says...", /**this.getX()+300**/Center.centerStringStatic(this.getTitle()+" says...", this.getX(), this.getWidth(), 18), this.getY()+60);
+		Font font2 = new Font("Courier", Font.ROMAN_BASELINE, 25);
+		g2.setFont(font2);
+		g2.setColor(Color.white);
+		g2.drawString(this.getDescription(), /**this.getX()+50**/Center.centerStringStatic(this.getDescription(), this.getX(), this.getWidth(), 15), this.getY()+105);
+	}
+
+	public int getBuyPrice() {
+		return buyPrice;
+	}
+
+	public int getSellPrice() {
+		return sellPrice;
+	}
+
+	public void setFile(File file) {
+		this.file = file;
+	}
+
+	public void setBuyPrice(int buyPrice) {
+		this.buyPrice = buyPrice;
+	}
+
+	public void setSellPrice(int sellPrice) {
+		this.sellPrice = sellPrice;
+	}
+	
+	public static BufferedImage returnImage(File file, int width, int height){
+		//this method will take a file and return a buffered image which could be used on the screen.
+		BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		try{
+			img = ImageIO.read(file);
+		}
+		catch(IOException e){};
+		return img;
+	}
 }

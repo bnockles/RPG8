@@ -5,15 +5,15 @@ import java.awt.Point;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
+
+import javax.print.attribute.standard.RequestingUserName;
+
 import project.battles.demo.BattlesScreen;
 import project.directors.Character;
 import project.items.Weapon;
 
 public abstract class EnemyAI extends Character{
-	private Arc2D.Double visioncone;
 	private Ellipse2D.Double awarenessRange;
-	private int visionrange;
-	private int visiondegree;
 	private int awareRange;
 	private int bulletpersec = 100;
 	protected int spawnedX;
@@ -21,7 +21,7 @@ public abstract class EnemyAI extends Character{
 	protected int enemyClass;
 	protected int kills;
 	protected int deaths; 
-	
+
 	protected boolean targetLock = false;
 	protected boolean upAndDown = false;
 	protected boolean leftAndRight = false;
@@ -29,24 +29,31 @@ public abstract class EnemyAI extends Character{
 	protected boolean goToPlayer = false;
 	protected boolean direction = false;
 	protected boolean wander = false;
-	
+
 	protected boolean alone = true;
 	protected boolean left = false;
 	protected boolean up = false;
 	protected boolean boss = false;
 	protected abstract void reaction();
 	protected abstract void run();
+	protected abstract void goToPlayer();
+	protected abstract void dodge();
+	protected abstract void backToSpawn();
+	public abstract void scale();
+	protected int enemyRotation;
+	protected boolean returnToSpawn;
 	protected int waitInterval;
-	
-	protected EnemyAI(BufferedImage[][] images, int[] stats, int[] enemystats, Weapon weapon, int type) {
+
+	protected EnemyAI(BufferedImage[][] images, int[] stats, int[] stats2, Weapon weapon, int type) {
 		//stats = { 0 X, 1 Y, 2 hp, 3 armor, 4 sneak, 5 speed,6 recovery, 7 exp, 8 strength,9 level}
 		super(images, stats, false, weapon);
-		this.visionrange = enemystats[0];
-		this.visiondegree = enemystats[1];
-		this.awareRange = enemystats[2];
-		this.bulletpersec = enemystats[3];
+		this.visionrange = stats2[0];
+		this.visiondegree = stats2[1];
+		this.awareRange = stats2[2];
+		this.bulletpersec = stats2[3];
 		this.spawnedX = stats[0];
 		this.spawnedY = stats[1];
+		this.enemyRotation = 90;
 		awarenessRange = new Ellipse2D.Double(x-awareRange, y-awareRange, awareRange, awareRange);
 		this.hostile = true;
 		this.moveUp=true;
@@ -61,35 +68,63 @@ public abstract class EnemyAI extends Character{
 		if(type == BattlesScreen.WANDER)
 			wander = true;
 	}
+	
+	
+	public void setDirection(){
+		//		moveUp = false;
+		//		moveDown = false;
+		//		moveRight = false;
+		//		moveLeft = false;
+		facingUp= false;
+		facingDown= false;
+		facingLeft= false;
+		facingRight= false;
+		if (enemyRotation > 45 && enemyRotation < 135) facingUp = true;
+		if (enemyRotation > 135 && enemyRotation < 225) facingLeft = true;
+		if (enemyRotation > 225 && enemyRotation < 315) facingDown = true;
+		if ((enemyRotation > 315 && enemyRotation < 360) ||(enemyRotation > 0 && enemyRotation < 45)) facingRight = true;
+	}
+	
+	//Pelham
+//	public void checkDistanceFromMain(){
+//		Point enemy = new Point(x,y); 
+//		if (enemy.distance(MCharacter.getMainCharPoint()) < 50){
+//			//eLog.addEnemy(this); 
+//		}
+//	}
+	
 	public void GeneralEnemyAI(){
 		if(checkAlive()){
-			//do something
-			//System.out.println("hello");
+			setDirection();
 			visioncone = checkForPlayer(this);
-			if(targetLock)
+			if(targetLock){
 				reaction();
+			}
 			else{
-				if(leftAndRight)
-					moveLeftAndRight();
+
+				if (returnToSpawn){
+					backToSpawn();
+					return;
+				}
+				returnToSpawn = false;
 				if(upAndDown)
 					moveUpAndDown();
-				if(goAround)
-					moveAround();
-				if(goToPlayer)
-					goToPlayer();
-				if(wander)
-					wander();
+				//				if(goAround)
+				//					moveAround();
+				//				if(goToPlayer)
+				//					goToPlayer();
+				//				if(wander)
+				//					wander();
 			}
 			//checkForProjectiles(); // DO NOT IMPLEMENT THIS IF WE HAVEN'T FINISH COLLISIONS
 			//checkEnemiesAround();
-			if(maxHP/10>currentHP && alone){
-				System.out.println(maxHP+" "+currentHP);
-				run();
-			}
+		}else{
+			BattlesScreen.enemiesOnScreen.remove(this);
 		}
-		//animation of death
-		//dropItem();
 	}
+
+
+
 
 	private void checkForObjects(){//Enemy can hide behind objects to block damage.
 		Point location;
@@ -107,7 +142,7 @@ public abstract class EnemyAI extends Character{
 					y--;
 				else
 					y++;
-					
+
 			}
 		}
 	}
@@ -124,23 +159,50 @@ public abstract class EnemyAI extends Character{
 			return false;
 		return true;
 	}
-	public static Arc2D.Double checkForPlayer(EnemyAI enemy){
-		//System.out.println("hello");
+	public  Arc2D.Double checkForPlayer(EnemyAI enemy){
 		int arcX = enemy.getX()+(enemy.getWidth()/2)-enemy.getVisionrange()/2;
 		int arcY = enemy.getY()+(enemy.getHeight()/2)-enemy.getVisionrange()/2;
-		int begindegree = 45;
-		if(enemy.isMoveLeft())
-			begindegree+=90;
-		if(enemy.isMoveDown())
-			begindegree+=180;
-		if(enemy.isMoveRight())
-			begindegree+=270;
+		int begindegree = enemyRotation-45;
 		Arc2D.Double visioncone = new Arc2D.Double(arcX,arcY, enemy.getVisionrange(), enemy.getVisionrange(), begindegree, 90, Arc2D.PIE);
-		//90, 225 change it to line of sight degree - 45 degree + 45
 		if(visioncone.intersects(BattlesScreen.character.getBounds())){
 			enemy.setTargetLock(true);
+			enemyRotation = (int) getAngle(new Point(BattlesScreen.character.getX(),BattlesScreen.character.getY()));
 		}
 		return visioncone;
+	}
+
+	public void goTo(Point x){
+		float angle = getAngle(x);
+		enemyRotation = (int) angle;
+		double angularSpeed = Math.sqrt(2*Math.pow((double)this.speed, 2));
+		if (angle > 0 && angle < 90){
+			moveUp(angularSpeed);
+			moveRight(angularSpeed);
+		}
+		if (angle > 90 && angle < 180){
+			moveUp(angularSpeed);
+			moveLeft(angularSpeed);
+		}
+		if (angle > 180 && angle < 270){
+			moveDown(angularSpeed);
+			moveLeft(angularSpeed);
+		}
+		if (angle > 270 && angle < 360){
+			moveDown(angularSpeed);
+			moveRight(angularSpeed);
+		}
+		if (angle == 0 || angle == 360) moveRight(speed);
+		if (angle == 90)moveUp(speed);
+		if (angle == 180)moveLeft(speed);
+		if (angle == 270)moveDown(speed);
+	}
+
+	public float getAngle(Point target) {
+		float angle = (float) (180-Math.toDegrees(Math.atan2(y-target.y,x-target.x)));
+		if(angle < 0){
+			angle += 360;
+		}
+		return angle;
 	}
 	public void setTargetLock(boolean targetLock) {
 		this.targetLock = targetLock;
@@ -157,7 +219,7 @@ public abstract class EnemyAI extends Character{
 	public int getEnemyClass() {
 		return enemyClass;
 	}
-	
+
 	public void setSpawnedX(int spawnedX) {
 		this.spawnedX = spawnedX;
 	}
@@ -172,6 +234,13 @@ public abstract class EnemyAI extends Character{
 	}
 	public boolean isTargetLock() {
 		return targetLock;
+	}
+	public static float distance(int aX, int aY, int bX, int bY){
+		float dist = (float) Math.sqrt(
+				Math.pow(aX - bX, 2) +
+				Math.pow(aY - bY, 2) );
+
+		return dist;
 	}
 	protected void moveAround(){
 		if(moveUp){
@@ -215,6 +284,7 @@ public abstract class EnemyAI extends Character{
 			moveUp=false;
 			return;
 		}
+		enemyRotation = 90;
 		y-=speed;
 	}
 	protected void moveDown(){
@@ -222,6 +292,7 @@ public abstract class EnemyAI extends Character{
 			moveDown=false;
 			return;
 		}
+		enemyRotation = 270;
 		y+=speed;
 	}
 	protected void moveLeft(){
@@ -238,6 +309,34 @@ public abstract class EnemyAI extends Character{
 		}
 		x+=speed;
 	}
+	protected void moveUp(double a){
+		if(y-height<=0){
+			moveUp=false;
+			return;
+		}
+		y-=(int) a;
+	}
+	protected void moveDown(double a){
+		if(BattlesScreen.height <= y+height){
+			moveDown=false;
+			return;
+		}
+		y+=(int) a;
+	}
+	protected void moveLeft(double a){
+		if(x<=0){
+			moveLeft = false;
+			return;
+		}
+		x-=(int) a;
+	}
+	protected void moveRight(double a){
+		if(BattlesScreen.width <= x+width){
+			moveRight = false;
+			return;
+		}
+		x+=(int) a;
+	}
 	protected void moveLeftAndRight(){
 		if(moveRight){
 			moveRight();
@@ -251,25 +350,7 @@ public abstract class EnemyAI extends Character{
 				moveRight = true;
 		}
 	}
-	protected void goToPlayer(){
-		int pX = BattlesScreen.character.getX();
-		int pY = BattlesScreen.character.getY();
-		if(Math.abs(pX-x) < 10 && Math.abs(pY-y) < 10){
-			x = (int) (Math.random()*600);
-			y = (int) (Math.random()*600);
-			//System.out.println(x + " " + y);
-		}
-		else{
-			if(pX-x<0)
-				x-=speed;
-			else
-				x+=speed;
-			if(pY-y<0)
-				y-=speed;
-			else
-				y+=speed;
-		}
-	}
+
 	protected void wander(){
 		if(moveUp||moveDown)
 			moveUpAndDown();
@@ -303,40 +384,40 @@ public abstract class EnemyAI extends Character{
 		// TODO Auto-generated method stub
 		// moveup use it as moving.
 		increaseCount();
-			if(moveUp == true){
-				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
-					return bsprite[0];
-				if(count >= 5 && count < 10)
-					return bsprite[1];
-				if(count >= 15 && count < 20)
+		if(facingUp == true){
+			if((count >= 0 && count < 5) || (count >= 10 && count < 15))
+				return bsprite[0];
+			if(count >= 5 && count < 10)
+				return bsprite[1];
+			if(count >= 15 && count < 20)
 				return bsprite[2];
-			}
- 
-			if(moveDown == true){
-				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
-					return fsprite[0];
-				if(count >= 5 && count < 10)
-					return fsprite[1];
-				if(count >= 15 && count < 20)
-				return fsprite[2];
-			}
-			if(moveLeft == true){
-				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
-					return lsprite[0];
-				if(count >= 5 && count < 10)
-					return lsprite[1];
-				if(count >= 15 && count < 20)
-				return lsprite[2];
-			}
+		}
 
-			if(moveRight == true){
-				if((count >= 0 && count < 5) || (count >= 10 && count < 15))
-					return rsprite[0];
-				if(count >= 5 && count < 10)
-					return rsprite[1];
-				if(count >= 15 && count < 20)
+		if(facingDown == true){
+			if((count >= 0 && count < 5) || (count >= 10 && count < 15))
+				return fsprite[0];
+			if(count >= 5 && count < 10)
+				return fsprite[1];
+			if(count >= 15 && count < 20)
+				return fsprite[2];
+		}
+		if(facingLeft == true){
+			if((count >= 0 && count < 5) || (count >= 10 && count < 15))
+				return lsprite[0];
+			if(count >= 5 && count < 10)
+				return lsprite[1];
+			if(count >= 15 && count < 20)
+				return lsprite[2];
+		}
+
+		if(facingRight == true){
+			if((count >= 0 && count < 5) || (count >= 10 && count < 15))
+				return rsprite[0];
+			if(count >= 5 && count < 10)
+				return rsprite[1];
+			if(count >= 15 && count < 20)
 				return rsprite[2];
-			}
+		}
 		return fsprite[0];
 	}
 	public boolean waitInterval(int perSec){
@@ -349,7 +430,6 @@ public abstract class EnemyAI extends Character{
 	}
 	@Override
 	public void fire(int x, int y, int vx, int vy) {
-		// TODO Auto-generated method stub
 		if(waitInterval(bulletpersec)){
 			if(checkAmmo()){
 				//if(weapon instanceof Pistol) // this may be the way to check weapons

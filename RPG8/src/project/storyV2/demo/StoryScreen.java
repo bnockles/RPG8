@@ -1,4 +1,4 @@
-package project.storyV2.demo;
+ package project.storyV2.demo;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -11,17 +11,24 @@ import project.directors.Game;
 import project.directors.Screen;
 import project.storyV2.Cutscenes;
 import project.storyV2.IntroCut;
+import project.storyV2.NPC;
+import project.storyV2.TownPart;
+import project.tooltipdemo.DialogueDemo;
+import project.towns.TownScreen;
 
-public class StoryScreen extends Screen implements KeyListener {
-
-
+public class StoryScreen extends Screen implements KeyListener,project.battles.EnemyDifficulty,project.towns.TownInfo {
+	public String townCheck = null;
+	public TownPart twn;
 	private static final int MOVE_UNIT = 5;
+	private static final String STEALTH = "0";
+	private static final String ATTACK = "1";
 	public static Hero mc;
+	public static NPC npc;
 	public ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 	public Cutscenes cutscene;
-	public String[][] params = {{"Mission 1: Recover the datapad", "Kill all enemies"},
-			{"Side Mission: Install the backdoor", "Remain undetected"},
-			{"Mission 5: Escape the facility", "Get out alive"}};
+	private String[][] params = {{"Mission 1: Recover the datapad", "Kill all enemies", "1", ATTACK},
+			{"Side Mission: Install the backdoor", "Remain undetected", "1.5", STEALTH},
+			{"Mission 5: Escape the facility", "Get out alive", "5", ATTACK}};
 	public ArrayList<Color> colors = new ArrayList<Color>();
 	public ArrayList<Font> fonts = new ArrayList<Font>();
 	public ArrayList<Cutscenes> cuts = new ArrayList<Cutscenes>();
@@ -29,10 +36,12 @@ public class StoryScreen extends Screen implements KeyListener {
 	public static int height;
 	public static int width;
 	private boolean disable = false;
+	private int current = 0;
 	public StoryScreen(Game game) {
 		super(game);
 		mc = new Hero("Aya Drevis", 105, 105);
 		mc.animate(mc.AyaStanding.get(0));
+		npc = new NPC(300,300,"/image1.jpg");
 		Font temp = new Font("Onyx", Font.ITALIC, 32);
 		Font temp2 = new Font("Cochin", Font.BOLD, 48);
 		Font temp3 = new Font("Cracked", Font.PLAIN, 18);
@@ -45,7 +54,7 @@ public class StoryScreen extends Screen implements KeyListener {
 		colors.add(Color.ORANGE);
 		colors.add(Color.cyan);
 		colors.add(Color.darkGray);
-		cutscene =  new IntroCut("Mission 1: Recover the datapad", "Kill all enemies", temp, 30, 1000,800,colors);
+		cutscene =  new IntroCut(params[current][0], params[current][1], temp, 30, 1000,800,colors);
 		cuts.add(cutscene);
 		setHeight();
 		setWidth();
@@ -62,6 +71,7 @@ public class StoryScreen extends Screen implements KeyListener {
 			g2.drawImage(cuts.get(i).getBufferedImage(), 0, 0, null);
 		}
 		g2.drawImage(mc.getImage(), mc.getX(), mc.getY(), null);
+		g2.drawImage(npc.getImage(), npc.getX(), npc.getY(), null);
 	}
 
 	public void setHeight(){
@@ -91,7 +101,7 @@ public class StoryScreen extends Screen implements KeyListener {
 		}
 		if(disable == false){
 			if(keyCode == KeyEvent.VK_A){
-				int current = ++counter%3;
+				current = ++counter%3;
 				cutscene =  new IntroCut(params[current][0], params[current][1], fonts.get(current), 30, 1000,800,colors.subList(current, current+3));
 				cuts.add(cutscene);
 			}
@@ -113,10 +123,13 @@ public class StoryScreen extends Screen implements KeyListener {
 				mc.moveLeft();
 			}
 			else if(keyCode == KeyEvent.VK_S) {
-				//Swarm.shoot();
+				if(Math.abs(mc.getX()-npc.getX()) + Math.abs(mc.getY()-npc.getY()) < 20) {
+					Screen testScreen = new TownScreen(game,3,3);
+					game.setScreen(testScreen);
+				}
 			}
 			else if(keyCode == KeyEvent.VK_R) {
-				//Swarm.radio();
+				twn.changeTownStatus();
 			}
 		}
 		mc.checkDimensions();
@@ -157,4 +170,22 @@ public class StoryScreen extends Screen implements KeyListener {
 
 	}
 
+	public String getMission(){
+		return params[current][1];
+	}
+
+	@Override
+	public int getMissionLevel() {
+		return Integer.parseInt(params[current][2]);
+	}
+
+	@Override
+	public int getObjective(int mission) {
+		return Integer.parseInt(params[mission][3]);
+	}
+	public void getTownInfo(String str) {
+		if(str.equals("weapon"))townCheck = "weaponStore";
+		if(str.equals("ammo"))townCheck = "ammoStore";
+		if(str.equals("armor"))townCheck = "armorStore";
+	}
 }
