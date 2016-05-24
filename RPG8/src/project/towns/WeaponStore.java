@@ -70,7 +70,7 @@ public class WeaponStore implements StoreInterface{
 		for(int i = 0; i < count; i++){
 			if(itemx == x){
 				itemNuW.set(i, itemNuW.get(i) + 1);
-				TownScreen.playable.setMoney(TownScreen.playable.getMoney() - itemListW.get(i).getPrice());
+				TownScreen.playable.setMoney(ShopScreen.playable.getMoney() - itemListW.get(i).getPrice());
 			}
 			x+=100;
 		}
@@ -105,7 +105,7 @@ public class WeaponStore implements StoreInterface{
 		for(int i = 0; i < count; i++){
 			if(itemx == x){
 				itemNuW.set(i, itemNuW.get(i) - 1);
-				TownScreen.playable.setMoney(TownScreen.playable.getMoney() + itemListW.get(i).getPrice());
+				TownScreen.playable.setMoney(ShopScreen.playable.getMoney() + itemListW.get(i).getPrice());
 			}
 			x+=100;
 		}

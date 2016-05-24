@@ -26,7 +26,7 @@ public class ShopScreen extends Screen implements KeyListener{
 	
 	BufferedImage backGround = new BufferedImage(384, 288, BufferedImage.TYPE_INT_ARGB);;
 	BufferedImage character;
-	TownWanderer playable;
+	static TownWanderer playable;
 	int x;
 	int y;
 	int boxX = 50;
