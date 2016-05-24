@@ -22,7 +22,7 @@ public class Demo extends Game{
 	public void reset() {
 		//Screen townScreen = new TownScreen(this,3,3);
 		//setScreen(townScreen);;
-		playable = new TownWanderer(450, this.getHeight()-115, "hero", "/images/shop/character.jpg", 10000);
+		playable = new TownWanderer(450, this.getHeight()-115, "hero", "/images/shop/pepe2.png", 10000);
 		store = new WeaponStore(itemN, playable.getMoney());
 		storeA = new ArmorStore(itemN, playable.getMoney());
 		storeC = new ConsumStore(itemN, playable.getMoney());

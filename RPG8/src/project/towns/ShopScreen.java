@@ -115,16 +115,18 @@ public class ShopScreen extends Screen implements KeyListener{
 		int y2 =100;
 		int count = 0;
 		for(ShopItems x: s.itemListA){
-			g2.drawString("U owned: " + s.itemNA.get(count), 400, y);
-			g2.drawString(x.getName(), 100, y);
-			g2.drawString("price: " + x.getPrice(), 300, y);
-			g2.drawString(x.getDescription(), 500, y);
-			try {
-				itemI = ImageIO.read(getClass().getResource("/images/items/" + x.getName() + ".png"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				g2.drawString("U owned: " + s.itemNA.get(count), 400, y);
+				g2.drawString(x.getName(), 100, y);
+				g2.drawString("price: " + x.getPrice(), 300, y);
+				g2.drawString(x.getDescription(), 500, y);
+				
+				URL url = getClass().getResource(x.getItemImage());
+				try {
+					itemI = ImageIO.read(getClass().getResource("/images/items/Armor.png"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			g2.drawImage(itemI, 650, y2, 50, 50, null);
 			y+=100;
 			count++;

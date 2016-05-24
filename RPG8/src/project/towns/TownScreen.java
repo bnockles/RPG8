@@ -115,9 +115,9 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 				townPortalToArmor = ImageIO.read(getClass().getResource("/images/maps/portalshop2.png"));
 				townPortalToAmmo = ImageIO.read(getClass().getResource("/images/maps/portalshop3.png"));
 				
-				putin = new StoreNPC(450, 180, "Putin","/images/shop/bait4.jpg");
-				trump = new StoreNPC(450, 180, "Trump","/images/shop/bait3.jpg");
-				hillary = new StoreNPC(450, 180, "alien","/images/shop/bait1.png");
+				putin = new StoreNPC(450, 180, "Putin","/images/shop/pepe3.jpg");
+				trump = new StoreNPC(450, 180, "Trump","/images/shop/pepe1.png");
+				hillary = new StoreNPC(450, 180, "alien","/images/shop/pepe.png");
 				
 				portalTooTown = new Building(portalToTown,450,50,true,"porttotown");
 				townPortalTooWeapon = new Building(townPortalToWeapon,250 - 50, game.getHeight() -200,true,"weaponStore");
@@ -191,7 +191,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 	
 				if(status == WEAPON_STORE){
 					paintShop(g2);
-					g2.drawImage(hillary.getNpc(), 420,150,400,200, null);
+					g2.drawImage(hillary.getNpc(), 420,150,300,300, null);
 					portalTooTown.setxcoord(150);
 					portalTooTown.setycoord(game.getHeight() -110);
 					
@@ -203,7 +203,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 				}
 				if(status == AMMO_STORE){
 					paintShop(g2);
-					g2.drawImage(trump.getNpc(), 420,150,400,200, null);
+					g2.drawImage(trump.getNpc(), 420,150,300,300, null);
 					
 					portalTooTown.setxcoord(750);
 					portalTooTown.setycoord(game.getHeight() -110);
@@ -217,7 +217,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 				}
 				if(status == ARMOR_STORE){
 					paintShop(g2);
-					g2.drawImage(putin.getNpc(), 390,game.getHeight() - 250,400,200, null);
+					g2.drawImage(putin.getNpc(), 390,game.getHeight() - 250,300,300, null);
 					portalTooTown.setxcoord(450);
 					portalTooTown.setycoord(50);
 			    	g2.drawImage(portalTooTown.getImage(), portalTooTown.getxcoord(),portalTooTown.getycoord(), null);
@@ -259,7 +259,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 
 					//g2.fillRect(20, game.getHeight()/3, 100, 200);
 					
-					g2.drawString("USE T IN CIRCLE TO GO THROUGH CIRCLE, USE SPACE IN SHOP TO ACCESS SHOP ", 400, 500);
+					g2.drawString("RARE PEPE EDITION ", 400, 500);
 				
 					g2.drawImage(playable.getImage(),playable.getX(),playable.getY(),200,150,null);
 					
@@ -425,7 +425,7 @@ public class TownScreen extends Screen implements KeyListener, TownPart{
 			if(status == ARMOR_STORE){
 				if(Math.abs(390 - playable.getX()) <= 100 && Math.abs(game.getHeight() - 250 - playable.getY()) <= 100){
 					status = IN_SHOP_MENU;
-					Screen s = new ShopScreen(game, AMMO_STORE, store, storeA, storeC, playable);
+					Screen s = new ShopScreen(game, ARMOR_STORE, store, storeA, storeC, playable);
 					game.setScreen(s);
 				}
 			}
