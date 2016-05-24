@@ -2,7 +2,7 @@ package project.towns;
 
 public interface  TownInfo {
 	
-	public String getTownInfo (String str);
+	public void getTownInfo (String str);
 	
 	
 	
