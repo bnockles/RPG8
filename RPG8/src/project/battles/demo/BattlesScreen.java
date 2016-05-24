@@ -24,6 +24,7 @@ import project.battles.BattlesActions;
 import project.battles.CheatCodeDeterminer;
 import project.battles.Collision;
 import project.battles.EnemyAI;
+import project.battles.EnemySpawnable;
 import project.battles.GEnemy;
 import project.battles.KEnemy;
 import project.battles.MCharacter;
@@ -38,8 +39,10 @@ import project.directors.Screen;
 import project.directors.UtilityMethods;
 import project.items.Weapon;
 import project.overworld.BattleInterface;
+import project.storyV2.demo.EnemyCreator;
+import project.storyV2.demo.PoopMan;
 
-public class BattlesScreen extends Screen implements cheatCodeInterface,BattleInterface, BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener{
+public class BattlesScreen extends Screen implements EnemyCreator,cheatCodeInterface,BattleInterface, BattlesActions, ActionListener, KeyListener , MouseListener,MouseMotionListener{
 	/**
 	 * ***********CHANGES! MUST READ********************
 	 * RENAMING: 
@@ -740,6 +743,11 @@ public class BattlesScreen extends Screen implements cheatCodeInterface,BattleIn
 	public cheatCodeInterface getCCI(cheatCodeInterface c) {
 		// TODO Auto-generated method stub
 		return this;
+	}
+	@Override
+	public PoopMan getEnemyCharacter(EnemySpawnable b) {
+		// TODO Auto-generated method stub
+		return (PoopMan) new GEnemy(Enemy(),enemyG, statsG,weapon2,ENEMYMOVE);
 	}
 	
 

@@ -8,13 +8,15 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import project.battles.EnemySpawnable;
+import project.battles.demo.BattlesScreen;
 import project.directors.Game;
 import project.directors.Screen;
 import project.overworld.DemoOverworld;
 import project.storyV2.Cutscenes;
 import project.storyV2.IntroCut;
 
-public class StoryScreen extends Screen implements KeyListener {
+public class StoryScreen extends Screen implements EnemySpawnable, KeyListener {
 
 	final static ArrayList<String> AyaForward = new ArrayList<String>();
 	private static String forward = "/images/heroes/sForward.png";
@@ -41,11 +43,13 @@ public class StoryScreen extends Screen implements KeyListener {
 	public ArrayList<Color> colors = new ArrayList<Color>();
 	public ArrayList<Font> fonts = new ArrayList<Font>();
 	public ArrayList<Cutscenes> cuts = new ArrayList<Cutscenes>();
+	public ArrayList<PoopMan> guise = new ArrayList<PoopMan>();
 	public int counter = 0;
 	public boolean decide = true;
 	public int SwarmsXpos;
 	public int SwarmsYpos;
 	public boolean play = true;
+	public EnemyCreator something = new BattlesScreen(game);
 	public ArrayList<Integer> travelled  = new ArrayList<Integer>();
 	//getenemykilled interface for melvin
 	//unlocked location for me
@@ -98,7 +102,10 @@ public class StoryScreen extends Screen implements KeyListener {
 				cutscene =  new IntroCut("You are entering", "a highly dangerous area", temp, 30, 1000,800,colors);
 
 				cuts.add(cutscene);
-
+				PoopMan guy = something.getEnemyCharacter(this);
+				guy.setX(Swarm.getX());
+				guy.setY(Swarm.getY());
+				guise.add(guy);
 
 
 				stopmovement();
@@ -226,6 +233,9 @@ public void addlocation(){
 		for(int i =0; i < cuts.size();i++){
 			g2.drawImage(cuts.get(i).getBufferedImage(), 0, 0, null);
 		}
+		for(int i =0; i < guise.size();i++){
+			g2.drawImage(guise.get(i).getImage(), guise.get(i).getX(), guise.get(i).getY(), null);
+		}
 		g2.drawImage(Swarm.getImage(), Swarm.getX(), Swarm.getY(), null);
 	}
 
@@ -330,6 +340,13 @@ public void addlocation(){
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 
+	}
+
+
+	@Override
+	public int getEnemyLevel() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

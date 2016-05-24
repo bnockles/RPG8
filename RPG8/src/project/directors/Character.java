@@ -8,8 +8,9 @@ import project.battles.Melee;
 import project.battles.Projectiles;
 import project.battles.demo.BattlesScreen;
 import project.save.ItemState;
+import project.storyV2.demo.PoopMan;
 import project.items.Weapon;
-public abstract class Character implements project.battles.Animation, project.battles.HaveStats{
+public abstract class Character implements PoopMan,project.battles.Animation, project.battles.HaveStats{
 
 	//public abstract ItemState getItems();
 	//public abstract OverworldSpriteControl move();
