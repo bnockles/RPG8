@@ -14,24 +14,17 @@ public interface ItemResources {
 	public String printStats(double[] stats);
 	
 	//Armor
-<<<<<<< HEAD
+
 	final Armor yourarmor = new Armor("Armor", "It's Armor", 300, 0, 100,"/images/items/Armor.png",true);
-=======
-	final Armor yourarmor = new Armor("Armor", "It's Armor", 300, 0, 100,"",true);
->>>>>>> refs/heads/develop
+
 	final Armor enemyarmor = new Armor("Armor", "It's Armor", 0, 0, 100,"",false);
 	
 	//Medkits
-<<<<<<< HEAD
+
 	final MedKit smallkit=new MedKit("Small Medkit","It's crap.",100, 5, REGEN,"/images/items/Small Medkit.png",true,100,100);
 	final MedKit medkit=new MedKit("Medium Medkit","It's better.",500, 20, NO_EFFECT,"/images/items/Medium Medkit.png",true,300,300);
 	final MedKit bigkit=new MedKit("Big Medkit","It's the best.",1000, 30, NO_EFFECT,"/images/items/Large Medkit.png",true,500,500);
-=======
-	final MedKit smallkit=new MedKit("Small Medkit","It's crap.",100, 5, REGEN,"/images/items/Small Medkit.png",true);
-	final MedKit medkit=new MedKit("Medium Medkit","It's better.",500, 20, NO_EFFECT,"/images/items/Medium Medkit.png",true);
-	final MedKit bigkit=new MedKit("Big Medkit","It's the best.",1000, 30, NO_EFFECT,"/images/items/Large Medkit.png",true);
->>>>>>> refs/heads/develop
-	
+
 	//Ammo
 	final Ammo pistolAmmo=new Ammo("Pistol Ammo", "It's pistol ammo", 50, 1, NO_EFFECT,"/images/items/regular.png",true);
 	final Ammo rifleAmmo=new Ammo("Rifle Ammo", "It's rifle ammo", 50, 1, NO_EFFECT,"/images/items/regular.png",true);
@@ -50,15 +43,12 @@ public interface ItemResources {
 	final Ammo stunHeavyAmmo = new Ammo("Stunning Heavy Ammo", "It's stunning heavy ammo", 100, 1, STUN,"/images/items/stun.png",true);
 	final Ammo stunSMGAmmo=new Ammo("Stunning SMG Ammo", "It's stunning SMG ammo", 100, 1, STUN,"/images/items/stun.png",true);
 	final Ammo stunExplosiveAmmo = new Ammo("Stunning Explosive Ammo", "It's stunning explosive ammo", 100, 1, STUN,"/images/items/stun.png",true);
-<<<<<<< HEAD
-	
+
 	final Ammo corrosivePistolAmmo=new Ammo("Corrosive Pistol Ammo", "It's corrosive pistol ammo", 100, 1, CORROSIVE,"/images/items/corrosive.png",true);
 	final Ammo corrosiveRifleAmmo=new Ammo("Corrosive Rifle Ammo", "It's corrosive rifle ammo", 100, 1, CORROSIVE,"/images/items/corrosive.png",true);
 	final Ammo corrosiveHeavyAmmo = new Ammo("Corrosive Heavy Ammo", "It's corrosive heavy ammo", 100, 1, CORROSIVE,"/images/items/corrosive.png",true);
 	final Ammo corrosiveSMGAmmo=new Ammo("Corrosive SMG Ammo", "It's corrosive SMG ammo", 100, 1, CORROSIVE,"/images/items/corrosive.png",true);
 	final Ammo corrosiveExplosiveAmmo = new Ammo("Corrosive Explosive Ammo", "It's corrosive explosive ammo", 100, 1, CORROSIVE,"/images/items/corrosive.png",true);
-=======
->>>>>>> refs/heads/develop
 	
 	//final Ammo shotgunAmmo=new Ammo("Shotgun Ammo", "It's shotgun ammo", 0, 1, NO_EFFECT,"");
 	final Ammo grenadeAmmo = new Ammo("Grenade Ammo", "It's grenade ammo", 0, 1, NO_EFFECT,"/images/items/M10-SuperFrag.png",true);
@@ -191,23 +181,6 @@ public interface ItemResources {
 	 *Amount of weapons per type  [     1       ,      5       ,      4       ,      4        ,      2       ,         2        ]
 	 * 
 	 */
-	
-	static final int MElEE_INDEX= 0;
-	static final int PISTOL_INDEX = 1;
-	static final int RIFLES_INDEX = 2;
-	static final int HEAVY_INDEX = 3;
-	static final int SMG_INDEX = 4;
-	static final int EXPLOSIVE_INDEX = 5;
-	
-	final Weapons[][] AllWeapons = {Melee, Pistol, Rifles, Heavy, SMG, Explosives};
-	/** AllWeapons
-	 *Number of column                 [     0       ,      1       ,      2       ,      3        ,      4       ,         5        ]
-	 *The weapon type                   [ Melee   ,   Pistol   ,   Rifles   ,   Heavy   ,   SMG   ,   Explosives]
-	 *Amount of weapons per type  [     1       ,      3       ,      3       ,      2        ,      2       ,         2        ]
-	 * 
-	 */
-	
-	// Misc
 	final Misc gold = new Misc("Gold", "Get more of this and you're rich!", true , 10, NO_EFFECT,"/images/items/coin.png", false);
 	final Misc scrap = new Misc("Scrap Metal", "Useless trash.",false , 2, NO_EFFECT,"/images/items/scrapMetal.png", true);
 	
