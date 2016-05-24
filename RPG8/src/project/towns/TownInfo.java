@@ -7,6 +7,20 @@ public interface  TownInfo {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * MoMo interface
 	 * 
