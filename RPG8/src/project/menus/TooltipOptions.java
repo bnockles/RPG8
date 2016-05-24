@@ -2,6 +2,7 @@ package project.menus;
 /**
  * @author Mark Mozgovoy
  */
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 /**
@@ -9,6 +10,8 @@ import java.awt.Graphics2D;
  */
 
 import java.io.File;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import project.storyV2.DisplayBox;
 
@@ -32,11 +35,29 @@ public class TooltipOptions implements DisplayBox {
 	}
 	
 	public static Tooltip makeBoxStatic(String charName, String msg){
-		Tooltip t = TooltipOptions.getTooltip(TOOLTIP_DIALOGUE);
+		final Tooltip t = TooltipOptions.getTooltip(TOOLTIP_DIALOGUE);
 		editBoxStatic(t, charName, msg);
+		long start = 1000;
+		long period = 1000;
+		Timer timer = new Timer();
+		timer.scheduleAtFixedRate(new TimerTask(){
+			public void run(){
+				changeColor(t);
+			}
+		},start , period);
 		return t;
 	}
 	
+	public static void changeColor(Tooltip t) {
+		// TODO Auto-generated method stub
+		if(t.getColor() == Color.red){
+			t.setColor(Color.yellow);
+		}
+		else{
+			t.setColor(Color.red);
+		}
+	}
+
 	public static void editBoxStatic(Tooltip box, String charName, String msg){
 		box.setTitle(charName);
 		box.setDescription(msg);
