@@ -19,14 +19,18 @@ public class Armor extends Item{
 //	Health = (int) (Health  - (Damage*damageMultiplier));
 //	Armor = (int) (Armor - ((Damage*damageMultiplier)/2));
 	public static int[] damageCalcs(int damage, int health, int armor){
-		double damageMul;
+		double damageMul = 0;
 		int[] calcs = new int[2];
-		if(armor >= 0){
+		if(armor >= 0 && armor <= 100){
 			damageMul = 100/(100 + (double)armor);
 			System.out.println("1: " + damageMul);
 		}
+		else
+			if(armor > 100){
+				damageMul = 2 - 100/(100 + armor);
+			}
 		else{
-			damageMul = 2 - 100/(100 + armor);
+			armor = 0;
 		}
 		health = (int) (health  - (damage*damageMul));
 		System.out.println("The Armor absorbed: " + (damage - (damage*damageMul)) + " Damage.");
