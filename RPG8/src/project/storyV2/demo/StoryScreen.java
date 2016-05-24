@@ -13,6 +13,7 @@ import project.storyV2.Cutscenes;
 import project.storyV2.IntroCut;
 import project.storyV2.NPC;
 import project.tooltipdemo.DialogueDemo;
+import project.towns.TownScreen;
 
 public class StoryScreen extends Screen implements KeyListener,project.battles.EnemyDifficulty,project.towns.TownInfo {
 	public String townCheck = null;
@@ -122,7 +123,7 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 			else if(keyCode == KeyEvent.VK_S) {
 				if(Math.abs(mc.getX()-npc.getX()) + Math.abs(mc.getY()-npc.getY()) < 20) {
 					
-					Screen testScreen = new DialogueDemo(game);
+					Screen testScreen = new TownScreen(game,3,3);
 					game.setScreen(testScreen);
 				}
 			}
