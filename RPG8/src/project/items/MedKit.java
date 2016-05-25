@@ -38,6 +38,7 @@ public class MedKit extends Item implements UsableItem{
 		charHealth+=this.healthGained;
 	}**/
 	public void giveHealth(HaveStats b){
+		System.out.println(b.getCurrentHP());
 		if(b.getCurrentHP()==0)return;
 		int health= b.getCurrentHP()+this.healthGained;
 		b.setCurrentHP(health);
@@ -60,9 +61,12 @@ public class MedKit extends Item implements UsableItem{
 			final TimerTask countDown = new TimerTask(){
 				boolean timerStack=false;
 				public void run(){
+					System.out.println(b.getCurrentHP());
 					if(b.getCurrentHP()==0) {
+						System.out.println("CALLED");
 						b.setRegen(false);
 						regenTimer.cancel();
+						return;
 					}
 					b.setRegen(true);
 					System.out.println("REGEN"+count);
