@@ -4,14 +4,16 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import project.directors.Game;
+import project.items.Item;
 import project.items.ItemResources;
+import project.items.Misc;
 
 /**
  * 
  * @author Jingwen Li 2-24
  *
  */
-public class WeaponStore implements StoreInterface{
+public class WeaponStore implements StoreInterface, ItemResources{
 
 	double money;
 	ArrayList<Integer> itemNuW = new ArrayList<Integer>();
@@ -114,6 +116,30 @@ public class WeaponStore implements StoreInterface{
 	public String getItemImage(int x) {
 		// TODO Auto-generated method stub
 		return itemListW.get(x).getItemImage();
+	}
+
+	@Override
+	public int buy(Misc gold) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int sell(Misc gold, Misc scrap) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String printStats(double[] stats) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Item[] getItem() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
