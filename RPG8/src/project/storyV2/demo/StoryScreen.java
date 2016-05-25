@@ -26,7 +26,10 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 	public static NPC npc;
 	public ArrayList<Integer> pressedKeys = new ArrayList<Integer>();
 	public Cutscenes cutscene;
-	private String[][] params = {{"Mission 1: Recover the datapad", "Kill all enemies", "1", ATTACK},
+	public String[] subtitle = {"Would you like to go to town?"};
+	public int subtitleCount = 0;
+	public boolean subtitleBool = false;
+	private String[][] params = {{"", "", "1", ATTACK},
 			{"Side Mission: Install the backdoor", "Remain undetected", "1.5", STEALTH},
 			{"Mission 5: Escape the facility", "Get out alive", "5", ATTACK}};
 	public ArrayList<Color> colors = new ArrayList<Color>();
@@ -72,8 +75,8 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 		}
 		g2.drawImage(mc.getImage(), mc.getX(), mc.getY(), null);
 		g2.drawImage(npc.getImage(), npc.getX(), npc.getY(), null);
+		if(subtitleBool)g2.drawString(subtitle[subtitleCount],430,700);
 	}
-
 	public void setHeight(){
 		height = super.height;
 	}
@@ -94,10 +97,20 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 		//other keys don't get combined with other keys, so they don't need to be added
 		if(keyCode == KeyEvent.VK_SPACE){
 			//stuff that happens when the spacebar is pressed
-			disable = !disable;
+			if(Math.abs(mc.getX()-npc.getX()) + Math.abs(mc.getY()-npc.getY()) < 20) {
+				subtitleBool = !subtitleBool;
+				disable = !disable;
+				
+			}
 		}
 		if(disable){
 			if(pressedKeys.contains(keyCode))pressedKeys.remove(pressedKeys.indexOf(keyCode));
+			if(keyCode == KeyEvent.VK_S) {
+				if(disable) {
+					Screen testScreen = new TownScreen(game,3,3);
+					game.setScreen(testScreen);
+				}
+			}
 		}
 		if(disable == false){
 			if(keyCode == KeyEvent.VK_A){
@@ -122,12 +135,7 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 				mc.animate(mc.AyaStanding.get(1));
 				mc.moveLeft();
 			}
-			else if(keyCode == KeyEvent.VK_S) {
-				if(Math.abs(mc.getX()-npc.getX()) + Math.abs(mc.getY()-npc.getY()) < 20) {
-					Screen testScreen = new TownScreen(game,3,3);
-					game.setScreen(testScreen);
-				}
-			}
+			
 			else if(keyCode == KeyEvent.VK_R) {
 				twn.changeTownStatus();
 			}
