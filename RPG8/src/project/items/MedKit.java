@@ -32,24 +32,6 @@ public class MedKit extends Item implements UsableItem{
 		this.y = y;
 	}
 	
-	public BufferedImage getItemBImage(){
-		return itemBImage;
-	}
-	public void setVisible(boolean visible) {
-		this.visible = visible;
-	}
-	public boolean getVisible(){
-		return visible;
-	}
-	public int getX() {
-		return x;
-	}
-	public int getY() {
-		return y;
-	}
-	public Rectangle getRectitem() {
-		return rectitem;
-	}
 	//Health regained by clicking to use
 	/**public int giveHealth(Character b){
 		int charHealth=b.getHealth();
@@ -65,7 +47,7 @@ public class MedKit extends Item implements UsableItem{
 		}
 	}
 	public void regen(final HaveStats b){
-
+		
 		final int healRegen=this.healthGained;
 		if(this.getEffect()==ItemResources.REGEN){
 			try{	
@@ -78,7 +60,10 @@ public class MedKit extends Item implements UsableItem{
 			final TimerTask countDown = new TimerTask(){
 				boolean timerStack=false;
 				public void run(){
-					if(b.getCurrentHP()==0) regenTimer.cancel();
+					if(b.getCurrentHP()==0) {
+						b.setRegen(false);
+						regenTimer.cancel();
+					}
 					b.setRegen(true);
 					System.out.println("REGEN"+count);
 					if(regenDuration>3){
@@ -98,6 +83,24 @@ public class MedKit extends Item implements UsableItem{
 		}
 	}
 
+	public BufferedImage getItemBImage(){
+		return itemBImage;
+	}
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+	public boolean getVisible(){
+		return visible;
+	}
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
+	public Rectangle getRectitem() {
+		return rectitem;
+	}
 	public int getEffect() {
 		return effect;
 	}
