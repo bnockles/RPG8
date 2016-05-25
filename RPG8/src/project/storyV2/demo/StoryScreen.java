@@ -107,6 +107,7 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 			if(pressedKeys.contains(keyCode))pressedKeys.remove(pressedKeys.indexOf(keyCode));
 			if(keyCode == KeyEvent.VK_S) {
 				if(disable) {
+                                        twn.changeTownStatus();
 					Screen testScreen = new TownScreen(game,3,3);
 					game.setScreen(testScreen);
 				}
@@ -137,7 +138,7 @@ public class StoryScreen extends Screen implements KeyListener,project.battles.E
 			}
 			
 			else if(keyCode == KeyEvent.VK_R) {
-				twn.changeTownStatus();
+				
 			}
 		}
 		mc.checkDimensions();
