@@ -69,12 +69,13 @@ public class MedKit extends Item implements UsableItem{
 						return;
 					}
 					b.setRegen(true);
-					System.out.println("REGEN"+count);
+					
 					if(regenDuration>3){
 						b.setRegen(false);
 						regenDuration=0;
 						regenTimer.cancel();
 					}else{int health= b.getCurrentHP()+healRegen;
+						System.out.println("REGEN"+count);
 						count++;
 						b.setCurrentHP(health);
 						if(b.getCurrentHP()>b.getMaxHP())b.setCurrentHP(b.getMaxHP());

@@ -18,7 +18,8 @@ import project.mainmenudemo.DynamicMenu;
 public class ItemScreen extends Screen implements KeyListener,ItemResources{
 	TargetDemo you = new TargetDemo(100, Rifles[0],rifleAmmo,0,0,"You",yourarmor);
 	TargetDemo enemy = new TargetDemo(100, Rifles[1],rifleAmmo,0,0,"Enemy",enemyarmor);
-	
+	BufferedImage youImage;
+	BufferedImage enemyImage;
 	BufferedImage weaponEquiped;
 	int color=1;
 	BufferedImage melee;
@@ -52,7 +53,8 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		URL heavyurl = getClass().getResource(Heavy[0].getItemImage());
 		URL smgurl = getClass().getResource(SMG[0].getItemImage());
 		URL explosiveurl = getClass().getResource(Explosives[0].getItemImage());
-
+		URL enemyurl= getClass().getResource("/enemy/efront1.png");
+		URL youurl=getClass().getResource("/maincharacter/mfront1.png");
 		try {
 			melee = ImageIO.read(meleeurl);
 			pistol = ImageIO.read(pistolurl);
@@ -61,6 +63,8 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 			smg = ImageIO.read(smgurl);
 			explosive = ImageIO.read(explosiveurl);
 			weaponEquiped = rifle;
+			youImage=ImageIO.read(youurl);
+			enemyImage=ImageIO.read(enemyurl);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -97,10 +101,11 @@ public class ItemScreen extends Screen implements KeyListener,ItemResources{
 		g2.drawString("different types of ammo", 445, 270);
 		drawStats(g2,30,70,you);
 		drawStats(g2,700,70,enemy);
-		drawStickMan(g2, 20, 385);
+		drawStickMan(g2, 100, 385);
 		drawStickMan(g2,770,385);
 		g2.drawImage(weaponEquiped, 295, 525, weaponEquiped.getWidth(), weaponEquiped.getHeight(), null);	
-		
+		g2.drawImage(youImage, 60, 385, youImage.getWidth(),youImage.getHeight(), null);
+		g2.drawImage(enemyImage, 730, 385,enemyImage.getWidth(), enemyImage.getHeight(), null);
 	}
 	public void drawOutline(Graphics2D g2,int x1, int y1,int x2,int y2, Color c,int size){
 		//x-1,y+29,101,21
